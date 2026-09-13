@@ -1,0 +1,10 @@
+{
+  "name": "dsd-starters",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "validate": "node scripts/validate.js",
+    "start": "python3 -m http.server 8765 --bind 127.0.0.1"
+  }
+}
