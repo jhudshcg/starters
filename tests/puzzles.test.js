@@ -4,10 +4,10 @@ import puzzles from '../data/puzzles.js';
 import {choose,resolve} from '../js/bank.js';
 import {markChallenge,logicRule,equationRule,placedPolygon,intersectionArea,polygonArea} from '../js/challenge-rules.js';
 const permutations=a=>a.length?a.flatMap((x,i)=>permutations(a.filter((_,j)=>i!==j)).map(t=>[x,...t])):[[]];
-test('each puzzle subtype has five distinct templates and sets contain one puzzle',()=>{
+test('each puzzle subtype has five distinct templates and sets contain three puzzles',()=>{
  for(const focus of new Set(puzzles.map(q=>q.focus))){
   const qs=puzzles.filter(q=>q.focus===focus);assert.ok(qs.length>=5);
-  const first=choose(0,focus),second=choose(0,focus,first);assert.equal(first.questions.length,1);assert.notEqual(first.entries[0].slot,second.entries[0].slot);
+  const first=choose(0,focus),second=choose(0,focus,first);assert.equal(first.questions.length,3);assert.notDeepEqual(first.entries,second.entries);
   assert.equal(resolve(first.code).focus,focus);
  }
 });

@@ -1,4 +1,5 @@
-export const challengeKinds=['logic-grid','equation-grid','sudoku','cover-path','tiling','cage-grid'];
+import {markGo} from './go-rules.js';
+export const challengeKinds=['logic-grid','equation-grid','sudoku','cover-path','tiling','cage-grid','go'];
 export function stateOf(raw,part) {
   let state;try {state=JSON.parse(raw);} catch {state={};}
   if(Array.isArray(state)) return part.kind==='tiling'?{placements:state}:part.kind==='cover-path'?{path:state}:{values:state};
@@ -39,6 +40,7 @@ export function intersectionArea(subject,clip){
 }
 export function markChallenge(part,raw){
  const state=stateOf(raw,part),fail=message=>({earned:0,message}),win=()=>({earned:part.marks,message:'Complete. All puzzle rules are satisfied.'});
+ if(part.kind==='go')return markGo(part,state);
  if(['logic-grid','equation-grid'].includes(part.kind)){
   const v=state.values,n=part.names.length;
   if(!Array.isArray(v)||v.length!==part.categories.length||v.some(row=>!Array.isArray(row)||row.length!==n||row.some(x=>!Number.isInteger(x)||x<0||x>=n)))return fail('Select one value for each row in every category.');

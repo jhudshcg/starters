@@ -1,0 +1,455 @@
+{
+  "scope": "50 imported positions: five initial GoProblems examples, the linked OGS example and these 44 additions. Preserve original board sizes, setup, all supplied branches and winning markers. Source rank is not classroom timing.",
+  "initial": [
+    16441,
+    6423,
+    13359,
+    5130,
+    1091
+  ],
+  "ogs": [
+    2625
+  ],
+  "additional": [
+    {
+      "id": 17294,
+      "title": "Black to live · 17294",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17654,
+      "title": "Black to resist · 17654",
+      "prompt": "Find the best available resistance for Black. A ko fight is an accepted outcome in this source problem; unconditional life is not guaranteed.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The recorded result is ko. The eventual winner depends on ko threats outside this local problem.",
+      "sourceRank": 12,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17660,
+      "title": "Black to live · 17660",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 14,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17812,
+      "title": "Black to live in seki · 17812",
+      "prompt": "Black to play. Preserve the enclosed group. The supplied solutions include life in seki, where neither side can safely capture the other.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The source accepts several continuations, including seki. Compare the shared liberties in the replay.",
+      "sourceRank": 11,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17990,
+      "title": "Black to live · 17990",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 19,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17994,
+      "title": "Black to live · 17994",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 16,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18006,
+      "title": "Black to live · 18006",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 11,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18013,
+      "title": "Black to live · 18013",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 15,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18021,
+      "title": "Black to live · 18021",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 16,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18025,
+      "title": "Black to live · 18025",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 18,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18027,
+      "title": "Black to live · 18027",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 11,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18030,
+      "title": "Black to live · 18030",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 14,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18036,
+      "title": "Black to live · 18036",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 14,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18049,
+      "title": "Black to live · 18049",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 19,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18055,
+      "title": "Black to live · 18055",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18063,
+      "title": "Black to live · 18063",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18067,
+      "title": "Black to live · 18067",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18072,
+      "title": "Black to live · 18072",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 17,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18073,
+      "title": "Black to live · 18073",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 18,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18079,
+      "title": "Black to resist · 18079",
+      "prompt": "Find the best available resistance for Black. This source problem accepts an unfavourable ko, rather than unconditional life.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied line reaches an unfavourable ko. This is the recorded best local resistance, not guaranteed life.",
+      "sourceRank": 11,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18082,
+      "title": "Black to live · 18082",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 19,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18108,
+      "title": "Black to live in seki · 18108",
+      "prompt": "Black to play. Find the sequence that preserves the enclosed group in seki: neither side can safely capture the other.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The recorded result is seki. Shared liberties prevent either side from safely capturing the other.",
+      "sourceRank": 13,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18113,
+      "title": "Black to live · 18113",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18116,
+      "title": "Black to live · 18116",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18123,
+      "title": "Black to live · 18123",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 18,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18132,
+      "title": "Black to live · 18132",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18134,
+      "title": "Black to live · 18134",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 15,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17358,
+      "title": "Black to live · 17358",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 14,
+      "sourceSize": 12,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17531,
+      "title": "Black to live · 17531",
+      "prompt": "Black to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 12,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17482,
+      "title": "Black to kill · 17482",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 17,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17642,
+      "title": "Black to kill · 17642",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 17,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17838,
+      "title": "Black to kill · 17838",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 18,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17859,
+      "title": "Black to kill · 17859",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 13,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17989,
+      "title": "Black to kill · 17989",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 17,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18003,
+      "title": "Black to kill · 18003",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 17,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18046,
+      "title": "Black to kill · 18046",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 19,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18047,
+      "title": "Black to kill · 18047",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 15,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18052,
+      "title": "Black to kill · 18052",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18059,
+      "title": "Black to kill · 18059",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 17,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18071,
+      "title": "Black to kill · 18071",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 11,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18131,
+      "title": "Black to kill · 18131",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 20,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18143,
+      "title": "Black to kill · 18143",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 13,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 18146,
+      "title": "Black to kill · 18146",
+      "prompt": "Black to play. Prevent the enclosed opposing group from living. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 14,
+      "sourceSize": 13,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    },
+    {
+      "id": 17906,
+      "title": "White to live · 17906",
+      "prompt": "White to play. Find a continuation that preserves the enclosed group’s life. Read the forcing replies before choosing a move.",
+      "hint": "Compare the available liberties and eye space after each reply. Read the order of forcing moves.",
+      "explanation": "The supplied source marks this continuation as successful. Use the replay to inspect the changes in liberties and eye space.",
+      "sourceRank": 19,
+      "sourceSize": 19,
+      "goalReview": "Goal identified from the source position and recorded winning lines; no independent life-and-death engine adjudication."
+    }
+  ]
+}

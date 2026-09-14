@@ -32,3 +32,11 @@
 .question:has(.challenge) .parts { min-width:0; }
 .challenge button:disabled { cursor:default; }
 .solution .challenge { margin-top:1rem; }
+
+.go-board{position:relative;background:#eed19a;border:1px solid #a78346;border-radius:6px;margin:.4rem;flex-shrink:0}.go-board svg{display:block;width:100%;height:100%}.go-point{position:absolute;background:transparent;border:0;padding:0;border-radius:50%;box-shadow:none}.go-point:hover:not(:disabled){background:#efb93b66}.go-point:focus-visible{outline:3px solid #866000;outline-offset:-2px}.go-point:disabled{opacity:1}.go-moves{font-size:.8rem;overflow-wrap:anywhere}.go-status{padding:.65rem;background:#fff5d7;border-radius:6px}.go-reply,.go-replay label{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}.go-replay{display:flex;align-items:center;gap:1rem}.go-replay input{min-width:180px;flex:1}.go-scroll{max-width:100%;}
+
+/* Hit targets must never cover the stone beneath the last-move marker. */
+.challenge .go-point,.challenge .go-point[aria-pressed="true"],.challenge .go-point:hover:not(:disabled){background:transparent!important;border:0!important}
+.challenge .go-point:hover:not(:disabled){box-shadow:inset 0 0 0 2px #b78327}
+
+.go-status.go-success{background:#e5f3df;border:2px solid #548242;color:#244d20;font-weight:700}

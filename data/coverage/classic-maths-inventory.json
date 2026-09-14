@@ -1,7 +1,7 @@
 {
   "source": "https://mrbartonmaths.com/puzzles/",
   "reviewedDate": "2026-09-14",
-  "scope": "All 30 source problems; exempt from the five-per-subtype limit. Reviewed does not mean implemented. Use independently checked answers and concise adapted wording.",
+  "scope": "All 30 source ideas are accessible in the classic maths bank. Concise authored versions explicitly repair ambiguous rules; this is not a verbatim copy. Numeric results and strategies use independently derived answers.",
   "items": [
     {
       "sourceId": 1,
@@ -14,71 +14,82 @@
       "sourceId": 2,
       "label": "Coin denominations",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 140
     },
     {
       "sourceId": 3,
       "label": "Random loops",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 141
     },
     {
       "sourceId": 4,
       "label": "Digit statistics",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 142
     },
     {
       "sourceId": 5,
       "label": "Barrier detour",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Define when the barrier becomes observable before optimising the route."
+      "status": "integrated",
+      "authoringNote": "Define when the barrier becomes observable before optimising the route.",
+      "bankSlot": 143
     },
     {
       "sourceId": 6,
       "label": "Cargo optimisation",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "State divisible cargo and volume assumptions."
+      "status": "integrated",
+      "authoringNote": "State divisible cargo and volume assumptions.",
+      "bankSlot": 144
     },
     {
       "sourceId": 7,
       "label": "Random toggles",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 145
     },
     {
       "sourceId": 8,
       "label": "Pearl distribution",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 146
     },
     {
       "sourceId": 9,
       "label": "Unbounded lottery",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Personal willingness to pay has no unique correct value; distinguish it from expected payout."
+      "status": "integrated",
+      "authoringNote": "Personal willingness to pay has no unique correct value; distinguish it from expected payout.",
+      "bankSlot": 147
     },
     {
       "sourceId": 10,
       "label": "Birthday deduction",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Correct the swapped month/day information assignments before authoring."
+      "status": "integrated",
+      "authoringNote": "Correct the swapped month/day information assignments before authoring.",
+      "bankSlot": 148
     },
     {
       "sourceId": 11,
       "label": "Children’s ages",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 149
     },
     {
       "sourceId": 12,
       "label": "Raised circumference",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 150
     },
     {
       "sourceId": 13,
@@ -91,48 +102,55 @@
       "sourceId": 14,
       "label": "Coin placement strategy",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 151
     },
     {
       "sourceId": 15,
       "label": "Egg sales",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 152
     },
     {
       "sourceId": 16,
       "label": "Three-digit expressions",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Define permitted operations and how symbols are counted; verify feasibility for every digit."
+      "status": "integrated",
+      "authoringNote": "Define permitted operations and how symbols are counted; verify feasibility for every digit.",
+      "bankSlot": 153
     },
     {
       "sourceId": 17,
       "label": "Unreliable witnesses",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "State independence and the prior probability."
+      "status": "integrated",
+      "authoringNote": "State independence and the prior probability.",
+      "bankSlot": 154
     },
     {
       "sourceId": 18,
       "label": "Prisoner signalling",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Check the strategy against both unknown initial switch states."
+      "status": "integrated",
+      "authoringNote": "Check the strategy against both unknown initial switch states.",
+      "bankSlot": 155
     },
     {
       "sourceId": 19,
       "label": "Uneven ropes",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Distinguish a measured interval from elapsed time since lighting."
+      "status": "integrated",
+      "authoringNote": "Distinguish a measured interval from elapsed time since lighting.",
+      "bankSlot": 156
     },
     {
       "sourceId": 20,
       "label": "Aircraft refuelling",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Verify a complete schedule with every aircraft returning."
+      "status": "integrated",
+      "authoringNote": "Verify a complete schedule with every aircraft returning.",
+      "bankSlot": 157
     },
     {
       "sourceId": 21,
@@ -145,8 +163,9 @@
       "sourceId": 22,
       "label": "Coprime wager",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Specify the sampling range and distribution."
+      "status": "integrated",
+      "authoringNote": "Specify the sampling range and distribution.",
+      "bankSlot": 158
     },
     {
       "sourceId": 23,
@@ -159,32 +178,37 @@
       "sourceId": 24,
       "label": "Horse rankings",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 159
     },
     {
       "sourceId": 25,
       "label": "Blind coin grouping",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 160
     },
     {
       "sourceId": 26,
       "label": "Random seating",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 161
     },
     {
       "sourceId": 27,
       "label": "Birth proportions",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "Distinguish limiting population proportions from an expected finite ratio."
+      "status": "integrated",
+      "authoringNote": "Distinguish limiting population proportions from an expected finite ratio.",
+      "bankSlot": 162
     },
     {
       "sourceId": 28,
       "label": "Hat parity",
       "promptReviewed": true,
-      "status": "pending"
+      "status": "integrated",
+      "bankSlot": 163
     },
     {
       "sourceId": 29,
@@ -197,8 +221,9 @@
       "sourceId": 30,
       "label": "Pirate allocation",
       "promptReviewed": true,
-      "status": "pending",
-      "authoringNote": "State tie-breaking preferences as well as the voting threshold."
+      "status": "integrated",
+      "authoringNote": "State tie-breaking preferences as well as the voting threshold.",
+      "bankSlot": 164
     }
   ]
 }

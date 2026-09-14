@@ -16,9 +16,9 @@ async function evaluate(expression){const r=await send('Runtime.evaluate',{expre
 async function until(expression){for(let i=0;i<80;i++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Timed out: '+expression);}
 async function click(selector){await evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);}
 async function screenshot(name){const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/starters-${name}.png`,Buffer.from(r.data,'base64'));}
-async function openFocus(type,focus){
+async function openFocus(type,focus,count=1){
  await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
- const code=await evaluate(`(async()=>{const {choose}=await import('./js/bank.js');return choose(${type},${JSON.stringify(focus)}).code;})()`);
+ const code=await evaluate(`(async()=>{const {choose,resolve}=await import('./js/bank.js');const set=choose(${type},${JSON.stringify(focus)});return ${type}===0?resolve({...set,entries:set.entries.slice(0,${count})}).code:set.code;})()`);
  await evaluate(`document.querySelector('#code-form input').value=${JSON.stringify(code)};document.querySelector('#code-form').requestSubmit()`);
  await until(`Boolean(document.querySelector('dialog')) || document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
  if(await evaluate('Boolean(document.querySelector("dialog"))'))await click('dialog button[value="leave"]');
@@ -27,9 +27,9 @@ async function openFocus(type,focus){
 }
 const puzzlePart=()=>evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');return resolve(document.querySelector('#display-code').textContent).questions[0].parts[0];})()`);
 try{
- await send('Runtime.enable');await send('Page.enable');
+ await send('Runtime.enable');await send('Page.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});
  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
- await send('Page.navigate',{url:base});await until('Boolean(document.querySelector("#code-form"))');
+ await send('Page.navigate',{url:base+'/?smoke='+Date.now()});await until('Boolean(document.querySelector("#code-form"))');
  await evaluate('localStorage.removeItem("dsd-starters-v1")');await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');
  assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
  await openFocus(1,'CA2.1');assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
@@ -79,5 +79,48 @@ try{
  await openFocus(0,'logic grids');assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Logic grid causes whole-page overflow');
  await openFocus(0,'cover paths');assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Path board causes whole-page overflow');
  await click('#timer-toggle');const deadline=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline');await send('Page.reload');await until('Boolean(document.querySelector("#timer"))');assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline'),deadline);
- assert.deepEqual(errors,[]);console.log('Browser smoke passed: exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all eight subtypes, timer recovery and 320px reflow.');
+
+ await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
+ await openFocus(0,'go',3);assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
+ const goQuestions=await evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');return resolve(document.querySelector('#display-code').textContent).questions;})()`);
+ const goQ=goQuestions.find(q=>JSON.parse(q.parts[0].answer).moves.length>=2)??goQuestions[0];
+ const goP=goQ.parts[0],goMoves=JSON.parse(goP.answer).moves,goRoot=`[data-question="${goQ.slot}"] .challenge:not([data-locked])`;
+ await click(goRoot+' [data-challenge-action="go-hint"]');
+ assert.ok(await evaluate(`JSON.parse(localStorage.getItem('dsd-starters-v1')).active.hints[${goQ.slot}]`));
+ assert.equal(await evaluate(`JSON.parse(JSON.parse(localStorage.getItem('dsd-starters-v1')).active.answers[${goQ.slot}]['0']).moves?.length??0`),0);
+ for(let moveIndex=0;moveIndex<goMoves.length;){
+  await click(goRoot+` [data-challenge-action="go"][data-value="${goMoves[moveIndex]}"]`);
+  const played=await evaluate(`JSON.parse(JSON.parse(localStorage.getItem('dsd-starters-v1')).active.answers[${goQ.slot}]['0']).moves`);
+  assert.ok(played.length>moveIndex);moveIndex=played.length;
+  const last=played.at(-1);
+  assert.equal(await evaluate(`getComputedStyle(document.querySelector(${JSON.stringify(goRoot+` [data-value="${last}"]`)})).backgroundColor`),'rgba(0, 0, 0, 0)');
+  assert.ok(await evaluate(`Boolean(document.querySelector(${JSON.stringify(goRoot+` [data-go-stone="${last}"]`)}))`),'Latest played stone is missing');
+ }
+ assert.ok(await evaluate(`document.querySelector(${JSON.stringify(goRoot+' .go-success')}).textContent.includes('Well done!')`));
+ await screenshot('go-reply-visible');
+ await send('Page.reload');await until(`Boolean(document.querySelector(${JSON.stringify(goRoot)}))`);
+ assert.deepEqual(await evaluate(`JSON.parse(JSON.parse(localStorage.getItem('dsd-starters-v1')).active.answers[${goQ.slot}]['0']).moves`),goMoves);
+ await click(`[data-question="${goQ.slot}"] .answer-tools summary`);await click(`[data-reveal="${goQ.slot}"]`);
+ const slider=`[data-question="${goQ.slot}"] .solution [data-go-replay]`;
+ await evaluate(`document.querySelector(${JSON.stringify(slider)}).scrollIntoView({block:'center'});window.testReplaySlider=document.querySelector(${JSON.stringify(slider)});`);
+ const sr=await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(slider)}).getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})()`);
+ const sy=sr.y+sr.height/2;
+ await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',buttons:1,clickCount:1,x:sr.x+sr.width-8,y:sy});
+ for(const fraction of [.7,.45,.05]){
+  await send('Input.dispatchMouseEvent',{type:'mouseMoved',button:'left',buttons:1,x:sr.x+sr.width*fraction,y:sy});
+  assert.ok(await evaluate(`window.testReplaySlider===document.querySelector(${JSON.stringify(slider)})`),'Dragging replaced the slider');
+ }
+ await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',buttons:0,x:sr.x+sr.width*.05,y:sy});
+ assert.equal(await evaluate(`Number(document.querySelector(${JSON.stringify(slider)}).value)`),0);
+ assert.ok(await evaluate(`document.querySelector('[data-question="${goQ.slot}"] .solution .go-moves').textContent.includes('none yet')`));
+ await screenshot('go-replay');
+ await openFocus(0,'classic maths',3);assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
+ await openFocus(2,'functions');assert.equal(await evaluate('document.querySelectorAll(".question").length'),2);
+ await openFocus(2,'algorithms');assert.equal(await evaluate('document.querySelectorAll(".question").length'),2);
+ await openFocus(0,'go',3);await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
+ assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Go causes whole-page overflow');
+ assert.ok(await evaluate("document.querySelector('footer').textContent.includes('designed by Joe Hudson')"));
+ await screenshot('go-mobile');
+
+ assert.deepEqual(errors,[]);console.log('Browser smoke passed: exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
 } finally {ws.close();}

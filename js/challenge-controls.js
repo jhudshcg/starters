@@ -1,4 +1,6 @@
 import {stateOf,near,placedPolygon} from './challenge-rules.js';
+import {renderGo} from './go-controls.js';
+import {playGo,goPosition,nextGoHint} from './go-rules.js';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const palette=['#ffb39a','#a8c9ff','#d9b3ff','#9ddbd1','#ffd579','#d5b798','#c2dba1'];
 export function renderChallenge(part,raw,locked,slot){
@@ -6,6 +8,7 @@ export function renderChallenge(part,raw,locked,slot){
  const button=(action,text,value='',extra='')=>`<button type="button" data-challenge-action="${action}" data-value="${esc(value)}" ${disabled} ${extra}>${text}</button>`;
  const toolbar=`<div class="challenge-toolbar">${button('undo','Undo')}${button('reset','Reset')}</div>`;
  let body='';
+ if(part.kind==='go')body=renderGo(part,s,locked)+(locked?'':toolbar);
  if(['logic-grid','equation-grid'].includes(part.kind)){
   const values=s.values??part.categories.map(()=>part.names.map(()=>-1));
   body=`<ol class="challenge-clues">${part.clues.map(c=>`<li>${esc(c)}</li>`).join('')}</ol><p class="puzzle-help">Click once for × excluded, again for ✓ selected, again to clear. Each value belongs to one row. Yellow means your selection, not a checked answer.</p><div class="candidate-grids">${part.categories.map((cat,c)=>`<div class="board-scroll" tabindex="0" aria-label="${esc(cat.name)} candidate grid"><table class="candidate-table"><caption>${esc(cat.name)}</caption><thead><tr><th scope="col">${part.kind==='equation-grid'?'Variable':'Person'}</th>${cat.values.map(v=>`<th scope="col">${esc(v)}</th>`).join('')}</tr></thead><tbody>${part.names.map((name,r)=>`<tr><th scope="row">${esc(name)}</th>${cat.values.map((v,i)=>{const key=`${c},${r},${i}`,selected=values[c]?.[r]===i,excluded=s.excluded?.includes(key);return `<td>${button('candidate',selected?'✓':excluded?'×':'·',key,`aria-label="${esc(name)}, ${esc(v)}: ${selected?'selected':excluded?'excluded':'unknown'}" aria-pressed="${selected}" class="candidate ${selected?'selected':''}"`)}</td>`;}).join('')}</tr>`).join('')}</tbody></table></div>`).join('')}</div>${toolbar}`;
@@ -28,11 +31,28 @@ export function renderChallenge(part,raw,locked,slot){
   const polygon=(points,extra)=>`<polygon points="${points.map(p=>p.join(',')).join(' ')}" ${extra}/>`;
   body=`<div class="piece-tray">${part.pieces.map((shape,i)=>button('piece',`<svg viewBox="-1 -1 4 4" aria-hidden="true">${polygon(shape,`fill="${palette[i]}" stroke="#28363c" stroke-width=".05"`)}</svg><span>Piece ${i+1}${placements[i]?' · placed':''}</span>`,i,`aria-pressed="${selected===i}" class="${selected===i?'selected':''}"`)).join('')}</div><div class="tangram-board" data-tiling-board role="group" aria-label="Silhouette and placed pieces"><svg viewBox="0 0 ${n} ${n}" aria-hidden="true"><defs><pattern id="grid-${slot}" width=".5" height=".5" patternUnits="userSpaceOnUse"><path d="M .5 0 L 0 0 0 .5" fill="none" stroke="#d6dfe0" stroke-width=".012"/></pattern></defs><rect width="${n}" height="${n}" fill="url(#grid-${slot})"/>${part.target.map(p=>polygon(p,'fill="#55626d"')).join('')}${placements.map((place,i)=>place?polygon(placedPolygon(part.pieces[i],place),`fill="${palette[i]}" stroke="${selected===i?'#9B7122':'#28363c'}" stroke-width="${selected===i?'.08':'.025'}"`):'').join('')}</svg></div><div class="challenge-toolbar">${button('rotate','Rotate 45°',45)}${button('rotate','Rotate −45°',-45)}${button('flip','Flip')}${button('remove','Return to tray')}</div><div class="challenge-toolbar">${button('move','←','-0.5,0', 'aria-label="Move selected piece left"')}${button('move','↑','0,-0.5','aria-label="Move selected piece up"')}${button('move','↓','0,0.5','aria-label="Move selected piece down"')}${button('move','→','0.5,0','aria-label="Move selected piece right"')}${button('place','Place selected piece at centre')}</div><p class="puzzle-help">Select a piece, then click the board to place its anchor. Move in half-unit steps using the arrows; rotate around its anchor. Only the parallelogram (piece 5) can flip. Dark grey is the target, and yellow outlines show selection.</p>${toolbar}`;
  }
- return `<div class="challenge" ${attrs} data-kind="${part.kind}" ${locked?'data-locked="true"':''}>${body}</div>`;
+ return `<div class="challenge" ${attrs} data-kind="${part.kind}" ${part.kind==='go'?`data-go-moves="${esc(JSON.stringify(s.moves??[]))}"`:''} ${locked?'data-locked="true"':''}>${body}</div>`;
 }
-export function bindChallenges(root,set,attempt,onChange,notify){
+export function bindChallenges(root,set,attempt,onChange,notify,onAssist=()=>{}){
  const find=container=>{const slot=Number(container.dataset.challengeSlot),id=container.dataset.challengePart;return {slot,id,part:set.questions.find(q=>q.slot===slot)?.parts.find(p=>p.id===id)};};
  const read=(slot,id,part)=>stateOf(attempt.answers[slot]?.[id],part);
+ root.querySelectorAll('.challenge[data-locked][data-kind="go"]').forEach(container=>{
+  const {part}=find(container);if(!part)return;
+  const input=container.querySelector('[data-go-replay]');
+  const initial=input?Number(input.max):0;
+  // The rendered move list is the student's attempt, or the revealed model line.
+  const moves=JSON.parse(container.dataset.goMoves??'[]');
+  container.addEventListener('input',event=>{
+   if(!event.target.matches('[data-go-replay]'))return;
+   const step=Math.max(0,Math.min(initial,Number(event.target.value)));
+   const preview=document.createElement('div');
+   preview.innerHTML=renderGo(part,{moves:moves.slice(0,step),replay:moves},true);
+   for(const selector of ['.go-scroll','.go-moves','.go-status']){
+    container.querySelector(selector)?.replaceWith(preview.querySelector(selector));
+   }
+   container.querySelector('.go-replay > span').textContent=`${step} / ${initial}`;
+  });
+ });
  const update=(slot,id,s,previous,selector)=>{
   const history=previous.history??[];const {history:ignored,...snapshot}=previous;
   s.history=[...history,snapshot].slice(-100);
@@ -53,11 +73,28 @@ export function bindChallenges(root,set,attempt,onChange,notify){
  root.querySelectorAll('.challenge:not([data-locked])').forEach(container=>{
   const {slot,id,part}=find(container);if(!part)return;
   const selector=(action,value)=>`[data-challenge-slot="${slot}"][data-challenge-part="${id}"] [data-challenge-action="${action}"][data-value="${value}"]`;
+  container.querySelector('[data-go-reply]')?.addEventListener('change',event=>{
+   if(attempt.finished)return;
+   const old=read(slot,id,part),moves=old.moves??[],move=Number(event.target.value);
+   const parent=goPosition(part,moves.slice(0,-1));
+   if(parent?.children.some(c=>c.move===move&&c.colour!==part.player))update(slot,id,{...old,moves:[...moves.slice(0,-1),move],pending:null},old);
+  });
   container.querySelectorAll('[data-challenge-action]').forEach(button=>{
    button.addEventListener('click',()=>{
     if(attempt.finished||button.disabled)return;
     const action=button.dataset.challengeAction,value=button.dataset.value,old=read(slot,id,part),s=structuredClone(old);
     if(action==='path'){extend(slot,id,part,Number(value));return;}
+    if(action==='go'){
+     const result=playGo(part,old,Number(value));
+     if(result.error)notify(result.error);else update(slot,id,result.state,old,selector(action,value));
+     return;
+    }
+    if(action==='go-hint'){
+     const move=nextGoHint(part,old);
+     if(move===null){notify('No winning continuation is recorded here. Undo or Reset to explore another line.');return;}
+     onAssist(slot);s.hintMove=move;s.pending=null;
+     onChange(slot,id,JSON.stringify(s),selector(action,value));return;
+    }
     if(action==='undo'){
      if(!s.history?.length)return;const previous=s.history.pop();onChange(slot,id,JSON.stringify({...previous,history:s.history}),selector(action,value));return;
     }
@@ -95,7 +132,7 @@ export function bindChallenges(root,set,attempt,onChange,notify){
   container.addEventListener('keydown',event=>{
    const button=event.target.closest('[data-challenge-action]');if(!button)return;
    const action=button.dataset.challengeAction,i=Number(button.dataset.value),n=part.size;
-   if(['cell','path'].includes(action)&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)){
+   if(['cell','path','go'].includes(action)&&['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(event.key)){
     const next=i+({ArrowLeft:-1,ArrowRight:1,ArrowUp:-n,ArrowDown:n}[event.key]);event.preventDefault();
     if(next>=0&&next<n*n&&near(i,next,n)){
      const target=container.querySelector(`[data-challenge-action="${action}"][data-value="${next}"]`);

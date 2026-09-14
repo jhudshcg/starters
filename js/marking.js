@@ -1,4 +1,5 @@
 import {sameCode} from './code-answer.js';
+import {expressionValue,validCoinSystems,fractionValue} from './maths-answer.js';
 import {challengeKinds as interactiveKinds, markChallenge as markPuzzle} from './challenge-rules.js';
 const normalise = (value, sensitive=false) => {
   const text=String(value??'').trim().replace(/\s+/g,' ');
@@ -16,6 +17,14 @@ export function markQuestion(question, answers={}) {
     let correct=false;
     if(value) {
       if(p.kind==='number') correct=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value) && Number(value)===Number(p.answer);
+      else if(p.kind==='fraction') {
+        const supplied=fractionValue(raw),expected=fractionValue(p.answer);
+        correct=supplied!==null&&expected!==null&&Math.abs(supplied-expected)<1e-9;
+      }
+      else if(p.kind==='coin-systems') correct=validCoinSystems(raw);
+      else if(p.kind==='expression') {
+        const supplied=expressionValue(raw,p.digit);correct=supplied!==null&&Math.abs(supplied-6)<1e-9;
+      }
       else if(p.kind==='integer-set') {
         const parse=s=>{const text=String(s).trim().replace(/^\[|\]$/g,'');return /^\d+(?:\s*,\s*\d+)*$/.test(text)?text.split(',').map(Number).sort((a,b)=>a-b):null;};
         const supplied=parse(raw),expected=parse(p.answer);correct=Boolean(supplied&&expected&&new Set(supplied).size===supplied.length&&JSON.stringify(supplied)===JSON.stringify(expected));

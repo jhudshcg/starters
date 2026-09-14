@@ -29,6 +29,10 @@ jobs:
         run: npm run validate
       - name: Verify puzzle solutions
         run: python scripts/validate-puzzles.py
+      - name: Install content validation tools
+        run: python -m pip install -r scripts/requirements-content.txt
+      - name: Verify Go solution trees
+        run: python scripts/validate-go.py
       - name: Package site
         run: npm run build
       - name: Upload site

@@ -6,4 +6,5 @@ import sudoku from './puzzles/sudoku.js';
 import numbers from './puzzles/number-constraints.js';
 import sequences from './puzzles/sequences.js';
 import classics from './puzzles/classic-maths.js';
-export default [...logic,...equations,...tangrams,...paths,...sudoku,...numbers,...sequences,...classics];
+import go from './puzzles/go.js';
+export default [...logic,...equations,...tangrams,...paths,...sudoku,...numbers,...sequences,...classics,...go].map(question=>({...question,setSize:3}));
