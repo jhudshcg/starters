@@ -26,9 +26,9 @@ The Focus selector chooses other subtypes/topics. Copy controls share the exact 
 
 ## Current content
 
-- **Puzzles:** eight subtypes, five distinct puzzles each: logic grids, logic equations, tangrams, cover-every-dot paths, Sudoku, arithmetic cages, sequences and classic maths. The 35 original templates have five variations each; the five selected classic problems are fixed. One substantial puzzle per activity, provisionally 5–15 minutes.
+- **Puzzles:** 115 templates across nine subtypes: 35 original grid, shape and sequence puzzles with five variations each, all 30 classic maths problems, and 50 fixed Go problems. Normal selection produces three puzzles; individual question codes still open one. Some sets can take longer than the starter timer.
 - **Exam practice:** 51 multipart questions, two variations each, across all 15 CA1–CA2 subsections. Three questions per activity, currently 15–16 marks. Mainly short terms, values and constrained code answers.
-- **Python:** six templates with five variations each, covering iteration and selection. Two challenges, 12 marks per activity.
+- **Python:** 12 templates with five variations each, covering iteration, selection, functions, searching and sorting. Two challenges, 12 marks per activity.
 
 These are working practice materials pending teacher review and student timing trials. They are not a complete or approved Core question bank. The [generated coverage report](docs/coverage-ca1-ca2.md) exposes every subelement, including gaps: 239 of 369 currently have a live question with two applicable variations; only 10 have two distinct live questions. None is marked teacher-approved. Ten further elements have supporting practice only and 120 remain uncovered.
 
@@ -58,7 +58,7 @@ npm run validate
 
 `scripts/browser-smoke.mjs` uses an isolated Chrome debugging session on port 9227 and the preview on 8765. It clears test-profile storage; do not point it at a student profile. VS Code’s browser is preferred for manual testing; this session could not automate it.
 
-The [puzzle specification](docs/spec-puzzles.md) gives each subtype’s format, interaction, difficulty and marking requirements. [checkpoint.md](checkpoint.md) records decisions, source findings and remaining work. Public deployment has not been performed.
+The [puzzle specification](docs/spec-puzzles.md) gives each subtype’s format, interaction, difficulty and marking requirements. [checkpoint.md](checkpoint.md) records decisions, source findings and remaining work. The live site is https://jhudshcg.github.io/starters/.
 
 ## GitHub Pages
 
@@ -68,8 +68,12 @@ The workflow in `.github/workflows/pages.yml` tests the application, validates c
 2. In the repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**.
 3. Run **Actions → Validate and deploy Pages → Run workflow** if the first push happened before Pages was enabled. The deployment job reports the public URL.
 
-This uses the [official GitHub Pages workflow actions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). No personal access token or custom deployment secret is required by the workflow. Public deployment has not yet been verified: this checkout currently has no remote configured.
+This uses the [official GitHub Pages workflow actions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). No personal access token or custom deployment secret is required by the workflow. Deployment is verified at https://jhudshcg.github.io/starters/; pushes to `main` deploy automatically after validation.
 
 `npm run build` creates `_site` with HTML, CSS and JavaScript, including the live banks. Specifications, source examples, drafts and coverage inventories are excluded from the Pages artifact. Preview that exact artifact with `python3 -m http.server 8766 --bind 127.0.0.1 --directory _site`.
 
-The maths collection is **5 of 30 implemented**, not complete. All 30 remain in scope; [the source inventory](data/coverage/classic-maths-inventory.json) records outstanding problems and wording issues separately from implementation status.
+The maths collection is **30 of 30 implemented** as concise adaptations with explicit rules and self-marking answers. [The source inventory](data/coverage/classic-maths-inventory.json) links every source item to its live bank slot.
+
+Go uses 49 attributed GoProblems positions and the linked OGS example. Click to play; opponent stones and captures appear immediately. Undo, alternative recorded replies, next-move hints and draggable solution replay are available. A completed winning line shows immediate green feedback. Hints mark the attempt as assisted. Moves outside the supplied trees are unverified; the app is not a general Go engine. Ko and seki outcomes are identified in their prompts.
+
+Go source board sizes and branches are preserved. `scripts/import-go.py` imports downloaded public API JSON using `sgfmill`; `data/coverage/go-source-inventory.json` records the selection. Install `scripts/requirements-content.txt` to run `python scripts/validate-go.py`. GitHub Actions does this automatically and checks all 1,528 recorded positions.

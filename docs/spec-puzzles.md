@@ -6,7 +6,7 @@ Status: replacement content implemented for local testing; teacher difficulty re
 
 A starter should sustain 5–15 minutes of thought. Use linked deductions, interacting constraints, planning or systematic enumeration. A larger grid, longer calculation or more clicks alone does not meet this requirement. Each family needs five distinct puzzles, with meaningful variations; renamed clues or rotated copies do not count as five distinct puzzles. Timing remains an estimate until classroom trials.
 
-The implemented batch includes all five types illustrated in `example_puzzles`, plus numerical constraints and sequences. Add five selected classic maths problems from the linked collection. Go remains the optional separate extension described below.
+The implemented bank includes the example types, numerical constraints and sequences, all 30 classic maths problems, and 50 Go problems. The maths and Go totals override the five-per-type baseline.
 
 | Selectable subtype | Five-puzzle production brief | Interaction and correctness |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ The implemented batch includes all five types illustrated in `example_puzzles`, 
 | Sequences | Five different rule structures, such as alternating operations, interleaving, second differences, recurrence and constrained transformations. | Short numeric answers; constrain the rule family and request intermediate reasoning where practical. Do not claim an arbitrary finite sequence has a unique continuation. |
 | Classic maths | Five selected problems with bounded, checkable answers and independently derived explanations. | Short structured answers or choices; source link; separate hidden solution. Avoid subjective questions that cannot be self-marked fairly. |
 
-Start with one substantial puzzle per starter for these families; permit a teacher to open another. Do not force two full Sudoku/tangram problems into a 5–15-minute session. Set selection must respect the family’s set size and display the estimate honestly.
+Normal puzzle selection produces three distinct puzzles of the selected subtype. Individual question codes may open one puzzle. Three substantial puzzles can exceed 15 minutes; the starter timer is a practice limit, not a guarantee that every student will finish the set.
 
 ## What the examples establish
 
@@ -33,7 +33,7 @@ The old two-by-two totals/products, one-step spatial transformations and three-i
 
 - [Mr Barton Maths collection](https://mrbartonmaths.com/puzzles/): reviewed the 30 embedded prompts and page behaviour, not just the landing-page text. It contains self-reported completion, not supplied solutions or automatic marking. Some prompts need clearer assumptions; the birthday prompt reverses the information assignments relative to its dialogue. Use selected classic ideas, concise authored wording, attribution and independently checked answers. The collection is not ordered by difficulty.
 - [Mathschallenge one-star PDF](https://mathschallenge.net/problems/pdfs/mathschallenge_1_star.pdf): sampled numerical, arrangement and geometric problems and their printed solutions. Questions and solutions appear together, so embedding complete pages would disclose answers. Use as additional inspiration; no claim that all 127 pages were reviewed.
-- [GoProblems](https://goproblems.com/) and [OGS collection 2625](https://online-go.com/puzzle/2625): browser reader exposed app shells, not verified positions. Do not count them as reviewed Go content.
+- [GoProblems](https://goproblems.com/) and [OGS puzzle 2625](https://online-go.com/puzzle/2625): retrieved public API data, inspected positions and imported their solution trees. The bank contains 49 GoProblems examples rated 10–20 kyu and the linked OGS example. Preserve attribution and original board sizes. Source winning markers establish the accepted lines; validation checks move legality and captures, not independent strategic optimality.
 
 Keep source URLs and adaptation notes in content records. Do not import an entire externally authored collection as though it were original content.
 
@@ -47,15 +47,19 @@ One public `data/puzzles.js` bank imports the family data. Keep renderers and ch
 - Sudoku: solve independently, count solutions up to two, and record the techniques needed. Reject unsatisfiable or ambiguous boards.
 - Numerical/sequence/classic problems: calculate independently, check every variation and test wrong answers corresponding to common mistakes. Explicitly state conventions and allowed operations.
 
-Hints should point to a useful deduction rather than expose a complete answer. Show full explanations only through the existing reveal action. No correctness colours while entering answers. Avoid scoring trivial exclusions or safe moves as if they solved the puzzle; publish the scoring rule.
+Hints should point to a useful deduction rather than expose a complete answer. Show full explanations only through the existing reveal action. For Go, show green feedback immediately on reaching a recorded winning position; other puzzle families retain explicit checking. Avoid scoring trivial exclusions or safe moves as if they solved the puzzle; publish the scoring rule.
 
 ## Accessible controls
 
 All actions work by click and keyboard; dragging is optional. Use warm yellow for selections, with a cross/tick/number and an accessible state label. No second radio-selector grid for spatial answers. Preserve undo, reset and refresh recovery. Larger grids may scroll within a labelled board region, but must not cause whole-page overflow. Do not shrink controls to make a complex grid fit a phone.
 
-## Optional Go
+## Go: format, approach and presentation
 
-A later batch may include five reviewed 10–20 kyu tsumego. State side to move, capture/survival goal, legal moves, ko policy and verified opponent replies. Accept all winning continuations. Prefer positions without ko. Do not substitute a one-liberty capture exercise for the requested level or assign a rank without knowledgeable review.
+`data/puzzles/go.js` contains 50 fixed positions with side to move, objective, original board size, cropped viewport and a tree of recorded moves, resulting boards and success/failure markers. `sgfmill` parses source SGF and computes captures during import. Keep the selected source inventory in `data/coverage/go-source-inventory.json`.
+
+Click or keyboard activation plays a recorded move and the opponent’s reply immediately. Stone colours remain visible beneath yellow last-move rings. Offer Undo, Reset and a choice among recorded opponent replies. Unlisted moves are proposed but unverified, never declared proven losing. Ko/seki outcomes must be explicit in the question.
+
+“Hint: next move” marks a recommended intersection without playing it and records assisted practice. Reaching a source-marked winning node immediately shows a green success message. The source tree accepts alternative recorded wins; no general Go engine searches for unlisted solutions. Show-answer replay supports click, continuous dragging and keyboard steps without replacing the slider during input. Include a Go rules reminder link.
 
 ## Acceptance
 
