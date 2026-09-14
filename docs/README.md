@@ -6,6 +6,7 @@ Status: draft for review. These documents elaborate [AGENTS.md](../AGENTS.md); t
 | --- | --- |
 | [Common specification](spec-common.md) | Data, codes, navigation, marking lifecycle, timing and progress |
 | [Puzzle specification](spec-puzzles.md) | Puzzle families, interactions, scoring and examples |
+| [CA1–CA2 coverage report](coverage-ca1-ca2.md) | Generated subelement counts and remaining gaps |
 | [Exam specification](spec-exam.md) | Curriculum coverage, marking and examples |
 | [Python specification](spec-python.md) | Challenge formats, variations and examples |
 | [Style guide](style-guide.md) | Shared visual and interaction rules |

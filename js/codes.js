@@ -1,9 +1,10 @@
-// Version 1 format: 7 version bits, 2 type bits, three (10 slot + 3 variation) pairs.
+export const BANK_VERSION = 2;
+// Code format (independent of content revision): 7 version bits, 2 type bits, three (10 slot + 3 variation) pairs.
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
 export const UNUSED = 1023;
 const integer = (n, max) => Number.isInteger(n) && n >= 0 && n <= max;
 
-export function encode({version = 1, type, entries, minutes = null}) {
+export function encode({version = BANK_VERSION, type, entries, minutes = null}) {
   if (!integer(version, 127) || !integer(type, 2) || !Array.isArray(entries) || entries.length < 1 || entries.length > 3) throw Error('Invalid code fields.');
   if (new Set(entries.map(e => e.slot)).size !== entries.length) throw Error('A question cannot appear twice.');
   let payload = (BigInt(version) << 2n) | BigInt(type);
@@ -43,7 +44,7 @@ export function decode(raw) {
 }
 
 export function questionCode(type, slot, variation) {
-  return `${['PZ','EX','PY'][type]}-1-${slot}-${variation}`;
+  return `${['PZ','EX','PY'][type]}-${BANK_VERSION}-${slot}-${variation}`;
 }
 export function parseQuestionCode(code) {
   const match = /^(PZ|EX|PY)-(\d+)-(\d+)-(\d+)$/.exec(code.trim());

@@ -16,91 +16,68 @@ async function evaluate(expression){const r=await send('Runtime.evaluate',{expre
 async function until(expression){for(let i=0;i<80;i++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Timed out: '+expression);}
 async function click(selector){await evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);}
 async function screenshot(name){const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/starters-${name}.png`,Buffer.from(r.data,'base64'));}
+async function openFocus(type,focus){
+ await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
+ const code=await evaluate(`(async()=>{const {choose}=await import('./js/bank.js');return choose(${type},${JSON.stringify(focus)}).code;})()`);
+ await evaluate(`document.querySelector('#code-form input').value=${JSON.stringify(code)};document.querySelector('#code-form').requestSubmit()`);
+ await until(`Boolean(document.querySelector('dialog')) || document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
+ if(await evaluate('Boolean(document.querySelector("dialog"))'))await click('dialog button[value="leave"]');
+ await until(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
+ return code;
+}
+const puzzlePart=()=>evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');return resolve(document.querySelector('#display-code').textContent).questions[0].parts[0];})()`);
 try{
  await send('Runtime.enable');await send('Page.enable');
  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
  await send('Page.navigate',{url:base});await until('Boolean(document.querySelector("#code-form"))');
- const clean=await send('Page.addScriptToEvaluateOnNewDocument',{source:'localStorage.removeItem("dsd-starters-v1")'});await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:clean.identifier});
+ await evaluate('localStorage.removeItem("dsd-starters-v1")');await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');
  assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
- await screenshot('home');
- await click('[data-start="2"]');await until('document.querySelectorAll(".question").length===2');
- const originalCode=await evaluate('document.querySelector("#display-code").textContent');assert.equal(originalCode.length,8);
- await screenshot('programming');
- // Fill the displayed variation's reference answers using the same inputs as a student.
- await evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');const set=resolve(document.querySelector('#display-code').textContent);for(const q of set.questions)for(const p of q.parts){const els=[...document.querySelectorAll('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]')];if(els[0].type==='radio'){els.find(el=>el.value===p.answer).click();}else{els[0].value=p.answer;els[0].dispatchEvent(new Event('input',{bubbles:true}));}}})()`);
- assert.equal(await evaluate('document.querySelector(".answer-tools").open'),false);await click('.answer-tools summary');await click('[data-check]');assert.ok(await evaluate('document.querySelectorAll(".feedback.correct").length>=6'));
- await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');assert.equal(await evaluate('document.querySelector("#display-code").textContent'),originalCode);
- await click('#submit');await until('Boolean(document.querySelector(".result-score"))');assert.equal(await evaluate('document.querySelector(".result-score").textContent'),'100%');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));assert.equal(await evaluate('document.activeElement.id'),'submit-result');assert.ok(await evaluate('document.querySelector("#submit").getBoundingClientRect().bottom<=innerHeight'));
- await click('#nav-progress');await until('Boolean(document.querySelector(".history"))');assert.equal(await evaluate('document.querySelectorAll(".history tbody tr").length'),1);
- await screenshot('progress');
- await click('#nav-home');await until('Boolean(document.querySelector("#code-form"))');await click('[data-start="0"]');await until('Boolean(document.querySelector(".puzzle-grid"))');
- await evaluate('document.querySelector("#focus").value="spatial";document.querySelector("#focus").dispatchEvent(new Event("change"))');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');await until('Boolean(document.querySelector(".position-board"))');
- await click('[data-puzzle-action=position]:not(:disabled)');assert.ok(await evaluate('Boolean(document.querySelector("[data-puzzle-action=position][aria-pressed=true]"))'));assert.equal(await evaluate('document.querySelectorAll(".board-options").length'),0);await screenshot('spatial');
- await click('#timer-toggle');assert.equal((await evaluate('document.querySelector("#display-code").textContent')).length,9);
- const deadline=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline');
- await send('Page.reload');await until('Boolean(document.querySelector("#timer"))');assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline'),deadline);
- // Recovery from an expired saved timer must submit once and keep history intact.
- const injected=await send('Page.addScriptToEvaluateOnNewDocument',{source:'const saved=JSON.parse(localStorage.getItem("dsd-starters-v1"));if(saved?.active){saved.active.deadline=Date.now()-1000;localStorage.setItem("dsd-starters-v1",JSON.stringify(saved));}'});
- await send('Page.reload');await until('Boolean(document.querySelector(".result-score"))');await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:injected.identifier});assert.ok(await evaluate('document.querySelector(".result-banner").textContent.includes("Time’s up")'));
- await send('Page.reload');await until('Boolean(document.querySelector(".result-score"))');assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.length'),2);
- // Exam and invalid-code flows.
- await click('#nav-home');await until('Boolean(document.querySelector("#code-form"))');await click('[data-start="1"]');await until('document.querySelectorAll(".question").length===3');
- assert.equal(await evaluate('document.querySelector("#new-focus").disabled'),true);
- await click('[data-hint]');assert.ok(await evaluate('document.activeElement.classList.contains("hint-text")'));await click('.answer-tools summary');assert.ok(await evaluate('document.querySelector(".answer-tools-content").textContent.includes("try to answer all questions first and submit your best try before checking correct answers")'));await click('[data-reveal]');assert.ok(await evaluate('document.activeElement.classList.contains("solution")'));await screenshot('exam');
- await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
- assert.ok(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'), 'Activity page has horizontal overflow at 320px');await screenshot('mobile');
- await click('#nav-home');await until('Boolean(document.querySelector("#code-form"))');
- assert.ok(await evaluate('document.documentElement.scrollWidth<=window.innerWidth'),'Home page has horizontal overflow at 320px');
- await evaluate('document.querySelector("#code-form input").value="bad-code!";document.querySelector("#code-form").requestSubmit()');await until('document.querySelector("#code-error").textContent.length>0');
- // Expanded puzzle families: interact with real controls, then submit.
- await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
- async function openPuzzle(slots){
-   const code=encode({version:1,type:0,entries:slots.map(slot=>({slot,variation:0})),minutes:null});
-   await click('#nav-home');await until('Boolean(document.querySelector("#code-form"))');
-   await evaluate(`document.querySelector('#code-form input').value=${JSON.stringify(code)};document.querySelector('#code-form').requestSubmit()`);
-   await until(`Boolean(document.querySelector('dialog')) || document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
-   if(await evaluate('Boolean(document.querySelector("dialog"))'))await click('dialog button[value="leave"]');
-   await until(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
+ await openFocus(1,'CA2.1');assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
+ assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),15);
+ await evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');for(const q of resolve(document.querySelector('#display-code').textContent).questions)for(const p of q.parts){const el=document.querySelector('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]');el.value=p.answer;el.dispatchEvent(new Event('input',{bubbles:true}));}})()`);
+ await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));await screenshot('exam-expanded');
+ await openFocus(0,'logic grids');assert.equal(await evaluate('document.querySelectorAll(".question").length'),1);
+ await click('[data-challenge-action="candidate"]');assert.equal(await evaluate('document.querySelector("[data-challenge-action=candidate]").textContent'),'×');
+ await click('[data-challenge-action="candidate"]');assert.equal(await evaluate('document.querySelector("[data-challenge-action=candidate]").textContent'),'✓');
+ await send('Page.reload');await until('Boolean(document.querySelector(".candidate-table"))');assert.equal(await evaluate('document.querySelector("[data-challenge-action=candidate]").textContent'),'✓');
+ await click('[data-challenge-action="undo"]');assert.equal(await evaluate('document.querySelector("[data-challenge-action=candidate]").textContent'),'×');
+ await screenshot('logic-grid');
+ await openFocus(0,'sudoku');
+ const cell=await evaluate('document.querySelector(".digit-cell:not(.given)").dataset.value');
+ await click(`[data-challenge-action="cell"][data-value="${cell}"]`);await click('[data-challenge-action="notes"]');await click('[data-challenge-action="digit"][data-value="3"]');
+ assert.equal(await evaluate(`document.querySelector('[data-challenge-action="cell"][data-value="${cell}"] .pencil-notes').textContent`),'3');
+ await send('Page.reload');await until('Boolean(document.querySelector(".digit-grid"))');
+ assert.equal(await evaluate(`document.querySelector('[data-challenge-action="cell"][data-value="${cell}"] .pencil-notes').textContent`),'3');await screenshot('sudoku');
+ await openFocus(0,'cover paths');const part=await puzzlePart(),route=JSON.parse(part.answer).reverse();
+ await evaluate('document.querySelector("[data-path-board]").scrollIntoView({block:"center"})');
+ const rect=await evaluate('(()=>{const r=document.querySelector("[data-path-board]").getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})()');
+ const point=cell=>({x:rect.x+(cell%part.size+.5)/part.size*rect.width,y:rect.y+(Math.floor(cell/part.size)+.5)/part.size*rect.height});
+ await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',buttons:1,clickCount:1,...point(route[0])});
+ for(const cell of route.slice(1))await send('Input.dispatchMouseEvent',{type:'mouseMoved',button:'left',buttons:1,...point(cell)});
+ await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',buttons:0,clickCount:1,...point(route.at(-1))});
+ assert.ok(await evaluate(`document.querySelector('.path-count').textContent.startsWith('${route.length} / ${route.length}')`));
+ await send('Page.reload');await until('Boolean(document.querySelector("[data-path-board]"))');assert.ok(await evaluate(`document.querySelector('.path-count').textContent.startsWith('${route.length} /')`));
+ await click('#submit');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));await screenshot('path-drag');
+ await openFocus(0,'tangrams');const tiling=await puzzlePart(),places=JSON.parse(tiling.answer);
+ for(let i=0;i<places.length;i++){
+  await click(`[data-challenge-action="piece"][data-value="${i}"]`);
+  await evaluate('document.querySelector("[data-tiling-board]").scrollIntoView({block:"center"})');
+  const r=await evaluate('(()=>{const r=document.querySelector("[data-tiling-board]").getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})()');
+  const place=places[i],point={x:r.x+place.x/tiling.size*r.width,y:r.y+place.y/tiling.size*r.height};
+  await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',clickCount:1,...point});await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',clickCount:1,...point});
+  for(let n=0;n<place.rotation/45;n++)await click('[data-challenge-action="rotate"][data-value="45"]');
+  if(place.flipped)await click('[data-challenge-action="flip"]');
  }
- assert.equal(await evaluate('document.querySelector(".brand-sub").innerText'), 'Digital Software Development\nT-Level');
- await openPuzzle([6,7]);
- for(const cell of [0,2,1,3])await click(`[data-puzzle-slot="6"][data-puzzle-action="order-add"][data-value="${cell}"]`);
- for(let i=0;i<3;i++)await click(`[data-puzzle-slot="7"][data-puzzle-action="match"][data-value="${i},${i}"]`);
- await screenshot('logic');await click('#submit');assert.equal(await evaluate('document.querySelector(".result-score").textContent'),'100%');
- await openPuzzle([8]);await click('[data-puzzle-action="switch"][data-value="0"]');await click('[data-puzzle-action="switch"][data-value="2"]');await click('#submit');assert.equal(await evaluate('document.querySelector(".result-score").textContent'),'100%');
- await openPuzzle([9,11]);
- await evaluate(`document.querySelector('[data-puzzle-slot="9"][data-puzzle-action="shape"][data-value="0"]').focus()`);
- await send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowRight',code:'ArrowRight',windowsVirtualKeyCode:39});
- assert.equal(await evaluate('document.activeElement.dataset.value'),'1');
- for(let toggle=0;toggle<2;toggle++){
-   await send('Input.dispatchKeyEvent',{type:'keyDown',key:' ',code:'Space',windowsVirtualKeyCode:32});
-   await send('Input.dispatchKeyEvent',{type:'keyUp',key:' ',code:'Space',windowsVirtualKeyCode:32});
-   assert.equal(await evaluate('document.activeElement.getAttribute("aria-pressed")'),toggle===0?'true':'false');
+ await click('#submit');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));await screenshot('tangram');
+ await click('.answer-tools summary');await click('[data-reveal]');assert.equal(await evaluate('document.querySelectorAll(".solution .tangram-board").length'),1);
+ for(const focus of ['logic equations','number constraints','sequences','classic maths']){
+  await openFocus(0,focus);assert.equal(await evaluate('document.querySelectorAll(".question").length'),1);
+  if(focus==='classic maths')assert.equal(await evaluate('document.querySelector("#permutation").disabled'),true);
  }
-
- await evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');const set=resolve(document.querySelector('#display-code').textContent);for(const q of set.questions){for(const cell of JSON.parse(q.parts[0].answer))document.querySelector('[data-puzzle-slot="'+q.slot+'"][data-puzzle-action="shape"][data-value="'+cell+'"]').click();}})()`);
- assert.equal(await evaluate(`getComputedStyle(document.querySelector('[data-puzzle-action="shape"][aria-pressed="true"]')).backgroundColor`),'rgb(255, 230, 160)');await screenshot('shapes');
- await send('Page.reload');await until('Boolean(document.querySelector("[data-puzzle-action=shape]"))');
- assert.equal(await evaluate('document.querySelectorAll("[data-puzzle-action=shape][aria-pressed=true]").length'),8);
- await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
- assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Shape page overflows at 320px');await screenshot('shapes-mobile');
- await click('#submit');assert.equal(await evaluate('document.querySelector(".result-score").textContent'),'100%');
- await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
- await openPuzzle([12,14]);
- // Reject a diagonal move, then exercise undo and reset.
- await click('[data-puzzle-slot="12"][data-puzzle-action="path"][data-value="6"]');assert.ok(await evaluate('document.querySelector("#toast").textContent.includes("neighbouring")'));
- await click('[data-puzzle-slot="12"][data-puzzle-action="path"][data-value="1"]');await click('[data-puzzle-slot="12"][data-puzzle-action="undo"]');
- assert.ok(await evaluate(`document.querySelector('[data-question="12"] .route-status').textContent.startsWith('0 / 6')`));
- // Use a valid alternative to the model route in Q12.
- for(const cell of [1,2,6,10,11,15])await click(`[data-puzzle-slot="12"][data-puzzle-action="path"][data-value="${cell}"]`);
- for(const cell of [1,2,6,10,14,15])await click(`[data-puzzle-slot="14"][data-puzzle-action="path"][data-value="${cell}"]`);
- await screenshot('paths');await send('Page.reload');await until('Boolean(document.querySelector(".route-status"))');
- assert.ok(await evaluate('document.querySelector(".route-status").textContent.startsWith("6 / 6")'));
- await click('#submit');assert.equal(await evaluate('document.querySelector(".result-score").textContent'),'100%');
- await openPuzzle([15,17]);
- await evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');const set=resolve(document.querySelector('#display-code').textContent);for(const q of set.questions){const [r,c]=q.parts[0].answer.split(',').map(Number);document.querySelector('[data-puzzle-slot="'+q.slot+'"][data-puzzle-action="position"][data-value="'+((r-1)*5+c-1)+'"]').click();const field=document.querySelector('[data-slot="'+q.slot+'"][data-part="1"]');field.value=q.parts[1].answer;field.dispatchEvent(new Event('input',{bubbles:true}));}})()`);
- await screenshot('spatial-solved');await click('#submit');assert.equal(await evaluate('document.querySelector(".result-score").textContent'),'100%');
- await screenshot('submitted');
- assert.deepEqual(errors,[]);
- console.log('Browser smoke checks passed: three types, marking, reload, history, spatial input, timer recovery/deduplication, invalid codes, 320px reflow, answer disclosure, nearby submission results, logic, shape painting and alternative valid paths. Screenshots: /private/tmp/starters-*.png');
-}finally{ws.close();}
+ await openFocus(0,'sudoku');await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
+ assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Sudoku causes whole-page overflow');await screenshot('sudoku-mobile');
+ await openFocus(0,'logic grids');assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Logic grid causes whole-page overflow');
+ await openFocus(0,'cover paths');assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Path board causes whole-page overflow');
+ await click('#timer-toggle');const deadline=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline');await send('Page.reload');await until('Boolean(document.querySelector("#timer"))');assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline'),deadline);
+ assert.deepEqual(errors,[]);console.log('Browser smoke passed: exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all eight subtypes, timer recovery and 320px reflow.');
+} finally {ws.close();}

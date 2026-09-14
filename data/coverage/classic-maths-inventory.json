@@ -1,0 +1,204 @@
+{
+  "source": "https://mrbartonmaths.com/puzzles/",
+  "reviewedDate": "2026-09-14",
+  "scope": "All 30 source problems; exempt from the five-per-subtype limit. Reviewed does not mean implemented. Use independently checked answers and concise adapted wording.",
+  "items": [
+    {
+      "sourceId": 1,
+      "label": "Circle elimination",
+      "promptReviewed": true,
+      "status": "integrated",
+      "bankSlot": 135
+    },
+    {
+      "sourceId": 2,
+      "label": "Coin denominations",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 3,
+      "label": "Random loops",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 4,
+      "label": "Digit statistics",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 5,
+      "label": "Barrier detour",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Define when the barrier becomes observable before optimising the route."
+    },
+    {
+      "sourceId": 6,
+      "label": "Cargo optimisation",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "State divisible cargo and volume assumptions."
+    },
+    {
+      "sourceId": 7,
+      "label": "Random toggles",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 8,
+      "label": "Pearl distribution",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 9,
+      "label": "Unbounded lottery",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Personal willingness to pay has no unique correct value; distinguish it from expected payout."
+    },
+    {
+      "sourceId": 10,
+      "label": "Birthday deduction",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Correct the swapped month/day information assignments before authoring."
+    },
+    {
+      "sourceId": 11,
+      "label": "Children’s ages",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 12,
+      "label": "Raised circumference",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 13,
+      "label": "Locker toggles",
+      "promptReviewed": true,
+      "status": "integrated",
+      "bankSlot": 136
+    },
+    {
+      "sourceId": 14,
+      "label": "Coin placement strategy",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 15,
+      "label": "Egg sales",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 16,
+      "label": "Three-digit expressions",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Define permitted operations and how symbols are counted; verify feasibility for every digit."
+    },
+    {
+      "sourceId": 17,
+      "label": "Unreliable witnesses",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "State independence and the prior probability."
+    },
+    {
+      "sourceId": 18,
+      "label": "Prisoner signalling",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Check the strategy against both unknown initial switch states."
+    },
+    {
+      "sourceId": 19,
+      "label": "Uneven ropes",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Distinguish a measured interval from elapsed time since lighting."
+    },
+    {
+      "sourceId": 20,
+      "label": "Aircraft refuelling",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Verify a complete schedule with every aircraft returning."
+    },
+    {
+      "sourceId": 21,
+      "label": "Balance weights",
+      "promptReviewed": true,
+      "status": "integrated",
+      "bankSlot": 138
+    },
+    {
+      "sourceId": 22,
+      "label": "Coprime wager",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Specify the sampling range and distribution."
+    },
+    {
+      "sourceId": 23,
+      "label": "Bridge crossing",
+      "promptReviewed": true,
+      "status": "integrated",
+      "bankSlot": 137
+    },
+    {
+      "sourceId": 24,
+      "label": "Horse rankings",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 25,
+      "label": "Blind coin grouping",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 26,
+      "label": "Random seating",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 27,
+      "label": "Birth proportions",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "Distinguish limiting population proportions from an expected finite ratio."
+    },
+    {
+      "sourceId": 28,
+      "label": "Hat parity",
+      "promptReviewed": true,
+      "status": "pending"
+    },
+    {
+      "sourceId": 29,
+      "label": "Two-object testing",
+      "promptReviewed": true,
+      "status": "integrated",
+      "bankSlot": 139
+    },
+    {
+      "sourceId": 30,
+      "label": "Pirate allocation",
+      "promptReviewed": true,
+      "status": "pending",
+      "authoringNote": "State tie-breaking preferences as well as the voting threshold."
+    }
+  ]
+}

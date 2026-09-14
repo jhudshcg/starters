@@ -1,0 +1,3235 @@
+{
+  "schema_version": 2,
+  "source": "../../../agents/spec.md",
+  "source_version": "1.1",
+  "scope": [
+    "CA1",
+    "CA2"
+  ],
+  "required_question_count": 2,
+  "required_variations_per_question": 2,
+  "inventory_review_status": "author_checked_against_source; teacher_review_pending",
+  "key_policy": "Permanent local letters, independent of display order. Append new keys; retire rather than reuse. A changed requirement needs a new key.",
+  "count_policy": "Only direct part-level assessment links count. Broad skills require a full task; constrained completion is practice evidence only.",
+  "focuses": [
+    {
+      "focus": "CA1.1.1",
+      "source_text": "Know the definition and understand the purpose of computational\n\nthinking.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: computational thinking.",
+          "topic": "computational thinking",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: computational thinking.",
+          "topic": "computational thinking",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.2",
+      "source_text": "Know when to use computational thinking.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Choose when computational thinking is appropriate.",
+          "topic": "Choose when computational thinking is appropriate.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.3",
+      "source_text": "Know and understand the benefits and drawbacks of using\n\ncomputational thinking.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: computational thinking.",
+          "topic": "computational thinking",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: computational thinking.",
+          "topic": "computational thinking",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.4",
+      "source_text": "Know the components of computational thinking:\n\n- decomposition\n- pattern recognition\n- abstraction\n- algorithmic design.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify the component: decomposition.",
+          "topic": "decomposition",
+          "aspect": "Identify the component",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify the component: pattern recognition.",
+          "topic": "pattern recognition",
+          "aspect": "Identify the component",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify the component: abstraction.",
+          "topic": "abstraction",
+          "aspect": "Identify the component",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Identify the component: algorithmic design.",
+          "topic": "algorithmic design",
+          "aspect": "Identify the component",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.5",
+      "source_text": "Know and understand the benefits and drawbacks of using the\n\ncomponents of computational thinking.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: decomposition.",
+          "topic": "decomposition",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: decomposition.",
+          "topic": "decomposition",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: pattern recognition.",
+          "topic": "pattern recognition",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: pattern recognition.",
+          "topic": "pattern recognition",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Benefit: abstraction.",
+          "topic": "abstraction",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Drawback: abstraction.",
+          "topic": "abstraction",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Benefit: algorithmic design.",
+          "topic": "algorithmic design",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "h",
+          "requirement": "Drawback: algorithmic design.",
+          "topic": "algorithmic design",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.6",
+      "source_text": "Know and understand the purpose of decomposition.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of decomposition.",
+          "topic": "Purpose of decomposition.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.7",
+      "source_text": "Know the tasks of decomposition:\n\n- identify the main features of a problem\n- characterise each identified feature\n- break problems down into smaller, more manageable parts\n- break solutions down into smaller, more manageable parts.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify the main features of a problem.",
+          "topic": "Identify the main features of a problem.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Characterise each identified feature.",
+          "topic": "Characterise each identified feature.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Break a problem into manageable parts.",
+          "topic": "Break a problem into manageable parts.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Break a solution into manageable parts.",
+          "topic": "Break a solution into manageable parts.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.8",
+      "source_text": "Be able to use decomposition for problem solving.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply decomposition to a problem.",
+          "topic": "Apply decomposition to a problem.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.9",
+      "source_text": "Know and understand methods to represent decomposition:\n\n- block diagrams\n- information flow diagrams\n- flowcharts\n- code\n- written descriptions.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand the representation: block diagrams.",
+          "topic": "block diagrams",
+          "aspect": "Understand the representation",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand the representation: information flow diagrams.",
+          "topic": "information flow diagrams",
+          "aspect": "Understand the representation",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand the representation: flowcharts.",
+          "topic": "flowcharts",
+          "aspect": "Understand the representation",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand the representation: code.",
+          "topic": "code",
+          "aspect": "Understand the representation",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand the representation: written descriptions.",
+          "topic": "written descriptions",
+          "aspect": "Understand the representation",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.10",
+      "source_text": "Be able to use the methods to represent decomposition.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Use to represent decomposition: block diagrams.",
+          "topic": "block diagrams",
+          "aspect": "Use to represent decomposition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Use to represent decomposition: information flow diagrams.",
+          "topic": "information flow diagrams",
+          "aspect": "Use to represent decomposition",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Use to represent decomposition: flowcharts.",
+          "topic": "flowcharts",
+          "aspect": "Use to represent decomposition",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Use to represent decomposition: code.",
+          "topic": "code",
+          "aspect": "Use to represent decomposition",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Use to represent decomposition: written descriptions.",
+          "topic": "written descriptions",
+          "aspect": "Use to represent decomposition",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.11",
+      "source_text": "Know and understand the purpose of pattern recognition.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of pattern recognition.",
+          "topic": "Purpose of pattern recognition.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.12",
+      "source_text": "Be able to use pattern recognition for problem solving:\n\n- find and interpret trends and similarities within and between problems\n    and processes\n- find and interpret common features between a given problem and\n    existing solutions\n- make predictions and assumptions based on identified patterns.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret trends and similarities within and between problems and processes.",
+          "topic": "Interpret trends and similarities within and between problems and processes.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify common features with existing solutions.",
+          "topic": "Identify common features with existing solutions.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Make predictions and assumptions from patterns.",
+          "topic": "Make predictions and assumptions from patterns.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.13",
+      "source_text": "Know and understand the purpose of abstraction.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of abstraction.",
+          "topic": "Purpose of abstraction.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.14",
+      "source_text": "Know and understand the tasks of abstraction:\n\n- identify information that is needed\n- filter out unnecessary details\n- hide details of internal workings.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify needed information.",
+          "topic": "Identify needed information.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Filter unnecessary details.",
+          "topic": "Filter unnecessary details.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Hide internal workings.",
+          "topic": "Hide internal workings.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.15",
+      "source_text": "Be able to use abstraction:\n\n- what inputs are needed\n- what the expected outputs and outcomes are\n- things that will vary\n- things that will remain constant\n- key actions the solution must perform\n- repeated processes the solution will perform.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify inputs.",
+          "topic": "Identify inputs.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify expected outputs and outcomes.",
+          "topic": "Identify expected outputs and outcomes.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify things that vary.",
+          "topic": "Identify things that vary.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Identify constants.",
+          "topic": "Identify constants.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Identify key actions.",
+          "topic": "Identify key actions.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Identify repeated processes.",
+          "topic": "Identify repeated processes.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.16",
+      "source_text": "Be able to use abstraction in problem solving.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply abstraction to a problem.",
+          "topic": "Apply abstraction to a problem.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.17",
+      "source_text": "Understand the interrelationships between components of computational\n\nthinking and make judgements about the suitability of using the\ncomponents in digital software development.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand relationships between computational-thinking components.",
+          "topic": "Understand relationships between computational-thinking components.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Judge suitability of computational-thinking components for a problem.",
+          "topic": "Judge suitability of computational-thinking components for a problem.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.1",
+      "source_text": "Know the definition and understand the characteristics and purpose\n\nof algorithms.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition of an algorithm.",
+          "topic": "Definition of an algorithm.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Characteristics of an algorithm.",
+          "topic": "Characteristics of an algorithm.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose of an algorithm.",
+          "topic": "Purpose of an algorithm.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.2",
+      "source_text": "Know and understand that algorithms can be expressed in:\n\n- flowcharts:\n  - terminators\n  - processes\n  - sub-processes\n  - decisions\n  - inputs/outputs\n  - arrows\n  - labels\n- written descriptions using hierarchical markers to indicate sequence\n- code (commands in _Appendix 2_ ).",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand algorithm notation: flowchart terminators.",
+          "topic": "flowchart terminators",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand algorithm notation: flowchart processes.",
+          "topic": "flowchart processes",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand algorithm notation: flowchart sub-processes.",
+          "topic": "flowchart sub-processes",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand algorithm notation: flowchart decisions.",
+          "topic": "flowchart decisions",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand algorithm notation: flowchart inputs and outputs.",
+          "topic": "flowchart inputs and outputs",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand algorithm notation: flowchart arrows.",
+          "topic": "flowchart arrows",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Understand algorithm notation: flowchart labels.",
+          "topic": "flowchart labels",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "h",
+          "requirement": "Understand algorithm notation: hierarchical written descriptions.",
+          "topic": "hierarchical written descriptions",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        },
+        {
+          "key": "i",
+          "requirement": "Understand algorithm notation: code.",
+          "topic": "code",
+          "aspect": "Understand algorithm notation",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.3",
+      "source_text": "Know and understand the benefits and drawbacks of the ways of\n\nexpressing algorithms in flowcharts.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: flowcharts.",
+          "topic": "flowcharts",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: flowcharts.",
+          "topic": "flowcharts",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.4",
+      "source_text": "Know and understand the benefits and drawbacks of the ways of\n\nexpressing algorithms in written descriptions.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: written descriptions.",
+          "topic": "written descriptions",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: written descriptions.",
+          "topic": "written descriptions",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.5",
+      "source_text": "Know and understand the benefits and drawbacks of the ways of\n\nexpressing algorithms in code.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: code.",
+          "topic": "code",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: code.",
+          "topic": "code",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.6",
+      "source_text": "Know and understand actions to control ordering of steps in algorithms:\n\n- sequence\n- selection\n- iteration.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand control of step order: sequence.",
+          "topic": "sequence",
+          "aspect": "Understand control of step order",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand control of step order: selection.",
+          "topic": "selection",
+          "aspect": "Understand control of step order",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand control of step order: iteration.",
+          "topic": "iteration",
+          "aspect": "Understand control of step order",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.7",
+      "source_text": "Be able to determine the purpose of an algorithm and how it works.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Determine an algorithm’s purpose.",
+          "topic": "Determine an algorithm’s purpose.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Determine how an algorithm works.",
+          "topic": "Determine how an algorithm works.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.8",
+      "source_text": "Be able to determine the output of an algorithm given an input.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Determine an output for a given input.",
+          "topic": "Determine an output for a given input.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.9",
+      "source_text": "Be able to identify errors in an algorithm.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify an algorithm error.",
+          "topic": "Identify an algorithm error.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.10",
+      "source_text": "Be able to correct errors in an algorithm.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Correct an algorithm error.",
+          "topic": "Correct an algorithm error.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.11",
+      "source_text": "Be able to translate between the different notations for algorithms.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Translate an algorithm between notations.",
+          "topic": "Translate an algorithm between notations.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.12",
+      "source_text": "Be able to design algorithms and solutions that use actions.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Design an algorithm using sequence.",
+          "topic": "Design an algorithm using sequence.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Design an algorithm using selection.",
+          "topic": "Design an algorithm using selection.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Design an algorithm using iteration.",
+          "topic": "Design an algorithm using iteration.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.1",
+      "source_text": "Know the different approaches to solving problems and understand their\n\npurpose and when they are used:\n\n- top-down\n- bottom-up\n- modularisation.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: top-down.",
+          "topic": "top-down",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: bottom-up.",
+          "topic": "bottom-up",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: modularisation.",
+          "topic": "modularisation",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.2",
+      "source_text": "Know the benefits and drawbacks of using the different approaches to\n\nsolving problems.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: top-down.",
+          "topic": "top-down",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: top-down.",
+          "topic": "top-down",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: bottom-up.",
+          "topic": "bottom-up",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: bottom-up.",
+          "topic": "bottom-up",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Benefit: modularisation.",
+          "topic": "modularisation",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Drawback: modularisation.",
+          "topic": "modularisation",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.3",
+      "source_text": "Understand the purpose of root cause analysis and when it is used.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: root cause analysis.",
+          "topic": "root cause analysis",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.4",
+      "source_text": "Know and understand approaches to root cause analysis:\n\n- five whys\n- failure mode and effects analysis (FMEA)\n- event tree analysis (ETA)\n- actions to take after using root cause analysis:\n  - log\n  - close\n  - escalate to an appropriate manager, specialist or external\n       third party.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand the approach or follow-up action: five whys.",
+          "topic": "five whys",
+          "aspect": "Understand the approach or follow-up action",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand the approach or follow-up action: failure mode and effects analysis (FMEA).",
+          "topic": "failure mode and effects analysis (FMEA)",
+          "aspect": "Understand the approach or follow-up action",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand the approach or follow-up action: event tree analysis (ETA).",
+          "topic": "event tree analysis (ETA)",
+          "aspect": "Understand the approach or follow-up action",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand the approach or follow-up action: log.",
+          "topic": "log",
+          "aspect": "Understand the approach or follow-up action",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand the approach or follow-up action: close.",
+          "topic": "close",
+          "aspect": "Understand the approach or follow-up action",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand the approach or follow-up action: escalate to an appropriate manager, specialist or third party.",
+          "topic": "escalate to an appropriate manager, specialist or third party",
+          "aspect": "Understand the approach or follow-up action",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.5",
+      "source_text": "Know and understand the process of the high-level problem-solving\nstrategy:\n\n- define the problem\n- gather information\n- analyse the information\n- make a plan of action\n- implement a solution\n- review the solution.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand the strategy step: define the problem.",
+          "topic": "define the problem",
+          "aspect": "Understand the strategy step",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand the strategy step: gather information.",
+          "topic": "gather information",
+          "aspect": "Understand the strategy step",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand the strategy step: analyse information.",
+          "topic": "analyse information",
+          "aspect": "Understand the strategy step",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand the strategy step: make a plan.",
+          "topic": "make a plan",
+          "aspect": "Understand the strategy step",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand the strategy step: implement a solution.",
+          "topic": "implement a solution",
+          "aspect": "Understand the strategy step",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand the strategy step: review the solution.",
+          "topic": "review the solution",
+          "aspect": "Understand the strategy step",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.6",
+      "source_text": "Understand the interrelationships between problems and problem-\nsolving strategies and make judgements about the suitability of\nstrategies for solving the problems in digital software development.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand relationships between a problem and solution strategies.",
+          "topic": "Understand relationships between a problem and solution strategies.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Judge the suitability of a strategy for a problem.",
+          "topic": "Judge the suitability of a strategy for a problem.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.1.1",
+      "source_text": "Know the definition of common data types and understand their purpose\n\nand when each is used:\n- integer\n- float\n- string\n- Boolean.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: integer.",
+          "topic": "integer",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: integer.",
+          "topic": "integer",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Definition: float.",
+          "topic": "float",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: float.",
+          "topic": "float",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Definition: string.",
+          "topic": "string",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: string.",
+          "topic": "string",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Definition: Boolean.",
+          "topic": "Boolean",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "h",
+          "requirement": "Purpose and appropriate use: Boolean.",
+          "topic": "Boolean",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.1",
+      "source_text": "Know the definition of variables, understand their purpose and when they\n\nare used.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: variable.",
+          "topic": "variable",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: variable.",
+          "topic": "variable",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.2",
+      "source_text": "Know the definition of constants, understand their purpose and when\n\nthey are used.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: constant.",
+          "topic": "constant",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: constant.",
+          "topic": "constant",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.3",
+      "source_text": "Understand the purpose of data type conversion functions and why they\n\nare used.\nSee _Appendix 2_ for functions.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of data conversion functions and reasons for using them.",
+          "topic": "Purpose of data conversion functions and reasons for using them.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.4",
+      "source_text": "Know a definition of scope and understand the role of scope and when it\n\nis used.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: scope.",
+          "topic": "scope",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: scope.",
+          "topic": "scope",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.5",
+      "source_text": "Know and understand how variables are managed by scope:\n\n- global variables\n- local variables.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand scope management: global variables.",
+          "topic": "global variables",
+          "aspect": "Understand scope management",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand scope management: local variables.",
+          "topic": "local variables",
+          "aspect": "Understand scope management",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.6",
+      "source_text": "Be able to use scope.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply scope in code.",
+          "topic": "Apply scope in code.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.7",
+      "source_text": "Be able to declare variables and constants using standard data types.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Declare a variable with a standard data type.",
+          "topic": "Declare a variable with a standard data type.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Declare a constant with a standard data type.",
+          "topic": "Declare a constant with a standard data type.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.8",
+      "source_text": "Be able to use variables and constants.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Use a variable.",
+          "topic": "Use a variable.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Use a constant.",
+          "topic": "Use a constant.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.9",
+      "source_text": "Be able to use data type conversion functions.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Use data conversion functions.",
+          "topic": "Use data conversion functions.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.1",
+      "source_text": "Know the standard data structures and understand their purpose and\n\nwhen each is used:\n- list\n- array\n- dictionary.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify the structure: list.",
+          "topic": "list",
+          "aspect": "Identify the structure",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: list.",
+          "topic": "list",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify the structure: array.",
+          "topic": "array",
+          "aspect": "Identify the structure",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: array.",
+          "topic": "array",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Identify the structure: dictionary.",
+          "topic": "dictionary",
+          "aspect": "Identify the structure",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: dictionary.",
+          "topic": "dictionary",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.2",
+      "source_text": "Be able to interpret code using data structures.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using the structure: list.",
+          "topic": "list",
+          "aspect": "Interpret code using the structure",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using the structure: array.",
+          "topic": "array",
+          "aspect": "Interpret code using the structure",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using the structure: dictionary.",
+          "topic": "dictionary",
+          "aspect": "Interpret code using the structure",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.3",
+      "source_text": "Be able to develop code using data structures.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop code using the structure: list.",
+          "topic": "list",
+          "aspect": "Develop code using the structure",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Develop code using the structure: array.",
+          "topic": "array",
+          "aspect": "Develop code using the structure",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Develop code using the structure: dictionary.",
+          "topic": "dictionary",
+          "aspect": "Develop code using the structure",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.4",
+      "source_text": "Be able to debug code using data structures.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using the structure: list.",
+          "topic": "list",
+          "aspect": "Debug code using the structure",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using the structure: array.",
+          "topic": "array",
+          "aspect": "Debug code using the structure",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using the structure: dictionary.",
+          "topic": "dictionary",
+          "aspect": "Debug code using the structure",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.1",
+      "source_text": "Understand the purpose of arithmetic operators:\n\n- add\n- subtract\n- divide\n- multiply\n- exponentiation\n- integer division\n- modulus.\nSee _Appendix 2_ for operators.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand operator purpose: add.",
+          "topic": "add",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand operator purpose: subtract.",
+          "topic": "subtract",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand operator purpose: divide.",
+          "topic": "divide",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand operator purpose: multiply.",
+          "topic": "multiply",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand operator purpose: exponentiation.",
+          "topic": "exponentiation",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand operator purpose: integer division.",
+          "topic": "integer division",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Understand operator purpose: modulus.",
+          "topic": "modulus",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.2",
+      "source_text": "Understand the purpose of relational operators:\n\n- equivalence\n- less than\n- greater than\n- not equal\n- less than or equal to\n- greater than or equal to.\nSee _Appendix 2_ for operators.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand operator purpose: equivalence.",
+          "topic": "equivalence",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand operator purpose: less than.",
+          "topic": "less than",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand operator purpose: greater than.",
+          "topic": "greater than",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand operator purpose: not equal.",
+          "topic": "not equal",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand operator purpose: less than or equal to.",
+          "topic": "less than or equal to",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand operator purpose: greater than or equal to.",
+          "topic": "greater than or equal to",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.3",
+      "source_text": "Understand the purpose of Boolean operators:\n\n- not\n- and\n- or.\nSee _Appendix 2_ for operators.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand operator purpose: not.",
+          "topic": "not",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand operator purpose: and.",
+          "topic": "and",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand operator purpose: or.",
+          "topic": "or",
+          "aspect": "Understand operator purpose",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.4",
+      "source_text": "Be able to use operators:\n\n- arithmetic\n- relational\n- Boolean.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply operators: arithmetic.",
+          "topic": "arithmetic",
+          "aspect": "Apply operators",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Apply operators: relational.",
+          "topic": "relational",
+          "aspect": "Apply operators",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Apply operators: Boolean.",
+          "topic": "Boolean",
+          "aspect": "Apply operators",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.5",
+      "source_text": "Be able to interpret code using operators.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using operators: arithmetic.",
+          "topic": "arithmetic",
+          "aspect": "Interpret code using operators",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using operators: relational.",
+          "topic": "relational",
+          "aspect": "Interpret code using operators",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using operators: Boolean.",
+          "topic": "Boolean",
+          "aspect": "Interpret code using operators",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.6",
+      "source_text": "Be able to create code using operators.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Create code using operators: arithmetic.",
+          "topic": "arithmetic",
+          "aspect": "Create code using operators",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Create code using operators: relational.",
+          "topic": "relational",
+          "aspect": "Create code using operators",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Create code using operators: Boolean.",
+          "topic": "Boolean",
+          "aspect": "Create code using operators",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.7",
+      "source_text": "Be able to debug code using operators.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using operators: arithmetic.",
+          "topic": "arithmetic",
+          "aspect": "Debug code using operators",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using operators: relational.",
+          "topic": "relational",
+          "aspect": "Debug code using operators",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using operators: Boolean.",
+          "topic": "Boolean",
+          "aspect": "Debug code using operators",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.1",
+      "source_text": "Understand how to implement input and output:\n\n- keyboard\n- screen\n- text file.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Implement input or output: keyboard.",
+          "topic": "keyboard",
+          "aspect": "Implement input or output",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Implement input or output: screen.",
+          "topic": "screen",
+          "aspect": "Implement input or output",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Implement input or output: text file.",
+          "topic": "text file",
+          "aspect": "Implement input or output",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.2",
+      "source_text": "Know and understand the use of text files for input and output:\n\n- open a file for reading\n- open a file for writing\n- write lines to the file\n- close the file.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand text-file operation: open for reading.",
+          "topic": "open for reading",
+          "aspect": "Understand text-file operation",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand text-file operation: open for writing.",
+          "topic": "open for writing",
+          "aspect": "Understand text-file operation",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand text-file operation: write lines.",
+          "topic": "write lines",
+          "aspect": "Understand text-file operation",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand text-file operation: close.",
+          "topic": "close",
+          "aspect": "Understand text-file operation",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.3",
+      "source_text": "Be able to interpret code using input and output.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret input/output code: keyboard.",
+          "topic": "keyboard",
+          "aspect": "Interpret input/output code",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret input/output code: screen.",
+          "topic": "screen",
+          "aspect": "Interpret input/output code",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret input/output code: text file.",
+          "topic": "text file",
+          "aspect": "Interpret input/output code",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.4",
+      "source_text": "Be able to create code using input and output.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Create input/output code: keyboard.",
+          "topic": "keyboard",
+          "aspect": "Create input/output code",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Create input/output code: screen.",
+          "topic": "screen",
+          "aspect": "Create input/output code",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Create input/output code: text file.",
+          "topic": "text file",
+          "aspect": "Create input/output code",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.5",
+      "source_text": "Be able to debug code using input and output.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug input/output code: keyboard.",
+          "topic": "keyboard",
+          "aspect": "Debug input/output code",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug input/output code: screen.",
+          "topic": "screen",
+          "aspect": "Debug input/output code",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug input/output code: text file.",
+          "topic": "text file",
+          "aspect": "Debug input/output code",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.1",
+      "source_text": "Know and understand sequence, its purpose and when it is used.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: sequence.",
+          "topic": "sequence",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.2",
+      "source_text": "Know and understand selection, its purpose and when it is used:\n\n- if\n- else if\n- else\n- match/case.\nSee _Appendix 2_ for key words.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: if.",
+          "topic": "if",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: elif (else if).",
+          "topic": "elif (else if)",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: else.",
+          "topic": "else",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: match/case.",
+          "topic": "match/case",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.3",
+      "source_text": "Know and understand loops, their purpose and when they are used:\n\n- count-controlled loop\n- condition-controlled loop.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: count-controlled loop.",
+          "topic": "count-controlled loop",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: condition-controlled loop.",
+          "topic": "condition-controlled loop",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.4",
+      "source_text": "Know and understand iteration:\n\n- count-controlled ‘for’ loops\n- condition-controlled ‘while do’ loops.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand iteration: for loop.",
+          "topic": "for loop",
+          "aspect": "Understand iteration",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand iteration: while loop.",
+          "topic": "while loop",
+          "aspect": "Understand iteration",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.5",
+      "source_text": "Know and understand the benefits and drawbacks of loops.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: loops.",
+          "topic": "loops",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: loops.",
+          "topic": "loops",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.6",
+      "source_text": "Be able to interpret code using actions:\n\n- sequence\n- selection\n- iteration.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using the action: sequence.",
+          "topic": "sequence",
+          "aspect": "Interpret code using the action",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using the action: selection.",
+          "topic": "selection",
+          "aspect": "Interpret code using the action",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using the action: iteration.",
+          "topic": "iteration",
+          "aspect": "Interpret code using the action",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.7",
+      "source_text": "Be able to develop code using actions:\n\n- sequence\n- selection\n- iteration.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop code using the action: sequence.",
+          "topic": "sequence",
+          "aspect": "Develop code using the action",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Develop code using the action: selection.",
+          "topic": "selection",
+          "aspect": "Develop code using the action",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Develop code using the action: iteration.",
+          "topic": "iteration",
+          "aspect": "Develop code using the action",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.8",
+      "source_text": "Be able to debug code using actions:\n\n- sequence\n- selection\n- iteration.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using the action: sequence.",
+          "topic": "sequence",
+          "aspect": "Debug code using the action",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using the action: selection.",
+          "topic": "selection",
+          "aspect": "Debug code using the action",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using the action: iteration.",
+          "topic": "iteration",
+          "aspect": "Debug code using the action",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.1",
+      "source_text": "Know characteristics of functions, understand their purpose and when\n\nthey are used:\n\n- may or may not take parameters\n- must return a result.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "function: may have parameters or no parameters.",
+          "topic": "function: may have parameters or no parameters.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "function: returns a result.",
+          "topic": "function: returns a result.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use of a function.",
+          "topic": "Purpose and appropriate use of a function.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.2",
+      "source_text": "Know characteristics of procedures, understand their purpose and when\n\nthey are used:\n\n- may or may not take parameters\n- must not return a result.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "procedure: may have parameters or no parameters.",
+          "topic": "procedure: may have parameters or no parameters.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "procedure: does not return a result (specification terminology).",
+          "topic": "procedure: does not return a result (specification terminology).",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use of a procedure.",
+          "topic": "Purpose and appropriate use of a procedure.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.3",
+      "source_text": "Know and understand where functions and procedures come from:\n\n- user-written\n- pre-written and built-in as part of the programming language\n- pre-written and supplied in libraries as part of the programming\n    language\n- pre-written and supplied in libraries from third parties.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify code source: user-written.",
+          "topic": "user-written",
+          "aspect": "Identify code source",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify code source: built-in.",
+          "topic": "built-in",
+          "aspect": "Identify code source",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify code source: standard library.",
+          "topic": "standard library",
+          "aspect": "Identify code source",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Identify code source: third-party library.",
+          "topic": "third-party library",
+          "aspect": "Identify code source",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.4",
+      "source_text": "Know and understand the benefits and drawbacks of using\n\npre-written code.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: pre-written code.",
+          "topic": "pre-written code",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: pre-written code.",
+          "topic": "pre-written code",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.5",
+      "source_text": "Be able to interpret code using user-written and pre-written code:\n\n- functions\n- procedures.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using the subprogram: user-written functions.",
+          "topic": "user-written functions",
+          "aspect": "Interpret code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using the subprogram: pre-written functions.",
+          "topic": "pre-written functions",
+          "aspect": "Interpret code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using the subprogram: user-written procedures.",
+          "topic": "user-written procedures",
+          "aspect": "Interpret code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Interpret code using the subprogram: pre-written procedures.",
+          "topic": "pre-written procedures",
+          "aspect": "Interpret code using the subprogram",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.6",
+      "source_text": "Be able to develop code using user-written and pre-written code:\n\n- functions\n- procedures.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop code using the subprogram: user-written functions.",
+          "topic": "user-written functions",
+          "aspect": "Develop code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Develop code using the subprogram: pre-written functions.",
+          "topic": "pre-written functions",
+          "aspect": "Develop code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Develop code using the subprogram: user-written procedures.",
+          "topic": "user-written procedures",
+          "aspect": "Develop code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Develop code using the subprogram: pre-written procedures.",
+          "topic": "pre-written procedures",
+          "aspect": "Develop code using the subprogram",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.7",
+      "source_text": "Be able to debug code using user-written and pre-written code:\n\n- functions\n- procedures.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using the subprogram: user-written functions.",
+          "topic": "user-written functions",
+          "aspect": "Debug code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using the subprogram: pre-written functions.",
+          "topic": "pre-written functions",
+          "aspect": "Debug code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using the subprogram: user-written procedures.",
+          "topic": "user-written procedures",
+          "aspect": "Debug code using the subprogram",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Debug code using the subprogram: pre-written procedures.",
+          "topic": "pre-written procedures",
+          "aspect": "Debug code using the subprogram",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.1",
+      "source_text": "Know the definition of validation and understand the purpose and when\n\nvalidation checks are used:\n\n- presence check\n- length check\n- range check\n- type check\n- format check\n- check digit.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition of validation.",
+          "topic": "Definition of validation.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: presence check.",
+          "topic": "presence check",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: length check.",
+          "topic": "length check",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: range check.",
+          "topic": "range check",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Purpose and appropriate use: type check.",
+          "topic": "type check",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: format check.",
+          "topic": "format check",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Purpose and appropriate use: check digit.",
+          "topic": "check digit",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.2",
+      "source_text": "Be able to interpret code using validation.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret validation code.",
+          "topic": "Interpret validation code.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.3",
+      "source_text": "Be able to develop code using validation.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop validation code.",
+          "topic": "Develop validation code.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.4",
+      "source_text": "Be able to debug code using validation.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug validation code.",
+          "topic": "Debug validation code.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.1",
+      "source_text": "Determine the logical order for actions within processes.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Determine a logical order for process actions.",
+          "topic": "Determine a logical order for process actions.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.2",
+      "source_text": "Determine the order of operations in calculations and processes:\n\n- to ensure outputs are accurate\n- to ensure errors are avoided.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Order operations for accurate outputs.",
+          "topic": "Order operations for accurate outputs.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Order operations to avoid errors.",
+          "topic": "Order operations to avoid errors.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.3",
+      "source_text": "Determine the selection of data structures:\n\n- to ensure efficiency of execution time\n- to ensure efficient use of memory.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Choose data structures for execution-time efficiency.",
+          "topic": "Choose data structures for execution-time efficiency.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Choose data structures for memory efficiency.",
+          "topic": "Choose data structures for memory efficiency.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.4",
+      "source_text": "Determine the order of actions:\n\n- to ensure efficiency of execution time\n- to ensure efficient use of memory.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Order actions for execution-time efficiency.",
+          "topic": "Order actions for execution-time efficiency.",
+          "aspect": "requirement",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Order actions for memory efficiency.",
+          "topic": "Order actions for memory efficiency.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.5",
+      "source_text": "Know and understand naming conventions and their purpose:\n\n- meaningful names\n- camelCase\n- snake_case.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand naming convention and purpose: meaningful names.",
+          "topic": "meaningful names",
+          "aspect": "Understand naming convention and purpose",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand naming convention and purpose: camelCase.",
+          "topic": "camelCase",
+          "aspect": "Understand naming convention and purpose",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand naming convention and purpose: snake_case.",
+          "topic": "snake_case",
+          "aspect": "Understand naming convention and purpose",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.6",
+      "source_text": "Understand the impact on readability of code style conventions:\n\n- naming conventions\n- use of white space\n- maximum line length.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand impact on readability: naming.",
+          "topic": "naming",
+          "aspect": "Understand impact on readability",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand impact on readability: white space.",
+          "topic": "white space",
+          "aspect": "Understand impact on readability",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand impact on readability: maximum line length.",
+          "topic": "maximum line length",
+          "aspect": "Understand impact on readability",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.7",
+      "source_text": "Make judgements about the suitability of an algorithm in meeting\n\nrequirements, efficiency in use of storage and execution time,\nappropriateness in the choice of data structures, data types,\nvariables, constants, presentation and maintainability.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Judge algorithm suitability regarding: meeting requirements.",
+          "topic": "meeting requirements",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Judge algorithm suitability regarding: storage efficiency.",
+          "topic": "storage efficiency",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Judge algorithm suitability regarding: execution-time efficiency.",
+          "topic": "execution-time efficiency",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Judge algorithm suitability regarding: data structures.",
+          "topic": "data structures",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Judge algorithm suitability regarding: data types.",
+          "topic": "data types",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Judge algorithm suitability regarding: variables.",
+          "topic": "variables",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Judge algorithm suitability regarding: constants.",
+          "topic": "constants",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "h",
+          "requirement": "Judge algorithm suitability regarding: presentation.",
+          "topic": "presentation",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        },
+        {
+          "key": "i",
+          "requirement": "Judge algorithm suitability regarding: maintainability.",
+          "topic": "maintainability",
+          "aspect": "Judge algorithm suitability regarding",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.1",
+      "source_text": "Know and understand the characteristics of robust code:\n\n- handles unexpected inputs\n- handles unexpected terminations\n- produces specific and meaningful error messages.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand robust handling of: unexpected inputs.",
+          "topic": "unexpected inputs",
+          "aspect": "Understand robust handling of",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand robust handling of: unexpected terminations.",
+          "topic": "unexpected terminations",
+          "aspect": "Understand robust handling of",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand robust handling of: specific meaningful error messages.",
+          "topic": "specific meaningful error messages",
+          "aspect": "Understand robust handling of",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.2",
+      "source_text": "Know and understand the process of debugging and when it is used:\n\n- locating errors in code\n- correcting errors in code.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand debugging process and when used: locating errors.",
+          "topic": "locating errors",
+          "aspect": "Understand debugging process and when used",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand debugging process and when used: correcting errors.",
+          "topic": "correcting errors",
+          "aspect": "Understand debugging process and when used",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.3",
+      "source_text": "Understand the role of debugging in producing solutions that are robust.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Explain the role of debugging in robustness.",
+          "topic": "Explain the role of debugging in robustness.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.4",
+      "source_text": "Be able to locate errors in code.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Locate errors in code.",
+          "topic": "Locate errors in code.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.5",
+      "source_text": "Be able to correct errors in code.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Correct errors in code.",
+          "topic": "Correct errors in code.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.1",
+      "source_text": "Know and understand the algorithms for searching, how they work and\n\nwhen they are used:\n- linear search\n- binary search.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "How the algorithm works: linear search.",
+          "topic": "linear search",
+          "aspect": "How the algorithm works",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "When to use: linear search.",
+          "topic": "linear search",
+          "aspect": "When to use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "How the algorithm works: binary search.",
+          "topic": "binary search",
+          "aspect": "How the algorithm works",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "When to use: binary search.",
+          "topic": "binary search",
+          "aspect": "When to use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.2",
+      "source_text": "Know and understand the algorithms for sorting, how they work and\n\nwhen they are used:\n\n- bubble sort\n- insertion sort\n- merge sort.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "How the algorithm works: bubble sort.",
+          "topic": "bubble sort",
+          "aspect": "How the algorithm works",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "When to use: bubble sort.",
+          "topic": "bubble sort",
+          "aspect": "When to use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "How the algorithm works: insertion sort.",
+          "topic": "insertion sort",
+          "aspect": "How the algorithm works",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "When to use: insertion sort.",
+          "topic": "insertion sort",
+          "aspect": "When to use",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "How the algorithm works: merge sort.",
+          "topic": "merge sort",
+          "aspect": "How the algorithm works",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "When to use: merge sort.",
+          "topic": "merge sort",
+          "aspect": "When to use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.3",
+      "source_text": "Know and understand the benefits and drawbacks of using:\n\n- linear search\n- binary search\n- bubble sort\n- insertion sort\n- merge sort.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: linear search.",
+          "topic": "linear search",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: linear search.",
+          "topic": "linear search",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: binary search.",
+          "topic": "binary search",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: binary search.",
+          "topic": "binary search",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Benefit: bubble sort.",
+          "topic": "bubble sort",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Drawback: bubble sort.",
+          "topic": "bubble sort",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Benefit: insertion sort.",
+          "topic": "insertion sort",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "h",
+          "requirement": "Drawback: insertion sort.",
+          "topic": "insertion sort",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "i",
+          "requirement": "Benefit: merge sort.",
+          "topic": "merge sort",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "j",
+          "requirement": "Drawback: merge sort.",
+          "topic": "merge sort",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.4",
+      "source_text": "Know and understand metrics to compare algorithms:\n\n- use of memory space\n- execution time\n- number of comparisons.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand efficiency metric: memory space.",
+          "topic": "memory space",
+          "aspect": "Understand efficiency metric",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand efficiency metric: execution time.",
+          "topic": "execution time",
+          "aspect": "Understand efficiency metric",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand efficiency metric: number of comparisons.",
+          "topic": "number of comparisons",
+          "aspect": "Understand efficiency metric",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.5",
+      "source_text": "Know and understand best case, worst case and average case for\n\ncommon algorithms, using logical reasoning (Big O not required).",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Reason about common algorithms without Big O: best case.",
+          "topic": "best case",
+          "aspect": "Reason about common algorithms without Big O",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Reason about common algorithms without Big O: worst case.",
+          "topic": "worst case",
+          "aspect": "Reason about common algorithms without Big O",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Reason about common algorithms without Big O: average case.",
+          "topic": "average case",
+          "aspect": "Reason about common algorithms without Big O",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.6",
+      "source_text": "Make judgements about the suitability of using different algorithms\nfor searching.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Judge suitability of search algorithms.",
+          "topic": "Judge suitability of search algorithms.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.7",
+      "source_text": "Make judgements about the suitability of using different algorithms\nfor sorting.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Judge suitability of sorting algorithms.",
+          "topic": "Judge suitability of sorting algorithms.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.1.1",
+      "source_text": "Understand the reasons for testing individual components of a solution\nbefore putting them together in the final solution:\n\n- software\n- hardware\n- data\n- interfaces\n- resulting service (final product).",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Reasons to test the component before final integration: software.",
+          "topic": "software",
+          "aspect": "Reasons to test the component before final integration",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Reasons to test the component before final integration: hardware.",
+          "topic": "hardware",
+          "aspect": "Reasons to test the component before final integration",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Reasons to test the component before final integration: data.",
+          "topic": "data",
+          "aspect": "Reasons to test the component before final integration",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Reasons to test the component before final integration: interfaces.",
+          "topic": "interfaces",
+          "aspect": "Reasons to test the component before final integration",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Reasons to test the component before final integration: resulting service.",
+          "topic": "resulting service",
+          "aspect": "Reasons to test the component before final integration",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.2.1",
+      "source_text": "Know a definition of testing methods and understand their purpose,\nbenefits and drawbacks, and when they are used:\n\n- concept\n- unit\n- boundary\n- integration\n- performance\n- system\n- acceptance\n- usability\n- regression\n- load/stress\n- closed box\n- open box.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: concept.",
+          "topic": "concept",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: concept.",
+          "topic": "concept",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: concept.",
+          "topic": "concept",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: concept.",
+          "topic": "concept",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Definition: unit.",
+          "topic": "unit",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: unit.",
+          "topic": "unit",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Benefit: unit.",
+          "topic": "unit",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "h",
+          "requirement": "Drawback: unit.",
+          "topic": "unit",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "i",
+          "requirement": "Definition: boundary.",
+          "topic": "boundary",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "j",
+          "requirement": "Purpose and appropriate use: boundary.",
+          "topic": "boundary",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "k",
+          "requirement": "Benefit: boundary.",
+          "topic": "boundary",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "l",
+          "requirement": "Drawback: boundary.",
+          "topic": "boundary",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "m",
+          "requirement": "Definition: integration.",
+          "topic": "integration",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "n",
+          "requirement": "Purpose and appropriate use: integration.",
+          "topic": "integration",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "o",
+          "requirement": "Benefit: integration.",
+          "topic": "integration",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "p",
+          "requirement": "Drawback: integration.",
+          "topic": "integration",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "q",
+          "requirement": "Definition: performance.",
+          "topic": "performance",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "r",
+          "requirement": "Purpose and appropriate use: performance.",
+          "topic": "performance",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "s",
+          "requirement": "Benefit: performance.",
+          "topic": "performance",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "t",
+          "requirement": "Drawback: performance.",
+          "topic": "performance",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "u",
+          "requirement": "Definition: system.",
+          "topic": "system",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "v",
+          "requirement": "Purpose and appropriate use: system.",
+          "topic": "system",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "w",
+          "requirement": "Benefit: system.",
+          "topic": "system",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "x",
+          "requirement": "Drawback: system.",
+          "topic": "system",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "y",
+          "requirement": "Definition: acceptance.",
+          "topic": "acceptance",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "z",
+          "requirement": "Purpose and appropriate use: acceptance.",
+          "topic": "acceptance",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "aa",
+          "requirement": "Benefit: acceptance.",
+          "topic": "acceptance",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "ab",
+          "requirement": "Drawback: acceptance.",
+          "topic": "acceptance",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "ac",
+          "requirement": "Definition: usability.",
+          "topic": "usability",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "ad",
+          "requirement": "Purpose and appropriate use: usability.",
+          "topic": "usability",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "ae",
+          "requirement": "Benefit: usability.",
+          "topic": "usability",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "af",
+          "requirement": "Drawback: usability.",
+          "topic": "usability",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "ag",
+          "requirement": "Definition: regression.",
+          "topic": "regression",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "ah",
+          "requirement": "Purpose and appropriate use: regression.",
+          "topic": "regression",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "ai",
+          "requirement": "Benefit: regression.",
+          "topic": "regression",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "aj",
+          "requirement": "Drawback: regression.",
+          "topic": "regression",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "ak",
+          "requirement": "Definition: load/stress.",
+          "topic": "load/stress",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "al",
+          "requirement": "Purpose and appropriate use: load/stress.",
+          "topic": "load/stress",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "am",
+          "requirement": "Benefit: load/stress.",
+          "topic": "load/stress",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "an",
+          "requirement": "Drawback: load/stress.",
+          "topic": "load/stress",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "ao",
+          "requirement": "Definition: closed box.",
+          "topic": "closed box",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "ap",
+          "requirement": "Purpose and appropriate use: closed box.",
+          "topic": "closed box",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "aq",
+          "requirement": "Benefit: closed box.",
+          "topic": "closed box",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "ar",
+          "requirement": "Drawback: closed box.",
+          "topic": "closed box",
+          "aspect": "Drawback",
+          "status": "active"
+        },
+        {
+          "key": "as",
+          "requirement": "Definition: open box.",
+          "topic": "open box",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "at",
+          "requirement": "Purpose and appropriate use: open box.",
+          "topic": "open box",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "au",
+          "requirement": "Benefit: open box.",
+          "topic": "open box",
+          "aspect": "Benefit",
+          "status": "active"
+        },
+        {
+          "key": "av",
+          "requirement": "Drawback: open box.",
+          "topic": "open box",
+          "aspect": "Drawback",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.2.2",
+      "source_text": "Be able to use testing methods.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply testing methods.",
+          "topic": "Apply testing methods.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.3.1",
+      "source_text": "Know and understand the purpose of automation methods and when\nthey are used:\n- macros\n- scripts\n- functional testing tools.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: macros.",
+          "topic": "macros",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: scripts.",
+          "topic": "scripts",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: functional testing tools.",
+          "topic": "functional testing tools",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.4.1",
+      "source_text": "Know a definition for types of test data and understand the purpose of\ntest data and when it is used:\n- valid\n- invalid\n- boundary\n- erroneous.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: valid.",
+          "topic": "valid",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: valid.",
+          "topic": "valid",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Definition: invalid.",
+          "topic": "invalid",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: invalid.",
+          "topic": "invalid",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Definition: boundary.",
+          "topic": "boundary",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: boundary.",
+          "topic": "boundary",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        },
+        {
+          "key": "g",
+          "requirement": "Definition: erroneous.",
+          "topic": "erroneous",
+          "aspect": "Definition",
+          "status": "active"
+        },
+        {
+          "key": "h",
+          "requirement": "Purpose and appropriate use: erroneous.",
+          "topic": "erroneous",
+          "aspect": "Purpose and appropriate use",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.4.2",
+      "source_text": "Be able to create test data.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Create appropriate test data.",
+          "topic": "Create appropriate test data.",
+          "aspect": "requirement",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.4.3",
+      "source_text": "Know and understand the steps and structure of a test plan and when it\nis used:\n- identifying tests to be carried out\n- describing the purpose of the identified test\n- identifying test data to be used\n- describing the expected results\n- recording actual results.",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand test-plan step and when used: identifying tests.",
+          "topic": "identifying tests",
+          "aspect": "Understand test-plan step and when used",
+          "status": "active"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand test-plan step and when used: describing test purpose.",
+          "topic": "describing test purpose",
+          "aspect": "Understand test-plan step and when used",
+          "status": "active"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand test-plan step and when used: identifying test data.",
+          "topic": "identifying test data",
+          "aspect": "Understand test-plan step and when used",
+          "status": "active"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand test-plan step and when used: describing expected results.",
+          "topic": "describing expected results",
+          "aspect": "Understand test-plan step and when used",
+          "status": "active"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand test-plan step and when used: recording actual results.",
+          "topic": "recording actual results",
+          "aspect": "Understand test-plan step and when used",
+          "status": "active"
+        }
+      ]
+    }
+  ]
+}

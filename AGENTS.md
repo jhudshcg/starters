@@ -16,7 +16,7 @@ All interactive with click, drag and drop, text or number entry
 
 Self-marking
 
-varieties should include numerical, spatial and logic puzzles and combinations there of.
+Varieties should include numerical/maths, spatial, sequence and logic puzzles and combinations there of, along with other types as found in the provided examples and links.
 
 Shapes, number grids, sequences and other forms should be grouped into similar selectable types.
 
@@ -26,9 +26,13 @@ Where possible all questions should link to aspects of spec content areas, with 
 
 These can be allocated points based on challenge level and time to complete. They are more here for variety and fun, and to wake the brain up.
 
+See the `example_puzzles` dir content for examples of puzzle types, and links to good puzzle collections online which you can use for inspiration, or copying in case of good ones.
+
+It may be good to have puzzle subtype selection/filtering for the user.
+
 ## spec related questions
 
-Questions should focus on name and describe lower point value questions, and on questions that link reasons/justications that students must pick to previous answers, to aid deeper understanding of spec content areas. The aim is more towards coverage than question depth.
+Questions should focus on A) for programming related CA, lower point value logic and programming related knowledge questions, including questions involving applying the python operators listed in the spec and B) for all parts of the Core spec, name, state, list and describe lower point value questions, and on questions that link reasons/justications that students must pick to previous answers, to aid slightly deeper understanding of spec content areas. The aim is more towards coverage than question depth.
 
 For text entry questions, the HTML JS should be able to check for key words and phrases, match close spellings or synonyms, and provide informative feedback on the answer. Any text entry should be either single work or short sentence.
 

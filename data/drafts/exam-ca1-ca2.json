@@ -1,0 +1,3060 @@
+{
+  "status": "draft_not_for_live_import",
+  "purpose": "One simple initial question per numbered objective. These are question parts for later grouping, not complete 15–22-mark starter sets.",
+  "sources": [
+    "../../../agents/spec.md",
+    "../../../agents/SAM/paper1.md",
+    "../../../agents/SAM/paper2.md",
+    "../../../agents/SAM/mark_scheme_paper1.md",
+    "../../../agents/SAM/mark_scheme_paper2.md"
+  ],
+  "identity": "No public question IDs or set codes allocated. Array order is not a persistent identifier.",
+  "marking_limitations": "Exact authored answers only; semantic alternatives, contradictory answers and spelling tolerance require review. Code answers need token-aware whitespace handling before live use.",
+  "questions": [
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.1"
+          ],
+          "prompt": "Name the approach that uses decomposition, pattern recognition, abstraction and algorithm design to solve problems.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "computational thinking"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "computational thinking",
+          "feedback": "Computational thinking structures problems so that solutions can be developed systematically."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.2"
+          ],
+          "prompt": "A booking system has several interacting requirements. Name the problem-solving approach that helps break them down and design a solution.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "computational thinking"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "computational thinking",
+          "feedback": "The problem can be analysed as smaller tasks and expressed as algorithms."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.3"
+          ],
+          "prompt": "Complete this benefit: splitting a complex problem into smaller tasks makes each task easier to ___.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "manage",
+              "understand",
+              "solve"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "manage",
+          "feedback": "Smaller tasks reduce the complexity considered at one time."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.4"
+          ],
+          "prompt": "Name the computational-thinking component that removes irrelevant detail.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "abstraction"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "abstraction",
+          "feedback": "Abstraction retains information relevant to the problem."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.5"
+          ],
+          "prompt": "Which component can lose important information if the developer removes too much detail?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "abstraction"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "abstraction",
+          "feedback": "The retained details must still be sufficient to solve the problem."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.6"
+          ],
+          "prompt": "Name the technique used to split a large problem into smaller manageable problems.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "decomposition"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "decomposition",
+          "feedback": "Decomposition makes the separate parts easier to analyse and solve."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.7"
+          ],
+          "prompt": "After identifying the main features of a problem, a developer records what each feature does. Name this decomposition task.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "characterise each identified feature",
+              "characterise features",
+              "characterize features"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "characterise each identified feature",
+          "feedback": "Characterising a feature describes its relevant properties or behaviour."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.8"
+          ],
+          "prompt": "A shop system has checkout, stock control and refunds. Name the smaller task responsible for increasing the recorded quantity when a delivery arrives.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "stock control",
+              "stock management",
+              "inventory management"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "stock control",
+          "feedback": "Receiving stock belongs in the stock-management part of the system."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.9"
+          ],
+          "prompt": "Name the diagram that represents smaller parts of a system as labelled blocks.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "block diagram"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "block diagram",
+          "feedback": "A block diagram can show how a system is decomposed into parts."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.10"
+          ],
+          "prompt": "Complete this written decomposition of checkout: 1 calculate total; 2 take payment; 3 produce a ___.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "receipt"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "receipt",
+          "feedback": "A written description can represent the smaller tasks within checkout."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.11"
+          ],
+          "prompt": "Name the technique that identifies similarities between problems so an existing solution may be reused.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "pattern recognition"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "pattern recognition",
+          "feedback": "Recognising common features helps a developer adapt existing approaches."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.12"
+          ],
+          "prompt": "A monitoring system records failures at 09:00, 10:00 and 11:00. Assuming the pattern continues, state the next predicted failure time.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "12:00",
+              "12pm",
+              "12 pm"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "12:00",
+          "feedback": "The observations suggest an hourly pattern; the prediction still needs verification."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.13"
+          ],
+          "prompt": "A route planner retains road connections but omits building colours. Name the technique used.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "abstraction"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "abstraction",
+          "feedback": "Building colours do not affect the route calculation."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.14"
+          ],
+          "prompt": "A developer exposes a simple function call while concealing the calculation inside it. Which abstraction task is this?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "hide details of internal workings",
+              "hide internal workings",
+              "hide implementation details"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "hide details of internal workings",
+          "feedback": "The caller can use the operation without needing its internal implementation."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.15"
+          ],
+          "prompt": "A parking calculator multiplies hours parked by a fixed hourly rate. State the input that varies between customers.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "hours parked",
+              "hours",
+              "parking duration"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "hours parked",
+          "feedback": "The duration varies; the stated hourly rate is constant."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.16"
+          ],
+          "prompt": "A program checks whether a person meets a minimum age. Which is relevant: date of birth or favourite colour?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "date of birth"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "date of birth",
+          "feedback": "Date of birth allows age to be calculated; favourite colour is irrelevant."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.1.17"
+          ],
+          "prompt": "A developer first separates checkout into tasks, then removes irrelevant details from each task. Name the second computational-thinking component.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "abstraction"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "abstraction",
+          "feedback": "Decomposition identifies the smaller tasks; abstraction isolates their relevant information."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.1"
+          ],
+          "prompt": "Name a finite sequence of unambiguous instructions for solving a problem.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "algorithm",
+              "an algorithm"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "algorithm",
+          "feedback": "An algorithm specifies ordered steps that lead to a result."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.2"
+          ],
+          "prompt": "Name the flowchart symbol used for a decision.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "diamond",
+              "rhombus"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "diamond",
+          "feedback": "A decision branches according to a condition."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.3"
+          ],
+          "prompt": "Complete this flowchart drawback: a large algorithm can make the diagram difficult to ___.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "read",
+              "follow",
+              "maintain",
+              "update"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "read",
+          "feedback": "Large flowcharts can become cluttered and difficult to change."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.4"
+          ],
+          "prompt": "Complete this drawback of an informal written algorithm: imprecise wording can make instructions ___.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "ambiguous",
+              "unclear"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "ambiguous",
+          "feedback": "Different readers may interpret the same instruction differently."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.5"
+          ],
+          "prompt": "To understand an algorithm written in Python, a reader needs knowledge of Python ___.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "syntax"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "syntax",
+          "feedback": "Code is precise but requires knowledge of its programming language."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.6"
+          ],
+          "prompt": "Name the control structure that repeats an action.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "iteration",
+              "loop",
+              "looping"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "iteration",
+          "feedback": "Iteration executes a block repeatedly."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.7"
+          ],
+          "prompt": "An algorithm starts total at zero, adds each sale amount to total, then outputs total. State what it calculates.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "total sales",
+              "sum of sales",
+              "total sales amount"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "total sales",
+          "feedback": "Every sale contributes once to the running total."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.8"
+          ],
+          "prompt": "An algorithm doubles its input and adds 3. State the output for input 4.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "11"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "11",
+          "feedback": "4 multiplied by 2 is 8; adding 3 gives 11."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.9"
+          ],
+          "prompt": "A loop must process positions 0 to 4 but processes only 0 to 3. Name this common boundary error.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "off-by-one error",
+              "off by one",
+              "off-by-one"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "off-by-one error",
+          "feedback": "The loop executes one fewer iteration than required."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.10"
+          ],
+          "prompt": "Complete the loop so it processes five items: for i in range(___):",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "5"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "5",
+          "feedback": "range(5) produces 0, 1, 2, 3 and 4."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.11"
+          ],
+          "prompt": "Translate 'set total to price multiplied by quantity' into one Python assignment.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "total = price * quantity"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "total = price * quantity",
+          "feedback": "The multiplication is evaluated before its result is assigned to total."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.2.12"
+          ],
+          "prompt": "A delivery algorithm must choose between a free and a paid delivery charge. Name the control structure needed for that choice.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "selection"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "selection",
+          "feedback": "Selection chooses a path based on a condition."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.3.1"
+          ],
+          "prompt": "Name the strategy that starts with the overall system and breaks it into smaller components.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "top-down",
+              "top down",
+              "top-down approach"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "top-down",
+          "feedback": "Top-down design progressively decomposes the whole system."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.3.2"
+          ],
+          "prompt": "Complete this benefit of modularisation: a tested module can be ___ in another system.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "reused",
+              "re-used"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "reused",
+          "feedback": "Reuse can reduce repeated development and testing work."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.3.3"
+          ],
+          "prompt": "Name the approach that investigates the underlying reason for a fault rather than only its symptoms.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "root cause analysis",
+              "rca"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "root cause analysis",
+          "feedback": "Addressing the underlying cause helps prevent recurrence."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.3.4"
+          ],
+          "prompt": "Name the root-cause technique that repeatedly asks why a problem occurred.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "five whys",
+              "5 whys",
+              "five why",
+              "5 why"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "five whys",
+          "feedback": "Repeated why questions trace symptoms towards underlying causes."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.3.5"
+          ],
+          "prompt": "In a high-level problem-solving strategy, which step follows implementing the solution?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "review",
+              "review the solution"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "review",
+          "feedback": "Review checks whether the implemented solution resolves the problem."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA1.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA1.3.6"
+          ],
+          "prompt": "An intermittent fault returns after several temporary fixes. Name a suitable strategy for investigating its underlying cause.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "root cause analysis",
+              "rca"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "root cause analysis",
+          "feedback": "Recurring symptoms justify investigating the cause before choosing another fix."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.1",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.1.1"
+          ],
+          "prompt": "Name the Python data type for a value that is either True or False.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "bool",
+              "boolean"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "bool",
+          "feedback": "Boolean values represent two truth states."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.1"
+          ],
+          "prompt": "Name a named storage location whose value can change during program execution.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "variable",
+              "a variable"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "variable",
+          "feedback": "A variable allows a program to refer to a changing value by name."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.2"
+          ],
+          "prompt": "Name a value intended to remain unchanged during execution.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "constant",
+              "a constant"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "constant",
+          "feedback": "A constant represents a fixed value, such as a configured rate."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.3"
+          ],
+          "prompt": "Name the Python function that converts the string '42' into an integer.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "int",
+              "int()"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "int",
+          "feedback": "int('42') returns the integer 42."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.4"
+          ],
+          "prompt": "Name the term for the region of a program in which a name can be accessed.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "scope"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "scope",
+          "feedback": "Scope determines where a name is available."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.5"
+          ],
+          "prompt": "A variable is assigned inside a function and is not declared global. Name its scope.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "local",
+              "local scope"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "local",
+          "feedback": "The variable is local to that function."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.6"
+          ],
+          "prompt": "Inside a function, which Python keyword allows assignment to an existing module-level variable?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "global"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "global",
+          "feedback": "The global declaration makes that assignment target the module-level name."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.7"
+          ],
+          "prompt": "Write a Python assignment setting attempts to the integer zero.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "attempts = 0"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "attempts = 0",
+          "feedback": "The unquoted literal 0 is an integer."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.8"
+          ],
+          "prompt": "Given RATE = 3 and hours = 4, state the value of RATE * hours.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "12"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "12",
+          "feedback": "The fixed rate is multiplied by the variable duration."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.2",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.2.9"
+          ],
+          "prompt": "State the value of int('12') + 3.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "15"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "15",
+          "feedback": "The string is converted to an integer before addition."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.3.1"
+          ],
+          "prompt": "Name the Python data structure that associates keys with values.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "dictionary",
+              "dict"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "dictionary",
+          "feedback": "A dictionary retrieves a value using its key."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.3.2"
+          ],
+          "prompt": "Given scores = [8, 5, 9], state the value of scores[1].",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "5"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "5",
+          "feedback": "Python list indexing starts at zero."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.3.3"
+          ],
+          "prompt": "Write a Python list literal containing the integers 8, 5 and 9 in that order.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "[8, 5, 9]"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "[8, 5, 9]",
+          "feedback": "For this item, use the three integers 8, 5 and 9 in that order."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.3",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.3.4"
+          ],
+          "prompt": "Given names = ['Ali', 'Bo'], replace the index in names[2] to access 'Bo'.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "1"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "1",
+          "feedback": "The two valid indices are 0 and 1."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.4",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.4.1"
+          ],
+          "prompt": "State the value of 17 % 5.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "2"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "2",
+          "feedback": "The modulus operator returns the remainder after division."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.4",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.4.2"
+          ],
+          "prompt": "Write the Python relational operator meaning 'greater than or equal to'.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              ">="
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": ">=",
+          "feedback": "This comparison includes equality."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.4",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.4.3"
+          ],
+          "prompt": "Name the Boolean operator that is true only when both operands are true.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "and"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "and",
+          "feedback": "Both conditions must be true for and to return true."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.4",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.4.4"
+          ],
+          "prompt": "A box holds 6 devices. Write the expression using count that calculates the number of complete boxes.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "count // 6"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "count // 6",
+          "feedback": "Integer division gives the number of complete groups for a non-negative count."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.4",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.4.5"
+          ],
+          "prompt": "State the value of 3 + 2 * 4.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "11"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "11",
+          "feedback": "Multiplication is performed before addition."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.4",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.4.6"
+          ],
+          "prompt": "Write an expression that is true when age is at least 16.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "age >= 16",
+              "16 <= age"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "age >= 16",
+          "feedback": "The boundary value 16 must be included."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.4",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.4.7"
+          ],
+          "prompt": "Replace the incorrect operator in 'if score = 10:' with the equality-comparison operator.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "=="
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "==",
+          "feedback": "A single equals sign assigns; a double equals sign compares."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.5",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.5.1"
+          ],
+          "prompt": "Name the Python built-in function used to read text entered at the keyboard.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "input",
+              "input()"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "input",
+          "feedback": "input returns the entered text as a string."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.5",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.5.2"
+          ],
+          "prompt": "State the file mode used to open an existing text file for reading.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "r",
+              "'r'",
+              "\"r\""
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "r",
+          "feedback": "Read mode reads the file without requesting write access."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.5",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.5.3"
+          ],
+          "prompt": "If the user types 7, state the data type returned by input().",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "string",
+              "str"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "string",
+          "feedback": "input returns text even when the characters are digits."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.5",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.5.4"
+          ],
+          "prompt": "Write one Python statement to display the value of total.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "print(total)"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "print(total)",
+          "feedback": "print sends the value to standard output."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.5",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.5.5"
+          ],
+          "prompt": "A file is opened with open('log.txt', 'r') before writing text. Which mode should replace r to append without discarding existing content?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "a"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "a",
+          "feedback": "'a' appends at the end of the file."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.1"
+          ],
+          "prompt": "Name the control structure in which statements execute one after another in their written order.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "sequence"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "sequence",
+          "feedback": "Sequence preserves the stated order of execution."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.2"
+          ],
+          "prompt": "Which Python keyword introduces another condition after an if condition is false?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "elif"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "elif",
+          "feedback": "elif tests an additional condition in the selection chain."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.3"
+          ],
+          "prompt": "Name the loop category most suitable when the required number of repetitions is known beforehand.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "count-controlled",
+              "count controlled",
+              "count-controlled loop"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "count-controlled",
+          "feedback": "A count-controlled loop repeats a specified number of times."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.4"
+          ],
+          "prompt": "Which Python loop keyword repeats while a condition remains true?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "while"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "while",
+          "feedback": "The condition is checked before each iteration."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.5"
+          ],
+          "prompt": "A while loop's condition never becomes false. Name the resulting problem.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "infinite loop",
+              "non-terminating loop",
+              "endless loop"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "infinite loop",
+          "feedback": "A missing or incorrect update can prevent termination."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.6"
+          ],
+          "prompt": "How many times does 'for i in range(2, 5):' execute its body?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "3"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "3",
+          "feedback": "The values are 2, 3 and 4; the upper bound is excluded."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.7"
+          ],
+          "prompt": "Complete the header to repeat exactly four times: for i in ___:",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "range(4)"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "range(4)",
+          "feedback": "range(4) supplies four values."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.6",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.6.8"
+          ],
+          "prompt": "A loop starts count = 0 and runs while count < 3. Write the update that increases count by one each iteration.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "count += 1",
+              "count = count + 1"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "count += 1",
+          "feedback": "Updating count allows it to reach the terminating boundary."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.7",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.7.1"
+          ],
+          "prompt": "Which Python keyword sends a result back from a function to its caller?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "return"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "return",
+          "feedback": "An explicit return can provide the caller with a calculated value."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.7",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.7.2"
+          ],
+          "prompt": "Using the specification's terminology, name a subprogram that performs a task without returning a result.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "procedure"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "procedure",
+          "feedback": "Python uses def for both styles; a function without an explicit result returns None."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.7",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.7.3"
+          ],
+          "prompt": "Is Python's len function user-written, built-in or from a third-party library?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "built-in",
+              "built in",
+              "builtin"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "built-in",
+          "feedback": "len is available without importing a library."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.7",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.7.4"
+          ],
+          "prompt": "Complete this benefit of using a suitable pre-written function: it saves development ___.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "time"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "time",
+          "feedback": "Existing functionality reduces the amount of new code to write."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.7",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.7.5"
+          ],
+          "prompt": "A function is defined as 'def double(n): return n * 2'. State double(6).",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "12"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "12",
+          "feedback": "The argument 6 is bound to n and multiplied by 2."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.7",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.7.6"
+          ],
+          "prompt": "Complete the body of def square(n): with one statement returning n squared.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "return n * n",
+              "return n ** 2"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "return n * n",
+          "feedback": "The function must return the calculated square."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.7",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.7.7"
+          ],
+          "prompt": "A function prints a total, but its caller needs to store that total as the function result. Which keyword should replace print in the function's final operation?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "return"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "return",
+          "feedback": "Printing displays a value; returning supplies it to the caller."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.8",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.8.1"
+          ],
+          "prompt": "Name the validation check that rejects an empty required field.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "presence check",
+              "presence"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "presence check",
+          "feedback": "A presence check verifies that a value was supplied."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.8",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.8.2"
+          ],
+          "prompt": "For the check 1 <= quantity <= 10, is quantity = 10 accepted or rejected?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "accepted",
+              "accept"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "accepted",
+          "feedback": "Both boundary values are included by <=."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.8",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.8.3"
+          ],
+          "prompt": "Complete a length check for an eight-character code: len(code) ___ 8.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "=="
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "==",
+          "feedback": "Equality checks that the length is exactly eight."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.8",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.8.4"
+          ],
+          "prompt": "A valid age is 16 to 19 inclusive. Replace and in 'age < 16 and age > 19' so the expression identifies invalid ages.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "or"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "or",
+          "feedback": "An age is invalid if it is below 16 or above 19."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.9",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.9.1"
+          ],
+          "prompt": "Which must happen first: calculate an average or check that the divisor is not zero?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "check that the divisor is not zero",
+              "check divisor",
+              "check for zero"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "check that the divisor is not zero",
+          "feedback": "Check before division to avoid a division-by-zero error."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.9",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.9.2"
+          ],
+          "prompt": "State the value of (3 + 2) * 4.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "20"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "20",
+          "feedback": "Parentheses make the addition happen before multiplication."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.9",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.9.3"
+          ],
+          "prompt": "For frequent retrieval of a record by a unique key, choose a dictionary or an unsorted list.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "dictionary",
+              "dict"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "dictionary",
+          "feedback": "A dictionary supports direct key lookup rather than requiring a scan through the list."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.9",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.9.4"
+          ],
+          "prompt": "A loop repeatedly calculates a fixed value that never changes. Where should that calculation move: before the loop or after the loop?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "before the loop"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "before the loop",
+          "feedback": "Calculate it once before the loop so the result is available during each iteration."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.9",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.9.5"
+          ],
+          "prompt": "Name the naming convention used by total_cost.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "snake_case",
+              "snake case"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "snake_case",
+          "feedback": "Words are separated with underscores."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.9",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.9.6"
+          ],
+          "prompt": "Choose the clearer variable name for a count of failed logins: x or failed_login_count.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "failed_login_count"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "failed_login_count",
+          "feedback": "The name describes the value's purpose."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.9",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.9.7"
+          ],
+          "prompt": "An algorithm returns correct answers but exceeds the maximum permitted run time. Does it meet all the stated requirements? Answer yes or no.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "no"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "no",
+          "feedback": "Correct output alone does not satisfy a run-time requirement."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.10",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.10.1"
+          ],
+          "prompt": "Name the Python statement pair used to handle an exception such as invalid numeric input.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "try and except",
+              "try except",
+              "try/except"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "try and except",
+          "feedback": "try contains the operation and except handles a matching exception."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.10",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.10.2"
+          ],
+          "prompt": "Name the process of locating and correcting program errors.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "debugging"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "debugging",
+          "feedback": "Debugging investigates the cause and corrects the code."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.10",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.10.3"
+          ],
+          "prompt": "Complete this statement: correcting the cause of a crash makes software more ___.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "robust",
+              "reliable"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "robust",
+          "feedback": "Removing the fault helps the software handle that situation successfully."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.10",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.10.4"
+          ],
+          "prompt": "State the exception raised by 10 / 0.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "ZeroDivisionError"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": true,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "ZeroDivisionError",
+          "feedback": "Division by zero raises ZeroDivisionError in Python."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.10",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.10.5"
+          ],
+          "prompt": "Replace the function in int('3.5') with one that converts the text to a decimal numeric value.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "float",
+              "float()"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "float",
+          "feedback": "float accepts the decimal representation '3.5'."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.11",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.11.1"
+          ],
+          "prompt": "Name the search algorithm that repeatedly halves the remaining search interval in sorted data.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "binary search"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "binary search",
+          "feedback": "Binary search compares with the middle value and discards half of the interval."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.11",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.11.2"
+          ],
+          "prompt": "Name the sorting algorithm that compares adjacent values and swaps those in the wrong order over repeated passes.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "bubble sort"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "bubble sort",
+          "feedback": "Bubble sort repeats passes until the list is ordered."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.11",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.11.3"
+          ],
+          "prompt": "Which requires sorted input: linear search or binary search?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "binary search"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "binary search",
+          "feedback": "The halving decision relies on the input being ordered."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.11",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.11.4"
+          ],
+          "prompt": "Name the efficiency measure concerned with how much storage an algorithm needs.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "memory space",
+              "memory usage",
+              "space usage",
+              "space complexity"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "memory space",
+          "feedback": "Memory use is distinct from execution time or the number of comparisons."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.11",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.11.5"
+          ],
+          "prompt": "For linear search, where is a matching target in the best case?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "first position",
+              "first",
+              "start",
+              "first item"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "first position",
+          "feedback": "The first comparison finds the target."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.11",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.11.6"
+          ],
+          "prompt": "Choose a suitable search for a large sorted list with efficient access by index: linear or binary.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "binary",
+              "binary search"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "binary",
+          "feedback": "Repeated halving usually needs far fewer comparisons than scanning the list."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.11",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.11.7"
+          ],
+          "prompt": "Choose a suitable simple sort for a small, nearly sorted list: insertion sort or bubble sort.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "insertion sort",
+              "insertion"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "insertion sort",
+          "feedback": "Insertion sort can place each item with little shifting when the list is nearly ordered."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.12",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.12.1.1"
+          ],
+          "prompt": "Should individual software components be tested before or only after integration?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "before",
+              "before integration"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "before",
+          "feedback": "Testing components first helps isolate faults before components interact."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.12",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.12.2.1"
+          ],
+          "prompt": "Name the testing method that checks whether a change has broken previously working functionality.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "regression testing",
+              "regression"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "regression testing",
+          "feedback": "Regression tests repeat relevant earlier checks after a change."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.12",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.12.2.2"
+          ],
+          "prompt": "A team checks that its payment module exchanges data correctly with its order module. Name the test type.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "integration testing",
+              "integration"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "integration testing",
+          "feedback": "Integration testing checks interactions between components."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.12",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.12.3.1"
+          ],
+          "prompt": "Name a sequence of recorded application actions that can be replayed to automate a repeated task.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "macro",
+              "a macro"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "macro",
+          "feedback": "A macro can automate repeated actions in a supporting application."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.12",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.12.4.1"
+          ],
+          "prompt": "An integer field accepts 1 to 10 inclusive. Which category describes the value 1: boundary or erroneous?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "boundary",
+              "boundary data"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "boundary",
+          "feedback": "1 lies exactly on an accepted boundary."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.12",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.12.4.2"
+          ],
+          "prompt": "An integer field accepts 1 to 10 inclusive. Give the invalid integer immediately above the upper boundary.",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "11"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "11",
+          "feedback": "11 tests rejection just outside the accepted range."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    },
+    {
+      "focus": "CA2.12",
+      "status": "draft",
+      "parts": [
+        {
+          "element_refs": [
+            "CA2.12.4.3"
+          ],
+          "prompt": "Which test-plan column records what the system should do before the test is run?",
+          "marks": 1,
+          "response_type": "short_text",
+          "marking": {
+            "method": "accepted_answers",
+            "accepted_answers": [
+              "expected result",
+              "expected results",
+              "expected outcome"
+            ],
+            "normalisation": "trim_and_collapse_whitespace",
+            "case_sensitive": false,
+            "fuzzy_matching": false,
+            "unrecognised_feedback": "This answer was not recognised. Compare it with the model answer."
+          },
+          "model_answer": "expected result",
+          "feedback": "Actual results are recorded after executing the test."
+        }
+      ],
+      "coverage_status": "objective_sample_only",
+      "variations": []
+    }
+  ]
+}

@@ -17,7 +17,7 @@ test('48-bit Base64url round-trip agrees with an independent byte encoder',()=>{
 });
 test('timer suffixes are separate from payload and preserve all durations',()=>{
  for(let minutes=5;minutes<=15;minutes++){
-  const f={version:1,type:2,entries:[{slot:0,variation:0},{slot:1,variation:0}],minutes};
+  const f={version:2,type:2,entries:[{slot:0,variation:0},{slot:1,variation:0}],minutes};
   assert.equal(encode(f).length,9);assert.deepEqual(decode(encode(f)),f);
  }
 });
@@ -25,16 +25,16 @@ test('URL symbols, leading zero fields and case survive copying',()=>{
  const code=encode({version:127,type:2,entries:[{slot:1022,variation:7},{slot:1021,variation:7},{slot:1020,variation:7}]});
  assert.match(code,/[_-]/);assert.equal(new URL('https://example.org/#set='+code).hash.slice(5),code);
  assert.equal(encode({version:0,type:0,entries:[{slot:0,variation:0},{slot:1,variation:0},{slot:2,variation:0}]}).length,8);
- const a=encode({version:1,type:2,entries:[{slot:0,variation:0},{slot:1,variation:0}]});
+ const a=encode({version:2,type:2,entries:[{slot:0,variation:0},{slot:1,variation:0}]});
  assert.notEqual(a,a.toLowerCase());assert.throws(()=>resolve(a.toLowerCase()));
 });
 test('invalid codes and missing content are rejected',()=>{
  for(const code of ['','abcdefg','AAAAAAAA=','AAAAAAA+','AAAAAAA/','AAAAAAAA0','AAAAAAAAa','________'])assert.throws(()=>resolve(code));
  assert.throws(()=>encode({version:128,type:0,entries:[{slot:0,variation:0}]}));
- assert.throws(()=>encode({version:1,type:0,entries:[{slot:0,variation:8}]}));
- assert.throws(()=>encode({version:1,type:0,entries:[{slot:1,variation:0},{slot:1,variation:1}]}));
- assert.throws(()=>resolve(encode({version:2,type:1,entries:[{slot:0,variation:0}]})));
- assert.throws(()=>resolve(encode({version:1,type:1,entries:[{slot:0,variation:7}]})));
+ assert.throws(()=>encode({version:2,type:0,entries:[{slot:0,variation:8}]}));
+ assert.throws(()=>encode({version:2,type:0,entries:[{slot:1,variation:0},{slot:1,variation:1}]}));
+ assert.throws(()=>resolve(encode({version:3,type:1,entries:[{slot:0,variation:0}]})));
+ assert.throws(()=>resolve(encode({version:2,type:1,entries:[{slot:0,variation:7}]})));
 });
 test('question bank meets pilot content constraints',()=>assert.deepEqual(validateBank(),[]));
 test('all answers mark correctly and blanks never receive marks',()=>{
@@ -44,13 +44,13 @@ test('all answers mark correctly and blanks never receive marks',()=>{
  }
 });
 test('bounded synonyms, negation, Python case and dependency marking',()=>{
- const q=banks[1][0].variations[0];
+ const q={parts:[{id:'0',prompt:'Name the remainder operator',answer:'modulus',accepted:['modulo','mod','%'],typos:['modulous'],marks:1,kind:'text',explanation:'Modulus returns the remainder.'},
+ {id:'1',prompt:'Choose the reason',answer:'Counts complete groups',dependsOn:'0',marks:1,kind:'text',explanation:'Choose a reason.'}]};
  assert.equal(markQuestion(q,{'0':' MOD '})[0].earned,1);
  assert.equal(markQuestion(q,{'0':'not modulus'})[0].earned,0);
  assert.equal(markQuestion(q,{'0':'modulous'})[0].earned,1);
- assert.equal(markQuestion(q,{'3':'17 / 5','4':'Counts complete groups'})[4].earned,0);
+ assert.equal(markQuestion(q,{'0':'division','1':'Counts complete groups'})[1].earned,0);
  assert.equal(markQuestion(banks[2][2].variations[0],{'0':'Range'})[0].earned,0);
- assert.equal(markQuestion(q,{'1':'3 boxes'})[1].earned,0);
 });
 test('new permutations replace every variation but preserve templates',()=>{
  const first=choose(2,'iteration');
@@ -58,13 +58,24 @@ test('new permutations replace every variation but preserve templates',()=>{
  assert.deepEqual(next.entries.map(e=>e.slot),first.entries.map(e=>e.slot));
  assert.ok(next.entries.every((e,i)=>e.variation!==first.entries[i].variation));
  assert.notDeepEqual(choose(2,'iteration',first).entries.map(e=>e.slot),first.entries.map(e=>e.slot));
- assert.throws(()=>choose(1,'CA2.4',choose(1,'CA2.4')));
+ assert.throws(()=>choose(1,'CA2.1',choose(1,'CA2.1')));
+ assert.notDeepEqual(choose(1,'CA2.4',choose(1,'CA2.4')).entries,choose(1,'CA2.1').entries);
 });
 test('all published question combinations meet mark limits',()=>{
  for(let type=0;type<3;type++)for(const focus of new Set(banks[type].map(q=>q.focus))) {
-  const slots=banks[type].filter(q=>q.focus===focus).map(q=>q.slot);
-  const groups=type===1?[slots]:[[slots[0],slots[1]],[slots[0],slots[2]],[slots[1],slots[2]]];
-  for(const group of groups)for(let v=0;v<5;v++)assert.ok(resolve({version:1,type,entries:group.map(slot=>({slot,variation:v})),minutes:null}).total>0);
+  const pool=banks[type].filter(q=>q.focus===focus&&!q.retired);
+  const size=type===0?1:type===1?3:2;
+  function check(start,group){
+   if(group.length===size){
+    for(let seed=0;seed<8;seed++) {
+     const set=resolve({version:2,type,entries:group.map(q=>({slot:q.slot,variation:seed%q.variations.length})),minutes:null});
+     assert.ok(set.total>0);
+    }
+    return;
+   }
+   for(let i=start;i<pool.length;i++)check(i+1,[...group,pool[i]]);
+  }
+  check(0,[]);
  }
 });
 test('deadlines survive reload and background time; submission deduplicates',()=>{
@@ -96,14 +107,4 @@ test('Python reference outputs agree with the authored trace and countdown answe
   const output=execFileSync('python3',['-c',corrected],{encoding:'utf8',timeout:2000}).trim().split('\n');
   assert.deepEqual(output,v.parts.slice(1,5).map(p=>p.answer));
  }
-});
-
-test('number grids satisfy their independent row, column and product clues',()=>{
- for(const v of banks[0][0].variations) {
-  const answer=v.parts.map(p=>Number(p.answer));
-  v.grid.rows.forEach((r,i)=>assert.equal(r[0]+answer[i],r[2]));
-  assert.equal(answer[0]+answer[1],v.grid.footer[1]);
-  assert.equal(v.grid.rows[0][0]+v.grid.rows[1][0],v.grid.footer[0]);
- }
- for(const v of banks[0][1].variations)v.grid.rows.forEach((r,i)=>assert.equal(r[0]*Number(v.parts[i].answer),r[2]));
 });

@@ -1,0 +1,4608 @@
+{
+  "schema_version": 2,
+  "source_version": "1.1",
+  "required_question_count": 2,
+  "required_variations_per_question": 2,
+  "summary": {
+    "focus_count": 106,
+    "element_count": 369,
+    "live_question_count": 51,
+    "elements_with_live_questions": 239,
+    "elements_with_two_live_questions": 10,
+    "practice_only_elements": 10,
+    "uncovered_elements": 120,
+    "complete_elements": 0
+  },
+  "errors": [],
+  "focuses": [
+    {
+      "focus": "CA1.1.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: computational thinking.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: computational thinking.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Choose when computational thinking is appropriate.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: computational thinking.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: computational thinking.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify the component: decomposition.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify the component: pattern recognition.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify the component: abstraction.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Identify the component: algorithmic design.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: decomposition.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: decomposition.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: pattern recognition.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: pattern recognition.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Benefit: abstraction.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "f",
+          "requirement": "Drawback: abstraction.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "g",
+          "requirement": "Benefit: algorithmic design.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "h",
+          "requirement": "Drawback: algorithmic design.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of decomposition.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify the main features of a problem.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Characterise each identified feature.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Break a problem into manageable parts.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Break a solution into manageable parts.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.8",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply decomposition to a problem.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.9",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand the representation: block diagrams.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand the representation: information flow diagrams.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand the representation: flowcharts.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand the representation: code.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand the representation: written descriptions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.10",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Use to represent decomposition: block diagrams.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Use to represent decomposition: information flow diagrams.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Use to represent decomposition: flowcharts.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Use to represent decomposition: code.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "e",
+          "requirement": "Use to represent decomposition: written descriptions.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.11",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of pattern recognition.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.12",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret trends and similarities within and between problems and processes.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify common features with existing solutions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Make predictions and assumptions from patterns.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.13",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of abstraction.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.14",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify needed information.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Filter unnecessary details.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Hide internal workings.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.15",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify inputs.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify expected outputs and outcomes.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify things that vary.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Identify constants.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Identify key actions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Identify repeated processes.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.16",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply abstraction to a problem.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.1.17",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand relationships between computational-thinking components.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Judge suitability of computational-thinking components for a problem.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition of an algorithm.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Characteristics of an algorithm.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose of an algorithm.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand algorithm notation: flowchart terminators.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand algorithm notation: flowchart processes.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand algorithm notation: flowchart sub-processes.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand algorithm notation: flowchart decisions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand algorithm notation: flowchart inputs and outputs.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand algorithm notation: flowchart arrows.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "g",
+          "requirement": "Understand algorithm notation: flowchart labels.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "h",
+          "requirement": "Understand algorithm notation: hierarchical written descriptions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "i",
+          "requirement": "Understand algorithm notation: code.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: flowcharts.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: flowcharts.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: written descriptions.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: written descriptions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: code.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: code.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand control of step order: sequence.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand control of step order: selection.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand control of step order: iteration.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Determine an algorithm’s purpose.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Determine how an algorithm works.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.8",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Determine an output for a given input.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.9",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify an algorithm error.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.10",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Correct an algorithm error.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.11",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Translate an algorithm between notations.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.2.12",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Design an algorithm using sequence.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Design an algorithm using selection.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Design an algorithm using iteration.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: top-down.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: bottom-up.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: modularisation.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: top-down.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: top-down.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: bottom-up.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: bottom-up.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "e",
+          "requirement": "Benefit: modularisation.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Drawback: modularisation.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: root cause analysis.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand the approach or follow-up action: five whys.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand the approach or follow-up action: failure mode and effects analysis (FMEA).",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand the approach or follow-up action: event tree analysis (ETA).",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand the approach or follow-up action: log.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand the approach or follow-up action: close.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand the approach or follow-up action: escalate to an appropriate manager, specialist or third party.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand the strategy step: define the problem.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand the strategy step: gather information.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand the strategy step: analyse information.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand the strategy step: make a plan.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand the strategy step: implement a solution.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand the strategy step: review the solution.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA1.3.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand relationships between a problem and solution strategies.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Judge the suitability of a strategy for a problem.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.1.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: integer.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: integer.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "c",
+          "requirement": "Definition: float.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: float.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "e",
+          "requirement": "Definition: string.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: string.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "g",
+          "requirement": "Definition: Boolean.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "h",
+          "requirement": "Purpose and appropriate use: Boolean.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: variable.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: variable.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: constant.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: constant.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose of data conversion functions and reasons for using them.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: scope.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: scope.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand scope management: global variables.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand scope management: local variables.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply scope in code.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Declare a variable with a standard data type.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Declare a constant with a standard data type.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.8",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Use a variable.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Use a constant.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.2.9",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Use data conversion functions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify the structure: list.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: list.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify the structure: array.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: array.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Identify the structure: dictionary.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: dictionary.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using the structure: list.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using the structure: array.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using the structure: dictionary.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop code using the structure: list.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        },
+        {
+          "key": "b",
+          "requirement": "Develop code using the structure: array.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Develop code using the structure: dictionary.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.3.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using the structure: list.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using the structure: array.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using the structure: dictionary.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand operator purpose: add.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand operator purpose: subtract.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand operator purpose: divide.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand operator purpose: multiply.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand operator purpose: exponentiation.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand operator purpose: integer division.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "g",
+          "requirement": "Understand operator purpose: modulus.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand operator purpose: equivalence.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand operator purpose: less than.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand operator purpose: greater than.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand operator purpose: not equal.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand operator purpose: less than or equal to.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Understand operator purpose: greater than or equal to.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand operator purpose: not.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand operator purpose: and.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand operator purpose: or.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply operators: arithmetic.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Apply operators: relational.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Apply operators: Boolean.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using operators: arithmetic.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using operators: relational.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using operators: Boolean.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Create code using operators: arithmetic.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Create code using operators: relational.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Create code using operators: Boolean.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.4.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using operators: arithmetic.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using operators: relational.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using operators: Boolean.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Implement input or output: keyboard.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Implement input or output: screen.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Implement input or output: text file.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand text-file operation: open for reading.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand text-file operation: open for writing.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand text-file operation: write lines.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand text-file operation: close.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret input/output code: keyboard.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret input/output code: screen.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret input/output code: text file.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Create input/output code: keyboard.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Create input/output code: screen.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Create input/output code: text file.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.5.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug input/output code: keyboard.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug input/output code: screen.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug input/output code: text file.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: sequence.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: if.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: elif (else if).",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: else.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: match/case.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: count-controlled loop.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: condition-controlled loop.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand iteration: for loop.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand iteration: while loop.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: loops.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: loops.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using the action: sequence.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using the action: selection.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using the action: iteration.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop code using the action: sequence.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Develop code using the action: selection.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Develop code using the action: iteration.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.6.8",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using the action: sequence.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using the action: selection.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using the action: iteration.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "function: may have parameters or no parameters.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "function: returns a result.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use of a function.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "procedure: may have parameters or no parameters.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "procedure: does not return a result (specification terminology).",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use of a procedure.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Identify code source: user-written.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Identify code source: built-in.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Identify code source: standard library.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Identify code source: third-party library.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: pre-written code.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: pre-written code.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret code using the subprogram: user-written functions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Interpret code using the subprogram: pre-written functions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Interpret code using the subprogram: user-written procedures.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Interpret code using the subprogram: pre-written procedures.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop code using the subprogram: user-written functions.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        },
+        {
+          "key": "b",
+          "requirement": "Develop code using the subprogram: pre-written functions.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Develop code using the subprogram: user-written procedures.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Develop code using the subprogram: pre-written procedures.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.7.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug code using the subprogram: user-written functions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Debug code using the subprogram: pre-written functions.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Debug code using the subprogram: user-written procedures.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Debug code using the subprogram: pre-written procedures.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition of validation.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: presence check.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: length check.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: range check.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "e",
+          "requirement": "Purpose and appropriate use: type check.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: format check.",
+          "status": "active",
+          "live_question_count": 2,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "awaiting_review"
+        },
+        {
+          "key": "g",
+          "requirement": "Purpose and appropriate use: check digit.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Interpret validation code.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Develop validation code.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.8.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Debug validation code.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Determine a logical order for process actions.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Order operations for accurate outputs.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Order operations to avoid errors.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Choose data structures for execution-time efficiency.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Choose data structures for memory efficiency.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Order actions for execution-time efficiency.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Order actions for memory efficiency.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand naming convention and purpose: meaningful names.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand naming convention and purpose: camelCase.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand naming convention and purpose: snake_case.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand impact on readability: naming.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand impact on readability: white space.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand impact on readability: maximum line length.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.9.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Judge algorithm suitability regarding: meeting requirements.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Judge algorithm suitability regarding: storage efficiency.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Judge algorithm suitability regarding: execution-time efficiency.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Judge algorithm suitability regarding: data structures.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "e",
+          "requirement": "Judge algorithm suitability regarding: data types.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Judge algorithm suitability regarding: variables.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "g",
+          "requirement": "Judge algorithm suitability regarding: constants.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "h",
+          "requirement": "Judge algorithm suitability regarding: presentation.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "i",
+          "requirement": "Judge algorithm suitability regarding: maintainability.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand robust handling of: unexpected inputs.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand robust handling of: unexpected terminations.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand robust handling of: specific meaningful error messages.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand debugging process and when used: locating errors.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand debugging process and when used: correcting errors.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Explain the role of debugging in robustness.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Locate errors in code.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.10.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Correct errors in code.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "How the algorithm works: linear search.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "When to use: linear search.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "How the algorithm works: binary search.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "When to use: binary search.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "How the algorithm works: bubble sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        },
+        {
+          "key": "b",
+          "requirement": "When to use: bubble sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "How the algorithm works: insertion sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        },
+        {
+          "key": "d",
+          "requirement": "When to use: insertion sort.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "How the algorithm works: merge sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 1,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "practice_only"
+        },
+        {
+          "key": "f",
+          "requirement": "When to use: merge sort.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Benefit: linear search.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Drawback: linear search.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: binary search.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: binary search.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Benefit: bubble sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "f",
+          "requirement": "Drawback: bubble sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "g",
+          "requirement": "Benefit: insertion sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "h",
+          "requirement": "Drawback: insertion sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "i",
+          "requirement": "Benefit: merge sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "j",
+          "requirement": "Drawback: merge sort.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.4",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand efficiency metric: memory space.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand efficiency metric: execution time.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand efficiency metric: number of comparisons.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.5",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Reason about common algorithms without Big O: best case.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Reason about common algorithms without Big O: worst case.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Reason about common algorithms without Big O: average case.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.6",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Judge suitability of search algorithms.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.11.7",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Judge suitability of sorting algorithms.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.1.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Reasons to test the component before final integration: software.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Reasons to test the component before final integration: hardware.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Reasons to test the component before final integration: data.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Reasons to test the component before final integration: interfaces.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "e",
+          "requirement": "Reasons to test the component before final integration: resulting service.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.2.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: concept.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: concept.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Benefit: concept.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "d",
+          "requirement": "Drawback: concept.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "e",
+          "requirement": "Definition: unit.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: unit.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "g",
+          "requirement": "Benefit: unit.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "h",
+          "requirement": "Drawback: unit.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "i",
+          "requirement": "Definition: boundary.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "j",
+          "requirement": "Purpose and appropriate use: boundary.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "k",
+          "requirement": "Benefit: boundary.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "l",
+          "requirement": "Drawback: boundary.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "m",
+          "requirement": "Definition: integration.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "n",
+          "requirement": "Purpose and appropriate use: integration.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "o",
+          "requirement": "Benefit: integration.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "p",
+          "requirement": "Drawback: integration.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "q",
+          "requirement": "Definition: performance.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "r",
+          "requirement": "Purpose and appropriate use: performance.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "s",
+          "requirement": "Benefit: performance.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "t",
+          "requirement": "Drawback: performance.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "u",
+          "requirement": "Definition: system.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "v",
+          "requirement": "Purpose and appropriate use: system.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "w",
+          "requirement": "Benefit: system.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "x",
+          "requirement": "Drawback: system.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "y",
+          "requirement": "Definition: acceptance.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "z",
+          "requirement": "Purpose and appropriate use: acceptance.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "aa",
+          "requirement": "Benefit: acceptance.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ab",
+          "requirement": "Drawback: acceptance.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ac",
+          "requirement": "Definition: usability.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "ad",
+          "requirement": "Purpose and appropriate use: usability.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ae",
+          "requirement": "Benefit: usability.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "af",
+          "requirement": "Drawback: usability.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ag",
+          "requirement": "Definition: regression.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "ah",
+          "requirement": "Purpose and appropriate use: regression.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ai",
+          "requirement": "Benefit: regression.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "aj",
+          "requirement": "Drawback: regression.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ak",
+          "requirement": "Definition: load/stress.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "al",
+          "requirement": "Purpose and appropriate use: load/stress.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "am",
+          "requirement": "Benefit: load/stress.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "an",
+          "requirement": "Drawback: load/stress.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ao",
+          "requirement": "Definition: closed box.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "ap",
+          "requirement": "Purpose and appropriate use: closed box.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "aq",
+          "requirement": "Benefit: closed box.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "ar",
+          "requirement": "Drawback: closed box.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "as",
+          "requirement": "Definition: open box.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "at",
+          "requirement": "Purpose and appropriate use: open box.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "au",
+          "requirement": "Benefit: open box.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "av",
+          "requirement": "Drawback: open box.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.2.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Apply testing methods.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.3.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Purpose and appropriate use: macros.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: scripts.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Purpose and appropriate use: functional testing tools.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.4.1",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Definition: valid.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "b",
+          "requirement": "Purpose and appropriate use: valid.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "c",
+          "requirement": "Definition: invalid.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Purpose and appropriate use: invalid.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "e",
+          "requirement": "Definition: boundary.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "f",
+          "requirement": "Purpose and appropriate use: boundary.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "g",
+          "requirement": "Definition: erroneous.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "h",
+          "requirement": "Purpose and appropriate use: erroneous.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.4.2",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Create appropriate test data.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    },
+    {
+      "focus": "CA2.12.4.3",
+      "elements": [
+        {
+          "key": "a",
+          "requirement": "Understand test-plan step and when used: identifying tests.",
+          "status": "active",
+          "live_question_count": 0,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "uncovered"
+        },
+        {
+          "key": "b",
+          "requirement": "Understand test-plan step and when used: describing test purpose.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "c",
+          "requirement": "Understand test-plan step and when used: identifying test data.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "d",
+          "requirement": "Understand test-plan step and when used: describing expected results.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        },
+        {
+          "key": "e",
+          "requirement": "Understand test-plan step and when used: recording actual results.",
+          "status": "active",
+          "live_question_count": 1,
+          "question_count": 0,
+          "practice_question_count": 0,
+          "draft_question_count": 0,
+          "insufficient_variations_count": 0,
+          "coverage_status": "needs_more_questions"
+        }
+      ]
+    }
+  ]
+}

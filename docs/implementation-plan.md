@@ -1,6 +1,6 @@
 # Implementation plan
 
-Status: pilot implemented for local testing. Public deployment has not been requested. [AGENTS.md](../AGENTS.md) remains authoritative.
+Status: expanded local pilot implemented: CA1–CA2 exam practice and eight puzzle subtypes. See the generated coverage report for remaining curriculum gaps. Public deployment has not been requested. [AGENTS.md](../AGENTS.md) remains authoritative.
 
 ## Decisions to review
 
@@ -13,7 +13,7 @@ The draft supplies concrete defaults so review can be targeted. These decisions 
 | Similarity matching | Explicit aliases only; never guess from code similarity | Compatibility implementation |
 | Navigation | Three actions: new focus, new set within focus, same questions/new variations | Activity controls |
 | Focus | Exam subsection normally; primary topic separate from secondary tags | Content schema freeze |
-| Puzzle launch | Three families, three templates each, five variations each; two per set | Puzzle production |
+| Puzzle expansion — implemented | Eight subtypes, five puzzles each; one substantial puzzle per activity; family-specific banks | Teacher difficulty review |
 | Exam mark wording | Keep 1–3 marks per part; use 1–4-mark source questions only as patterns | Exam production |
 | 45-minute rule | Stale untimed attempts restart; overdue timed attempts expire before retry | Recovery logic |
 | Scoring lifecycle | Checks within attempt; final submission ends it; first response retained | Marking and progress |
@@ -86,13 +86,13 @@ Implement attempt state, local recovery, hidden and visible timing, expiry, hist
 
 Exit: refresh does not reset a valid timer; background expiry submits once; stale recovery follows the agreed rule. CSV round-trip preserves records, repeated imports do not duplicate them, and malformed/conflicting data is reported. Storage failure does not lose the current visible activity or falsely report success.
 
-## Stage 4: representative pilot
+## Stage 4: expanded local pilot
 
-**Proposal:** include two exam focuses with three templates and at least two variations each; two programming focuses with three templates and five variations each; three puzzle families with three templates and five variations each. This permits meaningful changes of focus as well as changes within focus. Expand the draft examples rather than counting unfinished template notes as content.
+Implemented: 51 CA1–CA2 exam templates with two variations; 40 puzzle templates across eight subtypes (five variations for original puzzles, fixed classic problems); six Python templates with five variations. Puzzle subtypes have separate bank files and their own format/interaction/marking sections in spec-puzzles.md.
 
-Review all pilot material for correctness, suitable language, fair partial credit and misconception feedback. Check curriculum tags against the source. Run sessions with mixed-experience students; record completion time, confusing instructions, marking disagreements and inaccessible interactions. Adjust content without changing old code meanings.
+Nested CA coverage uses permanent subelement letters and generated counts. Direct assessment, supporting practice and subject approval remain separate. Teacher review and classroom timing are outstanding; technical test success is not a difficulty or coverage certification.
 
-Exit: pilot activities generally fit 5–15 minutes, all supported interactions pass keyboard/zoom checks, and reviewed question counts meet the adopted pilot target.
+Bank revision 2 replaces the demonstrations at the teacher’s request. Reject old codes rather than silently mapping them to different content. Preserve saved history; clear unsupported active attempts.
 
 ## Stage 5: publish and expand coverage
 

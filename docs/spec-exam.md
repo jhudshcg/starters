@@ -4,37 +4,51 @@ Status: draft; shared behaviour is in [spec-common.md](spec-common.md).
 
 ## Requirements
 
-- Three questions per set; 15–22 marks total; each part worth 1–3 marks.
+- Three questions per set; 15–22 marks total; questions can be multi-part, with each part worth 1–3 marks.
+- At least two distinct questions per assessable Core specification element. Variations of one question do not count as two questions.
 - At least two variations per question. Vary meaningful scenarios, values or correct answers; avoid cosmetic synonym rotation.
 - Single words or short sentences for text responses. Prefer explicit response slots over a paragraph requesting several points.
-- Use name, identify and describe tasks and selected linked justifications. CA2 may include choosing test inputs and predicting results.
-- Tag parts with curriculum references and assessable-element IDs. Full-bank coverage targets Core CA1–CA8, not Occupational Specialism content.
+- For programming-related content areas, include lower-mark logic and programming-knowledge questions, including applying the Python operators listed in the specification. Appropriate CA2 questions may also involve selecting test types, inputs and expected results.
+- Across all Core content areas, primarily use name, state, list and describe questions. Include selected reasons or justifications linked to preceding answers for slightly deeper understanding. Prioritise coverage over depth; multiple choice should not displace the intended short-answer practice.
+- A question's focus is its CA reference. Add precise assessable-element references to the relevant parts; a part may assess more than one element. Full-bank coverage targets Core CA1–CA8, not Occupational Specialism content.
 
-**Proposal:** retain the explicit 1–3 mark part limit despite the later reference to 1–4-point source questions. Adapt a four-mark source pattern into smaller parts if appropriate.
-
-**Proposal:** selectable focus is normally a subsection such as `CA2.4`; show precise references such as `CA2.4.1` on questions. Permit broader CA groupings where a subsection cannot support a useful three-question set. The catalogue declares each grouping rather than deciding it at runtime.
+**Proposal:** selectable focus is normally a subsection such as `CA2.4`; show precise references such as `CA2.4.1` on questions. Permit broader CA groupings where a subsection cannot support a useful three-question set. Declare these groupings in the question bank.
 
 ## Sources and coverage
 
-Use [spec.md](../../agents/spec.md) and the [Paper 1](../../agents/SAM/mark_scheme_paper1.md) and [Paper 2](../../agents/SAM/mark_scheme_paper2.md) specimen mark schemes to calibrate command words and marking points. The SAM materials are specimen assessments; do not label them as past live papers. Write original items.
+Use [spec.md](../../agents/spec.md), [Paper 1](../../agents/SAM/paper1.md), [Paper 1 markscheme](../../agents/SAM/mark_scheme_paper1.md), and [Paper 2](../../agents/SAM/paper2.md) and [Paper 2 markscheme](../../agents/SAM/mark_scheme_paper2.md) specimen materials for example question content, challenge level, wording and to calibrate command words and marking points. The SAM materials are specimen assessments. Write original items.
 
-The teacher confirmed on 13 September 2026 that the curriculum content is version 1.1; older version labels in spec.md are stale. Use version 1.1 as the source baseline. Correct extraction errors in a separate coverage inventory, preserving the original source.
+The spec is version 1.1, despite stale references to 1.0. do not edit reference materials.
 
-Create `coverage-map.csv` with columns: `element_id`, `ca_ref`, `element_text`, `source_version`, `source_location`, `question_id`, `part_id`, `coverage_kind`, `review_status`. One row maps one assessable element to one question part; unmapped elements have blank question fields. Stable element IDs distinguish nested bullets, for example `CA2.4.1/modulus`.
+Coverage must show whether every assessable Core element has at least two distinct questions, each with at least two variations. The two-question minimum follows the teacher's latest clarification; the older one-question wording in AGENTS.md does not apply to this minimum.
 
-Separate `topic` coverage from `skill` coverage. A recognition question about debugging does not demonstrate the ability to debug. Report both honestly; the project's coverage-first approach does not imply full exam preparation. Reviewers confirm that every leaf element and any additional parent-level outcome is represented in the inventory.
+**Implemented: nested JSON inventory and generated reports.** The authoritative inventory is [core-inventory.json](../data/coverage/core-inventory.json). Each official `focus` contains `elements` with permanent local letter keys and explicit requirements. For example, `CA2.1.1[a,b]` identifies integer definition and appropriate use. Letters are identifiers, not list positions: append new keys, retain retired keys, and never reuse a key for a changed requirement.
+
+Question parts carry structured links:
+
+```json
+{"coverage": [{"focus": "CA2.1.1", "elements": ["a", "b"]}]}
+```
+
+A part may link to several focuses, each listing several subelements. Store links on the variations that actually assess them. Merely mentioning a concept or using it as a distractor does not establish coverage. Constrained exercises that support a broader practical skill use `coverageMode: "practice"`; they do not count as demonstrating that full skill.
+
+Run `npm run coverage` to regenerate [JSON counts](../data/coverage/report.json) and the [readable report](coverage-ca1-ca2.md). Counts are nested beneath each focus and include zero-count elements. Count a distinct question once per element only if at least two variations directly assess it. `live_question_count` includes qualifying practice-bank questions; `question_count` additionally requires `reviewStatus: "approved"`. Supporting practice, drafts and insufficient variations have separate counts. Automated checks do not confer subject approval.
+
+The full target remains two distinct reviewed questions per element, with two applicable variations each. The current CA1–CA2 expansion is incomplete; use the report to find the gaps. The earlier coarse objective inventory and generated draft report are superseded. The 106-question draft is retained only as historical authoring material.
+
+`data/exam.js` imports the CA1 and CA2 content modules. Puzzle and Python banks remain separate. Explicit question slots support the implemented codec, but coverage does not depend on their display order or on a future public question-ID decision. Bank revision 2 replaces the demo contents; old demo-code compatibility is not maintained at the teacher’s request.
 
 ## Marking
 
-For single words, normalise case and whitespace and use authored synonyms. Spelling tolerance is opt-in per term, bounded and tested against confusing terms. Never use fuzzy matching for numbers, operators or Python identifiers.
+For single words, normalise case and whitespace and use authored synonyms. The live bank also accepts simple sentence wrappers such as “It is an integer.”; contradictory additions do not match. Spelling tolerance is opt-in per term, bounded and tested against confusing terms. Never use fuzzy matching for numbers, operators or Python identifiers.
 
-For short sentences, define independent marking points, accepted phrases and contradictions. Award a concept once. Do not award a point solely because a keyword occurs within a negated claim. If a concept cannot be checked reliably with a bounded rule, use a choice or structured response instead. Unrecognised wording receives “This answer was not recognised. Check the feedback or compare with the model answer.” It is not described as authoritative human marking.
+For lists, award marks for distinct correct concepts; synonyms or repeated mentions of one concept earn no additional marks. For descriptions, define the expected points, accepted keywords and phrases, and any required links or sequence. Negation rules must distinguish an opposite claim from a correct negative statement; do not reject an answer simply because it contains “not”. Keep responses short and focused. Use selected reasons or structured responses where checking the required relationship needs more support. Unrecognised wording receives “This answer was not recognised. Check the feedback or compare with the model answer.”
 
 Linked justifications use an explicit table of valid choice/reason pairs. **Proposal:** award the first choice independently; award a linked reason only for a valid pair. Any error-carried-forward exception must be authored for that item.
 
-## Complete example set: operators
+## Programming-related example set: operators
 
-Focus `CA2.4`; 15 marks; estimated 8–10 minutes. Each listed part is worth one mark, keeping all parts within 1–3 marks. Choices and short entries below are the complete assessed responses.
+Focus `CA2.4`; 15 marks. Each listed part is worth one mark. This example illustrates the programming-related branch of exam practice, not the intended balance across the whole bank. Further sets must demonstrate name, state, list and describe responses. Completion time has not been validated.
 
 | Question | Parts and correct answers |
 | --- | --- |
@@ -54,4 +68,4 @@ Hints: Q1 “Separate complete boxes from devices left over”; Q2 “Check whet
 
 ## Acceptance
 
-Validate two or more variations, all mark totals, all option IDs, dependencies and coverage references. Each text rule has accepted, rejected, near-spelling and contradiction examples. Each variation receives subject review. A coverage report lists missing elements and does not count unreviewed drafts as complete.
+Validate two distinct questions per assessable element, at least two applicable variations per counted question, all mark totals, option IDs, dependencies and coverage references. Each text rule has accepted, rejected, near-spelling and contradiction examples. Each variation receives subject review. The coverage report includes zero-count elements and flags elements with fewer than two usable questions; unreviewed drafts are not counted as completed coverage.
