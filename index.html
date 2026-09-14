@@ -16,6 +16,14 @@
     <nav aria-label="Main navigation"><a href="#home" id="nav-home">Activities</a><a href="#progress" id="nav-progress">My progress <span aria-hidden="true">↗</span></a></nav>
     <span class="pilot-badge">YEAR 1 <span>•</span> PILOT</span>
   </header>
+  <section class="global-code-entry" aria-label="Open a question set">
+    <form id="global-code-form">
+      <label for="global-code">Question set code</label>
+      <input id="global-code" name="code" placeholder="Enter code" aria-describedby="global-code-error" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+      <button type="submit">Open set <span aria-hidden="true">↗</span></button>
+    </form>
+    <p id="global-code-error" class="error" role="alert"></p>
+  </section>
   <div id="storage-warning" role="alert" hidden></div>
   <main id="main" tabindex="-1"></main>
   <div id="toast" role="status" aria-live="polite"></div>

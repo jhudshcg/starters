@@ -8,3 +8,12 @@
 .part-coverage { margin-top: .4rem; color: var(--text-muted, #555); font-size: .8rem; }
 .part-coverage summary { cursor: pointer; width: fit-content; }
 .part-coverage small { display: block; margin-top: .3rem; overflow-wrap: anywhere; }
+
+.global-code-entry{max-width:1320px;margin:auto;padding:.75rem 3rem;border-bottom:1px solid var(--line)}
+.global-code-entry form{display:flex;align-items:center;justify-content:flex-end;gap:.65rem;flex-wrap:wrap}
+.global-code-entry label{font-size:.85rem;font-weight:650}
+.global-code-entry input{width:14ch;min-width:0;font-family:var(--mono)}
+.global-code-entry .error{margin:.5rem 0 0;text-align:right}
+.global-code-entry .error:empty{display:none}
+@media(max-width:850px){.global-code-entry{padding:.75rem 1.5rem}}
+@media(max-width:600px){.global-code-entry{padding:.75rem 1.3rem}.global-code-entry form{justify-content:flex-start}.global-code-entry label{flex-basis:100%}.global-code-entry input{flex:1}.global-code-entry .error{text-align:left}}

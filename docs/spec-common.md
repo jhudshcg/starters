@@ -62,7 +62,7 @@ Share URLs use a fragment field to work on GitHub Pages without server routes, f
 
 ## Navigation and selection
 
-Home provides three type choices, focus selection, code entry and progress access. An activity shows its type, focus, code, total marks, estimated duration and timer control.
+Home provides three type choices, focus selection, code entry and progress access. A shared question-set code form is also available on every page, including activities and progress. Invalid codes are reported beside that form; opening a different set preserves the existing unfinished-work confirmation. An activity shows its type, focus, code, total marks, estimated duration and timer control.
 
 **Proposal: three distinct actions.**
 
@@ -80,9 +80,9 @@ Before replacing an unfinished activity, offer to keep working or leave it. **Pr
 
 Mark each part using its own rule. Scores are non-negative and capped at the part maximum. Blank answers score zero. Multi-select rules declare whether selection count is limited and how partial credit works. Dependencies and error-carried-forward credit are explicit, not inferred.
 
-**Proposal:** checking a question gives feedback and increments its check count but does not create another attempt. Students can edit and retry. Submission records current answers and ends the attempt. Retry creates a new attempt. Submission is idempotent: repeated clicks or timer events cannot duplicate records.
+Checking and showing answers are disabled until the set is submitted during the current page visit. Submission records current answers and ends the attempt; automatic timer submission also unlocks review. Reloading or leaving the set locks checking/reveal and hides answer feedback again. A restored completed attempt offers Submit saved answers to unlock review without changing its recorded score or adding another record. Post-submission checks redisplay feedback without increasing attempt check counts. Retry creates a fresh attempt with review locked. Submission is idempotent: repeated clicks or timer events cannot duplicate records. Hints remain available before submission.
 
-Record first-check marks per part, final marks, check counts, hint use and answer reveals. Showing an answer flags the part as assisted; it does not award marks automatically. Feedback distinguishes correct, partly correct, incorrect and blank, and gives a useful next step. After expiry, review is available; changing answers requires a new attempt.
+Record first-check marks per part, final marks, check counts, hint use and answer reveals. Hints used before submission flag the response as assisted. Revealing answers during review does not award marks or change the submitted record. Feedback distinguishes correct, partly correct, incorrect and blank, and gives a useful next step. After expiry, review is available; changing answers requires a new attempt.
 
 ## Timing and recovery
 

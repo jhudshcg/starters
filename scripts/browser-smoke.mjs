@@ -36,6 +36,36 @@ try{
  assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),15);
  await evaluate(`(async()=>{const {resolve}=await import('./js/bank.js');for(const q of resolve(document.querySelector('#display-code').textContent).questions)for(const p of q.parts){const el=document.querySelector('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]');el.value=p.answer;el.dispatchEvent(new Event('input',{bubbles:true}));}})()`);
  await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));await screenshot('exam-expanded');
+ // Review gates reset on reload, guard handlers, and preserve recorded attempts.
+ await click('[data-reveal]');assert.equal(await evaluate('document.querySelectorAll(".solution").length'),1);
+ const historyBefore=await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)');
+ await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');
+ assert.equal(await evaluate('document.querySelectorAll(".solution,.feedback").length'),0);
+ assert.ok(await evaluate('document.querySelector("[data-check]").disabled && document.querySelector("[data-reveal]").disabled'));
+ await evaluate('document.querySelector("[data-check]").onclick();document.querySelector("[data-reveal]").onclick()');
+ assert.equal(await evaluate('document.querySelectorAll(".solution,.feedback").length'),0);
+ await click('#submit');assert.ok(await evaluate('!document.querySelector("[data-check]").disabled'));
+ await click('[data-check]');
+ assert.equal(await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)'),historyBefore);
+ await click('#retry');await until('!document.querySelector("#submit").disabled');
+ assert.ok(await evaluate('document.querySelector("[data-reveal]").disabled'));
+ // The shared form works on activity and progress pages, including errors/cancel.
+ await evaluate('document.querySelector("#global-code").value="bad";document.querySelector("#global-code-form").requestSubmit()');
+ await until('Boolean(document.querySelector("#global-code-error").textContent)');
+ assert.ok(await evaluate('Boolean(document.querySelector("#submit"))'));
+ await evaluate('document.querySelector("#global-code").value="BIAkAiAg";document.querySelector("#global-code-form").requestSubmit()');
+ await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="stay"]');
+ assert.notEqual(await evaluate('document.querySelector("#display-code").textContent'),'BIAkAiAg');
+ await click('#nav-progress');await until('Boolean(document.querySelector("#export-csv"))');
+ await evaluate('document.querySelector("#global-code-form").requestSubmit()');
+ await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ assert.ok(await evaluate('document.querySelector("[data-check]").disabled && document.querySelector("[data-reveal]").disabled'));
+ await click('#timer-toggle');
+ const expireOnReload=await send('Page.addScriptToEvaluateOnNewDocument',{source:'const saved=JSON.parse(localStorage.getItem("dsd-starters-v1"));if(saved?.active){saved.active.deadline=Date.now()-1000;localStorage.setItem("dsd-starters-v1",JSON.stringify(saved));}'});
+ await send('Page.reload');await until('Boolean(document.querySelector("#submit-result"))');
+ await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:expireOnReload.identifier});
+ assert.ok(await evaluate('!document.querySelector("[data-reveal]").disabled'),'Automatic submission must unlock review');
  await openFocus(0,'logic grids');assert.equal(await evaluate('document.querySelectorAll(".question").length'),1);
  await click('[data-challenge-action="candidate"]');assert.equal(await evaluate('document.querySelector("[data-challenge-action=candidate]").textContent'),'×');
  await click('[data-challenge-action="candidate"]');assert.equal(await evaluate('document.querySelector("[data-challenge-action=candidate]").textContent'),'✓');
@@ -100,7 +130,7 @@ try{
  await screenshot('go-reply-visible');
  await send('Page.reload');await until(`Boolean(document.querySelector(${JSON.stringify(goRoot)}))`);
  assert.deepEqual(await evaluate(`JSON.parse(JSON.parse(localStorage.getItem('dsd-starters-v1')).active.answers[${goQ.slot}]['0']).moves`),goMoves);
- await click(`[data-question="${goQ.slot}"] .answer-tools summary`);await click(`[data-reveal="${goQ.slot}"]`);
+ await click("#submit");await click(`[data-question="${goQ.slot}"] .answer-tools summary`);await click(`[data-reveal="${goQ.slot}"]`);
  const slider=`[data-question="${goQ.slot}"] .solution [data-go-replay]`;
  await evaluate(`document.querySelector(${JSON.stringify(slider)}).scrollIntoView({block:'center'});window.testReplaySlider=document.querySelector(${JSON.stringify(slider)});`);
  const sr=await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(slider)}).getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})()`);

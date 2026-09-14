@@ -12,6 +12,9 @@ const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;
 let data={schema:1,active:null,history:[]};
 let storageOK=true;
 let toastTimer;
+// Review permission belongs to this page visit, never to persisted progress.
+let submittedAttemptId=null;
+const canReview=()=>Boolean(data.active && submittedAttemptId===data.active.id);
 let filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
 function storageError(){storageOK=false;$('#storage-warning').hidden=false;$('#storage-warning').textContent='Progress could not be saved on this browser. You can keep practising. Export a backup from My progress to keep your results.';}
 try{data=loadStorage();if(data.active){try{resolve(data.active.code);}catch{data.active=null;saveStorage(data);}}}catch{storageError();}
@@ -34,6 +37,7 @@ function askLeave(){
 async function start(set,{force=false}={}){
   if(!force && !await askLeave())return;
   const now=Date.now();
+  submittedAttemptId=null;
   clearTimeout(toastTimer);$('#toast').textContent='';
   data.active={id:crypto.randomUUID(),code:set.code,answers:{},checks:{},first:{},hints:{},reveals:{},started:now,origin:now,saved:now,deadline:set.minutes?now+set.minutes*60000:null,finished:null,outcome:null,timingEvents:[]};
   persist();setHash(set.code);render();main.focus();
@@ -56,14 +60,14 @@ function stimulus(q){
   return '';
 }
 function questionHTML(q,index,set){
-  const a=data.active,answers=a.answers[q.slot]??{}, results=a.checks[q.slot]&&(!a.feedbackHidden?.[q.slot]||a.finished)?markQuestion(q,answers):null;
+  const a=data.active,answers=a.answers[q.slot]??{}, results=canReview()&&a.checks[q.slot]&&(!a.feedbackHidden?.[q.slot]||a.finished)?markQuestion(q,answers):null;
   const locked=Boolean(a.finished);
   return `<article class="question type-${set.type}" data-question="${q.slot}"><div class="question-top"><span class="question-number">${String(index+1).padStart(2,'0')}</span><div><h2>${esc(q.title)}</h2><div class="muted">${esc(q.format)} · <span title="Individual question code">${questionCode(set.type,q.slot,q.variation)}</span>${q.tags.filter(t=>t.startsWith('CA')).length?` · ${q.tags.filter(t=>t.startsWith('CA')).join(', ')}`:''}</div></div><span class="marks-badge">${marks(q)} ${set.type===0?'points':'marks'}</span></div><p class="question-prompt">${esc(q.prompt)}</p>${q.source?`<p class="muted"><a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a> · ${esc(q.source.note)}</p>`:''}<div class="question-layout ${q.code||q.grid||q.clues?'':'no-stimulus'}">${stimulus(q)}<div class="parts">${q.parts.map((p,j)=>{
     const id=`answer-${q.slot}-${p.id}`,answer=answers[p.id]??'',result=results?.[j];
     const label=`${esc(p.prompt)} <span class="part-marks">(${p.marks})</span>`;
     const input=(interactiveKinds.includes(p.kind)||p.kind==='board')?`<div class="part interactive-part">${renderPuzzle(p,answer,locked,q.slot,q.board)}`:p.options?`<fieldset class="part" ${locked?'disabled':''}><legend>${label}</legend><div class="options ${p.kind==='board'?'board-options':''}">${p.options.map((option,k)=>`<label class="option"><input type="radio" name="${id}" value="${esc(option)}" data-slot="${q.slot}" data-part="${p.id}" ${answer===option?'checked':''}>${p.kind==='board'?`<span>Row ${option[0]}<br>Col ${option[2]}</span>`:esc(option)}</label>`).join('')}</div>`:`<div class="part"><label for="${id}">${label}</label><input id="${id}" data-slot="${q.slot}" data-part="${p.id}" value="${esc(answer)}" ${locked?'disabled':''} ${p.kind==='number'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" ${result?`aria-describedby="feedback-${q.slot}-${j}"`:''}>`;
     return input+(p.coverage?.length?`<details class="part-coverage"><summary>Spec reference</summary><small>${esc(formatCoverage(p.coverage))}${p.coverageMode==='practice'?' · Supporting practice':''}</small></details>`:'')+(result?`<p id="feedback-${q.slot}-${j}" class="feedback ${result.earned===result.max?'correct':'incorrect'}">${result.earned}/${result.max} · ${esc(result.message)}</p>`:'')+(p.options&&!interactiveKinds.includes(p.kind)&&p.kind!=='board'?'</fieldset>':'</div>');
-  }).join('')}</div></div><div class="question-actions"><button class="subtle" data-hint="${q.slot}" ${a.hints[q.slot]?'disabled':''}>${a.hints[q.slot]?'Hint shown':'Show hint'}</button><details class="answer-tools" data-answer-tools="${q.slot}" ${a.answerTools?.[q.slot]?'open':''}><summary>Check / show answer</summary><div class="answer-tools-content"><p>try to answer all questions first and submit your best try before checking correct answers</p><div class="options"><button data-check="${q.slot}" ${locked?'disabled':''}>Check answer</button><button class="subtle" data-reveal="${q.slot}" ${a.reveals[q.slot]?'disabled':''}>${a.reveals[q.slot]?'Answer shown':'Show answer'}</button></div></div></details>${a.hints[q.slot]||a.reveals[q.slot]?'<small>Assisted practice</small>':''}</div>${a.hints[q.slot]?`<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`:''}${a.reveals[q.slot]?`<div class="solution"><strong>Answers and explanations</strong>${q.parts.map(p=>`<p>${esc(p.prompt)}: <strong>${esc(p.solutionText??p.answer)}</strong>. ${esc(p.explanation)}</p>${interactiveKinds.includes(p.kind)?renderPuzzle(p,p.answer,true,q.slot):''}`).join('')}</div>`:''}</article>`;
+  }).join('')}</div></div><div class="question-actions"><button class="subtle" data-hint="${q.slot}" ${a.hints[q.slot]?'disabled':''}>${a.hints[q.slot]?'Hint shown':'Show hint'}</button><details class="answer-tools" data-answer-tools="${q.slot}" ${a.answerTools?.[q.slot]?'open':''}><summary>Check / show answer</summary><div class="answer-tools-content"><p>${canReview()?'Your set has been submitted. You can check and reveal answers.':'Submit your set answers first to unlock checking and model answers.'}</p><div class="options"><button data-check="${q.slot}" ${!canReview()?'disabled':''}>Check answer</button><button class="subtle" data-reveal="${q.slot}" ${!canReview()||a.reveals[q.slot]?'disabled':''}>${canReview()&&a.reveals[q.slot]?'Answer shown':'Show answer'}</button></div></div></details>${a.hints[q.slot]||a.reveals[q.slot]?'<small>Assisted practice</small>':''}</div>${a.hints[q.slot]?`<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`:''}${canReview()&&a.reveals[q.slot]?`<div class="solution"><strong>Answers and explanations</strong>${q.parts.map(p=>`<p>${esc(p.prompt)}: <strong>${esc(p.solutionText??p.answer)}</strong>. ${esc(p.explanation)}</p>${interactiveKinds.includes(p.kind)?renderPuzzle(p,p.answer,true,q.slot):''}`).join('')}</div>`:''}</article>`;
 }
 function activity(){
   const set=activeSet(),a=data.active;
@@ -71,10 +75,10 @@ function activity(){
   const record=data.history.find(r=>r.id===a.id);
   const sameFocusAlternatives=banks[set.type].filter(q=>q.focus===set.focus&&!q.retired).length>set.questions.length;
   main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><div class="eyebrow">${types[set.type].name} / ${set.questions.length===1?'Single question':'Starter set'}</div><h1>${esc(focusNames[set.focus])}</h1><p class="muted">${set.questions.length} ${set.questions.length===1?'question':'questions'} · ${set.total} ${set.type===0?'points':'marks'} · About ${set.questions.length===1?(set.questions[0].estimatedMinutes??types[set.type].minutes):types[set.type].minutes} minutes</p></div><div class="focus-row"><label for="focus">Focus</label><select id="focus">${focuses(set.type).map(f=>`<option value="${f}" ${f===set.focus?'selected':''}>${esc(focusNames[f])}</option>`).join('')}</select></div></div>
-  ${record?`<section class="result-banner" aria-label="Activity result"><span class="result-score">${record.percentage}%</span><div><h2>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</h2><p>${record.earned}/${record.max} marks · ${duration(record.seconds)}${record.assisted?' · Assisted practice':''}. Review your feedback below.</p></div><button id="retry">Try this set again</button></section>`:''}
+  ${record?`<section class="result-banner" aria-label="Activity result"><span class="result-score">${record.percentage}%</span><div><h2>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</h2><p>${record.earned}/${record.max} marks · ${duration(record.seconds)}${record.assisted?' · Assisted practice':''}. ${canReview()?'Review your feedback below.':'Submit your saved answers to unlock review for this visit.'}</p></div><button id="retry">Try this set again</button></section>`:''}
   <section class="set-toolbar" aria-label="Set code and timing"><div class="code-block"><div><div class="code-label">YOUR ${set.questions.length===1?'ACTIVITY':'SET'} CODE</div><div class="set-code" id="display-code">${esc(a.code)}</div></div><div class="code-actions"><button id="copy-code">Copy code</button><button id="copy-link">Copy link</button></div></div><div class="timer-controls"><span class="timer-display" id="timer">${a.deadline?'':'Untimed'}</span><label for="minutes">Timer</label><select id="minutes" ${a.finished?'disabled':''}>${Array.from({length:11},(_,i)=>i+5).map(m=>`<option value="${m}" ${m===(set.minutes??types[set.type].minutes)?'selected':''}>${m} min</option>`).join('')}</select><button id="timer-toggle" ${a.finished?'disabled':''}>${a.deadline?'Stop timer':'Start timer'}</button></div></section>
   <div class="random-controls"><button id="new-type">Get new question set ↗</button><button id="new-focus" ${!sameFocusAlternatives?'disabled title="All templates in this focus are already shown. Use Get new permutation."':''}>New set in this focus</button><button id="permutation" ${set.questions.some(q=>q.variations.length<2)?'disabled title="This set includes a fixed problem. Choose a new set for different puzzles."':''}>Get new permutation ↻</button></div>
-  <section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${duration(record.seconds)}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished?'disabled':''}>${a.finished?'Submitted ✓':'Submit activity →'}</button></div>`;
+  <section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${duration(record.seconds)}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>`;
   main.querySelectorAll('[data-answer-tools]').forEach(details=>details.addEventListener('toggle',()=>{if(!details.isConnected)return;a.answerTools??={};a.answerTools[details.dataset.answerTools]=details.open;persist();}));
   bindPuzzles(main,set,a,(slot,id,value,selector)=>{
     a.answers[slot]??={};a.answers[slot][id]=value;a.saved=Date.now();
@@ -92,10 +96,11 @@ function activity(){
     a.saved=Date.now();persist();
   }));
   main.querySelectorAll('[data-check]').forEach(b=>b.onclick=()=>{
+    if(!canReview())return;
     a.answerTools??={};a.answerTools[b.dataset.check]=true;check(Number(b.dataset.check));persist();activity();main.querySelector(`[data-check="${b.dataset.check}"]`).focus();
   });
   main.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>{a.hints[b.dataset.hint]=true;persist();activity();const panel=main.querySelector('[data-question="'+b.dataset.hint+'"] .hint-text');panel.tabIndex=-1;panel.focus();toast('Hint shown. This question is marked as assisted practice.');});
-  main.querySelectorAll('[data-reveal]').forEach(b=>b.onclick=()=>{a.reveals[b.dataset.reveal]=true;persist();activity();const panel=main.querySelector('[data-question="'+b.dataset.reveal+'"] .solution');panel.tabIndex=-1;panel.focus();toast('Model answers shown. This question is marked as assisted practice.');});
+  main.querySelectorAll('[data-reveal]').forEach(b=>b.onclick=()=>{if(!canReview())return;a.reveals[b.dataset.reveal]=true;persist();activity();const panel=main.querySelector('[data-question="'+b.dataset.reveal+'"] .solution');panel.tabIndex=-1;panel.focus();toast('Model answers shown. Your submitted score is unchanged.');});
   $('#submit').onclick=()=>submit('submitted');
   $('#retry')?.addEventListener('click',()=>start(set));
   $('#new-type').onclick=()=>replaceSet(set, 'type');$('#new-focus').onclick=()=>replaceSet(set,'focus');$('#permutation').onclick=()=>replaceSet(set,'permutation');
@@ -123,12 +128,15 @@ function check(slot,announce=true){
   a.feedbackHidden??={};a.feedbackHidden[slot]=false;
   const result=markQuestion(q,a.answers[slot]);
   if(!a.first[slot])a.first[slot]={results:result,assisted:Boolean(a.hints[slot]||a.reveals[slot])};
-  a.checks[slot]=(a.checks[slot]??0)+1;
+  if(!a.finished)a.checks[slot]=(a.checks[slot]??0)+1;
   if(announce)toast(`${q.title}: ${result.reduce((s,r)=>s+r.earned,0)} of ${marks(q)} marks.`);
   return result;
 }
 function submit(outcome){
-  const a=data.active;if(!a||a.finished)return;
+  const a=data.active;if(!a)return;
+  submittedAttemptId=a.id;
+  // A restored completed attempt unlocks review without recording it twice.
+  if(a.finished){render();$('#submit-result')?.focus();return;}
   const set=activeSet(),now=Date.now();let earned=0,firstEarned=0,firstMax=0;
   for(const q of set.questions){
     if(!a.first[q.slot])check(q.slot,false);
@@ -189,6 +197,7 @@ function render(){
   const route=location.hash;
   $('#nav-home').setAttribute('aria-current',route==='#progress'?'false':'page');
   $('#nav-progress').setAttribute('aria-current',route==='#progress'?'page':'false');
+  if(!route.startsWith('#set='))submittedAttemptId=null;
   if(route==='#progress'){progress();return;}
   if(route.startsWith('#set=')){
     try{
@@ -207,6 +216,15 @@ try{
     else if(!data.active.finished&&Date.now()-data.active.saved>45*60000){data.active=null;persist();toast('Your previous untimed activity was inactive for over 45 minutes. Start a fresh attempt.');}
   }
 }catch{data.active=null;persist();toast('The unfinished activity could not be restored. Your completed history is still available.');}
+$('#global-code-form').onsubmit=async e=>{
+  e.preventDefault();
+  const error=$('#global-code-error');error.textContent='';
+  try{
+    const set=resolve(new FormData(e.target).get('code'));
+    await start(set);
+    if(data.active?.code===set.code)e.target.reset();
+  }catch(err){error.textContent=err.message;}
+};
 window.addEventListener('hashchange',()=>{render();main.focus();});
 window.addEventListener('pagehide',()=>{if(data.active&&!data.active.finished){data.active.saved=Date.now();persist();}});
 window.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});
