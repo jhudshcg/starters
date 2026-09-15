@@ -21,3 +21,9 @@
 .tracking-notice{padding:1rem;background:#fff5df;border:1px solid #bc9750;border-radius:10px;font-size:.9rem}
 
 .part-code{margin:0 0 .75rem;font-size:.9rem;line-height:1.5}.part-label{font-weight:750}
+
+.brand-level{font-size:1.06em;color:#637067;white-space:nowrap}
+.type-card{position:relative}
+.type-card [data-start]::after{content:"";position:absolute;inset:0;cursor:pointer}
+.type-card:has([data-start]:hover),.type-card:focus-within{border-color:var(--green);box-shadow:0 0 0 1px var(--green)}
+.global-code-entry:not([hidden])~main{padding-top:1rem}
