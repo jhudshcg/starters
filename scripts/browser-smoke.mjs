@@ -35,7 +35,10 @@ try{
  await send('Page.navigate',{url:base+'/?smoke='+Date.now()});await until('Boolean(document.querySelector("#code-form"))');
  await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:clearOnLoad.identifier});
  assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
+ assert.deepEqual(await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)'),[],'Fresh home must not download banks');
  await openFocus(1,'CA2.1');assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
+ const downloadedBanks=await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)');
+ assert.equal(downloadedBanks.length,1);assert.match(downloadedBanks[0],/\/banks\/exam-[a-f0-9]+\.txt$/);
  assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),15);
  const examQuestions=resolve(await evaluate('document.querySelector("#display-code").textContent')).questions;
  await evaluate(`for(const q of ${JSON.stringify(examQuestions)})for(const p of q.parts){const elements=[...document.querySelectorAll('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]')];const el=elements.find(el=>el.type!=='radio'||el.value===p.answer);if(el.type==='radio'){el.checked=true;el.dispatchEvent(new Event('change',{bubbles:true}));}else{el.value=p.answer;el.dispatchEvent(new Event('input',{bubbles:true}));}}`);

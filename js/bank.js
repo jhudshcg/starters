@@ -1,9 +1,13 @@
 import {revisions,revisionDetails} from './code-compatibility.js';
-import puzzles from '../data/puzzles.js';
-import exam from '../data/exam.js';
-import python from '../data/python.js';
+import {banks,ensureBank} from './bank-data.js';
+export {banks,ensureBank};
 import {BANK_VERSION, decode, encode, parseQuestionCode} from './codes.js';
-export const banks = [puzzles, exam, python];
+export async function loadSet(input){
+  const fields=typeof input==='string'?parseQuestionCode(input)??decode(input):input;
+  historicalSet(fields);
+  await ensureBank(fields.type);
+  return resolve(fields);
+}
 export const types = [
   {name:'Puzzles', icon:'◇', description:'Logic, shapes, paths and number grids. A fresh way to get thinking.', label:'Think it through', minutes:10},
   {name:'Exam practice', icon:'≡', description:'Short questions, clear feedback. Build your Core knowledge.', label:'Know your Core', minutes:10},

@@ -2,7 +2,7 @@ import {revealPart} from './packed-data.js';
 import {formatCoverage} from './coverage.js';
 import {challengeKinds as interactiveKinds} from './challenge-rules.js';
 import {renderChallenge as renderPuzzle,bindChallenges as bindPuzzles} from './challenge-controls.js';
-import {banks, types, focuses, focusNames, resolve, choose, marks, historicalSet} from './bank.js';
+import {banks, types, focuses, focusNames, resolve, choose, marks, historicalSet, ensureBank, loadSet} from './bank.js';
 import {encode, questionCode} from './codes.js';
 import {markQuestion} from './marking.js';
 import {loadStorage, saveStorage, deadlineState, priorities, exportCSV, attemptEligibility, recordPractice, REATTEMPT_HOURS} from './progress.js';
@@ -18,7 +18,7 @@ let submittedAttemptId=null;
 const canReview=()=>Boolean(data.active && submittedAttemptId===data.active.id);
 let filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
 function storageError(){storageOK=false;$('#storage-warning').hidden=false;$('#storage-warning').textContent='Progress could not be saved on this browser. You can keep practising. Export a backup from My progress to keep your results.';}
-try{data=loadStorage();if(data.active){try{resolve(data.active.code);}catch{data.active=null;saveStorage(data);}}}catch{storageError();}
+try{data=loadStorage();if(data.active){try{historicalSet(data.active.code);}catch{data.active=null;saveStorage(data);}}}catch{storageError();}
 function persist(){try{saveStorage(data);}catch{storageError();}}
 function toast(message){$('#toast').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').textContent='',4500);}
 function activeSet(){return data.active?resolve(data.active.code):null;}
@@ -51,8 +51,8 @@ function home(){
   <section class="activity-grid" aria-label="Activity types">${types.map((t,i)=>`<article class="type-card type-${i}"><div class="card-art" aria-hidden="true"><span class="art-label">0${i+1} / ${t.label.toUpperCase()}</span>${i===0?'<div class="mini-grid"><span>2</span><span>5</span><span>7</span><span>3</span><span>?</span><span>9</span><span>5</span><span>11</span><span>16</span></div>':i===1?'<div class="art-lines"><span>○ &nbsp; identify</span><span>● &nbsp; understand</span><span>○ &nbsp; explain</span></div>':'<div class="art-code">for idea in ideas:<br>&nbsp; &nbsp; give_it_a_go()</div>'}</div><div class="card-body"><h3>${t.name}</h3><p>${t.description}</p><div class="card-bottom"><small>${i===1?'3 questions · 15–21 marks':i===2?'2 challenges · 12 marks':'3 puzzles · choose your pace'}</small><button data-start="${i}" aria-label="Start ${t.name}">Let’s go <span aria-hidden="true">↗</span></button></div></div></article>`).join('')}</section>
   <section class="lower-panel"><div class="note-panel"><span class="note-icon" aria-hidden="true">↗</span><div><h3>${completed?`${completed} ${completed===1?'activity':'activities'} completed. Keep building.`:'Small steps add up.'}</h3><p>See your results and find out what to practise next.</p></div><a href="#progress">My progress →</a></div><div class="note-panel"><span class="note-icon" aria-hidden="true">◷</span><div><h3>No rush. Unless you want one.</h3><p>Practise at your pace, or add a timer for a challenge.</p></div></div></section>
   ${data.active&&!data.active.finished?`<p class="muted" style="margin-top:1.5rem">You have an unfinished activity. <a href="#set=${encodeURIComponent(data.active.code)}">Continue ${esc(data.active.code)}</a></p>`:''}`;
-  $('#code-form').onsubmit=async e=>{e.preventDefault();try{await start(resolve(new FormData(e.target).get('code')));}catch(error){$('#code-error').textContent=error.message;}};
-  main.querySelectorAll('[data-start]').forEach(b=>b.onclick=async()=>{try{await start(choose(Number(b.dataset.start),focuses(Number(b.dataset.start))[0]));}catch(e){toast(e.message);}});
+  $('#code-form').onsubmit=async e=>{e.preventDefault();try{await start(await loadSet(new FormData(e.target).get('code')));}catch(error){$('#code-error').textContent=error.message;}};
+  main.querySelectorAll('[data-start]').forEach(b=>b.onclick=async()=>{try{await ensureBank(Number(b.dataset.start));await start(choose(Number(b.dataset.start),focuses(Number(b.dataset.start))[0]));}catch(e){toast(e.message);}});
 }
 function stimulus(q){
   if(q.code)return `<pre class="code-panel" tabindex="0" aria-label="Python code"><code>${esc(q.code)}</code></pre>`;
@@ -159,6 +159,7 @@ function submit(outcome){
   recordPractice(data,record,a.tracking);a.result=record;persist();render();if(location.hash.startsWith('#set=')&&outcome==='submitted')$('#submit-result')?.focus();toast(`${outcome==='expired'?'Time’s up. ':''}${record.percentage}%. ${!a.tracking.eligible?'Practice only — progress not updated.':storageOK?'Result saved.':'Export to keep your result.'}`);
 }
 function tick(){
+  if(data.active&&!banks[historicalSet(data.active.code).type])return;
   const a=data.active;if(!a)return;
   const state=deadlineState(a);
   if(!a.finished&&state.expired){submit('expired');return;}
@@ -210,9 +211,11 @@ function progress(){
       data.history=next;data.recentAttempts=recent;persist();progress();toast(`${added} results restored; ${duplicate} duplicates skipped.`);
     }catch(error){toast(error.message);}
   };
-  main.querySelectorAll('.history-code').forEach(b=>b.onclick=()=>{try{start(resolve(b.dataset.code));}catch(e){toast(e.message);}});
+  main.querySelectorAll('.history-code').forEach(b=>b.onclick=async()=>{try{await start(await loadSet(b.dataset.code));}catch(e){toast(e.message);}});
 }
-function render(){
+let renderId=0;
+async function render(){
+  const requestId=++renderId;
   const route=location.hash;
   $('#nav-home').setAttribute('aria-current',route==='#progress'?'false':'page');
   $('#nav-progress').setAttribute('aria-current',route==='#progress'?'page':'false');
@@ -220,26 +223,28 @@ function render(){
   if(route==='#progress'){progress();return;}
   if(route.startsWith('#set=')){
     try{
-      const code=decodeURIComponent(route.slice(5)),set=resolve(code);
+      const code=decodeURIComponent(route.slice(5));
+      const set=banks[historicalSet(code).type]?resolve(code):await loadSet(code);
+      if(requestId!==renderId)return;
       if(data.active?.code===set.code){activity();return;}
       // External links are explicit navigation; preserve unfinished work until confirmed.
       home();start(set).then(()=>{if(data.active?.code!==set.code)navigate('#home');});return;
-    }catch(e){home();$('#code-error').textContent=e.message;return;}
+    }catch(e){if(requestId!==renderId)return;home();$('#code-error').textContent=e.message;return;}
   }
   home();
 }
 try{
   if(data.active){
-    resolve(data.active.code);
+    await loadSet(data.active.code);
     if(!data.active.finished&&deadlineState(data.active).expired)submit('expired');
     else if(!data.active.finished&&Date.now()-data.active.saved>45*60000){data.active=null;persist();toast('Your previous untimed activity was inactive for over 45 minutes. Start a fresh attempt.');}
   }
-}catch{data.active=null;persist();toast('The unfinished activity could not be restored. Your completed history is still available.');}
+}catch(error){toast(error.message);}
 $('#global-code-form').onsubmit=async e=>{
   e.preventDefault();
   const error=$('#global-code-error');error.textContent='';
   try{
-    const set=resolve(new FormData(e.target).get('code'));
+    const set=await loadSet(new FormData(e.target).get('code'));
     await start(set);
     if(data.active?.code===set.code)e.target.reset();
   }catch(err){error.textContent=err.message;}
