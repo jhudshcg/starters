@@ -1,7 +1,7 @@
 import {goPosition,goCoordinate} from './go-rules.js';
 
 export function renderGo(part,state,locked){
-  const moves=state.moves??[],node=goPosition(part,moves)??part.tree,n=part.size,coordinate=i=>goCoordinate(i,n);
+  const moves=state.moves??[],node=goPosition(part,moves)??goPosition(part,[]),n=part.size,coordinate=i=>goCoordinate(i,n);
   const [x0,y0,x1,y1]=part.view,w=x1-x0+1,h=y1-y0+1;
   const last=moves.at(-1),pending=state.pending;
   const line=(x1,y1,x2,y2,extra='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#806437" stroke-width=".022" ${extra}/>`;

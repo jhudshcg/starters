@@ -1,4 +1,5 @@
-export const BANK_VERSION = 2;
+import {BANK_VERSION} from './code-compatibility.js';
+export {BANK_VERSION};
 // Code format (independent of content revision): 7 version bits, 2 type bits, three (10 slot + 3 variation) pairs.
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
 export const UNUSED = 1023;
@@ -43,8 +44,8 @@ export function decode(raw) {
   return {version, type, entries, minutes: code.length === 9 ? parseInt(code[8], 16) : null};
 }
 
-export function questionCode(type, slot, variation) {
-  return `${['PZ','EX','PY'][type]}-${BANK_VERSION}-${slot}-${variation}`;
+export function questionCode(type, slot, variation, version = BANK_VERSION) {
+  return `${['PZ','EX','PY'][type]}-${version}-${slot}-${variation}`;
 }
 export function parseQuestionCode(code) {
   const match = /^(PZ|EX|PY)-(\d+)-(\d+)-(\d+)$/.exec(code.trim());

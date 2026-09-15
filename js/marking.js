@@ -1,3 +1,4 @@
+import {markingPart} from './packed-data.js';
 import {sameCode} from './code-answer.js';
 import {expressionValue,validCoinSystems,fractionValue} from './maths-answer.js';
 import {challengeKinds as interactiveKinds, markChallenge as markPuzzle} from './challenge-rules.js';
@@ -8,7 +9,8 @@ const normalise = (value, sensitive=false) => {
 const normaliseTerm=value=>normalise(value).replace(/[.!]$/, '').replace(/^(?:it is|this is|it's|the answer is)\s+/, '').replace(/^(?:a|an|the)\s+/, '');
 export function markQuestion(question, answers={}) {
   const results=[];
-  for(const p of question.parts) {
+  for(const publicPart of question.parts) {
+    const p=markingPart(publicPart);
     const raw=answers[p.id]??'', value=normalise(raw,p.caseSensitive);
     if(interactiveKinds.includes(p.kind)){
       const result=value?markPuzzle(p,raw):{earned:0,message:'No answer entered.'};
@@ -16,10 +18,10 @@ export function markQuestion(question, answers={}) {
     }
     let correct=false;
     if(value) {
-      if(p.kind==='number') correct=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value) && Number(value)===Number(p.answer);
+      if(p.kind==='number') correct=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value) && [p.answer,...p.accepted??[]].some(a=>Number(value)===Number(a));
       else if(p.kind==='fraction') {
-        const supplied=fractionValue(raw),expected=fractionValue(p.answer);
-        correct=supplied!==null&&expected!==null&&Math.abs(supplied-expected)<1e-9;
+        const supplied=fractionValue(raw);
+        correct=supplied!==null&&[p.answer,...p.accepted??[]].some(a=>{const expected=fractionValue(a);return expected!==null&&Math.abs(supplied-expected)<1e-9;});
       }
       else if(p.kind==='coin-systems') correct=validCoinSystems(raw);
       else if(p.kind==='expression') {
@@ -29,6 +31,7 @@ export function markQuestion(question, answers={}) {
         const parse=s=>{const text=String(s).trim().replace(/^\[|\]$/g,'');return /^\d+(?:\s*,\s*\d+)*$/.test(text)?text.split(',').map(Number).sort((a,b)=>a-b):null;};
         const supplied=parse(raw),expected=parse(p.answer);correct=Boolean(supplied&&expected&&new Set(supplied).size===supplied.length&&JSON.stringify(supplied)===JSON.stringify(expected));
       }
+      else if(p.kind==='identifier') {const name=normalise(raw,true);correct=/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)&&[p.answer,...p.accepted??[]].includes(name);}
       else if(p.kind==='code') correct=[p.answer,...p.accepted??[]].some(a=>sameCode(raw,a));
       else {
         const clean=p.allowSentence&&!p.caseSensitive?normaliseTerm:a=>normalise(a,p.caseSensitive);
@@ -36,7 +39,7 @@ export function markQuestion(question, answers={}) {
       }
     }
     const dependency=p.dependsOn===undefined || results[Number(p.dependsOn)]?.earned>0;
-    results.push({id:p.id,earned:correct&&dependency?p.marks:0,max:p.marks,blank:!value,message:correct&&!dependency?'Your reason needs to match a correct preceding choice.':correct?'Correct.':value?(p.explanation.startsWith('The answer is ')?'Check the question and try again. Use a hint if you need a starting point.':p.explanation):'No answer entered.'});
+    results.push({id:p.id,earned:correct&&dependency?p.marks:0,max:p.marks,blank:!value,message:correct&&!dependency?'Your reason needs to match a correct preceding choice.':correct?'Correct.':value?(p.feedback??(p.options?'That choice is not correct. Compare it with the model answer.':'This answer was not recognised. Check the requested format or compare it with the model answer.')):'No answer entered.'});
   }
   return results;
 }

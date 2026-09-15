@@ -5,8 +5,16 @@
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "test": "node --test tests/*.test.js",
-    "validate": "node scripts/validate.js && node scripts/coverage.js --check",
-    "start": "python3 -m http.server 8765 --bind 127.0.0.1",
-    "coverage": "node scripts/coverage.js"
+    "validate": "node scripts/question-codes.mjs --check && node scripts/validate.js && node scripts/coverage.js --check",
+    "start": "npm run build && python3 -m http.server 8765 --bind 127.0.0.1 --directory _site",
+    "coverage": "node scripts/coverage.js",
+    "codes:update": "node scripts/question-codes.mjs --update",
+    "codes:check": "node scripts/question-codes.mjs --check"
+  },
+  "dependencies": {
+    "fflate": "0.8.3"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
   }
 }

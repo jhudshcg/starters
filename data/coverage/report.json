@@ -7,10 +7,10 @@
     "focus_count": 106,
     "element_count": 369,
     "live_question_count": 51,
-    "elements_with_live_questions": 239,
-    "elements_with_two_live_questions": 10,
-    "practice_only_elements": 10,
-    "uncovered_elements": 120,
+    "elements_with_live_questions": 231,
+    "elements_with_two_live_questions": 8,
+    "practice_only_elements": 14,
+    "uncovered_elements": 124,
     "complete_elements": 0
   },
   "errors": [],
@@ -451,12 +451,12 @@
           "key": "a",
           "requirement": "Interpret trends and similarities within and between problems and processes.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "uncovered"
         },
         {
           "key": "b",
@@ -505,12 +505,12 @@
           "key": "a",
           "requirement": "Identify needed information.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "uncovered"
         },
         {
           "key": "b",
@@ -587,12 +587,12 @@
           "key": "e",
           "requirement": "Identify key actions.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "practice_only"
         },
         {
           "key": "f",
@@ -750,12 +750,12 @@
           "key": "f",
           "requirement": "Understand algorithm notation: flowchart arrows.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "uncovered"
         },
         {
           "key": "g",
@@ -945,12 +945,12 @@
           "key": "a",
           "requirement": "Determine an output for a given input.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -993,12 +993,12 @@
           "key": "a",
           "requirement": "Translate an algorithm between notations.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -1385,12 +1385,12 @@
           "key": "e",
           "requirement": "Definition: string.",
           "status": "active",
-          "live_question_count": 2,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "awaiting_review"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "f",
@@ -1407,12 +1407,12 @@
           "key": "g",
           "requirement": "Definition: Boolean.",
           "status": "active",
-          "live_question_count": 2,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "awaiting_review"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "h",
@@ -3388,12 +3388,12 @@
           "key": "b",
           "requirement": "Understand debugging process and when used: correcting errors.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -3404,12 +3404,12 @@
           "key": "a",
           "requirement": "Explain the role of debugging in robustness.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -3545,12 +3545,12 @@
           "key": "e",
           "requirement": "How the algorithm works: merge sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "f",
@@ -4388,12 +4388,12 @@
           "key": "a",
           "requirement": "Apply testing methods.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 0,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "uncovered"
         }
       ]
     },
@@ -4537,7 +4537,7 @@
           "status": "active",
           "live_question_count": 1,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "needs_more_questions"

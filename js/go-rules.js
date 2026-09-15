@@ -1,7 +1,8 @@
+import {playTree} from './packed-data.js';
 // Read the supplied solution tree. Captures were computed with sgfmill at import.
 export function goPosition(part,moves=[]) {
   if(!Array.isArray(moves)||moves.length>100)return null;
-  let node=part.tree;
+  let node=playTree(part);
   for(const move of moves){
     if(!Number.isInteger(move)||move<0||move>=part.size**2)return null;
     node=node.children.find(child=>child.move===move);

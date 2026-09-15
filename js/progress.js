@@ -1,3 +1,29 @@
+import {decode, encode, parseQuestionCode} from './codes.js';
+import {revisions} from './code-compatibility.js';
+export const REATTEMPT_HOURS=4;
+const gapMs=REATTEMPT_HOURS*60*60*1000;
+// Timer settings and display order do not make a different set. Variations do.
+export function setIdentity(code) {
+  const fields=parseQuestionCode(code)??decode(code);
+  const unchanged=version=>fields.entries.every(e=>revisions[version]?.[`${fields.type}:${e.slot}:${e.variation}`]===1);
+  // An unchanged legacy/current code is the same practice set. An obsolete
+  // version remains distinct from its revised replacement.
+  const version=unchanged(fields.version)?Number(Object.keys(revisions).map(Number).sort((a,b)=>a-b).find(unchanged)):fields.version;
+  return encode({...fields,version,minutes:null,entries:[...fields.entries].sort((a,b)=>a.slot-b.slot)});
+}
+export function attemptEligibility(data,code,now=Date.now()) {
+  const key=setIdentity(code);
+  let previous=data.recentAttempts?.[key]??null;
+  for(const r of data.history) {
+    try {if(setIdentity(r.code)===key)previous=Math.max(previous??0,r.finished);} catch {/* Ignore unavailable legacy identities. */}
+  }
+  return {key,previous,eligible:previous===null||now-previous>=gapMs,checkedAt:now};
+}
+export function recordPractice(data,record,eligibility) {
+  data.recentAttempts??={};
+  data.recentAttempts[eligibility.key]=Math.max(data.recentAttempts[eligibility.key]??0,record.finished);
+  if(eligibility.eligible)data.history=appendAttempt(data.history,record);
+}
 export const STORAGE_KEY='dsd-starters-v1';
 export function loadStorage(storage=globalThis.localStorage) {
   const empty={schema:1,active:null,history:[]};

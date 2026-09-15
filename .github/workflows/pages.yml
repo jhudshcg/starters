@@ -23,6 +23,8 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.13'
+      - name: Install JavaScript dependencies
+        run: npm ci
       - name: Test application
         run: npm test
       - name: Validate content and coverage

@@ -69,3 +69,11 @@ Hints: Q1 “Separate complete boxes from devices left over”; Q2 “Check whet
 ## Acceptance
 
 Validate two distinct questions per assessable element, at least two applicable variations per counted question, all mark totals, option IDs, dependencies and coverage references. Each text rule has accepted, rejected, near-spelling and contradiction examples. Each variation receives subject review. The coverage report includes zero-count elements and flags elements with fewer than two usable questions; unreviewed drafts are not counted as completed coverage.
+
+## Editorial update — 15 September 2026
+
+Applied the reviewed classroom feedback to 52 parts in both variations, plus concise wording and accepted-answer corrections elsewhere. The print-cost and function-call wording is corrected; the output-name task accepts meaningful authored Python identifiers. Patterns has one numerical prediction, followed by an assumption, a reusable validation rule, changing its limits and filtering irrelevant information. Sorting asks for an actual pass, shifts or next comparison rather than a fully sorted list.
+
+Added selected linked reasons and distinct application tasks, removed implausible distractors, clarified file/loop assumptions, and separated displayed Python code from prose in subprogram questions. Alternative terms, expressions and numeric answers (including valid negative indexing) are tested. Numeric and fraction markers now consult explicit alternatives; identifier matching preserves case. Generic checking feedback does not decode the model explanation; explanation remains available through Show answer after submission.
+
+The existing slots, variation numbers and total marks are retained. Under the subsequently agreed policy, these content edits create revision 3; revision-2 codes continue to open unchanged variations and explicitly reject altered ones. The corrected example set is BoAkAiAg. See README.md for the fingerprint/compatibility workflow. All templates remain pending teacher subject approval. Coverage reports are regenerated from the revised tasks, including removed or practice-only links.

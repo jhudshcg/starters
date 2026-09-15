@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {encode,decode} from '../js/codes.js';
+import {encode,decode,BANK_VERSION} from '../js/codes.js';
 import {banks,resolve,choose,validateBank} from '../js/bank.js';
 import {markQuestion} from '../js/marking.js';
 import {appendAttempt,deadlineState,priorities,exportCSV} from '../js/progress.js';
@@ -33,7 +33,7 @@ test('invalid codes and missing content are rejected',()=>{
  assert.throws(()=>encode({version:128,type:0,entries:[{slot:0,variation:0}]}));
  assert.throws(()=>encode({version:2,type:0,entries:[{slot:0,variation:8}]}));
  assert.throws(()=>encode({version:2,type:0,entries:[{slot:1,variation:0},{slot:1,variation:1}]}));
- assert.throws(()=>resolve(encode({version:3,type:1,entries:[{slot:0,variation:0}]})));
+ assert.throws(()=>resolve(encode({version:127,type:1,entries:[{slot:0,variation:0}]})));
  assert.throws(()=>resolve(encode({version:2,type:1,entries:[{slot:0,variation:7}]})));
 });
 test('question bank meets pilot content constraints',()=>assert.deepEqual(validateBank(),[]));
@@ -68,7 +68,7 @@ test('all published question combinations meet mark limits',()=>{
   function check(start,group){
    if(group.length===size){
     for(let seed=0;seed<8;seed++) {
-     const set=resolve({version:2,type,entries:group.map(q=>({slot:q.slot,variation:seed%q.variations.length})),minutes:null});
+     const set=resolve({version:BANK_VERSION,type,entries:group.map(q=>({slot:q.slot,variation:seed%q.variations.length})),minutes:null});
      assert.ok(set.total>0);
     }
     return;

@@ -17,3 +17,7 @@
 .global-code-entry .error:empty{display:none}
 @media(max-width:850px){.global-code-entry{padding:.75rem 1.5rem}}
 @media(max-width:600px){.global-code-entry{padding:.75rem 1.3rem}.global-code-entry form{justify-content:flex-start}.global-code-entry label{flex-basis:100%}.global-code-entry input{flex:1}.global-code-entry .error{text-align:left}}
+
+.tracking-notice{padding:1rem;background:#fff5df;border:1px solid #bc9750;border-radius:10px;font-size:.9rem}
+
+.part-code{margin:0 0 .75rem;font-size:.9rem;line-height:1.5}.part-label{font-weight:750}

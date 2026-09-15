@@ -1,9 +1,9 @@
 // Each item has two authored scenarios. Coverage belongs to the item, not its title.
 export function item(coverage, first, second, explanation, extra = {}) {
   const links = Object.entries(coverage).map(([focus, elements]) => ({focus: `CA${focus}`, elements: elements.split(',')}));
-  return [first, second].map(([prompt, answer, accepted = []]) => ({
+  return [first, second].map(([prompt, answer, accepted = [], overrides = {}]) => ({
     prompt, answer: String(answer), accepted, marks: 1, kind: 'text',
-    coverage: links, explanation, allowSentence:true, ...extra
+    coverage: links, explanation, allowSentence:true, ...extra, ...overrides
   }));
 }
 export function examQuestion(slot, focus, title, items, hint = 'Answer each part separately. Use a term, value or short sentence as requested.') {

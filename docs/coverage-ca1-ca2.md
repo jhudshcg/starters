@@ -2,7 +2,7 @@
 
 Generated from the live exam bank. Run `npm run coverage` after editing questions or the inventory. Do not edit counts manually.
 
-51 live questions; 369 assessable subelements. 239 elements have at least one question with two applicable variations; 10 have at least two. 0 meet the reviewed coverage target.
+51 live questions; 369 assessable subelements. 231 elements have at least one question with two applicable variations; 8 have at least two. 0 meet the reviewed coverage target.
 
 **Live** counts distinct question templates with at least two variations assessing the element. **Reviewed** additionally requires explicit subject approval. **Practice** covers constrained exercises that do not demonstrate the complete specified skill; it does not count towards the target. Zero-count rows remain visible. Letters are internal, permanent identifiers beneath the official reference.
 
@@ -101,7 +101,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Interpret trends and similarities within and between problems and processes. | 1 | 0 | 0 | needs more questions |
+| a | Interpret trends and similarities within and between problems and processes. | 0 | 0 | 0 | uncovered |
 | b | Identify common features with existing solutions. | 1 | 0 | 0 | needs more questions |
 | c | Make predictions and assumptions from patterns. | 1 | 0 | 0 | needs more questions |
 
@@ -115,7 +115,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Identify needed information. | 1 | 0 | 0 | needs more questions |
+| a | Identify needed information. | 0 | 0 | 0 | uncovered |
 | b | Filter unnecessary details. | 1 | 0 | 0 | needs more questions |
 | c | Hide internal workings. | 1 | 0 | 0 | needs more questions |
 
@@ -127,7 +127,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 | b | Identify expected outputs and outcomes. | 1 | 0 | 0 | needs more questions |
 | c | Identify things that vary. | 1 | 0 | 0 | needs more questions |
 | d | Identify constants. | 1 | 0 | 0 | needs more questions |
-| e | Identify key actions. | 1 | 0 | 0 | needs more questions |
+| e | Identify key actions. | 0 | 0 | 1 | practice only |
 | f | Identify repeated processes. | 1 | 0 | 0 | needs more questions |
 
 ## CA1.1.16
@@ -160,7 +160,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 | c | Understand algorithm notation: flowchart sub-processes. | 1 | 0 | 0 | needs more questions |
 | d | Understand algorithm notation: flowchart decisions. | 1 | 0 | 0 | needs more questions |
 | e | Understand algorithm notation: flowchart inputs and outputs. | 1 | 0 | 0 | needs more questions |
-| f | Understand algorithm notation: flowchart arrows. | 1 | 0 | 0 | needs more questions |
+| f | Understand algorithm notation: flowchart arrows. | 0 | 0 | 0 | uncovered |
 | g | Understand algorithm notation: flowchart labels. | 1 | 0 | 0 | needs more questions |
 | h | Understand algorithm notation: hierarchical written descriptions. | 1 | 0 | 0 | needs more questions |
 | i | Understand algorithm notation: code. | 0 | 0 | 0 | uncovered |
@@ -205,7 +205,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Determine an output for a given input. | 1 | 0 | 0 | needs more questions |
+| a | Determine an output for a given input. | 0 | 0 | 1 | practice only |
 
 ## CA1.2.9
 
@@ -223,7 +223,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Translate an algorithm between notations. | 1 | 0 | 0 | needs more questions |
+| a | Translate an algorithm between notations. | 0 | 0 | 1 | practice only |
 
 ## CA1.2.12
 
@@ -295,9 +295,9 @@ Teacher review of the inventory and content is pending. A count verifies links a
 | b | Purpose and appropriate use: integer. | 2 | 0 | 0 | awaiting review |
 | c | Definition: float. | 2 | 0 | 0 | awaiting review |
 | d | Purpose and appropriate use: float. | 2 | 0 | 0 | awaiting review |
-| e | Definition: string. | 2 | 0 | 0 | awaiting review |
+| e | Definition: string. | 1 | 0 | 0 | needs more questions |
 | f | Purpose and appropriate use: string. | 2 | 0 | 0 | awaiting review |
-| g | Definition: Boolean. | 2 | 0 | 0 | awaiting review |
+| g | Definition: Boolean. | 1 | 0 | 0 | needs more questions |
 | h | Purpose and appropriate use: Boolean. | 2 | 0 | 0 | awaiting review |
 
 ## CA2.2.1
@@ -718,13 +718,13 @@ Teacher review of the inventory and content is pending. A count verifies links a
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
 | a | Understand debugging process and when used: locating errors. | 1 | 0 | 0 | needs more questions |
-| b | Understand debugging process and when used: correcting errors. | 1 | 0 | 0 | needs more questions |
+| b | Understand debugging process and when used: correcting errors. | 0 | 0 | 1 | practice only |
 
 ## CA2.10.3
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Explain the role of debugging in robustness. | 1 | 0 | 0 | needs more questions |
+| a | Explain the role of debugging in robustness. | 0 | 0 | 1 | practice only |
 
 ## CA2.10.4
 
@@ -755,7 +755,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 | b | When to use: bubble sort. | 0 | 0 | 0 | uncovered |
 | c | How the algorithm works: insertion sort. | 0 | 0 | 1 | practice only |
 | d | When to use: insertion sort. | 1 | 0 | 0 | needs more questions |
-| e | How the algorithm works: merge sort. | 0 | 0 | 1 | practice only |
+| e | How the algorithm works: merge sort. | 1 | 0 | 0 | needs more questions |
 | f | When to use: merge sort. | 1 | 0 | 0 | needs more questions |
 
 ## CA2.11.3
@@ -868,7 +868,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Apply testing methods. | 1 | 0 | 0 | needs more questions |
+| a | Apply testing methods. | 0 | 0 | 0 | uncovered |
 
 ## CA2.12.3.1
 
@@ -895,7 +895,7 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Create appropriate test data. | 1 | 0 | 0 | needs more questions |
+| a | Create appropriate test data. | 1 | 0 | 1 | needs more questions |
 
 ## CA2.12.4.3
 

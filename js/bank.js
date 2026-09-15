@@ -1,3 +1,4 @@
+import {revisions,revisionDetails} from './code-compatibility.js';
 import puzzles from '../data/puzzles.js';
 import exam from '../data/exam.js';
 import python from '../data/python.js';
@@ -14,11 +15,34 @@ Object.assign(focusNames, {"logic grids": "Logic grids", "logic equations": "Log
 export const focuses = type => [...new Set(banks[type].map(q => q.focus))];
 export const marks = q => q.parts.reduce((a,p) => a+p.marks,0);
 
+// Historical scores can still be imported even when their questions were revised.
+// These records contain only focus/marks, never the previous answers.
+export function historicalSet(input) {
+  const fields=typeof input==='string'?parseQuestionCode(input)??decode(input):input;
+  const code=encode(fields),details=revisionDetails[fields.version];
+  if(!details)throw Error('Unsupported question-bank version.');
+  const entries=fields.entries.map(e=>details[`${fields.type}:${e.slot}:${e.variation}`]);
+  if(entries.some(e=>!e))throw Error('Unknown historical question.');
+  const focus=entries[0][0],total=entries.reduce((sum,e)=>sum+e[1],0);
+  if(entries.some(e=>e[0]!==focus))throw Error('Historical set mixes focuses.');
+  if(entries.length!==1){
+    if(entries.length!==(fields.type===2?2:3))throw Error('Invalid historical set size.');
+    if(fields.type===1&&(total<15||total>22)||fields.type===2&&(total<10||total>15))throw Error('Invalid historical mark total.');
+  }
+  return {...fields,code,focus,total};
+}
+
 export function resolve(input) {
   const fields = typeof input === 'string' ? parseQuestionCode(input) ?? decode(input) : input;
   // Encoding validates integer ranges, duplicate slots and field structure.
   const code = encode(fields);
-  if (fields.version !== BANK_VERSION) throw Error('This question-bank version is not available. Reload to check for an update.');
+  const revision=revisions[fields.version];
+  if(!revision)throw Error('This question-bank version is not available. Reload to check for an update.');
+  for(const entry of fields.entries){
+    const state=revision[`${fields.type}:${entry.slot}:${entry.variation}`];
+    if(state===0)throw Error('This code contains a question that has been updated or removed. Ask for a current set code.');
+    if(state===undefined)throw Error('This question or variation was not available in that bank version.');
+  }
   const questions = fields.entries.map(e => {
     const template = banks[fields.type].find(q => q.slot === e.slot);
     if (!template || !template.variations[e.variation]) throw Error('This question or variation is not available in the pilot.');
@@ -38,7 +62,7 @@ export function resolve(input) {
 const pick = values => values[Math.floor(Math.random()*values.length)];
 export function choose(type, focus, previous = null, mode = 'new') {
   if(mode==='permutation' && previous && previous.entries.some(e=>banks[type].find(q=>q.slot===e.slot)?.variations.length<2)) throw Error('This fixed problem has no variations. Choose another puzzle.');
-  if(mode==='permutation' && previous) return resolve({...previous, entries:previous.entries.map(e=>({slot:e.slot,variation:pick(banks[type].find(q=>q.slot===e.slot).variations.map((_,i)=>i).filter(i=>i!==e.variation))}))});
+  if(mode==='permutation' && previous) return resolve({...previous, version:BANK_VERSION, entries:previous.entries.map(e=>({slot:e.slot,variation:pick(banks[type].find(q=>q.slot===e.slot).variations.map((_,i)=>i).filter(i=>i!==e.variation))}))});
   const pool = banks[type].filter(q=>q.focus===focus&&!q.retired);
   const size = type===2?2:3;
   const combinations=[];
