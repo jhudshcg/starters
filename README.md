@@ -11,7 +11,7 @@ npm ci
 npm start
 ```
 
-The preview builds and serves `_site`, the same artifact deployed to Pages. Rebuild after editing source files. Do not serve the repository root or open its authoring HTML directly; production bundles resolve the browser dependencies. Students need only a browser.
+The preview builds and serves `live`, the same artifact deployed to Pages. Rebuild after editing source files. Do not serve the repository root or open its authoring HTML directly; production bundles resolve the browser dependencies. Students need only a browser.
 
 | Activity | Direct preview |
 | --- | --- |
@@ -63,21 +63,26 @@ The [puzzle specification](docs/spec-puzzles.md) gives each subtype’s format, 
 
 ## GitHub Pages
 
-The workflow in `.github/workflows/pages.yml` tests the application, validates coverage and independently checks puzzle solutions before deployment. Pull requests run these checks; pushes to `main` and manual runs on `main` also publish the site.
+All application building happens locally. The workflow in `.github/workflows/pages.yml` uploads the committed `live/` folder and deploys it on pushes to `main` (or a manual run on `main`). GitHub does not install dependencies, run tests or rebuild the site. Keep **Settings → Pages → Source → GitHub Actions**.
 
-1. Connect this checkout to the intended GitHub repository and push the project, including the workflow and all question bank files, to `main`.
-2. In the repository, select **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-3. Run **Actions → Validate and deploy Pages → Run workflow** if the first push happened before Pages was enabled. The deployment job reports the public URL.
+Once per clone, install dependencies and enable the tracked hook:
 
-This uses the [official GitHub Pages workflow actions](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages). No personal access token or custom deployment secret is required by the workflow. Deployment is verified at https://jhudshcg.github.io/starters/; pushes to `main` deploy automatically after validation.
+```sh
+npm ci
+npm run hooks:install
+```
 
-`npm run build` creates `_site` with HTML, CSS and JavaScript, including the live banks. Specifications, source examples, drafts and coverage inventories are excluded from the Pages artifact. Preview that exact artifact with `python3 -m http.server 8766 --bind 127.0.0.1 --directory _site`.
+Then edit, stage your source changes, commit and push. The pre-commit hook builds from an isolated copy of the **Git index**, so partially staged files and unrelated uncommitted edits cannot leak into the published site. On success it replaces and stages `live/`, including removal of old hashed assets. A failed build blocks the commit. Generated files should not be edited by hand. Node.js and installed dependencies are required when committing; after dependency changes run `npm ci` first. Hooks can be bypassed, so avoid `--no-verify` for publishing commits. Web-based commits do not run your local hook.
+
+`npm run build` builds your working files into `live/` for local preview; `npm start` builds and serves it. Preview builds do not stage files. The hook rebuilds from the staged source at commit time. You do not need to run the build manually before each commit.
+
+Run `npm test` and `npm run validate` locally when changing the application/content. For puzzle edits also run `python scripts/validate-puzzles.py` and `python scripts/validate-go.py` (install `scripts/requirements-content.txt` first). The commit hook checks bank identities and validates the bank during building; it does not run the full test suite.
 
 The maths collection is **30 of 30 implemented** as concise adaptations with explicit rules and self-marking answers. [The source inventory](data/coverage/classic-maths-inventory.json) links every source item to its live bank slot.
 
 Go uses 49 attributed GoProblems positions and the linked OGS example. Click to play; opponent stones and captures appear immediately. Undo, alternative recorded replies, next-move hints and draggable solution replay are available. A completed winning line shows immediate green feedback. Hints mark the attempt as assisted. Moves outside the supplied trees are unverified; the app is not a general Go engine. Ko and seki outcomes are identified in their prompts.
 
-Go source board sizes and branches are preserved. `scripts/import-go.py` imports downloaded public API JSON using `sgfmill`; `data/coverage/go-source-inventory.json` records the selection. Install `scripts/requirements-content.txt` to run `python scripts/validate-go.py`. GitHub Actions does this automatically and checks all 1,528 recorded positions.
+Go source board sizes and branches are preserved. `scripts/import-go.py` imports downloaded public API JSON using `sgfmill`; `data/coverage/go-source-inventory.json` records the selection. Install `scripts/requirements-content.txt` to run `python scripts/validate-go.py`. Run this locally to check all 1,528 recorded positions.
 
 ## Repeat attempts and progress
 
@@ -87,15 +92,15 @@ The identity includes the question slots and exact variations, ignoring order an
 
 ## Production bank packaging
 
-`npm run build` uses pinned **esbuild** and **fflate** dependencies. It validates the source bank, compresses JSON using zlib, wraps it in Base64 with a fixed 17-position alphabet rotation, and emits minified content-hashed JavaScript/CSS. All assets use relative paths for repository Pages hosting. CI installs dependencies with `npm ci`.
+`npm run build` uses pinned **esbuild** and **fflate** dependencies. It validates the source bank, compresses JSON using zlib, wraps it in Base64 with a fixed 17-position alphabet rotation, and emits minified content-hashed JavaScript/CSS. All assets use relative paths for repository Pages hosting. Install local dependencies with `npm ci`.
 
-Readable `data/*.js` authoring banks stay in Git. Their import module is replaced with an on-demand asset loader during bundling and are **not shipped or imported by the deployed page**. Drafts, coverage reports, build metadata and source maps are excluded from `_site`. Encoded banks are separate content-hashed files: `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt` and `banks/python-<hash>.txt`. The app fetches and decodes only the bank needed for a selected activity or set code, reuses it during the page visit, and retries failed downloads when requested again. Restoring an active attempt also loads its bank. A fresh home or progress page downloads no banks. Each asset URL is relative to the app bundle for repository Pages hosting; each part retains separate encoded marking and reveal payloads. Marking decodes accepted answers only when needed; reveal decodes the model answer/explanation only when requested. These temporary decoded objects are not cached on the bank or saved to local storage. Checking uses separate generic feedback so it does not need to decode the explanation.
+Readable `data/*.js` authoring banks stay in Git. Their import module is replaced with an on-demand asset loader during bundling and are **not shipped or imported by the deployed page**. Drafts, coverage reports, build metadata and source maps are excluded from `live`. Encoded banks are separate content-hashed files: `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt` and `banks/python-<hash>.txt`. The app fetches and decodes only the bank needed for a selected activity or set code, reuses it during the page visit, and retries failed downloads when requested again. Restoring an active attempt also loads its bank. A fresh home or progress page downloads no banks. Each asset URL is relative to the app bundle for repository Pages hosting; each part retains separate encoded marking and reveal payloads. Marking decodes accepted answers only when needed; reveal decodes the model answer/explanation only when requested. These temporary decoded objects are not cached on the bank or saved to local storage. Checking uses separate generic feedback so it does not need to decode the explanation.
 
 Go also has a separately encoded playing tree, decoded as needed for board rendering, opponent replies, hints and marking; those interactive features necessarily need the tree before submission. The rest of the bank does not need its model solutions for display.
 
 This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Slot numbering and the 48-bit encoding layout remain unchanged; content revision 3 selectively preserves compatible revision-2 codes. The rotation applies only to bank payloads, never to share codes.
 
-Checks: `npm test`, `npm run validate`, `npm run build`. Run `scripts/browser-smoke.mjs` against a server serving `_site`; `STARTERS_PREVIEW_URL` can include a repository path. The smoke runner reads authoring fixtures locally, never via the production page.
+Checks: `npm test`, `npm run validate`, `npm run build`. Run `scripts/browser-smoke.mjs` against a server serving `live`; `STARTERS_PREVIEW_URL` can include a repository path. The smoke runner reads authoring fixtures locally, never via the production page.
 
 ## Maintaining shared codes
 

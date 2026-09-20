@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "hooks:install": "git config core.hooksPath .githooks",
     "build": "node scripts/build-site.mjs",
     "test": "node --test tests/*.test.js",
     "validate": "node scripts/question-codes.mjs --check && node scripts/validate.js && node scripts/coverage.js --check",
-    "start": "npm run build && python3 -m http.server 8765 --bind 127.0.0.1 --directory _site",
+    "start": "npm run build && python3 -m http.server 8765 --bind 127.0.0.1 --directory live",
     "coverage": "node scripts/coverage.js",
     "codes:update": "node scripts/question-codes.mjs --update",
     "codes:check": "node scripts/question-codes.mjs --check"

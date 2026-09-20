@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+# GUI Git clients on macOS may not inherit Homebrew's PATH.
+if ! command -v node >/dev/null 2>&1; then
+  PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+  export PATH
+fi
+if ! command -v node >/dev/null 2>&1; then
+  echo 'Node.js is required to build live/. Install Node and run npm ci before committing.' >&2
+  exit 1
+fi
+exec node scripts/pre-commit-build.mjs

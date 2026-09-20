@@ -9,11 +9,11 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 
 test('the deployable site contains hashed bundles, no authoring banks or source maps',()=>{
  execFileSync(process.execPath,['scripts/build-site.mjs'],{cwd:root});
- const html=readFileSync(join(root,'_site/index.html'),'utf8');
- const files=readdirSync(join(root,'_site'),{recursive:true});
+ const html=readFileSync(join(root,'live/index.html'),'utf8');
+ const files=readdirSync(join(root,'live'),{recursive:true});
  assert.ok(!files.some(f=>f.startsWith('data')||f.startsWith('js/')||f.endsWith('.map')));
  const script=html.match(/src="(assets\/app-[A-Z0-9]+\.js)"/)[1];
- const bundle=readFileSync(join(root,'_site',script),'utf8');
+ const bundle=readFileSync(join(root,'live',script),'utf8');
  for(const phrase of ['A print cost calculator uses','hiding implementation details','The caller uses the interface'])assert.ok(!bundle.includes(phrase),phrase+' leaked into source');
  assert.ok(!html.includes('js/app.js'));
  assert.equal((html.match(/href="assets\//g)??[]).length,3);
@@ -22,7 +22,7 @@ test('the deployable site contains hashed bundles, no authoring banks or source 
  assert.ok(!bundle.includes('sourceMappingURL'));
  const bankFiles=files.filter(f=>/^banks\/(puzzles|exam|python)-[a-f0-9]+\.txt$/.test(f));
  assert.equal(bankFiles.length,3);
- const payloads=bankFiles.map(file=>readFileSync(join(root,'_site',file),'utf8'));
+ const payloads=bankFiles.map(file=>readFileSync(join(root,'live',file),'utf8'));
  for(const [index,payload] of payloads.entries()){
    assert.ok(!bundle.includes(payload),'Bank must not be embedded in the app');
    assert.ok(bundle.includes(bankFiles[index]),'App must reference the separate bank');
@@ -31,7 +31,7 @@ test('the deployable site contains hashed bundles, no authoring banks or source 
  assert.ok(!Object.keys(meta.inputs).some(f=>/^data\//.test(f)),'No authoring bank is bundled');
  // Rebuilding unchanged inputs is deterministic; no commit/deployment counter enters IDs.
  execFileSync(process.execPath,['scripts/build-site.mjs'],{cwd:root});
- assert.equal(readFileSync(join(root,'_site/index.html'),'utf8'),html);
- assert.equal(readFileSync(join(root,'_site',script),'utf8'),bundle);
- assert.deepEqual(bankFiles.map(file=>readFileSync(join(root,'_site',file),'utf8')),payloads);
+ assert.equal(readFileSync(join(root,'live/index.html'),'utf8'),html);
+ assert.equal(readFileSync(join(root,'live',script),'utf8'),bundle);
+ assert.deepEqual(bankFiles.map(file=>readFileSync(join(root,'live',file),'utf8')),payloads);
 });
