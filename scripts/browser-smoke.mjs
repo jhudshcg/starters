@@ -16,9 +16,17 @@ function send(method,params={}){const id=++nextId;return new Promise((resolve,re
 async function evaluate(expression){const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;}
 async function until(expression){for(let i=0;i<80;i++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Timed out: '+expression);}
 async function click(selector){await evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);}
+async function acceptLeaveIfShown(){
+ // Older scenarios may start from blank activities, which no longer need confirmation.
+ await new Promise(r=>setTimeout(r,200));
+ if(await evaluate('Boolean(document.querySelector("dialog button[value=leave]"))')){await click('dialog button[value="leave"]');await until('!document.querySelector("dialog")');}
+}
+async function enterUnsubmittedAnswer(){
+ await evaluate(`{const input=document.querySelector('[data-part]');if(input){if(input.type==='radio'){input.checked=true;input.dispatchEvent(new Event('change',{bubbles:true}));}else{input.value='test';input.dispatchEvent(new Event('input',{bubbles:true}));}}}`);
+}
 async function screenshot(name){const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/starters-${name}.png`,Buffer.from(r.data,'base64'));}
 async function openFocus(type,focus,count=1){
- await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
+ await send('Page.navigate',{url:base+'/#home'});await acceptLeaveIfShown();await until('Boolean(document.querySelector("#code-form"))');
  const set=type===1&&focus==='CA2.7'?resolve({...choose(type,focus),entries:[31,32,33].map(slot=>({slot,variation:0}))}):choose(type,focus);
  const code=(type===0?resolve({...set,entries:set.entries.slice(0,count)}):set).code;
  await evaluate(`document.querySelector('#code-form input').value=${JSON.stringify(code)};document.querySelector('#code-form').requestSubmit()`);
@@ -69,6 +77,19 @@ try{
  const downloadedBanks=await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)');
  assert.equal(downloadedBanks.length,1);assert.match(downloadedBanks[0],/\/banks\/exam-[a-f0-9]+\.txt$/);
  assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),15);
+ // Navigation warning is tied to entered answers on the visible activity.
+ await click('#nav-home');await until('Boolean(document.querySelector("#code-form"))');
+ assert.equal(await evaluate('Boolean(document.querySelector("dialog"))'),false);
+ await openFocus(1,'CA2.1');await enterUnsubmittedAnswer();
+ const guardedCode=await evaluate('document.querySelector("#display-code").textContent');
+ await click('#nav-home');await until('Boolean(document.querySelector("dialog button[value=stay]"))');
+ assert.ok(await evaluate('Boolean(document.querySelector("#display-code"))'),'Warning stays over activity, not home');
+ await click('dialog button[value="stay"]');await until('!document.querySelector("dialog")&&location.hash.startsWith("#set=")');
+ assert.equal(await evaluate('document.querySelector("#display-code").textContent'),guardedCode);
+ await click('#nav-home');await until('Boolean(document.querySelector("dialog button[value=leave]"))');
+ await click('dialog button[value="leave"]');await until('Boolean(document.querySelector("#code-form"))');
+ await openFocus(1,'CA2.1');
+ assert.equal(await evaluate('Boolean(document.querySelector("dialog"))'),false,'Starting from home must not warn about saved answers');
  const examQuestions=resolve(await evaluate('document.querySelector("#display-code").textContent')).questions;
  await evaluate(`for(const q of ${JSON.stringify(examQuestions)})for(const p of q.parts){const elements=[...document.querySelectorAll('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]')];const el=elements.find(el=>el.type!=='radio'||el.value===p.answer);if(el.type==='radio'){el.checked=true;el.dispatchEvent(new Event('change',{bubbles:true}));}else{el.value=p.answer;el.dispatchEvent(new Event('input',{bubbles:true}));}}`);
  await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));await screenshot('exam-expanded');
@@ -77,7 +98,7 @@ try{
  assert.equal(detailed.partScores.length,15);
  assert.equal(detailed.partScores.reduce((sum,p)=>sum+p.firstMax,0),15);
  assert.ok(detailed.partScores.every(p=>p.refs.includes('CA2.1.1')));
- await click('#nav-progress');await until('Boolean(document.querySelector("#priority-level"))');
+ await click('#nav-progress');await acceptLeaveIfShown();await until('Boolean(document.querySelector("#priority-level"))');
  assert.equal(await evaluate('document.querySelector(".priority-row meter").value'),100);
  await evaluate('document.querySelector("#priority-level").value="subtopic";document.querySelector("#priority-level").dispatchEvent(new Event("change"))');
  assert.ok(await evaluate('document.querySelector(".priority-row").textContent.includes("CA2.1.1")'));
@@ -124,13 +145,14 @@ try{
  await evaluate('document.querySelector("#global-code").value="BIAkAiAg";document.querySelector("#global-code-form").requestSubmit()');
  await until('document.querySelector("#global-code-error").textContent.includes("updated or removed")');
  assert.equal(await evaluate('Boolean(document.querySelector("dialog"))'),false);
+ await enterUnsubmittedAnswer();
  await evaluate('document.querySelector("#global-code").value="BoAkAiAg";document.querySelector("#global-code-form").requestSubmit()');
  await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="stay"]');
  await until('!document.querySelector("dialog")');
  assert.notEqual(await evaluate('document.querySelector("#display-code").textContent'),'BoAkAiAg');
- await click('#nav-progress');await until('Boolean(document.querySelector("#export-csv"))');
+ await click('#nav-progress');await acceptLeaveIfShown();await until('Boolean(document.querySelector("#export-csv"))');
  await evaluate('document.querySelector("#global-code-form").requestSubmit()');
- await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await acceptLeaveIfShown();
  await until('document.querySelector("#display-code")?.textContent==="BoAkAiAg"');
  await screenshot('exam-reviewed');
  assert.ok(await evaluate('document.querySelector("[data-check]").disabled && document.querySelector("[data-reveal]").disabled'));
@@ -231,27 +253,28 @@ try{
  await screenshot('go-mobile');
 
  // Historical results remain importable even when the old question code is stale.
- await click('#nav-progress');await until('Boolean(document.querySelector("#backup-file"))');
+ await click('#nav-progress');await acceptLeaveIfShown();await until('Boolean(document.querySelector("#backup-file"))');
  const legacyResult={id:'legacy-changed-question',code:'BIAkAiAg',type:1,focus:'CA1.1',max:15,earned:9,percentage:60,firstMax:15,firstEarned:9,attemptChecks:3,assisted:false,outcome:'submitted',seconds:180,finished:Date.now()-6*3600000};
  await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify(${JSON.stringify({schema:1,history:[legacyResult]})})],"old-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
  await until('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.some(r=>r.id==="legacy-changed-question")');
  await evaluate('document.querySelector("#global-code").value="BAyD_x_4";document.querySelector("#global-code-form").requestSubmit()');
- await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await acceptLeaveIfShown();
  await until('document.querySelector("#display-code")?.textContent==="BAyD_x_4"');
  assert.ok(await evaluate('document.querySelector(".question").textContent.includes("PZ-2-100-0")'));
- await click('#permutation');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await click('#permutation');await acceptLeaveIfShown();
  await until('document.querySelector("#display-code")?.textContent!=="BAyD_x_4"');
  assert.ok(await evaluate('document.querySelector(".question").textContent.includes("PZ-3-100-")'));
 
  // Select a fine reference while retaining all parts and related-question context.
  await openFocus(1,'CA1.2');
+ await enterUnsubmittedAnswer();
  const unfiltered=await evaluate('document.querySelector("#display-code").textContent');
  await evaluate('document.querySelector("#subtopic").value="CA1.2.3";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
  await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="stay"]');
  await until('!document.querySelector("dialog")&&document.querySelector("#subtopic")?.value==="all"');
  assert.equal(await evaluate('document.querySelector("#display-code").textContent'),unfiltered);
  await evaluate('document.querySelector("#subtopic").value="CA1.2.3";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
- await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await acceptLeaveIfShown();
  await until('document.querySelector("#subtopic")?.value==="CA1.2.3"&&!document.querySelector("dialog")');
  assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
  assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
@@ -260,12 +283,12 @@ try{
  const filtered=resolve(await evaluate('document.querySelector("#display-code").textContent'));
  assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),filtered.questions.reduce((sum,q)=>sum+q.parts.length,0));
  await send('Page.reload');await until('document.querySelector("#subtopic")?.value==="CA1.2.3"');
- await click('#permutation');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await click('#permutation');await acceptLeaveIfShown();
  await until(`document.querySelector('#display-code')?.textContent!==${JSON.stringify(filtered.code)}&&!document.querySelector('dialog')`);
  assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
  const permuted=resolve(await evaluate('document.querySelector("#display-code").textContent'));
  assert.deepEqual(permuted.entries.map(e=>e.slot),filtered.entries.map(e=>e.slot));
- await click('#new-focus');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await click('#new-focus');await acceptLeaveIfShown();
  await until(`document.querySelector('#display-code')?.textContent!==${JSON.stringify(permuted.code)}&&!document.querySelector('dialog')`);
  assert.equal(await evaluate('document.querySelector("#subtopic").value'),'CA1.2.3');
  assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
@@ -274,11 +297,12 @@ try{
  await screenshot('exam-subtopic-mobile');
  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
  await evaluate('document.querySelector("#focus").value="CA2.1";document.querySelector("#focus").dispatchEvent(new Event("change"))');
- await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await acceptLeaveIfShown();
  await until('document.querySelector("#focus")?.value==="CA2.1"&&!document.querySelector("dialog")');
  assert.equal(await evaluate('document.querySelector("#subtopic").value'),'all');
  // Challenge filters preserve the activity on cancel and constrain all new sets.
  await openFocus(0,'logic grids',3);
+ await click('[data-challenge-action="candidate"]');
  const beforeFilter=await evaluate('document.querySelector("#display-code").textContent');
  const beforeLevel=await evaluate('document.querySelector("#challenge-level").value');
  await evaluate('document.querySelector("#challenge-level").value="foundation";document.querySelector("#challenge-level").dispatchEvent(new Event("change"))');
@@ -287,11 +311,11 @@ try{
  assert.equal(await evaluate('document.querySelector("#display-code").textContent'),beforeFilter);
  for(const level of ['foundation','stretch']){
   await evaluate(`document.querySelector('#challenge-level').value=${JSON.stringify(level)};document.querySelector('#challenge-level').dispatchEvent(new Event('change'))`);
-  await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+  await acceptLeaveIfShown();
   await until(`document.querySelector('#challenge-level')?.value===${JSON.stringify(level)}&&!document.querySelector('dialog')`);
   let current=resolve(await evaluate('document.querySelector("#display-code").textContent'));
   assert.ok(current.questions.every(q=>q.challengeLevel===level));
-  const oldCode=current.code;await click('#new-focus');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+  const oldCode=current.code;await click('#new-focus');await acceptLeaveIfShown();
   await until(`document.querySelector('#display-code').textContent!==${JSON.stringify(oldCode)}`);
   current=resolve(await evaluate('document.querySelector("#display-code").textContent'));
   assert.ok(current.questions.every(q=>q.challengeLevel===level));
@@ -334,7 +358,7 @@ try{
   }
   await peerSend('Page.enable');
   for(const type of [0,1,2]){
-   await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
+   await send('Page.navigate',{url:base+'/#home'});await acceptLeaveIfShown();await until('Boolean(document.querySelector("#code-form"))');
    await click(`[data-start="${type}"]`);await until('Boolean(document.querySelector("dialog"))||Boolean(document.querySelector("#display-code"))');
    if(await evaluate('Boolean(document.querySelector("dialog"))'))await click('dialog button[value="leave"]');
    await until('Boolean(document.querySelector("#display-code"))&&!document.querySelector("dialog")');

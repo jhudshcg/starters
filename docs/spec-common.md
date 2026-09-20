@@ -137,3 +137,8 @@ One footer button is available on every page. On an activity page, students choo
 A preview includes the description, selected item numbers/titles/exact question codes, current set code when visible, page link, build/bank identifier, browser and report time. Bug reports also include any currently visible code-entry diagnostics. Saved history and answers are not collected. The recipient stays blank: students address the draft to their teacher.
 
 Open email draft uses a percent-encoded mailto subject/body with CRLF line endings. The student reviews and sends through their configured email app; the site neither sends nor claims delivery. Copy report provides a fallback for missing email handlers or client URL-length limits; if clipboard access fails, the preview is selected for manual copying. No server, reporting account or new dependency is required.
+
+
+## Leaving an activity
+
+Warn only when the currently visible activity has entered, unsubmitted answers or puzzle work. Show the warning before navigating to another page or replacing the set, with Keep working and Leave activity choices. Starting from Home/Progress must not warn about a saved activity. Empty activities and submitted work do not warn. Puzzle selections, givens and undo history alone do not count as answers; entered notes and moves do. Cancel preserves the visible activity, route and answers.

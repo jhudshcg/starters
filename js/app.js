@@ -3,6 +3,7 @@ import {formatCoverage} from './coverage.js';
 import {challengeKinds as interactiveKinds} from './challenge-rules.js';
 import {renderChallenge as renderPuzzle,bindChallenges as bindPuzzles} from './challenge-controls.js';
 import {banks, types, focuses, focusNames, resolve, choose, marks, historicalSet, ensureBank, loadSet, challengeLevels, availableChallenges, puzzlePool, examSubtopics, matchesSubtopic, hasAlternativeExamSet} from './bank.js';
+import {hasUnsubmittedAnswers} from './unsent-answers.js';
 import {codeDiagnostics} from './code-diagnostics.js';
 import {openIssueReport} from './issue-report.js';
 import {encode, questionCode, BANK_VERSION} from './codes.js';
@@ -45,15 +46,19 @@ function activeSet(){return data.active?{...resolve(data.active.code),examSubtop
 function navigate(hash){if(location.hash===hash)render();else location.hash=hash;}
 function setHash(code){history.replaceState(null,'',`#set=${encodeURIComponent(code)}`);}
 function duration(seconds){const s=Math.max(0,Math.floor(seconds));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;}
+function needsLeaveWarning(){return Boolean($('#display-code'))&&hasUnsubmittedAnswers(data.active,activeSet());}
+let leaveDecision=null;
 function askLeave(){
-  if(!data.active||data.active.finished) return Promise.resolve(true);
-  return new Promise(resolveAnswer=>{
+  if(!needsLeaveWarning()) return Promise.resolve(true);
+  if(leaveDecision)return leaveDecision;
+  leaveDecision=new Promise(resolveAnswer=>{
     const dialog=document.createElement('dialog');
-    dialog.innerHTML='<h2>Start a new activity?</h2><p>Your current answers will be replaced. You can keep working and submit them first.</p><div class="actions"><button value="stay">Keep working</button><button class="primary" value="leave">Start new activity</button></div>';
+    dialog.innerHTML='<h2>Leave unsubmitted answers?</h2><p>You have entered answers but have not submitted this activity. You can keep working and submit them first.</p><div class="actions"><button value="stay">Keep working</button><button class="primary" value="leave">Leave activity</button></div>';
     document.body.append(dialog);dialog.addEventListener('click',e=>{if(e.target.matches('button'))dialog.close(e.target.value);});
     dialog.addEventListener('cancel',e=>{e.preventDefault();dialog.close('stay');});
-    dialog.addEventListener('close',()=>{const yes=dialog.returnValue==='leave';dialog.remove();resolveAnswer(yes);});dialog.showModal();
+    dialog.addEventListener('close',()=>{const yes=dialog.returnValue==='leave';dialog.remove();leaveDecision=null;resolveAnswer(yes);});dialog.showModal();
   });
+  return leaveDecision;
 }
 async function start(set,{force=false,challengeLevel=null}={}){
   if(!force && !await askLeave())return;
@@ -258,6 +263,10 @@ let renderId=0;
 async function render(){
   const requestId=++renderId;
   const route=location.hash;
+  if($('#display-code')&&route!==`#set=${encodeURIComponent(data.active.code)}`){
+    if(!await askLeave()){if(requestId===renderId)setHash(data.active.code);return;}
+    if(requestId!==renderId)return;
+  }
   $('#nav-home').setAttribute('aria-current',route==='#progress'?'false':'page');
   $('#nav-progress').setAttribute('aria-current',route==='#progress'?'page':'false');
   if(!route.startsWith('#set='))submittedAttemptId=null;
@@ -269,7 +278,7 @@ async function render(){
       if(requestId!==renderId)return;
       if(data.active?.code===set.code){activity();return;}
       // External links are explicit navigation; preserve unfinished work until confirmed.
-      home();await start(set);if(data.active?.code!==set.code)navigate('#home');return;
+      await start(set,{force:true});if(data.active?.code!==set.code)navigate('#home');return;
     }catch(e){if(requestId!==renderId)return;home();showCodeError($('#code-error'),route.slice(5),e);return;}
   }
   home();
@@ -291,6 +300,15 @@ $('#global-code-form').onsubmit=async e=>{
     if(data.active?.code===set.code)e.target.reset();
   }catch(err){showCodeError(error,input,err);}
 };
+document.addEventListener('click',async event=>{
+  const link=event.target.closest('a[href]');
+  if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.hasAttribute('download')||(link.target&&link.target!=='_self'))return;
+  if(link.getAttribute('href')==='#main'){event.preventDefault();main.focus();return;}
+  const url=new URL(link.href,location.href);
+  if(url.origin===location.origin&&url.pathname===location.pathname&&url.search===location.search)return;
+  if(!needsLeaveWarning())return;
+  event.preventDefault();if(await askLeave())location.href=url.href;
+});
 window.addEventListener('hashchange',()=>{render();main.focus();});
 window.addEventListener('pagehide',()=>{if(data.active&&!data.active.finished){data.active.saved=Date.now();persist();}});
 window.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});
