@@ -6,11 +6,11 @@
   "summary": {
     "focus_count": 106,
     "element_count": 369,
-    "live_question_count": 51,
-    "elements_with_live_questions": 231,
-    "elements_with_two_live_questions": 8,
-    "practice_only_elements": 14,
-    "uncovered_elements": 124,
+    "live_question_count": 77,
+    "elements_with_live_questions": 341,
+    "elements_with_two_live_questions": 23,
+    "practice_only_elements": 28,
+    "uncovered_elements": 0,
     "complete_elements": 0
   },
   "errors": [],
@@ -33,12 +33,12 @@
           "key": "b",
           "requirement": "Purpose and appropriate use: computational thinking.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -49,12 +49,12 @@
           "key": "a",
           "requirement": "Choose when computational thinking is appropriate.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -65,23 +65,23 @@
           "key": "a",
           "requirement": "Benefit: computational thinking.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
           "requirement": "Drawback: computational thinking.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -152,23 +152,23 @@
           "key": "b",
           "requirement": "Drawback: decomposition.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "Benefit: pattern recognition.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
@@ -185,12 +185,12 @@
           "key": "e",
           "requirement": "Benefit: abstraction.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "f",
@@ -207,23 +207,23 @@
           "key": "g",
           "requirement": "Benefit: algorithmic design.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "h",
           "requirement": "Drawback: algorithmic design.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -250,45 +250,45 @@
           "key": "a",
           "requirement": "Identify the main features of a problem.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
           "requirement": "Characterise each identified feature.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "Break a problem into manageable parts.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
           "requirement": "Break a solution into manageable parts.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -301,10 +301,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -377,10 +377,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "b",
@@ -388,10 +388,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "c",
@@ -399,10 +399,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "d",
@@ -410,10 +410,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "e",
@@ -421,10 +421,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -451,12 +451,12 @@
           "key": "a",
           "requirement": "Interpret trends and similarities within and between problems and processes.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
@@ -505,12 +505,12 @@
           "key": "a",
           "requirement": "Identify needed information.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
@@ -587,12 +587,12 @@
           "key": "e",
           "requirement": "Identify key actions.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "f",
@@ -616,10 +616,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -641,12 +641,12 @@
           "key": "b",
           "requirement": "Judge suitability of computational-thinking components for a problem.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -679,12 +679,12 @@
           "key": "c",
           "requirement": "Purpose of an algorithm.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -750,12 +750,12 @@
           "key": "f",
           "requirement": "Understand algorithm notation: flowchart arrows.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "g",
@@ -783,12 +783,12 @@
           "key": "i",
           "requirement": "Understand algorithm notation: code.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -810,12 +810,12 @@
           "key": "b",
           "requirement": "Drawback: flowcharts.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -826,12 +826,12 @@
           "key": "a",
           "requirement": "Benefit: written descriptions.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
@@ -853,12 +853,12 @@
           "key": "a",
           "requirement": "Benefit: code.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
@@ -929,12 +929,12 @@
           "key": "b",
           "requirement": "Determine how an algorithm works.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -945,12 +945,12 @@
           "key": "a",
           "requirement": "Determine an output for a given input.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -995,7 +995,7 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "practice_only"
@@ -1011,10 +1011,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "b",
@@ -1022,10 +1022,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "c",
@@ -1033,10 +1033,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -1085,45 +1085,45 @@
           "key": "a",
           "requirement": "Benefit: top-down.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
           "requirement": "Drawback: top-down.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "Benefit: bottom-up.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
           "requirement": "Drawback: bottom-up.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "e",
@@ -1140,12 +1140,12 @@
           "key": "f",
           "requirement": "Drawback: modularisation.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -1287,12 +1287,12 @@
           "key": "e",
           "requirement": "Understand the strategy step: implement a solution.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "f",
@@ -1314,23 +1314,23 @@
           "key": "a",
           "requirement": "Understand relationships between a problem and solution strategies.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
           "requirement": "Judge the suitability of a strategy for a problem.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -1461,12 +1461,12 @@
           "key": "a",
           "requirement": "Definition: constant.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "b",
@@ -1504,12 +1504,12 @@
           "key": "a",
           "requirement": "Definition: scope.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "b",
@@ -1531,23 +1531,23 @@
           "key": "a",
           "requirement": "Understand scope management: global variables.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "b",
           "requirement": "Understand scope management: local variables.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         }
       ]
     },
@@ -1560,7 +1560,7 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "practice_only"
@@ -1655,12 +1655,12 @@
           "key": "b",
           "requirement": "Purpose and appropriate use: list.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "c",
@@ -1699,12 +1699,12 @@
           "key": "f",
           "requirement": "Purpose and appropriate use: dictionary.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         }
       ]
     },
@@ -1755,7 +1755,7 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "practice_only"
@@ -1766,10 +1766,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "c",
@@ -1777,7 +1777,7 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "practice_only"
@@ -2031,12 +2031,12 @@
           "key": "b",
           "requirement": "Apply operators: relational.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
@@ -2098,10 +2098,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "b",
@@ -2109,10 +2109,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "c",
@@ -2120,10 +2120,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -2134,12 +2134,12 @@
           "key": "a",
           "requirement": "Debug code using operators: arithmetic.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
@@ -2156,12 +2156,12 @@
           "key": "c",
           "requirement": "Debug code using operators: Boolean.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -2194,12 +2194,12 @@
           "key": "c",
           "requirement": "Implement input or output: text file.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -2259,23 +2259,23 @@
           "key": "a",
           "requirement": "Interpret input/output code: keyboard.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "b",
           "requirement": "Interpret input/output code: screen.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "c",
@@ -2308,12 +2308,12 @@
           "key": "b",
           "requirement": "Create input/output code: screen.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "c",
@@ -2321,7 +2321,7 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "practice_only"
@@ -2422,12 +2422,12 @@
           "key": "d",
           "requirement": "Purpose and appropriate use: match/case.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         }
       ]
     },
@@ -2559,10 +2559,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "b",
@@ -2570,10 +2570,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "c",
@@ -2581,10 +2581,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -2595,12 +2595,12 @@
           "key": "a",
           "requirement": "Debug code using the action: sequence.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
@@ -2693,12 +2693,12 @@
           "key": "c",
           "requirement": "Purpose and appropriate use of a procedure.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -2769,12 +2769,12 @@
           "key": "b",
           "requirement": "Drawback: pre-written code.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -2818,12 +2818,12 @@
           "key": "d",
           "requirement": "Interpret code using the subprogram: pre-written procedures.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -2836,7 +2836,7 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "practice_only"
@@ -2847,10 +2847,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "c",
@@ -2858,10 +2858,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         },
         {
           "key": "d",
@@ -2869,10 +2869,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -2894,34 +2894,34 @@
           "key": "b",
           "requirement": "Debug code using the subprogram: pre-written functions.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "Debug code using the subprogram: user-written procedures.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
           "requirement": "Debug code using the subprogram: pre-written procedures.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -2954,18 +2954,18 @@
           "key": "c",
           "requirement": "Purpose and appropriate use: length check.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "d",
           "requirement": "Purpose and appropriate use: range check.",
           "status": "active",
-          "live_question_count": 2,
+          "live_question_count": 3,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
@@ -2976,18 +2976,18 @@
           "key": "e",
           "requirement": "Purpose and appropriate use: type check.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "f",
           "requirement": "Purpose and appropriate use: format check.",
           "status": "active",
-          "live_question_count": 2,
+          "live_question_count": 3,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
@@ -3032,7 +3032,7 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
           "coverage_status": "practice_only"
@@ -3132,12 +3132,12 @@
           "key": "a",
           "requirement": "Order actions for execution-time efficiency.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "b",
@@ -3246,12 +3246,12 @@
           "key": "b",
           "requirement": "Judge algorithm suitability regarding: storage efficiency.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
@@ -3268,12 +3268,12 @@
           "key": "d",
           "requirement": "Judge algorithm suitability regarding: data structures.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "e",
@@ -3290,12 +3290,12 @@
           "key": "f",
           "requirement": "Judge algorithm suitability regarding: variables.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "g",
@@ -3312,12 +3312,12 @@
           "key": "h",
           "requirement": "Judge algorithm suitability regarding: presentation.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "i",
@@ -3361,12 +3361,12 @@
           "key": "c",
           "requirement": "Understand robust handling of: specific meaningful error messages.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         }
       ]
     },
@@ -3377,23 +3377,23 @@
           "key": "a",
           "requirement": "Understand debugging process and when used: locating errors.",
           "status": "active",
-          "live_question_count": 1,
+          "live_question_count": 2,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "needs_more_questions"
+          "coverage_status": "awaiting_review"
         },
         {
           "key": "b",
           "requirement": "Understand debugging process and when used: correcting errors.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
-          "practice_question_count": 1,
+          "practice_question_count": 2,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -3404,12 +3404,12 @@
           "key": "a",
           "requirement": "Explain the role of debugging in robustness.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -3501,34 +3501,34 @@
           "key": "a",
           "requirement": "How the algorithm works: bubble sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
           "requirement": "When to use: bubble sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "How the algorithm works: insertion sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "practice_only"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
@@ -3572,34 +3572,34 @@
           "key": "a",
           "requirement": "Benefit: linear search.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
           "requirement": "Drawback: linear search.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "Benefit: binary search.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
@@ -3616,67 +3616,67 @@
           "key": "e",
           "requirement": "Benefit: bubble sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "f",
           "requirement": "Drawback: bubble sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "g",
           "requirement": "Benefit: insertion sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "h",
           "requirement": "Drawback: insertion sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "i",
           "requirement": "Benefit: merge sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "j",
           "requirement": "Drawback: merge sort.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -3747,12 +3747,12 @@
           "key": "c",
           "requirement": "Reason about common algorithms without Big O: average case.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -3795,56 +3795,56 @@
           "key": "a",
           "requirement": "Reasons to test the component before final integration: software.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",
           "requirement": "Reasons to test the component before final integration: hardware.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "Reasons to test the component before final integration: data.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
           "requirement": "Reasons to test the component before final integration: interfaces.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "e",
           "requirement": "Reasons to test the component before final integration: resulting service.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -3866,34 +3866,34 @@
           "key": "b",
           "requirement": "Purpose and appropriate use: concept.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
           "requirement": "Benefit: concept.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "d",
           "requirement": "Drawback: concept.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "e",
@@ -3910,34 +3910,34 @@
           "key": "f",
           "requirement": "Purpose and appropriate use: unit.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "g",
           "requirement": "Benefit: unit.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "h",
           "requirement": "Drawback: unit.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "i",
@@ -3954,34 +3954,34 @@
           "key": "j",
           "requirement": "Purpose and appropriate use: boundary.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "k",
           "requirement": "Benefit: boundary.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "l",
           "requirement": "Drawback: boundary.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "m",
@@ -3998,34 +3998,34 @@
           "key": "n",
           "requirement": "Purpose and appropriate use: integration.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "o",
           "requirement": "Benefit: integration.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "p",
           "requirement": "Drawback: integration.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "q",
@@ -4042,34 +4042,34 @@
           "key": "r",
           "requirement": "Purpose and appropriate use: performance.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "s",
           "requirement": "Benefit: performance.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "t",
           "requirement": "Drawback: performance.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "u",
@@ -4086,34 +4086,34 @@
           "key": "v",
           "requirement": "Purpose and appropriate use: system.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "w",
           "requirement": "Benefit: system.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "x",
           "requirement": "Drawback: system.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "y",
@@ -4130,34 +4130,34 @@
           "key": "z",
           "requirement": "Purpose and appropriate use: acceptance.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "aa",
           "requirement": "Benefit: acceptance.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ab",
           "requirement": "Drawback: acceptance.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ac",
@@ -4174,34 +4174,34 @@
           "key": "ad",
           "requirement": "Purpose and appropriate use: usability.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ae",
           "requirement": "Benefit: usability.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "af",
           "requirement": "Drawback: usability.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ag",
@@ -4218,34 +4218,34 @@
           "key": "ah",
           "requirement": "Purpose and appropriate use: regression.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ai",
           "requirement": "Benefit: regression.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "aj",
           "requirement": "Drawback: regression.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ak",
@@ -4262,34 +4262,34 @@
           "key": "al",
           "requirement": "Purpose and appropriate use: load/stress.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "am",
           "requirement": "Benefit: load/stress.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "an",
           "requirement": "Drawback: load/stress.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ao",
@@ -4306,34 +4306,34 @@
           "key": "ap",
           "requirement": "Purpose and appropriate use: closed box.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "aq",
           "requirement": "Benefit: closed box.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "ar",
           "requirement": "Drawback: closed box.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "as",
@@ -4350,34 +4350,34 @@
           "key": "at",
           "requirement": "Purpose and appropriate use: open box.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "au",
           "requirement": "Benefit: open box.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "av",
           "requirement": "Drawback: open box.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -4390,10 +4390,10 @@
           "status": "active",
           "live_question_count": 0,
           "question_count": 0,
-          "practice_question_count": 0,
+          "practice_question_count": 1,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "practice_only"
         }
       ]
     },
@@ -4453,12 +4453,12 @@
           "key": "b",
           "requirement": "Purpose and appropriate use: valid.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "c",
@@ -4475,12 +4475,12 @@
           "key": "d",
           "requirement": "Purpose and appropriate use: invalid.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "e",
@@ -4497,34 +4497,34 @@
           "key": "f",
           "requirement": "Purpose and appropriate use: boundary.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "g",
           "requirement": "Definition: erroneous.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "h",
           "requirement": "Purpose and appropriate use: erroneous.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         }
       ]
     },
@@ -4551,12 +4551,12 @@
           "key": "a",
           "requirement": "Understand test-plan step and when used: identifying tests.",
           "status": "active",
-          "live_question_count": 0,
+          "live_question_count": 1,
           "question_count": 0,
           "practice_question_count": 0,
           "draft_question_count": 0,
           "insufficient_variations_count": 0,
-          "coverage_status": "uncovered"
+          "coverage_status": "needs_more_questions"
         },
         {
           "key": "b",

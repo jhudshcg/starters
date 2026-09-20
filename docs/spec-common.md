@@ -16,7 +16,7 @@ Static GitHub Pages SPA for 16–18-year-old year 1 students. Activities take 5�
 | Set | An ordered group of specific question variations |
 | Attempt | One started activity, ending in submission, expiry or abandonment |
 
-Questions may have several tags. **Proposal:** a set has one primary focus; each part also has one reporting focus to avoid counting its marks several times in revision calculations. Other tags remain searchable.
+Questions may have several tags. A set has one primary focus. Exam parts report against their distinct coverage references; a part with several references divides its earned and available marks equally between them. Programming parts report against the named programming focus. Other tags remain searchable.
 
 ## Data contract
 
@@ -100,7 +100,15 @@ Persist a versioned local record with attempt ID, activity kind, code, content r
 
 Views: sortable attempt table, score-over-time chart with equivalent table, type/focus/date filters and revision priorities. Date boundaries use the student's local date. Puzzles are excluded from revision priorities; their history remains visible. This interprets the incomplete sentence about puzzles in AGENTS.md.
 
-**Proposal:** for each non-puzzle reporting focus, use the latest five submitted attempts with at least one eligible first response. For each part, take its first check, or submission if never checked; exclude that part if a hint or answer had already been shown at that moment. Calculate earned marks divided by available marks across eligible parts. Lowest percentage comes first, with sample count shown; fewer than three attempts is labelled “Limited evidence”. Keep unattempted focuses separate. Filters apply to the evidence window before selecting the latest five.
+**Implemented detailed tracking:** new exam and programming attempts save optional `partScores`, containing question slot/variation, part ID, distinct reporting references, final earned/available marks and unassisted first-response earned/available marks. A question assisted before its first check contributes zero first-response earned and available marks, retaining the existing question-level assistance rule. Puzzle attempts have no detailed-priority contribution.
+
+Only records containing `partScores` contribute to revision priorities. Earlier aggregate-only results remain unchanged in history, charts, summary statistics, exports and repeat-attempt checks. There is no migration, historical allocation, cutoff date or “migration completed” flag. A completed older attempt remains aggregate-only when reopened; an unfinished attempt submitted under the new code receives detailed scores.
+
+After applying history filters, select the latest five eligible detailed attempts with nonzero first-response available marks per broad topic or programming focus. Both priority views use this **same parent-level window**. Topic scores count each part once; exam-subtopic scores divide each part's earned and available marks equally across its distinct references (multiple subelement letters or repeated links do not multiply its credit). Sum marks before calculating percentages; round only display values. Do not add child totals to parent totals. Programming remains a named-focus measure because its tags are not authored part-level CA mappings.
+
+The priorities view switches between Topic / programming focus and Exam subtopic, shows assessed marks and contributing attempts, and labels fewer than three attempts or fewer than ten assessed marks “Limited evidence”. The note explains that earlier results remain in history without contributing to priorities. A narrow subtopic with no evidence in the selected parent window has no rating.
+
+JSON backups retain `partScores` as recorded rather than re-deriving mappings from today's bank. Import accepts absent legacy detail but rejects malformed detail, duplicate part identities/references, invalid question coordinates, references outside the parent focus, invalid marks and totals inconsistent with the aggregate record. All validation finishes before writing history. CSV adds first-response totals and a quoted JSON `partScores` column; full restoration continues to use JSON backups.
 
 **Proposal:** CSV schema v1 uses one row per attempt, with fixed scalar columns plus quoted JSON cells for part results and timing events. Use a maintained CSV parser/writer; support commas, quotes, Unicode and newlines. Export enough metadata to preserve focus results even if questions later change. Exclude raw student answer text from exports by default.
 
@@ -113,3 +121,19 @@ Encourage download to student OneDrive; import uses a standard file picker. No d
 Progress is recorded only when an attempt starts at least four hours after the most recent completion of that exact set. Students may practise sooner with a notice and an untracked result; those results do not enter charts, averages or revision priorities. Every completion, including untracked practice, updates the last-practice date. Timer suffixes and question order are ignored for this comparison; different variations remain distinct sets. Eligibility is fixed at the start of the attempt. JSON backups include recent-practice dates as well as tracked results; legacy backups remain accepted. Reloading and resubmitting a completed attempt does not create a new completion or move the gap.
 
 Production build details and the client-side obfuscation boundary are documented in README.md. Display data, marking data and reveal text are separate; ordinary checking must not decode model explanations. The agreed compatibility policy uses content fingerprints: earlier codes remain valid if all contained variations are unchanged. Altered/removed questions produce a specific update message. Content revision 3 records this editorial update without changing the encoding layout; documentation edits and rebuilds do not change it. See README.md for the codes:update workflow.
+
+## Shared-code diagnostics and regression checks (20 September 2026)
+
+The footer identifies the loaded application asset and bank revision. Since production app and bank assets have content-based filenames, the application filename distinguishes builds even when additions retain the same question revision. A malformed, unsupported or unavailable code entered through either form, or a failing shared link, offers Copy error details. This explicitly copied report includes the entered string and Unicode character values, decoded code fields where possible, the error, build, bank revision, page origin/path and browser identification. It excludes answers, progress history, local storage and URL query strings. It is not sent anywhere automatically.
+
+The encoding remains the existing eight-character, case-sensitive, 48-bit format with an optional timer suffix. No automatic case changes or lookalike-character substitutions are made. Sharing tests exercise actual activity-start and copy-button handlers, open the resulting code in another browser context without shared storage, and compare the displayed questions. They also cover timers, single-question codes, shared links, malformed-input diagnostics and the existing compatibility tests. Copy-button tests capture the exact clipboard-write argument; they do not access the operating-system clipboard.
+
+`scripts/audit-shared-codes.mjs` extracts the saved 14 September commit `45cc13e` into a temporary directory, tests its own encoder/resolver and bank, then audits the current bank. It leaves the working checkout unchanged. Passing these checks does not identify the earlier classroom failure or prove that this commit was the deployed classroom release. The exact failing code, error and loaded release remain unknown.
+
+## Student issue reports
+
+One footer button is available on every page. On an activity page, students choose Bug or Content issue; content reports require one or more items selected from the current set. Elsewhere the form offers Bug. A description is required, with a 1,500-character limit. Closing the dialog preserves the activity; its timer continues normally.
+
+A preview includes the description, selected item numbers/titles/exact question codes, current set code when visible, page link, build/bank identifier, browser and report time. Bug reports also include any currently visible code-entry diagnostics. Saved history and answers are not collected. The recipient stays blank: students address the draft to their teacher.
+
+Open email draft uses a percent-encoded mailto subject/body with CRLF line endings. The student reviews and sends through their configured email app; the site neither sends nor claims delivery. Copy report provides a fallback for missing email handlers or client URL-length limits; if clipboard access fails, the preview is selected for manual copying. No server, reporting account or new dependency is required.

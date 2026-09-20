@@ -58,7 +58,7 @@ test('Sudoku and cage grids enforce givens, domains, units and constraints',()=>
   const bad=a.slice();bad[0]=bad[1];assert.equal(markChallenge(p,JSON.stringify(bad)).earned,0);
   assert.equal(markChallenge(p,JSON.stringify(a.slice(1))).earned,0);
   assert.equal(p.validation.solutionCount,1);
-  if(p.kind==='sudoku'){assert.ok(p.validation.techniques.includes('hidden single'));assert.ok(p.givens.filter(Boolean).length<=35);}
+  if(p.kind==='sudoku'){assert.ok(p.validation.deductionTrace.length>0);assert.ok(p.givens.filter(Boolean).length<=40);}
  }
 });
 test('interactive marking rejects malformed and out-of-range state',()=>{

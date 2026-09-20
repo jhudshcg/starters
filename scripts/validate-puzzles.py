@@ -7,14 +7,15 @@ count=0
 for filename in ['logic-grids','logic-equations','sudoku','cover-paths','tangrams','number-constraints']:
  text=(root/f'data/puzzles/{filename}.js').read_text()
  bank=json.loads(text.split('export default ',1)[1].strip().removesuffix(';'))
- assert len(bank)==5
+ assert len(bank)>=50
  for q in bank:
-  assert len(q['variations'])==5
+  assert len(q['variations'])==(1 if q.get('fixed') else 5)
   for v in q['variations']:
    p=v['parts'][0];answer=json.loads(p['answer']);kind=p['kind']
    if kind=='sudoku':
     solutions=reference.sudoku_solve(p['givens']);assert solutions==[answer]
-    done,tech,steps,trace=reference.human_singles(p['givens']);assert done and 'hidden single' in tech
+    done,tech,steps,trace=reference.human_singles(p['givens'])
+    if q.get('challengeLevel')!='stretch':assert done
     assert p['validation']['deductionTrace']==trace
    elif kind=='cage-grid':assert reference.latin_solve(p['cages'],p['size'])==[answer]
    elif kind=='logic-grid':

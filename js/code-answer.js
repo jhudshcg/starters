@@ -3,7 +3,7 @@
 export function codeTokens(input) {
   const source = String(input).trim();
   if (!source || /[\r\n]/.test(source)) return null;
-  const token = /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|[A-Za-z_]\w*|\d+(?:\.\d+)?|\*\*|\/\/|==|!=|<=|>=|\+=|-=|\*=|\/=|[+\-*\/%<>=()[\]{},:])/y;
+  const token = /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|[A-Za-z_]\w*|\d+(?:\.\d+)?|\*\*=|\/\/=|\*\*|\/\/|==|!=|<=|>=|\+=|-=|\*=|\/=|[.+\-*\/%<>=()[\]{},:])/y;
   const result=[];
   let position=0;
   while (position<source.length) {

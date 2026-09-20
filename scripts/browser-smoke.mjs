@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import {encode} from '../js/codes.js';
-import {choose,resolve} from '../js/bank.js';
+import {choose,resolve,banks} from '../js/bank.js';
 const endpoint=process.env.STARTERS_DEBUG_URL??'http://127.0.0.1:9227';
 const base=process.env.STARTERS_PREVIEW_URL??'http://127.0.0.1:8765';
 const pages=await (await fetch(endpoint+'/json/list')).json();
@@ -19,7 +19,7 @@ async function click(selector){await evaluate(`document.querySelector(${JSON.str
 async function screenshot(name){const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/starters-${name}.png`,Buffer.from(r.data,'base64'));}
 async function openFocus(type,focus,count=1){
  await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
- const set=choose(type,focus);
+ const set=type===1&&focus==='CA2.7'?resolve({...choose(type,focus),entries:[31,32,33].map(slot=>({slot,variation:0}))}):choose(type,focus);
  const code=(type===0?resolve({...set,entries:set.entries.slice(0,count)}):set).code;
  await evaluate(`document.querySelector('#code-form input').value=${JSON.stringify(code)};document.querySelector('#code-form').requestSubmit()`);
  await until(`Boolean(document.querySelector('dialog')) || document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
@@ -37,12 +37,63 @@ try{
  assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
  assert.deepEqual(await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)'),[],'Fresh home must not download banks');
  await openFocus(1,'CA2.1');assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
+ // Reports use one global button, preserve the attempt and select multiple exact items.
+ assert.equal(await evaluate('document.querySelectorAll("#report-issue").length'),1);
+ const beforeReport=await evaluate('localStorage.getItem("dsd-starters-v1")');
+ await click('#report-issue');
+ await evaluate('document.querySelector("#report-kind").value="content";document.querySelector("#report-kind").dispatchEvent(new Event("change"));document.querySelector("#report-description").value="Answer & marking unclear? π";document.querySelector("#report-description").dispatchEvent(new Event("input"))');
+ await click('#issue-report button[value="copy"]');
+ assert.match(await evaluate('document.querySelector("#report-error").textContent'),/Select at least one/);
+ await evaluate('Object.defineProperty(navigator,"clipboard",{configurable:true,value:{writeText:async text=>{window.reportCopy=text;}}});document.querySelectorAll("#report-items input")[0].click();document.querySelectorAll("#report-items input")[2].click()');
+ await click('#issue-report button[value="copy"]');
+ await until('Boolean(window.reportCopy)');
+ const report=await evaluate('window.reportCopy');
+ const reportSet=resolve(await evaluate('document.querySelector("#display-code").textContent'));
+ assert.ok(report.includes(reportSet.questions[0].title));assert.ok(report.includes(reportSet.questions[2].title));assert.ok(!report.includes(reportSet.questions[1].title));
+ assert.match(report,/Answer & marking unclear\? π/);
+ await evaluate('Object.defineProperty(navigator,"clipboard",{configurable:true,value:{writeText:async()=>{throw Error("denied");}}})');
+ await click('#issue-report button[value="copy"]');
+ await until('document.querySelector("#report-status").textContent.includes("selected preview")');
+ assert.equal(await evaluate('document.activeElement.id'),'report-preview');
+ await send('Emulation.setDeviceMetricsOverride',{width:320,height:800,deviceScaleFactor:1,mobile:false});
+ assert.ok(await evaluate('document.querySelector("#issue-report").scrollWidth<=document.querySelector("#issue-report").clientWidth+1'));
+ await click('#report-close');await until('!document.querySelector("#issue-report")');
+ assert.equal(await evaluate('localStorage.getItem("dsd-starters-v1")'),beforeReport);
+ await click('#nav-home');await until('Boolean(document.querySelector("#code-form"))');
+ await click('#report-issue');
+ assert.equal(await evaluate('document.querySelector("#report-kind").options.length'),1);
+ assert.ok(!(await evaluate('document.querySelector("#report-preview").value')).includes('Set:'));
+ await click('#report-close');await until('!document.querySelector("#issue-report")');
+ await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
+ await openFocus(1,'CA2.1');
  const downloadedBanks=await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)');
  assert.equal(downloadedBanks.length,1);assert.match(downloadedBanks[0],/\/banks\/exam-[a-f0-9]+\.txt$/);
  assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),15);
  const examQuestions=resolve(await evaluate('document.querySelector("#display-code").textContent')).questions;
  await evaluate(`for(const q of ${JSON.stringify(examQuestions)})for(const p of q.parts){const elements=[...document.querySelectorAll('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]')];const el=elements.find(el=>el.type!=='radio'||el.value===p.answer);if(el.type==='radio'){el.checked=true;el.dispatchEvent(new Event('change',{bubbles:true}));}else{el.value=p.answer;el.dispatchEvent(new Event('input',{bubbles:true}));}}`);
  await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));await screenshot('exam-expanded');
+ // New history stores part evidence; legacy imports remain visible without affecting priorities.
+ const detailed=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.at(-1)');
+ assert.equal(detailed.partScores.length,15);
+ assert.equal(detailed.partScores.reduce((sum,p)=>sum+p.firstMax,0),15);
+ assert.ok(detailed.partScores.every(p=>p.refs.includes('CA2.1.1')));
+ await click('#nav-progress');await until('Boolean(document.querySelector("#priority-level"))');
+ assert.equal(await evaluate('document.querySelector(".priority-row meter").value'),100);
+ await evaluate('document.querySelector("#priority-level").value="subtopic";document.querySelector("#priority-level").dispatchEvent(new Event("change"))');
+ assert.ok(await evaluate('document.querySelector(".priority-row").textContent.includes("CA2.1.1")'));
+ assert.ok(await evaluate('document.querySelector(".priority-row").textContent.includes("15 marks assessed")'));
+ const legacyAggregate={...detailed,id:'legacy-aggregate',finished:detailed.finished-6*3600000,earned:0,percentage:0,firstEarned:0};delete legacyAggregate.partScores;
+ const backup={schema:1,history:[detailed,legacyAggregate]};
+ await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify(${JSON.stringify(backup)})],"mixed-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
+ await until('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.length===2');
+ assert.equal(await evaluate('document.querySelector(".priority-row meter").value'),100);
+ assert.deepEqual(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.find(r=>r.id==='+JSON.stringify(detailed.id)+').partScores'),detailed.partScores);
+ const invalid={...detailed,id:'invalid-parts',partScores:detailed.partScores.map((p,i)=>i? p:{...p,refs:[]})};
+ await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify({schema:1,history:[${JSON.stringify(invalid)}]})],"invalid-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
+ await until('document.querySelector("#toast").textContent.includes("invalid part scores")');
+ assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.length'),2);
+ await screenshot('subtopic-progress');
+ await evaluate(`location.hash='#set='+${JSON.stringify(detailed.code)}`);await until('Boolean(document.querySelector("#submit"))');await click('#submit');
  // Review gates reset on reload, guard handlers, and preserve recorded attempts.
  await click('[data-reveal]');assert.equal(await evaluate('document.querySelectorAll(".solution").length'),1);
  const historyBefore=await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)');
@@ -182,7 +233,7 @@ try{
  // Historical results remain importable even when the old question code is stale.
  await click('#nav-progress');await until('Boolean(document.querySelector("#backup-file"))');
  const legacyResult={id:'legacy-changed-question',code:'BIAkAiAg',type:1,focus:'CA1.1',max:15,earned:9,percentage:60,firstMax:15,firstEarned:9,attemptChecks:3,assisted:false,outcome:'submitted',seconds:180,finished:Date.now()-6*3600000};
- await evaluate(`const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify(${JSON.stringify({schema:1,history:[legacyResult]})})],"old-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));`);
+ await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify(${JSON.stringify({schema:1,history:[legacyResult]})})],"old-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
  await until('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.some(r=>r.id==="legacy-changed-question")');
  await evaluate('document.querySelector("#global-code").value="BAyD_x_4";document.querySelector("#global-code-form").requestSubmit()');
  await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
@@ -192,5 +243,126 @@ try{
  await until('document.querySelector("#display-code")?.textContent!=="BAyD_x_4"');
  assert.ok(await evaluate('document.querySelector(".question").textContent.includes("PZ-3-100-")'));
 
- assert.deepEqual(errors,[]);console.log('Browser smoke passed: legacy/current codes and historical imports, rotated encoded production banks, four-hour repeat tracking, submission gating, global code entry, exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
-} finally {ws.close();}
+ // Select a fine reference while retaining all parts and related-question context.
+ await openFocus(1,'CA1.2');
+ const unfiltered=await evaluate('document.querySelector("#display-code").textContent');
+ await evaluate('document.querySelector("#subtopic").value="CA1.2.3";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
+ await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="stay"]');
+ await until('!document.querySelector("dialog")&&document.querySelector("#subtopic")?.value==="all"');
+ assert.equal(await evaluate('document.querySelector("#display-code").textContent'),unfiltered);
+ await evaluate('document.querySelector("#subtopic").value="CA1.2.3";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
+ await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await until('document.querySelector("#subtopic")?.value==="CA1.2.3"&&!document.querySelector("dialog")');
+ assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
+ assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
+ assert.ok(await evaluate('document.querySelector(".subtopic-notice").textContent.includes("2 of 3")'));
+ assert.equal(await evaluate('[...document.querySelectorAll(".subtopic-context")].filter(p=>p.textContent.includes("Related practice")).length'),1);
+ const filtered=resolve(await evaluate('document.querySelector("#display-code").textContent'));
+ assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),filtered.questions.reduce((sum,q)=>sum+q.parts.length,0));
+ await send('Page.reload');await until('document.querySelector("#subtopic")?.value==="CA1.2.3"');
+ await click('#permutation');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await until(`document.querySelector('#display-code')?.textContent!==${JSON.stringify(filtered.code)}&&!document.querySelector('dialog')`);
+ assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
+ const permuted=resolve(await evaluate('document.querySelector("#display-code").textContent'));
+ assert.deepEqual(permuted.entries.map(e=>e.slot),filtered.entries.map(e=>e.slot));
+ await click('#new-focus');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await until(`document.querySelector('#display-code')?.textContent!==${JSON.stringify(permuted.code)}&&!document.querySelector('dialog')`);
+ assert.equal(await evaluate('document.querySelector("#subtopic").value'),'CA1.2.3');
+ assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
+ await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
+ assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Subtopic controls cause overflow');
+ await screenshot('exam-subtopic-mobile');
+ await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
+ await evaluate('document.querySelector("#focus").value="CA2.1";document.querySelector("#focus").dispatchEvent(new Event("change"))');
+ await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+ await until('document.querySelector("#focus")?.value==="CA2.1"&&!document.querySelector("dialog")');
+ assert.equal(await evaluate('document.querySelector("#subtopic").value'),'all');
+ // Challenge filters preserve the activity on cancel and constrain all new sets.
+ await openFocus(0,'logic grids',3);
+ const beforeFilter=await evaluate('document.querySelector("#display-code").textContent');
+ const beforeLevel=await evaluate('document.querySelector("#challenge-level").value');
+ await evaluate('document.querySelector("#challenge-level").value="foundation";document.querySelector("#challenge-level").dispatchEvent(new Event("change"))');
+ await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="stay"]');
+ await until(`!document.querySelector('dialog')&&document.querySelector('#challenge-level')?.value===${JSON.stringify(beforeLevel)}`);
+ assert.equal(await evaluate('document.querySelector("#display-code").textContent'),beforeFilter);
+ for(const level of ['foundation','stretch']){
+  await evaluate(`document.querySelector('#challenge-level').value=${JSON.stringify(level)};document.querySelector('#challenge-level').dispatchEvent(new Event('change'))`);
+  await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+  await until(`document.querySelector('#challenge-level')?.value===${JSON.stringify(level)}&&!document.querySelector('dialog')`);
+  let current=resolve(await evaluate('document.querySelector("#display-code").textContent'));
+  assert.ok(current.questions.every(q=>q.challengeLevel===level));
+  const oldCode=current.code;await click('#new-focus');await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="leave"]');
+  await until(`document.querySelector('#display-code').textContent!==${JSON.stringify(oldCode)}`);
+  current=resolve(await evaluate('document.querySelector("#display-code").textContent'));
+  assert.ok(current.questions.every(q=>q.challengeLevel===level));
+ }
+ await send('Page.reload');await until('document.querySelector("#challenge-level")?.value==="stretch"');
+ await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
+ assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Challenge selector causes whole-page overflow');
+ await screenshot('challenge-filter-mobile');
+ // A shared code overrides the filter and still opens the exact original questions.
+ await openFocus(0,'classic maths',3);
+ const shared=resolve(await evaluate('document.querySelector("#display-code").textContent'));
+ assert.equal(shared.questions.length,3);
+ await openFocus(2,'validation');assert.equal(await evaluate('document.querySelectorAll(".question").length'),2);
+ await openFocus(2,'arrays');assert.equal(await evaluate('document.querySelectorAll(".question").length'),2);
+ // Generate through the interface, copy through its buttons, and open in a
+ // separate browser context with no shared local storage or loaded bank.
+ const browserInfo=await (await fetch(endpoint+'/json/version')).json();
+ const controlSocket=new WebSocket(browserInfo.webSocketDebuggerUrl);
+ await new Promise((resolve,reject)=>{controlSocket.onopen=resolve;controlSocket.onerror=reject;});
+ let controlId=0;const controlPending=new Map();
+ controlSocket.onmessage=e=>{const message=JSON.parse(e.data);if(message.id){const task=controlPending.get(message.id);controlPending.delete(message.id);message.error?task.reject(Error(message.error.message)):task.resolve(message.result);}};
+ const controlSend=(method,params={})=>new Promise((resolve,reject)=>{const id=++controlId;controlPending.set(id,{resolve,reject});controlSocket.send(JSON.stringify({id,method,params}));});
+ const {browserContextId}=await controlSend('Target.createBrowserContext');
+ let peerSocket;
+ try{
+  const {targetId}=await controlSend('Target.createTarget',{url:'about:blank',browserContextId});
+  const peers=await (await fetch(endpoint+'/json/list')).json();
+  peerSocket=new WebSocket(peers.find(p=>p.id===targetId).webSocketDebuggerUrl);
+  await new Promise((resolve,reject)=>{peerSocket.onopen=resolve;peerSocket.onerror=reject;});
+  let peerId=0;const peerPending=new Map();
+  peerSocket.onmessage=e=>{const message=JSON.parse(e.data);if(message.id){const task=peerPending.get(message.id);peerPending.delete(message.id);message.error?task.reject(Error(message.error.message)):task.resolve(message.result);}};
+  const peerSend=(method,params={})=>new Promise((resolve,reject)=>{const id=++peerId;peerPending.set(id,{resolve,reject});peerSocket.send(JSON.stringify({id,method,params}));});
+  const peerEval=async expression=>{const result=await peerSend('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(result.exceptionDetails)throw Error(JSON.stringify(result.exceptionDetails));return result.result.value;};
+  const peerUntil=async expression=>{for(let i=0;i<100;i++){if(await peerEval(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Peer timed out: '+expression);};
+  async function peerOpen(code,global=false){
+   await peerEval(`{const form=document.querySelector(${JSON.stringify(global?'#global-code-form':'#code-form')});form.querySelector('input').value=${JSON.stringify(code)};form.requestSubmit();}`);
+   await peerUntil(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}||Boolean(document.querySelector('dialog'))`);
+   if(await peerEval('Boolean(document.querySelector("dialog"))'))await peerEval('document.querySelector("dialog button[value=leave]").click()');
+   await peerUntil(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}&&!document.querySelector('dialog')`);
+  }
+  await peerSend('Page.enable');
+  for(const type of [0,1,2]){
+   await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
+   await click(`[data-start="${type}"]`);await until('Boolean(document.querySelector("dialog"))||Boolean(document.querySelector("#display-code"))');
+   if(await evaluate('Boolean(document.querySelector("dialog"))'))await click('dialog button[value="leave"]');
+   await until('Boolean(document.querySelector("#display-code"))&&!document.querySelector("dialog")');
+   // Capture the exact strings passed by the copy buttons without touching the OS clipboard.
+   await evaluate('Object.defineProperty(navigator,"clipboard",{configurable:true,value:{writeText:async text=>{window.copiedForTest=text;}}})');
+   await click('#copy-code');const copied=await evaluate('window.copiedForTest');
+   assert.equal(copied,await evaluate('document.querySelector("#display-code").textContent'));
+   await peerSend('Page.navigate',{url:base+'/#home'});await peerUntil('Boolean(document.querySelector("#code-form"))');
+   if(type===0)assert.equal(await peerEval('localStorage.getItem("dsd-starters-v1")'),null);
+   await peerOpen(copied);
+   assert.deepEqual(await peerEval('[...document.querySelectorAll(".question")].map(q=>q.dataset.question)'),await evaluate('[...document.querySelectorAll(".question")].map(q=>q.dataset.question)'));
+   assert.equal(await peerEval('document.querySelector(".questions").textContent'),await evaluate('document.querySelector(".questions").textContent'));
+   await evaluate('document.querySelector("#minutes").value="10"');await click('#timer-toggle');await click('#copy-code');
+   const timed=await evaluate('window.copiedForTest');assert.equal(timed.length,9);await peerOpen(timed,true);
+   assert.ok(await peerEval('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline>Date.now()'));
+   const current=resolve(timed),single=encode({...current,minutes:null,entries:[current.entries[0]]});await peerOpen(single,true);
+   assert.equal(await peerEval('document.querySelectorAll(".question").length'),1);
+   await click('#copy-link');const link=await evaluate('window.copiedForTest');assert.ok(link.endsWith('#set='+timed));
+   await peerSend('Page.navigate',{url:link});await peerUntil('Boolean(document.querySelector("dialog"))||document.querySelector("#display-code")?.textContent==='+JSON.stringify(timed));
+   if(await peerEval('Boolean(document.querySelector("dialog"))'))await peerEval('document.querySelector("dialog button[value=leave]").click()');
+   await peerUntil('document.querySelector("#display-code")?.textContent==='+JSON.stringify(timed));
+  }
+  await evaluate('document.querySelector("#global-code").value="bad";document.querySelector("#global-code-form").requestSubmit()');
+  await until('Boolean(document.querySelector("#global-code-error .code-diagnostics"))');
+  await click('#global-code-error .code-diagnostics');
+  const diagnostics=JSON.parse(await evaluate('window.copiedForTest'));
+  assert.equal(diagnostics.enteredCode,'bad');assert.match(diagnostics.build,/app-[A-Z0-9]+.js/);assert.ok(!('history' in diagnostics));
+  assert.ok(await evaluate('document.querySelector("#build-info").textContent.includes("bank 3")'));
+ }finally{peerSocket?.close();await controlSend('Target.disposeBrowserContext',{browserContextId});controlSocket.close();}
+ assert.deepEqual(errors,[]);console.log('Browser smoke passed: whole-question subtopic filtering/cancel/reload/mobile, UI-generated codes and links in an independent browser context, error diagnostics, detailed topic/subtopic priorities and mixed/invalid backup imports, challenge filtering/cancellation/reload/mobile, arrays and validation, legacy/current codes and historical imports, rotated encoded production banks, four-hour repeat tracking, submission gating, global code entry, exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
+} catch(error) {console.error('Browser state:',await evaluate(`({hash:location.hash,level:document.querySelector('#challenge-level')?.value,toast:document.querySelector('#toast')?.textContent,dialog:document.querySelector('dialog')?.textContent})`));throw error;} finally {ws.close();}

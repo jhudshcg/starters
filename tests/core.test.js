@@ -67,6 +67,9 @@ test('all published question combinations meet mark limits',()=>{
   const size=type===0?1:type===1?3:2;
   function check(start,group){
    if(group.length===size){
+    if(type===2&&new Set(group.map(q=>q.format)).size!==2){
+     assert.throws(()=>resolve({version:BANK_VERSION,type,entries:group.map(q=>({slot:q.slot,variation:0})),minutes:null}),/different aspects/);return;
+    }
     for(let seed=0;seed<8;seed++) {
      const set=resolve({version:BANK_VERSION,type,entries:group.map(q=>({slot:q.slot,variation:seed%q.variations.length})),minutes:null});
      assert.ok(set.total>0);
@@ -86,8 +89,8 @@ test('deadlines survive reload and background time; submission deduplicates',()=
  const h=appendAttempt([],{id:'same'});assert.equal(appendAttempt(h,{id:'same'}).length,1);
 });
 test('revision priorities exclude puzzles and assisted first responses',()=>{
- const rows=[{type:0,focus:'spatial',firstEarned:0,firstMax:4,finished:3},{type:2,focus:'iteration',firstEarned:3,firstMax:6,finished:2},{type:2,focus:'selection',firstEarned:0,firstMax:0,finished:1}];
- assert.deepEqual(priorities(rows),[{focus:'iteration',count:1,score:50}]);
+ const rows=[{type:0,focus:'spatial',firstEarned:0,firstMax:4,finished:3},{type:2,focus:'iteration',firstEarned:3,firstMax:6,finished:2,partScores:[{refs:['iteration'],firstEarned:3,firstMax:6}]},{type:2,focus:'selection',firstEarned:0,firstMax:0,finished:1}];
+ assert.deepEqual(priorities(rows),[{focus:'iteration',count:1,earned:3,max:6,score:50}]);
 });
 test('CSV quotes values and protects spreadsheet formula prefixes',()=>{
  const csv=exportCSV([{id:'=1+1',focus:'commas, "quotes"',finished:0}]);

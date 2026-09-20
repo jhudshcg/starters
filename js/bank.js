@@ -1,3 +1,5 @@
+import {matchingVariations,subtopicOptions,preferSubtopic} from './exam-selection.js';
+export {matchesSubtopic} from './exam-selection.js';
 import {revisions,revisionDetails} from './code-compatibility.js';
 import {banks,ensureBank} from './bank-data.js';
 export {banks,ensureBank};
@@ -14,9 +16,14 @@ export const types = [
   {name:'Programming', icon:'</>', description:'Trace, complete and fix Python. One small challenge at a time.', label:'Read. Reason. Code.', minutes:10}
 ];
 export const focusNames = {iteration:'Iteration',selection:'Selection',functions:'Functions',algorithms:'Searching and sorting',go:'Go · life and death'};
+Object.assign(focusNames, Object.fromEntries(['validation','arrays','operators','data types','strings','lists','records','boolean logic','nested iteration','input output','robust code','testing','sorting','design','collections','code style'].map(f=>[f,f[0].toUpperCase()+f.slice(1)])));
 Object.assign(focusNames, {"CA1.1": "CA1.1 · Computational thinking", "CA1.2": "CA1.2 · Algorithmic design", "CA1.3": "CA1.3 · Problem-solving strategies", "CA2.1": "CA2.1 · Data types", "CA2.2": "CA2.2 · Variables and constants", "CA2.3": "CA2.3 · Data structures", "CA2.4": "CA2.4 · Operators", "CA2.5": "CA2.5 · Input and output", "CA2.6": "CA2.6 · Sequence, selection and iteration", "CA2.7": "CA2.7 · Functions and procedures", "CA2.8": "CA2.8 · Validation", "CA2.9": "CA2.9 · Design and code style", "CA2.10": "CA2.10 · Robust code", "CA2.11": "CA2.11 · Searching and sorting", "CA2.12": "CA2.12 · Testing"});
 Object.assign(focusNames, {"logic grids": "Logic grids", "logic equations": "Logic equations", "tangrams": "Tangram silhouettes", "cover paths": "Cover every dot", "sudoku": "Sudoku", "number constraints": "Arithmetic cages", "sequences": "Sequences", "classic maths": "Classic maths"});
+export const challengeLevels = {all:'Mixed challenge',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
+export const puzzlePool = (focus, level='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level));
+export const availableChallenges = focus => Object.keys(challengeLevels).filter(level=>puzzlePool(focus,level).length>=3);
 export const focuses = type => [...new Set(banks[type].map(q => q.focus))];
+export const examSubtopics = focus => subtopicOptions(banks[1],focus);
 export const marks = q => q.parts.reduce((a,p) => a+p.marks,0);
 
 // Historical scores can still be imported even when their questions were revised.
@@ -24,9 +31,9 @@ export const marks = q => q.parts.reduce((a,p) => a+p.marks,0);
 export function historicalSet(input) {
   const fields=typeof input==='string'?parseQuestionCode(input)??decode(input):input;
   const code=encode(fields),details=revisionDetails[fields.version];
-  if(!details)throw Error('Unsupported question-bank version.');
+  if(!details)throw Error(`Unsupported question-bank version ${fields.version}; this page has bank ${BANK_VERSION}. Check the code or reload the page.`);
   const entries=fields.entries.map(e=>details[`${fields.type}:${e.slot}:${e.variation}`]);
-  if(entries.some(e=>!e))throw Error('Unknown historical question.');
+  if(entries.some(e=>!e))throw Error('Unknown historical question: this page does not recognise a question or variation in that code. Check the copied code or reload the page.');
   const focus=entries[0][0],total=entries.reduce((sum,e)=>sum+e[1],0);
   if(entries.some(e=>e[0]!==focus))throw Error('Historical set mixes focuses.');
   if(entries.length!==1){
@@ -64,20 +71,42 @@ export function resolve(input) {
 }
 
 const pick = values => values[Math.floor(Math.random()*values.length)];
-export function choose(type, focus, previous = null, mode = 'new') {
-  if(mode==='permutation' && previous && previous.entries.some(e=>banks[type].find(q=>q.slot===e.slot)?.variations.length<2)) throw Error('This fixed problem has no variations. Choose another puzzle.');
-  if(mode==='permutation' && previous) return resolve({...previous, version:BANK_VERSION, entries:previous.entries.map(e=>({slot:e.slot,variation:pick(banks[type].find(q=>q.slot===e.slot).variations.map((_,i)=>i).filter(i=>i!==e.variation))}))});
-  const pool = banks[type].filter(q=>q.focus===focus&&!q.retired);
-  const size = type===2?2:3;
-  const combinations=[];
-  function build(start, entries) {
-    if(entries.length===size) { combinations.push(entries); return; }
-    for(let i=start;i<pool.length;i++) build(i+1,[...entries,pool[i]]);
+function candidateSets(type,focus,challengeLevel='all',subtopic='all') {
+  const pool=banks[type].filter(q=>q.focus===focus&&!q.retired&&(type!==0||challengeLevel==='all'||q.challengeLevel===challengeLevel));
+  const size=type===2?2:3,combinations=[];
+  function build(start,entries){
+    if(entries.length===size){
+      const total=entries.reduce((sum,q)=>sum+marks(q.variations[0]),0);
+      if(type===2&&(new Set(entries.map(q=>q.format)).size!==2||total<10||total>15)||type===1&&(total<15||total>22))return;
+      combinations.push(entries);return;
+    }
+    for(let i=start;i<pool.length;i++)build(i+1,[...entries,pool[i]]);
   }
   build(0,[]);
-  const eligible=combinations.filter(qs=> !previous || qs.map(q=>q.slot).join(',')!==previous.entries.map(e=>e.slot).join(','));
-  if(!eligible.length) throw Error('No other question combination is available in this focus yet. Use Get new permutation.');
-  return resolve({version:BANK_VERSION,type,entries:pick(eligible).map(q=>({slot:q.slot,variation:pick(q.variations.map((_,i)=>i))})),minutes:previous?.minutes??null});
+  return type===1?preferSubtopic(combinations,subtopic):combinations;
+}
+const slotsKey = entries => entries.map(e=>e.slot).sort((a,b)=>a-b).join(',');
+export function hasAlternativeExamSet(set,subtopic='all') {
+  return candidateSets(1,set.focus,'all',subtopic).some(qs=>slotsKey(qs)!==slotsKey(set.entries));
+}
+export function choose(type, focus, previous = null, mode = 'new', challengeLevel = 'all', subtopic = 'all') {
+  const variationPool=q=>{
+    const matching=type===1&&subtopic!=='all'?matchingVariations(q,subtopic):[];
+    return matching.length?matching:q.variations.map((_,i)=>i);
+  };
+  if(mode==='permutation'&&previous){
+    const entries=previous.entries.map(e=>{
+      const q=banks[type].find(q=>q.slot===e.slot),options=q?variationPool(q).filter(i=>i!==e.variation):[];
+      if(!options.length)throw Error('These questions have no other matching permutation. Choose a new set.');
+      return {slot:e.slot,variation:pick(options)};
+    });
+    return {...resolve({...previous,version:BANK_VERSION,entries}),examSubtopic:type===1?subtopic:'all'};
+  }
+  // Choose the best matching combinations before excluding the last set: never
+  // weaken the filter just to manufacture another combination.
+  const eligible=candidateSets(type,focus,challengeLevel,subtopic).filter(qs=>!previous||slotsKey(qs)!==slotsKey(previous.entries));
+  if(!eligible.length)throw Error('No other question combination matches this selection. Use Get new permutation.');
+  return {...resolve({version:BANK_VERSION,type,entries:pick(eligible).map(q=>({slot:q.slot,variation:pick(variationPool(q))})),minutes:previous?.minutes??null}),examSubtopic:type===1?subtopic:'all'};
 }
 
 export function validateBank() {

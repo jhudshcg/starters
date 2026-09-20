@@ -1,0 +1,2592 @@
+[
+  {
+    "slot": 12,
+    "variation": 0,
+    "code": "count = 3 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 3, -7 // 3, -7 % 3)",
+    "expressions": [
+      "count // size",
+      "count % size",
+      "count / size",
+      "2 ** 3",
+      "-7 // 3",
+      "-7 % 3"
+    ]
+  },
+  {
+    "slot": 12,
+    "variation": 1,
+    "code": "count = 4 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 4, -7 // 3, -7 % 3)",
+    "expressions": [
+      "count // size",
+      "count % size",
+      "count / size",
+      "2 ** 4",
+      "-7 // 3",
+      "-7 % 3"
+    ]
+  },
+  {
+    "slot": 12,
+    "variation": 2,
+    "code": "count = 5 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 5, -7 // 3, -7 % 3)",
+    "expressions": [
+      "count // size",
+      "count % size",
+      "count / size",
+      "2 ** 5",
+      "-7 // 3",
+      "-7 % 3"
+    ]
+  },
+  {
+    "slot": 12,
+    "variation": 3,
+    "code": "count = 6 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 6, -7 // 3, -7 % 3)",
+    "expressions": [
+      "count // size",
+      "count % size",
+      "count / size",
+      "2 ** 6",
+      "-7 // 3",
+      "-7 % 3"
+    ]
+  },
+  {
+    "slot": 12,
+    "variation": 4,
+    "code": "count = 7 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 7, -7 // 3, -7 % 3)",
+    "expressions": [
+      "count // size",
+      "count % size",
+      "count / size",
+      "2 ** 7",
+      "-7 // 3",
+      "-7 % 3"
+    ]
+  },
+  {
+    "slot": 13,
+    "variation": 0,
+    "code": "a = 3\nb = 3\nprint(a + b * 2, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
+    "expressions": [
+      "a + b * 2",
+      "(a + b) * 2",
+      "a ** 2 + b",
+      "a - b - 1",
+      "a * b % 4"
+    ]
+  },
+  {
+    "slot": 13,
+    "variation": 1,
+    "code": "a = 4\nb = 3\nprint(a + b * 2, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
+    "expressions": [
+      "a + b * 2",
+      "(a + b) * 2",
+      "a ** 2 + b",
+      "a - b - 1",
+      "a * b % 4"
+    ]
+  },
+  {
+    "slot": 13,
+    "variation": 2,
+    "code": "a = 5\nb = 3\nprint(a + b * 2, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
+    "expressions": [
+      "a + b * 2",
+      "(a + b) * 2",
+      "a ** 2 + b",
+      "a - b - 1",
+      "a * b % 4"
+    ]
+  },
+  {
+    "slot": 13,
+    "variation": 3,
+    "code": "a = 6\nb = 3\nprint(a + b * 2, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
+    "expressions": [
+      "a + b * 2",
+      "(a + b) * 2",
+      "a ** 2 + b",
+      "a - b - 1",
+      "a * b % 4"
+    ]
+  },
+  {
+    "slot": 13,
+    "variation": 4,
+    "code": "a = 7\nb = 3\nprint(a + b * 2, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
+    "expressions": [
+      "a + b * 2",
+      "(a + b) * 2",
+      "a ** 2 + b",
+      "a - b - 1",
+      "a * b % 4"
+    ]
+  },
+  {
+    "slot": 14,
+    "variation": 0,
+    "code": "value = 3\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue //= 2\nprint(first, second, value, value == second, value != first)",
+    "expressions": [
+      "first",
+      "second",
+      "value",
+      "value == second",
+      "value != first"
+    ]
+  },
+  {
+    "slot": 14,
+    "variation": 1,
+    "code": "value = 4\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue //= 2\nprint(first, second, value, value == second, value != first)",
+    "expressions": [
+      "first",
+      "second",
+      "value",
+      "value == second",
+      "value != first"
+    ]
+  },
+  {
+    "slot": 14,
+    "variation": 2,
+    "code": "value = 5\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue //= 2\nprint(first, second, value, value == second, value != first)",
+    "expressions": [
+      "first",
+      "second",
+      "value",
+      "value == second",
+      "value != first"
+    ]
+  },
+  {
+    "slot": 14,
+    "variation": 3,
+    "code": "value = 6\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue //= 2\nprint(first, second, value, value == second, value != first)",
+    "expressions": [
+      "first",
+      "second",
+      "value",
+      "value == second",
+      "value != first"
+    ]
+  },
+  {
+    "slot": 14,
+    "variation": 4,
+    "code": "value = 7\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue //= 2\nprint(first, second, value, value == second, value != first)",
+    "expressions": [
+      "first",
+      "second",
+      "value",
+      "value == second",
+      "value != first"
+    ]
+  },
+  {
+    "slot": 15,
+    "variation": 0,
+    "code": "raw = \"3\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+    "expressions": [
+      "amount + 2",
+      "raw + \"2\"",
+      "price + 0.5",
+      "str(amount) == raw",
+      "bool(0)",
+      "bool(raw)"
+    ]
+  },
+  {
+    "slot": 15,
+    "variation": 1,
+    "code": "raw = \"4\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+    "expressions": [
+      "amount + 2",
+      "raw + \"2\"",
+      "price + 0.5",
+      "str(amount) == raw",
+      "bool(0)",
+      "bool(raw)"
+    ]
+  },
+  {
+    "slot": 15,
+    "variation": 2,
+    "code": "raw = \"5\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+    "expressions": [
+      "amount + 2",
+      "raw + \"2\"",
+      "price + 0.5",
+      "str(amount) == raw",
+      "bool(0)",
+      "bool(raw)"
+    ]
+  },
+  {
+    "slot": 15,
+    "variation": 3,
+    "code": "raw = \"6\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+    "expressions": [
+      "amount + 2",
+      "raw + \"2\"",
+      "price + 0.5",
+      "str(amount) == raw",
+      "bool(0)",
+      "bool(raw)"
+    ]
+  },
+  {
+    "slot": 15,
+    "variation": 4,
+    "code": "raw = \"7\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+    "expressions": [
+      "amount + 2",
+      "raw + \"2\"",
+      "price + 0.5",
+      "str(amount) == raw",
+      "bool(0)",
+      "bool(raw)"
+    ]
+  },
+  {
+    "slot": 16,
+    "variation": 0,
+    "code": "value = 3\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(str(value)).__name__, type(value > 0).__name__, type([value]).__name__)",
+    "expressions": [
+      "type(value).__name__",
+      "type(ratio).__name__",
+      "type(str(value)).__name__",
+      "type(value > 0).__name__",
+      "type([value]).__name__"
+    ]
+  },
+  {
+    "slot": 16,
+    "variation": 1,
+    "code": "value = 4\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(str(value)).__name__, type(value > 0).__name__, type([value]).__name__)",
+    "expressions": [
+      "type(value).__name__",
+      "type(ratio).__name__",
+      "type(str(value)).__name__",
+      "type(value > 0).__name__",
+      "type([value]).__name__"
+    ]
+  },
+  {
+    "slot": 16,
+    "variation": 2,
+    "code": "value = 5\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(str(value)).__name__, type(value > 0).__name__, type([value]).__name__)",
+    "expressions": [
+      "type(value).__name__",
+      "type(ratio).__name__",
+      "type(str(value)).__name__",
+      "type(value > 0).__name__",
+      "type([value]).__name__"
+    ]
+  },
+  {
+    "slot": 16,
+    "variation": 3,
+    "code": "value = 6\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(str(value)).__name__, type(value > 0).__name__, type([value]).__name__)",
+    "expressions": [
+      "type(value).__name__",
+      "type(ratio).__name__",
+      "type(str(value)).__name__",
+      "type(value > 0).__name__",
+      "type([value]).__name__"
+    ]
+  },
+  {
+    "slot": 16,
+    "variation": 4,
+    "code": "value = 7\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(str(value)).__name__, type(value > 0).__name__, type([value]).__name__)",
+    "expressions": [
+      "type(value).__name__",
+      "type(ratio).__name__",
+      "type(str(value)).__name__",
+      "type(value > 0).__name__",
+      "type([value]).__name__"
+    ]
+  },
+  {
+    "slot": 17,
+    "variation": 0,
+    "code": "value = 3 + 0.75\nprint(int(value), round(value), int(-value), abs(-value), min(value, 3))",
+    "expressions": [
+      "int(value)",
+      "round(value)",
+      "int(-value)",
+      "abs(-value)",
+      "min(value, 3)"
+    ]
+  },
+  {
+    "slot": 17,
+    "variation": 1,
+    "code": "value = 4 + 0.75\nprint(int(value), round(value), int(-value), abs(-value), min(value, 4))",
+    "expressions": [
+      "int(value)",
+      "round(value)",
+      "int(-value)",
+      "abs(-value)",
+      "min(value, 4)"
+    ]
+  },
+  {
+    "slot": 17,
+    "variation": 2,
+    "code": "value = 5 + 0.75\nprint(int(value), round(value), int(-value), abs(-value), min(value, 5))",
+    "expressions": [
+      "int(value)",
+      "round(value)",
+      "int(-value)",
+      "abs(-value)",
+      "min(value, 5)"
+    ]
+  },
+  {
+    "slot": 17,
+    "variation": 3,
+    "code": "value = 6 + 0.75\nprint(int(value), round(value), int(-value), abs(-value), min(value, 6))",
+    "expressions": [
+      "int(value)",
+      "round(value)",
+      "int(-value)",
+      "abs(-value)",
+      "min(value, 6)"
+    ]
+  },
+  {
+    "slot": 17,
+    "variation": 4,
+    "code": "value = 7 + 0.75\nprint(int(value), round(value), int(-value), abs(-value), min(value, 7))",
+    "expressions": [
+      "int(value)",
+      "round(value)",
+      "int(-value)",
+      "abs(-value)",
+      "min(value, 7)"
+    ]
+  },
+  {
+    "slot": 18,
+    "variation": 0,
+    "code": "label = \"AB3xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+    "expressions": [
+      "label[0]",
+      "label[-1]",
+      "label[2]",
+      "label[3:5]",
+      "label[::-1]",
+      "len(label)"
+    ]
+  },
+  {
+    "slot": 18,
+    "variation": 1,
+    "code": "label = \"AB4xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+    "expressions": [
+      "label[0]",
+      "label[-1]",
+      "label[2]",
+      "label[3:5]",
+      "label[::-1]",
+      "len(label)"
+    ]
+  },
+  {
+    "slot": 18,
+    "variation": 2,
+    "code": "label = \"AB5xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+    "expressions": [
+      "label[0]",
+      "label[-1]",
+      "label[2]",
+      "label[3:5]",
+      "label[::-1]",
+      "len(label)"
+    ]
+  },
+  {
+    "slot": 18,
+    "variation": 3,
+    "code": "label = \"AB6xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+    "expressions": [
+      "label[0]",
+      "label[-1]",
+      "label[2]",
+      "label[3:5]",
+      "label[::-1]",
+      "len(label)"
+    ]
+  },
+  {
+    "slot": 18,
+    "variation": 4,
+    "code": "label = \"AB7xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+    "expressions": [
+      "label[0]",
+      "label[-1]",
+      "label[2]",
+      "label[3:5]",
+      "label[::-1]",
+      "len(label)"
+    ]
+  },
+  {
+    "slot": 19,
+    "variation": 0,
+    "code": "name = \"  Team3  \"\nclean = name.strip()\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+    "expressions": [
+      "len(name)",
+      "clean",
+      "clean.lower()",
+      "clean.upper()",
+      "clean.startswith(\"Team\")"
+    ]
+  },
+  {
+    "slot": 19,
+    "variation": 1,
+    "code": "name = \"  Team4  \"\nclean = name.strip()\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+    "expressions": [
+      "len(name)",
+      "clean",
+      "clean.lower()",
+      "clean.upper()",
+      "clean.startswith(\"Team\")"
+    ]
+  },
+  {
+    "slot": 19,
+    "variation": 2,
+    "code": "name = \"  Team5  \"\nclean = name.strip()\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+    "expressions": [
+      "len(name)",
+      "clean",
+      "clean.lower()",
+      "clean.upper()",
+      "clean.startswith(\"Team\")"
+    ]
+  },
+  {
+    "slot": 19,
+    "variation": 3,
+    "code": "name = \"  Team6  \"\nclean = name.strip()\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+    "expressions": [
+      "len(name)",
+      "clean",
+      "clean.lower()",
+      "clean.upper()",
+      "clean.startswith(\"Team\")"
+    ]
+  },
+  {
+    "slot": 19,
+    "variation": 4,
+    "code": "name = \"  Team7  \"\nclean = name.strip()\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+    "expressions": [
+      "len(name)",
+      "clean",
+      "clean.lower()",
+      "clean.upper()",
+      "clean.startswith(\"Team\")"
+    ]
+  },
+  {
+    "slot": 20,
+    "variation": 0,
+    "code": "row = \"a,3,b\"\nfields = row.split(\",\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+    "expressions": [
+      "len(fields)",
+      "fields[1]",
+      "\"-\".join(fields)",
+      "row.replace(\",\", \":\")",
+      "row.count(\",\")"
+    ]
+  },
+  {
+    "slot": 20,
+    "variation": 1,
+    "code": "row = \"a,4,b\"\nfields = row.split(\",\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+    "expressions": [
+      "len(fields)",
+      "fields[1]",
+      "\"-\".join(fields)",
+      "row.replace(\",\", \":\")",
+      "row.count(\",\")"
+    ]
+  },
+  {
+    "slot": 20,
+    "variation": 2,
+    "code": "row = \"a,5,b\"\nfields = row.split(\",\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+    "expressions": [
+      "len(fields)",
+      "fields[1]",
+      "\"-\".join(fields)",
+      "row.replace(\",\", \":\")",
+      "row.count(\",\")"
+    ]
+  },
+  {
+    "slot": 20,
+    "variation": 3,
+    "code": "row = \"a,6,b\"\nfields = row.split(\",\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+    "expressions": [
+      "len(fields)",
+      "fields[1]",
+      "\"-\".join(fields)",
+      "row.replace(\",\", \":\")",
+      "row.count(\",\")"
+    ]
+  },
+  {
+    "slot": 20,
+    "variation": 4,
+    "code": "row = \"a,7,b\"\nfields = row.split(\",\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+    "expressions": [
+      "len(fields)",
+      "fields[1]",
+      "\"-\".join(fields)",
+      "row.replace(\",\", \":\")",
+      "row.count(\",\")"
+    ]
+  },
+  {
+    "slot": 21,
+    "variation": 0,
+    "code": "queue = [3, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+    "expressions": [
+      "first",
+      "queue[0]",
+      "queue[-1]",
+      "len(queue)",
+      "sum(queue)",
+      "10 in queue"
+    ]
+  },
+  {
+    "slot": 21,
+    "variation": 1,
+    "code": "queue = [4, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+    "expressions": [
+      "first",
+      "queue[0]",
+      "queue[-1]",
+      "len(queue)",
+      "sum(queue)",
+      "10 in queue"
+    ]
+  },
+  {
+    "slot": 21,
+    "variation": 2,
+    "code": "queue = [5, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+    "expressions": [
+      "first",
+      "queue[0]",
+      "queue[-1]",
+      "len(queue)",
+      "sum(queue)",
+      "10 in queue"
+    ]
+  },
+  {
+    "slot": 21,
+    "variation": 3,
+    "code": "queue = [6, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+    "expressions": [
+      "first",
+      "queue[0]",
+      "queue[-1]",
+      "len(queue)",
+      "sum(queue)",
+      "10 in queue"
+    ]
+  },
+  {
+    "slot": 21,
+    "variation": 4,
+    "code": "queue = [7, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+    "expressions": [
+      "first",
+      "queue[0]",
+      "queue[-1]",
+      "len(queue)",
+      "sum(queue)",
+      "10 in queue"
+    ]
+  },
+  {
+    "slot": 22,
+    "variation": 0,
+    "code": "items = [3, 7]\nalias = items\ncopy = items[:]\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+    "expressions": [
+      "items[0]",
+      "alias[0]",
+      "copy[0]",
+      "items is alias",
+      "items is copy"
+    ]
+  },
+  {
+    "slot": 22,
+    "variation": 1,
+    "code": "items = [4, 7]\nalias = items\ncopy = items[:]\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+    "expressions": [
+      "items[0]",
+      "alias[0]",
+      "copy[0]",
+      "items is alias",
+      "items is copy"
+    ]
+  },
+  {
+    "slot": 22,
+    "variation": 2,
+    "code": "items = [5, 7]\nalias = items\ncopy = items[:]\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+    "expressions": [
+      "items[0]",
+      "alias[0]",
+      "copy[0]",
+      "items is alias",
+      "items is copy"
+    ]
+  },
+  {
+    "slot": 22,
+    "variation": 3,
+    "code": "items = [6, 7]\nalias = items\ncopy = items[:]\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+    "expressions": [
+      "items[0]",
+      "alias[0]",
+      "copy[0]",
+      "items is alias",
+      "items is copy"
+    ]
+  },
+  {
+    "slot": 22,
+    "variation": 4,
+    "code": "items = [7, 7]\nalias = items\ncopy = items[:]\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+    "expressions": [
+      "items[0]",
+      "alias[0]",
+      "copy[0]",
+      "items is alias",
+      "items is copy"
+    ]
+  },
+  {
+    "slot": 23,
+    "variation": 0,
+    "code": "grid = [[3, 2, 3], [4, 5, 6]]\ngrid[1][0] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+    "expressions": [
+      "grid[0][0]",
+      "grid[1][0]",
+      "grid[1][2]",
+      "len(grid)",
+      "len(grid[0])"
+    ]
+  },
+  {
+    "slot": 23,
+    "variation": 1,
+    "code": "grid = [[4, 2, 3], [4, 5, 6]]\ngrid[1][0] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+    "expressions": [
+      "grid[0][0]",
+      "grid[1][0]",
+      "grid[1][2]",
+      "len(grid)",
+      "len(grid[0])"
+    ]
+  },
+  {
+    "slot": 23,
+    "variation": 2,
+    "code": "grid = [[5, 2, 3], [4, 5, 6]]\ngrid[1][0] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+    "expressions": [
+      "grid[0][0]",
+      "grid[1][0]",
+      "grid[1][2]",
+      "len(grid)",
+      "len(grid[0])"
+    ]
+  },
+  {
+    "slot": 23,
+    "variation": 3,
+    "code": "grid = [[6, 2, 3], [4, 5, 6]]\ngrid[1][0] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+    "expressions": [
+      "grid[0][0]",
+      "grid[1][0]",
+      "grid[1][2]",
+      "len(grid)",
+      "len(grid[0])"
+    ]
+  },
+  {
+    "slot": 23,
+    "variation": 4,
+    "code": "grid = [[7, 2, 3], [4, 5, 6]]\ngrid[1][0] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+    "expressions": [
+      "grid[0][0]",
+      "grid[1][0]",
+      "grid[1][2]",
+      "len(grid)",
+      "len(grid[0])"
+    ]
+  },
+  {
+    "slot": 24,
+    "variation": 0,
+    "code": "stock = {\"pen\": 3, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+    "expressions": [
+      "stock[\"pen\"]",
+      "stock[\"pad\"]",
+      "stock.get(\"bag\", 0)",
+      "len(stock)",
+      "\"pen\" in stock",
+      "\"bag\" in stock"
+    ]
+  },
+  {
+    "slot": 24,
+    "variation": 1,
+    "code": "stock = {\"pen\": 4, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+    "expressions": [
+      "stock[\"pen\"]",
+      "stock[\"pad\"]",
+      "stock.get(\"bag\", 0)",
+      "len(stock)",
+      "\"pen\" in stock",
+      "\"bag\" in stock"
+    ]
+  },
+  {
+    "slot": 24,
+    "variation": 2,
+    "code": "stock = {\"pen\": 5, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+    "expressions": [
+      "stock[\"pen\"]",
+      "stock[\"pad\"]",
+      "stock.get(\"bag\", 0)",
+      "len(stock)",
+      "\"pen\" in stock",
+      "\"bag\" in stock"
+    ]
+  },
+  {
+    "slot": 24,
+    "variation": 3,
+    "code": "stock = {\"pen\": 6, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+    "expressions": [
+      "stock[\"pen\"]",
+      "stock[\"pad\"]",
+      "stock.get(\"bag\", 0)",
+      "len(stock)",
+      "\"pen\" in stock",
+      "\"bag\" in stock"
+    ]
+  },
+  {
+    "slot": 24,
+    "variation": 4,
+    "code": "stock = {\"pen\": 7, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+    "expressions": [
+      "stock[\"pen\"]",
+      "stock[\"pad\"]",
+      "stock.get(\"bag\", 0)",
+      "len(stock)",
+      "\"pen\" in stock",
+      "\"bag\" in stock"
+    ]
+  },
+  {
+    "slot": 25,
+    "variation": 0,
+    "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = counts.get(event, 3) + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+    "expressions": [
+      "counts[\"ok\"]",
+      "counts[\"bad\"]",
+      "len(counts)",
+      "sum(counts.values())",
+      "counts.get(\"new\", 0)"
+    ]
+  },
+  {
+    "slot": 25,
+    "variation": 1,
+    "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = counts.get(event, 4) + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+    "expressions": [
+      "counts[\"ok\"]",
+      "counts[\"bad\"]",
+      "len(counts)",
+      "sum(counts.values())",
+      "counts.get(\"new\", 0)"
+    ]
+  },
+  {
+    "slot": 25,
+    "variation": 2,
+    "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = counts.get(event, 5) + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+    "expressions": [
+      "counts[\"ok\"]",
+      "counts[\"bad\"]",
+      "len(counts)",
+      "sum(counts.values())",
+      "counts.get(\"new\", 0)"
+    ]
+  },
+  {
+    "slot": 25,
+    "variation": 3,
+    "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = counts.get(event, 6) + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+    "expressions": [
+      "counts[\"ok\"]",
+      "counts[\"bad\"]",
+      "len(counts)",
+      "sum(counts.values())",
+      "counts.get(\"new\", 0)"
+    ]
+  },
+  {
+    "slot": 25,
+    "variation": 4,
+    "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = counts.get(event, 7) + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+    "expressions": [
+      "counts[\"ok\"]",
+      "counts[\"bad\"]",
+      "len(counts)",
+      "sum(counts.values())",
+      "counts.get(\"new\", 0)"
+    ]
+  },
+  {
+    "slot": 26,
+    "variation": 0,
+    "code": "record = (\"item3\", 3, True)\nname, count, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+    "expressions": [
+      "name",
+      "count",
+      "active",
+      "len(record)",
+      "type(record).__name__"
+    ]
+  },
+  {
+    "slot": 26,
+    "variation": 1,
+    "code": "record = (\"item4\", 4, True)\nname, count, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+    "expressions": [
+      "name",
+      "count",
+      "active",
+      "len(record)",
+      "type(record).__name__"
+    ]
+  },
+  {
+    "slot": 26,
+    "variation": 2,
+    "code": "record = (\"item5\", 5, True)\nname, count, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+    "expressions": [
+      "name",
+      "count",
+      "active",
+      "len(record)",
+      "type(record).__name__"
+    ]
+  },
+  {
+    "slot": 26,
+    "variation": 3,
+    "code": "record = (\"item6\", 6, True)\nname, count, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+    "expressions": [
+      "name",
+      "count",
+      "active",
+      "len(record)",
+      "type(record).__name__"
+    ]
+  },
+  {
+    "slot": 26,
+    "variation": 4,
+    "code": "record = (\"item7\", 7, True)\nname, count, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+    "expressions": [
+      "name",
+      "count",
+      "active",
+      "len(record)",
+      "type(record).__name__"
+    ]
+  },
+  {
+    "slot": 27,
+    "variation": 0,
+    "code": "age = 3\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+    "expressions": [
+      "member and not blocked",
+      "age >= 5 and member",
+      "age < 5 or blocked",
+      "not (member or blocked)",
+      "member != blocked",
+      "age == 5"
+    ]
+  },
+  {
+    "slot": 27,
+    "variation": 1,
+    "code": "age = 4\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+    "expressions": [
+      "member and not blocked",
+      "age >= 5 and member",
+      "age < 5 or blocked",
+      "not (member or blocked)",
+      "member != blocked",
+      "age == 5"
+    ]
+  },
+  {
+    "slot": 27,
+    "variation": 2,
+    "code": "age = 5\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+    "expressions": [
+      "member and not blocked",
+      "age >= 5 and member",
+      "age < 5 or blocked",
+      "not (member or blocked)",
+      "member != blocked",
+      "age == 5"
+    ]
+  },
+  {
+    "slot": 27,
+    "variation": 3,
+    "code": "age = 6\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+    "expressions": [
+      "member and not blocked",
+      "age >= 5 and member",
+      "age < 5 or blocked",
+      "not (member or blocked)",
+      "member != blocked",
+      "age == 5"
+    ]
+  },
+  {
+    "slot": 27,
+    "variation": 4,
+    "code": "age = 7\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+    "expressions": [
+      "member and not blocked",
+      "age >= 5 and member",
+      "age < 5 or blocked",
+      "not (member or blocked)",
+      "member != blocked",
+      "age == 5"
+    ]
+  },
+  {
+    "slot": 28,
+    "variation": 0,
+    "code": "def safe(value):\n    return value != 0 and 12 / value > 2\nx = 3\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
+    "expressions": [
+      "safe(0)",
+      "safe(x)",
+      "safe(2)",
+      "safe(6)",
+      "safe(-1)"
+    ]
+  },
+  {
+    "slot": 28,
+    "variation": 1,
+    "code": "def safe(value):\n    return value != 0 and 12 / value > 2\nx = 4\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
+    "expressions": [
+      "safe(0)",
+      "safe(x)",
+      "safe(2)",
+      "safe(6)",
+      "safe(-1)"
+    ]
+  },
+  {
+    "slot": 28,
+    "variation": 2,
+    "code": "def safe(value):\n    return value != 0 and 12 / value > 2\nx = 5\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
+    "expressions": [
+      "safe(0)",
+      "safe(x)",
+      "safe(2)",
+      "safe(6)",
+      "safe(-1)"
+    ]
+  },
+  {
+    "slot": 28,
+    "variation": 3,
+    "code": "def safe(value):\n    return value != 0 and 12 / value > 2\nx = 6\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
+    "expressions": [
+      "safe(0)",
+      "safe(x)",
+      "safe(2)",
+      "safe(6)",
+      "safe(-1)"
+    ]
+  },
+  {
+    "slot": 28,
+    "variation": 4,
+    "code": "def safe(value):\n    return value != 0 and 12 / value > 2\nx = 7\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
+    "expressions": [
+      "safe(0)",
+      "safe(x)",
+      "safe(2)",
+      "safe(6)",
+      "safe(-1)"
+    ]
+  },
+  {
+    "slot": 29,
+    "variation": 0,
+    "code": "a = [3]\nb = [3]\nc = a\nprint(a == b, a is b, a is c, 3 in a, 0 not in a)",
+    "expressions": [
+      "a == b",
+      "a is b",
+      "a is c",
+      "3 in a",
+      "0 not in a"
+    ]
+  },
+  {
+    "slot": 29,
+    "variation": 1,
+    "code": "a = [4]\nb = [4]\nc = a\nprint(a == b, a is b, a is c, 4 in a, 0 not in a)",
+    "expressions": [
+      "a == b",
+      "a is b",
+      "a is c",
+      "4 in a",
+      "0 not in a"
+    ]
+  },
+  {
+    "slot": 29,
+    "variation": 2,
+    "code": "a = [5]\nb = [5]\nc = a\nprint(a == b, a is b, a is c, 5 in a, 0 not in a)",
+    "expressions": [
+      "a == b",
+      "a is b",
+      "a is c",
+      "5 in a",
+      "0 not in a"
+    ]
+  },
+  {
+    "slot": 29,
+    "variation": 3,
+    "code": "a = [6]\nb = [6]\nc = a\nprint(a == b, a is b, a is c, 6 in a, 0 not in a)",
+    "expressions": [
+      "a == b",
+      "a is b",
+      "a is c",
+      "6 in a",
+      "0 not in a"
+    ]
+  },
+  {
+    "slot": 29,
+    "variation": 4,
+    "code": "a = [7]\nb = [7]\nc = a\nprint(a == b, a is b, a is c, 7 in a, 0 not in a)",
+    "expressions": [
+      "a == b",
+      "a is b",
+      "a is c",
+      "7 in a",
+      "0 not in a"
+    ]
+  },
+  {
+    "slot": 30,
+    "variation": 0,
+    "code": "count = 0\nfor row in range(3):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
+    "expressions": [
+      "count",
+      "row",
+      "col",
+      "count // 3",
+      "count % 3",
+      "row + col"
+    ]
+  },
+  {
+    "slot": 30,
+    "variation": 1,
+    "code": "count = 0\nfor row in range(4):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
+    "expressions": [
+      "count",
+      "row",
+      "col",
+      "count // 3",
+      "count % 3",
+      "row + col"
+    ]
+  },
+  {
+    "slot": 30,
+    "variation": 2,
+    "code": "count = 0\nfor row in range(5):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
+    "expressions": [
+      "count",
+      "row",
+      "col",
+      "count // 3",
+      "count % 3",
+      "row + col"
+    ]
+  },
+  {
+    "slot": 30,
+    "variation": 3,
+    "code": "count = 0\nfor row in range(6):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
+    "expressions": [
+      "count",
+      "row",
+      "col",
+      "count // 3",
+      "count % 3",
+      "row + col"
+    ]
+  },
+  {
+    "slot": 30,
+    "variation": 4,
+    "code": "count = 0\nfor row in range(7):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
+    "expressions": [
+      "count",
+      "row",
+      "col",
+      "count // 3",
+      "count % 3",
+      "row + col"
+    ]
+  },
+  {
+    "slot": 31,
+    "variation": 0,
+    "code": "total = 0\nfor value in range(3, 3 + 6):\n    if value == 3 + 1:\n        continue\n    if value == 3 + 4:\n        break\n    total += value\nprint(total, value, value == 3 + 4, total > 0, total % 2)",
+    "expressions": [
+      "total",
+      "value",
+      "value == 3 + 4",
+      "total > 0",
+      "total % 2"
+    ]
+  },
+  {
+    "slot": 31,
+    "variation": 1,
+    "code": "total = 0\nfor value in range(4, 4 + 6):\n    if value == 4 + 1:\n        continue\n    if value == 4 + 4:\n        break\n    total += value\nprint(total, value, value == 4 + 4, total > 0, total % 2)",
+    "expressions": [
+      "total",
+      "value",
+      "value == 4 + 4",
+      "total > 0",
+      "total % 2"
+    ]
+  },
+  {
+    "slot": 31,
+    "variation": 2,
+    "code": "total = 0\nfor value in range(5, 5 + 6):\n    if value == 5 + 1:\n        continue\n    if value == 5 + 4:\n        break\n    total += value\nprint(total, value, value == 5 + 4, total > 0, total % 2)",
+    "expressions": [
+      "total",
+      "value",
+      "value == 5 + 4",
+      "total > 0",
+      "total % 2"
+    ]
+  },
+  {
+    "slot": 31,
+    "variation": 3,
+    "code": "total = 0\nfor value in range(6, 6 + 6):\n    if value == 6 + 1:\n        continue\n    if value == 6 + 4:\n        break\n    total += value\nprint(total, value, value == 6 + 4, total > 0, total % 2)",
+    "expressions": [
+      "total",
+      "value",
+      "value == 6 + 4",
+      "total > 0",
+      "total % 2"
+    ]
+  },
+  {
+    "slot": 31,
+    "variation": 4,
+    "code": "total = 0\nfor value in range(7, 7 + 6):\n    if value == 7 + 1:\n        continue\n    if value == 7 + 4:\n        break\n    total += value\nprint(total, value, value == 7 + 4, total > 0, total % 2)",
+    "expressions": [
+      "total",
+      "value",
+      "value == 7 + 4",
+      "total > 0",
+      "total % 2"
+    ]
+  },
+  {
+    "slot": 32,
+    "variation": 0,
+    "code": "values = [3, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] != -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
+    "expressions": [
+      "total",
+      "index",
+      "values[index]",
+      "values[-1]",
+      "len(values)"
+    ]
+  },
+  {
+    "slot": 32,
+    "variation": 1,
+    "code": "values = [4, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] != -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
+    "expressions": [
+      "total",
+      "index",
+      "values[index]",
+      "values[-1]",
+      "len(values)"
+    ]
+  },
+  {
+    "slot": 32,
+    "variation": 2,
+    "code": "values = [5, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] != -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
+    "expressions": [
+      "total",
+      "index",
+      "values[index]",
+      "values[-1]",
+      "len(values)"
+    ]
+  },
+  {
+    "slot": 32,
+    "variation": 3,
+    "code": "values = [6, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] != -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
+    "expressions": [
+      "total",
+      "index",
+      "values[index]",
+      "values[-1]",
+      "len(values)"
+    ]
+  },
+  {
+    "slot": 32,
+    "variation": 4,
+    "code": "values = [7, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] != -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
+    "expressions": [
+      "total",
+      "index",
+      "values[index]",
+      "values[-1]",
+      "len(values)"
+    ]
+  },
+  {
+    "slot": 33,
+    "variation": 0,
+    "code": "count = 3\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+    "expressions": [
+      "f\"Q{count}\"",
+      "f\"{total:.2f}\"",
+      "str(total)",
+      "len(str(total))",
+      "total",
+      "count"
+    ]
+  },
+  {
+    "slot": 33,
+    "variation": 1,
+    "code": "count = 4\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+    "expressions": [
+      "f\"Q{count}\"",
+      "f\"{total:.2f}\"",
+      "str(total)",
+      "len(str(total))",
+      "total",
+      "count"
+    ]
+  },
+  {
+    "slot": 33,
+    "variation": 2,
+    "code": "count = 5\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+    "expressions": [
+      "f\"Q{count}\"",
+      "f\"{total:.2f}\"",
+      "str(total)",
+      "len(str(total))",
+      "total",
+      "count"
+    ]
+  },
+  {
+    "slot": 33,
+    "variation": 3,
+    "code": "count = 6\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+    "expressions": [
+      "f\"Q{count}\"",
+      "f\"{total:.2f}\"",
+      "str(total)",
+      "len(str(total))",
+      "total",
+      "count"
+    ]
+  },
+  {
+    "slot": 33,
+    "variation": 4,
+    "code": "count = 7\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+    "expressions": [
+      "f\"Q{count}\"",
+      "f\"{total:.2f}\"",
+      "str(total)",
+      "len(str(total))",
+      "total",
+      "count"
+    ]
+  },
+  {
+    "slot": 34,
+    "variation": 0,
+    "code": "from io import StringIO\nfile = StringIO(\"3\\n8\\n\")\nfirst = file.readline().strip()\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
+    "expressions": [
+      "first",
+      "rest",
+      "int(first) + int(rest)",
+      "file.read() == \"\"",
+      "file.tell()"
+    ]
+  },
+  {
+    "slot": 34,
+    "variation": 1,
+    "code": "from io import StringIO\nfile = StringIO(\"4\\n8\\n\")\nfirst = file.readline().strip()\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
+    "expressions": [
+      "first",
+      "rest",
+      "int(first) + int(rest)",
+      "file.read() == \"\"",
+      "file.tell()"
+    ]
+  },
+  {
+    "slot": 34,
+    "variation": 2,
+    "code": "from io import StringIO\nfile = StringIO(\"5\\n8\\n\")\nfirst = file.readline().strip()\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
+    "expressions": [
+      "first",
+      "rest",
+      "int(first) + int(rest)",
+      "file.read() == \"\"",
+      "file.tell()"
+    ]
+  },
+  {
+    "slot": 34,
+    "variation": 3,
+    "code": "from io import StringIO\nfile = StringIO(\"6\\n8\\n\")\nfirst = file.readline().strip()\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
+    "expressions": [
+      "first",
+      "rest",
+      "int(first) + int(rest)",
+      "file.read() == \"\"",
+      "file.tell()"
+    ]
+  },
+  {
+    "slot": 34,
+    "variation": 4,
+    "code": "from io import StringIO\nfile = StringIO(\"7\\n8\\n\")\nfirst = file.readline().strip()\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
+    "expressions": [
+      "first",
+      "rest",
+      "int(first) + int(rest)",
+      "file.read() == \"\"",
+      "file.tell()"
+    ]
+  },
+  {
+    "slot": 35,
+    "variation": 0,
+    "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID3\")\nposition = file.tell()\nfile.seek(0)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
+    "expressions": [
+      "written",
+      "position",
+      "text",
+      "len(text)",
+      "file.read() == \"\""
+    ]
+  },
+  {
+    "slot": 35,
+    "variation": 1,
+    "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID4\")\nposition = file.tell()\nfile.seek(0)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
+    "expressions": [
+      "written",
+      "position",
+      "text",
+      "len(text)",
+      "file.read() == \"\""
+    ]
+  },
+  {
+    "slot": 35,
+    "variation": 2,
+    "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID5\")\nposition = file.tell()\nfile.seek(0)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
+    "expressions": [
+      "written",
+      "position",
+      "text",
+      "len(text)",
+      "file.read() == \"\""
+    ]
+  },
+  {
+    "slot": 35,
+    "variation": 3,
+    "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID6\")\nposition = file.tell()\nfile.seek(0)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
+    "expressions": [
+      "written",
+      "position",
+      "text",
+      "len(text)",
+      "file.read() == \"\""
+    ]
+  },
+  {
+    "slot": 35,
+    "variation": 4,
+    "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID7\")\nposition = file.tell()\nfile.seek(0)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
+    "expressions": [
+      "written",
+      "position",
+      "text",
+      "len(text)",
+      "file.read() == \"\""
+    ]
+  },
+  {
+    "slot": 36,
+    "variation": 0,
+    "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"3\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+    "expressions": [
+      "parse(\"3\")",
+      "parse(\"bad\")",
+      "parse(\"2.5\")",
+      "parse(\"-3\")",
+      "parse(\" 7 \")",
+      "parse(\"\")"
+    ]
+  },
+  {
+    "slot": 36,
+    "variation": 1,
+    "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"4\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+    "expressions": [
+      "parse(\"4\")",
+      "parse(\"bad\")",
+      "parse(\"2.5\")",
+      "parse(\"-3\")",
+      "parse(\" 7 \")",
+      "parse(\"\")"
+    ]
+  },
+  {
+    "slot": 36,
+    "variation": 2,
+    "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"5\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+    "expressions": [
+      "parse(\"5\")",
+      "parse(\"bad\")",
+      "parse(\"2.5\")",
+      "parse(\"-3\")",
+      "parse(\" 7 \")",
+      "parse(\"\")"
+    ]
+  },
+  {
+    "slot": 36,
+    "variation": 3,
+    "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"6\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+    "expressions": [
+      "parse(\"6\")",
+      "parse(\"bad\")",
+      "parse(\"2.5\")",
+      "parse(\"-3\")",
+      "parse(\" 7 \")",
+      "parse(\"\")"
+    ]
+  },
+  {
+    "slot": 36,
+    "variation": 4,
+    "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"7\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+    "expressions": [
+      "parse(\"7\")",
+      "parse(\"bad\")",
+      "parse(\"2.5\")",
+      "parse(\"-3\")",
+      "parse(\" 7 \")",
+      "parse(\"\")"
+    ]
+  },
+  {
+    "slot": 37,
+    "variation": 0,
+    "code": "def valid(value):\n    return 3 <= value <= 3 + 4\nprint(valid(3 - 1), valid(3), valid(3 + 4), valid(3 + 5), valid(0))",
+    "expressions": [
+      "valid(3 - 1)",
+      "valid(3)",
+      "valid(3 + 4)",
+      "valid(3 + 5)",
+      "valid(0)"
+    ]
+  },
+  {
+    "slot": 37,
+    "variation": 1,
+    "code": "def valid(value):\n    return 4 <= value <= 4 + 4\nprint(valid(4 - 1), valid(4), valid(4 + 4), valid(4 + 5), valid(0))",
+    "expressions": [
+      "valid(4 - 1)",
+      "valid(4)",
+      "valid(4 + 4)",
+      "valid(4 + 5)",
+      "valid(0)"
+    ]
+  },
+  {
+    "slot": 37,
+    "variation": 2,
+    "code": "def valid(value):\n    return 5 <= value <= 5 + 4\nprint(valid(5 - 1), valid(5), valid(5 + 4), valid(5 + 5), valid(0))",
+    "expressions": [
+      "valid(5 - 1)",
+      "valid(5)",
+      "valid(5 + 4)",
+      "valid(5 + 5)",
+      "valid(0)"
+    ]
+  },
+  {
+    "slot": 37,
+    "variation": 3,
+    "code": "def valid(value):\n    return 6 <= value <= 6 + 4\nprint(valid(6 - 1), valid(6), valid(6 + 4), valid(6 + 5), valid(0))",
+    "expressions": [
+      "valid(6 - 1)",
+      "valid(6)",
+      "valid(6 + 4)",
+      "valid(6 + 5)",
+      "valid(0)"
+    ]
+  },
+  {
+    "slot": 37,
+    "variation": 4,
+    "code": "def valid(value):\n    return 7 <= value <= 7 + 4\nprint(valid(7 - 1), valid(7), valid(7 + 4), valid(7 + 5), valid(0))",
+    "expressions": [
+      "valid(7 - 1)",
+      "valid(7)",
+      "valid(7 + 4)",
+      "valid(7 + 5)",
+      "valid(0)"
+    ]
+  },
+  {
+    "slot": 38,
+    "variation": 0,
+    "code": "def valid(text):\n    return len(text) == 3 and text.isdigit()\ncode = \"323\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+    "expressions": [
+      "valid(code)",
+      "valid(\"12\")",
+      "valid(\"abc\")",
+      "valid(\"1234\")",
+      "valid(\"007\")"
+    ]
+  },
+  {
+    "slot": 38,
+    "variation": 1,
+    "code": "def valid(text):\n    return len(text) == 3 and text.isdigit()\ncode = \"423\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+    "expressions": [
+      "valid(code)",
+      "valid(\"12\")",
+      "valid(\"abc\")",
+      "valid(\"1234\")",
+      "valid(\"007\")"
+    ]
+  },
+  {
+    "slot": 38,
+    "variation": 2,
+    "code": "def valid(text):\n    return len(text) == 3 and text.isdigit()\ncode = \"523\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+    "expressions": [
+      "valid(code)",
+      "valid(\"12\")",
+      "valid(\"abc\")",
+      "valid(\"1234\")",
+      "valid(\"007\")"
+    ]
+  },
+  {
+    "slot": 38,
+    "variation": 3,
+    "code": "def valid(text):\n    return len(text) == 3 and text.isdigit()\ncode = \"623\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+    "expressions": [
+      "valid(code)",
+      "valid(\"12\")",
+      "valid(\"abc\")",
+      "valid(\"1234\")",
+      "valid(\"007\")"
+    ]
+  },
+  {
+    "slot": 38,
+    "variation": 4,
+    "code": "def valid(text):\n    return len(text) == 3 and text.isdigit()\ncode = \"723\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+    "expressions": [
+      "valid(code)",
+      "valid(\"12\")",
+      "valid(\"abc\")",
+      "valid(\"1234\")",
+      "valid(\"007\")"
+    ]
+  },
+  {
+    "slot": 39,
+    "variation": 0,
+    "code": "def admitted(age):\n    return age > 3\n# Requirement: accept ages at least 3.\nprint(admitted(3 - 1), admitted(3), admitted(3 + 1), admitted(0), admitted(3 + 2), admitted(3) == True)",
+    "expressions": [
+      "admitted(3 - 1)",
+      "admitted(3)",
+      "admitted(3 + 1)",
+      "admitted(0)",
+      "admitted(3 + 2)",
+      "admitted(3) == True"
+    ]
+  },
+  {
+    "slot": 39,
+    "variation": 1,
+    "code": "def admitted(age):\n    return age > 4\n# Requirement: accept ages at least 4.\nprint(admitted(4 - 1), admitted(4), admitted(4 + 1), admitted(0), admitted(4 + 2), admitted(4) == True)",
+    "expressions": [
+      "admitted(4 - 1)",
+      "admitted(4)",
+      "admitted(4 + 1)",
+      "admitted(0)",
+      "admitted(4 + 2)",
+      "admitted(4) == True"
+    ]
+  },
+  {
+    "slot": 39,
+    "variation": 2,
+    "code": "def admitted(age):\n    return age > 5\n# Requirement: accept ages at least 5.\nprint(admitted(5 - 1), admitted(5), admitted(5 + 1), admitted(0), admitted(5 + 2), admitted(5) == True)",
+    "expressions": [
+      "admitted(5 - 1)",
+      "admitted(5)",
+      "admitted(5 + 1)",
+      "admitted(0)",
+      "admitted(5 + 2)",
+      "admitted(5) == True"
+    ]
+  },
+  {
+    "slot": 39,
+    "variation": 3,
+    "code": "def admitted(age):\n    return age > 6\n# Requirement: accept ages at least 6.\nprint(admitted(6 - 1), admitted(6), admitted(6 + 1), admitted(0), admitted(6 + 2), admitted(6) == True)",
+    "expressions": [
+      "admitted(6 - 1)",
+      "admitted(6)",
+      "admitted(6 + 1)",
+      "admitted(0)",
+      "admitted(6 + 2)",
+      "admitted(6) == True"
+    ]
+  },
+  {
+    "slot": 39,
+    "variation": 4,
+    "code": "def admitted(age):\n    return age > 7\n# Requirement: accept ages at least 7.\nprint(admitted(7 - 1), admitted(7), admitted(7 + 1), admitted(0), admitted(7 + 2), admitted(7) == True)",
+    "expressions": [
+      "admitted(7 - 1)",
+      "admitted(7)",
+      "admitted(7 + 1)",
+      "admitted(0)",
+      "admitted(7 + 2)",
+      "admitted(7) == True"
+    ]
+  },
+  {
+    "slot": 40,
+    "variation": 0,
+    "code": "def double(value):\n    return value * 2\nx = 3\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
+    "expressions": [
+      "double(x) == 2 * x",
+      "double(0) == 0",
+      "double(-x) == -2 * x",
+      "double(x) == x",
+      "double(x + 1) - double(x)"
+    ]
+  },
+  {
+    "slot": 40,
+    "variation": 1,
+    "code": "def double(value):\n    return value * 2\nx = 4\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
+    "expressions": [
+      "double(x) == 2 * x",
+      "double(0) == 0",
+      "double(-x) == -2 * x",
+      "double(x) == x",
+      "double(x + 1) - double(x)"
+    ]
+  },
+  {
+    "slot": 40,
+    "variation": 2,
+    "code": "def double(value):\n    return value * 2\nx = 5\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
+    "expressions": [
+      "double(x) == 2 * x",
+      "double(0) == 0",
+      "double(-x) == -2 * x",
+      "double(x) == x",
+      "double(x + 1) - double(x)"
+    ]
+  },
+  {
+    "slot": 40,
+    "variation": 3,
+    "code": "def double(value):\n    return value * 2\nx = 6\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
+    "expressions": [
+      "double(x) == 2 * x",
+      "double(0) == 0",
+      "double(-x) == -2 * x",
+      "double(x) == x",
+      "double(x + 1) - double(x)"
+    ]
+  },
+  {
+    "slot": 40,
+    "variation": 4,
+    "code": "def double(value):\n    return value * 2\nx = 7\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
+    "expressions": [
+      "double(x) == 2 * x",
+      "double(0) == 0",
+      "double(-x) == -2 * x",
+      "double(x) == x",
+      "double(x + 1) - double(x)"
+    ]
+  },
+  {
+    "slot": 41,
+    "variation": 0,
+    "code": "def mean(values):\n    if not values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([3]), mean([3, 3 + 2]), mean([0]), mean([-2, 2]))",
+    "expressions": [
+      "mean([]) is None",
+      "mean([3])",
+      "mean([3, 3 + 2])",
+      "mean([0])",
+      "mean([-2, 2])"
+    ]
+  },
+  {
+    "slot": 41,
+    "variation": 1,
+    "code": "def mean(values):\n    if not values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([4]), mean([4, 4 + 2]), mean([0]), mean([-2, 2]))",
+    "expressions": [
+      "mean([]) is None",
+      "mean([4])",
+      "mean([4, 4 + 2])",
+      "mean([0])",
+      "mean([-2, 2])"
+    ]
+  },
+  {
+    "slot": 41,
+    "variation": 2,
+    "code": "def mean(values):\n    if not values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([5]), mean([5, 5 + 2]), mean([0]), mean([-2, 2]))",
+    "expressions": [
+      "mean([]) is None",
+      "mean([5])",
+      "mean([5, 5 + 2])",
+      "mean([0])",
+      "mean([-2, 2])"
+    ]
+  },
+  {
+    "slot": 41,
+    "variation": 3,
+    "code": "def mean(values):\n    if not values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([6]), mean([6, 6 + 2]), mean([0]), mean([-2, 2]))",
+    "expressions": [
+      "mean([]) is None",
+      "mean([6])",
+      "mean([6, 6 + 2])",
+      "mean([0])",
+      "mean([-2, 2])"
+    ]
+  },
+  {
+    "slot": 41,
+    "variation": 4,
+    "code": "def mean(values):\n    if not values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([7]), mean([7, 7 + 2]), mean([0]), mean([-2, 2]))",
+    "expressions": [
+      "mean([]) is None",
+      "mean([7])",
+      "mean([7, 7 + 2])",
+      "mean([0])",
+      "mean([-2, 2])"
+    ]
+  },
+  {
+    "slot": 42,
+    "variation": 0,
+    "code": "values = [2, 5, 3 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
+    "expressions": [
+      "values[0]",
+      "values[1]",
+      "values[2]",
+      "values[3]",
+      "index",
+      "key"
+    ]
+  },
+  {
+    "slot": 42,
+    "variation": 1,
+    "code": "values = [2, 5, 4 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
+    "expressions": [
+      "values[0]",
+      "values[1]",
+      "values[2]",
+      "values[3]",
+      "index",
+      "key"
+    ]
+  },
+  {
+    "slot": 42,
+    "variation": 2,
+    "code": "values = [2, 5, 5 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
+    "expressions": [
+      "values[0]",
+      "values[1]",
+      "values[2]",
+      "values[3]",
+      "index",
+      "key"
+    ]
+  },
+  {
+    "slot": 42,
+    "variation": 3,
+    "code": "values = [2, 5, 6 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
+    "expressions": [
+      "values[0]",
+      "values[1]",
+      "values[2]",
+      "values[3]",
+      "index",
+      "key"
+    ]
+  },
+  {
+    "slot": 42,
+    "variation": 4,
+    "code": "values = [2, 5, 7 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
+    "expressions": [
+      "values[0]",
+      "values[1]",
+      "values[2]",
+      "values[3]",
+      "index",
+      "key"
+    ]
+  },
+  {
+    "slot": 43,
+    "variation": 0,
+    "code": "left = [3, 3 + 4]\nright = [3 + 1, 3 + 3]\nmerged = []\nwhile left and right:\n    source = left if left[0] <= right[0] else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+    "expressions": [
+      "merged[0]",
+      "merged[1]",
+      "merged[2]",
+      "merged[3]",
+      "len(left)"
+    ]
+  },
+  {
+    "slot": 43,
+    "variation": 1,
+    "code": "left = [4, 4 + 4]\nright = [4 + 1, 4 + 3]\nmerged = []\nwhile left and right:\n    source = left if left[0] <= right[0] else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+    "expressions": [
+      "merged[0]",
+      "merged[1]",
+      "merged[2]",
+      "merged[3]",
+      "len(left)"
+    ]
+  },
+  {
+    "slot": 43,
+    "variation": 2,
+    "code": "left = [5, 5 + 4]\nright = [5 + 1, 5 + 3]\nmerged = []\nwhile left and right:\n    source = left if left[0] <= right[0] else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+    "expressions": [
+      "merged[0]",
+      "merged[1]",
+      "merged[2]",
+      "merged[3]",
+      "len(left)"
+    ]
+  },
+  {
+    "slot": 43,
+    "variation": 3,
+    "code": "left = [6, 6 + 4]\nright = [6 + 1, 6 + 3]\nmerged = []\nwhile left and right:\n    source = left if left[0] <= right[0] else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+    "expressions": [
+      "merged[0]",
+      "merged[1]",
+      "merged[2]",
+      "merged[3]",
+      "len(left)"
+    ]
+  },
+  {
+    "slot": 43,
+    "variation": 4,
+    "code": "left = [7, 7 + 4]\nright = [7 + 1, 7 + 3]\nmerged = []\nwhile left and right:\n    source = left if left[0] <= right[0] else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+    "expressions": [
+      "merged[0]",
+      "merged[1]",
+      "merged[2]",
+      "merged[3]",
+      "len(left)"
+    ]
+  },
+  {
+    "slot": 44,
+    "variation": 0,
+    "code": "values = [3 + 2, 3, 3 + 1]\ncopy = sorted(values)\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
+    "expressions": [
+      "copy[0]",
+      "copy[-1]",
+      "values[0]",
+      "values[-1]",
+      "result is None"
+    ]
+  },
+  {
+    "slot": 44,
+    "variation": 1,
+    "code": "values = [4 + 2, 4, 4 + 1]\ncopy = sorted(values)\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
+    "expressions": [
+      "copy[0]",
+      "copy[-1]",
+      "values[0]",
+      "values[-1]",
+      "result is None"
+    ]
+  },
+  {
+    "slot": 44,
+    "variation": 2,
+    "code": "values = [5 + 2, 5, 5 + 1]\ncopy = sorted(values)\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
+    "expressions": [
+      "copy[0]",
+      "copy[-1]",
+      "values[0]",
+      "values[-1]",
+      "result is None"
+    ]
+  },
+  {
+    "slot": 44,
+    "variation": 3,
+    "code": "values = [6 + 2, 6, 6 + 1]\ncopy = sorted(values)\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
+    "expressions": [
+      "copy[0]",
+      "copy[-1]",
+      "values[0]",
+      "values[-1]",
+      "result is None"
+    ]
+  },
+  {
+    "slot": 44,
+    "variation": 4,
+    "code": "values = [7 + 2, 7, 7 + 1]\ncopy = sorted(values)\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
+    "expressions": [
+      "copy[0]",
+      "copy[-1]",
+      "values[0]",
+      "values[-1]",
+      "result is None"
+    ]
+  },
+  {
+    "slot": 45,
+    "variation": 0,
+    "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(3, 3), cost(3, 3), area(0, 3), cost(1, 3), area(3, 3), cost(2, 2))",
+    "expressions": [
+      "area(3, 3)",
+      "cost(3, 3)",
+      "area(0, 3)",
+      "cost(1, 3)",
+      "area(3, 3)",
+      "cost(2, 2)"
+    ]
+  },
+  {
+    "slot": 45,
+    "variation": 1,
+    "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(4, 3), cost(4, 3), area(0, 4), cost(1, 4), area(4, 4), cost(2, 2))",
+    "expressions": [
+      "area(4, 3)",
+      "cost(4, 3)",
+      "area(0, 4)",
+      "cost(1, 4)",
+      "area(4, 4)",
+      "cost(2, 2)"
+    ]
+  },
+  {
+    "slot": 45,
+    "variation": 2,
+    "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(5, 3), cost(5, 3), area(0, 5), cost(1, 5), area(5, 5), cost(2, 2))",
+    "expressions": [
+      "area(5, 3)",
+      "cost(5, 3)",
+      "area(0, 5)",
+      "cost(1, 5)",
+      "area(5, 5)",
+      "cost(2, 2)"
+    ]
+  },
+  {
+    "slot": 45,
+    "variation": 3,
+    "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(6, 3), cost(6, 3), area(0, 6), cost(1, 6), area(6, 6), cost(2, 2))",
+    "expressions": [
+      "area(6, 3)",
+      "cost(6, 3)",
+      "area(0, 6)",
+      "cost(1, 6)",
+      "area(6, 6)",
+      "cost(2, 2)"
+    ]
+  },
+  {
+    "slot": 45,
+    "variation": 4,
+    "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(7, 3), cost(7, 3), area(0, 7), cost(1, 7), area(7, 7), cost(2, 2))",
+    "expressions": [
+      "area(7, 3)",
+      "cost(7, 3)",
+      "area(0, 7)",
+      "cost(1, 7)",
+      "area(7, 7)",
+      "cost(2, 2)"
+    ]
+  },
+  {
+    "slot": 46,
+    "variation": 0,
+    "code": "RATE = 3\ndef charge(hours):\n    return hours * RATE\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
+    "expressions": [
+      "RATE",
+      "first",
+      "charge(3)",
+      "charge(0)",
+      "charge(1)"
+    ]
+  },
+  {
+    "slot": 46,
+    "variation": 1,
+    "code": "RATE = 4\ndef charge(hours):\n    return hours * RATE\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
+    "expressions": [
+      "RATE",
+      "first",
+      "charge(3)",
+      "charge(0)",
+      "charge(1)"
+    ]
+  },
+  {
+    "slot": 46,
+    "variation": 2,
+    "code": "RATE = 5\ndef charge(hours):\n    return hours * RATE\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
+    "expressions": [
+      "RATE",
+      "first",
+      "charge(3)",
+      "charge(0)",
+      "charge(1)"
+    ]
+  },
+  {
+    "slot": 46,
+    "variation": 3,
+    "code": "RATE = 6\ndef charge(hours):\n    return hours * RATE\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
+    "expressions": [
+      "RATE",
+      "first",
+      "charge(3)",
+      "charge(0)",
+      "charge(1)"
+    ]
+  },
+  {
+    "slot": 46,
+    "variation": 4,
+    "code": "RATE = 7\ndef charge(hours):\n    return hours * RATE\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
+    "expressions": [
+      "RATE",
+      "first",
+      "charge(3)",
+      "charge(0)",
+      "charge(1)"
+    ]
+  },
+  {
+    "slot": 47,
+    "variation": 0,
+    "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value - 2)\nprint(steps(3), steps(0), steps(1), steps(2), steps(3))",
+    "expressions": [
+      "steps(3)",
+      "steps(0)",
+      "steps(1)",
+      "steps(2)",
+      "steps(3)"
+    ]
+  },
+  {
+    "slot": 47,
+    "variation": 1,
+    "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value - 2)\nprint(steps(4), steps(0), steps(1), steps(2), steps(3))",
+    "expressions": [
+      "steps(4)",
+      "steps(0)",
+      "steps(1)",
+      "steps(2)",
+      "steps(3)"
+    ]
+  },
+  {
+    "slot": 47,
+    "variation": 2,
+    "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value - 2)\nprint(steps(5), steps(0), steps(1), steps(2), steps(3))",
+    "expressions": [
+      "steps(5)",
+      "steps(0)",
+      "steps(1)",
+      "steps(2)",
+      "steps(3)"
+    ]
+  },
+  {
+    "slot": 47,
+    "variation": 3,
+    "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value - 2)\nprint(steps(6), steps(0), steps(1), steps(2), steps(3))",
+    "expressions": [
+      "steps(6)",
+      "steps(0)",
+      "steps(1)",
+      "steps(2)",
+      "steps(3)"
+    ]
+  },
+  {
+    "slot": 47,
+    "variation": 4,
+    "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value - 2)\nprint(steps(7), steps(0), steps(1), steps(2), steps(3))",
+    "expressions": [
+      "steps(7)",
+      "steps(0)",
+      "steps(1)",
+      "steps(2)",
+      "steps(3)"
+    ]
+  },
+  {
+    "slot": 48,
+    "variation": 0,
+    "code": "values = [3, 3, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 3 in unique, 0 in unique, len(set()))",
+    "expressions": [
+      "len(values)",
+      "len(unique)",
+      "sum(unique)",
+      "3 in unique",
+      "0 in unique",
+      "len(set())"
+    ]
+  },
+  {
+    "slot": 48,
+    "variation": 1,
+    "code": "values = [4, 4, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 4 in unique, 0 in unique, len(set()))",
+    "expressions": [
+      "len(values)",
+      "len(unique)",
+      "sum(unique)",
+      "4 in unique",
+      "0 in unique",
+      "len(set())"
+    ]
+  },
+  {
+    "slot": 48,
+    "variation": 2,
+    "code": "values = [5, 5, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 5 in unique, 0 in unique, len(set()))",
+    "expressions": [
+      "len(values)",
+      "len(unique)",
+      "sum(unique)",
+      "5 in unique",
+      "0 in unique",
+      "len(set())"
+    ]
+  },
+  {
+    "slot": 48,
+    "variation": 3,
+    "code": "values = [6, 6, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 6 in unique, 0 in unique, len(set()))",
+    "expressions": [
+      "len(values)",
+      "len(unique)",
+      "sum(unique)",
+      "6 in unique",
+      "0 in unique",
+      "len(set())"
+    ]
+  },
+  {
+    "slot": 48,
+    "variation": 4,
+    "code": "values = [7, 7, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 7 in unique, 0 in unique, len(set()))",
+    "expressions": [
+      "len(values)",
+      "len(unique)",
+      "sum(unique)",
+      "7 in unique",
+      "0 in unique",
+      "len(set())"
+    ]
+  },
+  {
+    "slot": 49,
+    "variation": 0,
+    "code": "values = [value * 2 for value in range(3) if value % 2 == 0]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+    "expressions": [
+      "len(values)",
+      "values[0]",
+      "values[-1]",
+      "sum(values)",
+      "2 in values"
+    ]
+  },
+  {
+    "slot": 49,
+    "variation": 1,
+    "code": "values = [value * 2 for value in range(4) if value % 2 == 0]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+    "expressions": [
+      "len(values)",
+      "values[0]",
+      "values[-1]",
+      "sum(values)",
+      "2 in values"
+    ]
+  },
+  {
+    "slot": 49,
+    "variation": 2,
+    "code": "values = [value * 2 for value in range(5) if value % 2 == 0]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+    "expressions": [
+      "len(values)",
+      "values[0]",
+      "values[-1]",
+      "sum(values)",
+      "2 in values"
+    ]
+  },
+  {
+    "slot": 49,
+    "variation": 3,
+    "code": "values = [value * 2 for value in range(6) if value % 2 == 0]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+    "expressions": [
+      "len(values)",
+      "values[0]",
+      "values[-1]",
+      "sum(values)",
+      "2 in values"
+    ]
+  },
+  {
+    "slot": 49,
+    "variation": 4,
+    "code": "values = [value * 2 for value in range(7) if value % 2 == 0]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+    "expressions": [
+      "len(values)",
+      "values[0]",
+      "values[-1]",
+      "sum(values)",
+      "2 in values"
+    ]
+  },
+  {
+    "slot": 50,
+    "variation": 0,
+    "code": "values = [3, 8, 9]\npairs = list(enumerate(values, start=1))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+    "expressions": [
+      "pairs[0][0]",
+      "pairs[0][1]",
+      "pairs[2][0]",
+      "pairs[2][1]",
+      "len(pairs)"
+    ]
+  },
+  {
+    "slot": 50,
+    "variation": 1,
+    "code": "values = [4, 8, 9]\npairs = list(enumerate(values, start=1))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+    "expressions": [
+      "pairs[0][0]",
+      "pairs[0][1]",
+      "pairs[2][0]",
+      "pairs[2][1]",
+      "len(pairs)"
+    ]
+  },
+  {
+    "slot": 50,
+    "variation": 2,
+    "code": "values = [5, 8, 9]\npairs = list(enumerate(values, start=1))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+    "expressions": [
+      "pairs[0][0]",
+      "pairs[0][1]",
+      "pairs[2][0]",
+      "pairs[2][1]",
+      "len(pairs)"
+    ]
+  },
+  {
+    "slot": 50,
+    "variation": 3,
+    "code": "values = [6, 8, 9]\npairs = list(enumerate(values, start=1))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+    "expressions": [
+      "pairs[0][0]",
+      "pairs[0][1]",
+      "pairs[2][0]",
+      "pairs[2][1]",
+      "len(pairs)"
+    ]
+  },
+  {
+    "slot": 50,
+    "variation": 4,
+    "code": "values = [7, 8, 9]\npairs = list(enumerate(values, start=1))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+    "expressions": [
+      "pairs[0][0]",
+      "pairs[0][1]",
+      "pairs[2][0]",
+      "pairs[2][1]",
+      "len(pairs)"
+    ]
+  },
+  {
+    "slot": 51,
+    "variation": 0,
+    "code": "unit_price = 3\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+    "expressions": [
+      "unit_price",
+      "item_count",
+      "total_price",
+      "total_price // item_count",
+      "total_price - unit_price",
+      "type(total_price).__name__"
+    ]
+  },
+  {
+    "slot": 51,
+    "variation": 1,
+    "code": "unit_price = 4\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+    "expressions": [
+      "unit_price",
+      "item_count",
+      "total_price",
+      "total_price // item_count",
+      "total_price - unit_price",
+      "type(total_price).__name__"
+    ]
+  },
+  {
+    "slot": 51,
+    "variation": 2,
+    "code": "unit_price = 5\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+    "expressions": [
+      "unit_price",
+      "item_count",
+      "total_price",
+      "total_price // item_count",
+      "total_price - unit_price",
+      "type(total_price).__name__"
+    ]
+  },
+  {
+    "slot": 51,
+    "variation": 3,
+    "code": "unit_price = 6\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+    "expressions": [
+      "unit_price",
+      "item_count",
+      "total_price",
+      "total_price // item_count",
+      "total_price - unit_price",
+      "type(total_price).__name__"
+    ]
+  },
+  {
+    "slot": 51,
+    "variation": 4,
+    "code": "unit_price = 7\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+    "expressions": [
+      "unit_price",
+      "item_count",
+      "total_price",
+      "total_price // item_count",
+      "total_price - unit_price",
+      "type(total_price).__name__"
+    ]
+  },
+  {
+    "slot": 52,
+    "variation": 0,
+    "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    return value * value\nnumber = 3\nprint(square(number), square(0), square(-2), square(1), square(3))",
+    "expressions": [
+      "square(number)",
+      "square(0)",
+      "square(-2)",
+      "square(1)",
+      "square(3)"
+    ]
+  },
+  {
+    "slot": 52,
+    "variation": 1,
+    "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    return value * value\nnumber = 4\nprint(square(number), square(0), square(-2), square(1), square(3))",
+    "expressions": [
+      "square(number)",
+      "square(0)",
+      "square(-2)",
+      "square(1)",
+      "square(3)"
+    ]
+  },
+  {
+    "slot": 52,
+    "variation": 2,
+    "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    return value * value\nnumber = 5\nprint(square(number), square(0), square(-2), square(1), square(3))",
+    "expressions": [
+      "square(number)",
+      "square(0)",
+      "square(-2)",
+      "square(1)",
+      "square(3)"
+    ]
+  },
+  {
+    "slot": 52,
+    "variation": 3,
+    "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    return value * value\nnumber = 6\nprint(square(number), square(0), square(-2), square(1), square(3))",
+    "expressions": [
+      "square(number)",
+      "square(0)",
+      "square(-2)",
+      "square(1)",
+      "square(3)"
+    ]
+  },
+  {
+    "slot": 52,
+    "variation": 4,
+    "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    return value * value\nnumber = 7\nprint(square(number), square(0), square(-2), square(1), square(3))",
+    "expressions": [
+      "square(number)",
+      "square(0)",
+      "square(-2)",
+      "square(1)",
+      "square(3)"
+    ]
+  },
+  {
+    "slot": 53,
+    "variation": 0,
+    "code": "SECONDS_PER_MINUTE = 60\nminutes = 3\nseconds = minutes * SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+    "expressions": [
+      "seconds",
+      "SECONDS_PER_MINUTE",
+      "minutes",
+      "seconds // 60",
+      "seconds % 60"
+    ]
+  },
+  {
+    "slot": 53,
+    "variation": 1,
+    "code": "SECONDS_PER_MINUTE = 60\nminutes = 4\nseconds = minutes * SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+    "expressions": [
+      "seconds",
+      "SECONDS_PER_MINUTE",
+      "minutes",
+      "seconds // 60",
+      "seconds % 60"
+    ]
+  },
+  {
+    "slot": 53,
+    "variation": 2,
+    "code": "SECONDS_PER_MINUTE = 60\nminutes = 5\nseconds = minutes * SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+    "expressions": [
+      "seconds",
+      "SECONDS_PER_MINUTE",
+      "minutes",
+      "seconds // 60",
+      "seconds % 60"
+    ]
+  },
+  {
+    "slot": 53,
+    "variation": 3,
+    "code": "SECONDS_PER_MINUTE = 60\nminutes = 6\nseconds = minutes * SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+    "expressions": [
+      "seconds",
+      "SECONDS_PER_MINUTE",
+      "minutes",
+      "seconds // 60",
+      "seconds % 60"
+    ]
+  },
+  {
+    "slot": 53,
+    "variation": 4,
+    "code": "SECONDS_PER_MINUTE = 60\nminutes = 7\nseconds = minutes * SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+    "expressions": [
+      "seconds",
+      "SECONDS_PER_MINUTE",
+      "minutes",
+      "seconds // 60",
+      "seconds % 60"
+    ]
+  }
+]

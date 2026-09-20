@@ -11,7 +11,8 @@ test('coverage inventory has distinct permanent keys and valid live links',()=>{
  assert.equal(inventory.focuses.length,106);
  assert.equal(inventory.focuses.find(f=>f.focus==='CA2.1.1').elements.find(e=>e.key==='a').topic,'integer');
  assert.equal(inventory.focuses.find(f=>f.focus==='CA2.12.2.1').elements.find(e=>e.key==='av').aspect,'Drawback');
- assert.ok(report.summary.uncovered_elements>0);
+ assert.equal(report.summary.uncovered_elements,0);
+ assert.ok(report.summary.practice_only_elements>0);
  assert.equal(report.summary.complete_elements,0);
  assert.equal(formatCoverage([{focus:'CA2.1.1',elements:['a','b']}]),'CA2.1.1[a,b]');
 });

@@ -11,6 +11,9 @@ export function snapshotBanks(banks) {
     for(const question of bank){
       const {slot,variations,retired,reviewStatus,status,...template}=question;
       for(const [variation,content] of variations.entries()){
+        // Challenge labels are selection metadata, not changes to the question or marking.
+        delete template.challengeLevel;
+        if(template.tags)template.tags=template.tags.filter(tag=>!tag.startsWith('challenge:'));
         const data=JSON.stringify(canonical({...template,...content}));
         snapshot[`${type}:${slot}:${variation}`]={fingerprint:createHash('sha256').update(data).digest('hex'),focus:question.focus,marks:content.parts.reduce((sum,p)=>sum+p.marks,0)};
       }

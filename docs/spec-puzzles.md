@@ -120,3 +120,21 @@ Display the terms in order and request three short numeric results, including a 
 The initial five adapt the circular-elimination, locker-toggling, bridge-and-torch, two-pan weights and two-object threshold problems. They are fixed problems, with no artificial permutations. Disable “Get new permutation” for them; “New set in this focus” chooses another problem.
 
 Display concise assumptions, a source link and short structured answer fields. Keep the explanation hidden behind Show answer. Validate solutions independently by simulation, state search or a mathematical bound as appropriate. For open answers, accept every valid solution instead of only one sample. This batch deliberately selects bounded answer formats; a general proof or strategy would need a different marking approach.
+
+## Challenge levels and expanded bank (20 September 2026)
+
+Every puzzle has a `challengeLevel` (`foundation`, `standard` or `stretch`) and a matching `challenge:<level>` tag. These are provisional author judgements, not measured completion times or Go ranks.
+
+- **Foundation:** fewer interacting constraints or a more visible route into the problem. Examples include two-category logic grids, four-by-four cages and Sudoku with 40 givens.
+- **Standard:** combine several deductions or stages. Examples include three-category logic grids with an explicit starting relationship and five-by-five cages.
+- **Stretch:** more interdependent constraints, less scaffolding or deeper planning. Examples include eight-variable equation grids, six-by-six cages, Sudoku with further uniqueness-preserving clue removal, mixed recurrences and counting/optimisation problems.
+
+Tangram levels use compactness as a provisional indication of how much the outline conceals piece placement. Go levels use recorded tree depth, including replies; this is a reading-depth proxy, not a rank assessment. Both need classroom calibration. A level need not exist for every subtype. Only levels with at least three puzzles are selectable.
+
+The puzzle page has a Challenge selector, initially Mixed challenge. Changing it requests a new three-puzzle set within the current subtype. New set and New set in this focus respect the selection; Get new permutation preserves the exact templates. Each puzzle displays its own level. Switching to a subtype without the selected level falls back to Mixed challenge. A shared code always opens its exact questions regardless of the saved filter. Cancelling replacement preserves the previous activity and filter.
+
+The bank has **50 puzzles per subtype**, including the existing 50 Go problems. Counts mean independently addressable puzzles, not 50 different mechanics. The sequence collection explicitly reuses named rule families with different values; grid puzzles have different checked layouts/constraints. Existing variations remain. New fixed grid/geometry boards do not claim artificial permutations; their permutation button is disabled. Sequences and new maths problems have five variations each.
+
+Generation: `python3 scripts/expand-puzzles.py` appends deterministic boards and runs `scripts/refine-puzzles.py` to apply scaffolding and remove tangram silhouettes equivalent under translation, rotation or reflection. `python3 scripts/validate-puzzles.py` checks the served boards independently. Sudoku uniqueness is required at every level; stretch boards need not be solvable solely with singles. Multiple valid paths and tangram arrangements remain accepted.
+
+Challenge labels are selection metadata and do not invalidate existing question codes. Changing puzzle content or marking still uses the normal selective code-compatibility process.

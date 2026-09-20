@@ -84,3 +84,24 @@ Cover linear and binary search and bubble, insertion and merge sort through appr
 ## Acceptance
 
 Check five variations per template and three templates per selectable focus. Execute corrected reference snippets during content validation and compare trace/output answers. Never execute deliberately nonterminating examples without a timeout. Check that each pair tests different aspects and totals 10–15 marks. Pilot hints with students of differing experience.
+
+## Expanded supported bank (20 September 2026)
+
+The bank now contains **63 distinct programming challenges, each with five variations**. All remain within the supported bounded interactions: token/expression completion, specified repairs, short output fields, traces and multiple choice. Each template has six marks; selection pairs different formats for twelve marks, excluding same-format pairs even when a focus has more than three templates.
+
+| Core scope | Programming coverage |
+| --- | --- |
+| CA2.1–2.2 | Conversion, numeric and Boolean types, constants, local scope and returned values |
+| CA2.3 | Lists, nested lists, typed standard-library arrays, dictionaries, tuples, aliasing and copies |
+| CA2.4 | Arithmetic, precedence, floor division/remainders, augmented assignment, relational and Boolean expressions, short circuiting |
+| CA2.5 | Input-like text conversion, string formatting, reading/writing and cursor behaviour using in-memory text files |
+| CA2.6 | Sequence, if/elif/else, match/case and guards, for/while loops, nested loops, break/continue and sentinels |
+| CA2.7 | Parameters, calls, return versus print, scope, composition, built-in functions and in-place procedures |
+| CA2.8–2.10 | Presence, length/type/range/format constraints, check-digit generation and its limitations, boundary errors, exceptions, readable naming/layout and defensive empty-input handling |
+| CA2.11 | Linear/binary search; bubble-sort pass, insertion step, merge step and in-place versus copied sorting |
+| CA2.12 | Normal, empty, boundary and erroneous cases; assertion outcomes and exposing faulty comparisons |
+| Beyond Core | Sets, comprehensions, enumerate, identity, slicing and a small recursive base-case trace |
+
+This is breadth across the programming sections, not certification of every assessable Core element. Full independent program development is not assessed by the programming bank. The linked exam inventory separately records direct knowledge coverage and supporting practice for broader skills. In-memory text-file examples explain the same read/write/cursor operations without executing student code or accessing real files.
+
+`data/coverage/python-reference.json` stores offline reference programs for the 42-template expansion; it is not imported by the student application. The tests execute these programs and compare all predicted fields. The original challenges retain their reference tests. Additional array and match/case tasks are short authored fragments. Code answers compare tokens, including method-access dots, preserve case/string content, and never execute student input.

@@ -1,5 +1,8 @@
 import {question as q, part, number as n, choice as c} from './helpers.js';
 import more from './python-more.js';
+import expanded from './python-expanded.js';
+import coreMore from './python-core-more.js';
+import validation from './python-validation.js';
 const traces = [[0,[2,4,1,3]],[1,[3,2,5,1]],[0,[5,1,2,4]],[2,[1,3,2,5]],[0,[4,2,3,2]]];
 export default [
   q(0, 'iteration', 'Follow the readings', 'Trace the code', ['iteration','program tracing','CA2.6.6'], i => {
@@ -27,5 +30,5 @@ export default [
     const limit=[2,3,4,5,6][i];
     return {prompt:'Complete the keywords, then predict how this support desk routes tickets.', code:`def route(priority):\n    ___ priority > ${limit}:\n        return "urgent"\n    ___ priority == ${limit}:\n        return "review"\n    ___:\n        return "normal"`, hint:'Test the first condition, then the next condition, then the fallback.', parts:[part('First keyword','if',{caseSensitive:true}),part('Second keyword','elif',{caseSensitive:true}),part('Third keyword','else',{caseSensitive:true}),part(`route(${limit+1}) — without quotes`,'urgent',{caseSensitive:true}),part(`route(${limit}) — without quotes`,'review',{caseSensitive:true}),part(`route(${limit-1}) — without quotes`,'normal',{caseSensitive:true})]};
   }),
-  ...more
+  ...more, ...expanded, ...coreMore, ...validation
 ];
