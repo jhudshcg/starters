@@ -1,6 +1,7 @@
 import {banks,validateBank,focuses,choose,resolve} from '../js/bank.js';
 import {markQuestion} from '../js/marking.js';
-const errors=validateBank();
+import {auditHints} from './audit-hints.mjs';
+const errors=[...validateBank(),...auditHints(banks).errors];
 for(const [type,bank] of banks.entries()) {
   for(const q of bank)for(const v of q.variations){
     const result=markQuestion(v,Object.fromEntries(v.parts.map(p=>[p.id,p.answer])));

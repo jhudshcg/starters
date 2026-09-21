@@ -9,10 +9,11 @@ import {expressionValue,validCoinSystems,fractionValue} from '../js/maths-answer
 import {playGo,markGo,goPosition} from '../js/go-rules.js';
 import {markQuestion} from '../js/marking.js';
 import {choose,resolve} from '../js/bank.js';
+import {BANK_VERSION} from '../js/codes.js';
 
 test('all 30 maths source ideas have distinct accessible live templates',()=>{
  assert.deepEqual(maths.map(q=>q.sourceId).sort((a,b)=>a-b),Array.from({length:30},(_,i)=>i+1));
- for(const q of maths)assert.equal(resolve({version:2,type:0,entries:[{slot:q.slot,variation:0}],minutes:null}).questions[0].sourceId,q.sourceId);
+ for(const q of maths)assert.equal(resolve({version:BANK_VERSION,type:0,entries:[{slot:q.slot,variation:0}],minutes:null}).questions[0].sourceId,q.sourceId);
  const inventory=JSON.parse(readFileSync(new URL('../data/coverage/classic-maths-inventory.json',import.meta.url)));
  assert.equal(inventory.items.length,30);
  for(const row of inventory.items){assert.equal(row.status,'integrated');assert.ok(maths.some(q=>q.sourceId===row.sourceId&&q.slot===row.bankSlot));}

@@ -8,11 +8,11 @@ const rules=[
  ['Recover a missing start','standard',t=>{const a=[t+1,t+3];for(let k=2;k<7;k++)a.push(a[k-1]+a[k-2]);return [`Every term after the first two is their sum. Terms: ?, ?, ${a.slice(2,5).join(', ')}.`,[a[0],a[1],a[6]],['First term','Second term','Seventh term'],'Subtract known later terms to work backwards before extending forwards.'];}],
  ['Alternating signed squares','standard',t=>{const f=k=>(k%2?1:-1)*(k*k+t);return [`The nth term is n² + C at odd positions and −(n² + C) at even positions. Terms: ${[1,2,3,4,5].map(f).join(', ')}.`,[t,f(6),f(9)],['Find C','Sixth term','Ninth term'],'Separate the sign from the magnitude; n is the overall position.'];}],
  ['A geometric sum','standard',t=>{const a=[t+2];for(let k=1;k<7;k++)a.push(3*a.at(-1)+2);return [`Each next term equals M × previous + C, for fixed integers M > 1 and C ≥ 0. Terms: ${a.slice(0,4).join(', ')}.`,[3,2,a[6]],['Find M','Find C','Seventh term'],'Ratios of successive differences reveal M; then find C.'];}],
- ['Interleaved recurrence and squares','stretch',t=>{const odd=[t+1,t+2];for(let k=2;k<5;k++)odd.push(odd[k-1]+odd[k-2]);const even=Array.from({length:5},(_,k)=>(k+1)**2+t);const a=odd.flatMap((x,k)=>[x,even[k]]);return [`Odd-position terms use a sum-of-previous-two rule within that subsequence. Even-position terms use n² + C, counting n from 1 within that subsequence. Terms: ${a.slice(0,7).join(', ')}.`,[a[7],a[8],a[9]],['Eighth term','Ninth term','Tenth term'],'Keep the two subsequence counters separate.'];}]
+ ['Interleaved recurrence and squares','stretch',t=>{const odd=[t+1,t+2];for(let k=2;k<5;k++)odd.push(odd[k-1]+odd[k-2]);const even=Array.from({length:5},(_,k)=>(k+1)**2+t);const a=odd.flatMap((x,k)=>[x,even[k]]);return [`Odd-position terms use a sum-of-previous-two rule within that subsequence. Even-position terms use n² + C, counting n from 1 within that subsequence. Terms: ${a.slice(0,7).join(', ')}.`,[a[7],a[8],a[9]],['Eighth term','Ninth term','Tenth term'],'Write the odd-position terms and even-position terms on separate rows. Position 8 in the full sequence is position 4 in the even row.', 'Keep the two subsequence counters separate.'];}]
 ];
 export default rules.flatMap(([title,level,make],family)=>Array.from({length:5},(_,batch)=>{
  const item=q(570+family*5+batch,'sequences',`${title} ${batch+1}`,'Find and apply a constrained rule',[`challenge:${level}`],i=>{
-  const [prompt,answers,labels,hint]=make(batch*5+i+2);
-  return {prompt,hint,parts:answers.map((a,k)=>n(labels[k],a,{explanation:hint}))};
+  const [prompt,answers,labels,hint,explanation=hint]=make(batch*5+i+2);
+  return {prompt,hint,parts:answers.map((a,k)=>n(labels[k],a,{explanation}))};
  });return {...item,challengeLevel:level,estimatedMinutes:8};
 }));

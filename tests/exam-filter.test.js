@@ -21,10 +21,10 @@ test('every available exam reference selects the maximum matching whole question
   }else assert.throws(()=>choose(1,focus,set,'new','all',reference),/No other/);
  }
 });
-test('CA1.2.3 retains its two matching questions and fills with related practice',()=>{
- const set=choose(1,'CA1.2',null,'new','all','CA1.2.3');
- assert.equal(set.examSubtopic,'CA1.2.3');assert.ok(set.entries.some(e=>e.slot===8));assert.ok(set.entries.some(e=>e.slot===104));
- assert.equal(set.questions.flatMap(q=>q.parts).filter(p=>matchesSubtopic(p,'CA1.2.3')).length,2);
+test('CA1.2.10 retains its two matching questions and fills with related practice',()=>{
+ const set=choose(1,'CA1.2',null,'new','all','CA1.2.10');
+ assert.equal(set.examSubtopic,'CA1.2.10');assert.ok(set.entries.some(e=>e.slot===7));assert.ok(set.entries.some(e=>e.slot===129));
+ assert.equal(set.questions.flatMap(q=>q.parts).filter(p=>matchesSubtopic(p,'CA1.2.10')).length,2);
  assert.throws(()=>choose(1,'CA1.2',null,'new','all','CA2.1.1'),/No questions/);
 });
 test('matching is segment-aware, includes deeper references, and respects variation-specific coverage',()=>{

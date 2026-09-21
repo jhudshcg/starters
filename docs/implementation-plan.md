@@ -1,6 +1,6 @@
 # Implementation plan
 
-Status: expanded local pilot implemented: CA1–CA2 exam practice and eight puzzle subtypes. See the generated coverage report for remaining curriculum gaps. Public deployment has not been requested. [AGENTS.md](../AGENTS.md) remains authoritative.
+Historical delivery plan; current status is in [README](../README.md) and the generated coverage report. Shared content rules and completion criteria are in the [refinement guide](content-refinement.md). [AGENTS.md](../AGENTS.md) remains authoritative subject to recorded teacher decisions.
 
 ## Decisions to review
 
@@ -24,21 +24,11 @@ The draft supplies concrete defaults so review can be targeted. These decisions 
 
 ## Settled set-code decision
 
-Use **Base64url**, with the alphabet `A–Z a–z 0–9 - _`, case-sensitive. Eight characters hold exactly 48 bits; append an optional ninth timer character. This records the user's decision following the code-design review and supersedes the earlier six-character hash/catalogue proposal in these drafts and AGENTS.md.
+Use the settled [48-bit Base64url contract](spec-common.md#set-codes-and-compatibility), superseding the six-character hash/catalogue proposal. Eight case-sensitive characters encode six bytes, without padding; an optional ninth configures timing.
 
-Layout: seven version bits, two type bits and three ordered pairs of ten question bits plus three variation bits. Encode the six packed bytes in Base64url; there is no padding because six bytes form two complete three-byte groups. Detailed decoding and validation rules are in [spec-common.md](spec-common.md#set-codes-and-compatibility).
+Reversible fields remove the need for a server, exhaustive set catalogue, collision registry or shared hash seed. Base36 would require ten characters; raw ASCII contains unsuitable controls. Stable slots preserve identities independently of file order. The user explicitly chose URL-safe `-` and `_`, not standard Base64 `+` and `/`.
 
-Rationale:
-
-- Reversible fields let any client reconstruct a newly selected set without a server, exhaustive combination cache or shared hash seed.
-- Forty-eight bits preserve the requested 128 versions, four types, three question positions and eight variations per question.
-- Raw ASCII includes unsuitable control characters. Base36 would need ten characters for 48 bits; case-sensitive Base64url retains the eight-character target.
-- Stable question slots and retained versioned banks preserve old code meanings independently of file ordering.
-- Base64url uses `-` and `_`, avoiding the URL handling complications of standard Base64’s `+` and `/`. This reflects the user’s correction to the alphabet choice; do not silently mix the two formats.
-
-Trade-offs: codes are case-sensitive and may contain visually similar characters. Provide copy controls and a clear monospace display. Preserve case, `-` and `_` when copying codes and creating share links. There is no checksum, so validation cannot detect every typo. Eight variations per question and 128 bank versions are fixed format limits; future expansion needs an explicit new format. Never truncate larger values or reuse exhausted version IDs.
-
-No full set-code cache or collision registry is needed: field encoding is one-to-one for valid canonical payloads. An optional question index still helps resolve coordinates to content. Validate randomly selected sets before encoding so shared codes always meet composition and mark requirements.
+Trade-offs: visually similar characters, no checksum, eight variations per question and 128 bank versions. Provide copy controls; never truncate overflowing fields or reuse exhausted versions. Future expansion needs a new format. An optional question index can resolve coordinates. Validate set composition before encoding.
 
 ## Proposed architecture
 
@@ -98,7 +88,7 @@ Bank revision 2 replaces the demonstrations at the teacher’s request. Reject o
 
 Prepare the GitHub Pages build and deployment instructions; verify relative asset paths under a project subpath and fragment links. Publish when requested. Retain the versioned question banks and stable slot mappings with each release. Provide a brief teacher guide for codes, timers and student progress export.
 
-Expand the bank by curriculum coverage gaps, keeping topic coverage distinct from demonstrated skill. Validate and subject-review every new variation. Full-bank completion requires all agreed assessable elements mapped to reviewed questions with the required variation minimums. Optional Go and free-form Python execution are separate later milestones.
+Expand by curriculum gaps using the [shared completion criteria](content-refinement.md), separating topic coverage from demonstrated skill. This historical stage treats optional Go and free-form Python execution as later milestones.
 
 ## Verification priorities
 
@@ -116,7 +106,7 @@ Test the supported college browsers once identified; initial smoke testing shoul
 
 ## Completion criteria
 
-The pilot is complete when the three activity types, exact sharing, feedback, timing, local progress and CSV transfer work together and pass their checks. The full project additionally requires reviewed Core coverage, all adopted content minimums and the deferred programming formats from AGENTS.md. A pilot release is not the full project being declared complete.
+See [shared definitions of done](content-refinement.md#project-definitions-of-done); the stage exits above remain applicable.
 
 ## Pilot implementation checkpoint · 13 September 2026
 

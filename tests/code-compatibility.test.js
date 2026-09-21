@@ -16,22 +16,25 @@ test('every unchanged revision-2 variation opens; every altered one is explicitl
    assert.deepEqual(resolve(encode(fields)).questions,resolve(encode({...fields,version:BANK_VERSION})).questions);preserved++;
   }else{assert.throws(()=>resolve(encode(fields)),/updated or removed/);changed++;}
  }
- assert.equal(preserved,344);assert.equal(changed,73);
+ const expected = Object.entries(history[2]).filter(([key, value]) => value.fingerprint === history[BANK_VERSION][key]?.fingerprint).length;
+ assert.equal(preserved,expected);assert.equal(changed,Object.keys(history[2]).length-expected);
+ assert.ok(preserved>0 && changed>0);
 });
 test('a mixed set is invalid if any contained variation changed; revised code opens it',()=>{
  assert.throws(()=>resolve('BIAkAiAg'),/updated or removed/);
- assert.equal(resolve('BoAkAiAg').total,15);
+ assert.equal(resolve(encode({version:BANK_VERSION,type:1,entries:[{slot:1,variation:1},{slot:2,variation:1},{slot:4,variation:0}]})).total,15);
  assert.throws(()=>resolve('EX-2-1-1'),/updated or removed/);
- assert.equal(resolve('EX-3-1-1').questions[0].title,'Abstraction in a calculation');
+ assert.throws(()=>resolve('EX-3-1-1'),/updated or removed/); // Hint changes are content changes.
+ assert.equal(resolve(`EX-${BANK_VERSION}-1-1`).questions[0].title,'Abstraction in a calculation');
 });
 test('old timers, single-question codes and new permutations work for unchanged content',()=>{
- const old=resolve('BAyD_x_4A');assert.equal(old.minutes,10);assert.equal(old.version,2);
- assert.equal(resolve('PZ-2-100-0').questions.length,1);
+ const old=resolve('BA8D_x_4A');assert.equal(old.minutes,10);assert.equal(old.version,2);
+ assert.equal(resolve('PZ-2-120-0').questions.length,1);
  const next=choose(0,old.focus,old,'permutation');assert.equal(next.version,BANK_VERSION);
  assert.notEqual(next.entries[0].variation,old.entries[0].variation);
 });
 test('unchanged codes across revisions share a repeat-attempt identity; changed questions do not',()=>{
- const old=resolve('BAyD_x_4'),current=encode({...old,version:BANK_VERSION,minutes:15});
+ const old=resolve('BA8D_x_4'),current=encode({...old,version:BANK_VERSION,minutes:15});
  assert.equal(setIdentity(old.code),setIdentity(current));
  assert.equal(attemptEligibility({history:[{code:old.code,finished:1000}]},current,2000).eligible,false);
  assert.notEqual(setIdentity('BIAkAiAg'),setIdentity('BoAkAiAg'));

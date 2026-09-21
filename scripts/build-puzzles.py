@@ -4,11 +4,28 @@ The generated bank is served directly; no Python or solver runs in the browser.
 import itertools as it,json,math,random,pathlib
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 bank=[]
+def reasoning_hint(kind,data,fallback):
+ # Use visible constraints only, never the saved solution. Shared by both generators.
+ if kind=='logic-grid':
+  for index,(op,c,r,a,b) in enumerate(data['rules']):
+   if op in ('diff','before'):
+    return f"Use clue {index+1} to list possible start-time pairs for {data['names'][r]} and {data['names'][a]}. Eliminate pairs that conflict with another clue before assigning either time."
+  for index,(op,c,r,a,b) in enumerate(data['rules']):
+   if op=='either':
+    return f"Test the two possibilities in clue {index+1} separately. When one is true, the other must be false; follow the effect on {data['names'][r]}'s other assignments."
+ if kind=='equation-grid':
+  domain=range(1,len(data['names'])+1)
+  candidates=[(sum(equation_holds(rule,[x if k==rule[1] else y for k in range(len(data['names']))]) for x in domain for y in domain if x!=y),i) for i,rule in enumerate(data['rules']) if rule[0]!='less']
+  _,index=min(candidates)
+  rule=data['rules'][index]
+  return f"Start with clue {index+1}: {data['clues'][index]}. List distinct allowed value pairs, then use another clue involving {data['names'][rule[1]]} or {data['names'][rule[2]]} to narrow the assignments."
+ return fallback
+
 def question(slot,focus,title,kind,make,hint):
  variations=[]
  for v in range(5):
   data=make(random.Random(7000+slot*101+v*7919))
-  variations.append({'prompt':data.pop('prompt'),'hint':hint,'parts':[{'id':'0','prompt':'Solve the puzzle.','kind':kind,'marks':3,'answer':json.dumps(data.pop('solution')),'explanation':data.pop('explanation'),'solutionText':data.pop('solutionText','See the completed board below.'),**data}]})
+  variations.append({'prompt':data.pop('prompt'),'hint':reasoning_hint(kind,data,hint),'parts':[{'id':'0','prompt':'Solve the puzzle.','kind':kind,'marks':3,'answer':json.dumps(data.pop('solution')),'explanation':data.pop('explanation'),'solutionText':data.pop('solutionText','See the completed board below.'),**data}]})
  bank.append({'slot':slot,'focus':focus,'title':title,'format':'Reasoning puzzle','tags':[],'setSize':1,'estimatedMinutes':10,'variations':variations})
 def logic_holds(clue,assign):
  op,c,r,a,b=clue

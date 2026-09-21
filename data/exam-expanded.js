@@ -15,7 +15,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Compare the effort of analysing the problem with the benefit of repeating the solution. Then ask what separately developed parts must agree on.",
         "parts": [
           {
             "prompt": "A clinic wants repeatable appointment allocation. What is the purpose of computational thinking here?",
@@ -147,7 +147,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Compare the effort of analysing the problem with the benefit of repeating the solution. Then ask what separately developed parts must agree on.",
         "parts": [
           {
             "prompt": "A warehouse wants repeatable picking routes. What does computational thinking provide?",
@@ -292,7 +292,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "List what could change the requested outcome. Check the model against an unusual case as well as the ordinary case.",
         "parts": [
           {
             "prompt": "A route model keeps roads and distances but omits shop colours. What benefit follows?",
@@ -424,7 +424,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "List what could change the requested outcome. Check the model against an unusual case as well as the ordinary case.",
         "parts": [
           {
             "prompt": "A login model omits the page background image. Why is this useful?",
@@ -573,7 +573,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Give each proposed subproblem one clear responsibility. For the failures, compare a failing case with a working case to isolate the shared difference.",
         "parts": [
           {
             "prompt": "Which solution breakdown separates distinct checkout responsibilities?",
@@ -706,7 +706,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Give each proposed subproblem one clear responsibility. For the failures, compare a failing case with a working case to isolate the shared difference.",
         "parts": [
           {
             "prompt": "Which solution breakdown separates distinct reporting responsibilities?",
@@ -852,7 +852,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Follow one item of data from its source to the component that needs it. At a decision, test the condition before choosing the next action.",
         "parts": [
           {
             "prompt": "Which block breakdown separates a checkout into responsibilities?",
@@ -990,7 +990,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Follow one item of data from its source to the component that needs it. At a decision, test the condition before choosing the next action.",
         "parts": [
           {
             "prompt": "Which block breakdown separates a reporting pipeline?",
@@ -1144,7 +1144,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Imagine a colleague reading, changing and trying out the algorithm. Consider separately what each representation makes easy and what work it adds.",
         "parts": [
           {
             "prompt": "What is the purpose of an algorithm for password checks?",
@@ -1276,7 +1276,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Imagine a colleague reading, changing and trying out the algorithm. Consider separately what each representation makes easy and what work it adds.",
         "parts": [
           {
             "prompt": "What is the purpose of a sorting algorithm?",
@@ -1423,7 +1423,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Use a trace table for a small input. Record the value after every step and check that each operation has the data it needs before it runs.",
         "parts": [
           {
             "prompt": "An algorithm repeatedly divides a positive integer by ten using floor division until zero. What does its iteration count represent?",
@@ -1559,7 +1559,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Use a trace table for a small input. Record the value after every step and check that each operation has the data it needs before it runs.",
         "parts": [
           {
             "prompt": "An algorithm repeatedly removes the smallest remaining item into a result list. What does it do?",
@@ -1709,7 +1709,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Check the fit in both directions: overall requirements against available components, and component interfaces against one another. A working part need not guarantee a working whole.",
         "parts": [
           {
             "prompt": "Why use top-down design for a new booking service with clear overall requirements?",
@@ -1863,7 +1863,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Check the fit in both directions: overall requirements against available components, and component interfaces against one another. A working part need not guarantee a working whole.",
         "parts": [
           {
             "prompt": "Why use top-down design to plan a new stock system?",
@@ -2031,7 +2031,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Try small inputs that distinguish the candidate expressions: a fractional result, an equality case or just one true flag. Compare each outcome with the requirement.",
         "parts": [
           {
             "prompt": "For x = 5 and y = 7, evaluate x <= y.",
@@ -2166,7 +2166,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Try small inputs that distinguish the candidate expressions: a fractional result, an equality case or just one true flag. Compare each outcome with the requirement.",
         "parts": [
           {
             "prompt": "For x = 9 and y = 4, evaluate x != y.",
@@ -2315,7 +2315,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Track where text comes from and where it goes. Check whether existing file contents must survive and how the file resource is released.",
         "parts": [
           {
             "prompt": "Which mode reads an existing text file without changing it?",
@@ -2420,7 +2420,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Track where text comes from and where it goes. Check whether existing file contents must survive and how the file resource is released.",
         "parts": [
           {
             "prompt": "Which mode appends new records while retaining existing text?",
@@ -2539,7 +2539,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "For each line, identify the values it reads and where they are first assigned. Then follow the branch or loop that can execute next.",
         "parts": [
           {
             "prompt": "Code prints total before assigning total = price * count. Which fix addresses the sequence error?",
@@ -2653,7 +2653,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "For each line, identify the values it reads and where they are first assigned. Then follow the branch or loop that can execute next.",
         "parts": [
           {
             "prompt": "Code validates age before reading the user's age. Which fix addresses the sequence error?",
@@ -2782,7 +2782,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Distinguish naming a routine from calling it. After a method changes a list, inspect the list itself before calculating an index or length.",
         "parts": [
           {
             "prompt": "Which task suits a procedure with no explicit returned result?",
@@ -2893,7 +2893,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Distinguish naming a routine from calling it. After a method changes a list, inspect the list itself before calculating an index or length.",
         "parts": [
           {
             "prompt": "Which task suits a procedure with no explicit returned result?",
@@ -3017,7 +3017,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Separate defining a subprogram, calling it and changing an object through a method. Check the argument types as well as the punctuation.",
         "parts": [
           {
             "prompt": "items.append[3] fails. Which correction appends the number?",
@@ -3132,7 +3132,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Separate defining a subprogram, calling it and changing an object through a method. Check the argument types as well as the punctuation.",
         "parts": [
           {
             "prompt": "items.sort(reverse = \"True\") uses text for a Boolean flag. Which call uses a Boolean?",
@@ -3260,7 +3260,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "List only the values needed for the next processing step. Then consider how records will be accessed and whether repeated calculations depend on changing inputs.",
         "parts": [
           {
             "prompt": "A huge input file exceeds memory if read at once. Which approach best meets the storage constraint?",
@@ -3373,7 +3373,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "List only the values needed for the next processing step. Then consider how records will be accessed and whether repeated calculations depend on changing inputs.",
         "parts": [
           {
             "prompt": "A calculation only needs a running total. Which approach avoids unnecessary storage?",
@@ -3500,7 +3500,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Recreate the failing case and trace the earliest incorrect behaviour. Judge a proposed repair against that case and nearby inputs, not just a run that succeeds.",
         "parts": [
           {
             "prompt": "A failing boundary comparison has been located. What is the next debugging action?",
@@ -3616,7 +3616,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Recreate the failing case and trace the earliest incorrect behaviour. Judge a proposed repair against that case and nearby inputs, not just a run that succeeds.",
         "parts": [
           {
             "prompt": "An incorrect loop update has been located. What should the developer do?",
@@ -3744,7 +3744,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Trace a small list with one out-of-order value. Count the comparisons, movements and extra storage instead of judging an algorithm by its name.",
         "parts": [
           {
             "prompt": "What does a left-to-right ascending bubble-sort pass do?",
@@ -3897,7 +3897,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Trace a small list with one out-of-order value. Count the comparisons, movements and extra storage instead of judging an algorithm by its name.",
         "parts": [
           {
             "prompt": "After one ascending bubble-sort pass through the whole list, what is guaranteed?",
@@ -4063,7 +4063,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Compare a nearly ordered list with a reversed one. For the average search cost, write down the comparisons needed at each possible target position.",
         "parts": [
           {
             "prompt": "Why avoid bubble sort for a large reverse-sorted list?",
@@ -4195,7 +4195,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Compare a nearly ordered list with a reversed one. For the average search cost, write down the comparisons needed at each possible target position.",
         "parts": [
           {
             "prompt": "What drawback remains even if bubble sort uses little extra memory?",
@@ -4341,7 +4341,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Ask what evidence a prototype can provide before the final system exists. Contrast that with what can be learned by checking a single implemented component.",
         "parts": [
           {
             "prompt": "An integer quantity field receives the text \"many\". Which test-data description applies?",
@@ -4494,7 +4494,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Ask what evidence a prototype can provide before the final system exists. Contrast that with what can be learned by checking a single implemented component.",
         "parts": [
           {
             "prompt": "A numeric temperature field receives \"warm\". Which test-data description applies?",
@@ -4659,7 +4659,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "For each test, draw the region it examines and what lies outside it. Compare an input near a limit with data moving between two components.",
         "parts": [
           {
             "prompt": "Using unit testing, a developer checks a price function in isolation. What is a limitation of this method?",
@@ -4812,7 +4812,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "For each test, draw the region it examines and what lies outside it. Compare an input near a limit with data moving between two components.",
         "parts": [
           {
             "prompt": "Using unit testing, a developer checks a date parser in isolation. What is a limitation of this method?",
@@ -4977,7 +4977,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Separate a measured technical target from complete-system behaviour and the client\u2019s decision. Check how closely the test environment resembles intended use.",
         "parts": [
           {
             "prompt": "Using performance testing, a search must respond within one second. Why is this method appropriate?",
@@ -5130,7 +5130,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Separate a measured technical target from complete-system behaviour and the client\u2019s decision. Check how closely the test environment resembles intended use.",
         "parts": [
           {
             "prompt": "Using performance testing, a report must finish within thirty seconds. Why is this method appropriate?",
@@ -5295,7 +5295,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Consider whose judgement is collected, which tasks they attempt and what their sample might miss. After a change, consider features beyond the edited code.",
         "parts": [
           {
             "prompt": "Using acceptance testing, a client checks an application before signing it off. What is a benefit of this method?",
@@ -5448,7 +5448,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Consider whose judgement is collected, which tasks they attempt and what their sample might miss. After a change, consider features beyond the edited code.",
         "parts": [
           {
             "prompt": "Using acceptance testing, staff check a replacement system against agreed business criteria. What is a benefit of this method?",
@@ -5613,7 +5613,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Compare ordinary demand with overload, including recovery afterwards. For a test without source access, ask what evidence is observable from outside the program.",
         "parts": [
           {
             "prompt": "Using regression testing, a tax-rule change is made to a working checkout. What is a limitation of this method?",
@@ -5766,7 +5766,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Compare ordinary demand with overload, including recovery afterwards. For a test without source access, ask what evidence is observable from outside the program.",
         "parts": [
           {
             "prompt": "Using regression testing, a library upgrade changes a working report tool. What is a limitation of this method?",
@@ -5932,7 +5932,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "List possible fault sources separately: code logic, devices, records and communication. Consider how isolating one source changes what a failure tells you.",
         "parts": [
           {
             "prompt": "Using open box testing, a developer uses source code to target each decision branch. Why is this method appropriate?",
@@ -6085,7 +6085,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "List possible fault sources separately: code logic, devices, records and communication. Consider how isolating one source changes what a failure tells you.",
         "parts": [
           {
             "prompt": "Using open box testing, a tester examines loop paths to choose cases. Why is this method appropriate?",
@@ -6252,7 +6252,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Check type and permitted limits separately for each candidate input. Draw the range and mark its ends and their immediate neighbours.",
         "parts": [
           {
             "prompt": "Why test a booking service before public launch separately first?",
@@ -6385,7 +6385,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Check type and permitted limits separately for each candidate input. Draw the range and mark its ends and their immediate neighbours.",
         "parts": [
           {
             "prompt": "Why test an ordering service before live use before final release?",
@@ -6533,7 +6533,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Draw the function boundary and locate the original assignment to total. Distinguish accessing that existing name from creating a separate name inside the function.",
         "parts": [
           {
             "prompt": "Which header allows assigning the module-level total inside a function?",
@@ -6638,7 +6638,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Draw the nested function boundaries and locate the original assignment to count. Identify which surrounding level owns the name being reassigned.",
         "parts": [
           {
             "prompt": "Which header allows assigning the enclosing function variable count in a nested function?",
@@ -6756,7 +6756,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Sketch the collection you need before choosing syntax: ordered entries, a declared numeric element type, or labelled associations. Then check how an entry will be retrieved.",
         "parts": [
           {
             "prompt": "Which statement creates an empty list for incoming orders?",
@@ -6866,7 +6866,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Sketch the collection you need before choosing syntax: ordered entries, a declared numeric element type, or labelled associations. Then check how an entry will be retrieved.",
         "parts": [
           {
             "prompt": "Which statement adds 7 to the end of readings?",
@@ -6989,7 +6989,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Try an empty string and a string containing only spaces against the proposed presence check. For the other rules, identify which property of the data each examines.",
         "parts": [
           {
             "prompt": "Choose a presence check rejecting an empty or whitespace-only name.",
@@ -7097,7 +7097,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Use the stated requirement and consider why the alternatives do not meet it.",
+        "hint": "Try strings just shorter and longer than the required size against the proposed expression. For the other rules, identify which property of the data each examines.",
         "parts": [
           {
             "prompt": "Choose a length check requiring exactly six characters.",

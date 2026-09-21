@@ -29,7 +29,7 @@ for family,(filename,focus,kind,make) in enumerate(families):
   else:raise ValueError('Could not generate distinct puzzle')
   seen.add(sig)
   slot=300+family*45+j
-  v={'prompt':d.pop('prompt'),'hint':bank[0]['variations'][0]['hint'],'parts':[{'id':'0','prompt':'Solve the puzzle.','kind':kind,'marks':3,'answer':json.dumps(d.pop('solution')),'explanation':d.pop('explanation'),'solutionText':d.pop('solutionText','See the completed board below.'),**d}]}
+  v={'prompt':d.pop('prompt'),'hint':b.reasoning_hint(kind,d,bank[0]['variations'][0]['hint']),'parts':[{'id':'0','prompt':'Solve the puzzle.','kind':kind,'marks':3,'answer':json.dumps(d.pop('solution')),'explanation':d.pop('explanation'),'solutionText':d.pop('solutionText','See the completed board below.'),**d}]}
   # Existing tangrams are already compact; label by outline complexity provisionally, not generation order.
   if kind=='tiling':
    points=set(tuple(p) for poly in d['target'] for p in poly);area=(max(x for x,y in points)-min(x for x,y in points))*(max(y for x,y in points)-min(y for x,y in points))

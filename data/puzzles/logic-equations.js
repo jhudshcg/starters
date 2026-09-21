@@ -11,7 +11,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: B × E = 4. List distinct allowed value pairs, then use another clue involving B or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -81,7 +81,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: A × E = 10. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -158,7 +158,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: B × C = 20. List distinct allowed value pairs, then use another clue involving B or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -228,7 +228,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A × C = 2. List distinct allowed value pairs, then use another clue involving A or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -298,7 +298,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: B + E = 3. List distinct allowed value pairs, then use another clue involving B or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -372,7 +372,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: C × E = 6. List distinct allowed value pairs, then use another clue involving C or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -442,7 +442,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A × E = 3. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -505,7 +505,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: B × D = 5. List distinct allowed value pairs, then use another clue involving B or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -575,7 +575,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: C − E = 4. List distinct allowed value pairs, then use another clue involving C or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -645,7 +645,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A × D = 2. List distinct allowed value pairs, then use another clue involving A or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -719,7 +719,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 6: B − E = 3. List distinct allowed value pairs, then use another clue involving B or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -805,7 +805,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: A × B = 15. List distinct allowed value pairs, then use another clue involving A or B to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -877,7 +877,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: C − D = 4. List distinct allowed value pairs, then use another clue involving C or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -956,7 +956,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: C × F = 18. List distinct allowed value pairs, then use another clue involving C or F to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1042,7 +1042,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: A − C = 2. List distinct allowed value pairs, then use another clue involving A or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1125,7 +1125,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: A − E = -5. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1197,7 +1197,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: B + C = 11. List distinct allowed value pairs, then use another clue involving B or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1269,7 +1269,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: B × E = 5. List distinct allowed value pairs, then use another clue involving B or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1341,7 +1341,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: D − E = -4. List distinct allowed value pairs, then use another clue involving D or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1413,7 +1413,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 6 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: D × F = 18. List distinct allowed value pairs, then use another clue involving D or F to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1503,7 +1503,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: D + G = 12. List distinct allowed value pairs, then use another clue involving D or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1584,7 +1584,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: D − F = -5. List distinct allowed value pairs, then use another clue involving D or F to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1665,7 +1665,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: B × C = 10. List distinct allowed value pairs, then use another clue involving B or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1760,7 +1760,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: C × E = 15. List distinct allowed value pairs, then use another clue involving C or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1841,7 +1841,7 @@ export default [
       },
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: B − G = -6. List distinct allowed value pairs, then use another clue involving B or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -1937,7 +1937,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: B × E = 5. List distinct allowed value pairs, then use another clue involving B or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2015,7 +2015,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A − C = 2. List distinct allowed value pairs, then use another clue involving A or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2100,7 +2100,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: A + C = 9. List distinct allowed value pairs, then use another clue involving A or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2185,7 +2185,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: B × C = 6. List distinct allowed value pairs, then use another clue involving B or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2263,7 +2263,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: A − E = -4. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2341,7 +2341,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: B × D = 15. List distinct allowed value pairs, then use another clue involving B or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2433,7 +2433,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A × E = 8. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2518,7 +2518,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: C × E = 10. List distinct allowed value pairs, then use another clue involving C or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2603,7 +2603,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: A × C = 2. List distinct allowed value pairs, then use another clue involving A or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2688,7 +2688,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: B − E = -2. List distinct allowed value pairs, then use another clue involving B or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2773,7 +2773,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: A × E = 4. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2858,7 +2858,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: A + C = 8. List distinct allowed value pairs, then use another clue involving A or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -2936,7 +2936,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: D × E = 2. List distinct allowed value pairs, then use another clue involving D or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3021,7 +3021,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: A × D = 5. List distinct allowed value pairs, then use another clue involving A or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3113,7 +3113,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 5 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A − E = -4. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3191,7 +3191,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: C × D = 8. List distinct allowed value pairs, then use another clue involving C or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3294,7 +3294,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: B + D = 3. List distinct allowed value pairs, then use another clue involving B or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3397,7 +3397,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: C × D = 42. List distinct allowed value pairs, then use another clue involving C or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3493,7 +3493,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A − E = -3. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3582,7 +3582,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: A × D = 20. List distinct allowed value pairs, then use another clue involving A or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3685,7 +3685,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A − D = 5. List distinct allowed value pairs, then use another clue involving A or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3774,7 +3774,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: F × G = 42. List distinct allowed value pairs, then use another clue involving F or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3870,7 +3870,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: D − F = 6. List distinct allowed value pairs, then use another clue involving D or F to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -3966,7 +3966,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: D × G = 28. List distinct allowed value pairs, then use another clue involving D or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4062,7 +4062,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: A − C = 4. List distinct allowed value pairs, then use another clue involving A or C to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4158,7 +4158,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: C × G = 18. List distinct allowed value pairs, then use another clue involving C or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4254,7 +4254,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: A × D = 4. List distinct allowed value pairs, then use another clue involving A or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4343,7 +4343,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: E × G = 35. List distinct allowed value pairs, then use another clue involving E or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4439,7 +4439,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: C × F = 20. List distinct allowed value pairs, then use another clue involving C or F to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4542,7 +4542,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 7 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: C + E = 12. List distinct allowed value pairs, then use another clue involving C or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4652,7 +4652,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 4: A × E = 16. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4764,7 +4764,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: F + G = 6. List distinct allowed value pairs, then use another clue involving F or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4869,7 +4869,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: C × F = 56. List distinct allowed value pairs, then use another clue involving C or F to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -4974,7 +4974,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 6: A × D = 20. List distinct allowed value pairs, then use another clue involving A or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5093,7 +5093,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: A × E = 30. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5191,7 +5191,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: D × H = 40. List distinct allowed value pairs, then use another clue involving D or H to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5303,7 +5303,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: D × H = 14. List distinct allowed value pairs, then use another clue involving D or H to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5408,7 +5408,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: A − H = 4. List distinct allowed value pairs, then use another clue involving A or H to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5520,7 +5520,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: A × E = 18. List distinct allowed value pairs, then use another clue involving A or E to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5625,7 +5625,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 2: D + H = 4. List distinct allowed value pairs, then use another clue involving D or H to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5730,7 +5730,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: A − H = 5. List distinct allowed value pairs, then use another clue involving A or H to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5821,7 +5821,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: B + D = 15. List distinct allowed value pairs, then use another clue involving B or D to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -5933,7 +5933,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 5: F × H = 32. List distinct allowed value pairs, then use another clue involving F or H to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -6045,7 +6045,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 1: C × G = 48. List distinct allowed value pairs, then use another clue involving C or G to narrow the assignments.",
         "parts": [
           {
             "id": "0",
@@ -6150,7 +6150,7 @@ export default [
     "variations": [
       {
         "prompt": "Assign the integers 1 to 8 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
-        "hint": "Factor a product or use a large difference to reduce the candidates. Every value is used once.",
+        "hint": "Start with clue 3: F + H = 15. List distinct allowed value pairs, then use another clue involving F or H to narrow the assignments.",
         "parts": [
           {
             "id": "0",

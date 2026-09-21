@@ -15,23 +15,25 @@ The preview builds and serves `live`, the same artifact deployed to Pages. Rebui
 
 | Activity | Direct preview |
 | --- | --- |
-| Logic grid | [Four-person deduction](http://127.0.0.1:8765/#set=BAyD_x_4) |
+| Logic grid | [Four-person deduction](http://127.0.0.1:8765/#set=CAyD_x_4) |
 | Cover every dot | [Choose a start and drag a route](http://127.0.0.1:8765/#set=BA5j_x_4) |
 | Tangram | [Fit seven pieces into a silhouette](http://127.0.0.1:8765/#set=BA8D_x_4) |
 | Sudoku | [Grid with pencil notes](http://127.0.0.1:8765/#set=BA3D_x_4) |
-| CA1 exam practice | [Computational thinking](http://127.0.0.1:8765/#set=BoAAAQAQ) |
-| CA2 exam practice | [Data types](http://127.0.0.1:8765/#set=BoGADQBw) |
+| CA1 exam practice | [Computational thinking](http://127.0.0.1:8765/#set=CoAAAQAQ) |
+| CA2 exam practice | [Data types](http://127.0.0.1:8765/#set=CIGADQBw) |
+| Function/procedure practice | [Build and repair code](http://127.0.0.1:8765/#set=CpKglgRQ) |
+| New CA2 exam practice | [Loop state and stopping conditions](http://127.0.0.1:8765/#set=CpEkHQDx) |
 | Python | [Iteration](http://127.0.0.1:8765/#set=BQAAAR_4) |
 
-The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. Revision 3 contains the reviewed exam questions. Revision-2 codes still open unchanged variations; codes containing updated/removed variations receive a specific message. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; an unsupported unfinished activity is cleared rather than interpreted as different questions.
+The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. Revision 5 includes the revised hints and reading cautions. Older codes open unchanged variations; updated/removed variations receive a specific message. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; an unsupported unfinished activity is cleared rather than interpreted as different questions.
 
 ## Current content
 
-- **Puzzles:** 115 templates across nine subtypes: 35 original grid, shape and sequence puzzles with five variations each, all 30 classic maths problems, and 50 fixed Go problems. Normal selection produces three puzzles; individual question codes still open one. Some sets can take longer than the starter timer.
-- **Exam practice:** 51 multipart questions, two variations each, across all 15 CA1–CA2 subsections. Three questions per activity, currently 15–16 marks. Short terms, values, constrained code answers and selected linked reasons. The September review improves 52 parts in both variations, plus wording and accepted answers elsewhere.
-- **Python:** 12 templates with five variations each, covering iteration, selection, functions, searching and sorting. Two challenges, 12 marks per activity.
+- **Puzzles:** 450 templates across nine subtypes; three puzzles per set. Individual codes open one. Some sets exceed the starter timer.
+- **Exam practice:** 112 multipart templates with 628 parts, each in two variations (1,256 part instances), across all 15 CA1–CA2 subsections. Three questions per set, 15–21 marks; short terms, values, constrained code and linked reasons.
+- **Python:** 63 templates, five variations each; two challenges testing different aspects, 12 marks per set.
 
-These are working practice materials pending teacher review and student timing trials. They are not a complete or approved Core question bank. The [generated coverage report](docs/coverage-ca1-ca2.md) exposes every subelement, including gaps: 231 of 369 currently have a live question with two applicable variations; only 8 have two distinct live questions. None is marked teacher-approved. Fourteen further elements have supporting practice only and 124 remain uncovered. Coverage counts fell where this review removed overstated links; that is a more accurate account of the remaining work.
+Teacher review and mixed-ability timing trials remain pending. The [generated coverage report](docs/coverage-ca1-ca2.md) distinguishes direct assessment, supporting practice and reviewed coverage. Every CA1–CA2 inventory element has a linked activity, with 285 of 369 having the required two distinct questions; 56 still have one and 28 broader practical skills have supporting practice only. This is not complete or approved Core coverage.
 
 ## Interaction
 
@@ -43,17 +45,11 @@ Progress stays in browser-local storage. CSV export and JSON backup/restore are 
 
 ## Maintaining content
 
-`data/puzzles.js`, `data/exam.js` and `data/python.js` are the public activity banks. Each puzzle subtype has its own module under `data/puzzles/`; exam content is split into `data/exam-ca1.js` and `data/exam-ca2.js`. Shared controls and rule checks live in `js/challenge-controls.js` and `js/challenge-rules.js`.
+`data/puzzles.js`, `data/exam.js` and `data/python.js` are the public activity banks. Each puzzle subtype has its own module under `data/puzzles/`; exam content uses `data/exam-ca1.js`, `data/exam-ca2.js`, `data/exam-expanded.js` the three `data/exam-depth-*.js` modules and `data/exam-priority.js`. The [expansion review](docs/exam-depth-review.md) records their source calibration and distinct angles. Shared controls and rule checks live in `js/challenge-controls.js` and `js/challenge-rules.js`.
 
 `data/coverage/core-inventory.json` is the authoritative nested inventory. Each official CA focus has permanent local letter keys. Parts carry structured `{focus, elements}` links; the report displays `CA2.1.1[a,b]`. Counts are generated, not edited. Supporting practice does not establish full practical-skill coverage. See [spec-exam.md](docs/spec-exam.md) for counting and review rules.
 
-```sh
-npm test
-npm run coverage
-npm run validate
-```
-
-`npm run validate` checks model answers and rejects a stale coverage report. On this workstation use `/opt/homebrew/bin/node` if Node is absent from PATH.
+Use [content authoring](docs/content-authoring.md) and the [refinement checklist](docs/content-refinement.md) for edits, including hints alone. `npm run hints:audit` rejects known placeholders and reports cross-question repetition for editorial review; it cannot judge usefulness. Validation checks model answers, identities and stale coverage. If Node is absent from PATH, use `/opt/homebrew/bin/node`.
 
 `scripts/build-puzzles.py` reproducibly generates the six grid/geometry family files, checking uniqueness or a valid solution witness. It overwrites those generated files; edit generator inputs or keep additional authored templates in separate modules. Sequence and classic-maths banks are authored separately. `scripts/validate-puzzles.py` independently checks the served grid instances.
 
@@ -76,7 +72,7 @@ Then edit, stage your source changes, commit and push. The pre-commit hook build
 
 `npm run build` builds your working files into `live/` for local preview; `npm start` builds and serves it. Preview builds do not stage files. The hook rebuilds from the staged source at commit time. You do not need to run the build manually before each commit.
 
-Run `npm test` and `npm run validate` locally when changing the application/content. For puzzle edits also run `python scripts/validate-puzzles.py` and `python scripts/validate-go.py` (install `scripts/requirements-content.txt` first). The commit hook checks bank identities and validates the bank during building; it does not run the full test suite.
+Run the [local refinement checks](docs/content-refinement.md) for content changes and `npm test` / `npm run validate` for application changes. The hook validates bank identities/content, including hint placeholders; it does not run the full suite.
 
 The maths collection is **30 of 30 implemented** as concise adaptations with explicit rules and self-marking answers. [The source inventory](data/coverage/classic-maths-inventory.json) links every source item to its live bank slot.
 
@@ -86,28 +82,30 @@ Go source board sizes and branches are preserved. `scripts/import-go.py` imports
 
 ## Repeat attempts and progress
 
-Leave at least **four hours from completing a set to starting the next tracked attempt** at it. Earlier practice remains available and displays a result, but does not add a progress row or change averages, charts or revision priorities. A notice states how recently the set was attempted. Early practice also resets the four-hour gap; waiting with an already-started attempt open does not make it eligible.
+Leave **four hours between completing a set and starting its next tracked attempt**. Earlier practice shows a result and recency notice but changes no history, averages, charts or priorities. It resets the four-hour gap; waiting in an already-started attempt cannot make it eligible.
 
-The identity includes the question slots and exact variations, ignoring order and the optional timer. A different permutation is a different set. Recent practice dates travel in JSON backups; old backups without them still use their tracked result dates. Existing recorded history is not retroactively removed.
+Identity uses slots and exact variations, ignoring order/timer; another permutation is a different set. JSON backups carry recent practice dates; older backups use tracked result dates. Existing history is retained.
 
 ## Production bank packaging
 
 `npm run build` uses pinned **esbuild** and **fflate** dependencies. It validates the source bank, compresses JSON using zlib, wraps it in Base64 with a fixed 17-position alphabet rotation, and emits minified content-hashed JavaScript/CSS. All assets use relative paths for repository Pages hosting. Install local dependencies with `npm ci`.
 
-Readable `data/*.js` authoring banks stay in Git. Their import module is replaced with an on-demand asset loader during bundling and are **not shipped or imported by the deployed page**. Drafts, coverage reports, build metadata and source maps are excluded from `live`. Encoded banks are separate content-hashed files: `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt` and `banks/python-<hash>.txt`. The app fetches and decodes only the bank needed for a selected activity or set code, reuses it during the page visit, and retries failed downloads when requested again. Restoring an active attempt also loads its bank. A fresh home or progress page downloads no banks. Each asset URL is relative to the app bundle for repository Pages hosting; each part retains separate encoded marking and reveal payloads. Marking decodes accepted answers only when needed; reveal decodes the model answer/explanation only when requested. These temporary decoded objects are not cached on the bank or saved to local storage. Checking uses separate generic feedback so it does not need to decode the explanation.
+Readable `data/*.js` stays in Git; bundling replaces its imports with an on-demand loader. `live` excludes authoring banks, drafts, coverage reports, build metadata and source maps. Separate encoded assets are `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt` and `banks/python-<hash>.txt`, addressed relative to the app bundle for repository Pages hosting. Only the selected/restored activity's bank downloads; home/progress downloads none. Loaded display data is reused for the visit; failed downloads can be retried.
+
+Parts retain separate encoded marking and reveal payloads. Marking decodes accepted answers as needed; explicit reveal decodes model answers/explanations. Neither decoded payload is cached on the bank or stored locally. Generic checking feedback does not decode explanations.
 
 Go also has a separately encoded playing tree, decoded as needed for board rendering, opponent replies, hints and marking; those interactive features necessarily need the tree before submission. The rest of the bank does not need its model solutions for display.
 
-This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Slot numbering and the 48-bit encoding layout remain unchanged; content revision 3 selectively preserves compatible revision-2 codes. The rotation applies only to bank payloads, never to share codes.
+This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Slot numbering and the 48-bit encoding layout remain unchanged; content revisions selectively preserve unchanged historical variations. The rotation applies only to bank payloads, never to share codes.
 
 Checks: `npm test`, `npm run validate`, `npm run build`. Run `scripts/browser-smoke.mjs` against a server serving `live`; `STARTERS_PREVIEW_URL` can include a repository path. The smoke runner reads authoring fixtures locally, never via the production page.
 
 ## Maintaining shared codes
 
-After completing question edits, run `npm run codes:update`, then `npm run validate` and `npm test`. Commit both `data/code-history.json` and the generated `js/code-compatibility.js`. Validation and build fail if those records do not match the authored banks. The update command makes no changes when content is unchanged; additions at unused addresses extend the current revision. Changing/removing an existing variation creates the next content revision and preserves every unchanged historical address.
+Follow the [refinement workflow](docs/content-refinement.md) and commit both generated compatibility files. Validation/build reject stale records. `codes:update` is unchanged for identical content; unused addresses extend the current revision, while changing/removing a variation creates a revision preserving unchanged historical addresses.
 
-The history stores SHA-256 fingerprints plus focus/marks metadata, not old answer banks. Fingerprints include the selected variation's text, answers, hints, code and assessment metadata. They exclude authoring review/retirement status and other variations of the same template. This allows an unchanged variation to retain its old code even if its sibling changes. Document/style/build-only edits do not consume a revision.
+History stores SHA-256 fingerprints and focus/marks metadata, not old answers. Fingerprints cover each variation's text, answers, hints, code and assessment metadata, excluding review/retirement status and sibling variations. Unchanged siblings keep their codes. Document/style/build-only edits consume no revision.
 
-Never renumber/reuse slots or variation positions for unrelated content. Retire a retained question to remove it from random selection while keeping its old codes available. Removing or revising it causes codes containing it to show an update message. Existing result records remain viewable/importable even when their question codes can no longer open. Equivalent old/current codes share the same four-hour tracking identity; a revised question is a different set.
+Never renumber/reuse slots or variation positions. Retirement removes a question from random selection while preserving codes; revisions/removals produce update messages. Historical results remain viewable/importable. Equivalent historical/current codes share the four-hour tracking identity; revised content forms a different set.
 
-The reviewed replacement for `BIAkAiAg` is **`BoAkAiAg`**. Of the original 417 revision-2 variations, 344 remain compatible and 73 were altered in this review. Bank packaging format and code layout are separate from this content revision.
+The replacement for `BIAkAiAg`, `BoAkAiAg` and `CIAkAiAg` is **`CoAkAiAg`**. Hint changes affect compatibility. Packaging format and code layout are separate from content revision.

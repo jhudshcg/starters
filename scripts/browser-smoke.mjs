@@ -2,8 +2,9 @@
 // The profile must be dedicated to testing: this script clears the app's test storage.
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
-import {encode} from '../js/codes.js';
+import {encode,BANK_VERSION} from '../js/codes.js';
 import {choose,resolve,banks} from '../js/bank.js';
+const currentExamCode=encode({version:BANK_VERSION,type:1,entries:[{slot:1,variation:1},{slot:2,variation:1},{slot:4,variation:0}]});
 const endpoint=process.env.STARTERS_DEBUG_URL??'http://127.0.0.1:9227';
 const base=process.env.STARTERS_PREVIEW_URL??'http://127.0.0.1:8765';
 const pages=await (await fetch(endpoint+'/json/list')).json();
@@ -27,7 +28,8 @@ async function enterUnsubmittedAnswer(){
 async function screenshot(name){const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/starters-${name}.png`,Buffer.from(r.data,'base64'));}
 async function openFocus(type,focus,count=1){
  await send('Page.navigate',{url:base+'/#home'});await acceptLeaveIfShown();await until('Boolean(document.querySelector("#code-form"))');
- const set=type===1&&focus==='CA2.7'?resolve({...choose(type,focus),entries:[31,32,33].map(slot=>({slot,variation:0}))}):choose(type,focus);
+ const fixedSlots=type===1?({'CA2.1':[12,13,14],'CA2.7':[31,32,33]})[focus]:null;
+ const set=fixedSlots?resolve({...choose(type,focus),entries:fixedSlots.map(slot=>({slot,variation:0}))}):choose(type,focus);
  const code=(type===0?resolve({...set,entries:set.entries.slice(0,count)}):set).code;
  await evaluate(`document.querySelector('#code-form input').value=${JSON.stringify(code)};document.querySelector('#code-form').requestSubmit()`);
  await until(`Boolean(document.querySelector('dialog')) || document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
@@ -146,14 +148,14 @@ try{
  await until('document.querySelector("#global-code-error").textContent.includes("updated or removed")');
  assert.equal(await evaluate('Boolean(document.querySelector("dialog"))'),false);
  await enterUnsubmittedAnswer();
- await evaluate('document.querySelector("#global-code").value="BoAkAiAg";document.querySelector("#global-code-form").requestSubmit()');
+ await evaluate(`document.querySelector("#global-code").value=${JSON.stringify(currentExamCode)};document.querySelector("#global-code-form").requestSubmit()`);
  await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="stay"]');
  await until('!document.querySelector("dialog")');
- assert.notEqual(await evaluate('document.querySelector("#display-code").textContent'),'BoAkAiAg');
+ assert.notEqual(await evaluate('document.querySelector("#display-code").textContent'),currentExamCode);
  await click('#nav-progress');await acceptLeaveIfShown();await until('Boolean(document.querySelector("#export-csv"))');
  await evaluate('document.querySelector("#global-code-form").requestSubmit()');
  await acceptLeaveIfShown();
- await until('document.querySelector("#display-code")?.textContent==="BoAkAiAg"');
+ await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(currentExamCode)}`);
  await screenshot('exam-reviewed');
  assert.ok(await evaluate('document.querySelector("[data-check]").disabled && document.querySelector("[data-reveal]").disabled'));
  await click('#timer-toggle');
@@ -257,32 +259,32 @@ try{
  const legacyResult={id:'legacy-changed-question',code:'BIAkAiAg',type:1,focus:'CA1.1',max:15,earned:9,percentage:60,firstMax:15,firstEarned:9,attemptChecks:3,assisted:false,outcome:'submitted',seconds:180,finished:Date.now()-6*3600000};
  await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify(${JSON.stringify({schema:1,history:[legacyResult]})})],"old-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
  await until('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.some(r=>r.id==="legacy-changed-question")');
- await evaluate('document.querySelector("#global-code").value="BAyD_x_4";document.querySelector("#global-code-form").requestSubmit()');
+ await evaluate('document.querySelector("#global-code").value="BA8D_x_4";document.querySelector("#global-code-form").requestSubmit()');
  await acceptLeaveIfShown();
- await until('document.querySelector("#display-code")?.textContent==="BAyD_x_4"');
- assert.ok(await evaluate('document.querySelector(".question").textContent.includes("PZ-2-100-0")'));
+ await until('document.querySelector("#display-code")?.textContent==="BA8D_x_4"');
+ assert.ok(await evaluate('document.querySelector(".question").textContent.includes("PZ-2-120-0")'));
  await click('#permutation');await acceptLeaveIfShown();
- await until('document.querySelector("#display-code")?.textContent!=="BAyD_x_4"');
- assert.ok(await evaluate('document.querySelector(".question").textContent.includes("PZ-3-100-")'));
+ await until('document.querySelector("#display-code")?.textContent!=="BA8D_x_4"');
+ assert.ok(await evaluate(`document.querySelector(".question").textContent.includes("PZ-${BANK_VERSION}-120-")`));
 
  // Select a fine reference while retaining all parts and related-question context.
  await openFocus(1,'CA1.2');
  await enterUnsubmittedAnswer();
  const unfiltered=await evaluate('document.querySelector("#display-code").textContent');
- await evaluate('document.querySelector("#subtopic").value="CA1.2.3";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
+ await evaluate('document.querySelector("#subtopic").value="CA1.2.10";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
  await until('Boolean(document.querySelector("dialog"))');await click('dialog button[value="stay"]');
  await until('!document.querySelector("dialog")&&document.querySelector("#subtopic")?.value==="all"');
  assert.equal(await evaluate('document.querySelector("#display-code").textContent'),unfiltered);
- await evaluate('document.querySelector("#subtopic").value="CA1.2.3";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
+ await evaluate('document.querySelector("#subtopic").value="CA1.2.10";document.querySelector("#subtopic").dispatchEvent(new Event("change"))');
  await acceptLeaveIfShown();
- await until('document.querySelector("#subtopic")?.value==="CA1.2.3"&&!document.querySelector("dialog")');
+ await until('document.querySelector("#subtopic")?.value==="CA1.2.10"&&!document.querySelector("dialog")');
  assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
  assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
  assert.ok(await evaluate('document.querySelector(".subtopic-notice").textContent.includes("2 of 3")'));
  assert.equal(await evaluate('[...document.querySelectorAll(".subtopic-context")].filter(p=>p.textContent.includes("Related practice")).length'),1);
  const filtered=resolve(await evaluate('document.querySelector("#display-code").textContent'));
  assert.equal(await evaluate('document.querySelectorAll(".part-coverage").length'),filtered.questions.reduce((sum,q)=>sum+q.parts.length,0));
- await send('Page.reload');await until('document.querySelector("#subtopic")?.value==="CA1.2.3"');
+ await send('Page.reload');await until('document.querySelector("#subtopic")?.value==="CA1.2.10"');
  await click('#permutation');await acceptLeaveIfShown();
  await until(`document.querySelector('#display-code')?.textContent!==${JSON.stringify(filtered.code)}&&!document.querySelector('dialog')`);
  assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
@@ -290,7 +292,7 @@ try{
  assert.deepEqual(permuted.entries.map(e=>e.slot),filtered.entries.map(e=>e.slot));
  await click('#new-focus');await acceptLeaveIfShown();
  await until(`document.querySelector('#display-code')?.textContent!==${JSON.stringify(permuted.code)}&&!document.querySelector('dialog')`);
- assert.equal(await evaluate('document.querySelector("#subtopic").value'),'CA1.2.3');
+ assert.equal(await evaluate('document.querySelector("#subtopic").value'),'CA1.2.10');
  assert.equal(await evaluate('document.querySelectorAll(".subtopic-match").length'),2);
  await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Subtopic controls cause overflow');
@@ -386,7 +388,46 @@ try{
   await click('#global-code-error .code-diagnostics');
   const diagnostics=JSON.parse(await evaluate('window.copiedForTest'));
   assert.equal(diagnostics.enteredCode,'bad');assert.match(diagnostics.build,/app-[A-Z0-9]+.js/);assert.ok(!('history' in diagnostics));
-  assert.ok(await evaluate('document.querySelector("#build-info").textContent.includes("bank 3")'));
+  assert.ok(await evaluate(`document.querySelector("#build-info").textContent.includes("bank ${BANK_VERSION}")`));
  }finally{peerSocket?.close();await controlSend('Target.disposeBrowserContext',{browserContextId});controlSocket.close();}
- assert.deepEqual(errors,[]);console.log('Browser smoke passed: whole-question subtopic filtering/cancel/reload/mobile, UI-generated codes and links in an independent browser context, error diagnostics, detailed topic/subtopic priorities and mixed/invalid backup imports, challenge filtering/cancellation/reload/mobile, arrays and validation, legacy/current codes and historical imports, rotated encoded production banks, four-hour repeat tracking, submission gating, global code entry, exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
+ // Revised content hints remain separate from solutions and accessible on mobile.
+ for(const [type,focus] of [[1,'CA1.1'],[0,'logic grids'],[0,'go']]){
+  await openFocus(type,focus);
+  const hinted=resolve(await evaluate('document.querySelector("#display-code").textContent'));
+  for(const q of hinted.questions){
+   await click(`[data-hint="${q.slot}"]`);
+   assert.equal(await evaluate(`document.querySelector('[data-question="${q.slot}"] .hint-text').textContent`),'Hint: '+q.hint);
+   assert.ok(await evaluate('document.activeElement.matches(".hint-text")'));
+  }
+  assert.equal(await evaluate('document.querySelectorAll(".solution").length'),0);
+  assert.ok(await evaluate('[...document.querySelectorAll("[data-reveal]")].every(b=>b.disabled)'));
+  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Hint causes whole-page overflow');
+  await screenshot(`hints-${type}-${focus.replaceAll(' ','-')}`);
+ }
+ // Preview every new exam variation, including complete code and contextual hints.
+ for(const template of banks[1].filter(q=>q.slot>=126&&q.slot<=156))for(const variation of [0,1]){
+  const companions=banks[1].filter(q=>q.focus===template.focus&&q.slot!==template.slot).slice(0,2);
+  const code=encode({version:BANK_VERSION,type:1,entries:[{slot:template.slot,variation},...companions.map(q=>({slot:q.slot,variation:0}))]});
+  await send('Page.navigate',{url:base+'/#set='+code});await acceptLeaveIfShown();
+  await until(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
+  const opened=resolve(code),q=opened.questions[0],root=`[data-question="${q.slot}"]`;
+  assert.equal(await evaluate(`document.querySelector(${JSON.stringify(root+' .question-prompt')}).textContent`),q.prompt);
+  assert.equal(await evaluate(`document.querySelectorAll(${JSON.stringify(root+' .hint-text')}).length`),0);
+  assert.equal(await evaluate(`document.querySelectorAll(${JSON.stringify(root+' .solution')}).length`),0);
+  for(const part of q.parts)assert.ok(await evaluate(`document.querySelector(${JSON.stringify(root)}).textContent.includes(${JSON.stringify(part.prompt)})`));
+  if(q.code)assert.equal(await evaluate(`document.querySelector(${JSON.stringify(root+' pre code')}).textContent`),q.code);
+  await click(`[data-hint="${q.slot}"]`);
+  assert.equal(await evaluate(`document.querySelector(${JSON.stringify(root+' .hint-text')}).textContent`),'Hint: '+q.hint);
+  assert.ok(await evaluate('document.activeElement.matches(".hint-text")'));
+  assert.ok(await evaluate(`document.querySelector('[data-reveal="${q.slot}"]').disabled`));
+  await evaluate(`for(const q of ${JSON.stringify(opened.questions)})for(const p of q.parts){const elements=[...document.querySelectorAll('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]')];const el=elements.find(el=>el.type!=='radio'||el.value===p.answer);if(el.type==='radio'){el.checked=true;el.dispatchEvent(new Event('change',{bubbles:true}));}else{el.value=p.answer;el.dispatchEvent(new Event('input',{bubbles:true}));}}`);
+  await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
+  assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'),`Scoring ${q.slot}/${variation}`);
+  await click(`[data-reveal="${q.slot}"]`);
+  assert.ok(await evaluate(`document.querySelector(${JSON.stringify(root+' .solution')}).textContent.includes(${JSON.stringify(q.parts[0].explanation)})`));
+  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),`Reflow ${q.slot}/${variation}`);
+  if([129,136,146].includes(q.slot)&&variation===0)await screenshot(`exam-depth-${q.slot}`);
+  if(variation===1&&[150,152,154,156].includes(q.slot))console.log(`Priority pair ${q.slot-1}–${q.slot}: both variations passed browser scoring, hints, reveal and mobile checks.`);
+ }
+ assert.deepEqual(errors,[]);console.log('Browser smoke passed: all 62 added exam variations/scoring/reveal/mobile, authored hints/focus/reveal separation/mobile, whole-question subtopic filtering/cancel/reload/mobile, UI-generated codes and links in an independent browser context, error diagnostics, detailed topic/subtopic priorities and mixed/invalid backup imports, challenge filtering/cancellation/reload/mobile, arrays and validation, legacy/current codes and historical imports, rotated encoded production banks, four-hour repeat tracking, submission gating, global code entry, exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
 } catch(error) {console.error('Browser state:',await evaluate(`({hash:location.hash,level:document.querySelector('#challenge-level')?.value,toast:document.querySelector('#toast')?.textContent,dialog:document.querySelector('dialog')?.textContent})`));throw error;} finally {ws.close();}

@@ -5,12 +5,13 @@ import {join, relative} from 'node:path';
 import {build} from 'esbuild';
 import './question-codes.mjs';
 import {banks, validateBank} from '../js/bank.js';
+import {auditHints} from './audit-hints.mjs';
 import {createHash} from 'node:crypto';
 import {pack, packBank} from './pack-bank.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const output=join(root,'live');
-const errors=validateBank();
+const errors=[...validateBank(),...auditHints(banks).errors];
 if(errors.length)throw Error(errors.join('\n'));
 await rm(output,{recursive:true,force:true});
 await mkdir(output);

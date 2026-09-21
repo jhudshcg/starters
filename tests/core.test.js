@@ -58,7 +58,8 @@ test('new permutations replace every variation but preserve templates',()=>{
  assert.deepEqual(next.entries.map(e=>e.slot),first.entries.map(e=>e.slot));
  assert.ok(next.entries.every((e,i)=>e.variation!==first.entries[i].variation));
  assert.notDeepEqual(choose(2,'iteration',first).entries.map(e=>e.slot),first.entries.map(e=>e.slot));
- assert.throws(()=>choose(1,'CA2.1',choose(1,'CA2.1')));
+ const constrained=choose(1,'CA1.2',null,'new','all','CA1.2.3');
+ assert.throws(()=>choose(1,'CA1.2',constrained,'new','all','CA1.2.3'),/No other/);
  assert.notDeepEqual(choose(1,'CA2.4',choose(1,'CA2.4')).entries,choose(1,'CA2.1').entries);
 });
 test('all published question combinations meet mark limits',()=>{

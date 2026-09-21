@@ -6,7 +6,7 @@ Status: draft; shared behaviour is in [spec-common.md](spec-common.md).
 
 - Three questions per set; 15–22 marks total; questions can be multi-part, with each part worth 1–3 marks.
 - At least two distinct questions per assessable Core specification element. Variations of one question do not count as two questions.
-- At least two variations per question. Vary meaningful scenarios, values or correct answers; avoid cosmetic synonym rotation.
+- At least two variations per question.
 - Single words or short sentences for text responses. Prefer explicit response slots over a paragraph requesting several points.
 - For programming-related content areas, include lower-mark logic and programming-knowledge questions, including applying the Python operators listed in the specification. Appropriate CA2 questions may also involve selecting test types, inputs and expected results.
 - Across all Core content areas, primarily use name, state, list and describe questions. Include selected reasons or justifications linked to preceding answers for slightly deeper understanding. Prioritise coverage over depth; multiple choice should not displace the intended short-answer practice.
@@ -16,9 +16,7 @@ Status: draft; shared behaviour is in [spec-common.md](spec-common.md).
 
 ## Sources and coverage
 
-Use [spec.md](../../agents/spec.md), [Paper 1](../../agents/SAM/paper1.md), [Paper 1 markscheme](../../agents/SAM/mark_scheme_paper1.md), and [Paper 2](../../agents/SAM/paper2.md) and [Paper 2 markscheme](../../agents/SAM/mark_scheme_paper2.md) specimen materials for example question content, challenge level, wording and to calibrate command words and marking points. The SAM materials are specimen assessments. Write original items.
-
-The spec is version 1.1, despite stale references to 1.0. do not edit reference materials.
+Apply [shared authoring rules](content-authoring.md), including the specification/SAM source baseline, marking and hint requirements.
 
 Coverage must show whether every assessable Core element has at least two distinct questions, each with at least two variations. The two-question minimum follows the teacher's latest clarification; the older one-question wording in AGENTS.md does not apply to this minimum.
 
@@ -34,17 +32,9 @@ A part may link to several focuses, each listing several subelements. Store link
 
 Run `npm run coverage` to regenerate [JSON counts](../data/coverage/report.json) and the [readable report](coverage-ca1-ca2.md). Counts are nested beneath each focus and include zero-count elements. Count a distinct question once per element only if at least two variations directly assess it. `live_question_count` includes qualifying practice-bank questions; `question_count` additionally requires `reviewStatus: "approved"`. Supporting practice, drafts and insufficient variations have separate counts. Automated checks do not confer subject approval.
 
-The full target remains two distinct reviewed questions per element, with two applicable variations each. The current CA1–CA2 expansion is incomplete; use the report to find the gaps. The earlier coarse objective inventory and generated draft report are superseded. The 106-question draft is retained only as historical authoring material.
+Use the report to find remaining gaps towards the reviewed target. It supersedes the coarse objective inventory/draft report; the 106-question draft remains historical authoring material.
 
 `data/exam.js` imports the CA1 and CA2 content modules. Puzzle and Python banks remain separate. Explicit question slots support the implemented codec, but coverage does not depend on their display order or on a future public question-ID decision. Bank revision 2 replaces the demo contents; old demo-code compatibility is not maintained at the teacher’s request.
-
-## Marking
-
-For single words, normalise case and whitespace and use authored synonyms. The live bank also accepts simple sentence wrappers such as “It is an integer.”; contradictory additions do not match. Spelling tolerance is opt-in per term, bounded and tested against confusing terms. Never use fuzzy matching for numbers, operators or Python identifiers.
-
-For lists, award marks for distinct correct concepts; synonyms or repeated mentions of one concept earn no additional marks. For descriptions, define the expected points, accepted keywords and phrases, and any required links or sequence. Negation rules must distinguish an opposite claim from a correct negative statement; do not reject an answer simply because it contains “not”. Keep responses short and focused. Use selected reasons or structured responses where checking the required relationship needs more support. Unrecognised wording receives “This answer was not recognised. Check the feedback or compare with the model answer.”
-
-Linked justifications use an explicit table of valid choice/reason pairs. **Proposal:** award the first choice independently; award a linked reason only for a valid pair. Any error-carried-forward exception must be authored for that item.
 
 ## Programming-related example set: operators
 
@@ -68,7 +58,7 @@ Hints: Q1 “Separate complete boxes from devices left over”; Q2 “Check whet
 
 ## Acceptance
 
-Validate two distinct questions per assessable element, at least two applicable variations per counted question, all mark totals, option IDs, dependencies and coverage references. Each text rule has accepted, rejected, near-spelling and contradiction examples. Each variation receives subject review. The coverage report includes zero-count elements and flags elements with fewer than two usable questions; unreviewed drafts are not counted as completed coverage.
+Apply the [refinement definition of done](content-refinement.md). Coverage needs two distinct reviewed questions per element and two applicable variations per counted question; retain zero-count and insufficient-coverage rows.
 
 ## Editorial update — 15 September 2026
 
@@ -90,6 +80,10 @@ The exam activity page offers Topic (for example CA1.2) and Subtopic (All subtop
 
 Filtering preserves whole questions, their scenarios, code and linked parts. Choose three distinct templates with as many matches as possible (up to three); if fewer than three match, fill from the same broad topic. Matching parts are visibly labelled, each question states whether it includes the selection or provides related practice, and the set states the matching-question count. Selection never changes marks, coverage attribution or assessment rules.
 
-For CA1.2.3, the current bank supplies two matching whole questions plus one related CA1.2 question. Only variations whose displayed parts contain the selected reference qualify as direct matches. New set with this subtopic retains the filter; Get new permutation keeps the templates and qualifying coverage. Changing the broad topic or requesting a different topic resets the subtopic to All. Do not silently drop matching questions to manufacture another combination: disable the new-combination button if none remains, while allowing permutations where available.
+For CA1.2.3, the expanded bank supplies three matching whole questions. CA1.2.10 supplies two matches plus one related CA1.2 question. Only variations whose displayed parts contain the selected reference qualify as direct matches. New set with this subtopic retains the filter; Get new permutation keeps the templates and qualifying coverage. Changing the broad topic or requesting a different topic resets the subtopic to All. Do not silently drop matching questions to manufacture another combination: disable the new-combination button if none remains, while allowing permutations where available.
 
 The selected subtopic is stored with the active attempt and survives refresh. Cancelling replacement retains the old set and filter. Shared codes continue to encode the exact question slots and variations, not UI filtering preferences. A recipient opens those exact whole questions regardless of local preferences, with All subtopics initially selected; no codec revision or historical code migration is needed.
+
+## Further depth — 21 September 2026
+
+The [expansion review](exam-depth-review.md) records 23 additions, their comparison with existing tasks, SAM calibration, checks and remaining gaps. Counts remain in the generated coverage report. Cautions appear only in hints; original questions are unchanged.

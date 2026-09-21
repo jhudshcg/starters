@@ -54,7 +54,7 @@ These are acceptance targets for this product, not a claim that the draft has pa
 
 ## Content and feedback
 
-Use British English, direct command words and consistent technical terms. Avoid synonym rotation. State required units and rounding. Explain unfamiliar scenario terms briefly. Keep hints separate from the initial instruction.
+Apply [content authoring rules](content-authoring.md).
 
 Examples:
 

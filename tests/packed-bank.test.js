@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {BANK_VERSION,encode} from '../js/codes.js';
 import {banks, resolve} from '../js/bank.js';
 import {markQuestion} from '../js/marking.js';
 import {pack, packBank} from '../scripts/pack-bank.mjs';
@@ -49,7 +50,7 @@ test('Go can decode its playing tree without revealing a model answer',()=>{
 test('Unicode and original question identities survive packaging',()=>{
  const sample={text:'£2 · ≥ 16 · 5–15 minutes · café · × ◇'};
  assert.deepEqual(unpack(pack(sample)),sample);
- assert.deepEqual(resolve('BoAkAiAg').entries,[{slot:1,variation:1},{slot:2,variation:1},{slot:4,variation:0}]);
+ assert.deepEqual(resolve(encode({version:BANK_VERSION,type:1,entries:[{slot:1,variation:1},{slot:2,variation:1},{slot:4,variation:0}]})).entries,[{slot:1,variation:1},{slot:2,variation:1},{slot:4,variation:0}]);
 });
 test('payload rotation preserves padding and defeats plain Base64-plus-zlib decoding',()=>{
  const text='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/==';

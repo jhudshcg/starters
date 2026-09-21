@@ -148,3 +148,5 @@ Make full use of reliable libraries, tools and common browser api features. Don'
 This may include importing Pyscript (although a v1 could keep programming questions to fill in the blank/change the word/symbol/operator and multiple choice).
 
 For further project spec files, for specific question types and features and style, content much remain high signal, accurate and concise. Avoid all synonym rotation in text, call a spade a spade.
+
+For content changes, including hints, follow [content authoring](docs/content-authoring.md) and [content refinement](docs/content-refinement.md). Type specifications retain specialist requirements.

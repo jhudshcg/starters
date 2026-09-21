@@ -18,7 +18,7 @@ Token entries are compared against explicit accepted alternatives after permitte
 
 Output responses declare whether quotes, whitespace and numeric equivalents are accepted. Trace cells have explicit expected values; each assessed cell is marked independently unless a documented dependency applies. Avoid awarding the same fact twice.
 
-Hints address the concept; misconception feedback addresses the submitted error. Reveal includes the completed code and explanation. Use no syntax errors in ordinary snippets; deliberate errors are labelled as tasks to fix.
+Apply [shared authoring rules](content-authoring.md). Ordinary snippets must be syntactically valid; label deliberate errors as repair tasks.
 
 ## Complete example set: iteration
 
@@ -83,7 +83,7 @@ Cover linear and binary search and bubble, insertion and merge sort through appr
 
 ## Acceptance
 
-Check five variations per template and three templates per selectable focus. Execute corrected reference snippets during content validation and compare trace/output answers. Never execute deliberately nonterminating examples without a timeout. Check that each pair tests different aspects and totals 10–15 marks. Pilot hints with students of differing experience.
+Apply the [refinement checklist](content-refinement.md). Check five variations per template, three templates per selectable focus, reference trace/output agreement, and pairs testing different aspects totalling 10–15 marks.
 
 ## Expanded supported bank (20 September 2026)
 

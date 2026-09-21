@@ -47,7 +47,7 @@ One public `data/puzzles.js` bank imports the family data. Keep renderers and ch
 - Sudoku: solve independently, count solutions up to two, and record the techniques needed. Reject unsatisfiable or ambiguous boards.
 - Numerical/sequence/classic problems: calculate independently, check every variation and test wrong answers corresponding to common mistakes. Explicitly state conventions and allowed operations.
 
-Hints should point to a useful deduction rather than expose a complete answer. Show full explanations only through the existing reveal action. For Go, show green feedback immediately on reaching a recorded winning position; other puzzle families retain explicit checking. Avoid scoring trivial exclusions or safe moves as if they solved the puzzle; publish the scoring rule.
+Apply [shared hint rules](content-authoring.md#hints-feedback-and-reveal) and the [refinement checklist](content-refinement.md). For Go, show green feedback immediately on reaching a recorded winning position; other puzzle families retain explicit checking. Avoid scoring trivial exclusions or safe moves as if they solved the puzzle; publish the scoring rule.
 
 ## Accessible controls
 

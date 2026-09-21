@@ -11,7 +11,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Alex and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -128,7 +128,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 3 to list possible start-time pairs for Drew and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -237,7 +237,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -354,7 +354,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -460,7 +460,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Drew and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -580,7 +580,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 5 to list possible start-time pairs for Blair and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -689,7 +689,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -798,7 +798,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -899,7 +899,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 3 to list possible start-time pairs for Casey and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -1011,7 +1011,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 5 to list possible start-time pairs for Blair and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -1131,7 +1131,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Alex's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -1296,7 +1296,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Drew and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -1450,7 +1450,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 8 to list possible start-time pairs for Blair and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -1604,7 +1604,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Alex and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -1755,7 +1755,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 5 to list possible start-time pairs for Casey and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -1909,7 +1909,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 9 to list possible start-time pairs for Blair and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -2060,7 +2060,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Blair and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -2200,7 +2200,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -2357,7 +2357,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Blair's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -2514,7 +2514,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 6 to list possible start-time pairs for Alex and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -2665,7 +2665,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 2 separately. When one is true, the other must be false; follow the effect on Alex's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -2819,7 +2819,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Blair's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -2976,7 +2976,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -3127,7 +3127,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Casey's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -3284,7 +3284,7 @@ export default [
       },
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 3 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -3450,7 +3450,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Drew and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -3571,7 +3571,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Blair and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -3687,7 +3687,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -3800,7 +3800,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Drew and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -3924,7 +3924,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 5 to list possible start-time pairs for Alex and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -4040,7 +4040,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 5 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -4156,7 +4156,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Blair's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -4294,7 +4294,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Casey and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -4418,7 +4418,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -4534,7 +4534,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Alex and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -4644,7 +4644,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 6 to list possible start-time pairs for Blair and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -4782,7 +4782,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Alex and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -4895,7 +4895,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 5 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -5016,7 +5016,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Casey and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -5132,7 +5132,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Drew and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -5267,7 +5267,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 2 separately. When one is true, the other must be false; follow the effect on Alex's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -5444,7 +5444,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Casey and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -5610,7 +5610,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 8 to list possible start-time pairs for Alex and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -5784,7 +5784,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 9 to list possible start-time pairs for Alex and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -5961,7 +5961,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -6141,7 +6141,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -6334,7 +6334,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -6514,7 +6514,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Drew and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -6680,7 +6680,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -6860,7 +6860,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Casey and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -7023,7 +7023,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Casey's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -7203,7 +7203,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Alex and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -7369,7 +7369,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 6 to list possible start-time pairs for Blair and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -7546,7 +7546,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 9 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -7720,7 +7720,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -7897,7 +7897,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Alex's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -8069,7 +8069,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Alex's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -8238,7 +8238,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 2 to list possible start-time pairs for Casey and Blair. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -8409,7 +8409,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 1 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -8575,7 +8575,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -8738,7 +8738,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 9 to list possible start-time pairs for Alex and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -8901,7 +8901,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Casey and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -9061,7 +9061,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 5 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -9219,7 +9219,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Blair and Drew. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -9377,7 +9377,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Blair and Casey. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -9540,7 +9540,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -9712,7 +9712,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 4 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -9881,7 +9881,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Use clue 7 to list possible start-time pairs for Drew and Alex. Eliminate pairs that conflict with another clue before assigning either time.",
         "parts": [
           {
             "id": "0",
@@ -10052,7 +10052,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 2 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
@@ -10221,7 +10221,7 @@ export default [
     "variations": [
       {
         "prompt": "Match each person with one value in every category. Each value is used once per category. Combine the clues; exactly-one statements exclude both being true.",
-        "hint": "Start with time differences or a value excluded from several people. Combine clues with the one-to-one rule.",
+        "hint": "Test the two possibilities in clue 1 separately. When one is true, the other must be false; follow the effect on Drew's other assignments.",
         "parts": [
           {
             "id": "0",
