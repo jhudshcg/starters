@@ -1,7 +1,8 @@
 // Editorial opt-ins, by permanent slot:part[:variation]. Omitting variation
 // selects both versions. Expected answers guard against stale assignments.
-// Each group permits one term phrase and at most one of its linked suffixes.
-const group=(terms,qualifiers)=>({terms:terms.split('|'),...(qualifiers?{qualifiers}: {})});
+// Each group permits one term phrase, up to three descriptive prefix words,
+// and at most one linked suffix. The marker checks every or-alternative.
+const group=(terms,qualifiers)=>({terms:terms.split('|'),prefixWords:3,...(qualifiers?{qualifiers}: {})});
 const design=['design','approach','method','strategy'];
 const method=['method','approach','technique'];
 const type=['type','data type'];
@@ -22,7 +23,7 @@ link('3:0','block diagram',group('block diagram|block diagrams'));
 link('3:1','information flow diagram',group('information flow|information-flow|data flow|data-flow',['diagram']),group('DFD'));
 link('3:2','flowchart',group('flowchart|flow chart',['diagram']));
 link('3:3','code',group('code|program code|Python code|source code'));
-link('3:4','written description',group('written description|written descriptions|written algorithm|numbered steps|natural language|plain language|plain-language description'));
+link('3:4','written description',group('written description|written descriptions|written representation|written representations|written algorithm|numbered steps|natural language|plain language|plain-language description'));
 link('4:3 127:3','hiding internal workings',group('hiding internal workings|hide internal workings|hide implementation details|hiding implementation details|hiding the implementation|hiding internal details|information hiding|implementation hiding'));
 link('5:0','terminator',group('terminator|terminal|start/end|start or end',symbol));
 link('5:1 128:0','process',group('process',symbol));
@@ -71,6 +72,8 @@ link('18:2 18:4 37:2 124:4','dictionary',group('dictionary|dict',type));
 link('29:0','count-controlled',group('count-controlled|count controlled|counter-controlled|counter controlled',['loop','iteration']));
 link('29:1 137:2','condition-controlled',group('condition-controlled|condition controlled',['loop','iteration']));
 link('29:4','infinite loop',group('infinite loop|endless loop|non-terminating loop|non terminating loop|nonterminating loop'));
+link('31:2','procedure',group('procedure'));
+link('31:4','function',group('function'));
 link('32:0 159:0','user-written',group('user-written|user written|user-defined|user defined|custom-written|custom written',['code','function','routine']));
 link('32:1 159:1','built-in',group('built-in|built in|builtin',['code','function']));
 link('32:2 159:2','standard library',group('standard library|standard-library|Python standard library',['code']));

@@ -106,3 +106,23 @@ test('bank validation rejects malformed or inapplicable term rules',()=>{
   } finally {p.termRules=original;}
   assert.ok(!validateBank().some(e=>e.includes('invalid conceptual term rules')));
 });
+
+
+test('descriptive prefixes and equivalent or alternatives are bounded per operand',()=>{
+ const partAt=(slot,id)=>exam.find(q=>q.slot===slot).variations[0].parts.find(p=>p.id===id);
+ for(const [p,good,bad] of [
+  [partAt(3,'2'),['high level flow chart','simple high level flowchart','flowchart or flow chart'],['very simple high level flowchart','not a flowchart','anything but a flowchart','flowchart or block diagram','flowchart or','or flowchart','flowchart or or flowchart']],
+  [partAt(12,'1'),['float or real','a float or a real number','approximate real number or floating point'],['integer or float','float or integer','not float or real','float or not real','neither float nor real','non-float','non floating point','isn’t a float','float or unreal']],
+  [partAt(31,'4'),['short function','small simple function'],['not a function','procedure or function','function or procedure']],
+ ]) {
+  const packed=packBank([{variations:[{parts:[p]}]}])[0].variations[0].parts[0];
+  for(const candidate of [p,packed]) {
+   for(const answer of good)assert.equal(mark(candidate,answer),1,answer);
+   for(const answer of bad)assert.equal(mark(candidate,answer),0,answer);
+  }
+ }
+ const strict={...partAt(3,'2'),termRules:[{terms:['flowchart'],prefixWords:0}]};
+ assert.equal(mark(strict,'short flowchart'),0);
+ assert.equal(mark(partAt(17,'2'),'short float'),0);
+ assert.equal(mark(partAt(17,'2'),'float or real'),0);
+});

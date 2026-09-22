@@ -49,3 +49,10 @@
 #issue-report fieldset label{display:flex;align-items:baseline;gap:.6rem;margin:.7rem 0;overflow-wrap:anywhere}
 #issue-report input[type=checkbox]{flex:none;width:auto}
 #issue-report p{font-size:.85rem;overflow-wrap:anywhere}
+
+/* Reveal each answer under the same part label as its question. */
+.solution h3{font-size:1rem;margin:0 0 .8rem}
+.solution-list{list-style:none;margin:0;padding:0}
+.solution-part+.solution-part{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
+.solution .solution-answer{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 .25rem}
+.solution .solution-explanation{margin:0}

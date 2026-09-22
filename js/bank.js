@@ -141,7 +141,7 @@ export function validateBank() {
           if(p.termRules!==undefined) {
             const strings=list=>Array.isArray(list)&&list.length>0&&list.every(s=>typeof s==='string'&&s.trim()===s&&s.length>0);
             if(p.kind!=='text'||p.options||p.caseSensitive||!Array.isArray(p.termRules)||!p.termRules.length||
-              p.termRules.some(rule=>!rule||!strings(rule.terms)||(rule.qualifiers!==undefined&&!strings(rule.qualifiers)))) {
+              p.termRules.some(rule=>!rule||!strings(rule.terms)||(rule.prefixWords!==undefined&&![0,3].includes(rule.prefixWords))||(rule.qualifiers!==undefined&&!strings(rule.qualifiers)))) {
               errors.push(`${q.title} V${i} part ${j}: invalid conceptual term rules`);
             }
           }

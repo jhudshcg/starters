@@ -36,12 +36,25 @@ export function markQuestion(question, answers={}) {
       else {
         const clean=p.allowSentence&&!p.caseSensitive?normaliseTerm:a=>normalise(a,p.caseSensitive);
         correct=[p.answer,...p.accepted??[],...p.typos??[]].some(a=>clean(a)===clean(raw));
-        // Opt-in conceptual answers: one complete term, optionally followed by
-        // one qualifier linked to that term group. Never match substrings.
-        if(!correct && p.kind==='text' && !p.options && !p.caseSensitive) {
-          correct=(p.termRules??[]).some(rule=>rule.terms.some(term=>
-            clean(raw)===clean(term) || (rule.qualifiers??[]).some(qualifier=>
-              clean(raw)===clean(`${term} ${qualifier}`))));
+        if(!correct && p.kind==='text' && !p.options && !p.caseSensitive && p.termRules?.length) {
+          const forms=[p.answer,...p.accepted??[],...p.typos??[],
+            ...p.termRules.flatMap(rule=>rule.terms.flatMap(term=>[term,...(rule.qualifiers??[]).map(q=>`${term} ${q}`)]))].map(clean);
+          const exact=answer=>forms.includes(answer);
+          const matches=answer=>{
+            if(exact(answer))return true;
+            return p.termRules.some(rule=>rule.terms.some(term=>['',...(rule.qualifiers??[])].some(qualifier=>{
+              const ending=clean(qualifier?`${term} ${qualifier}`:term);
+              if(!answer.endsWith(` ${ending}`))return false;
+              const prefix=answer.slice(0,-ending.length).trim();
+              if(prefix.split(/\s+/).length>(rule.prefixWords??0))return false;
+              if(/\b(?:not|no|non|never|neither|nor|without|except|excluding|but|rather|instead|versus|vs|and|or)\b|n['’]t\b|\bnon(?:-|\s)/i.test(prefix))return false;
+              // A repeated term is not a descriptive prefix.
+              return !forms.some(form=>(` ${prefix} `).includes(` ${form} `));
+            })));
+          };
+          const answer=clean(raw);
+          // Authored phrases such as "start or end" remain atomic alternatives.
+          correct=exact(answer)||answer.split(/\bor\b/i).every(operand=>Boolean(clean(operand))&&matches(clean(operand)));
         }
       }
     }
