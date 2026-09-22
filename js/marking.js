@@ -36,6 +36,13 @@ export function markQuestion(question, answers={}) {
       else {
         const clean=p.allowSentence&&!p.caseSensitive?normaliseTerm:a=>normalise(a,p.caseSensitive);
         correct=[p.answer,...p.accepted??[],...p.typos??[]].some(a=>clean(a)===clean(raw));
+        // Opt-in conceptual answers: one complete term, optionally followed by
+        // one qualifier linked to that term group. Never match substrings.
+        if(!correct && p.kind==='text' && !p.options && !p.caseSensitive) {
+          correct=(p.termRules??[]).some(rule=>rule.terms.some(term=>
+            clean(raw)===clean(term) || (rule.qualifiers??[]).some(qualifier=>
+              clean(raw)===clean(`${term} ${qualifier}`))));
+        }
       }
     }
     const dependency=p.dependsOn===undefined || results[Number(p.dependsOn)]?.earned>0;

@@ -138,6 +138,13 @@ export function validateBank() {
         v.parts.forEach((p,j)=>{
           if(!Number.isInteger(p.marks)||p.marks<1||p.marks>3) errors.push(`${q.title}: invalid marks`);
           if(p.options && !p.options.includes(p.answer)) errors.push(`${q.title} V${i}: answer absent from options`);
+          if(p.termRules!==undefined) {
+            const strings=list=>Array.isArray(list)&&list.length>0&&list.every(s=>typeof s==='string'&&s.trim()===s&&s.length>0);
+            if(p.kind!=='text'||p.options||p.caseSensitive||!Array.isArray(p.termRules)||!p.termRules.length||
+              p.termRules.some(rule=>!rule||!strings(rule.terms)||(rule.qualifiers!==undefined&&!strings(rule.qualifiers)))) {
+              errors.push(`${q.title} V${i} part ${j}: invalid conceptual term rules`);
+            }
+          }
           if(p.dependsOn!==undefined && (!v.parts[Number(p.dependsOn)]||Number(p.dependsOn)>=j)) errors.push(`${q.title}: invalid dependency`);
         });
         try {resolve({version:BANK_VERSION,type,entries:[{slot:q.slot,variation:i}],minutes:null});} catch(e){errors.push(e.message);}

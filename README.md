@@ -41,7 +41,7 @@ Logic/equation candidate cells cycle unknown → excluded → selected. Sudoku a
 
 Undo, Reset and hints are available during an attempt. Checking and solution reveal unlock after submitting the set (including timer expiry), and lock again when the set is reloaded or left. Completed saved answers can be submitted again to unlock review without duplicating the progress record. A code-entry form is available on every page. Selected cells are yellow; correctness appears only after explicit checking or submission. The score appears beside Submit and at the top. Answers, notes and timing survive refresh. Timer expiry submits once. Puzzles are excluded from revision priorities.
 
-Progress stays in browser-local storage. CSV export and JSON backup/restore are available; accounts, OneDrive integration and CSV import are not implemented. Python code answers are compared as constrained tokens, never executed. Text marking uses explicit accepted answers; unrestricted sentence understanding is not implemented.
+Progress stays in browser-local storage. CSV export and JSON backup/restore are available; accounts, OneDrive integration and CSV import are not implemented. Python code answers are compared as constrained tokens, never executed. Text marking uses explicit accepted answers and, for opted-in concepts, one authored term with up to one linked qualifier. Unrestricted sentence understanding is not implemented.
 
 ## Maintaining content
 

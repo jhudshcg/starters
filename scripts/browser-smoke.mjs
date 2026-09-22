@@ -429,5 +429,22 @@ try{
   if([129,136,146].includes(q.slot)&&variation===0)await screenshot(`exam-depth-${q.slot}`);
   if(variation===1&&[150,152,154,156].includes(q.slot))console.log(`Priority pair ${q.slot-1}–${q.slot}: both variations passed browser scoring, hints, reveal and mobile checks.`);
  }
- assert.deepEqual(errors,[]);console.log('Browser smoke passed: all 62 added exam variations/scoring/reveal/mobile, authored hints/focus/reveal separation/mobile, whole-question subtopic filtering/cancel/reload/mobile, UI-generated codes and links in an independent browser context, error diagnostics, detailed topic/subtopic priorities and mixed/invalid backup imports, challenge filtering/cancellation/reload/mobile, arrays and validation, legacy/current codes and historical imports, rotated encoded production banks, four-hour repeat tracking, submission gating, global code entry, exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
+ // Concept rules must survive the complete browser input / packed-bank / score path.
+ for(const [slot,alternatives,rejected] of [
+  [9,{'0':'top down design','1':'bottom-up method','2':'modular approach'},{'0':'top-down design method'}],
+  [12,{'0':'integer data type','1':'real number','2':'string type','3':'Boolean data type'},{'1':'real array'}],
+  [47,{'3':'black-box testing','4':'white-box testing'},{'3':'black-box testing or white-box testing'}]
+ ])for(const variation of [0,1])for(const valid of [true,false]) {
+  const code=encode({version:BANK_VERSION,type:1,entries:[{slot,variation}]}),opened=resolve(code);
+  await evaluate('localStorage.removeItem("dsd-starters-v1")');
+  await send('Page.navigate',{url:base+'/?term-rule='+slot+'-'+variation+'-'+valid+'#set='+code});
+  await until(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)} && document.querySelector('#submit') && !document.querySelector('#submit').disabled && !document.querySelector('#submit-result')`);
+  const answers={...Object.fromEntries(opened.questions[0].parts.map(p=>[p.id,p.answer])),...alternatives,...(valid?{}:rejected)};
+  await evaluate(`for(const [id,value] of Object.entries(${JSON.stringify(answers)})){const el=[...document.querySelectorAll('[data-slot="${slot}"][data-part="'+id+'"]')].find(el=>el.type!=='radio'||el.value===value);if(el.type==='radio'){el.checked=true;el.dispatchEvent(new Event('change',{bubbles:true}));}else{el.value=value;el.dispatchEvent(new Event('input',{bubbles:true}));}}`);
+  await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
+  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.at(-1).earned'),opened.total-(valid?0:1),`Term rules ${slot}/${variation}/${valid}`);
+  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'));
+  if(slot===12&&variation===0&&valid)await screenshot('term-rules');
+ }
+ assert.deepEqual(errors,[]);console.log('Browser smoke passed: term synonyms/qualifiers and rejection in both variations, all 62 added exam variations/scoring/reveal/mobile, authored hints/focus/reveal separation/mobile, whole-question subtopic filtering/cancel/reload/mobile, UI-generated codes and links in an independent browser context, error diagnostics, detailed topic/subtopic priorities and mixed/invalid backup imports, challenge filtering/cancellation/reload/mobile, arrays and validation, legacy/current codes and historical imports, rotated encoded production banks, four-hour repeat tracking, submission gating, global code entry, exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
 } catch(error) {console.error('Browser state:',await evaluate(`({hash:location.hash,level:document.querySelector('#challenge-level')?.value,toast:document.querySelector('#toast')?.textContent,dialog:document.querySelector('dialog')?.textContent})`));throw error;} finally {ws.close();}

@@ -10,6 +10,7 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Puzzle specification](spec-puzzles.md) | Puzzle families, interactions, scoring and examples |
 | [CA1–CA2 coverage report](coverage-ca1-ca2.md) | Generated subelement counts and remaining gaps |
 | [Exam expansion review](exam-depth-review.md) | Source calibration, distinct angles and remaining gaps for slots 126–148 |
+| [Exam term review](exam-term-review.md) | Context clarifications, synonyms, linked qualifiers and marking checks |
 | [Exam specification](spec-exam.md) | Curriculum coverage, marking and examples |
 | [Python specification](spec-python.md) | Challenge formats, variations and examples |
 | [Style guide](style-guide.md) | Shared visual and interaction rules |

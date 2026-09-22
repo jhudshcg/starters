@@ -20,7 +20,7 @@ test('all production parts keep answers sealed and match source scoring and reve
    assert.deepEqual(markQuestion(production),markQuestion(v));
    assert.deepEqual(markQuestion(production,Object.fromEntries(v.parts.map(p=>[p.id,'wrong']))),markQuestion(v,Object.fromEntries(v.parts.map(p=>[p.id,'wrong']))));
    for(const [i,p] of production.parts.entries()){
-    for(const field of ['answer','accepted','typos','explanation','solutionText','tree'])assert.ok(!(field in p));
+    for(const field of ['answer','accepted','typos','termRules','explanation','solutionText','tree'])assert.ok(!(field in p));
     assert.equal(markingPart(p).answer,v.parts[i].answer);
     assert.equal(markingPart(p).explanation,undefined);
     assert.equal(revealPart(p).answer,v.parts[i].answer);

@@ -6,4 +6,5 @@ import depthCa1 from './exam-depth-ca1.js';
 import depthCa2 from './exam-depth-ca2.js';
 import depthTesting from './exam-depth-testing.js';
 import priority from './exam-priority.js';
-export default [...ca1, ...ca2, ...expanded, ...depthCa1, ...depthCa2, ...depthTesting, ...priority];
+import {withExamTermRules} from './exam-term-rules.js';
+export default withExamTermRules([...ca1, ...ca2, ...expanded, ...depthCa1, ...depthCa2, ...depthTesting, ...priority]);

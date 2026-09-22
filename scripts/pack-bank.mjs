@@ -5,9 +5,9 @@ export function pack(data) {
 }
 export function packBank(bank) {
   return bank.map(q=>({...q,variations:q.variations.map(v=>({...v,parts:v.parts.map(part=>{
-    const {answer,accepted,typos,explanation,solutionText,tree,...visible}=part;
+    const {answer,accepted,typos,termRules,explanation,solutionText,tree,...visible}=part;
     return {...visible,
-      checkData:pack({answer,accepted,typos}),
+      checkData:pack({answer,accepted,typos,termRules}),
       revealData:pack({answer,explanation,solutionText}),
       ...(tree?{playData:pack(tree)}:{})};
   })}))}));

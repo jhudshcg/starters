@@ -6559,7 +6559,7 @@ export default [
           },
           {
             "id": "1",
-            "prompt": "Name a value intended to remain unchanged during execution.",
+            "prompt": "Name the programming construct for a value intended to remain unchanged during execution.",
             "answer": "constant",
             "accepted": [],
             "marks": 1,
@@ -7015,7 +7015,7 @@ export default [
           },
           {
             "id": "1",
-            "prompt": "Name the check requiring a code to contain exactly six characters.",
+            "prompt": "Name the validation check requiring a code to contain exactly six characters.",
             "answer": "length check",
             "accepted": [
               "length"
@@ -7035,7 +7035,7 @@ export default [
           },
           {
             "id": "2",
-            "prompt": "Name the check requiring age to be between 16 and 19 inclusive.",
+            "prompt": "Name the validation check requiring age to be between 16 and 19 inclusive.",
             "answer": "range check",
             "accepted": [
               "range"
@@ -7055,7 +7055,7 @@ export default [
           },
           {
             "id": "3",
-            "prompt": "Name the check requiring a count to be an integer.",
+            "prompt": "Name the validation check requiring a count to be an integer.",
             "answer": "type check",
             "accepted": [
               "type"
@@ -7075,7 +7075,7 @@ export default [
           },
           {
             "id": "4",
-            "prompt": "Name the check requiring two uppercase letters followed by four digits.",
+            "prompt": "Name the validation check requiring two uppercase letters followed by four digits.",
             "answer": "format check",
             "accepted": [
               "format"
@@ -7123,7 +7123,7 @@ export default [
           },
           {
             "id": "1",
-            "prompt": "Name the check limiting a username to twenty characters.",
+            "prompt": "Name the validation check limiting a username to twenty characters.",
             "answer": "length check",
             "accepted": [
               "length"
@@ -7143,7 +7143,7 @@ export default [
           },
           {
             "id": "2",
-            "prompt": "Name the check requiring quantity to be between 1 and 50 inclusive.",
+            "prompt": "Name the validation check requiring quantity to be between 1 and 50 inclusive.",
             "answer": "range check",
             "accepted": [
               "range"
@@ -7163,7 +7163,7 @@ export default [
           },
           {
             "id": "3",
-            "prompt": "Name the check requiring a measurement to have a numeric data type.",
+            "prompt": "Name the validation check requiring a measurement to have a numeric data type.",
             "answer": "type check",
             "accepted": [
               "type"
@@ -7183,7 +7183,7 @@ export default [
           },
           {
             "id": "4",
-            "prompt": "Name the check requiring three digits followed by one uppercase letter.",
+            "prompt": "Name the validation check requiring three digits followed by one uppercase letter.",
             "answer": "format check",
             "accepted": [
               "format"
