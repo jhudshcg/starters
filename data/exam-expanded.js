@@ -3,7 +3,7 @@ export default [
   {
     "slot": 100,
     "focus": "CA1.1",
-    "title": "CA1.1 \u00b7 Applying ideas 1",
+    "title": "Computational thinking in practice",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -282,7 +282,7 @@ export default [
   {
     "slot": 101,
     "focus": "CA1.1",
-    "title": "CA1.1 \u00b7 Applying ideas 2",
+    "title": "Abstraction, algorithms and subproblems",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -559,7 +559,7 @@ export default [
   {
     "slot": 102,
     "focus": "CA1.1",
-    "title": "CA1.1 \u00b7 Applying ideas 3",
+    "title": "Combining computational-thinking techniques",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -842,7 +842,7 @@ export default [
   {
     "slot": 103,
     "focus": "CA1.1",
-    "title": "CA1.1 \u00b7 Applying ideas 4",
+    "title": "Decomposition and abstraction models",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -1131,7 +1131,7 @@ export default [
   {
     "slot": 104,
     "focus": "CA1.2",
-    "title": "CA1.2 \u00b7 Applying ideas 1",
+    "title": "Algorithm forms and trade-offs",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -1411,7 +1411,7 @@ export default [
   {
     "slot": 105,
     "focus": "CA1.2",
-    "title": "CA1.2 \u00b7 Applying ideas 2",
+    "title": "Tracing and translating algorithms",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -1698,7 +1698,7 @@ export default [
   {
     "slot": 106,
     "focus": "CA1.3",
-    "title": "CA1.3 \u00b7 Applying ideas 1",
+    "title": "Design approaches and troubleshooting",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -2020,7 +2020,7 @@ export default [
   {
     "slot": 107,
     "focus": "CA2.4",
-    "title": "CA2.4 \u00b7 Applying ideas 1",
+    "title": "Operators and Boolean expressions",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -2304,7 +2304,7 @@ export default [
   {
     "slot": 108,
     "focus": "CA2.5",
-    "title": "CA2.5 \u00b7 Applying ideas 1",
+    "title": "Files, input and output",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -2528,7 +2528,7 @@ export default [
   {
     "slot": 109,
     "focus": "CA2.6",
-    "title": "CA2.6 \u00b7 Applying ideas 1",
+    "title": "Control flow constructs",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -2770,7 +2770,7 @@ export default [
   {
     "slot": 110,
     "focus": "CA2.7",
-    "title": "CA2.7 \u00b7 Applying ideas 1",
+    "title": "Procedures, methods and call syntax",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -3007,7 +3007,7 @@ export default [
   {
     "slot": 111,
     "focus": "CA2.7",
-    "title": "CA2.7 \u00b7 Applying ideas 2",
+    "title": "Function and method syntax",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -3250,7 +3250,7 @@ export default [
   {
     "slot": 112,
     "focus": "CA2.9",
-    "title": "CA2.9 \u00b7 Applying ideas 1",
+    "title": "Efficient data and code choices",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -3489,7 +3489,7 @@ export default [
   {
     "slot": 113,
     "focus": "CA2.10",
-    "title": "CA2.10 \u00b7 Applying ideas 1",
+    "title": "Debugging and error feedback",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -3734,7 +3734,7 @@ export default [
   {
     "slot": 114,
     "focus": "CA2.11",
-    "title": "CA2.11 \u00b7 Applying ideas 1",
+    "title": "Sorting and searching fundamentals",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -4053,7 +4053,7 @@ export default [
   {
     "slot": 115,
     "focus": "CA2.11",
-    "title": "CA2.11 \u00b7 Applying ideas 2",
+    "title": "Sorting trade-offs and search cost",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -4330,7 +4330,7 @@ export default [
   {
     "slot": 116,
     "focus": "CA2.12",
-    "title": "CA2.12 \u00b7 Applying ideas 1",
+    "title": "Early testing and test planning",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -4650,7 +4650,7 @@ export default [
   {
     "slot": 117,
     "focus": "CA2.12",
-    "title": "CA2.12 \u00b7 Applying ideas 2",
+    "title": "Unit, boundary and integration testing",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -4968,7 +4968,7 @@ export default [
   {
     "slot": 118,
     "focus": "CA2.12",
-    "title": "CA2.12 \u00b7 Applying ideas 3",
+    "title": "Performance, system and acceptance testing",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -5286,7 +5286,7 @@ export default [
   {
     "slot": 119,
     "focus": "CA2.12",
-    "title": "CA2.12 \u00b7 Applying ideas 4",
+    "title": "Acceptance, usability and regression testing",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -5604,7 +5604,7 @@ export default [
   {
     "slot": 120,
     "focus": "CA2.12",
-    "title": "CA2.12 \u00b7 Applying ideas 5",
+    "title": "Regression, load and closed-box testing",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -5922,7 +5922,7 @@ export default [
   {
     "slot": 121,
     "focus": "CA2.12",
-    "title": "CA2.12 \u00b7 Applying ideas 6",
+    "title": "Open-box and component testing",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -6241,7 +6241,7 @@ export default [
   {
     "slot": 122,
     "focus": "CA2.12",
-    "title": "CA2.12 \u00b7 Applying ideas 7",
+    "title": "Test data and release testing",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -6521,7 +6521,7 @@ export default [
   {
     "slot": 123,
     "focus": "CA2.2",
-    "title": "CA2.2 \u00b7 Applying ideas 1",
+    "title": "Name visibility and fixed values",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -6746,7 +6746,7 @@ export default [
   {
     "slot": 124,
     "focus": "CA2.3",
-    "title": "CA2.3 \u00b7 Applying ideas 1",
+    "title": "Arrays, lists and dictionaries",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [
@@ -6979,7 +6979,7 @@ export default [
   {
     "slot": 125,
     "focus": "CA2.8",
-    "title": "CA2.8 \u00b7 Applying ideas 1",
+    "title": "Common input validation checks",
     "format": "Scenario questions",
     "reviewStatus": "teacher-review-pending",
     "tags": [

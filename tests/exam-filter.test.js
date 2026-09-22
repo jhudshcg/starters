@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {banks,focuses,examSubtopics,choose,resolve,hasAlternativeExamSet,matchesSubtopic} from '../js/bank.js';
+import {banks,focuses,examSubtopics,nextExamSubtopic,choose,resolve,hasAlternativeExamSet,matchesSubtopic} from '../js/bank.js';
 import {matchingVariations,subtopicOptions,preferSubtopic} from '../js/exam-selection.js';
 import {codeDiagnostics} from '../js/code-diagnostics.js';
 import {BANK_VERSION,encode} from '../js/codes.js';
@@ -37,6 +37,24 @@ test('matching is segment-aware, includes deeper references, and respects variat
  assert.throws(()=>preferSubtopic([[q]],'CA1.2.9'),/No questions/);
  const deep={...q,focus:'CA2.12',variations:[{parts:[part('CA2.12.1.1')]}]};
  assert.deepEqual(subtopicOptions([deep],'CA2.12').map(r=>r.reference),['CA2.12.1','CA2.12.1.1']);
+});
+test('sequence advances through selectable subtopics and across topic boundaries',()=>{
+ const first=examSubtopics('CA1.1')[0].reference;
+ assert.deepEqual(nextExamSubtopic('CA1.1','all'),{focus:'CA1.1',reference:first});
+ const last=examSubtopics('CA1.1').at(-1).reference;
+ assert.deepEqual(nextExamSubtopic('CA1.1',last),{focus:'CA1.2',reference:examSubtopics('CA1.2')[0].reference});
+ const finalFocus=focuses(1).at(-1),finalReference=examSubtopics(finalFocus).at(-1).reference;
+ assert.equal(nextExamSubtopic(finalFocus,finalReference),null);
+ assert.equal(nextExamSubtopic('CA1.1','CA1.1.999'),null);
+});
+test('every sequence step can replace the previous set',()=>{
+ let target=nextExamSubtopic(focuses(1)[0]),set=null;
+ while(target){
+    set=choose(1,target.focus,set,'sequence','all',target.reference);
+  assert.equal(set.examSubtopic,target.reference);
+  assert.ok(set.questions.some(q=>q.parts.some(p=>matchesSubtopic(p,target.reference))));
+  target=nextExamSubtopic(target.focus,target.reference);
+ }
 });
 test('error diagnostics preserve exact characters and omit page queries and student storage',()=>{
  const raw='BoAkAiAg\u200b';

@@ -24,6 +24,14 @@ export const puzzlePool = (focus, level='all') => banks[0].filter(q=>q.focus===f
 export const availableChallenges = focus => Object.keys(challengeLevels).filter(level=>puzzlePool(focus,level).length>=3);
 export const focuses = type => [...new Set(banks[type].map(q => q.focus))];
 export const examSubtopics = focus => subtopicOptions(banks[1],focus);
+// Sequence only through selectable references, so every step has bank coverage.
+export function nextExamSubtopic(focus, reference='all') {
+  const sequence=focuses(1).flatMap(parent=>examSubtopics(parent).map(option=>({focus:parent,reference:option.reference})));
+  if(reference==='all')return sequence.find(option=>option.focus===focus)??null;
+  const index=sequence.findIndex(option=>option.reference===reference);
+  if(index<0)return null;
+  return sequence[index+1]??null;
+}
 export const marks = q => q.parts.reduce((a,p) => a+p.marks,0);
 
 // Historical scores can still be imported even when their questions were revised.
@@ -104,9 +112,17 @@ export function choose(type, focus, previous = null, mode = 'new', challengeLeve
   }
   // Choose the best matching combinations before excluding the last set: never
   // weaken the filter just to manufacture another combination.
-  const eligible=candidateSets(type,focus,challengeLevel,subtopic).filter(qs=>!previous||slotsKey(qs)!==slotsKey(previous.entries));
+  const candidates=candidateSets(type,focus,challengeLevel,subtopic);
+  const alternatives=candidates.filter(qs=>!previous||slotsKey(qs)!==slotsKey(previous.entries));
+  // Adjacent sequence focuses may share their only best whole-question set.
+  const eligible=mode==='sequence'&&!alternatives.length?candidates:alternatives;
   if(!eligible.length)throw Error('No other question combination matches this selection. Use Get new permutation.');
-  return {...resolve({version:BANK_VERSION,type,entries:pick(eligible).map(q=>({slot:q.slot,variation:pick(variationPool(q))})),minutes:previous?.minutes??null}),examSubtopic:type===1?subtopic:'all'};
+  const entries=pick(eligible).map(q=>{
+    const options=variationPool(q),prior=previous?.entries.find(entry=>entry.slot===q.slot)?.variation;
+    const fresh=mode==='sequence'?options.filter(variation=>variation!==prior):options;
+    return {slot:q.slot,variation:pick(fresh.length?fresh:options)};
+  });
+  return {...resolve({version:BANK_VERSION,type,entries,minutes:previous?.minutes??null}),examSubtopic:type===1?subtopic:'all'};
 }
 
 export function validateBank() {
