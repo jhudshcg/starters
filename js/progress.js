@@ -5,15 +5,18 @@ const gapMs=REATTEMPT_HOURS*60*60*1000;
 // Timer settings and display order do not make a different set. Variations do.
 export function setIdentity(code) {
   const fields=parseQuestionCode(code)??decode(code);
-  const unchanged=version=>fields.entries.every(e=>revisions[version]?.[`${fields.type}:${e.slot}:${e.variation}`]===1);
-  // An unchanged legacy/current code is the same practice set. An obsolete
-  // version remains distinct from its revised replacement.
-  const version=unchanged(fields.version)?Number(Object.keys(revisions).map(Number).sort((a,b)=>a-b).find(unchanged)):fields.version;
+  // Permanent question/variation addresses identify practice across editorial revisions.
+  const exists=version=>fields.entries.every(e=>revisions[version]?.[`${fields.type}:${e.slot}:${e.variation}`]!==undefined);
+  const version=Number(Object.keys(revisions).map(Number).sort((a,b)=>a-b).find(exists)??fields.version);
   return encode({...fields,version,minutes:null,entries:[...fields.entries].sort((a,b)=>a.slot-b.slot)});
 }
 export function attemptEligibility(data,code,now=Date.now()) {
   const key=setIdentity(code);
-  let previous=data.recentAttempts?.[key]??null;
+  let previous=null;
+  // Include keys written by earlier releases, even for untracked practice.
+  for(const [code,finished] of Object.entries(data.recentAttempts??{})) {
+    try {if(setIdentity(code)===key)previous=Math.max(previous??0,finished);} catch {}
+  }
   for(const r of data.history) {
     try {if(setIdentity(r.code)===key)previous=Math.max(previous??0,r.finished);} catch {/* Ignore unavailable legacy identities. */}
   }

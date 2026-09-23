@@ -56,3 +56,31 @@
 .solution-part+.solution-part{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--line)}
 .solution .solution-answer{white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 .25rem}
 .solution .solution-explanation{margin:0}
+
+.puzzle-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:.6rem;margin:0 0 1.5rem}
+.puzzle-cards button{display:flex;flex-direction:column;align-items:center;gap:.3rem;padding:.7rem .4rem;white-space:normal;text-align:center;font-size:.8rem}
+.puzzle-card-art{display:grid;place-items:center;min-height:3rem;width:100%;border-radius:6px;background:#ebe4f5;color:#533d73;font:700 1.4rem var(--mono)}
+.puzzle-cards button:nth-child(3n+2) .puzzle-card-art{background:#e2eddf;color:#355630}
+.puzzle-cards button:nth-child(3n) .puzzle-card-art{background:#fae8be;color:#69480b}
+.puzzle-cards button[aria-pressed=true]{border:2px solid var(--green);box-shadow:0 0 0 1px var(--green)}
+.puzzle-cards small{font-weight:400}
+
+:root[data-theme=dark]{color-scheme:dark;--page:#121c19;--surface:#1c2b25;--text:#e7eee9;--muted:#b2c1b8;--text-muted:#b2c1b8;--green:#a1d5b6;--line:#485d50}
+[data-theme=dark] :is(button,input,select,textarea,dialog,.question,.type-card,.stat,.progress-panel,.set-toolbar,.skip,.sequence-tooltip){background:var(--surface);color:var(--text)}
+[data-theme=dark] button:hover:not(:disabled){background:#334a3d}
+[data-theme=dark] :is(button.primary,.brand-icon,#toast){background:#a1d5b6;color:#14271d}
+[data-theme=dark] :is(.code-entry,.note-panel,.hint-text,.solution,.logic-clues,.result-banner,.option:has(input:checked),.subtopic-context,.subtopic-notice,.subtopic-match){background:#293d32;color:var(--text)}
+[data-theme=dark] :is(.feedback,.tracking-notice){background:#3a3422;color:#f3ddaa}
+[data-theme=dark] .feedback.correct{background:#1f402d;color:#b1edc4}
+[data-theme=dark] :is(.feedback.incorrect,.error){color:#ffb89c}
+[data-theme=dark] .feedback.incorrect{background:#472d25}
+[data-theme=dark] .brand-level{color:var(--muted)}
+[data-theme=dark] .part-coverage{color:var(--muted)}
+[data-theme=dark] :is(.card-art,.puzzle-card-art){color:#20372f}
+[data-theme=dark] :is(.puzzle-grid td,.puzzle-grid td.missing){background:#353047;color:#eee4ff}
+[data-theme=dark] .puzzle-grid tfoot td{background:#293d32;color:var(--text)}
+[data-theme=dark] .puzzle-cards button[aria-pressed=true]{background:#293d32}
+
+[data-theme=dark] :is(.question-number,.marks-badge){background:#344a3d;color:var(--text)}
+
+.set-update-notice{font-size:.8rem;color:var(--muted);border-left:3px solid var(--line);padding:.4rem .75rem;margin:0 0 1rem}

@@ -40,3 +40,10 @@
 .challenge .go-point:hover:not(:disabled){box-shadow:inset 0 0 0 2px #b78327}
 
 .go-status.go-success{background:#e5f3df;border:2px solid #548242;color:#244d20;font-weight:700}
+
+[data-theme=dark] :is(.digit-cell,.candidate-table button){background:#25382f;color:#ecf4ef}
+[data-theme=dark] .digit-cell.given{background:#3a5043}
+[data-theme=dark] .challenge :is(.selected,[aria-pressed=true]){background:#f2d592;color:#403111}
+
+[data-theme=dark] .go-status{background:#3a3422;color:#f3ddaa}
+[data-theme=dark] .go-status.go-success{background:#1f402d;color:#b1edc4}

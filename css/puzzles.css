@@ -1,21 +1,6 @@
 /* Interactive puzzle controls and answer disclosure. Shared colours live in tokens.css. */
 .brand-sub { font-size: .62rem; line-height: 1.45; letter-spacing: .035em; }
 .question-actions { align-items: flex-start; }
-.answer-tools { flex: 1 1 15rem; max-width: 38rem; }
-.answer-tools summary {
-  cursor: pointer;
-  min-height: 44px;
-  padding: .65rem .8rem;
-  border: 1px solid var(--line);
-  border-radius: 9px;
-  font-size: .8rem;
-  font-weight: 650;
-  width: fit-content;
-}
-.answer-tools[open] { background: #f4f5ed; border-radius: 9px; }
-.answer-tools[open] summary { border-color: transparent; }
-.answer-tools-content { padding: 0 .9rem .9rem; }
-.answer-tools-content p { font-size: .85rem; color: var(--muted); max-width: 55ch; }
 .submit-result { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; }
 .submit-result > strong { font: 700 2rem var(--mono); color: var(--green); }
 .submit-result > span { font-size: .9rem; }

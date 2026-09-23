@@ -26,7 +26,7 @@ export function openIssueReport(context) {
   dialog.innerHTML = `<form>
     <h2 id="report-title">Report an issue</h2>
     <label for="report-kind">Issue type</label>
-    <select id="report-kind"><option value="bug">Bug — something isn't working</option>${context.questions.length ? '<option value="content">Content issue — a question or answer</option>' : ''}</select>
+    <select id="report-kind"><option value="bug">Bug — something isn't working</option><option value="content">Content issue — a question or answer</option></select>
     <fieldset id="report-items" hidden><legend>Which items? Select one or more.</legend></fieldset>
     <label for="report-description">Describe the issue</label>
     <textarea id="report-description" rows="4" maxlength="1500" required placeholder="What happened, and what did you expect? For a marking issue, include the part and your answer."></textarea>
@@ -49,7 +49,7 @@ export function openIssueReport(context) {
   const current = () => makeReport(context, find('#report-kind').value, find('#report-description').value,
     [...dialog.querySelectorAll('input:checked')].map(input => input.value));
   const update = () => {
-    find('#report-items').hidden = find('#report-kind').value !== 'content';
+    find('#report-items').hidden = find('#report-kind').value !== 'content' || !context.questions.length;
     find('#report-preview').value = current().body;
     find('#report-error').textContent = ''; find('#report-status').textContent = '';
   };
@@ -57,7 +57,7 @@ export function openIssueReport(context) {
   find('form').addEventListener('change', update);
   find('form').onsubmit = async event => {
     event.preventDefault();
-    if (find('#report-kind').value === 'content' && !dialog.querySelector('input:checked')) {
+    if (find('#report-kind').value === 'content' && context.questions.length && !dialog.querySelector('input:checked')) {
       find('#report-error').textContent = 'Select at least one item.';
       find('#report-items input').focus(); return;
     }

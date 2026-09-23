@@ -25,7 +25,7 @@ The preview builds and serves `live`, the same artifact deployed to Pages. Rebui
 | New CA2 exam practice | [Loop state and stopping conditions](http://127.0.0.1:8765/#set=CpEkHQDx) |
 | Python | [Iteration](http://127.0.0.1:8765/#set=BQAAAR_4) |
 
-The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. Revision 5 includes the revised hints and reading cautions. Older codes open unchanged variations; updated/removed variations receive a specific message. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; an unsupported unfinished activity is cleared rather than interpreted as different questions.
+The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. Revision 5 includes the revised hints and reading cautions. Older codes open current versions of their questions with a discreet update notice when needed. Removed questions offer an explicit replacement-set action. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; an unsupported unfinished activity is cleared rather than interpreted as different questions.
 
 ## Current content
 
@@ -39,7 +39,7 @@ Teacher review and mixed-ability timing trials remain pending. The [generated co
 
 Logic/equation candidate cells cycle unknown → excluded → selected. Sudoku and arithmetic cages support a digit palette, keyboard entry and pencil notes. Tangrams use a piece tray, board placement, rotation, flipping and movement controls. Paths start anywhere: hold and drag to draw, or use clicks/keyboard; every dot must be visited exactly once and every blocked position avoided. Alternative valid paths and tilings are accepted.
 
-Undo, Reset and hints are available during an attempt. Checking and solution reveal unlock after submitting the set (including timer expiry), and lock again when the set is reloaded or left. Completed saved answers can be submitted again to unlock review without duplicating the progress record. A code-entry form is available on every page. Selected cells are yellow; correctness appears only after explicit checking or submission. The score appears beside Submit and at the top. Answers, notes and timing survive refresh. Timer expiry submits once. Puzzles are excluded from revision priorities.
+Undo, Reset and hints are available during an attempt. Checking and solution reveal unlock after submitting the set (including timer expiry), and remain available for four hours across refreshes. Completed saved answers can be submitted again to unlock review without duplicating the progress record. A code-entry form is available on every page. Selected cells are yellow; correctness appears only after explicit checking or submission. The score appears beside Submit and at the top. Answers, notes and timing survive refresh. Timer expiry submits once. Puzzles are excluded from revision priorities.
 
 Progress stays in browser-local storage. CSV export and JSON backup/restore are available; accounts, OneDrive integration and CSV import are not implemented. Python code answers are compared as constrained tokens, never executed. Text marking uses explicit accepted answers and, for opted-in concepts, one authored term with up to one linked qualifier. Unrestricted sentence understanding is not implemented.
 
@@ -96,16 +96,16 @@ Parts retain separate encoded marking and reveal payloads. Marking decodes accep
 
 Go also has a separately encoded playing tree, decoded as needed for board rendering, opponent replies, hints and marking; those interactive features necessarily need the tree before submission. The rest of the bank does not need its model solutions for display.
 
-This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Slot numbering and the 48-bit encoding layout remain unchanged; content revisions selectively preserve unchanged historical variations. The rotation applies only to bank payloads, never to share codes.
+This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Slot numbering and the 48-bit encoding layout remain unchanged; content revisions preserve codes for all surviving question identities. The rotation applies only to bank payloads, never to share codes.
 
 Checks: `npm test`, `npm run validate`, `npm run build`. Run `scripts/browser-smoke.mjs` against a server serving `live`; `STARTERS_PREVIEW_URL` can include a repository path. The smoke runner reads authoring fixtures locally, never via the production page.
 
 ## Maintaining shared codes
 
-Follow the [refinement workflow](docs/content-refinement.md) and commit both generated compatibility files. Validation/build reject stale records. `codes:update` is unchanged for identical content; unused addresses extend the current revision, while changing/removing a variation creates a revision preserving unchanged historical addresses.
+Follow the [refinement workflow](docs/content-refinement.md) and commit both generated compatibility files. Validation/build reject stale records. `codes:update` is unchanged for identical content; unused addresses extend the current revision, while changing/removing a variation creates a revision recording changes for notices and historical metadata.
 
-History stores SHA-256 fingerprints and focus/marks metadata, not old answers. Fingerprints cover each variation's text, answers, hints, code and assessment metadata, excluding review/retirement status and sibling variations. Unchanged siblings keep their codes. Document/style/build-only edits consume no revision.
+History stores SHA-256 fingerprints and focus/marks metadata, not old answers. Fingerprints cover each variation's text, answers, hints, code and assessment metadata, excluding review/retirement status and sibling variations. All surviving identities keep their codes; fingerprints control only the update notice. Document/style/build-only edits consume no revision.
 
-Never renumber/reuse slots or variation positions. Retirement removes a question from random selection while preserving codes; revisions/removals produce update messages. Historical results remain viewable/importable. Equivalent historical/current codes share the four-hour tracking identity; revised content forms a different set.
+Never renumber/reuse slots or variation positions. Substantive task changes require a new question slot. Retirement removes a question from random selection while preserving codes. Corrections open under old codes with an update notice; removals offer an explicit replacement set. Historical results remain unchanged and importable. Old and current codes for the same question/variation identities share the four-hour tracking window. Saved attempts record their content revision: if their questions change, a fresh attempt avoids regrading stale answers. New scores record the revision actually marked.
 
 The replacement for `BIAkAiAg`, `BoAkAiAg` and `CIAkAiAg` is **`CoAkAiAg`**. Hint changes affect compatibility. Packaging format and code layout are separate from content revision.

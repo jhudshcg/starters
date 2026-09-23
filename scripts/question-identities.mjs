@@ -23,6 +23,13 @@ export function snapshotBanks(banks) {
 }
 export function nextHistory(history,snapshot) {
   const latest=Math.max(...Object.keys(history).map(Number)),previous=history[latest];
+  for(const key of Object.keys(snapshot)){
+    const slot=key.slice(0,key.lastIndexOf(':')+1);
+    const reusedSlot=!Object.keys(previous).some(address=>address.startsWith(slot))&&
+      Object.values(history).some(revision=>Object.keys(revision).some(address=>address.startsWith(slot)));
+    if(reusedSlot||!previous[key]&&Object.values(history).some(revision=>revision[key]))
+      throw Error(`Cannot reuse removed question/variation address ${key}. Allocate a new slot instead.`);
+  }
   // Additions at unused addresses cannot invalidate an existing valid code.
   const altered=Object.entries(previous).some(([key,digest])=>snapshot[key]?.fingerprint!==digest.fingerprint);
   const version=altered?latest+1:latest;

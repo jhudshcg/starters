@@ -75,7 +75,7 @@ Proposed shared files: `css/tokens.css`, `css/base.css`, `css/components.css`, `
 
 ## Adopted interaction refinements
 
-Show hint remains directly available. To its right, a native details/summary disclosure labelled “Check / show answer” contains both answer controls and this exact reminder: “try to answer all questions first and submit your best try before checking correct answers”. Keep the disclosure state while checking or revealing an answer.
+Show hint remains directly available. Check answer and Show answer appear beside it only after a submission within the last four hours. Each is a direct button; no disclosure or confirmation is needed to reveal answers.
 
 After submission, show percentage, earned/available marks or points, time and assistance status beside the Submit button as well as at the top. Move focus to the nearby result for a manual submission so the student does not have to scroll back to the top.
 

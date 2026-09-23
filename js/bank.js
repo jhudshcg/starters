@@ -22,7 +22,7 @@ Object.assign(focusNames, {"logic grids": "Logic grids", "logic equations": "Log
 export const challengeLevels = {all:'Mixed challenge',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
 export const puzzlePool = (focus, level='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level));
 export const availableChallenges = focus => Object.keys(challengeLevels).filter(level=>puzzlePool(focus,level).length>=3);
-export const focuses = type => [...new Set(banks[type].map(q => q.focus))];
+export const focuses = type => [...new Set(banks[type].filter(q=>!q.retired).map(q => q.focus))];
 export const examSubtopics = focus => subtopicOptions(banks[1],focus);
 // Sequence only through selectable references, so every step has bank coverage.
 export function nextExamSubtopic(focus, reference='all') {
@@ -51,31 +51,40 @@ export function historicalSet(input) {
   return {...fields,code,focus,total};
 }
 
+export function contentChanged(set, version=set.version) {
+  return set.entries.some(e=>revisions[version]?.[`${set.type}:${e.slot}:${e.variation}`]===0);
+}
+
 export function resolve(input) {
   const fields = typeof input === 'string' ? parseQuestionCode(input) ?? decode(input) : input;
   // Encoding validates integer ranges, duplicate slots and field structure.
   const code = encode(fields);
+  const original = historicalSet(fields);
   const revision=revisions[fields.version];
   if(!revision)throw Error('This question-bank version is not available. Reload to check for an update.');
   for(const entry of fields.entries){
     const state=revision[`${fields.type}:${entry.slot}:${entry.variation}`];
-    if(state===0)throw Error('This code contains a question that has been updated or removed. Ask for a current set code.');
     if(state===undefined)throw Error('This question or variation was not available in that bank version.');
   }
   const questions = fields.entries.map(e => {
     const template = banks[fields.type].find(q => q.slot === e.slot);
-    if (!template || !template.variations[e.variation]) throw Error('This question or variation is not available in the pilot.');
+    if (!template || !template.variations[e.variation]) {
+      const error=new Error('A question in this set is no longer available. You can choose a replacement set.');
+      error.replacement={type:fields.type,focus:original.focus};
+      throw error;
+    }
     return {...template, ...template.variations[e.variation], variation:e.variation};
   });
   const total = questions.reduce((a,q)=>a+marks(q),0);
   if(fields.type===0&&![1,3].includes(questions.length)) throw Error('Puzzle sets contain three questions; individual question codes open one.');
-  if (questions.length > 1) {
+  const updated=contentChanged(fields);
+  if (questions.length > 1 && !updated) {
     if (questions.length !== (fields.type===2?2:3)) throw Error('This set has the wrong number of questions.');
     if (new Set(questions.map(q=>q.focus)).size!==1) throw Error('Choose questions with the same focus.');
     if (fields.type===1 && (total<15 || total>22) || fields.type===2 && (total<10 || total>15)) throw Error('This set does not meet the mark limits.');
     if (fields.type===2 && new Set(questions.map(q=>q.format)).size!==2) throw Error('Programming questions must test different aspects.');
   }
-  return {...fields, code, questions, total, focus:questions[0].focus};
+  return {...fields, code, questions, total, focus:questions[0].focus, updated};
 }
 
 const pick = values => values[Math.floor(Math.random()*values.length)];

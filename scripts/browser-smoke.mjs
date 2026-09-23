@@ -39,13 +39,18 @@ async function openFocus(type,focus,count=1){
 }
 const puzzlePart=async()=>resolve(await evaluate("document.querySelector('#display-code').textContent")).questions[0].parts[0];
 try{
+ await send('Page.navigate',{url:'about:blank'});
  await send('Runtime.enable');await send('Page.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});
  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
- const clearOnLoad=await send('Page.addScriptToEvaluateOnNewDocument',{source:'localStorage.removeItem("dsd-starters-v1")'});
+ const clearOnLoad=await send('Page.addScriptToEvaluateOnNewDocument',{source:'localStorage.removeItem("dsd-starters-v1");localStorage.removeItem("dsd-starters-theme")'});
  await send('Page.navigate',{url:base+'/?smoke='+Date.now()});await until('Boolean(document.querySelector("#code-form"))');
  await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:clearOnLoad.identifier});
  assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
  assert.deepEqual(await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)'),[],'Fresh home must not download banks');
+ await click('#theme-toggle');assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');
+ await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');
+ assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');
+ await screenshot('dark-home');await click('#theme-toggle');
  await openFocus(1,'CA2.1');assert.equal(await evaluate('document.querySelectorAll(".question").length'),3);
  // Reports use one global button, preserve the attempt and select multiple exact items.
  assert.equal(await evaluate('document.querySelectorAll("#report-issue").length'),1);
@@ -71,7 +76,7 @@ try{
  assert.equal(await evaluate('localStorage.getItem("dsd-starters-v1")'),beforeReport);
  await click('#nav-home');await until('Boolean(document.querySelector("#code-form"))');
  await click('#report-issue');
- assert.equal(await evaluate('document.querySelector("#report-kind").options.length'),1);
+ assert.equal(await evaluate('document.querySelector("#report-kind").options.length'),2);
  assert.ok(!(await evaluate('document.querySelector("#report-preview").value')).includes('Set:'));
  await click('#report-close');await until('!document.querySelector("#issue-report")');
  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
@@ -117,22 +122,22 @@ try{
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.length'),2);
  await screenshot('subtopic-progress');
  await evaluate(`location.hash='#set='+${JSON.stringify(detailed.code)}`);await until('Boolean(document.querySelector("#submit"))');await click('#submit');
- // Review gates reset on reload, guard handlers, and preserve recorded attempts.
+ // Recent review survives reload; expiry hides controls without changing progress.
  await click('[data-reveal]');assert.equal(await evaluate('document.querySelectorAll(".solution").length'),1);
  const historyBefore=await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)');
  const legacyOnReload=await send('Page.addScriptToEvaluateOnNewDocument',{source:'const old=JSON.parse(localStorage.getItem("dsd-starters-v1"));if(old?.active){delete old.active.tracking;delete old.active.result;delete old.recentAttempts;localStorage.setItem("dsd-starters-v1",JSON.stringify(old));}'});
  await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');
  await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:legacyOnReload.identifier});
  assert.equal(await evaluate('Boolean(document.querySelector(".tracking-notice"))'),false,'A legacy tracked attempt must stay tracked');
- assert.equal(await evaluate('document.querySelectorAll(".solution,.feedback").length'),0);
- assert.ok(await evaluate('document.querySelector("[data-check]").disabled && document.querySelector("[data-reveal]").disabled'));
- await evaluate('document.querySelector("[data-check]").onclick();document.querySelector("[data-reveal]").onclick()');
- assert.equal(await evaluate('document.querySelectorAll(".solution,.feedback").length'),0);
- await click('#submit');assert.ok(await evaluate('!document.querySelector("[data-check]").disabled'));
+ assert.ok(await evaluate('Boolean(document.querySelector(".solution"))'));
+ await evaluate('const expired=JSON.parse(localStorage.getItem("dsd-starters-v1"));expired.active.reviewSubmittedAt=Date.now()-4*3600000;localStorage.setItem("dsd-starters-v1",JSON.stringify(expired))');
+ await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');
+ assert.equal(await evaluate('document.querySelectorAll("[data-check],[data-reveal],.solution,.feedback").length'),0);
+ await click('#submit');assert.ok(await evaluate('Boolean(document.querySelector("[data-check]"))'));
  await click('[data-check]');
  assert.equal(await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)'),historyBefore);
  await click('#retry');await until('!document.querySelector("#submit").disabled');
- assert.ok(await evaluate('document.querySelector("[data-reveal]").disabled'));
+ assert.ok(await evaluate('!document.querySelector("[data-reveal]")'));
  assert.ok(await evaluate('document.querySelector(".tracking-notice").textContent.includes("4 hours")'));
  await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
  assert.equal(await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)'),historyBefore);
@@ -145,7 +150,10 @@ try{
  await until('Boolean(document.querySelector("#global-code-error").textContent)');
  assert.ok(await evaluate('Boolean(document.querySelector("#submit"))'));
  await evaluate('document.querySelector("#global-code").value="BIAkAiAg";document.querySelector("#global-code-form").requestSubmit()');
- await until('document.querySelector("#global-code-error").textContent.includes("updated or removed")');
+ await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ assert.equal(await evaluate('document.querySelector(".set-update-notice").textContent'),'This set has been updated since this code was created.');
+ await send('Page.reload');await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ assert.ok(await evaluate('Boolean(document.querySelector(".set-update-notice"))'));
  assert.equal(await evaluate('Boolean(document.querySelector("dialog"))'),false);
  await enterUnsubmittedAnswer();
  await evaluate(`document.querySelector("#global-code").value=${JSON.stringify(currentExamCode)};document.querySelector("#global-code-form").requestSubmit()`);
@@ -157,7 +165,7 @@ try{
  await acceptLeaveIfShown();
  await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(currentExamCode)}`);
  await screenshot('exam-reviewed');
- assert.ok(await evaluate('document.querySelector("[data-check]").disabled && document.querySelector("[data-reveal]").disabled'));
+ assert.ok(await evaluate('!document.querySelector("[data-check]") && !document.querySelector("[data-reveal]")'));
  await click('#timer-toggle');
  const expireOnReload=await send('Page.addScriptToEvaluateOnNewDocument',{source:'const saved=JSON.parse(localStorage.getItem("dsd-starters-v1"));if(saved?.active){saved.active.deadline=Date.now()-1000;localStorage.setItem("dsd-starters-v1",JSON.stringify(saved));}'});
  await send('Page.reload');await until('Boolean(document.querySelector("#submit-result"))');
@@ -196,11 +204,17 @@ try{
   if(place.flipped)await click('[data-challenge-action="flip"]');
  }
  await click('#submit');assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'));await screenshot('tangram');
- await click('.answer-tools summary');await click('[data-reveal]');assert.equal(await evaluate('document.querySelectorAll(".solution .tangram-board").length'),1);
+ await click('[data-reveal]');assert.equal(await evaluate('document.querySelectorAll(".solution .tangram-board").length'),1);
  for(const focus of ['logic equations','number constraints','sequences','classic maths']){
   await openFocus(0,focus);assert.equal(await evaluate('document.querySelectorAll(".question").length'),1);
-  if(focus==='classic maths')assert.equal(await evaluate('document.querySelector("#permutation").disabled'),true);
+  if(focus==='classic maths'){const current=resolve(await evaluate('document.querySelector("#display-code").textContent'));assert.equal(await evaluate('document.querySelector("#permutation").disabled'),current.questions.every(q=>banks[0].find(t=>t.slot===q.slot).variations.length<2));}
  }
+ await openFocus(0,'sudoku');
+ assert.equal(await evaluate('document.querySelectorAll("[data-puzzle-focus]").length'),9);
+ assert.equal(await evaluate('Boolean(document.querySelector("#focus"))'),false);
+ await click('[data-puzzle-focus="go"]');await until('document.querySelector("[data-puzzle-focus=go]")?.getAttribute("aria-pressed")==="true"');
+ assert.ok(await evaluate('document.querySelector(".go-scroll").previousElementSibling.querySelector("a").href.includes("britgo.org/intro/intro2.html")'));
+ await click('#theme-toggle');await screenshot('dark-puzzle-cards');await click('#theme-toggle');
  await openFocus(0,'sudoku');await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:false});
  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Sudoku causes whole-page overflow');await screenshot('sudoku-mobile');
  await openFocus(0,'logic grids');assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Logic grid causes whole-page overflow');
@@ -227,7 +241,7 @@ try{
  await screenshot('go-reply-visible');
  await send('Page.reload');await until(`Boolean(document.querySelector(${JSON.stringify(goRoot)}))`);
  assert.deepEqual(await evaluate(`JSON.parse(JSON.parse(localStorage.getItem('dsd-starters-v1')).active.answers[${goQ.slot}]['0']).moves`),goMoves);
- await click("#submit");await click(`[data-question="${goQ.slot}"] .answer-tools summary`);await click(`[data-reveal="${goQ.slot}"]`);
+ await click("#submit");await click(`[data-reveal="${goQ.slot}"]`);
  const slider=`[data-question="${goQ.slot}"] .solution [data-go-replay]`;
  await evaluate(`document.querySelector(${JSON.stringify(slider)}).scrollIntoView({block:'center'});window.testReplaySlider=document.querySelector(${JSON.stringify(slider)});`);
  const sr=await evaluate(`(()=>{const r=document.querySelector(${JSON.stringify(slider)}).getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})()`);
@@ -419,7 +433,7 @@ try{
   await click(`[data-hint="${q.slot}"]`);
   assert.equal(await evaluate(`document.querySelector(${JSON.stringify(root+' .hint-text')}).textContent`),'Hint: '+q.hint);
   assert.ok(await evaluate('document.activeElement.matches(".hint-text")'));
-  assert.ok(await evaluate(`document.querySelector('[data-reveal="${q.slot}"]').disabled`));
+  assert.ok(await evaluate(`!document.querySelector('[data-reveal="${q.slot}"]')`));
   await evaluate(`for(const q of ${JSON.stringify(opened.questions)})for(const p of q.parts){const elements=[...document.querySelectorAll('[data-slot="'+q.slot+'"][data-part="'+p.id+'"]')];const el=elements.find(el=>el.type!=='radio'||el.value===p.answer);if(el.type==='radio'){el.checked=true;el.dispatchEvent(new Event('change',{bubbles:true}));}else{el.value=p.answer;el.dispatchEvent(new Event('input',{bubbles:true}));}}`);
   await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
   assert.ok(await evaluate('document.querySelector("#submit-result").textContent.includes("100%")'),`Scoring ${q.slot}/${variation}`);
@@ -446,5 +460,26 @@ try{
   assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'));
   if(slot===12&&variation===0&&valid)await screenshot('term-rules');
  }
+
+ // A saved draft from before a correction must not be silently regraded.
+ await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
+ await evaluate('document.querySelector("#code-form input").value="BIAkAiAg";document.querySelector("#code-form").requestSubmit()');
+ await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ const preservedHistory=await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)');
+ const staleId=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.id');
+ const staleFixture=await send('Page.addScriptToEvaluateOnNewDocument',{source:'const saved=JSON.parse(localStorage.getItem("dsd-starters-v1"));saved.active.contentVersion=2;saved.active.answers={1:{0:"old draft"}};saved.active.deadline=Date.now()-1000;localStorage.setItem("dsd-starters-v1",JSON.stringify(saved))'});
+ await send('Page.reload');await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ await until(`JSON.parse(localStorage.getItem("dsd-starters-v1"))?.active?.contentVersion===${BANK_VERSION} && JSON.parse(localStorage.getItem("dsd-starters-v1"))?.active?.id!==${JSON.stringify(staleId)}`);
+ await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:staleFixture.identifier});
+ const refreshed=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active');
+ assert.notEqual(refreshed.id,staleId);assert.deepEqual(refreshed.answers,{});assert.equal(refreshed.contentVersion,BANK_VERSION);
+ assert.equal(await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)'),preservedHistory);
+ await click('#submit');
+ assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.result.code'),currentExamCode);
+ assert.equal(await evaluate('document.querySelector("#display-code").textContent'),'BIAkAiAg');
+ const completedId=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.id');
+ await send('Page.reload');await until('Boolean(document.querySelector("#submit-result"))');
+ assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.id'),completedId);
+ await screenshot('updated-set-notice');
  assert.deepEqual(errors,[]);console.log('Browser smoke passed: term synonyms/qualifiers and rejection in both variations, all 62 added exam variations/scoring/reveal/mobile, authored hints/focus/reveal separation/mobile, whole-question subtopic filtering/cancel/reload/mobile, UI-generated codes and links in an independent browser context, error diagnostics, detailed topic/subtopic priorities and mixed/invalid backup imports, challenge filtering/cancellation/reload/mobile, arrays and validation, legacy/current codes and historical imports, rotated encoded production banks, four-hour repeat tracking, submission gating, global code entry, exam scoring and coverage, candidate grid and Undo, Sudoku notes/reload, continuous path drag with arbitrary start, tangram placement/reveal, all nine subtypes, three-puzzle sets, Go replies/hints/reload/drag replay, new coding focuses, footer, timer recovery and 320px reflow.');
-} catch(error) {console.error('Browser state:',await evaluate(`({hash:location.hash,level:document.querySelector('#challenge-level')?.value,toast:document.querySelector('#toast')?.textContent,dialog:document.querySelector('dialog')?.textContent})`));throw error;} finally {ws.close();}
+} catch(error) {console.error('Browser exceptions:',errors);console.error('Browser state:',await evaluate(`({hash:location.hash,level:document.querySelector('#challenge-level')?.value,toast:document.querySelector('#toast')?.textContent,dialog:document.querySelector('dialog')?.textContent})`));throw error;} finally {ws.close();}
