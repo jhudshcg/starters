@@ -1,0 +1,30 @@
+{
+  "id": 534,
+  "rank": {
+    "value": 9,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;SZ[19]AW[rs]AW[rr]AW[rq]AW[rp]AB[qp]AB[qq]AB[qr]AB[oq]AB[nq]AB[mq]AW[pp]AW[nr]AB[mr]AW[qo]AW[ro]AB[pn]AB[lr]AB[ks]AB[jr]AB[jq]AW[lq]AW[lp]AW[kq]AW[kr]AB[jp]AB[ko]AB[ln]AB[qn]AB[rn]AB[so]AW[op]AW[no]AB[po]AW[oo]AB[om]AB[mm]AB[nm]AW[mo]AW[mp]C[can white connect her groups and live?]GM[1]FF[4]CA[UTF-8]RU[Japanese]KM[0]TM[1800,0,30,5]PW[]PB[]AE[jo]AE[ls]AE[sn]AE[np]AE[on]AE[mn]PL[W]\n(;W[pq];B[pr]\n(;W[or];B[ns]\n(;W[ps];B[os]\n(;W[or];B[nr]\n(;W[qs];B[or];W[ls];B[ms];W[np];B[ls];W[js]C[RIGHT])\n(;W[ls];B[qs]))\n(;W[qs];B[or]))\n(;W[os];B[ps])\n(;W[qs];B[os];W[or];B[ps]))\n(;W[os];B[or])\n(;W[ms];B[or]))\n(;W[or];B[pq]\n(;W[qs];B[ps]\n(;W[pr];B[ns];W[os];B[ps])\n(;W[os];B[pr]))\n(;W[ps];B[qs]))\n(;W[pr];B[pq]\n(;W[qs];B[or])\n(;W[ps];B[qs]))\n(;W[qs];B[pr])\n(;W[sp];B[pr])\n(;W[ns];B[pr])\n(;W[ls];B[or]\n(;W[js];B[pq])\n(;W[pq];B[pr];W[js];B[ns]))\n(;W[ps];B[pr]\n(;W[os];B[qs])\n(;W[qs];B[os])))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-04-29T01:39:43+00:00",
+  "problemLevel": 21,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 67,
+  "attempts": {
+    "solved": 2367,
+    "failed": 4754,
+    "tries": 7121,
+    "speedSolved": 0,
+    "speedPlay": 10
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/534"
+}

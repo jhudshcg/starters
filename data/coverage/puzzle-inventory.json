@@ -1,0 +1,98 @@
+{
+  "date": "2026-09-24",
+  "total": 901,
+  "families": [
+    {
+      "focus": "logic grids",
+      "templates": 100,
+      "variations": 120,
+      "levels": {
+        "standard": 40,
+        "foundation": 30,
+        "stretch": 30
+      }
+    },
+    {
+      "focus": "logic equations",
+      "templates": 100,
+      "variations": 120,
+      "levels": {
+        "standard": 40,
+        "foundation": 30,
+        "stretch": 30
+      }
+    },
+    {
+      "focus": "tangrams",
+      "templates": 100,
+      "variations": 120,
+      "levels": {
+        "standard": 27,
+        "stretch": 43,
+        "foundation": 30
+      }
+    },
+    {
+      "focus": "cover paths",
+      "templates": 100,
+      "variations": 120,
+      "levels": {
+        "standard": 40,
+        "foundation": 30,
+        "stretch": 30
+      }
+    },
+    {
+      "focus": "sudoku",
+      "templates": 100,
+      "variations": 120,
+      "levels": {
+        "standard": 40,
+        "foundation": 30,
+        "stretch": 30
+      }
+    },
+    {
+      "focus": "number constraints",
+      "templates": 100,
+      "variations": 120,
+      "levels": {
+        "standard": 40,
+        "foundation": 30,
+        "stretch": 30
+      }
+    },
+    {
+      "focus": "sequences",
+      "templates": 100,
+      "variations": 500,
+      "levels": {
+        "standard": 45,
+        "foundation": 30,
+        "stretch": 25
+      }
+    },
+    {
+      "focus": "classic maths",
+      "templates": 100,
+      "variations": 380,
+      "levels": {
+        "standard": 52,
+        "foundation": 26,
+        "stretch": 10,
+        "beginner": 12
+      }
+    },
+    {
+      "focus": "go",
+      "templates": 101,
+      "variations": 101,
+      "levels": {
+        "foundation": 25,
+        "standard": 25,
+        "stretch": 25,
+        "beginner": 26
+      }
+    }
+  ]
+}

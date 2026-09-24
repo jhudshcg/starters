@@ -1,0 +1,2202 @@
+[
+  {
+    "id": 484,
+    "rank": {
+      "value": 7,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.4,
+      "votes": 7,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 485,
+    "rank": {
+      "value": 4,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 21,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 487,
+    "rank": {
+      "value": 2,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 16,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 6,
+      "negativeFlagSum": 0,
+      "flagSum": 6
+    }
+  },
+  {
+    "id": 488,
+    "rank": {
+      "value": 8,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.8,
+      "votes": 5,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 489,
+    "rank": {
+      "value": 8,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.4,
+      "votes": 7,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 0,
+      "negativeFlagSum": 0,
+      "flagSum": 0
+    }
+  },
+  {
+    "id": 491,
+    "rank": {
+      "value": 3,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4,
+      "votes": 12,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 492,
+    "rank": {
+      "value": 5,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 22,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 493,
+    "rank": {
+      "value": 10,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.7,
+      "votes": 31,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 11,
+      "negativeFlagSum": 0,
+      "flagSum": 11
+    }
+  },
+  {
+    "id": 494,
+    "rank": {
+      "value": 8,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.7,
+      "votes": 4,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 496,
+    "rank": {
+      "value": 6,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.2,
+      "votes": 12,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 497,
+    "rank": {
+      "value": 10,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 33,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 6,
+      "negativeFlagSum": 0,
+      "flagSum": 6
+    }
+  },
+  {
+    "id": 498,
+    "rank": {
+      "value": 18,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 26,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 11,
+      "negativeFlagSum": 0,
+      "flagSum": 11
+    }
+  },
+  {
+    "id": 499,
+    "rank": {
+      "value": 4,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.3,
+      "votes": 8,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 500,
+    "rank": {
+      "value": 9,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 20,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 502,
+    "rank": {
+      "value": 1,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 2.5,
+      "votes": 17,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": -3,
+      "flagSum": -1
+    }
+  },
+  {
+    "id": 503,
+    "rank": {
+      "value": 9,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 4,
+      "votes": 22,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 504,
+    "rank": {
+      "value": 6,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.4,
+      "votes": 5,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 506,
+    "rank": {
+      "value": 3,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.8,
+      "votes": 12,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 508,
+    "rank": {
+      "value": 13,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.1,
+      "votes": 20,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 509,
+    "rank": {
+      "value": 3,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.2,
+      "votes": 9,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 510,
+    "rank": {
+      "value": 22,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 4.2,
+      "votes": 25,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 15,
+      "negativeFlagSum": -2,
+      "flagSum": 13
+    }
+  },
+  {
+    "id": 511,
+    "rank": {
+      "value": 9,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 2.7,
+      "votes": 4,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 0,
+      "negativeFlagSum": 0,
+      "flagSum": 0
+    }
+  },
+  {
+    "id": 512,
+    "rank": {
+      "value": 7,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.8,
+      "votes": 15,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 513,
+    "rank": {
+      "value": 4,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "best move",
+    "rating": {
+      "stars": 2,
+      "votes": 14,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 514,
+    "rank": {
+      "value": 1,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.9,
+      "votes": 20,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 515,
+    "rank": {
+      "value": 4,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 2.2,
+      "votes": 14,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 0,
+      "negativeFlagSum": 0,
+      "flagSum": 0
+    }
+  },
+  {
+    "id": 517,
+    "rank": {
+      "value": 9,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3,
+      "votes": 7,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 0,
+      "negativeFlagSum": 0,
+      "flagSum": 0
+    }
+  },
+  {
+    "id": 518,
+    "rank": {
+      "value": 5,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 3.5,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 520,
+    "rank": {
+      "value": 14,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.3,
+      "votes": 26,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 521,
+    "rank": {
+      "value": 13,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 24,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 522,
+    "rank": {
+      "value": 6,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 20,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 523,
+    "rank": {
+      "value": 3,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.7,
+      "votes": 14,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 524,
+    "rank": {
+      "value": 11,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 3.6,
+      "votes": 19,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 525,
+    "rank": {
+      "value": 14,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.9,
+      "votes": 31,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 9,
+      "negativeFlagSum": 0,
+      "flagSum": 9
+    }
+  },
+  {
+    "id": 526,
+    "rank": {
+      "value": 12,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4,
+      "votes": 22,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 527,
+    "rank": {
+      "value": 1,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.8,
+      "votes": 8,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 528,
+    "rank": {
+      "value": 12,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 28,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 529,
+    "rank": {
+      "value": 3,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.6,
+      "votes": 12,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 530,
+    "rank": {
+      "value": 16,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.1,
+      "votes": 25,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 531,
+    "rank": {
+      "value": 20,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.1,
+      "votes": 19,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 532,
+    "rank": {
+      "value": 5,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 17,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 533,
+    "rank": {
+      "value": 8,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 17,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 7,
+      "negativeFlagSum": 0,
+      "flagSum": 7
+    }
+  },
+  {
+    "id": 534,
+    "rank": {
+      "value": 9,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 33,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 15,
+      "negativeFlagSum": 0,
+      "flagSum": 15
+    }
+  },
+  {
+    "id": 535,
+    "rank": {
+      "value": 4,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.5,
+      "votes": 10,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 536,
+    "rank": {
+      "value": 9,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4,
+      "votes": 17,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 537,
+    "rank": {
+      "value": 6,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.8,
+      "votes": 5,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 538,
+    "rank": {
+      "value": 7,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.1,
+      "votes": 14,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 539,
+    "rank": {
+      "value": 25,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 2.9,
+      "votes": 44,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 11,
+      "negativeFlagSum": 0,
+      "flagSum": 11
+    }
+  },
+  {
+    "id": 540,
+    "rank": {
+      "value": 2,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 15,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 541,
+    "rank": {
+      "value": 8,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 22,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 7,
+      "negativeFlagSum": 0,
+      "flagSum": 7
+    }
+  },
+  {
+    "id": 559,
+    "rank": {
+      "value": 25,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.2,
+      "votes": 32,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 11,
+      "negativeFlagSum": 0,
+      "flagSum": 11
+    }
+  },
+  {
+    "id": 563,
+    "rank": {
+      "value": 6,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.1,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 572,
+    "rank": {
+      "value": 12,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.7,
+      "votes": 23,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 6,
+      "negativeFlagSum": 0,
+      "flagSum": 6
+    }
+  },
+  {
+    "id": 573,
+    "rank": {
+      "value": 6,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 0,
+      "negativeFlagSum": 0,
+      "flagSum": 0
+    }
+  },
+  {
+    "id": 574,
+    "rank": {
+      "value": 12,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 26,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 575,
+    "rank": {
+      "value": 8,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 4.1,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 0,
+      "negativeFlagSum": 0,
+      "flagSum": 0
+    }
+  },
+  {
+    "id": 576,
+    "rank": {
+      "value": 6,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4,
+      "votes": 5,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 577,
+    "rank": {
+      "value": 8,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.3,
+      "votes": 33,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 579,
+    "rank": {
+      "value": 11,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 39,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 10,
+      "negativeFlagSum": 0,
+      "flagSum": 10
+    }
+  },
+  {
+    "id": 580,
+    "rank": {
+      "value": 3,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.7,
+      "votes": 12,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 581,
+    "rank": {
+      "value": 7,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.1,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 582,
+    "rank": {
+      "value": 5,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 21,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 585,
+    "rank": {
+      "value": 5,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.8,
+      "votes": 17,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 586,
+    "rank": {
+      "value": 8,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 19,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 587,
+    "rank": {
+      "value": 3,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.6,
+      "votes": 13,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 588,
+    "rank": {
+      "value": 3,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.3,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 589,
+    "rank": {
+      "value": 5,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 590,
+    "rank": {
+      "value": 7,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4,
+      "votes": 20,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 7,
+      "negativeFlagSum": 0,
+      "flagSum": 7
+    }
+  },
+  {
+    "id": 592,
+    "rank": {
+      "value": 2,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.1,
+      "votes": 7,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 596,
+    "rank": {
+      "value": 17,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 23,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 598,
+    "rank": {
+      "value": 3,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.8,
+      "votes": 11,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 599,
+    "rank": {
+      "value": 2,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.5,
+      "votes": 9,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": -1,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 600,
+    "rank": {
+      "value": 9,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.3,
+      "votes": 20,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 601,
+    "rank": {
+      "value": 1,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 9,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 603,
+    "rank": {
+      "value": 20,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 4.4,
+      "votes": 24,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 604,
+    "rank": {
+      "value": 13,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 30,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 10,
+      "negativeFlagSum": 0,
+      "flagSum": 10
+    }
+  },
+  {
+    "id": 605,
+    "rank": {
+      "value": 1,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.8,
+      "votes": 7,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 606,
+    "rank": {
+      "value": 1,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 19,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 11,
+      "negativeFlagSum": 0,
+      "flagSum": 11
+    }
+  },
+  {
+    "id": 607,
+    "rank": {
+      "value": 2,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.7,
+      "votes": 22,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 8,
+      "negativeFlagSum": 0,
+      "flagSum": 8
+    }
+  },
+  {
+    "id": 609,
+    "rank": {
+      "value": 8,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.6,
+      "votes": 5,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 610,
+    "rank": {
+      "value": 4,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.1,
+      "votes": 6,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 611,
+    "rank": {
+      "value": 7,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.3,
+      "votes": 16,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 612,
+    "rank": {
+      "value": 4,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.7,
+      "votes": 4,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 2,
+      "negativeFlagSum": 0,
+      "flagSum": 2
+    }
+  },
+  {
+    "id": 614,
+    "rank": {
+      "value": 3,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.9,
+      "votes": 11,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 615,
+    "rank": {
+      "value": 9,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 23,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 11,
+      "negativeFlagSum": 0,
+      "flagSum": 11
+    }
+  },
+  {
+    "id": 616,
+    "rank": {
+      "value": 12,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 24,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 617,
+    "rank": {
+      "value": 1,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 12,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 619,
+    "rank": {
+      "value": 14,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.8,
+      "votes": 21,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 7,
+      "negativeFlagSum": 0,
+      "flagSum": 7
+    }
+  },
+  {
+    "id": 620,
+    "rank": {
+      "value": 8,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.1,
+      "votes": 13,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 6,
+      "negativeFlagSum": 0,
+      "flagSum": 6
+    }
+  },
+  {
+    "id": 621,
+    "rank": {
+      "value": 15,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 2,
+      "votes": 30,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": -6,
+      "flagSum": -2
+    }
+  },
+  {
+    "id": 622,
+    "rank": {
+      "value": 12,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 24,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 14,
+      "negativeFlagSum": 0,
+      "flagSum": 14
+    }
+  },
+  {
+    "id": 623,
+    "rank": {
+      "value": 4,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 5,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 1,
+      "negativeFlagSum": 0,
+      "flagSum": 1
+    }
+  },
+  {
+    "id": 625,
+    "rank": {
+      "value": 13,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 33,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 10,
+      "negativeFlagSum": 0,
+      "flagSum": 10
+    }
+  },
+  {
+    "id": 626,
+    "rank": {
+      "value": 6,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.4,
+      "votes": 15,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 627,
+    "rank": {
+      "value": 7,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.5,
+      "votes": 22,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 11,
+      "negativeFlagSum": 0,
+      "flagSum": 11
+    }
+  },
+  {
+    "id": 628,
+    "rank": {
+      "value": 19,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 3.7,
+      "votes": 30,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 4,
+      "negativeFlagSum": 0,
+      "flagSum": 4
+    }
+  },
+  {
+    "id": 629,
+    "rank": {
+      "value": 14,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.6,
+      "votes": 19,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 5,
+      "negativeFlagSum": 0,
+      "flagSum": 5
+    }
+  },
+  {
+    "id": 630,
+    "rank": {
+      "value": 8,
+      "unit": "dan",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "tesuji",
+    "rating": {
+      "stars": 3.2,
+      "votes": 4,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 0,
+      "negativeFlagSum": 0,
+      "flagSum": 0
+    }
+  },
+  {
+    "id": 631,
+    "rank": {
+      "value": 5,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "life and death",
+    "rating": {
+      "stars": 4.2,
+      "votes": 17,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  },
+  {
+    "id": 632,
+    "rank": {
+      "value": 3,
+      "unit": "kyu",
+      "exact": false,
+      "mark": false
+    },
+    "genre": "endgame",
+    "rating": {
+      "stars": 3.9,
+      "votes": 12,
+      "currentUserVote": null
+    },
+    "flagStats": {
+      "flags": [],
+      "userFlag": null,
+      "positiveFlagSum": 3,
+      "negativeFlagSum": 0,
+      "flagSum": 3
+    }
+  }
+]

@@ -1,0 +1,461 @@
+[
+  {
+    "id": 8,
+    "slot": 50,
+    "rank": 29,
+    "level": "beginner",
+    "theme": "capture",
+    "cache": "references/go/goproblems-8.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 157,
+    "slot": 51,
+    "rank": 26,
+    "level": "beginner",
+    "theme": "live",
+    "cache": "references/go/goproblems-157.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 169,
+    "slot": 52,
+    "rank": 30,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-169.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 171,
+    "slot": 53,
+    "rank": 30,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-171.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 174,
+    "slot": 54,
+    "rank": 28,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-174.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 176,
+    "slot": 55,
+    "rank": 30,
+    "level": "beginner",
+    "theme": "capture",
+    "cache": "references/go/goproblems-176.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 177,
+    "slot": 56,
+    "rank": 25,
+    "level": "beginner",
+    "theme": "live",
+    "cache": "references/go/goproblems-177.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 178,
+    "slot": 57,
+    "rank": 28,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-178.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 180,
+    "slot": 58,
+    "rank": 28,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-180.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 186,
+    "slot": 59,
+    "rank": 28,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-186.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 191,
+    "slot": 60,
+    "rank": 25,
+    "level": "beginner",
+    "theme": "cut",
+    "cache": "references/go/goproblems-191.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 195,
+    "slot": 61,
+    "rank": 30,
+    "level": "beginner",
+    "theme": "live",
+    "cache": "references/go/goproblems-195.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 201,
+    "slot": 62,
+    "rank": 29,
+    "level": "beginner",
+    "theme": "live",
+    "cache": "references/go/goproblems-201.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 233,
+    "slot": 63,
+    "rank": 27,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-233.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 235,
+    "slot": 64,
+    "rank": 27,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-235.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 255,
+    "slot": 65,
+    "rank": 27,
+    "level": "beginner",
+    "theme": "connect",
+    "cache": "references/go/goproblems-255.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 313,
+    "slot": 66,
+    "rank": 25,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-313.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 323,
+    "slot": 67,
+    "rank": 26,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-323.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 379,
+    "slot": 68,
+    "rank": 27,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-379.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 405,
+    "slot": 69,
+    "rank": 28,
+    "level": "beginner",
+    "theme": "capture",
+    "cache": "references/go/goproblems-405.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 539,
+    "slot": 70,
+    "rank": 25,
+    "level": "beginner",
+    "theme": "live",
+    "cache": "references/go/goproblems-539.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 559,
+    "slot": 71,
+    "rank": 25,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-559.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 1120,
+    "slot": 72,
+    "rank": 25,
+    "level": "beginner",
+    "theme": "kill",
+    "cache": "references/go/goproblems-1120.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 1164,
+    "slot": 73,
+    "rank": 27,
+    "level": "beginner",
+    "theme": "capture",
+    "cache": "references/go/goproblems-1164.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 1180,
+    "slot": 74,
+    "rank": 26,
+    "level": "beginner",
+    "theme": "capture",
+    "cache": "references/go/goproblems-1180.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 9,
+    "slot": 75,
+    "rank": 23,
+    "level": "foundation",
+    "theme": "live",
+    "cache": "references/go/goproblems-9.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 37,
+    "slot": 76,
+    "rank": 20,
+    "level": "foundation",
+    "theme": "live",
+    "cache": "references/go/goproblems-37.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 107,
+    "slot": 77,
+    "rank": 19,
+    "level": "foundation",
+    "theme": "capture",
+    "cache": "references/go/goproblems-107.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 185,
+    "slot": 78,
+    "rank": 23,
+    "level": "foundation",
+    "theme": "kill",
+    "cache": "references/go/goproblems-185.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 188,
+    "slot": 79,
+    "rank": 19,
+    "level": "foundation",
+    "theme": "connect",
+    "cache": "references/go/goproblems-188.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 472,
+    "slot": 80,
+    "rank": 22,
+    "level": "foundation",
+    "theme": "live",
+    "cache": "references/go/goproblems-472.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 451,
+    "slot": 81,
+    "rank": 12,
+    "level": "standard",
+    "theme": "kill",
+    "cache": "references/go/goproblems-451.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 13,
+    "slot": 82,
+    "rank": 11,
+    "level": "stretch",
+    "theme": "live",
+    "cache": "references/go/goproblems-13.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 25,
+    "slot": 83,
+    "rank": 9,
+    "level": "stretch",
+    "theme": "ko",
+    "cache": "references/go/goproblems-25.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 32,
+    "slot": 84,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "live",
+    "cache": "references/go/goproblems-32.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 41,
+    "slot": 85,
+    "rank": 11,
+    "level": "stretch",
+    "theme": "seki",
+    "cache": "references/go/goproblems-41.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 51,
+    "slot": 86,
+    "rank": 9,
+    "level": "stretch",
+    "theme": "live",
+    "cache": "references/go/goproblems-51.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 53,
+    "slot": 87,
+    "rank": 7,
+    "level": "stretch",
+    "theme": "live",
+    "cache": "references/go/goproblems-53.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 68,
+    "slot": 88,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "kill",
+    "cache": "references/go/goproblems-68.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 70,
+    "slot": 89,
+    "rank": 9,
+    "level": "stretch",
+    "theme": "kill",
+    "cache": "references/go/goproblems-70.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 74,
+    "slot": 90,
+    "rank": 9,
+    "level": "stretch",
+    "theme": "kill",
+    "cache": "references/go/goproblems-74.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 78,
+    "slot": 91,
+    "rank": 9,
+    "level": "stretch",
+    "theme": "kill",
+    "cache": "references/go/goproblems-78.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 80,
+    "slot": 92,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "live",
+    "cache": "references/go/goproblems-80.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 93,
+    "slot": 93,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "live",
+    "cache": "references/go/goproblems-93.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 184,
+    "slot": 94,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "kill",
+    "cache": "references/go/goproblems-184.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 199,
+    "slot": 95,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "capture",
+    "cache": "references/go/goproblems-199.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 497,
+    "slot": 96,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "kill",
+    "cache": "references/go/goproblems-497.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 534,
+    "slot": 97,
+    "rank": 9,
+    "level": "stretch",
+    "theme": "connect",
+    "cache": "references/go/goproblems-534.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 577,
+    "slot": 98,
+    "rank": 8,
+    "level": "stretch",
+    "theme": "live",
+    "cache": "references/go/goproblems-577.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 579,
+    "slot": 99,
+    "rank": 11,
+    "level": "stretch",
+    "theme": "kill",
+    "cache": "references/go/goproblems-579.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  },
+  {
+    "id": 656,
+    "slot": 165,
+    "rank": 10,
+    "level": "stretch",
+    "theme": "capture",
+    "cache": "references/go/goproblems-656.json",
+    "review": "Objective and source comments reviewed; move legality checked. Strategic outcomes follow source winning markers."
+  }
+]

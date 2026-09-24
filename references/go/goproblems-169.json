@@ -1,0 +1,30 @@
+{
+  "id": 169,
+  "rank": {
+    "value": 30,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]SZ[19]AW[da][ab][bb][cb][db]AB[ea][eb][ac][bc][cc][dc][ec]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]C[black to kill\n](;B[ba]C[RIGHT\n])(;B[ca];W[ba])(;B[aa];W[ba]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-08-29T13:35:00+00:00",
+  "problemLevel": 0,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 5,
+  "attempts": {
+    "solved": 121309,
+    "failed": 7043,
+    "tries": 128352,
+    "speedSolved": 736,
+    "speedPlay": 771
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/169"
+}

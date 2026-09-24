@@ -1,0 +1,30 @@
+{
+  "id": 1164,
+  "rank": {
+    "value": 27,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "Didn't remember seeing this basic net shape on this site.  Re-edited to allow more beginner mistakes and for those that like to test it out.",
+  "sgf": "(;AW[dp][ep][bq][cq][dr][cs]AB[co][cp][dq][eq][fq]TR[dp][ep]C[Black to capture the two marked stones splitting his group.]\r\n(;B[fo]\r\n(;W[do]\r\n(;B[dn]\r\n;W[eo]\r\n(;B[en]\r\n;W[fp]\r\n(;B[gp]C[RIGHT])\r\n(;B[hp]CR[hp]\r\n;W[gp]CR[gp]\r\n(;B[go]CR[go]\r\n;W[gq]CR[gq]\r\n;B[gr]CR[gr]\r\n;W[hq]CR[hq]\r\n;B[iq]CR[iq]C[RIGHT\r\nSmartass!\r\n])\r\n(;B[gq]CR[gq]\r\n;W[go]CR[go]\r\n(;B[gn]CR[gn]\r\n;W[ho]CR[ho]\r\n(;B[io]CR[io]\r\n;W[hn]CR[hn]\r\n;B[hm]CR[hm]\r\n;W[fn]CR[fn]\r\n(;B[in]CR[in]\r\n;W[gm]CR[gm])\r\n(;B[gm]CR[gm]\r\n;W[in]CR[in]))\r\n(;B[hn]CR[hn]\r\n;W[io]CR[io]))\r\n(;B[ho]CR[ho]\r\n;W[gn]CR[gn])\r\n(;B[fn]CR[fn]\r\n;W[ho]CR[ho])))\r\n(;B[go]CR[go]\r\n;W[gp]CR[gp]\r\n(;B[hp]CR[hp]\r\n;W[gq]CR[gq]\r\n;B[gr]CR[gr]\r\n;W[hq]CR[hq]\r\n(;B[iq]CR[iq]C[RIGHT\r\nSmartass!])\r\n(;B[hr]CR[hr]\r\n;W[iq]CR[iq]))\r\n(;B[gq]CR[gq]\r\n;W[hp]CR[hp]))\r\n(;B[gq]CR[gq]\r\n;W[gp]CR[gp]\r\n(;B[go]CR[go]\r\n;W[hp]CR[hp])\r\n(;B[hp]CR[hp]\r\n;W[go]CR[go]\r\n(;B[fn]CR[fn]\r\n;W[ho]CR[ho])\r\n(;B[ho]CR[ho]\r\n;W[gn]CR[gn])\r\n(;B[gn]CR[gn]\r\n;W[ho]CR[ho]\r\n;B[io]CR[io]\r\n;W[hn]CR[hn]\r\n;B[hm]CR[hm]\r\n;W[fn]CR[fn]\r\n(;B[gm]CR[gm]\r\n;W[in]CR[in])\r\n(;B[in]CR[in]\r\n;W[gm]CR[gm])\r\n(;B[fm]CR[fm]\r\n;W[gm]CR[gm])))))\r\n(;B[fn]CR[fn]\r\n;W[en]CR[en]\r\n;B[em]CR[em]C[RIGHT])\r\n(;B[fp]CR[fp]\r\n;W[en]CR[en]\r\n(;B[em]CR[em]\r\n;W[fn]CR[fn]C[Don't use a ladder if you can capture without one.])\r\n(;B[fn]CR[fn]\r\n;W[em]CR[em])))\r\n(;B[cn]CR[cn]\r\n;W[dn]CR[dn]\r\n;B[dm]CR[dm]\r\n;W[en]CR[en]C[Black cannot keep white inside.]\r\n(;B[fn]CR[fn]\r\n;W[em]CR[em])\r\n(;B[em]CR[em]\r\n;W[fn]CR[fn])\r\n(;B[fm]CR[fm]\r\n;W[fn]CR[fn]\r\n;B[gn]CR[gn]\r\n;W[em]CR[em]\r\n;B[el]CR[el]\r\n;W[fl]CR[fl]\r\n(;B[gm]CR[gm]\r\n;W[dl]CR[dl])\r\n(;B[ek]CR[ek]\r\n;W[gm]CR[gm])\r\n(;B[dl]CR[dl]\r\n;W[gm]CR[gm])))\r\n(;B[en]CR[en]\r\n;W[dn]CR[dn]\r\n(;B[cn]CR[cn]\r\n;W[dm]CR[dm])\r\n(;B[dm]CR[dm]\r\n;W[cn]CR[cn]))\r\n(;B[eo]CR[eo]\r\n;W[dn]CR[dn])\r\n(;B[fp]CR[fp]\r\n;W[dn]CR[dn])\r\n(;B[gp]CR[gp]\r\n;W[cn]CR[cn]))\r\n(;W[dn]\r\n;B[do]\r\n;W[en]\r\n;B[eo]\r\n;W[gp]\r\n;B[fp]C[RIGHT]))\r\n(;B[eo]\r\n;W[do]\r\n(;B[fp]\r\n;W[dn])\r\n(;B[dn]\r\n;W[fp]\r\n(;B[fo]\r\n;W[gp])\r\n(;B[gp]\r\n;W[fo]\r\n;B[fn]\r\n;W[go]\r\n;B[ho]\r\n;W[gn]\r\n;B[gm]\r\n;W[hn]\r\n;B[in]\r\n;W[en]\r\n;B[hm]\r\n;W[fm])\r\n(;B[go]CR[go]\r\n;W[gp]CR[gp]\r\n(;B[gq]CR[gq]\r\n;W[hp]CR[hp])\r\n(;B[hp]CR[hp]\r\n;W[gq]CR[gq])\r\n(;B[ho]CR[ho]\r\n;W[gq]CR[gq]))))\r\n(;B[fp]\r\n;W[dn]\r\n(;B[do]\r\n;W[eo]\r\n(;B[fo]\r\n;W[en])\r\n(;B[en]\r\n;W[fo]\r\n(;B[fn]\r\n;W[go])\r\n(;B[go]\r\n;W[fn]\r\n(;B[fm]\r\n;W[gn]\r\n;B[hn]\r\n;W[gm]\r\n;B[gl]\r\n;W[em]\r\n(;B[hm]\r\n;W[fl])\r\n(;B[fl]CR[fl]\r\n;W[hm]CR[hm]))\r\n(;B[em]CR[em]\r\n;W[gn]CR[gn])\r\n(;B[gn]CR[gn]\r\n;W[fm]CR[fm]))))\r\n(;B[en]CR[en]\r\n;W[do]CR[do]\r\n(;B[dm]CR[dm]\r\n;W[cn]CR[cn])\r\n(;B[cn]CR[cn]\r\n;W[dm]CR[dm])\r\n(;B[eo]CR[eo]\r\n;W[cn]CR[cn]))\r\n(;B[eo]CR[eo]\r\n;W[do]CR[do]))\r\n(;B[do]\r\n;W[fo]\r\n(;B[fp]\r\n;W[eo])\r\n(;B[eo]\r\n;W[fp])\r\n(;B[fn]CR[fn]\r\n;W[go]CR[go]))\r\n(;B[fn]CR[fn]\r\n;W[en]CR[en]\r\n(;B[fo]CR[fo]\r\n;W[dn]CR[dn])\r\n(;B[em]CR[em]\r\n;W[dn]CR[dn]\r\n(;B[cn]CR[cn]\r\n;W[dm]CR[dm])\r\n(;B[dm]CR[dm]\r\n;W[cn]CR[cn]))\r\n(;B[eo]CR[eo]\r\n;W[do]CR[do]\r\n(;B[dn]CR[dn]\r\n;W[fo]CR[fo]\r\n(;B[fp]CR[fp]\r\n;W[eo]CR[eo]\r\n(;B[em]CR[em]\r\n;W[go]CR[go])\r\n(;B[go]CR[go]\r\n;W[em]CR[em]))\r\n(;B[em]CR[em]\r\n;W[go]CR[go]))\r\n(;B[fo]CR[fo]\r\n;W[dn]CR[dn])\r\n(;B[fp]CR[fp]\r\n;W[dn]CR[dn]))\r\n(;B[dn]CR[dn]\r\n;W[eo]CR[eo]\r\n;B[em]CR[em]\r\n;W[fo]CR[fo]\r\n(;B[go]CR[go]\r\n;W[gn]CR[gn]\r\n(;B[fm]CR[fm]\r\n;W[gp]CR[gp]\r\n;B[ho]CR[ho]\r\n;W[fp]CR[fp]\r\n(;B[hp]CR[hp]\r\n;W[gq]CR[gq]\r\n(;B[gr]CR[gr]\r\n;W[fr]CR[fr])\r\n(;B[hq]CR[hq]\r\n;W[fr]CR[fr]))\r\n(;B[gq]CR[gq]\r\n;W[hp]CR[hp]\r\n(;B[io]CR[io]\r\n;W[hq]CR[hq])\r\n(;B[hq]CR[hq]\r\n;W[ip]CR[ip])\r\n(;B[ip]CR[ip]\r\n;W[io]CR[io]\r\n;B[hn]CR[hn]\r\n;W[iq]CR[iq]\r\n;B[jp]CR[jp]\r\n;W[hq]CR[hq])))\r\n(;B[fp]CR[fp]\r\n;W[fm]CR[fm])\r\n(;B[do]CR[do]\r\n;W[fm]CR[fm]))\r\n(;B[gn]CR[gn]\r\n;W[go]CR[go])))\r\n(;B[en]CR[en]\r\n;W[fp]CR[fp]\r\n;B[gp]CR[gp]\r\n;W[fo]CR[fo]\r\n(;B[fn]CR[fn]\r\n;W[go]CR[go])\r\n(;B[go]CR[go]\r\n;W[fn]CR[fn])\r\n(;B[gn]CR[gn]\r\n;W[go]CR[go]\r\n;B[ho]CR[ho]\r\n;W[hp]CR[hp]\r\n;B[gq]CR[gq]\r\n;W[hn]CR[hn]\r\n(;B[io]CR[io]\r\n;W[fn]CR[fn]\r\n(;B[gm]CR[gm]\r\n;W[fm]CR[fm])\r\n(;B[fm]CR[fm]\r\n;W[gm]CR[gm]))\r\n(;B[fn]CR[fn]\r\n;W[io]CR[io]))))",
+  "source": "Basic Capture Shape",
+  "playerColor": "black",
+  "createdAt": "2001-11-09T20:41:33+00:00",
+  "problemLevel": 3,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 15,
+  "attempts": {
+    "solved": 47560,
+    "failed": 17254,
+    "tries": 64814,
+    "speedSolved": 100,
+    "speedPlay": 182
+  },
+  "author": "nuke-marine",
+  "url": "https://goproblems.com/problems/1164"
+}

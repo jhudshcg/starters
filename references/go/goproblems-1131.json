@@ -1,0 +1,30 @@
+{
+  "id": 1131,
+  "rank": {
+    "value": 25,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[4]CA[UTF-8]AP[CGoban:2]ST[2]\nRU[Japanese]SZ[19]KM[0.00]TM[]\nPW[White]PB[Black]AW[qp][rp][qq][pr][qr][rs]AB[po][qo][ro][op][sp][oq][nr][ns]\n(;B[sr]CR[sr]\n;W[sq]CR[sq]\n;B[rq]CR[rq]C[RIGHT])\n(;B[sq]CR[sq]\n;W[sr]CR[sr]\n(;B[ps]CR[ps]\n;W[rq]CR[rq])\n(;B[rq]CR[rq]\n;W[ps]CR[ps]))\n(;B[ps]CR[ps]\n;W[sr]CR[sr]\n(;B[sq]CR[sq]\n;W[rq]CR[rq])\n(;B[rq]CR[rq]\n;W[sq]CR[sq]))\n(;B[os]CR[os]\n;W[sr]CR[sr]\n(;B[sq]CR[sq]\n;W[rq]CR[rq])\n(;B[rq]CR[rq]\n;W[sq]CR[sq])\n(;B[ps]CR[ps]\n;W[sq]CR[sq]))\n(;B[or]CR[or]\n;W[sr]CR[sr])\n(;B[rr]CR[rr]\n;W[sr]CR[sr])\n(;B[qs]CR[qs]\n;W[ps]CR[ps])\n(;B[ss]CR[ss]\n;W[sr]CR[sr])\n(;B[so]CR[so]\n;W[sr]CR[sr]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2001-10-31T17:40:33+00:00",
+  "problemLevel": 5,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 19,
+  "attempts": {
+    "solved": 21716,
+    "failed": 14796,
+    "tries": 36512,
+    "speedSolved": 65,
+    "speedPlay": 135
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/1131"
+}

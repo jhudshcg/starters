@@ -1,0 +1,30 @@
+{
+  "id": 1259,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(\r\n\r\n;\r\n\r\nFF[4]\r\n\r\nGM[1]\r\n\r\nSZ[19]\r\n\r\nAP[Jago:Version 4.25]\r\n\r\nAW[cd][dd][ed][cf][fc][gc][hc][gd][jc][kc][lc][ld][me][mg][he][hf][if][ih][hh][jh][lh][nf][bc][cb][be][ad][kh]\r\n\r\nAB[ee][fe][fd][ge][hd][id][ic][ib][hb][jd][ie][jf][kd][eg][gg][gh][gi][cc][ki]\r\n\r\nC[Black first to live.]\r\n\r\nGN[goproblem1259]\r\n\r\n(\r\n\r\n;\r\n\r\nB[ec]\r\n\r\n;\r\n\r\nW[eb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[fb]\r\n\r\n;\r\n\r\nW[dc]\r\n\r\n(\r\n\r\n;\r\n\r\nB[gb]\r\n\r\n;\r\n\r\nW[ec]\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n(\r\n\r\n;\r\n\r\nB[le]\r\n\r\n;\r\n\r\nW[kf]\r\n\r\n(\r\n\r\n;\r\n\r\nB[kg]\r\n\r\n;\r\n\r\nW[lg]\r\n\r\n(\r\n\r\n;\r\n\r\nB[je]\r\n\r\n;\r\n\r\nW[jb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[ia]\r\n\r\nC[RIGHT]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[fa]\r\n\r\nC[RIGHT]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jg]\r\n\r\n;\r\n\r\nW[mf]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[jg]\r\n\r\n;\r\n\r\nB[kb]\r\n\r\n;\r\n\r\nW[lb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[kg]\r\n\r\n;\r\n\r\nB[kb]\r\n\r\n;\r\n\r\nW[lb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kf]\r\n\r\n;\r\n\r\nW[le]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[le]\r\n\r\n;\r\n\r\nB[kb]\r\n\r\n;\r\n\r\nW[lb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kf]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[ke]\r\n\r\n;\r\n\r\nW[kf]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[le]\r\n\r\n;\r\n\r\nW[lf]\r\n\r\n(\r\n\r\n;\r\n\r\nB[ke]\r\n\r\n;\r\n\r\nW[kf]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kf]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kg]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n;\r\n\r\nB[kb]\r\n\r\n;\r\n\r\nW[lb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kf]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[ke]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[le]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kg]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n;\r\n\r\nB[kb]\r\n\r\n;\r\n\r\nW[lb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[ka]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[ha]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[ka]\r\n\r\n)\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[gb]\r\n\r\n;\r\n\r\nW[fb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[jb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[ke]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kf]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[le]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kg]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[ke]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kf]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[le]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[kg]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[fb]\r\n\r\n;\r\n\r\nW[ec]\r\n\r\n(\r\n\r\n;\r\n\r\nB[gb]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[kb]\r\n\r\n;\r\n\r\nB[eb]\r\n\r\n;\r\n\r\nW[db]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[eb]\r\n\r\n;\r\n\r\nW[db]\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[kb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[gb]\r\n\r\n;\r\n\r\nW[fb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[jb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[eb]\r\n\r\n;\r\n\r\nW[ec]\r\n\r\n(\r\n\r\n;\r\n\r\nB[gb]\r\n\r\n;\r\n\r\nW[fb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[jb]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[fb]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[jb]\r\n\r\n;\r\n\r\nW[gb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[kb]\r\n\r\n;\r\n\r\nW[lb]\r\n\r\n(\r\n\r\n;\r\n\r\nB[ka]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[ha]\r\n\r\n;\r\n\r\nW[ke]\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[ka]\r\n\r\n)\r\n\r\n)\r\n\r\n(\r\n\r\n;\r\n\r\nB[lf]\r\n\r\n;\r\n\r\nW[kb]\r\n\r\n)\r\n\r\n)\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2002-01-11T09:15:10+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 62,
+  "attempts": {
+    "solved": 2790,
+    "failed": 5522,
+    "tries": 8312,
+    "speedSolved": 2,
+    "speedPlay": 3
+  },
+  "author": "unkx80",
+  "url": "https://goproblems.com/problems/1259"
+}

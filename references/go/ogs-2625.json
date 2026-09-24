@@ -1,0 +1,266 @@
+{
+  "id": 2625,
+  "name": "Exercise 001",
+  "puzzle": {
+    "mode": "puzzle",
+    "name": "Exercise 001",
+    "puzzle_type": "life_and_death",
+    "width": 19,
+    "height": 19,
+    "initial_state": {
+      "white": "arbrcrdreres",
+      "black": "aqbpdpeqfqfrhrbs"
+    },
+    "puzzle_opponent_move_mode": "automatic",
+    "puzzle_player_move_mode": "free",
+    "puzzle_rank": "5",
+    "puzzle_description": "Learn and exercise basic concepts in life and death! Each puzzle contains an easy problem (max level 10k) followed by a solution. Use the solutions to learn Go terms and tricks. Or you can skip them if you already know it.\n\nIf you like the puzzles, rate 5 stars so the series can stay visible to other beginners. Happy puzzle solving!\n\n---",
+    "puzzle_collection": "242",
+    "initial_player": "black",
+    "move_tree": {
+      "x": -1,
+      "y": -1,
+      "text": "Black to kill.",
+      "branches": [
+        {
+          "x": 2,
+          "y": 18,
+          "correct_answer": true
+        },
+        {
+          "x": 0,
+          "y": 18,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 3,
+          "y": 18,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 1,
+          "y": 16,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 2,
+          "y": 16,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 3,
+          "y": 16,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 5,
+          "y": 18,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 0,
+          "y": 15,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 2,
+          "y": 15,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 4,
+          "y": 15,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 5,
+          "y": 15,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 6,
+          "y": 15,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 6,
+          "y": 16,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 6,
+          "y": 17,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 6,
+          "y": 18,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 7,
+          "y": 15,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 7,
+          "y": 16,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        },
+        {
+          "x": 7,
+          "y": 18,
+          "branches": [
+            {
+              "x": 2,
+              "y": 18,
+              "wrong_answer": true
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "width": 19,
+  "height": 19,
+  "rank": 5,
+  "collection": {
+    "id": 242,
+    "owner": {
+      "id": 64817,
+      "username": "mark5000",
+      "country": "us",
+      "icon": "https://user-uploads.online-go.com/9b5320a244a5d988372d7e6e830a8fbe-64.png",
+      "ratings": {
+        "version": 5,
+        "overall": {
+          "rating": 2254.707619884256,
+          "deviation": 84.48105170755471,
+          "volatility": 0.06047579984841494
+        }
+      },
+      "ranking": 33.73828501242196,
+      "professional": false,
+      "ui_class": "supporter moderator"
+    },
+    "name": "Exercises for Beginners",
+    "created": "2015-06-18T03:50:00.350378Z",
+    "private": false,
+    "price": "0.00",
+    "starting_puzzle": {
+      "id": 2625,
+      "initial_state": {
+        "white": "arbrcrdreres",
+        "black": "aqbpdpeqfqfrhrbs"
+      },
+      "width": 19,
+      "height": 19
+    },
+    "rating": 4.58456006638188,
+    "rating_count": 32539,
+    "puzzle_count": 107,
+    "min_rank": 5,
+    "max_rank": 21,
+    "view_count": 11301207,
+    "solved_count": 5108578,
+    "attempt_count": 11454428,
+    "color_transform_enabled": true,
+    "position_transform_enabled": true
+  }
+}

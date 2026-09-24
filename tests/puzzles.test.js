@@ -18,22 +18,21 @@ test('all equation assignments have exactly one solution',()=>{
  }
 });
 test('logic clues uniquely determine each mapping across all categories',()=>{
- const perm=permutations([0,1,2,3]);
  for(const q of puzzles.filter(q=>q.focus==='logic grids'))for(const v of q.variations){
-  const p=v.parts[0];let count=0;
+  const p=v.parts[0],perm=permutations(p.names.map((_,i)=>i));let count=0;
   function search(rows){if(rows.length===p.categories.length){if(p.rules.every(c=>logicRule(c,rows)))count++;return;}for(const row of perm)search([...rows,row]);}
-  search([]);assert.equal(count,1);assert.ok(p.rules.length>=4);
+  search([]);assert.equal(count,1);assert.ok(p.rules.length>=p.names.length);
  }
 });
 test('every path layout is feasible, with no fixed endpoints; reverse routes also pass',()=>{
  const layouts=new Set();
  for(const q of puzzles.filter(q=>q.focus==='cover paths'))for(const v of q.variations){
-  const p=v.parts[0],a=JSON.parse(p.answer);assert.equal(p.start,undefined);assert.equal(p.end,undefined);assert.ok(p.blocked.length>=5);
+  const p=v.parts[0],a=JSON.parse(p.answer);assert.equal(p.start,undefined);assert.equal(p.end,undefined);assert.ok(p.blocked.length<p.size*(p.rows??p.size));
   assert.equal(markChallenge(p,p.answer).earned,3);assert.equal(markChallenge(p,JSON.stringify(a.toReversed())).earned,3);
   assert.equal(markChallenge(p,JSON.stringify(a.slice(1))).earned,0);
   assert.equal(markChallenge(p,JSON.stringify([...a,a[0]])).earned,0);
-  assert.equal(markChallenge(p,JSON.stringify([...a.slice(0,-1),p.blocked[0]])).earned,0);
-  layouts.add(p.blocked.join(','));
+  assert.equal(markChallenge(p,JSON.stringify([...a.slice(0,-1),p.blocked[0]??p.size*(p.rows??p.size)])).earned,0);
+  layouts.add([p.size,p.rows??p.size,...p.blocked].join(','));
  }
  assert.ok(layouts.size>=20);
  const p={kind:'cover-path',size:2,blocked:[],marks:3};

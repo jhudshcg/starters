@@ -1,0 +1,30 @@
+{
+  "id": 1176,
+  "rank": {
+    "value": 11,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;SZ[13]AB[la]AB[lb]AB[kb]AB[ja]AB[jc]AB[jd]AB[je]AB[jf]AB[jg]AB[kh]AB[ki]AB[li]AB[mj]AB[lk]AW[mb]AW[lc]AW[kc]AW[kg]AW[kf]AW[lf]AW[mg]AW[mh]AW[mi]AW[lh]C[Black to kill]AE[mk]\n(;B[le];W[ke]\n(;B[kd];W[ld];B[me]C[RIGHT])\n(;B[me]\n(;W[ld]\n(;B[kd]C[RIGHT])\n(;B[md];W[mc])\n(;B[mf];W[md]))\n(;W[kd];B[mf]C[RIGHT]))\n(;B[md];W[ld]\n(;B[kd];W[me])\n(;B[me];W[mc]))\n(;B[ld];W[kd]\n(;B[me];W[mf])\n(;B[md];W[mc])\n(;B[mf];W[me])\n(;B[mc];W[md])))\n(;B[me];W[le]\n(;B[ld];W[kd])\n(;B[md];W[mc]\n(;B[ld];W[kd])\n(;B[kd];W[ld])))\n(;B[ld]\n(;W[le]\n(;B[me];W[kd])\n(;B[kd];W[me])\n(;B[md];W[me]C[Black gets only a few stones, the main part of white's group lives.]))\n(;W[kd];B[ke];W[le]))\n(;B[md];W[ld]\n(;B[le];W[ke]\n(;B[kd];W[me])\n(;B[me];W[mc]))\n(;B[me];W[le]))\n(;B[kd];W[le]\n(;B[ld];W[me]C[Black gets only a few stones, the main part is alive.])\n(;B[md];W[ld];B[mc];W[me])\n(;B[me];W[ld])\n(;B[mc];W[md]\n(;B[ld];W[me])\n(;B[me];W[ld]))))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2001-11-15T01:49:21+00:00",
+  "problemLevel": 19,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 49,
+  "attempts": {
+    "solved": 2804,
+    "failed": 5514,
+    "tries": 8318,
+    "speedSolved": 4,
+    "speedPlay": 36
+  },
+  "author": "Madeline",
+  "url": "https://goproblems.com/problems/1176"
+}

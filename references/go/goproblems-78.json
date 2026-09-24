@@ -1,0 +1,30 @@
+{
+  "id": 78,
+  "rank": {
+    "value": 9,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[ma][na][ra][mb][mc][qc][rc][md][nd][sd][oe][re][of][pf][qf]\r\nAB[nb][ob][pb][qb][sb][nc][pc][pd][qd][rd]LB[sb:A]PL[2]\r\nC[black has just played a. he's so smartypants. but white can kill.\r\n]\r\n(;W[sc];B[rb];W[se];B[od])\r\n\r\n(;W[rb];B[sc]\r\n(;W[sa];B[sc]\r\n(;W[sb];B[qa]\r\n(;W[se];B[sc];W[rc]C[RIGHT\r\nnot smartypants enough!\r\n])\r\n\r\n(;W[sc];B[se])\r\n\r\n(;W[od];B[sc]\r\n(;W[rc];B[se])\r\n\r\n(;W[oa];B[rb])\r\n)\r\n\r\n(;W[oa];B[sc]\r\n(;W[rc];B[se])\r\n\r\n(;W[od];B[rb])\r\n)\r\n)\r\n\r\n(;W[se];B[qa];W[sb];B[sc];W[rc]C[RIGHT\r\n])\r\n)\r\n\r\n(;W[se];B[qa]\r\n(;W[sa];B[sc];W[sb];B[sc];W[rc]C[RIGHT\r\n])\r\n\r\n(;W[oa];B[sa])\r\n)\r\n)\r\n\r\n(;W[od];B[rb])\r\n\r\n)",
+  "source": "pamphlet",
+  "playerColor": "white",
+  "createdAt": "1999-09-10T14:12:12+00:00",
+  "problemLevel": 21,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 46,
+  "attempts": {
+    "solved": 4459,
+    "failed": 8479,
+    "tries": 12938,
+    "speedSolved": 2,
+    "speedPlay": 7
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/78"
+}

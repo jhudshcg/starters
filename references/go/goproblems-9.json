@@ -1,0 +1,30 @@
+{
+  "id": 9,
+  "rank": {
+    "value": 23,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-29]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]AW[qn][ro][qp][oq][pq][qq][or]\r\nAB[rp][rq][pr][qr][rr]C[black to live\r\n]\r\n(;B[ss];W[sp];B[sq];W[ps];B[qs]C[RIGHT\r\neasy\r\n])\r\n\r\n(;B[sp];W[sr]\r\n(;B[ps];W[rs]\r\n(;B[qs];W[ss])\r\n\r\n(;B[sq];W[ss])\r\n)\r\n\r\n(;B[rs];W[ps])\r\n\r\n(;B[sq];W[ss]\r\n(;B[rs];W[ps])\r\n\r\n(;B[ps];W[rs])\r\n)\r\n)\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-07-29T22:07:14+00:00",
+  "problemLevel": 7,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 13,
+  "attempts": {
+    "solved": 46079,
+    "failed": 24596,
+    "tries": 70675,
+    "speedSolved": 104,
+    "speedPlay": 141
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/9"
+}

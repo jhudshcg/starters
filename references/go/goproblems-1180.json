@@ -1,0 +1,30 @@
+{
+  "id": 1180,
+  "rank": {
+    "value": 26,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[4]CA[UTF-8]AP[CGoban:2]ST[2]SZ[13]AW[bc][cc][ec][dd][de][fe][he][df][bg][cg]AB[db][eb][dc][fc][cd][ce][cf][dg][eg]RU[Japanese]TM[]PW[White]PB[Black]C[Save the three Black stones by capturing the White stones outside.](;B[ee]CR[ee];W[ef]CR[ef](;B[ff]CR[ff];W[ed]CR[ed](;B[fd]CR[fd]C[RIGHT])(;B[ge];W[gf])(;B[gd];W[ge]))(;B[ed];W[ff])(;B[fd];W[ff]))(;B[ed];W[ee])(;B[fd];W[ee])(;B[ef];W[ee])(;B[ff];W[fd](;B[ee];W[ed])(;B[ed];W[ee]))(;B[bd];W[bf])(;B[bf];W[bd])(;B[cb];W[bd]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2001-11-16T11:56:45+00:00",
+  "problemLevel": 4,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 17,
+  "attempts": {
+    "solved": 47830,
+    "failed": 16227,
+    "tries": 64057,
+    "speedSolved": 52,
+    "speedPlay": 89
+  },
+  "author": "BigMetalGuy",
+  "url": "https://goproblems.com/problems/1180"
+}

@@ -1,0 +1,30 @@
+{
+  "id": 51,
+  "rank": {
+    "value": 9,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]SZ[19]AW[mc][nc][pc][pd][rd][sd][qe][se][of][pf][og]AB[sb][rc][re][qf][rf][pg][rg][oh][qh][sh]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]C[black to live in the corner unconditionally\n](;B[qb];W[qc](;B[pb];W[ob](;B[ra];W[sc];B[pa];W[rb])(;B[pa];W[ra]))(;B[sc];W[ra](;B[qa];W[pb])(;B[rb];W[pb])))(;B[ra];W[qc];B[qb];W[sc];B[pb];W[ob];B[pa];W[rb])(;B[qc];W[qd](;B[ra];W[qb](;B[pb];W[ob](;B[pa]C[RIGHT\n])(;B[rb];W[pa]))(;B[rb];W[pb]))(;B[pb];W[ra](;B[ob];W[qb](;B[rb];W[qa];B[pa];W[nb])(;B[nb];W[mb](;B[rb];W[qa](;B[na];W[pa])(;B[pa];W[na];B[sa];W[qa]))(;B[pa];W[rb])))(;B[qa];W[ob](;B[rb];W[oa](;B[pa];W[qb])(;B[sa];W[pa]))(;B[pa];W[rb])))))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-08-16T22:43:08+00:00",
+  "problemLevel": 21,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 31,
+  "attempts": {
+    "solved": 4439,
+    "failed": 10204,
+    "tries": 14643,
+    "speedSolved": 6,
+    "speedPlay": 24
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/51"
+}

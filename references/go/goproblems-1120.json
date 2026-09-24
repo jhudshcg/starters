@@ -1,0 +1,30 @@
+{
+  "id": 1120,
+  "rank": {
+    "value": 25,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[4]CA[UTF-8]AP[CGoban:2]ST[2]\nRU[Japanese]SZ[19]KM[0.00]TM[]\nPW[White]PB[Black]AW[qp][rp][qq][rr][sr][rs]AB[po][qo][ro][op][oq][rq][pr][qr][os]C[black to kill]\n(;B[sp]CR[sp]\n;W[sq]CR[sq]\n;B[so]CR[so]C[RIGHT])\n(;B[sq]CR[sq]\n;W[sp]CR[sp])\n(;B[so]CR[so]\n;W[sp]CR[sp])\n(;B[qs]CR[qs]\n;W[sp]CR[sp])\n(;B[pp]CR[pp]\n;W[sp]CR[sp])\n(;B[pq]CR[pq]\n;W[sp]CR[sp]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2001-10-30T12:43:40+00:00",
+  "problemLevel": 5,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 23,
+  "attempts": {
+    "solved": 29310,
+    "failed": 15630,
+    "tries": 44940,
+    "speedSolved": 47,
+    "speedPlay": 95
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/1120"
+}

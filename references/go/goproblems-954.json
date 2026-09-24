@@ -1,0 +1,30 @@
+{
+  "id": 954,
+  "rank": {
+    "value": 11,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "Black to play and kill. Ko is poor result.",
+  "sgf": "(;GM[1]VW[]SZ[19]\r\nAB[bc][cc]AW[cb]AB[da]AW[dc][ec][eb][fc][gc][gb][fa]AB[ga][ha][hb][hc][hd][gd][fd][ed][dd][ce](;\r\nB[ca];\r\nW[bb](;\r\nB[ba];\r\nW[ab](;\r\nB[db]C[RIGHT]\r\n)\r\n(;\r\nB[ea];\r\nW[db])\r\n)\r\n(;\r\nB[ab];\r\nW[ba])\r\n(;\r\nB[db];\r\nW[ba])\r\n)\r\n(;\r\nB[db];\r\nW[ca])\r\n(;\r\nB[bb];\r\nW[ca])\r\n(;\r\nB[ba];\r\nW[ca])\r\n(;\r\nB[ea];\r\nW[ca]C[Not the best result to\r\n play ko.]\r\n)\r\n)",
+  "source": "Sikatu no Tamatebako",
+  "playerColor": "black",
+  "createdAt": "2001-07-31T10:28:58+00:00",
+  "problemLevel": 19,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 43,
+  "attempts": {
+    "solved": 4477,
+    "failed": 8332,
+    "tries": 12809,
+    "speedSolved": 9,
+    "speedPlay": 25
+  },
+  "author": "vlkplk",
+  "url": "https://goproblems.com/problems/954"
+}

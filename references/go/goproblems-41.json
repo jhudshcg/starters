@@ -1,0 +1,30 @@
+{
+  "id": 41,
+  "rank": {
+    "value": 11,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nAW[gb][mb][gc][mc][gd][hd][id][kd][ld][md]AB[ha][la][hb][lb][hc][lc]\r\nC[black to live\r\n]\r\n(;B[ja];W[jb]\r\n(;B[jc];W[ib]\r\n(;B[ic];W[kb];B[kc]C[RIGHT\r\nblack lives in seki\r\n])\r\n\r\n(;B[kb];W[ic])\r\n)\r\n\r\n(;B[kb];W[ic]\r\n(;B[jc];W[ib])\r\n\r\n(;B[ib];W[jc])\r\n)\r\n\r\n(;B[ib];W[kc]\r\n(;B[jc];W[kb])\r\n\r\n(;B[kb];W[jc])\r\n)\r\n)\r\n\r\n(;B[jb];W[kc]\r\n(;B[kb];W[ic];B[ib];W[ja])\r\n\r\n(;B[jc];W[jd];B[kb];W[ic];B[ib];W[ja])\r\n)\r\n\r\n(;B[jc];W[kc]\r\n(;B[kb];W[ic];B[ib];W[ja])\r\n\r\n(;B[jd];W[je];B[kb];W[ic])\r\n)\r\n\r\n(;B[kb];W[ic]\r\n(;B[ib];W[ja])\r\n\r\n(;B[jc];W[jd];B[ib];W[ja])\r\n)\r\n\r\n(;B[ib];W[kc])\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-08-14T12:59:09+00:00",
+  "problemLevel": 19,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 20,
+  "attempts": {
+    "solved": 8081,
+    "failed": 14657,
+    "tries": 22738,
+    "speedSolved": 15,
+    "speedPlay": 24
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/41"
+}

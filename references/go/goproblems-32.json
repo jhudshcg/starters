@@ -1,0 +1,30 @@
+{
+  "id": 32,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;AW[re]AW[of]AW[pf]AW[qf]AW[rg]AW[qh]AW[qi]AW[oj]AW[pj]AW[nk]AW[ok]AW[pk]AW[pl]AW[ql]AW[qm]AW[qn]AW[oo]AW[po]AW[pp]AW[oq]AW[pq]AB[pd]AB[rd]AB[ne]AB[oe]AB[qe]AB[mf]AB[mg]AB[pg]AB[qg]AB[mh]AB[ph]AB[mi]AB[oi]AB[pi]AB[mj]AB[nj]AB[qj]AB[mk]AB[qk]AB[nl]AB[ol]AB[rl]AB[mm]AB[om]AB[rm]AB[mn]AB[on]AB[mo]AB[no]AB[mp]AB[op]AB[lq]AB[nq]C[black to live on the right side]PL[B]\n(;B[ri];W[rh]\n(;B[rj];W[sk]\n(;B[rn];W[ro])\n(;B[ro];W[rn];B[sn]))\n(;B[rk];W[si]\n(;B[ro];W[rn];B[sj];W[sh])\n(;B[sj];W[sh];B[rn];W[ro];B[sn];W[sl])))\n(;B[rj]C[]\n(;W[ri]\n(;B[sk]C[RIGHT])\n(;B[rn];W[sj])\n(;B[si];W[rh]\n(;B[sk]C[RIGHT])\n(;B[sj];W[sk]C[white wins])\n(;B[rn];W[sk]))\n(;B[sj];W[sk]\n(;B[si];W[rh]C[white wins])\n(;B[rh];W[sh];B[si];W[rk]))\n(;B[rh];W[sh]\n(;B[sj];W[sk];B[si];W[rk])\n(;B[sk];W[sj]C[Only ko.])))\n(;W[sk];B[rh]))\n(;B[rn];W[rj]\n(;B[rk];W[ri];B[rp];W[rq];B[qo];W[qp];B[ro];W[pn]\n(;B[sk];W[sp];B[so];W[sm];B[si]C[white wins])\n(;B[sp];W[sk];B[sl];W[sn]))\n(;B[rp]\n(;W[rk])\n(;W[rq];B[qo];W[qp];B[ro];W[pn];B[rk];W[ri];B[sk];W[sp];B[so];W[sm];B[si]C[white wins]))\n(;B[ro];W[rk]LB[rp:A]C[Even if black lives in the corner, this is much worse than the correct solution. Also, white could have played 'A', and probably wins the semeai.]))\n(;B[ro];W[rn];B[rj];W[rh]\n(;B[sn];W[sk])\n(;B[sk];W[sm]))\n(;B[rh];W[ri];B[rj];W[sh]\n(;B[sk];W[sj]C[White can get a ko. It's a hard ko for white to win, but it's better than nothing.])\n(;B[sj];W[sk]C[White wins.];B[si];W[rk])\n(;B[rn];W[sj]))\n(;B[se];W[rj];B[rk];W[ri]C[Black may get some stones this way, but his own die.])\n(;B[sk];W[rj];B[rk];W[ri]\n(;B[si];W[rh];B[sj];W[rn]C[White easily wins the semai.])\n(;B[rn];W[ro]\n(;B[si];W[rh];B[sj];W[sn]C[White easily wins the semeai.])\n(;B[sn];W[sj]C[White easily wins the semeai])\n(;B[sj];W[si]C[White easily wins the semeai.]))\n(;B[sj];W[si]C[White easily wins the semeai.]))\n(;B[si];W[rj];B[rk];W[ri];B[sj];W[rh];B[rn];W[ro]C[White will win this semeai.])\n(;B[sj];W[rj];B[rk];W[ri];B[si];W[rh];B[rn];W[ro]C[White will win this semeai.]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-08-13T17:18:42+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": false,
+  "isCanon": false,
+  "avgSolveTimeSeconds": 23,
+  "attempts": {
+    "solved": 9420,
+    "failed": 19543,
+    "tries": 28963,
+    "speedSolved": 0,
+    "speedPlay": 0
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/32"
+}

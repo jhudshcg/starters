@@ -1,5 +1,13 @@
 # DSD T-Level year 1 starters
 
+## Working efficiently and preserving handovers
+
+- Work efficiently: reuse existing research, cached references, tools and completed checks. Do not repeat downloads or investigations when the required material is already available.
+- Save downloaded reference material that may be useful in future in the repository, with source URLs and enough metadata to support reuse. Reference importers must use the local cache first. Keep temporary build/browser artefacts outside the repository.
+- **Before starting any job expected to take more than 20 seconds, persist its plan in `checkpoint.md`.** Use a dated work-plan entry with the objective, scope, concrete steps and checks. This applies to follow-on jobs as well as the initial task.
+- Maintain the checkpoint as a dated log of work plans and completed-work records. Mark each plan step when it is done. Record current failures, outstanding decisions, relevant files, useful commands and the exact next action so another agent can continue without repeating completed work.
+- Record verification results and remaining limitations honestly. Keep completed historical entries; correct stale assumptions in the current entry rather than treating old status text as current truth.
+
 The aim is to create a set of permutable starter activities (5 - 15 minutes) for Digital Software Development T-Level students in year 1, studying the Core component of the spec.
 
 They are generally 16-18 year olds, mixed ability and varying experience and subject skill levels (none to moderate/high).

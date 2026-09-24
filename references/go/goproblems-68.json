@@ -1,0 +1,30 @@
+{
+  "id": 68,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]SZ[19]AW[mb][nb][ob][rb][sb][oc][pc][qc]AB[la][pa][lb][lc][mc][nc][rc][sc][od][pd][qd][re]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]C[black to slaughter white\n](;B[ra];W[qb];B[qa]C[white gets a seki: this is no good.\n])(;B[qb];W[pb](;B[qa];W[oa](;B[ra];W[sa](;B[qa];W[ma];B[qb]C[RIGHT\ntricky, eh?\n])(;B[ma];W[qa]))(;B[ma];W[ra]))(;B[ra];W[qa]C[only a ko: no good\n]))(;B[pb];W[qa])(;B[ma];W[qa];B[na];W[oa]))",
+  "source": "pamphlet",
+  "playerColor": "black",
+  "createdAt": "1999-09-01T22:26:25+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 48,
+  "attempts": {
+    "solved": 2979,
+    "failed": 6614,
+    "tries": 9593,
+    "speedSolved": 3,
+    "speedPlay": 16
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/68"
+}

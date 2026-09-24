@@ -84,3 +84,6 @@
 [data-theme=dark] :is(.question-number,.marks-badge){background:#344a3d;color:var(--text)}
 
 .set-update-notice{font-size:.8rem;color:var(--muted);border-left:3px solid var(--line);padding:.4rem .75rem;margin:0 0 1rem}
+
+.feedback.partial{background:#fff3ce;color:#674b05;border-left:3px solid #b78327}
+[data-theme=dark] .feedback.partial{background:#3a3422;color:#f3ddaa}

@@ -14,7 +14,8 @@
     "codes:check": "node scripts/question-codes.mjs --check"
   },
   "dependencies": {
-    "fflate": "0.8.3"
+    "fflate": "0.8.3",
+    "mathjs": "15.2.0"
   },
   "devDependencies": {
     "esbuild": "0.28.2"

@@ -1,0 +1,30 @@
+{
+  "id": 559,
+  "rank": {
+    "value": 25,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "This is a simple problem that I first posted incorrectly Since then I have corrected the problem with help from:\nSpirit and Andre Engels",
+  "sgf": "(;AB[ap][bp][dr][ds][dp][bn][fr]AW[cr][cs][aq][bq][ar]C[Black to kill.](;B[cq];W[bs])(;B[cp];W[bs])(;B[as];W[bs])(;B[br];W[bs])(;B[dq];W[bs])(;B[eq];W[bs])(;B[er];W[bs])(;B[es];W[bs])(;B[bs];W[dq](;B[eq]C[RIGHT])(;B[cp];W[er])(;B[cq];W[cp])(;B[ep];W[er])(;B[er];W[eq])))",
+  "source": "While playing yahoo online games.",
+  "playerColor": "black",
+  "createdAt": "2001-05-03T09:40:54+00:00",
+  "problemLevel": 5,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 21,
+  "attempts": {
+    "solved": 23733,
+    "failed": 13389,
+    "tries": 37122,
+    "speedSolved": 30,
+    "speedPlay": 32
+  },
+  "author": "xeno",
+  "url": "https://goproblems.com/problems/559"
+}

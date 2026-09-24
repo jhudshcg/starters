@@ -1,0 +1,30 @@
+{
+  "id": 171,
+  "rank": {
+    "value": 30,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]SZ[19]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]AW[po][so][qp][rp][lq][mq][nq][oq][pq][rq][kr][ks][ls]AB[qq][mr][nr][or][qr][rr][ns][ps][rs][ss]C[white to kill\n](;W[pr]C[RIGHT])(;W[sq];B[pr])(;W[lr];B[pr])(;W[ms];B[pr])(;W[sr];B[pr]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-08-29T14:41:08+00:00",
+  "problemLevel": 0,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 12,
+  "attempts": {
+    "solved": 81515,
+    "failed": 10852,
+    "tries": 92367,
+    "speedSolved": 210,
+    "speedPlay": 497
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/171"
+}

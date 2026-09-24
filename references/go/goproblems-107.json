@@ -1,0 +1,30 @@
+{
+  "id": 107,
+  "rank": {
+    "value": 19,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[fc][fd][fe][bf][cf][gf][hf][dg][dh][ci][ei]\r\nAB[ed][ce][ee][df][ef][cg][eg]\r\nC[black to capture the two white stones\r\n]\r\n(;B[bg];W[be]\r\n(;B[bd];W[cd]\r\n(;B[ae];W[de]\r\n(;B[af];W[ce];B[cc]C[RIGHT\r\n])\r\n\r\n(;B[dd];W[bc])\r\n\r\n(;B[cc];W[bc])\r\n)\r\n\r\n(;B[af];W[de];B[ae];W[ce];B[cc]C[RIGHT\r\n])\r\n\r\n(;B[de];W[bc])\r\n\r\n(;B[dd];W[cc]\r\n(;B[de];W[bc])\r\n\r\n(;B[ae];W[de];B[af];W[ce])\r\n)\r\n)\r\n\r\n(;B[cd];W[bh];B[bd];W[ag])\r\n)\r\n\r\n(;B[be];W[bg]C[black can do better\r\n])\r\n\r\n(;B[bd];W[bg]C[black can do better\r\n])\r\n\r\n(;B[bh];W[bg];B[ch];W[bi])\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-10-10T13:32:19+00:00",
+  "problemLevel": 11,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 30,
+  "attempts": {
+    "solved": 12913,
+    "failed": 12686,
+    "tries": 25599,
+    "speedSolved": 24,
+    "speedPlay": 48
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/107"
+}

@@ -1,0 +1,30 @@
+{
+  "id": 93,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[be][ce][ee][fe][df][ef][eg][ah][bh][ch][dh]\r\nAB[bb][bd][cd][dd][ed][fd][ae][de][ge][gf][gg][eh][fh][ai][bi][ci][di][ej]\r\nLB[ae:1]PL[2]\r\nC[Harrison has just played 1. how can adum save his stones?\r\n]\r\n(;W[af];B[bf]\r\n(;W[cf];B[ag];W[bg]\r\nC[RIGHT\r\nof course, adum missed this in the actual game\r\n])\r\n\r\n(;W[ad];B[cf]\r\n(;W[ae];B[ac];W[ag];B[cg])\r\n\r\n(;W[cg];B[ae])\r\n\r\n(;W[bg];B[ae])\r\n)\r\n\r\n(;W[ag];B[cf])\r\n)\r\n\r\n(;W[bf];B[cg]\r\n(;W[bg];B[af])\r\n\r\n(;W[af];B[bg])\r\n)\r\n\r\n(;W[cf];B[af])\r\n\r\n(;W[bg];B[bf]\r\n(;W[cf];B[af])\r\n\r\n(;W[af];B[cf])\r\n)\r\n\r\n(;W[cg];B[bf];W[cf];B[af])\r\n\r\n(;W[ag];B[bf];W[cf];B[af])\r\n\r\n)",
+  "source": "game I lost",
+  "playerColor": "white",
+  "createdAt": "1999-09-26T23:19:33+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 44,
+  "attempts": {
+    "solved": 5263,
+    "failed": 10191,
+    "tries": 15454,
+    "speedSolved": 1,
+    "speedPlay": 20
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/93"
+}

@@ -1,0 +1,30 @@
+{
+  "id": 38,
+  "rank": {
+    "value": 13,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[oa][nb][pb][lc][nc][pc][ld][md][qd][rd][le][qf][pg][qg]\r\nAB[ob][oc][qc][rc][nd][od][pd][me][mf][nf][of][pf]\r\nC[black to do something in the corner\r\n]\r\n(;B[pa];W[qa]\r\n(;B[qb];W[pa];B[ra];W[na];B[sb]C[RIGHT\r\n])\r\n\r\n(;B[ra];W[sc]\r\n(;B[rb];W[na])\r\n\r\n(;B[qb];W[rb])\r\n)\r\n)\r\n\r\n(;B[qb];W[pa]\r\n(;B[qa];W[na];B[sb];W[ra])\r\n\r\n(;B[ra];W[sb])\r\n\r\n(;B[sb];W[ra])\r\n)\r\n\r\n(;B[ra];W[pa]\r\n(;B[qb];W[sb])\r\n\r\n(;B[sb];W[qb])\r\n)\r\n\r\n(;B[sb];W[pa]\r\n(;B[qb];W[ra])\r\n\r\n(;B[ra];W[qb])\r\n)\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-08-14T12:30:58+00:00",
+  "problemLevel": 17,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 31,
+  "attempts": {
+    "solved": 11586,
+    "failed": 16155,
+    "tries": 27741,
+    "speedSolved": 8,
+    "speedPlay": 47
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/38"
+}

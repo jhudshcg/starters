@@ -1,0 +1,30 @@
+{
+  "id": 197,
+  "rank": {
+    "value": 21,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;AW[rc]AW[od]AW[rd]AW[ne]AW[oe]AW[pe]AW[re]AW[nf]AW[pf]AW[rf]AW[qg]AW[rg]AB[nc]AB[oc]AB[qc]AB[md]AB[qd]AB[me]AB[qe]AB[of]AB[qf]AB[og]AB[pg]AB[qh]AB[rh]AB[pi]AB[ri]C[white to connect her two weak groups]SZ[19]PL[2]GM[1]FF[3]RU[Japanese]HA[0]KM[5.5]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]SY[Cgoban 1.9.2]TM[30:00(5x1:00)]\n(;W[pc]\n(;B[qb]\n(;W[pb]C[\r\nblack dies first];B[ob]\n(;W[pa];B[pd]\n(;W[rb]C[RIGHT])\n(;W[qa]C[RIGHT]))\n(;W[pd];B[pa])\n(;W[qa];B[ra];W[pa]C[RIGHT])\n(;W[rb];B[pa])\n(;W[oa];B[pd]))\n(;W[rb];B[pb];W[ob];B[pd])\n(;W[pd];B[pb]))\n(;B[pb];W[qb]C[\r\nwhite gets black in a snapbackRIGHT]))\n(;W[qb];B[pc]C[bad: white remains cut into two weak parts])\n(;W[rb];B[qb])\n(;W[pd];B[pc])\n(;W[mf];B[qb])\n(;W[ng];B[qb])\n(;W[mg];B[qb]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-09-12T13:29:24+00:00",
+  "problemLevel": 9,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 27,
+  "attempts": {
+    "solved": 47784,
+    "failed": 19450,
+    "tries": 67234,
+    "speedSolved": 3,
+    "speedPlay": 7
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/197"
+}

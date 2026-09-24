@@ -1,0 +1,30 @@
+{
+  "id": 8,
+  "rank": {
+    "value": 29,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;AW[hh]AW[lh]AW[hi]AW[ji]AW[li]AW[lj]AB[kg]AB[lg]AB[mg]AB[mh]AB[mi]AB[mj]AB[kk]AB[lk]AB[mk]C[Black to play and catch the three stones.]SZ[19]GM[1]FF[4]CA[UTF-8]AP[CGoban:2]ST[2]RU[Japanese]KM[0.00]TM[]DT[1999-07-28]SY[Cgoban 1.9.2]\n(;B[ki]\n(;W[kh]\n(;B[jh];W[kj];B[jj];W[ki];B[ii]C[CHOICERIGHT])\n(;B[kj];W[jh]))\n(;W[kj]\n(;B[kh];W[jj])\n(;B[jj];W[kh];B[jh];W[ki];B[ii]C[CHOICERIGHT])))\n(;B[jh];W[jj])\n(;B[jj];W[jh])\n(;B[ii];W[jj]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-07-28T01:21:39+00:00",
+  "problemLevel": 1,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 15,
+  "attempts": {
+    "solved": 81855,
+    "failed": 17581,
+    "tries": 99436,
+    "speedSolved": 186,
+    "speedPlay": 189
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/8"
+}

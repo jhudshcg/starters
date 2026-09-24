@@ -1,0 +1,30 @@
+{
+  "id": 53,
+  "rank": {
+    "value": 7,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[pa][mb][nb][rb][mc][qc][md][qd][ne][oe][pe][qe]\r\nAB[ob][pb][qb][nc][pc][nd][od][pd]C[black to live\r\n]\r\n(;B[rc];W[rd]\r\n(;B[ra];W[sc];B[oa]C[RIGHT\r\n])\r\n\r\n(;B[qa];W[oa]\r\n(;B[na];W[oa])\r\n\r\n(;B[ra];W[sc];B[na];W[oa])\r\n)\r\n\r\n(;B[oa];W[qa];B[ra];W[sc];B[qa]C[RIGHT\r\n])\r\n)\r\n\r\n(;B[ra];W[qa]\r\n(;B[rc];W[sa]\r\n(;B[oa];W[rd]\r\n(;B[ra];W[qa])\r\n\r\n(;B[sc];W[sd];B[ra];W[qa])\r\n)\r\n\r\n(;B[rd];W[re];B[oa];W[sd];B[ra];W[qa];B[pa];W[sc];B[ra];W[sb])\r\n)\r\n\r\n(;B[oa];W[qa]\r\n(;B[rc];W[sa];B[rd];W[re];B[pa];W[sd];B[ra];W[sc];B[sb];W[rc])\r\n\r\n(;B[pa];W[rc])\r\n)\r\n)\r\n\r\n(;B[qa];W[oa]\r\n(;B[na];W[oa])\r\n\r\n(;B[ra];W[rc])\r\n\r\n(;B[rc];W[rd];B[na];W[oa])\r\n)\r\n\r\n(;B[oa];W[qa]\r\n(;B[ra];W[qa];B[rc];W[sa]\r\n(;B[pa];W[rd])\r\n\r\n(;B[rd];W[re])\r\n)\r\n\r\n(;B[rc];W[sa]\r\n(;B[ra];W[qa];B[pa];W[rd];B[ra];W[sc])\r\n\r\n(;B[rd];W[re];B[ra];W[qa];B[pa];W[sc];B[ra];W[sd])\r\n)\r\n)\r\n\r\n(;B[sb];W[rc]\r\n(;B[qa];W[oa];B[na];W[oa])\r\n\r\n(;B[oa];W[qa];B[ra];W[qa])\r\n)\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-08-17T13:47:38+00:00",
+  "problemLevel": 23,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 30,
+  "attempts": {
+    "solved": 3020,
+    "failed": 8722,
+    "tries": 11742,
+    "speedSolved": 2,
+    "speedPlay": 12
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/53"
+}

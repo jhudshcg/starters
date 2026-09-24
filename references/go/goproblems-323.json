@@ -1,0 +1,30 @@
+{
+  "id": 323,
+  "rank": {
+    "value": 26,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]SZ[19]AW[oa][ob][pb][qb][rc][rd][re][se]AB[na][nb][nc][oc][pc][qc][qd][qe][qf][rf][sf]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]C[black to kill\n](;B[rb];W[sb](;B[ra]C[RIGHT\nwhite cannot push on either side\n])(;B[sc];W[ra])(;B[qa];W[ra]))(;B[sb];W[rb](;B[ra];W[qa])(;B[sc];W[ra]))(;B[ra];W[rb](;B[sb];W[sc])(;B[qa];W[sb]))(;B[sa];W[ra];B[sb];W[rb])(;B[qa];W[ra](;B[sb];W[rb])(;B[rb];W[sb]))(;B[sc];W[sb](;B[ra];W[rb])(;B[qa];W[rb])))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-12-18T16:36:34+00:00",
+  "problemLevel": 4,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 16,
+  "attempts": {
+    "solved": 30979,
+    "failed": 16020,
+    "tries": 46999,
+    "speedSolved": 87,
+    "speedPlay": 131
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/323"
+}

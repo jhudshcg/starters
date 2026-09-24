@@ -1,0 +1,30 @@
+{
+  "id": 186,
+  "rank": {
+    "value": 28,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\nRU[Japanese]SZ[19]HA[0]KM[5.5]\nPW[White]\nPB[Black]\nGN[White (W) vs. Black (B)]\nDT[1999-07-28]\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]PL[2]C[white to kill\n]\nAW[ea][fa][gb][ib][cc][dc][ec][fc][gc][ic][ad][bd]\nAB[da][ab][bb][cb][db][eb][fb]\n(;W[ba]C[\n];B[ga];W[fa]C[RIGHT\nblack reduced to one eye\n])\n\n(;W[ga];B[ba])\n\n(;W[bc];B[ba])\n\n(;W[ac];B[ba])\n\n(;W[ca];B[ba])\n\n(;W[aa];B[ba])\n\n)",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-09-06T12:11:35+00:00",
+  "problemLevel": 2,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 13,
+  "attempts": {
+    "solved": 45297,
+    "failed": 14304,
+    "tries": 59601,
+    "speedSolved": 122,
+    "speedPlay": 124
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/186"
+}

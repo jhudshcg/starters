@@ -1,0 +1,30 @@
+{
+  "id": 233,
+  "rank": {
+    "value": 27,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\nRU[Japanese]SZ[19]HA[0]KM[5.5]\nPW[White]\nPB[Black]\nGN[White (W) vs. Black (B)]\nDT[1999-07-28]\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]AW[an][bo][bp][bq][ar][br][bs]\nAB[bl][cl][bn][cn][ao][co][cp][dq][dr][ds]C[black to kill\n]\n(;B[ap];W[aq]\n(;B[ao]C[RIGHT\nthis will not be an eye now\n])\n\n(;B[am];W[ao])\n)\n\n(;B[am];W[ap]C[white has two eyes\n])\n\n(;B[bm];W[ap])\n\n(;B[al];W[ap])\n\n(;B[cq];W[ap])\n\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-10-14T15:22:51+00:00",
+  "problemLevel": 3,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 14,
+  "attempts": {
+    "solved": 53875,
+    "failed": 18640,
+    "tries": 72515,
+    "speedSolved": 131,
+    "speedPlay": 173
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/233"
+}

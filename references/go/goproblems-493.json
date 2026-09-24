@@ -1,0 +1,30 @@
+{
+  "id": 493,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[4]CA[UTF-8]\r\nSZ[19]RU[Japanese]KM[0]TM[1800,0,30,5]PW[]PB[]AB[bb]AE[ab]AB[ac][bc][cc][cb]AW[db][da]AB[eb][dc]AW[ec][dd]AB[fb]AW[fc][gc][gb]AE[ed]AB[cd][bd]AW[ce][be][ae][ad]AE[ee]AW[de]PL[W]\r\n(;W[ab]CR[ab]\r\n;B[aa]CR[aa]\r\n(;W[ca]CR[ca]C[RIGHT\r\nblack can't approach on either side])\r\n(;W[fa]CR[fa]\r\n;B[ca]CR[ca])\r\n(;W[ea]CR[ea]\r\n;B[ca]CR[ca]))\r\n(;W[ba]CR[ba]\r\n;B[aa]CR[aa]\r\n(;W[ab]CR[ab]C[ko])\r\n(;W[ca]CR[ca]\r\n;B[ea]CR[ea]))\r\n(;W[ca]CR[ca]\r\n;B[ba]CR[ba])\r\n(;W[fa]CR[fa]\r\n;B[ca]CR[ca]\r\n;W[ea]CR[ea]\r\n;B[aa]CR[aa])\r\n(;W[ea]CR[ea]\r\n;B[ca]CR[ca]\r\n;W[fa]CR[fa]\r\n;B[aa]CR[aa])\r\n(;W[aa]CR[aa]\r\n;B[ca]CR[ca]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-04-03T15:07:31+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 19,
+  "attempts": {
+    "solved": 2321,
+    "failed": 5554,
+    "tries": 7875,
+    "speedSolved": 10,
+    "speedPlay": 29
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/493"
+}

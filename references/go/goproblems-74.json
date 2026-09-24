@@ -1,0 +1,30 @@
+{
+  "id": 74,
+  "rank": {
+    "value": 9,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[la][ma][na][kb][nb][pb][qb][lc][mc][oc][qc][od]\r\nAB[ja][ka][oa][jb][rb][kc][nc][rc][kd][ld][md][nd][qd][rd][oe][pe]\r\nC[black to kill\r\n]\r\n(;B[ob];W[pa]\r\n(;B[ob];W[lb];B[pc]C[RIGHT\r\n])\r\n\r\n(;B[pd];W[lb]\r\n(;B[ob];W[pc])\r\n\r\n(;B[pc];W[ob])\r\n)\r\n)\r\n\r\n(;B[pd];W[lb]\r\n(;B[ob];W[pa]\r\n(;B[ob];W[pc])\r\n\r\n(;B[pc];W[ob])\r\n)\r\n\r\n(;B[pc];W[ob])\r\n\r\n(;B[qa];W[ob])\r\n)\r\n\r\n(;B[qa];W[ob]\r\n(;B[pd];W[lb])\r\n\r\n(;B[lb];W[pd])\r\n)\r\n\r\n(;B[pc];W[ob]\r\n(;B[pd];W[lb])\r\n\r\n(;B[lb];W[pd])\r\n)\r\n\r\n)",
+  "source": "pamphlet",
+  "playerColor": "black",
+  "createdAt": "1999-09-08T15:58:19+00:00",
+  "problemLevel": 21,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 62,
+  "attempts": {
+    "solved": 3481,
+    "failed": 6599,
+    "tries": 10080,
+    "speedSolved": 7,
+    "speedPlay": 21
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/74"
+}

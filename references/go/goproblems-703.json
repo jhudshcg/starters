@@ -1,0 +1,30 @@
+{
+  "id": 703,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[4]CA[UTF-8]AP[CGoban:2]\r\nSZ[19]RU[Japanese]KM[0.00]TM[]\r\nAW[oa][kb][ob][lc][mc][nc][oc]AB[na][qa][ib][jb][nb][pb][rb][kc][pc][kd][ld][md][nd][od][pd]C[white to live]PL[W]\r\n(;W[ka]CR[ka]\r\n;B[mb]CR[mb]\r\n(;W[ma]CR[ma]\r\n;B[la]CR[la]\r\n;W[lb]CR[lb]C[RIGHT])\r\n(;W[lb]CR[lb]\r\n;B[ma]CR[ma])\r\n(;W[la]CR[la]C[dead]))\r\n(;W[lb]CR[lb]\r\n;B[ka]CR[ka])\r\n(;W[mb]CR[mb]\r\n;B[ka]CR[ka])\r\n(;W[la]CR[la]\r\n;B[mb]CR[mb])\r\n(;W[ma]CR[ma]\r\n;B[lb]CR[lb]\r\n(;W[ka]CR[ka]\r\n;B[ja]CR[ja])\r\n(;W[mb]CR[mb]\r\n;B[ka]CR[ka]))\r\n(;W[pa]CR[pa]\r\n;B[lb]CR[lb]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-06-10T23:17:20+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 72,
+  "attempts": {
+    "solved": 3258,
+    "failed": 6534,
+    "tries": 9792,
+    "speedSolved": 4,
+    "speedPlay": 28
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/703"
+}

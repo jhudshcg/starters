@@ -53,16 +53,16 @@ export function markChallenge(part,raw){
   if(!Array.isArray(a)||a.length!==n*n||a.some(x=>!Number.isInteger(x)||x<1||x>n))return fail(`Fill every cell with a digit from 1 to ${n}.`);
   if(part.givens.some((x,i)=>x&&a[i]!==x))return fail('The given values must stay unchanged.');
   for(let r=0;r<n;r++)if(new Set(a.slice(r*n,r*n+n)).size!==n||new Set(a.filter((_,i)=>i%n===r)).size!==n)return fail('Every row and column must contain each digit exactly once.');
-  if(part.kind==='sudoku')for(let r=0;r<9;r+=3)for(let c=0;c<9;c+=3)if(new Set(Array.from({length:9},(_,i)=>a[(r+Math.floor(i/3))*9+c+i%3])).size!==9)return fail('Recheck the 3×3 boxes.');
+  if(part.kind==='sudoku'){const br=part.boxRows??3,bc=part.boxCols??3;for(let r=0;r<n;r+=br)for(let c=0;c<n;c+=bc)if(new Set(Array.from({length:n},(_,i)=>a[(r+Math.floor(i/bc))*n+c+i%bc])).size!==n)return fail(`Recheck the ${br}×${bc} boxes.`);}
   if(part.cages&&!part.cages.every(c=>cageRule(c,a)))return fail('The grid does not yet meet every cage target.');
   return win();
  }
  if(part.kind==='cover-path'){
-  const path=state.path,n=part.size,blocked=new Set(part.blocked);
-  if(!Array.isArray(path)||path.some(c=>!Number.isInteger(c)||c<0||c>=n*n||blocked.has(c)))return fail('Use only unblocked dots.');
+  const path=state.path,n=part.size,total=n*(part.rows??n),blocked=new Set(part.blocked);
+  if(!Array.isArray(path)||path.some(c=>!Number.isInteger(c)||c<0||c>=total||blocked.has(c)))return fail('Use only unblocked dots.');
   if(new Set(path).size!==path.length)return fail('Visit each dot only once.');
   if(path.some((c,i)=>i>0&&!near(path[i-1],c,n)))return fail('Every move must join neighbouring dots horizontally or vertically.');
-  if(path.length!==n*n-blocked.size)return fail(`${path.length} of ${n*n-blocked.size} dots covered. Continue without isolating unvisited dots.`);
+  if(path.length!==total-blocked.size)return fail(`${path.length} of ${total-blocked.size} dots covered. Continue without isolating unvisited dots.`);
   return win();
  }
  if(part.kind==='tiling'){

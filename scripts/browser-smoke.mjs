@@ -186,7 +186,7 @@ try{
  await openFocus(0,'cover paths');const part=await puzzlePart(),route=JSON.parse(part.answer).reverse();
  await evaluate('document.querySelector("[data-path-board]").scrollIntoView({block:"center"})');
  const rect=await evaluate('(()=>{const r=document.querySelector("[data-path-board]").getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};})()');
- const point=cell=>({x:rect.x+(cell%part.size+.5)/part.size*rect.width,y:rect.y+(Math.floor(cell/part.size)+.5)/part.size*rect.height});
+ const point=cell=>({x:rect.x+(cell%part.size+.5)/part.size*rect.width,y:rect.y+(Math.floor(cell/part.size)+.5)/(part.rows??part.size)*rect.height});
  await send('Input.dispatchMouseEvent',{type:'mousePressed',button:'left',buttons:1,clickCount:1,...point(route[0])});
  for(const cell of route.slice(1))await send('Input.dispatchMouseEvent',{type:'mouseMoved',button:'left',buttons:1,...point(cell)});
  await send('Input.dispatchMouseEvent',{type:'mouseReleased',button:'left',buttons:0,clickCount:1,...point(route.at(-1))});

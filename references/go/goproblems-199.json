@@ -1,0 +1,30 @@
+{
+  "id": 199,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;AW[dl]AW[fl]AW[gl]AW[cm]AW[hm]AW[bn]AW[hn]AW[bo]AW[co]AW[ho]AW[bp]AW[gp]AW[hp]AW[cq]AW[eq]AW[fq]AW[cr]AB[dn]AB[en]AB[fn]AB[gn]AB[do]AB[go]AB[cp]AB[dp]AB[ep]AB[fp]AB[bq]AB[dq]C[black to live]\n(;B[fr]\n(;W[dr]C[CHOICE]\n(;B[er];W[gq];B[br]C[\r\nblack wins the capturing raceRIGHT])\n(;B[gq];W[er])\n(;B[br];W[er]))\n(;W[er];B[dr];W[br];B[gq]C[RIGHT])\n(;W[br];B[gq];W[gr];B[er];W[fq];B[hq];W[hr];B[iq]C[RIGHT]C[Black runs out into the wild, and will have no problem getting a second eye there.RIGHT]))\n(;B[dr];W[br]\n(;B[gq];W[gr]\n(;B[fr];W[hq];B[er]C[needs no response])\n(;B[er];W[fr];B[hq];W[iq];B[hr];W[ir])\n(;B[hq];W[iq]\n(;B[fr];W[hr]\n(;B[er]C[No answer needed.])\n(;B[gq]C[No answer needed.]))\n(;B[hr];W[ir])\n(;B[er];W[hr])))\n(;B[fr];W[gr];B[er];W[gq]\n(;B[ds];W[fs])\n(;B[fs];W[ds])))\n(;B[gq];W[dr]\n(;B[gr];W[er];B[br];W[bs])\n(;B[er];W[fr]\n(;B[gr];W[es])\n(;B[br];W[es])\n(;B[es];W[gr];B[br];W[fs];B[hq];W[hr]))\n(;B[fr];W[er])\n(;B[br];W[er];B[gr];W[bs]))\n(;B[er];W[fr]\n(;B[br];W[dr]\n(;B[gq];W[es])\n(;B[es];W[fs])\n(;B[ds];W[es])\n(;B[cs];W[es]))\n(;B[dr];W[br];B[gq];W[gr];B[hq];W[iq];B[hr];W[ir])\n(;B[gq];W[gr]))\n(;B[gr];W[gq]\n(;B[dr];W[br]\n(;B[fr];W[er];B[es];W[hr])\n(;B[er];W[fr];B[fs];W[hr]))\n(;B[er];W[dr]\n(;B[fr];W[br])\n(;B[br];W[fr])))\n(;B[br];W[dr]\n(;B[er];W[fr]\n(;B[gq];W[es])\n(;B[es];W[fs])\n(;B[ds];W[es])\n(;B[cs];W[es]))\n(;B[gq];W[er];B[gr];W[bs])))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-09-12T17:06:46+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 41,
+  "attempts": {
+    "solved": 2611,
+    "failed": 5854,
+    "tries": 8465,
+    "speedSolved": 2,
+    "speedPlay": 18
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/199"
+}

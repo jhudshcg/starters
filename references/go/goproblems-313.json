@@ -1,0 +1,30 @@
+{
+  "id": 313,
+  "rank": {
+    "value": 25,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "Initially having seen this in a book, I was reminded of it by problem 312 (Weak shoulders)\nSurprisingly enough, black often thinks he's unconditionally alive.",
+  "sgf": "(;AB[cc]AB[bd]AB[db]AB[bb]AB[ad]AB[da]AW[dc]AW[ec]AW[eb]AW[cd]AW[ce]AW[be]AW[ea]AW[ae]C[White to kill.]\n(;W[ab];B[bc]\n(;W[ba];B[cb]C[Indeed - this black shape is dead. If there are big kos on the board, black can use the approach moves (A17/C19) as ko threats.RIGHT])\n(;W[ca];B[cb];W[ba];B[aa];W[ba]C[Indeed - this black shape is dead.If there are big kos on the board, black can use the approach moves (A17/C19) as ko threats.RIGHT]))\n(;W[aa];B[ba]\n(;W[ac];B[bc])\n(;W[ab];B[ac]))\n(;W[ca];B[cb]\n(;W[ac];B[bc]\n(;W[ab];B[aa])\n(;W[aa];B[ba])\n(;W[ba];B[aa]))\n(;W[ab];B[bc];W[ba];B[aa];W[ba]C[Indeed - this black shape is dead.If there are big kos on the board, black can use the approach moves (A17/C19) as ko threats.RIGHT]))\n(;W[ba];B[cb]\n(;W[ab];B[bc]C[Indeed - this black shape is dead.If there are big kos on the board, black can use the approach moves (A17/C19) as ko threats.RIGHT])\n(;W[ac];B[bc];W[ab];B[aa];W[ab]C[Indeed - this black shape is dead.If there are big kos on the board, black can use the approach moves (A17/C19) as ko threats.RIGHT]))\n(;W[ac];B[bc]\n(;W[ba];B[cb];W[ab];B[aa];W[ab]C[Indeed - this black shape is dead.If there are big kos on the board, black can use the approach moves (A17/C19) as ko threats.RIGHT])\n(;W[ca];B[cb]\n(;W[ba];B[aa])\n(;W[ab];B[aa])\n(;W[aa];B[ba]))))",
+  "source": "Classic Problem",
+  "playerColor": "white",
+  "createdAt": "2000-12-14T04:08:50+00:00",
+  "problemLevel": 5,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 23,
+  "attempts": {
+    "solved": 24806,
+    "failed": 14907,
+    "tries": 39713,
+    "speedSolved": 42,
+    "speedPlay": 82
+  },
+  "author": "morten",
+  "url": "https://goproblems.com/problems/313"
+}

@@ -1,0 +1,30 @@
+{
+  "id": 180,
+  "rank": {
+    "value": 28,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\nRU[Japanese]SZ[19]HA[0]KM[5.5]\nPW[White]\nPB[Black]\nGN[White (W) vs. Black (B)]\nDT[1999-07-28]\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]AW[rq][sq][pr][qr][rr][rs]\nAB[ro][so][qp][mq][oq][pq][qq][nr]C[black to kill\n]\n(;B[ps];W[os]\n(;B[or]C[RIGHT\nwhite is reduced to one eye\n])\n\n(;B[ns];W[or])\n)\n\n(;B[os];W[ps])\n\n(;B[or];W[ps])\n\n(;B[ss];W[ps])\n\n(;B[sr];W[ps])\n\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-08-30T22:00:19+00:00",
+  "problemLevel": 2,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 15,
+  "attempts": {
+    "solved": 51495,
+    "failed": 15639,
+    "tries": 67134,
+    "speedSolved": 111,
+    "speedPlay": 128
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/180"
+}

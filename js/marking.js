@@ -1,6 +1,7 @@
 import {markingPart} from './packed-data.js';
 import {sameCode} from './code-answer.js';
 import {expressionValue,validCoinSystems,fractionValue} from './maths-answer.js';
+import {markAlgebra} from './algebra-answer.js';
 import {challengeKinds as interactiveKinds, markChallenge as markPuzzle} from './challenge-rules.js';
 const normalise = (value, sensitive=false) => {
   const text=String(value??'').trim().replace(/\s+/g,' ');
@@ -16,13 +17,14 @@ export function markQuestion(question, answers={}) {
       const result=value?markPuzzle(p,raw):{earned:0,message:'No answer entered.'};
       results.push({id:p.id,...result,max:p.marks,blank:!value});continue;
     }
-    let correct=false;
+    let correct=false, algebraMessage, algebraEarned=0;
     if(value) {
       if(p.kind==='number') correct=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value) && [p.answer,...p.accepted??[]].some(a=>Number(value)===Number(a));
       else if(p.kind==='fraction') {
         const supplied=fractionValue(raw);
         correct=supplied!==null&&[p.answer,...p.accepted??[]].some(a=>{const expected=fractionValue(a);return expected!==null&&Math.abs(supplied-expected)<1e-9;});
       }
+      else if(p.kind==='algebra') {const result=markAlgebra(raw,p);correct=result.correct;algebraMessage=result.message;algebraEarned=result.earned??0;}
       else if(p.kind==='coin-systems') correct=validCoinSystems(raw);
       else if(p.kind==='expression') {
         const supplied=expressionValue(raw,p.digit);correct=supplied!==null&&Math.abs(supplied-6)<1e-9;
@@ -59,7 +61,7 @@ export function markQuestion(question, answers={}) {
       }
     }
     const dependency=p.dependsOn===undefined || results[Number(p.dependsOn)]?.earned>0;
-    results.push({id:p.id,earned:correct&&dependency?p.marks:0,max:p.marks,blank:!value,message:correct&&!dependency?'Your reason needs to match a correct preceding choice.':correct?'Correct.':value?(p.feedback??(p.options?'That choice is not correct. Compare it with the model answer.':'This answer was not recognised. Check the requested format or compare it with the model answer.')):'No answer entered.'});
+    results.push({id:p.id,earned:dependency?(correct?p.marks:algebraEarned):0,max:p.marks,blank:!value,message:correct&&!dependency?'Your reason needs to match a correct preceding choice.':correct?'Correct.':value?(algebraMessage??p.feedback??(p.options?'That choice is not correct. Compare it with the model answer.':'This answer was not recognised. Check the requested format or compare it with the model answer.')):'No answer entered.'});
   }
   return results;
 }

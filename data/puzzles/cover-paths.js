@@ -1,4 +1,4 @@
-// Generated deterministic, solver-checked instances. See scripts/expand-puzzles.py.
+// Deterministic instances; see scripts/enrich-puzzles.py.
 export default [
   {
     "slot": 115,
@@ -2754,6 +2754,2106 @@ export default [
             "validation": {
               "method": "complete witness route",
               "requiredCells": 42
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 835,
+    "title": "Cover Paths · 51",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 3, 7, 6, 10, 11, 15, 19, 18, 14, 13, 17, 16, 12, 8, 9, 5, 1, 0, 4]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 5,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 836,
+    "title": "Cover Paths · 52",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[18, 19, 14, 13, 12, 17, 16, 11, 10, 5, 0, 1, 6, 7, 2, 3, 4, 9, 8]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 4,
+            "blocked": [
+              15
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 837,
+    "title": "Cover Paths · 53",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[14, 15, 19, 23, 22, 18, 17, 21, 20, 16, 12, 13, 9, 8, 4, 0, 1, 5]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 6,
+            "blocked": [
+              2,
+              3,
+              6,
+              7,
+              10,
+              11
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 838,
+    "title": "Cover Paths · 54",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[11, 15, 19, 18, 14, 13, 17, 16, 12, 8, 9, 5, 4, 0, 1, 2, 6, 7, 3]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 5,
+            "blocked": [
+              10
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "central gap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 839,
+    "title": "Cover Paths · 55",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[18, 19, 14, 9, 4, 3, 8, 13, 12, 11, 16, 15, 10, 5, 0, 1, 6]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 4,
+            "blocked": [
+              2,
+              7,
+              17
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 840,
+    "title": "Cover Paths · 56",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[13, 12, 8, 9, 10, 14, 18, 17, 16, 20, 21, 22, 23, 19, 15, 11, 7, 3, 2, 6, 5, 4, 0, 1]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 6,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 841,
+    "title": "Cover Paths · 57",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[15, 19, 18, 17, 13, 14, 10, 11, 7, 3, 2, 6, 5, 1, 0, 4, 8, 9]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 5,
+            "blocked": [
+              12,
+              16
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 842,
+    "title": "Cover Paths · 58",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[16, 15, 10, 5, 0, 1, 6, 11, 12, 17, 18, 19, 14, 13]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 4,
+            "blocked": [
+              2,
+              3,
+              4,
+              7,
+              8,
+              9
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 843,
+    "title": "Cover Paths · 59",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[13, 12, 8, 9, 10, 6, 5, 4, 0, 1, 2, 3, 7, 11, 15, 19, 23, 22, 18, 17, 16, 20, 21]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 6,
+            "blocked": [
+              14
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "central gap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 844,
+    "title": "Cover Paths · 60",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[18, 17, 16, 15, 10, 11, 12, 13, 8, 9, 4, 3, 2, 7, 6, 1, 0, 5]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 4,
+            "blocked": [
+              14,
+              19
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 845,
+    "title": "Cover Paths · 61",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 5, 0, 1, 2, 3, 4, 9, 8, 7, 12, 13, 14, 19, 18, 17, 16, 15, 10, 11]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 4,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 846,
+    "title": "Cover Paths · 62",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 3, 2, 6, 10, 11, 15, 19, 23, 22, 21, 17, 18, 14, 13, 9, 8, 4, 5, 1, 0]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 6,
+            "blocked": [
+              12,
+              16,
+              20
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 847,
+    "title": "Cover Paths · 63",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[19, 18, 17, 16, 12, 8, 4, 0, 1, 5, 9, 13, 14, 15, 11, 10]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 5,
+            "blocked": [
+              2,
+              3,
+              6,
+              7
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 848,
+    "title": "Cover Paths · 64",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 2, 3, 4, 9, 8, 13, 14, 19, 18, 17, 16, 15, 10, 11, 6, 1, 0, 5]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 4,
+            "blocked": [
+              12
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "central gap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 849,
+    "title": "Cover Paths · 65",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 8, 12, 16, 17, 18, 19, 15, 14, 13, 9, 5, 6, 2, 3, 7, 11, 10]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 5,
+            "blocked": [
+              0,
+              1
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 850,
+    "title": "Cover Paths · 66",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[32, 31, 30, 25, 26, 27, 22, 21, 20, 15, 10, 5, 0, 1, 6, 11, 16, 17, 12, 7, 2, 3, 4, 9, 8, 13, 14, 19, 18, 23, 24, 29, 28, 33, 34]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 7,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 851,
+    "title": "Cover Paths · 67",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[34, 33, 32, 31, 30, 29, 22, 23, 24, 25, 26, 27, 20, 13, 6, 5, 4, 3, 2, 1, 0, 7, 14, 15, 8, 9, 16, 17, 10, 11, 12, 19, 18]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              21,
+              28
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 852,
+    "title": "Cover Paths · 68",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 1, 0, 6, 12, 13, 19, 18, 24, 30, 31, 25, 26, 32, 33, 34, 35, 29, 23, 22, 28, 27, 21, 20, 14, 8, 2]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [
+              3,
+              4,
+              5,
+              9,
+              10,
+              11,
+              15,
+              16,
+              17
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 853,
+    "title": "Cover Paths · 69",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 5, 6, 13, 20, 19, 26, 27, 34, 33, 32, 25, 18, 17, 16, 9, 2, 1, 0, 7, 8, 15, 14, 21, 28, 29, 22, 23, 30]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              3,
+              10,
+              11,
+              12,
+              24,
+              31
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 854,
+    "title": "Cover Paths · 70",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 0, 7, 14, 21, 28, 29, 30, 23, 22, 15, 8, 9, 16, 17, 18, 11, 4, 5, 6, 13, 12, 19, 20, 27, 34, 33, 32, 25, 26]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              3,
+              10,
+              24,
+              31
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 855,
+    "title": "Cover Paths · 71",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[8, 2, 3, 4, 5, 11, 17, 23, 29, 35, 34, 33, 32, 31, 30, 24, 18, 12, 6, 0, 1, 7, 13, 14, 20, 19, 25, 26, 27, 28, 22, 21, 15, 9, 10, 16]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 856,
+    "title": "Cover Paths · 72",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 0, 7, 8, 15, 14, 21, 28, 29, 22, 23, 30, 31, 24, 17, 18, 19, 20, 27, 34, 33, 26, 25, 32]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              3,
+              4,
+              5,
+              6,
+              9,
+              10,
+              11,
+              12,
+              13,
+              16
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 857,
+    "title": "Cover Paths · 73",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[20, 19, 18, 17, 24, 25, 26, 27, 34, 33, 32, 31, 30, 23, 16, 9, 2, 1, 0, 7, 8, 15, 14, 21, 28, 29, 22]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              3,
+              4,
+              5,
+              6,
+              10,
+              11,
+              12,
+              13
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 858,
+    "title": "Cover Paths · 74",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[27, 33, 32, 26, 20, 14, 15, 16, 22, 28, 34, 35, 29, 23, 17, 11, 5, 4, 10, 9, 3, 2, 8, 7, 1, 0, 6, 12, 13, 19, 18, 24, 30, 31, 25]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [
+              21
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "central gap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 859,
+    "title": "Cover Paths · 75",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 0, 5, 6, 11, 10, 15, 20, 25, 30, 31, 26, 21, 16, 17, 18, 23, 28, 33, 34, 29, 24, 19, 14, 13, 8, 9, 4, 3]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 7,
+            "blocked": [
+              2,
+              7,
+              12,
+              22,
+              27,
+              32
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 860,
+    "title": "Cover Paths · 76",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 5, 4, 3, 2, 1, 0, 7, 8, 9, 10, 11, 12, 13, 20, 27, 34, 33, 32, 31, 30, 29, 28, 21, 14, 15, 22, 23, 16, 17, 24, 25, 26, 19, 18]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 861,
+    "title": "Cover Paths · 77",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 5, 11, 10, 9, 3, 2, 1, 0, 6, 12, 13, 7, 8, 14, 15, 16, 17, 23, 22, 21, 20, 19, 25, 31, 32, 26, 27, 33, 34, 28, 29, 35]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [
+              18,
+              24,
+              30
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 862,
+    "title": "Cover Paths · 78",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[22, 17, 18, 19, 24, 23, 28, 29, 34, 33, 32, 27, 26, 31, 30, 25, 20, 21, 16, 15, 10, 11, 6, 5, 0, 1]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "rows": 7,
+            "blocked": [
+              2,
+              3,
+              4,
+              7,
+              8,
+              9,
+              12,
+              13,
+              14
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 863,
+    "title": "Cover Paths · 79",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[31, 32, 26, 25, 19, 18, 12, 13, 7, 6, 0, 1, 2, 8, 14, 20, 21, 22, 16, 10, 4, 5, 11, 17, 23, 29, 28, 34, 35]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [
+              3,
+              9,
+              15,
+              24,
+              27,
+              30,
+              33
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 864,
+    "title": "Cover Paths · 80",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[26, 32, 31, 30, 24, 25, 19, 18, 12, 13, 7, 6, 0, 1, 2, 8, 14, 20, 21, 22, 28, 34, 35, 29, 23, 17, 16, 10, 11, 5, 4]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [
+              3,
+              9,
+              15,
+              27,
+              33
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 865,
+    "title": "Cover Paths · 81",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[32, 31, 30, 29, 22, 23, 24, 25, 26, 27, 20, 13, 6, 5, 12, 19, 18, 17, 16, 15, 14, 7, 0, 1, 8, 9, 2, 3, 10, 11, 4]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              21,
+              28,
+              33,
+              34
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 866,
+    "title": "Cover Paths · 82",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[31, 30, 24, 18, 12, 6, 0, 1, 2, 8, 7, 13, 14, 20, 19, 25, 26, 27, 21, 22, 23, 29, 28, 34, 35]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [
+              3,
+              4,
+              5,
+              9,
+              10,
+              11,
+              15,
+              16,
+              17,
+              32,
+              33
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 867,
+    "title": "Cover Paths · 83",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 6, 13, 20, 27, 34, 33, 32, 25, 26, 19, 18, 17, 16, 9, 2, 1, 0, 7, 8, 15, 14, 21, 28, 29, 22, 23, 30]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              3,
+              4,
+              10,
+              11,
+              12,
+              24,
+              31
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 868,
+    "title": "Cover Paths · 84",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[30, 29, 28, 21, 14, 15, 8, 7, 0, 1, 2, 9, 16, 17, 18, 25, 32, 33, 34, 27, 26, 19, 20, 13, 6, 5, 12, 11, 4]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 5,
+            "blocked": [
+              3,
+              10,
+              22,
+              23,
+              24,
+              31
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 869,
+    "title": "Cover Paths · 85",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[0, 6, 12, 13, 14, 8, 2, 3, 9, 15, 21, 20, 19, 18, 24, 30, 31, 25, 26, 32, 33, 27, 28, 34, 35, 29, 23, 22, 16, 17, 11, 5, 4, 10]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 6,
+            "blocked": [
+              1,
+              7
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 870,
+    "title": "Cover Paths · 86",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[12, 5, 6, 13, 20, 19, 18, 11, 4, 3, 10, 17, 16, 9, 2, 1, 0, 7, 8, 15, 14, 21, 28, 35, 42, 43, 36, 29, 22, 23, 24, 25, 26, 27, 34, 41, 48, 47, 40, 33, 32, 39, 46, 45, 44, 37, 30, 31, 38]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 7,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 871,
+    "title": "Cover Paths · 87",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[9, 3, 2, 1, 0, 6, 12, 13, 7, 8, 14, 15, 21, 20, 19, 25, 31, 32, 26, 27, 33, 39, 38, 44, 45, 46, 47, 41, 40, 34, 35, 29, 28, 22, 23, 17, 16, 10, 4, 5, 11]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 8,
+            "blocked": [
+              18,
+              24,
+              30,
+              36,
+              37,
+              42,
+              43
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 872,
+    "title": "Cover Paths · 88",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[18, 19, 11, 3, 2, 10, 9, 1, 0, 8, 16, 17, 25, 24, 32, 40, 41, 33, 34, 26, 27, 28, 29, 30, 31, 39, 47, 46, 38, 37, 45, 44, 36, 35, 43, 42]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 8,
+            "rows": 6,
+            "blocked": [
+              4,
+              5,
+              6,
+              7,
+              12,
+              13,
+              14,
+              15,
+              20,
+              21,
+              22,
+              23
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 873,
+    "title": "Cover Paths · 89",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[23, 30, 31, 38, 37, 44, 45, 46, 39, 32, 25, 18, 17, 16, 15, 22, 29, 36, 43, 42, 35, 28, 21, 14, 7, 0, 1, 8, 9, 2, 3, 10, 11, 4, 5, 6, 13, 12, 19, 20, 27, 26, 33, 34, 41, 40, 47, 48]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 7,
+            "blocked": [
+              24
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "central gap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 874,
+    "title": "Cover Paths · 90",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[44, 38, 32, 31, 37, 43, 42, 36, 30, 24, 25, 19, 18, 12, 6, 0, 1, 2, 8, 7, 13, 14, 20, 26, 27, 28, 34, 40, 46, 47, 41, 35, 29, 23, 22, 16, 17, 11, 10, 4, 5]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 8,
+            "blocked": [
+              3,
+              9,
+              15,
+              21,
+              33,
+              39,
+              45
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 875,
+    "title": "Cover Paths · 91",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 15, 23, 31, 39, 47, 46, 38, 30, 22, 14, 6, 5, 4, 3, 2, 1, 0, 8, 16, 24, 32, 40, 41, 42, 43, 44, 45, 37, 36, 35, 34, 33, 25, 26, 27, 28, 29, 21, 13, 12, 20, 19, 11, 10, 9, 17, 18]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 8,
+            "rows": 6,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 876,
+    "title": "Cover Paths · 92",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[18, 12, 6, 0, 1, 2, 8, 7, 13, 14, 20, 19, 25, 26, 27, 28, 29, 35, 34, 33, 32, 31, 37, 36, 42, 43, 44, 38, 39, 45, 46, 40, 41, 47]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 8,
+            "blocked": [
+              3,
+              4,
+              5,
+              9,
+              10,
+              11,
+              15,
+              16,
+              17,
+              21,
+              22,
+              23,
+              24,
+              30
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 877,
+    "title": "Cover Paths · 93",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[0, 1, 2, 8, 14, 20, 26, 27, 28, 29, 35, 41, 47, 46, 45, 44, 43, 42, 36, 30, 24, 18, 12, 6, 7, 13, 19, 25, 31, 37, 38, 32, 33, 34, 40, 39]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 8,
+            "blocked": [
+              3,
+              4,
+              5,
+              9,
+              10,
+              11,
+              15,
+              16,
+              17,
+              21,
+              22,
+              23
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 878,
+    "title": "Cover Paths · 94",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 7, 15, 23, 31, 39, 47, 46, 45, 44, 43, 42, 41, 40, 32, 24, 16, 8, 0, 1, 9, 17, 25, 33, 34, 26, 18, 10, 2, 3, 11, 19, 27, 35, 36, 37, 38, 30, 29, 21, 22, 14, 13, 5, 4, 12, 20]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 8,
+            "rows": 6,
+            "blocked": [
+              28
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "central gap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 879,
+    "title": "Cover Paths · 95",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[0, 6, 12, 18, 24, 30, 36, 42, 43, 44, 45, 46, 47, 41, 35, 29, 23, 17, 11, 5, 4, 3, 9, 10, 16, 15, 14, 8, 7, 13, 19, 20, 21, 22, 28, 27, 26, 25, 31, 37, 38, 32, 33, 39, 40, 34]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 8,
+            "blocked": [
+              1,
+              2
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 880,
+    "title": "Cover Paths · 96",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[9, 3, 4, 5, 11, 10, 16, 17, 23, 29, 35, 41, 47, 46, 45, 44, 43, 42, 36, 30, 24, 18, 12, 6, 0, 1, 2, 8, 7, 13, 19, 25, 31, 37, 38, 32, 26, 20, 14, 15, 21, 22, 28, 27, 33, 34, 40, 39]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 8,
+            "blocked": [],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "rectangle"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 881,
+    "title": "Cover Paths · 97",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[43, 42, 41, 33, 34, 35, 27, 26, 25, 17, 16, 8, 0, 1, 9, 10, 2, 3, 4, 5, 6, 7, 15, 14, 13, 21, 22, 23, 31, 39, 47, 46, 38, 30, 29, 37, 45, 44, 36, 28, 20, 12, 11, 19, 18]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 8,
+            "rows": 6,
+            "blocked": [
+              24,
+              32,
+              40
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "stepped"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 882,
+    "title": "Cover Paths · 98",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[30, 29, 28, 35, 42, 43, 36, 37, 44, 45, 38, 31, 32, 39, 46, 47, 48, 41, 40, 33, 34, 27, 26, 25, 24, 23, 22, 21, 14, 15, 16, 9, 2, 1, 0, 7, 8]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 7,
+            "rows": 7,
+            "blocked": [
+              3,
+              4,
+              5,
+              6,
+              10,
+              11,
+              12,
+              13,
+              17,
+              18,
+              19,
+              20
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "L shape"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 883,
+    "title": "Cover Paths · 99",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 5, 11, 10, 9, 3, 2, 8, 14, 15, 16, 17, 23, 22, 21, 20, 26, 25, 19, 13, 7, 1, 0, 6, 12, 18, 24, 30, 36, 42, 43, 44, 45, 46, 47, 41, 35, 29, 28, 34, 40, 39, 33, 32, 38, 37, 31]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "rows": 8,
+            "blocked": [
+              27
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "central gap"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 884,
+    "title": "Cover Paths · 100",
+    "focus": "cover paths",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
+        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cover-path",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[37, 45, 46, 47, 39, 38, 30, 31, 23, 15, 7, 6, 5, 13, 14, 22, 21, 29, 28, 27, 19, 11, 3, 2, 1, 0, 8, 9, 10, 18, 17, 16, 24, 32, 40, 41, 33, 25, 26, 34, 35, 43, 42]",
+            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "solutionText": "See the completed board below.",
+            "size": 8,
+            "rows": 6,
+            "blocked": [
+              4,
+              12,
+              20,
+              36,
+              44
+            ],
+            "validation": {
+              "method": "Hamiltonian witness with adjacency and coverage checks",
+              "shape": "two regions"
             }
           }
         ]

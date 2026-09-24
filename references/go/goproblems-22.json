@@ -1,0 +1,30 @@
+{
+  "id": 22,
+  "rank": {
+    "value": 20,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[13]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-21]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]AW[ga][ab][bb][cb][db][eb][fb]\r\nAB[fa][gb][hb][ac][bc][cc][dc][ec][fc]\r\n(;B[ba];W[ca];B[ea]C[RIGHT\r\n])\r\n\r\n(;B[ea];W[ba]\r\n(;B[da];W[ca]\r\n(;B[fa];W[ea])\r\n\r\n(;B[ea];W[fa])\r\n)\r\n\r\n(;B[ca];W[da])\r\n)\r\n\r\n(;B[da];W[ea]\r\n(;B[ba];W[ca])\r\n\r\n(;B[ca];W[ba])\r\n)\r\n\r\n(;B[ca];W[ba]\r\n(;B[da];W[ea])\r\n\r\n(;B[ea];W[da])\r\n)\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-08-03T23:07:19+00:00",
+  "problemLevel": 10,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 21,
+  "attempts": {
+    "solved": 18129,
+    "failed": 21686,
+    "tries": 39815,
+    "speedSolved": 42,
+    "speedPlay": 84
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/22"
+}

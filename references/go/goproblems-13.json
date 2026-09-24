@@ -1,0 +1,30 @@
+{
+  "id": 13,
+  "rank": {
+    "value": 11,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;RU[Japanese]SZ[13]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nAW[bb][cb][cc][cd][de][df][cg][ch][dh][ai][bi][ci]\r\nAB[ba][ab][ac][bc][bd][be][cf][bg][bh]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-21]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]C[Black to play and live.]\r\n(;B[af];W[ah]\r\n(;B[ce];W[ag]C[only one eye this way\r\n])\r\n(;B[ag];W[ce])\r\n)\r\n(;B[ah];W[af]\r\n(;B[ae];W[bf];B[ag];W[bf]\r\n(;B[af];W[ce]C[oops! you can't take this stone\r\n])\r\n(;B[ce];W[af];B[bg]C[RIGHT\r\nblack plays under the stones and lives\r\n])\r\n)\r\n(;B[bf];W[ae])\r\n)\r\n(;B[ae];W[ag])\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-07-29T23:29:01+00:00",
+  "problemLevel": 19,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 46,
+  "attempts": {
+    "solved": 6553,
+    "failed": 28569,
+    "tries": 35122,
+    "speedSolved": 8,
+    "speedPlay": 25
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/13"
+}

@@ -101,15 +101,15 @@ def equations(rng,n):
  symbols={'sum':'+','product':'×','difference':'−','less':'<'}
  clues=[f'{chr(65+i)} {symbols[op]} {chr(65+j)}'+('' if op=='less' else f' = {t}') for op,i,j,t in rules]
  return {'prompt':f'Assign the integers 1 to {n} to the variables, using each once. All equations and inequalities must hold. × means multiplication.','names':[chr(65+i) for i in range(n)],'categories':[{'name':'Value','values':[str(i) for i in range(1,n+1)]}],'clues':clues,'rules':rules,'solution':[[v-1 for v in solution]],'explanation':'Use products and differences to narrow candidates, then combine the remaining constraints and the all-different rule.','validation':{'solutionCount':1,'method':'permutation enumeration'}}
-def sudoku_solve(board,limit=2):
+def sudoku_solve(board,limit=2,n=9,box_rows=3,box_cols=3):
  a=board[:];solutions=[]
  def solve():
   if len(solutions)>=limit:return
   best=None;possible=None
   for i,x in enumerate(a):
    if x:continue
-   r,c=divmod(i,9);used=set(a[r*9:r*9+9])|{a[j*9+c] for j in range(9)}|{a[y*9+x] for y in range(r//3*3,r//3*3+3) for x in range(c//3*3,c//3*3+3)}
-   vals=set(range(1,10))-used
+   r,c=divmod(i,n);used=set(a[r*n:r*n+n])|{a[j*n+c] for j in range(n)}|{a[y*n+x] for y in range(r//box_rows*box_rows,r//box_rows*box_rows+box_rows) for x in range(c//box_cols*box_cols,c//box_cols*box_cols+box_cols)}
+   vals=set(range(1,n+1))-used
    if not vals:return
    if possible is None or len(vals)<len(possible):best,possible=i,vals
   if best is None:solutions.append(a[:]);return
@@ -118,17 +118,17 @@ def sudoku_solve(board,limit=2):
    if len(solutions)>=limit:return
  solve();return solutions
 
-def human_singles(board):
+def human_singles(board,n=9,box_rows=3,box_cols=3):
  a=board[:];tech=set();steps=0;trace=[]
- groups=[[r*9+c for c in range(9)] for r in range(9)]+[[r*9+c for r in range(9)] for c in range(9)]+[[r*9+c for r in range(br,br+3) for c in range(bc,bc+3)] for br in [0,3,6] for bc in [0,3,6]]
+ groups=[[r*n+c for c in range(n)] for r in range(n)]+[[r*n+c for r in range(n)] for c in range(n)]+[[r*n+c for r in range(br,br+box_rows) for c in range(bc,bc+box_cols)] for br in range(0,n,box_rows) for bc in range(0,n,box_cols)]
  while 0 in a:
-  cand={i:set(range(1,10))-set(v for g in groups if i in g for j in g for v in [a[j]]) for i,v in enumerate(a) if not v}
+  cand={i:set(range(1,n+1))-set(v for g in groups if i in g for j in g for v in [a[j]]) for i,v in enumerate(a) if not v}
   singles=[(i,next(iter(v))) for i,v in cand.items() if len(v)==1]
   if singles:i,v=singles[0];tech.add('naked single');technique='naked single'
   else:
    hidden=[]
    for g in groups:
-    for v in range(1,10):
+    for v in range(1,n+1):
      cells=[i for i in g if i in cand and v in cand[i]]
      if len(cells)==1:hidden.append((cells[0],v))
    if not hidden:return False,sorted(tech),steps,trace

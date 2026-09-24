@@ -1,0 +1,30 @@
+{
+  "id": 379,
+  "rank": {
+    "value": 27,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;AB[bb]AB[ba]AB[bd]AB[cc]AB[cd]AB[be]AW[ca]AW[cb]AW[bc]AW[dc]AW[dd]AW[ce]AW[ee]AW[cf]AW[bf]AW[bh]AW[db]C[White to kill]\n(;W[ae];B[ac]C[Black has 2 eyes])\n(;W[ab];B[ac];W[ae];B[aa]LB[ad:a]C[]\n(;W[af];B[ad]C[Black has 2 eyes])\n(;W[ad];B[af]))\n(;W[ac]LB[ab:a]LB[ad:b]C[Black cannot approach on either a' or 'b', since he would put himself in atari.RIGHT]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-02-01T07:58:15+00:00",
+  "problemLevel": 3,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 12,
+  "attempts": {
+    "solved": 48268,
+    "failed": 16945,
+    "tries": 65213,
+    "speedSolved": 112,
+    "speedPlay": 196
+  },
+  "author": "morten",
+  "url": "https://goproblems.com/problems/379"
+}

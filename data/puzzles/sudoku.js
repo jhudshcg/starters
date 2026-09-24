@@ -1,4 +1,4 @@
-// Generated deterministic, solver-checked instances. See scripts/expand-puzzles.py.
+// Deterministic instances; see scripts/enrich-puzzles.py.
 export default [
   {
     "slot": 110,
@@ -24823,6 +24823,13886 @@ export default [
                 }
               ],
               "singlesComplete": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 785,
+    "title": "Sudoku · 51",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–4. Each row, column and 2×2 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 4, 1, 4, 1, 3, 2, 2, 4, 1, 3, 1, 3, 2, 4]",
+            "explanation": "Every row, column and 2×2 box contains 1–4 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              2,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              2,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 11,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 786,
+    "title": "Sudoku · 52",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–4. Each row, column and 2×2 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 3, 4, 3, 4, 2, 1, 1, 3, 4, 2, 4, 2, 1, 3]",
+            "explanation": "Every row, column and 2×2 box contains 1–4 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              3
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 12,
+              "deductionTrace": [
+                {
+                  "cell": 7,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 787,
+    "title": "Sudoku · 53",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–4. Each row, column and 2×2 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 3, 2, 4, 2, 4, 1, 3, 3, 2, 4, 1, 4, 1, 3, 2]",
+            "explanation": "Every row, column and 2×2 box contains 1–4 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              1,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 12,
+              "deductionTrace": [
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 788,
+    "title": "Sudoku · 54",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–4. Each row, column and 2×2 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 1, 2, 3, 2, 3, 4, 1, 1, 2, 3, 4, 3, 4, 1, 2]",
+            "explanation": "Every row, column and 2×2 box contains 1–4 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              0,
+              2,
+              0,
+              0,
+              3,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 11,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 789,
+    "title": "Sudoku · 55",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–4. Each row, column and 2×2 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 4, 3, 4, 3, 2, 1, 1, 4, 3, 2, 3, 2, 1, 4]",
+            "explanation": "Every row, column and 2×2 box contains 1–4 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 11,
+              "deductionTrace": [
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 790,
+    "title": "Sudoku · 56",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–4. Each row, column and 2×2 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 3, 2, 4, 2, 4, 1, 3, 3, 2, 4, 1, 4, 1, 3, 2]",
+            "explanation": "Every row, column and 2×2 box contains 1–4 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              0,
+              2,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              1,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 12,
+              "deductionTrace": [
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 791,
+    "title": "Sudoku · 57",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–4. Each row, column and 2×2 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 3, 4, 1, 4, 1, 2, 3, 3, 4, 1, 2, 1, 2, 3, 4]",
+            "explanation": "Every row, column and 2×2 box contains 1–4 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              3,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 12,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 792,
+    "title": "Sudoku · 58",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 1, 3, 4, 6, 2, 4, 6, 2, 5, 1, 3, 1, 3, 4, 6, 2, 5, 6, 2, 5, 1, 3, 4, 3, 4, 6, 2, 5, 1, 2, 5, 1, 3, 4, 6]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              5,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              4,
+              6,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              5,
+              1,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 26,
+              "deductionTrace": [
+                {
+                  "cell": 8,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 6,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 793,
+    "title": "Sudoku · 59",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 4, 5, 6, 1, 5, 6, 1, 3, 2, 4, 2, 4, 5, 6, 1, 3, 6, 1, 3, 2, 4, 5, 4, 5, 6, 1, 3, 2, 1, 3, 2, 4, 5, 6]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              3,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              5,
+              0,
+              1,
+              3,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              6
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 26,
+              "deductionTrace": [
+                {
+                  "cell": 4,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 794,
+    "title": "Sudoku · 60",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 1, 2, 5, 6, 3, 5, 6, 3, 4, 1, 2, 1, 2, 5, 6, 3, 4, 6, 3, 4, 1, 2, 5, 2, 5, 6, 3, 4, 1, 3, 4, 1, 2, 5, 6]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              2,
+              0,
+              2,
+              0,
+              6,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              5,
+              0,
+              5,
+              6,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 26,
+              "deductionTrace": [
+                {
+                  "cell": 7,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 6,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 795,
+    "title": "Sudoku · 61",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 2, 4, 5, 3, 1, 5, 3, 1, 6, 2, 4, 2, 4, 5, 3, 1, 6, 3, 1, 6, 2, 4, 5, 4, 5, 3, 1, 6, 2, 1, 6, 2, 4, 5, 3]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              2,
+              0,
+              0,
+              4,
+              0,
+              3,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              3
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 26,
+              "deductionTrace": [
+                {
+                  "cell": 9,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 5,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 796,
+    "title": "Sudoku · 62",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 5, 2, 6, 4, 1, 6, 4, 1, 3, 5, 2, 5, 2, 6, 4, 1, 3, 4, 1, 3, 5, 2, 6, 2, 6, 4, 1, 3, 5, 1, 3, 5, 2, 6, 4]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              0,
+              0,
+              2,
+              6,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              1,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              5,
+              2,
+              6,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 26,
+              "deductionTrace": [
+                {
+                  "cell": 14,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 797,
+    "title": "Sudoku · 63",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 4, 5, 6, 2, 1, 6, 2, 1, 3, 4, 5, 4, 5, 6, 2, 1, 3, 2, 1, 3, 4, 5, 6, 5, 6, 2, 1, 3, 4, 1, 3, 4, 5, 6, 2]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              0,
+              4,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              3,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              1,
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              3,
+              0,
+              5,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 25,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 798,
+    "title": "Sudoku · 64",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 4, 1, 5, 2, 3, 5, 2, 3, 6, 4, 1, 4, 1, 5, 2, 3, 6, 2, 3, 6, 4, 1, 5, 1, 5, 2, 3, 6, 4, 3, 6, 4, 1, 5, 2]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              6,
+              4,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              2,
+              3,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 26,
+              "deductionTrace": [
+                {
+                  "cell": 20,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 799,
+    "title": "Sudoku · 65",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–6. Each row, column and 2×3 box must contain each digit once.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 5, 6, 3, 2, 4, 3, 2, 4, 1, 5, 6, 5, 6, 3, 2, 4, 1, 2, 4, 1, 5, 6, 3, 6, 3, 2, 4, 1, 5, 4, 1, 5, 6, 3, 2]",
+            "explanation": "Every row, column and 2×3 box contains 1–6 exactly once.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "boxRows": 2,
+            "boxCols": 3,
+            "givens": [
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              6,
+              0,
+              0,
+              0,
+              2,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              5,
+              4,
+              0,
+              0,
+              0,
+              3,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent small-grid enumeration",
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 26,
+              "deductionTrace": [
+                {
+                  "cell": 27,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 800,
+    "title": "Sudoku · 66",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[8, 7, 5, 9, 2, 3, 6, 1, 4, 9, 3, 2, 6, 4, 1, 8, 7, 5, 6, 1, 4, 8, 5, 7, 9, 3, 2, 3, 4, 6, 1, 8, 5, 7, 2, 9, 7, 2, 9, 3, 6, 4, 1, 5, 8, 1, 5, 8, 7, 9, 2, 3, 4, 6, 5, 9, 7, 2, 3, 6, 4, 8, 1, 4, 8, 1, 5, 7, 9, 2, 6, 3, 2, 6, 3, 4, 1, 8, 5, 9, 7]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              5,
+              9,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              6,
+              4,
+              0,
+              8,
+              7,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              3,
+              0,
+              0,
+              4,
+              6,
+              1,
+              8,
+              0,
+              0,
+              0,
+              9,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              8,
+              7,
+              0,
+              2,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              2,
+              3,
+              0,
+              4,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              7,
+              9,
+              0,
+              0,
+              0,
+              2,
+              6,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 52,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 39,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 32,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 66,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 9,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 801,
+    "title": "Sudoku · 67",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 6, 7, 9, 8, 5, 2, 3, 4, 2, 3, 4, 1, 6, 7, 9, 8, 5, 9, 8, 5, 2, 3, 4, 1, 6, 7, 3, 7, 2, 6, 5, 1, 8, 4, 9, 8, 4, 9, 3, 7, 2, 6, 5, 1, 6, 5, 1, 8, 4, 9, 3, 7, 2, 5, 9, 6, 4, 2, 8, 7, 1, 3, 7, 1, 3, 5, 9, 6, 4, 2, 8, 4, 2, 8, 7, 1, 3, 5, 9, 6]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              1,
+              0,
+              7,
+              9,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              9,
+              8,
+              0,
+              9,
+              0,
+              0,
+              0,
+              3,
+              4,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              8,
+              4,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              1,
+              6,
+              5,
+              1,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              8,
+              0,
+              1,
+              3,
+              0,
+              1,
+              3,
+              5,
+              0,
+              0,
+              0,
+              0,
+              8,
+              4,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 29,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 19,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 1,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 33,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 31,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 24,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 42,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 34,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 58,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 68,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 9,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 802,
+    "title": "Sudoku · 68",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 8, 1, 5, 7, 4, 2, 9, 3, 9, 2, 3, 6, 8, 1, 7, 5, 4, 5, 7, 4, 9, 2, 3, 8, 6, 1, 4, 5, 2, 3, 9, 8, 6, 1, 7, 3, 9, 8, 1, 6, 7, 5, 4, 2, 1, 6, 7, 4, 5, 2, 9, 3, 8, 8, 3, 6, 7, 1, 5, 4, 2, 9, 7, 1, 5, 2, 4, 9, 3, 8, 6, 2, 4, 9, 8, 3, 6, 1, 7, 5]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              9,
+              0,
+              3,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              5,
+              7,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              1,
+              4,
+              5,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              8,
+              1,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              6,
+              0,
+              4,
+              5,
+              0,
+              0,
+              3,
+              8,
+              0,
+              3,
+              6,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              3,
+              8,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              5
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 10,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 42,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 59,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 3,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 16,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 71,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 17,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 7,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 803,
+    "title": "Sudoku · 69",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[9, 5, 6, 2, 4, 7, 8, 1, 3, 7, 4, 2, 1, 3, 8, 9, 6, 5, 8, 3, 1, 6, 5, 9, 7, 2, 4, 1, 9, 3, 5, 7, 6, 2, 4, 8, 2, 8, 4, 3, 9, 1, 6, 5, 7, 6, 7, 5, 4, 8, 2, 1, 3, 9, 3, 6, 9, 7, 2, 5, 4, 8, 1, 5, 2, 7, 8, 1, 4, 3, 9, 6, 4, 1, 8, 9, 6, 3, 5, 7, 2]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              9,
+              5,
+              0,
+              0,
+              4,
+              0,
+              8,
+              0,
+              3,
+              0,
+              0,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              3,
+              1,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              2,
+              4,
+              8,
+              2,
+              0,
+              4,
+              3,
+              0,
+              1,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              2,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              7,
+              0,
+              5,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              7,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 7,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 3,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 13,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 14,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 26,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 25,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 46,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 2,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 804,
+    "title": "Sudoku · 70",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 2, 1, 6, 8, 3, 5, 7, 9, 6, 8, 3, 9, 5, 7, 2, 1, 4, 9, 5, 7, 4, 2, 1, 8, 3, 6, 8, 7, 6, 5, 1, 9, 3, 4, 2, 2, 3, 4, 8, 7, 6, 1, 9, 5, 5, 1, 9, 2, 3, 4, 7, 6, 8, 1, 4, 5, 3, 6, 2, 9, 8, 7, 3, 6, 2, 7, 9, 8, 4, 5, 1, 7, 9, 8, 1, 4, 5, 6, 2, 3]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              8,
+              0,
+              9,
+              0,
+              7,
+              0,
+              1,
+              0,
+              9,
+              5,
+              0,
+              4,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              5,
+              5,
+              0,
+              9,
+              0,
+              0,
+              4,
+              7,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              7,
+              9,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              8,
+              0,
+              4,
+              5,
+              6,
+              2,
+              3
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 75,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 38,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 5,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 805,
+    "title": "Sudoku · 71",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 3, 4, 7, 1, 6, 2, 8, 9, 2, 8, 9, 3, 4, 5, 6, 7, 1, 6, 7, 1, 8, 9, 2, 5, 3, 4, 1, 6, 3, 2, 7, 9, 4, 5, 8, 4, 5, 8, 6, 3, 1, 9, 2, 7, 9, 2, 7, 5, 8, 4, 1, 6, 3, 8, 4, 2, 1, 5, 3, 7, 9, 6, 7, 9, 6, 4, 2, 8, 3, 1, 5, 3, 1, 5, 9, 6, 7, 8, 4, 2]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              4,
+              7,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              8,
+              0,
+              0,
+              4,
+              5,
+              0,
+              0,
+              0,
+              6,
+              0,
+              1,
+              8,
+              0,
+              0,
+              0,
+              3,
+              4,
+              0,
+              0,
+              3,
+              0,
+              0,
+              9,
+              4,
+              5,
+              0,
+              0,
+              0,
+              8,
+              6,
+              0,
+              1,
+              0,
+              2,
+              7,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              1,
+              0,
+              0,
+              8,
+              0,
+              2,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              8,
+              4,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 23,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 15,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 60,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 806,
+    "title": "Sudoku · 72",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 4, 6, 2, 7, 8, 3, 9, 5, 8, 2, 7, 5, 9, 3, 1, 6, 4, 3, 5, 9, 4, 6, 1, 8, 7, 2, 2, 9, 8, 6, 3, 5, 4, 1, 7, 5, 6, 3, 7, 1, 4, 2, 8, 9, 4, 7, 1, 9, 8, 2, 5, 3, 6, 7, 8, 4, 3, 2, 9, 6, 5, 1, 6, 1, 5, 8, 4, 7, 9, 2, 3, 9, 3, 2, 1, 5, 6, 7, 4, 8]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              6,
+              2,
+              0,
+              8,
+              3,
+              9,
+              0,
+              8,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              6,
+              0,
+              7,
+              0,
+              0,
+              2,
+              8,
+              0,
+              4,
+              0,
+              1,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              2,
+              0,
+              0,
+              5,
+              0,
+              6,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              3,
+              2,
+              0,
+              5,
+              6,
+              7,
+              4,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 75,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 15,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 807,
+    "title": "Sudoku · 73",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 3, 2, 4, 1, 5, 7, 8, 9, 4, 1, 5, 8, 9, 7, 2, 6, 3, 8, 9, 7, 6, 3, 2, 5, 4, 1, 1, 5, 8, 9, 7, 6, 4, 3, 2, 9, 7, 6, 3, 2, 4, 8, 1, 5, 3, 2, 4, 1, 5, 8, 6, 9, 7, 7, 6, 3, 2, 4, 1, 9, 5, 8, 5, 8, 9, 7, 6, 3, 1, 2, 4, 2, 4, 1, 5, 8, 9, 3, 7, 6]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              2,
+              6,
+              0,
+              8,
+              0,
+              7,
+              0,
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              5,
+              8,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              8,
+              0,
+              9,
+              7,
+              7,
+              0,
+              0,
+              0,
+              0,
+              1,
+              9,
+              0,
+              0,
+              0,
+              8,
+              0,
+              7,
+              6,
+              3,
+              0,
+              2,
+              0,
+              2,
+              4,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 34,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 17,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 12,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 13,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 4,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 6,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 808,
+    "title": "Sudoku · 74",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[9, 2, 8, 5, 3, 6, 7, 4, 1, 1, 7, 4, 8, 2, 9, 3, 5, 6, 6, 3, 5, 4, 7, 1, 2, 8, 9, 5, 1, 3, 7, 9, 4, 6, 2, 8, 8, 6, 2, 3, 1, 5, 9, 7, 4, 4, 9, 7, 2, 6, 8, 1, 3, 5, 3, 4, 1, 9, 8, 7, 5, 6, 2, 7, 8, 9, 6, 5, 2, 4, 1, 3, 2, 5, 6, 1, 4, 3, 8, 9, 7]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              2,
+              8,
+              5,
+              0,
+              0,
+              7,
+              4,
+              1,
+              0,
+              0,
+              0,
+              8,
+              0,
+              9,
+              3,
+              5,
+              0,
+              6,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              9,
+              5,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              1,
+              5,
+              0,
+              7,
+              0,
+              4,
+              9,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              9,
+              6,
+              5,
+              2,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              7
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 24,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 30,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 44,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 51,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 53,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 62,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 52,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 59,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 50,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 809,
+    "title": "Sudoku · 75",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 1, 5, 3, 6, 4, 8, 2, 9, 6, 4, 3, 2, 9, 8, 1, 5, 7, 9, 8, 2, 5, 7, 1, 4, 3, 6, 1, 5, 6, 9, 4, 3, 2, 7, 8, 4, 3, 9, 7, 8, 2, 5, 6, 1, 8, 2, 7, 6, 1, 5, 3, 9, 4, 3, 9, 8, 1, 2, 7, 6, 4, 5, 5, 6, 4, 8, 3, 9, 7, 1, 2, 2, 7, 1, 4, 5, 6, 9, 8, 3]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              7,
+              1,
+              5,
+              3,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              3,
+              0,
+              9,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              6,
+              0,
+              0,
+              6,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              7,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              1,
+              5,
+              0,
+              0,
+              0,
+              0,
+              9,
+              8,
+              1,
+              2,
+              7,
+              0,
+              0,
+              0,
+              5,
+              0,
+              4,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              5,
+              0,
+              0,
+              8,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 19,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 17,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 15,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 34,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 53,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 51,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 78,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 810,
+    "title": "Sudoku · 76",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 5, 1, 3, 8, 9, 6, 7, 4, 4, 7, 6, 5, 2, 1, 9, 3, 8, 8, 3, 9, 7, 4, 6, 1, 5, 2, 1, 8, 5, 4, 9, 3, 7, 2, 6, 6, 2, 7, 8, 1, 5, 3, 4, 9, 9, 4, 3, 2, 6, 7, 5, 8, 1, 5, 9, 8, 6, 3, 4, 2, 1, 7, 3, 6, 4, 1, 7, 2, 8, 9, 5, 7, 1, 2, 9, 5, 8, 4, 6, 3]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              1,
+              3,
+              0,
+              0,
+              0,
+              0,
+              4,
+              4,
+              0,
+              0,
+              5,
+              2,
+              1,
+              9,
+              3,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              8,
+              1,
+              5,
+              0,
+              0,
+              9,
+              0,
+              4,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              3,
+              0,
+              4,
+              0,
+              0,
+              0,
+              8,
+              9,
+              0,
+              0,
+              0,
+              2,
+              9,
+              0,
+              0,
+              4,
+              6,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 17,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 19,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 42,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 43,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 52,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 73,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 66,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 61,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 45,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 51,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 60,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 25,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 7,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 8,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 811,
+    "title": "Sudoku · 77",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 6, 4, 2, 3, 5, 8, 7, 9, 9, 8, 7, 4, 6, 1, 3, 2, 5, 5, 3, 2, 7, 8, 9, 6, 4, 1, 7, 1, 8, 6, 5, 4, 9, 3, 2, 4, 5, 6, 3, 9, 2, 1, 8, 7, 2, 9, 3, 8, 1, 7, 5, 6, 4, 3, 7, 9, 1, 4, 8, 2, 5, 6, 6, 2, 5, 9, 7, 3, 4, 1, 8, 8, 4, 1, 5, 2, 6, 7, 9, 3]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              6,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              3,
+              2,
+              0,
+              5,
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              9,
+              0,
+              0,
+              4,
+              0,
+              6,
+              3,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              1,
+              7,
+              0,
+              6,
+              4,
+              0,
+              7,
+              0,
+              0,
+              4,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              1,
+              8,
+              0,
+              0,
+              1,
+              5,
+              0,
+              6,
+              7,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 23,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 17,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 44,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 28,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 30,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 57,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 63,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 62,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 73,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 72,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 54,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 60,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 51,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 812,
+    "title": "Sudoku · 78",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 5, 7, 9, 4, 3, 1, 8, 2, 9, 3, 4, 2, 1, 8, 7, 5, 6, 2, 8, 1, 6, 7, 5, 4, 3, 9, 7, 2, 5, 4, 3, 6, 8, 9, 1, 1, 9, 8, 7, 5, 2, 3, 6, 4, 4, 6, 3, 1, 8, 9, 5, 2, 7, 5, 1, 2, 3, 6, 7, 9, 4, 8, 8, 4, 9, 5, 2, 1, 6, 7, 3, 3, 7, 6, 8, 9, 4, 2, 1, 5]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              6,
+              5,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              4,
+              3,
+              0,
+              0,
+              2,
+              5,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              9,
+              8,
+              0,
+              5,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              3,
+              1,
+              0,
+              9,
+              5,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              8,
+              0,
+              9,
+              5,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              6,
+              0,
+              0,
+              4,
+              2,
+              1,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 27,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 16,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 55,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 2,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 31,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 58,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 7,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 813,
+    "title": "Sudoku · 79",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 7, 8, 9, 1, 4, 2, 6, 3, 2, 3, 6, 7, 8, 5, 4, 1, 9, 4, 9, 1, 3, 6, 2, 5, 8, 7, 1, 4, 3, 2, 7, 6, 8, 9, 5, 6, 2, 7, 5, 9, 8, 1, 3, 4, 8, 5, 9, 4, 3, 1, 6, 7, 2, 7, 6, 5, 8, 4, 9, 3, 2, 1, 3, 1, 2, 6, 5, 7, 9, 4, 8, 9, 8, 4, 1, 2, 3, 7, 5, 6]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              5,
+              0,
+              0,
+              9,
+              1,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              7,
+              0,
+              4,
+              3,
+              0,
+              0,
+              0,
+              8,
+              9,
+              5,
+              0,
+              2,
+              0,
+              5,
+              0,
+              0,
+              0,
+              3,
+              4,
+              0,
+              0,
+              0,
+              4,
+              0,
+              1,
+              0,
+              0,
+              2,
+              7,
+              0,
+              0,
+              8,
+              0,
+              0,
+              3,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              5,
+              0,
+              9,
+              0,
+              0,
+              9,
+              8,
+              4,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 80,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 42,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 15,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 68,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 5,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 814,
+    "title": "Sudoku · 80",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 1, 5, 2, 4, 7, 8, 3, 9, 8, 3, 9, 6, 5, 1, 2, 7, 4, 2, 7, 4, 8, 9, 3, 6, 1, 5, 3, 5, 6, 1, 2, 4, 7, 9, 8, 1, 4, 2, 7, 8, 9, 3, 5, 6, 7, 9, 8, 3, 6, 5, 1, 4, 2, 5, 2, 1, 4, 7, 8, 9, 6, 3, 4, 8, 7, 9, 3, 6, 5, 2, 1, 9, 6, 3, 5, 1, 2, 4, 8, 7]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              5,
+              2,
+              0,
+              0,
+              8,
+              3,
+              9,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              7,
+              4,
+              8,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              7,
+              0,
+              8,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              5,
+              0,
+              4,
+              0,
+              5,
+              0,
+              0,
+              4,
+              7,
+              0,
+              0,
+              0,
+              3,
+              0,
+              8,
+              0,
+              9,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              4,
+              8,
+              7
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 0,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 9,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 28,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 47,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 59,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 40,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 63,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 32,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 30,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 75,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 815,
+    "title": "Sudoku · 81",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 9, 7, 3, 6, 5, 8, 4, 7, 6, 3, 5, 4, 8, 2, 1, 9, 5, 8, 4, 2, 9, 1, 7, 6, 3, 1, 4, 2, 6, 7, 9, 8, 3, 5, 8, 3, 5, 1, 2, 4, 6, 9, 7, 6, 9, 7, 8, 5, 3, 1, 4, 2, 4, 5, 1, 9, 6, 2, 3, 7, 8, 3, 7, 8, 4, 1, 5, 9, 2, 6, 9, 2, 6, 3, 8, 7, 4, 5, 1]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              2,
+              1,
+              0,
+              5,
+              0,
+              0,
+              0,
+              9,
+              1,
+              0,
+              6,
+              0,
+              0,
+              4,
+              0,
+              0,
+              7,
+              0,
+              8,
+              0,
+              0,
+              0,
+              3,
+              5,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              6,
+              9,
+              0,
+              0,
+              0,
+              3,
+              0,
+              4,
+              0,
+              4,
+              0,
+              1,
+              0,
+              6,
+              2,
+              0,
+              0,
+              0,
+              0,
+              7,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              9,
+              2,
+              0,
+              3,
+              0,
+              0,
+              4,
+              5,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 19,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 21,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 70,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 4,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 42,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 6,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 51,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 816,
+    "title": "Sudoku · 82",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 5, 9, 2, 4, 8, 7, 6, 3, 2, 4, 8, 3, 7, 6, 5, 9, 1, 3, 7, 6, 1, 5, 9, 4, 8, 2, 6, 3, 4, 9, 1, 7, 2, 5, 8, 8, 2, 5, 6, 3, 4, 1, 7, 9, 9, 1, 7, 8, 2, 5, 3, 4, 6, 4, 6, 2, 7, 9, 3, 8, 1, 5, 5, 8, 1, 4, 6, 2, 9, 3, 7, 7, 9, 3, 5, 8, 1, 6, 2, 4]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              9,
+              2,
+              0,
+              0,
+              7,
+              6,
+              3,
+              0,
+              4,
+              8,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              7,
+              6,
+              0,
+              5,
+              0,
+              0,
+              8,
+              2,
+              0,
+              3,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              8,
+              2,
+              5,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              4,
+              6,
+              0,
+              0,
+              2,
+              0,
+              9,
+              0,
+              0,
+              0,
+              5,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              5,
+              8,
+              1,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 4,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 12,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 23,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 817,
+    "title": "Sudoku · 83",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 5, 9, 3, 1, 4, 2, 8, 6, 2, 8, 6, 5, 7, 9, 1, 3, 4, 1, 3, 4, 8, 2, 6, 7, 5, 9, 5, 9, 2, 4, 3, 7, 8, 6, 1, 3, 4, 7, 6, 8, 1, 5, 9, 2, 8, 6, 1, 9, 5, 2, 3, 4, 7, 6, 1, 3, 2, 9, 8, 4, 7, 5, 9, 2, 8, 7, 4, 5, 6, 1, 3, 4, 7, 5, 1, 6, 3, 9, 2, 8]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              8,
+              0,
+              5,
+              7,
+              0,
+              1,
+              0,
+              4,
+              1,
+              0,
+              4,
+              8,
+              2,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              4,
+              3,
+              7,
+              8,
+              0,
+              1,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              4,
+              7,
+              0,
+              1,
+              3,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              9,
+              2,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 67,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 70,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 66,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 7,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 11,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 34,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 8,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 818,
+    "title": "Sudoku · 84",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 3, 5, 8, 9, 7, 4, 2, 1, 4, 2, 1, 6, 5, 3, 8, 7, 9, 8, 7, 9, 4, 1, 2, 6, 3, 5, 9, 8, 3, 1, 7, 4, 5, 6, 2, 5, 6, 2, 9, 3, 8, 1, 4, 7, 1, 4, 7, 5, 2, 6, 9, 8, 3, 7, 1, 8, 2, 4, 5, 3, 9, 6, 3, 9, 6, 7, 8, 1, 2, 5, 4, 2, 5, 4, 3, 6, 9, 7, 1, 8]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              6,
+              0,
+              0,
+              8,
+              0,
+              0,
+              4,
+              2,
+              0,
+              0,
+              0,
+              1,
+              6,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              1,
+              0,
+              0,
+              3,
+              5,
+              0,
+              0,
+              3,
+              1,
+              0,
+              4,
+              0,
+              6,
+              2,
+              5,
+              0,
+              0,
+              0,
+              3,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              8,
+              0,
+              0,
+              1,
+              0,
+              2,
+              0,
+              5,
+              3,
+              0,
+              6,
+              0,
+              0,
+              6,
+              0,
+              8,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 24,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 45,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 53,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 68,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 79,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 48,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 41,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 37,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 38,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 46,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 39,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 44,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 16,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 8,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 819,
+    "title": "Sudoku · 85",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 3, 6, 1, 4, 5, 7, 8, 9, 7, 8, 9, 2, 6, 3, 1, 5, 4, 1, 5, 4, 7, 9, 8, 2, 3, 6, 8, 6, 2, 3, 1, 4, 5, 9, 7, 3, 4, 1, 5, 7, 9, 8, 6, 2, 5, 9, 7, 8, 2, 6, 3, 4, 1, 4, 7, 5, 9, 8, 2, 6, 1, 3, 9, 2, 8, 6, 3, 1, 4, 7, 5, 6, 1, 3, 4, 5, 7, 9, 2, 8]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              3,
+              0,
+              1,
+              0,
+              5,
+              0,
+              0,
+              0,
+              7,
+              8,
+              9,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              1,
+              5,
+              0,
+              0,
+              9,
+              0,
+              2,
+              0,
+              6,
+              0,
+              6,
+              0,
+              3,
+              1,
+              0,
+              5,
+              0,
+              0,
+              0,
+              4,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              9,
+              0,
+              0,
+              2,
+              0,
+              0,
+              4,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              3,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              5,
+              7,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 51,
+              "deductionTrace": [
+                {
+                  "cell": 20,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 56,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 45,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 51,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 15,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 50,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 59,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 27,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 8,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 820,
+    "title": "Sudoku · 86",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 2, 3, 1, 4, 9, 8, 6, 7, 8, 7, 6, 3, 2, 5, 9, 1, 4, 9, 4, 1, 6, 7, 8, 5, 3, 2, 4, 1, 5, 9, 6, 7, 2, 8, 3, 7, 6, 9, 8, 3, 2, 4, 5, 1, 2, 3, 8, 5, 1, 4, 7, 9, 6, 6, 9, 4, 7, 8, 3, 1, 2, 5, 3, 8, 7, 2, 5, 1, 6, 4, 9, 1, 5, 2, 4, 9, 6, 3, 7, 8]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              7,
+              6,
+              3,
+              0,
+              5,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              2,
+              0,
+              5,
+              1,
+              0,
+              3,
+              0,
+              5,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              8,
+              0,
+              0,
+              5,
+              0,
+              6,
+              4,
+              0,
+              0,
+              5,
+              0,
+              4,
+              0,
+              0,
+              3,
+              7,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 16,
+              "deductionTrace": [
+                {
+                  "cell": 19,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 2,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 25,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 40,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 59,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 58,
+                  "value": 8,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 821,
+    "title": "Sudoku · 87",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 9, 2, 3, 5, 1, 8, 6, 7, 1, 5, 3, 7, 8, 6, 9, 4, 2, 6, 8, 7, 2, 9, 4, 5, 1, 3, 3, 4, 9, 5, 1, 7, 6, 2, 8, 2, 6, 8, 9, 4, 3, 1, 7, 5, 7, 1, 5, 8, 6, 2, 4, 3, 9, 9, 2, 6, 4, 3, 5, 7, 8, 1, 5, 3, 4, 1, 7, 8, 2, 9, 6, 8, 7, 1, 6, 2, 9, 3, 5, 4]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              2,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              3,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              9,
+              0,
+              5,
+              1,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              6,
+              0,
+              0,
+              2,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              2,
+              0,
+              3,
+              0,
+              0,
+              2,
+              0,
+              0,
+              3,
+              5,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              9,
+              6,
+              0,
+              0,
+              0,
+              6,
+              2,
+              0,
+              0,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 55,
+              "deductionTrace": [
+                {
+                  "cell": 26,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 21,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 19,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 56,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 37,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 41,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 69,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 78,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 79,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 44,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 39,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 47,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 54,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 73,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 32,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 16,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 43,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 61,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 53,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 57,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 48,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 60,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 7,
+                  "technique": "naked single"
+                }
+              ],
+              "singlesComplete": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 822,
+    "title": "Sudoku · 88",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 5, 6, 9, 8, 2, 1, 7, 3, 9, 8, 2, 1, 3, 7, 4, 6, 5, 1, 3, 7, 4, 5, 6, 9, 2, 8, 3, 6, 1, 5, 2, 4, 8, 9, 7, 8, 7, 9, 3, 6, 1, 5, 4, 2, 5, 2, 4, 8, 7, 9, 3, 1, 6, 7, 1, 8, 6, 4, 3, 2, 5, 9, 6, 4, 3, 2, 9, 5, 7, 8, 1, 2, 9, 5, 7, 1, 8, 6, 3, 4]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              1,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              6,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              2,
+              0,
+              0,
+              9,
+              0,
+              8,
+              7,
+              0,
+              0,
+              6,
+              0,
+              5,
+              4,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              4,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              7,
+              8,
+              0,
+              2,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single"
+              ],
+              "deductionSteps": 9,
+              "deductionTrace": [
+                {
+                  "cell": 12,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 18,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 71,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 41,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 52,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 35,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 13,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 2,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 823,
+    "title": "Sudoku · 89",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 4, 9, 8, 3, 2, 6, 1, 5, 5, 1, 6, 4, 7, 9, 2, 8, 3, 3, 8, 2, 1, 5, 6, 9, 4, 7, 2, 7, 8, 3, 6, 1, 4, 5, 9, 9, 5, 4, 7, 2, 8, 1, 3, 6, 6, 3, 1, 5, 9, 4, 8, 7, 2, 8, 9, 7, 2, 1, 3, 5, 6, 4, 1, 2, 3, 6, 4, 5, 7, 9, 8, 4, 6, 5, 9, 8, 7, 3, 2, 1]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              9,
+              0,
+              0,
+              0,
+              3,
+              8,
+              2,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              7,
+              0,
+              0,
+              0,
+              7,
+              0,
+              1,
+              3,
+              0,
+              6,
+              4,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              5,
+              9,
+              0,
+              0,
+              0,
+              2,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 12,
+              "deductionTrace": [
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 24,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 60,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 0,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 2,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 47,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 33,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 70,
+                  "value": 9,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 824,
+    "title": "Sudoku · 90",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 6, 9, 5, 2, 1, 8, 3, 7, 7, 3, 8, 6, 9, 4, 2, 5, 1, 1, 5, 2, 3, 8, 7, 9, 6, 4, 9, 4, 5, 1, 3, 2, 6, 7, 8, 2, 1, 3, 7, 6, 8, 5, 4, 9, 8, 7, 6, 4, 5, 9, 3, 1, 2, 3, 2, 7, 8, 4, 6, 1, 9, 5, 5, 9, 1, 2, 7, 3, 4, 8, 6, 6, 8, 4, 9, 1, 5, 7, 2, 3]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              6,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              7,
+              7,
+              0,
+              0,
+              0,
+              9,
+              4,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              9,
+              6,
+              0,
+              9,
+              4,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              8,
+              0,
+              1,
+              3,
+              0,
+              0,
+              0,
+              5,
+              0,
+              9,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              4,
+              6,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              3
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 56,
+              "deductionTrace": [
+                {
+                  "cell": 62,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 12,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 16,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 17,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 53,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 43,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 50,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 61,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 69,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 74,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 72,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 40,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 47,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 18,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 20,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 11,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 45,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 22,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 63,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 79,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ],
+              "singlesComplete": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 825,
+    "title": "Sudoku · 91",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[7, 6, 8, 5, 3, 9, 1, 4, 2, 2, 4, 1, 7, 8, 6, 3, 9, 5, 5, 9, 3, 2, 1, 4, 8, 6, 7, 6, 8, 2, 9, 7, 3, 5, 1, 4, 4, 1, 5, 6, 2, 8, 7, 3, 9, 9, 3, 7, 4, 5, 1, 2, 8, 6, 8, 2, 4, 3, 6, 7, 9, 5, 1, 3, 7, 6, 1, 9, 5, 4, 2, 8, 1, 5, 9, 8, 4, 2, 6, 7, 3]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              7,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              8,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              7,
+              0,
+              5,
+              1,
+              0,
+              0,
+              1,
+              5,
+              6,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              2,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              6,
+              7,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              1,
+              0,
+              9,
+              8,
+              0,
+              0,
+              0,
+              7,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single"
+              ],
+              "deductionSteps": 12,
+              "deductionTrace": [
+                {
+                  "cell": 42,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 12,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 26,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 50,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 52,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 73,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 3,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 18,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 61,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 78,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 71,
+                  "value": 8,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 826,
+    "title": "Sudoku · 92",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 4, 7, 1, 6, 8, 3, 9, 5, 6, 8, 1, 3, 9, 5, 7, 2, 4, 9, 5, 3, 7, 2, 4, 1, 6, 8, 4, 1, 2, 6, 8, 3, 9, 5, 7, 8, 3, 6, 9, 5, 7, 2, 4, 1, 5, 7, 9, 2, 4, 1, 6, 8, 3, 1, 6, 4, 8, 3, 9, 5, 7, 2, 3, 9, 8, 5, 7, 2, 4, 1, 6, 7, 2, 5, 4, 1, 6, 8, 3, 9]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              4,
+              0,
+              0,
+              6,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              5,
+              0,
+              2,
+              0,
+              9,
+              0,
+              3,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              1,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              7,
+              0,
+              2,
+              4,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              9,
+              0,
+              0,
+              0,
+              3,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              4,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 18,
+              "deductionTrace": [
+                {
+                  "cell": 3,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 39,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 37,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 56,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 54,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 23,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 22,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 36,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 31,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 58,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 32,
+                  "value": 3,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 827,
+    "title": "Sudoku · 93",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 9, 2, 3, 1, 5, 8, 4, 7, 5, 1, 3, 8, 7, 4, 2, 6, 9, 4, 7, 8, 2, 9, 6, 3, 5, 1, 7, 2, 4, 6, 3, 9, 5, 1, 8, 1, 8, 5, 4, 2, 7, 6, 9, 3, 9, 3, 6, 5, 8, 1, 4, 7, 2, 3, 5, 9, 1, 4, 8, 7, 2, 6, 2, 6, 7, 9, 5, 3, 1, 8, 4, 8, 4, 1, 7, 6, 2, 9, 3, 5]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              7,
+              5,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              7,
+              8,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              7,
+              0,
+              4,
+              0,
+              3,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              3,
+              6,
+              0,
+              0,
+              1,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              6,
+              2,
+              0,
+              0,
+              0,
+              5,
+              3,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 13,
+              "deductionTrace": [
+                {
+                  "cell": 71,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 16,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 0,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 76,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 60,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 54,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 65,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 66,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 24,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 828,
+    "title": "Sudoku · 94",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 9, 7, 8, 5, 2, 1, 4, 6, 6, 4, 1, 7, 9, 3, 8, 5, 2, 2, 5, 8, 1, 4, 6, 7, 9, 3, 7, 2, 9, 5, 6, 8, 4, 3, 1, 8, 6, 5, 4, 3, 1, 9, 2, 7, 1, 3, 4, 9, 2, 7, 5, 6, 8, 4, 7, 3, 2, 8, 9, 6, 1, 5, 5, 1, 6, 3, 7, 4, 2, 8, 9, 9, 8, 2, 6, 1, 5, 3, 7, 4]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              9,
+              7,
+              8,
+              5,
+              2,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              6,
+              0,
+              0,
+              0,
+              0,
+              2,
+              9,
+              5,
+              6,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              7,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              4,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              2,
+              8,
+              9,
+              0,
+              8,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 7,
+              "deductionTrace": [
+                {
+                  "cell": 0,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 72,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 25,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 43,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 39,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 74,
+                  "value": 2,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 829,
+    "title": "Sudoku · 95",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[8, 3, 4, 9, 1, 7, 2, 6, 5, 2, 5, 6, 8, 4, 3, 9, 1, 7, 9, 7, 1, 2, 6, 5, 8, 4, 3, 3, 6, 8, 7, 9, 4, 5, 2, 1, 5, 1, 2, 3, 8, 6, 7, 9, 4, 7, 4, 9, 5, 2, 1, 3, 8, 6, 1, 9, 5, 6, 3, 2, 4, 7, 8, 6, 2, 3, 4, 7, 8, 1, 5, 9, 4, 8, 7, 1, 5, 9, 6, 3, 2]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              8,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              7,
+              1,
+              2,
+              6,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              9,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              4,
+              0,
+              0,
+              0,
+              0,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              4,
+              7,
+              0,
+              6,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              7,
+              0,
+              0,
+              0,
+              0,
+              3,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 57,
+              "deductionTrace": [
+                {
+                  "cell": 42,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 17,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 37,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 38,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 45,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 72,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 13,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 23,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 25,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 76,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 16,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 77,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 48,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 51,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 46,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 28,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 47,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 55,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 41,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 40,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 57,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 56,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 53,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 52,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 34,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 33,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 66,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 71,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 75,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 78,
+                  "value": 6,
+                  "technique": "naked single"
+                }
+              ],
+              "singlesComplete": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 830,
+    "title": "Sudoku · 96",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 1, 9, 2, 8, 4, 3, 7, 5, 5, 3, 7, 9, 6, 1, 4, 2, 8, 8, 4, 2, 7, 5, 3, 1, 9, 6, 4, 7, 5, 6, 3, 9, 2, 8, 1, 1, 2, 8, 5, 4, 7, 9, 6, 3, 3, 9, 6, 8, 1, 2, 7, 5, 4, 2, 5, 4, 3, 7, 6, 8, 1, 9, 9, 8, 1, 4, 2, 5, 6, 3, 7, 7, 6, 3, 1, 9, 8, 5, 4, 2]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              6,
+              0,
+              9,
+              2,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              1,
+              4,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              7,
+              0,
+              6,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              6,
+              0,
+              0,
+              2,
+              0,
+              0,
+              4,
+              2,
+              0,
+              4,
+              0,
+              7,
+              6,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 16,
+              "deductionTrace": [
+                {
+                  "cell": 9,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 19,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 67,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 66,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 40,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 64,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 69,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 43,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 79,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 73,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 36,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 1,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 1,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 831,
+    "title": "Sudoku · 97",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[9, 8, 6, 4, 5, 3, 7, 2, 1, 2, 7, 1, 8, 6, 9, 4, 3, 5, 3, 4, 5, 7, 1, 2, 8, 9, 6, 7, 5, 2, 1, 9, 8, 6, 4, 3, 8, 1, 9, 6, 3, 4, 5, 7, 2, 4, 6, 3, 5, 2, 7, 1, 8, 9, 6, 9, 4, 3, 7, 5, 2, 1, 8, 1, 2, 8, 9, 4, 6, 3, 5, 7, 5, 3, 7, 2, 8, 1, 9, 6, 4]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              8,
+              0,
+              4,
+              5,
+              3,
+              0,
+              0,
+              1,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              5,
+              2,
+              1,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              6,
+              0,
+              5,
+              0,
+              0,
+              0,
+              7,
+              0,
+              8,
+              0,
+              9,
+              6,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single"
+              ],
+              "deductionSteps": 10,
+              "deductionTrace": [
+                {
+                  "cell": 10,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 67,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 56,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 80,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 45,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 40,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 18,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 22,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 2,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 832,
+    "title": "Sudoku · 98",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 4, 7, 8, 6, 5, 9, 1, 3, 8, 6, 5, 9, 1, 3, 2, 4, 7, 9, 1, 3, 2, 4, 7, 8, 6, 5, 5, 8, 4, 3, 9, 6, 7, 2, 1, 7, 2, 1, 5, 8, 4, 3, 9, 6, 3, 9, 6, 7, 2, 1, 5, 8, 4, 6, 3, 8, 1, 7, 9, 4, 5, 2, 1, 7, 9, 4, 5, 2, 6, 3, 8, 4, 5, 2, 6, 3, 8, 1, 7, 9]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              6,
+              5,
+              9,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              5,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              8,
+              4,
+              0,
+              0,
+              6,
+              3,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              4,
+              0,
+              3,
+              0,
+              1,
+              0,
+              9,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single",
+                "naked single"
+              ],
+              "deductionSteps": 58,
+              "deductionTrace": [
+                {
+                  "cell": 16,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 17,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 32,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 30,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 31,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 35,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 28,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 29,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 20,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 22,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 47,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 52,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 56,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 78,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 76,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 72,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 60,
+                  "value": 4,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 75,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 25,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 61,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 62,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 58,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 54,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 80,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 26,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 51,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 42,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 43,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 49,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 48,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 21,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 23,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 18,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 19,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 39,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 8,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 46,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 67,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 68,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 64,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 37,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 36,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 7,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 38,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 65,
+                  "value": 9,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 69,
+                  "value": 6,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 70,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 73,
+                  "value": 5,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 74,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 77,
+                  "value": 8,
+                  "technique": "naked single"
+                }
+              ],
+              "singlesComplete": true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 833,
+    "title": "Sudoku · 99",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 5, 6, 3, 8, 7, 2, 9, 1, 9, 1, 2, 6, 4, 5, 3, 8, 7, 8, 7, 3, 2, 9, 1, 6, 4, 5, 5, 6, 8, 9, 7, 3, 4, 1, 2, 1, 2, 4, 8, 5, 6, 9, 7, 3, 7, 3, 9, 4, 1, 2, 8, 5, 6, 3, 9, 1, 5, 2, 4, 7, 6, 8, 2, 4, 5, 7, 6, 8, 1, 3, 9, 6, 8, 7, 1, 3, 9, 5, 2, 4]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              4,
+              0,
+              0,
+              3,
+              0,
+              7,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              3,
+              0,
+              9,
+              1,
+              0,
+              4,
+              0,
+              0,
+              6,
+              8,
+              0,
+              7,
+              3,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              9,
+              0,
+              0,
+              0,
+              8,
+              0,
+              6,
+              3,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              6,
+              0,
+              0,
+              0,
+              9,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              5,
+              2,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single"
+              ],
+              "deductionSteps": 21,
+              "deductionTrace": [
+                {
+                  "cell": 4,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 10,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 18,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 24,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 2,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 41,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 39,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 61,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 68,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 62,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 72,
+                  "value": 6,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 9,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 55,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 76,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 75,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 49,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 69,
+                  "value": 1,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 70,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 46,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 77,
+                  "value": 9,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 30,
+                  "value": 9,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 834,
+    "title": "Sudoku · 100",
+    "focus": "sudoku",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Fill the grid with 1–9. Each row, column and 3×3 box must contain every digit once. Use pencil notes to record candidates.",
+        "hint": "Look for a row, column or box with only one missing digit. Then check where a particular digit can fit in another unit.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "sudoku",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 5, 2, 1, 4, 7, 3, 8, 9, 7, 4, 1, 8, 3, 9, 5, 2, 6, 9, 3, 8, 2, 5, 6, 4, 1, 7, 3, 2, 9, 6, 1, 5, 8, 7, 4, 4, 8, 7, 9, 2, 3, 1, 6, 5, 5, 1, 6, 7, 8, 4, 2, 9, 3, 8, 9, 4, 3, 6, 2, 7, 5, 1, 1, 7, 5, 4, 9, 8, 6, 3, 2, 2, 6, 3, 5, 7, 1, 9, 4, 8]",
+            "explanation": "The completed grid preserves the givens and contains 1–9 exactly once in each row, column and box. Look for a digit with only one possible cell in a unit as well as cells with one candidate.",
+            "solutionText": "See the completed board below.",
+            "size": 9,
+            "givens": [
+              0,
+              5,
+              2,
+              0,
+              0,
+              0,
+              0,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              9,
+              0,
+              0,
+              6,
+              0,
+              3,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              7,
+              0,
+              4,
+              8,
+              0,
+              9,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              7,
+              0,
+              4,
+              0,
+              0,
+              3,
+              8,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5,
+              0,
+              0,
+              7,
+              5,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0,
+              1,
+              9,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "independent backtracking",
+              "techniques": [
+                "hidden single"
+              ],
+              "deductionSteps": 16,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 12,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 15,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 16,
+                  "value": 2,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 38,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 9,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 41,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 76,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 5,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 60,
+                  "value": 7,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 75,
+                  "value": 5,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 74,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 27,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 57,
+                  "value": 3,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 80,
+                  "value": 8,
+                  "technique": "hidden single"
+                },
+                {
+                  "cell": 45,
+                  "value": 5,
+                  "technique": "hidden single"
+                }
+              ],
+              "singlesComplete": false
             }
           }
         ]

@@ -1,0 +1,30 @@
+{
+  "id": 370,
+  "rank": {
+    "value": 7,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "Probably my favorite problem. Black to kill, a ko is not enough.",
+  "sgf": "(;\r\nAW[aq][bq][cq][dr][er][bs]AB[ap][bp][cp][dp][dq][eq][fq][fr][cs][fs]\r\n(;B[as]\r\n(;W[ar]\r\n(;B[cr]C[RIGHT])\r\n\r\n(;B[es];W[cr])\r\n\r\n(;B[ds];W[cr])\r\n)\r\n\r\n(;W[br];B[es];W[cr];B[ds])\r\n\r\n(;W[cr];B[br])\r\n\r\n(;W[ds];B[br])\r\n\r\n(;W[es];B[cr])\r\n\r\n(;W[ds];B[br])\r\n)\r\n\r\n(;B[ar];W[cr]\r\n(;B[es];W[ds])\r\n\r\n(;B[ds];W[es])\r\n\r\n(;B[br];W[ds];B[es];W[as])\r\n)\r\n\r\n(;B[br];W[ar]\r\n(;B[as]C[ko])\r\n\r\n(;B[cr];W[ds])\r\n\r\n(;B[ds];W[cr])\r\n\r\n(;B[es];W[cr])\r\n)\r\n\r\n(;B[cr];W[br]\r\n(;B[es];W[ds])\r\n\r\n(;B[ds];W[es])\r\n\r\n(;B[ar];W[ds])\r\n\r\n(;B[as];W[ds])\r\n)\r\n\r\n(;B[ds];W[cr]\r\n(;B[es];W[ar])\r\n\r\n(;B[as];W[ar])\r\n\r\n(;B[ar];W[es])\r\n)\r\n\r\n(;B[es];W[cr]\r\n(;B[ds];W[ar])\r\n\r\n(;B[ar];W[ds])\r\n\r\n(;B[as];W[ds])\r\n)\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2001-01-31T02:20:14+00:00",
+  "problemLevel": 23,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 58,
+  "attempts": {
+    "solved": 1960,
+    "failed": 5538,
+    "tries": 7498,
+    "speedSolved": 4,
+    "speedPlay": 21
+  },
+  "author": "Andre Engels",
+  "url": "https://goproblems.com/problems/370"
+}

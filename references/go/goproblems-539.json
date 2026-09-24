@@ -1,0 +1,30 @@
+{
+  "id": 539,
+  "rank": {
+    "value": 25,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\nRU[Japanese]SZ[19]HA[0]KM[5.5]\nPW[White]\nPB[Black]\nGN[White (W) vs. Black (B)]\nDT[1999-07-28]\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]PL[2]C[how can white live?\n]\nAW[ab][bb][cb][db][bc][cd][gh]\nAB[ba][fb][ac][cc][dc][gc][ad][hd][be][ie][cf][if][bg][dg][ig][eh][hh][fi][gi]\n(;W[ec];B[dd]\n(;W[de];B[ed]\n(;W[fd];B[ee];W[ef];B[fe];W[ge];B[ff];W[fg];B[gf];W[hf];B[gg];W[hg]\nC[RIGHT\ncaught in a ladder\n])\n\n(;W[ee];B[fd])\n\n(;W[fc];B[fd])\n)\n\n(;W[ed];B[de])\n\n(;W[ee];B[bd])\n)\n\n(;W[eb];B[ec]\n(;W[ca];B[ea])\n\n(;W[ea];B[ca])\n)\n\n(;W[ed];B[ec])\n\n(;W[bd];B[ec]\n(;W[ae];B[ad])\n\n(;W[eb];B[ea])\n\n(;W[ca];B[eb])\n)\n\n(;W[dd];B[ec];W[ca];B[eb])\n\n(;W[fc];B[ec])\n\n(;W[ca];B[eb])\n\n(;W[da];B[eb])\n\n(;W[ea];B[eb])\n\n)",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-05-02T12:47:58+00:00",
+  "problemLevel": 5,
+  "hasNegativeFlags": false,
+  "isStandard": false,
+  "isCanon": false,
+  "avgSolveTimeSeconds": 25,
+  "attempts": {
+    "solved": 30059,
+    "failed": 15595,
+    "tries": 45654,
+    "speedSolved": 11,
+    "speedPlay": 21
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/539"
+}

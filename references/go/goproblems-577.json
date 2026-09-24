@@ -1,0 +1,30 @@
+{
+  "id": 577,
+  "rank": {
+    "value": 8,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;AW[ma]AW[na]AW[jb]AW[lb]AW[qb]AW[ic]AW[lc]AW[oc]AW[qc]AW[ld]AW[nd]AW[pd]AW[rd]AW[le]AW[pe]AW[lf]AW[pf]AW[mg]AW[og]AB[ka]AB[la]AB[mb]AB[pb]AB[mc]AB[pc]AB[md]AB[od]AB[me]AB[ne]AB[oe]C[black to live]SZ[19]GM[1]FF[3]RU[Japanese]HA[0]KM[5.5]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]SY[Cgoban 1.9.2]TM[30:00(5x1:00)]\n(;B[ob]\n(;W[nc]C[CHOICE]\n(;B[oa];W[ja];B[nb];W[nc];B[ma]C[RIGHT])\n(;B[nb];W[nc])\n(;B[pa];W[kb];B[nb];W[nc]))\n(;W[kb];B[nb];W[ja]C[a better play by whiteRIGHT]))\n(;B[nc];W[ob]\n(;B[nb];W[pa];B[oa];W[na])\n(;B[pa];W[qa])\n(;B[oa];W[pa]))\n(;B[nb];W[nc]\n(;B[ob];W[nc])\n(;B[oa];W[ma];B[ob];W[nc])\n(;B[pa];W[ja];B[oa];W[ma];B[ob];W[nc]))\n(;B[oa];W[ob]\n(;B[nb];W[pa])\n(;B[pa];W[qa]))\n(;B[pa];W[ob]\n(;B[nb];W[qa]\n(;B[nc];W[oa])\n(;B[oa];W[na]))\n(;B[nc];W[qa]))\n(;B[qa];W[ob]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2001-05-08T17:53:31+00:00",
+  "problemLevel": 22,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 57,
+  "attempts": {
+    "solved": 2146,
+    "failed": 4941,
+    "tries": 7087,
+    "speedSolved": 1,
+    "speedPlay": 13
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/577"
+}

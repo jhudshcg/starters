@@ -1,0 +1,30 @@
+{
+  "id": 80,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[on][pn][rn][oo][qo][op][rp][oq][os]\r\nAB[rl][om][pm][qm][rm][qn][qp][qq][rq][qr][rr][qs]\r\nC[black to live in corner without ko\r\n]\r\n(;B[so];W[sn]\r\n(;B[sq];W[ss]\r\n(;B[ro];W[sp]\r\n(;B[ro];W[so];B[sm]C[RIGHT\r\n])\r\n\r\n(;B[so];W[ro])\r\n)\r\n\r\n(;B[sp];W[ro])\r\n\r\n(;B[sm];W[ro])\r\n)\r\n\r\n(;B[ro];W[sp]\r\n(;B[sq];W[ss]\r\n(;B[ro];W[so];B[sm]C[RIGHT\r\n])\r\n\r\n(;B[so];W[ro])\r\n\r\n(;B[sm];W[ro])\r\n)\r\n\r\n(;B[ro];W[so];B[sq];W[ss];B[sm]C[RIGHT\r\n])\r\n)\r\n)\r\n\r\n(;B[sp];W[so]C[hey! i said no ko!\r\n])\r\n\r\n(;B[sn];W[so]C[ko!\r\n])\r\n\r\n(;B[ss];W[sq];B[so];W[ro])\r\n\r\n(;B[sq];W[ss];B[so];W[sn];B[ro];W[sp];B[ro];W[so];B[sm]C[RIGHT\r\n])\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-09-10T21:10:27+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 67,
+  "attempts": {
+    "solved": 3781,
+    "failed": 6835,
+    "tries": 10616,
+    "speedSolved": 1,
+    "speedPlay": 10
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/80"
+}

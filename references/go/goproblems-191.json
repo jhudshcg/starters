@@ -1,0 +1,30 @@
+{
+  "id": 191,
+  "rank": {
+    "value": 25,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\nRU[Japanese]SZ[19]HA[0]KM[5.5]\nPW[White]\nPB[Black]\nGN[White (W) vs. Black (B)]\nDT[1999-07-28]\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]PL[2]\nC[white to cut black into two groups\n]\nAW[lp][mp][np][op][pp][qp][rp][lq][oq][rq]\nAB[jq][kq][mq][nq][pq][qq][jr][lr][or][rr][sr][rs]\n(;W[pr];B[qr]\n(;W[nr];B[ps];W[mr]C[RIGHT\n])\n\n(;W[ps];B[nr])\n\n(;W[mr];B[nr]\n(;W[ns];B[ms])\n\n(;W[os];B[ms])\n)\n\n(;W[os];B[nr])\n)\n\n(;W[nr];B[mr]\n(;W[pr];B[ns]\n(;W[qr]C[RIGHT\n])\n\n(;W[ps];B[qr])\n)\n\n(;W[ns];B[pr])\n)\n\n(;W[os];B[pr]\n(;W[nr];B[mr]\n(;W[ps];B[ns])\n\n(;W[ns];B[ps])\n)\n\n(;W[mr];B[nr])\n)\n\n(;W[ns];B[nr]\n(;W[pr];B[qr];W[ps];B[qs])\n\n(;W[qr];B[pr])\n)\n\n(;W[ms];B[mr]\n(;W[pr];B[qr])\n\n(;W[qr];B[pr])\n)\n\n(;W[ps];B[pr]\n(;W[nr];B[mr])\n\n(;W[mr];B[nr])\n)\n\n(;W[qs];B[pr]\n(;W[nr];B[mr])\n\n(;W[nr];B[mr])\n)\n\n(;W[qr];B[pr])\n\n(;W[mr];B[nr]\n(;W[pr];B[qr])\n\n(;W[qr];B[pr])\n)\n\n)",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-09-06T15:05:02+00:00",
+  "problemLevel": 5,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 19,
+  "attempts": {
+    "solved": 30078,
+    "failed": 14595,
+    "tries": 44673,
+    "speedSolved": 35,
+    "speedPlay": 97
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/191"
+}

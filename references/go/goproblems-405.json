@@ -1,0 +1,30 @@
+{
+  "id": 405,
+  "rank": {
+    "value": 28,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;SZ[19]AB[pd]AB[pe]AB[pf]AW[qg]AW[qd]AW[qe]AW[pc]AB[oc]AB[nc]AW[pb]AW[nd]AW[od]AB[mc]AB[me]AW[pg]AB[qc]AB[rc]AW[qb]AB[rb]AW[ob]AB[ra]AB[sd]TR[pd]TR[pe]TR[pf]C[white must catch the marked black stones to win this battle]GM[1]FF[4]CA[UTF-8]RU[Japanese]KM[0]TM[1800,0,30,5]PW[]PB[]AE[qf]AE[nb]AE[sc]AE[se]PL[W]\n(;W[of];B[oe]\n(;W[ne]C[\r\nblack is capturedRIGHT])\n(;W[nf];B[ne]))\n(;W[qf];B[ne]\n(;W[oe];B[of]\n(;W[nf];B[md])\n(;W[md];B[ld]))\n(;W[of];B[oe]))\n(;W[oe];B[of]\n(;W[nf];B[ne]\n(;W[og];B[md])\n(;W[qf];B[md]))\n(;W[ne];B[nf];W[md];B[ld]))\n(;W[nf];B[ne]\n(;W[of];B[oe])\n(;W[oe];B[of]\n(;W[md];B[ld])\n(;W[og];B[md])\n(;W[qf];B[md]))\n(;W[qf];B[oe]))\n(;W[ne];B[nf]\n(;W[of];B[md]\n(;W[oe];B[og])\n(;W[qf];B[oe])\n(;W[og];B[oe]))\n(;W[oe];B[of];W[md];B[ld])\n(;W[qf];B[md]))\n(;W[md];B[ld]\n(;W[of];B[oe];W[ne];B[nf])\n(;W[ne];B[nf]\n(;W[of];B[oe])\n(;W[oe];B[of]))\n(;W[oe];B[of]))\n(;W[mf];B[ne])\n(;W[ld];B[md]))",
+  "source": "game vs jun1234",
+  "playerColor": "white",
+  "createdAt": "2001-02-17T17:19:37+00:00",
+  "problemLevel": 2,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 15,
+  "attempts": {
+    "solved": 56902,
+    "failed": 18302,
+    "tries": 75204,
+    "speedSolved": 66,
+    "speedPlay": 211
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/405"
+}

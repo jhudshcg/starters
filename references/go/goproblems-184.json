@@ -1,0 +1,30 @@
+{
+  "id": 184,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]SZ[19]AW[bn][cn][dn][en][fn][gn][jn][bo][go][jo][bp][hp][ip][bq][jq][cr][dr][er][gr][ir][jr][fs]AB[co][do][eo][cp][fp][cq][dq][eq][fq][gq][hq][iq][fr][hr]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]C[white to kill\n](;W[gs];B[es](;W[hs];B[is](;W[gs];B[fs](;W[hs]C[RIGHT\n])(;W[js];B[hs]))(;W[hs];B[gs])(;W[fs];B[gs]))(;W[ds];B[hs](;W[es];B[br](;W[bs];B[cs])(;W[ar];B[cs]))(;W[br];B[es](;W[fs];B[gs])(;W[gs];B[fs])))(;W[br];B[hs];W[fs];B[gs]))(;W[hs];B[gs]C[ko - white can do better\n])(;W[es];B[gs])(;W[br];B[gs])(;W[is];B[gs]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-09-05T14:16:46+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 43,
+  "attempts": {
+    "solved": 3263,
+    "failed": 6504,
+    "tries": 9767,
+    "speedSolved": 7,
+    "speedPlay": 29
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/184"
+}

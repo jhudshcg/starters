@@ -1,0 +1,30 @@
+{
+  "id": 1146,
+  "rank": {
+    "value": 28,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;AB[sb]AB[rb]AB[qa]AB[nb]AB[sc]AB[rd]AB[sd]AB[oc]AB[pc]AB[od]AB[pe]AB[pf]AB[qf]AB[rf]AB[sf]AB[ne]AB[mc]AB[na]AW[qb]AW[pb]AW[ob]AW[rc]AW[qc]AW[qd]AW[qe]AW[re]AW[se]AW[pd]C[White to live](;W[ra];B[oa](;W[sa]C[RIGHT])(;W[pa];B[qa]))(;W[sa];B[ra];W[pa];B[oa]C[Attacking this side means suicide])(;W[pa];B[oa]C[Attacking this side means suicide])(;W[oa]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-11-04T11:53:48+00:00",
+  "problemLevel": 2,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 13,
+  "attempts": {
+    "solved": 56367,
+    "failed": 17439,
+    "tries": 73806,
+    "speedSolved": 48,
+    "speedPlay": 126
+  },
+  "author": "loewenherz",
+  "url": "https://goproblems.com/problems/1146"
+}

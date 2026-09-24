@@ -1,0 +1,30 @@
+{
+  "id": 235,
+  "rank": {
+    "value": 27,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]SZ[19]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]AW[or][pr][qr][sr][os][qs][ss]AB[qo][rp][sp][nq][oq][pq][qq][mr][rs]C[black to kill\n](;B[rr];W[rq](;B[rr](;W[sq];B[rs]C[RIGHT\nwhite suffers shortage of liberties\n])(;W[rs];B[sq]))(;B[sq];W[rr]))(;B[rq];W[rr])(;B[sq];W[rr])(;B[nr];W[rr])(;B[ns];W[rr]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-10-14T16:43:02+00:00",
+  "problemLevel": 3,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 19,
+  "attempts": {
+    "solved": 50665,
+    "failed": 18408,
+    "tries": 69073,
+    "speedSolved": 66,
+    "speedPlay": 107
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/235"
+}

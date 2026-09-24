@@ -1,0 +1,30 @@
+{
+  "id": 157,
+  "rank": {
+    "value": 26,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Chinese]GC[simple problem, coposed by jonathan Cano.\r\n]SZ[19]HA[0]\r\nKM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[2000-05-21]\r\nSY[Cgoban 1.9.10]TM[30:00(5x1:00)]PL[1]\r\nAW[ea][fb][gb][cc][dc][ec][ad][bd][cd][gd]AB[bb][cb][db][eb][ac][bc]\r\nC[Black to play and live.\r\n]\r\n(;B[aa];W[da];B[ca]C[RIGHT.  Black lives unconditionally.\r\n])\r\n\r\n(;B[ab];W[da];B[ca];W[fa]C[one eye, black is dead.\r\n])\r\n\r\n(;B[ba];W[da]C[one eye, black is dead\r\n])\r\n\r\n(;B[ca];W[aa]C[one eye, black is dead.\r\n])\r\n\r\n(;B[da];W[ba]\r\n(;B[ca];W[aa]C[one eye, black is dead.\r\n])\r\n\r\n(;B[aa];W[ab]\r\nC[Ko at A1.  If white wins the ko (and connects at A1, black dies.  (variation follows)\r\n]\r\n;B[fa];W[aa];B[ca];W[aa]C[one eye, black is dead.\r\n])\r\n)\r\n\r\n)",
+  "source": "jonathan",
+  "playerColor": "black",
+  "createdAt": "2000-05-21T17:50:49+00:00",
+  "problemLevel": 4,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 13,
+  "attempts": {
+    "solved": 37533,
+    "failed": 18716,
+    "tries": 56249,
+    "speedSolved": 86,
+    "speedPlay": 169
+  },
+  "author": "jonathan",
+  "url": "https://goproblems.com/problems/157"
+}

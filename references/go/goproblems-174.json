@@ -1,0 +1,30 @@
+{
+  "id": 174,
+  "rank": {
+    "value": 28,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\nRU[Japanese]SZ[19]HA[0]KM[5.5]\nPW[White]\nPB[Black]\nGN[White (W) vs. Black (B)]\nDT[1999-07-28]\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\nAW[qp][rp][sp][pq][qq][sq][pr][ps][qs]\nAB[pn][qo][ro][so][op][pp][oq][or][os]C[black to kill: rabbity six\n]\n(;B[rr];W[rs]\n(;B[sr]C[RIGHT\nafter white takes black, the shape will only give one eye])\n\n(;B[ss];W[sr])\n(;B[qr];W[sr])\n(;B[rq];W[sr])\n)\n\n(;B[rs];W[rr])\n\n(;B[sr];W[rr])\n\n(;B[ss];W[rr])\n\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-08-29T15:13:33+00:00",
+  "problemLevel": 2,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 13,
+  "attempts": {
+    "solved": 63075,
+    "failed": 16353,
+    "tries": 79428,
+    "speedSolved": 103,
+    "speedPlay": 98
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/174"
+}

@@ -1,5 +1,21 @@
 # Puzzle specification
 
+## Current bank — 24 September 2026
+
+This section supersedes earlier numerical minima and challenge descriptions below. The bank contains 901 puzzle templates: 100 in each family, with 101 Go problems. Exact variation counts and level distributions are in the generated [puzzle inventory](../data/coverage/puzzle-inventory.json), maintained by `node scripts/puzzle-inventory.mjs`.
+
+- Go uses source rank: Beginner 25k+, Foundation 18–24k, Standard 12–17k, Stretch 11k and stronger. Counts are 26/25/25/25 respectively. Tree depth is no longer a difficulty proxy. Cached sources and offline import instructions are in [references/go](../references/go/README.md). The card depicts a ko shape.
+- Logic grids include three-person introductions and four-person systems with two/three categories. Equations mix domains and arithmetic constraints, including systems without multiplication.
+- Dot paths support rectangular boards and stepped, L-shaped, central-gap and linked-region masks. Starts and finishes remain player-chosen, and all complete valid routes are accepted.
+- Sudoku includes 4×4 with 2×2 boxes and 6×6 with 2×3 boxes alongside 9×9. Every board is uniquely solvable; small boards retain human deduction traces. Standard is singles-solvable; Stretch may need additional techniques.
+- Tangrams add more varied geometric silhouettes with two starting-piece guides at Foundation and one at Standard. Guides suggest an arrangement; geometric marking still accepts all complete valid tilings. The batch does not claim 100 recognisable named objects or 100 different mechanics.
+- Cages include 4×4, 5×5 and 6×6 boards and addition-only as well as mixed-operation systems. New sequences combine ten rule families with five different tasks: extension, missing terms, totals, position recovery and error correction.
+- Classic maths adds 35 algebra tasks and 15 other maths tasks, each with five variations. Both Beginner and Foundation remain within routine Foundation GCSE demand. Algebra is selectable as a topic. [Maths review and marking contract](maths-practice-review.md) records the boundaries and checks.
+
+Algebra marking uses exact rational polynomial equivalence, with separate final-form checks. Form questions award partial credit for equivalent unfinished expressions and give a next-step hint. Rearrangement accepts a reduced single fraction but not unreduced factors or uncollected terms. Feedback follows the existing submit/review/retry lifecycle. It does not mark arbitrary working or support variable denominators, functions or roots.
+
+All new questions remain pending teacher review. Numerical sizes, source Go ranks and author judgements are not measured classroom difficulty. Existing slots and variations are preserved; corrections use the usual compatibility notices. Future generators must append at unused slots and reuse repository-cached references.
+
 Status: replacement content implemented for local testing; teacher difficulty review pending. Shared behaviour: [spec-common.md](spec-common.md). Audience: 16–19-year-old T-Level students, at A-Level-equivalent academic level. Puzzles are for reasoning and variety; they do not contribute to revision priorities.
 
 ## Difficulty and scope

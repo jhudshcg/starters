@@ -1,0 +1,30 @@
+{
+  "id": 255,
+  "rank": {
+    "value": 27,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[oa][ra][mb][nb][pb][rb][sb][lc][pc][sc][ld][sd][se][sf]\r\nAB[ob][qb][oc][qc][nd][pd][qd][me][re][rf][rg][sg]PL[2]\r\nC[white to connect his stones\r\n]\r\n(;W[qa];B[pa]\r\n(;W[pb];B[pc]\r\n(;W[pa]C[RIGHT\r\nblack cannot cut white now\r\n])\r\n\r\n(;W[na];B[pa])\r\n)\r\n\r\n(;W[na];B[pb])\r\n\r\n(;W[ma];B[na])\r\n)\r\n\r\n(;W[pa];B[qa]C[white is cut\r\n])\r\n\r\n(;W[na];B[pa]\r\n(;W[qa];B[pb])\r\n\r\n(;W[pb];B[qa])\r\n)\r\n\r\n(;W[rd];B[pa])\r\n\r\n(;W[rc];B[pa])\r\n\r\n(;W[nc];B[pa])\r\n\r\n)",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-11-02T12:05:06+00:00",
+  "problemLevel": 3,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 18,
+  "attempts": {
+    "solved": 46775,
+    "failed": 17756,
+    "tries": 64531,
+    "speedSolved": 51,
+    "speedPlay": 111
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/255"
+}

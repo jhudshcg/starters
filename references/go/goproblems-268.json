@@ -1,0 +1,30 @@
+{
+  "id": 268,
+  "rank": {
+    "value": 28,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "Fabricated from my imagination when testing the new board size feature.",
+  "sgf": "(;GM[1]FF[3]\nRU[Japanese]SZ[9]HA[0]KM[5.5]\nPW[White]\nPB[Black]\nGN[White (W) vs. Black (B)]\nDT[2000-11-07]\nSY[Cgoban 1.9.8]TM[30:00(5x1:00)]PL[2]\nAW[ba][da][ab][bb][cb][db][fd][gd][ge][bf][cf][ef][gf][bg][dg][eg][gg][hg][bh][eh][gh]\nAB[eb][fb][ac][bc][cc][dc][ec][fc][gc][hc][hd][ae][be][ce][de][ee][he][df][ff][hf][if][cg][fg][ig][fh][ih]\nC[white to win this game\n]\n(;W[fe]\nC[RIGHT\nby capturing these stones, white has enough points to win\n]\nMA[ff][fg][fh])\n\n(;W[ed];B[fe]\n(;W[fi];B[dd]C[black wins\n])\n\n(;W[dd];B[gi]TR[hg][gh][gg][gf][ge][gd][fd][ed][dd]C[white dies here\n])\n\n(;W[gi];B[fi])\n)\n\n(;W[ch];B[fe]C[black saves these stones\n])\n\n(;W[ea];B[fe]C[black ignores your move to save these stones\n]\n(;W[fa];B[ga])\n\n(;W[fi];B[fa])\n)\n\n(;W[af];B[fe]C[too small\n])\n\n(;W[hh];B[fe])\n\n(;W[fi];B[fe])\n\n(;W[ha];B[fe])\n\n(;W[dh];B[fe])\n\n)",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-11-07T18:59:00+00:00",
+  "problemLevel": 2,
+  "hasNegativeFlags": false,
+  "isStandard": false,
+  "isCanon": false,
+  "avgSolveTimeSeconds": 17,
+  "attempts": {
+    "solved": 68612,
+    "failed": 20194,
+    "tries": 88806,
+    "speedSolved": 0,
+    "speedPlay": 4
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/268"
+}

@@ -1,0 +1,30 @@
+{
+  "id": 451,
+  "rank": {
+    "value": 12,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[4]CA[UTF-8]\r\nSZ[19]RU[Japanese]KM[0]TM[1800,0,30,5]PW[]PB[]AB[cb][db][eb][fb][bd][cd][dd][ed][fd][ca]AW[bc][bb]AB[ab]AW[ba][ad][ae][be][ce][de][ee][fe][ge][gd][gc]AE[gb]AW[hb][ic]AB[fa]PL[W]C[white to rob black of all lifeness]\r\n(;W[cc]CR[cc]\r\n;B[dc]CR[dc]\r\n(;W[fc]CR[fc]\r\n;B[ac]CR[ac]\r\n;W[aa]CR[aa]\r\n;B[ac]CR[ac]\r\n;W[ab]CR[ab]\r\n;B[ac]CR[ac]\r\n(;W[bc]CR[bc]C[RIGHT\r\n])\r\n(;W[ab]CR[ab]\r\n;B[bc]CR[bc]))\r\n(;W[ac]CR[ac]\r\n;B[fc]CR[fc]))\r\n(;W[fc]CR[fc]\r\n;B[cc]CR[cc]\r\n(;W[ec]CR[ec]\r\n;B[ac]CR[ac]\r\n;W[aa]CR[aa]\r\n;B[ac]CR[ac]\r\n;W[ab]CR[ab]\r\n;B[ac]CR[ac])\r\n(;W[ac]CR[ac]\r\n;B[ec]CR[ec]))\r\n(;W[ac]CR[ac]\r\n;B[cc]CR[cc]\r\n;W[fc]CR[fc]\r\n;B[ec]CR[ec])\r\n(;W[aa]CR[aa]\r\n;B[cc]CR[cc])\r\n(;W[dc]CR[dc]\r\n;B[cc]CR[cc])\r\n(;W[ec]CR[ec]\r\n;B[fc]CR[fc]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-03-21T23:08:36+00:00",
+  "problemLevel": 18,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 50,
+  "attempts": {
+    "solved": 4373,
+    "failed": 8199,
+    "tries": 12572,
+    "speedSolved": 12,
+    "speedPlay": 40
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/451"
+}

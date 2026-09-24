@@ -1,0 +1,30 @@
+{
+  "id": 62707,
+  "rank": {
+    "value": 25,
+    "unit": "kyu",
+    "exact": false,
+    "mark": true
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;FF[4]GM[1]CA[UTF-8]AP[goproblems:0.1.0]SZ[13]AW[bd][ce][de][ed][ec][dc][fd][gc][gb][hb][ic][id][hd]AB[fc][fb][eb][dd][cd][ee][fe][ge][gd][he]AN[2](;B[cc];W[db](;B[cb]C[RIGHT])(;B[bc];W[ea])(;B[da];W[cb])(;B[ga];W[ea])(;B[fa];W[ga])(;B[ea];W[da])(;B[bb];W[ea])(;B[ca];W[ea]))(;B[db];W[cc])(;B[cb];W[cc])(;B[bc];W[cc])(;B[bb];W[cc])(;B[ga];W[cc])(;B[fa];W[cc])(;B[ea];W[cc])(;B[da];W[cc])(;B[ca];W[cc]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2026-09-22T02:49:03+00:00",
+  "problemLevel": 5,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": false,
+  "avgSolveTimeSeconds": 4,
+  "attempts": {
+    "solved": 9,
+    "failed": 0,
+    "tries": 9,
+    "speedSolved": 7,
+    "speedPlay": 7
+  },
+  "author": "Andjey44",
+  "url": "https://goproblems.com/problems/62707"
+}

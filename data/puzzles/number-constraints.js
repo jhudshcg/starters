@@ -1,4 +1,4 @@
-// Generated deterministic, solver-checked instances. See scripts/expand-puzzles.py.
+// Deterministic instances; see scripts/enrich-puzzles.py.
 export default [
   {
     "slot": 125,
@@ -10495,6 +10495,8080 @@ export default [
                 ],
                 "op": "=",
                 "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 935,
+    "title": "Number Constraints · 51",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 3, 4, 1, 1, 2, 3, 4, 3, 4, 1, 2, 4, 1, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  3,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  5,
+                  6
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  10,
+                  11,
+                  14
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  15
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 936,
+    "title": "Number Constraints · 52",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 4, 1, 2, 1, 3, 4, 4, 3, 1, 2, 1, 4, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  1,
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  6,
+                  10
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  7,
+                  11
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  8,
+                  12,
+                  13
+                ],
+                "op": "×",
+                "target": 16
+              },
+              {
+                "cells": [
+                  9
+                ],
+                "op": "=",
+                "target": 3
+              },
+              {
+                "cells": [
+                  14,
+                  15
+                ],
+                "op": "×",
+                "target": 6
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 937,
+    "title": "Number Constraints · 53",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 4, 3, 1, 3, 2, 1, 4, 1, 3, 4, 2, 4, 1, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  3,
+                  7,
+                  11
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  6,
+                  10
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8,
+                  12
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  9,
+                  13,
+                  14
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  15
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 938,
+    "title": "Number Constraints · 54",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 2, 3, 4, 2, 4, 1, 3, 4, 3, 2, 1, 3, 1, 4, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  4
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  5
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  2,
+                  3,
+                  7
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  6,
+                  10
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8,
+                  9,
+                  13
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  12
+                ],
+                "op": "=",
+                "target": 3
+              },
+              {
+                "cells": [
+                  14
+                ],
+                "op": "=",
+                "target": 4
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 939,
+    "title": "Number Constraints · 55",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 1, 4, 4, 1, 3, 2, 2, 3, 4, 1, 1, 4, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  8,
+                  5
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  6,
+                  10
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  7,
+                  11
+                ],
+                "op": "×",
+                "target": 2
+              },
+              {
+                "cells": [
+                  9,
+                  13
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  12
+                ],
+                "op": "=",
+                "target": 1
+              },
+              {
+                "cells": [
+                  14,
+                  15
+                ],
+                "op": "×",
+                "target": 6
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 940,
+    "title": "Number Constraints · 56",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 4, 3, 3, 2, 1, 4, 4, 3, 2, 1, 1, 4, 3, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  2,
+                  6
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  3,
+                  7,
+                  11
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  8,
+                  12,
+                  9
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  10,
+                  14
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  13
+                ],
+                "op": "=",
+                "target": 4
+              },
+              {
+                "cells": [
+                  15
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 941,
+    "title": "Number Constraints · 57",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 3, 2, 1, 2, 1, 4, 3, 1, 4, 3, 2, 3, 2, 1, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  3,
+                  7,
+                  6
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  4,
+                  8
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  5,
+                  9,
+                  10
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  14
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 942,
+    "title": "Number Constraints · 58",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 3, 2, 4, 3, 4, 1, 2, 4, 2, 3, 1, 2, 1, 4, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  4,
+                  5
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  3,
+                  7
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  6,
+                  10
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "×",
+                "target": 3
+              },
+              {
+                "cells": [
+                  12,
+                  13,
+                  14
+                ],
+                "op": "×",
+                "target": 8
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 943,
+    "title": "Number Constraints · 59",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 4, 3, 3, 4, 2, 1, 4, 3, 1, 2, 1, 2, 3, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  2
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  3,
+                  7
+                ],
+                "op": "×",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  6,
+                  10
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8,
+                  12
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  9,
+                  13
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  14
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 944,
+    "title": "Number Constraints · 60",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 4, 3, 3, 4, 2, 1, 4, 3, 1, 2, 1, 2, 3, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  4
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  1,
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  5,
+                  6
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  7,
+                  11
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  10,
+                  14
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  15
+                ],
+                "op": "=",
+                "target": 4
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 945,
+    "title": "Number Constraints · 61",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 3, 1, 2, 3, 2, 4, 1, 2, 1, 3, 4, 1, 4, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  2,
+                  6
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  3,
+                  7
+                ],
+                "op": "×",
+                "target": 2
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8,
+                  12,
+                  9
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  10,
+                  14
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  13
+                ],
+                "op": "=",
+                "target": 4
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 946,
+    "title": "Number Constraints · 62",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 3, 4, 2, 2, 4, 1, 3, 3, 1, 2, 4, 4, 2, 3, 1]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  4,
+                  8,
+                  12
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  5,
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  9,
+                  10
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  13,
+                  14
+                ],
+                "op": "×",
+                "target": 6
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 947,
+    "title": "Number Constraints · 63",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 4, 1, 2, 2, 3, 4, 1, 1, 2, 3, 4, 4, 1, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  3,
+                  7
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6,
+                  10
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  8,
+                  12
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  9,
+                  13
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  14
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 948,
+    "title": "Number Constraints · 64",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 1, 2, 4, 4, 2, 1, 3, 2, 3, 4, 1, 1, 4, 3, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  4,
+                  1
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  5,
+                  9,
+                  8
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  10,
+                  11,
+                  14
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  15
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 949,
+    "title": "Number Constraints · 65",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:foundation"
+    ],
+    "challengeLevel": "foundation",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–4 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 3, 4, 2, 2, 1, 3, 4, 3, 4, 2, 1, 4, 2, 1, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–4 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  4,
+                  8
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  1,
+                  5,
+                  6
+                ],
+                "op": "×",
+                "target": 9
+              },
+              {
+                "cells": [
+                  2,
+                  3,
+                  7
+                ],
+                "op": "×",
+                "target": 32
+              },
+              {
+                "cells": [
+                  9,
+                  13
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  10,
+                  14
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  11,
+                  15
+                ],
+                "op": "×",
+                "target": 3
+              },
+              {
+                "cells": [
+                  12
+                ],
+                "op": "=",
+                "target": 4
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 950,
+    "title": "Number Constraints · 66",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 1, 3, 2, 4, 3, 5, 4, 1, 2, 2, 4, 1, 3, 5, 4, 3, 2, 5, 1, 1, 2, 5, 4, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  5,
+                  6
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  7,
+                  12
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8,
+                  13
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  10,
+                  15
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  11,
+                  16
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  17,
+                  22
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  18,
+                  23
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  20,
+                  21
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 951,
+    "title": "Number Constraints · 67",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 5, 4, 3, 4, 2, 3, 5, 1, 3, 5, 2, 1, 4, 5, 4, 1, 3, 2, 1, 3, 4, 2, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  5,
+                  10,
+                  11
+                ],
+                "op": "×",
+                "target": 60
+              },
+              {
+                "cells": [
+                  6,
+                  7,
+                  12
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  8,
+                  13,
+                  18
+                ],
+                "op": "×",
+                "target": 15
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  15,
+                  16,
+                  21
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  17,
+                  22
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 1
+              },
+              {
+                "cells": [
+                  23,
+                  24
+                ],
+                "op": "×",
+                "target": 10
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 952,
+    "title": "Number Constraints · 68",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 5, 3, 2, 4, 3, 4, 2, 5, 1, 4, 2, 1, 3, 5, 2, 1, 5, 4, 3, 5, 3, 4, 1, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  7,
+                  8
+                ],
+                "op": "×",
+                "target": 30
+              },
+              {
+                "cells": [
+                  3,
+                  4,
+                  9
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  5,
+                  10,
+                  6
+                ],
+                "op": "×",
+                "target": 48
+              },
+              {
+                "cells": [
+                  11,
+                  12,
+                  16
+                ],
+                "op": "×",
+                "target": 2
+              },
+              {
+                "cells": [
+                  13,
+                  18
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  15,
+                  20,
+                  21
+                ],
+                "op": "×",
+                "target": 30
+              },
+              {
+                "cells": [
+                  17,
+                  22,
+                  23
+                ],
+                "op": "×",
+                "target": 20
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 953,
+    "title": "Number Constraints · 69",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 5, 4, 1, 1, 5, 3, 2, 4, 2, 1, 4, 3, 5, 5, 4, 2, 1, 3, 4, 3, 1, 5, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  5
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  2,
+                  7,
+                  8
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  3,
+                  4,
+                  9
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  6,
+                  11
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  10,
+                  15
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  12,
+                  17
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  13,
+                  18
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  16,
+                  21,
+                  22
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 4
+              },
+              {
+                "cells": [
+                  23,
+                  24
+                ],
+                "op": "+",
+                "target": 7
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 954,
+    "title": "Number Constraints · 70",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 5, 3, 4, 1, 5, 4, 1, 3, 2, 4, 3, 2, 1, 5, 1, 2, 4, 5, 3, 3, 1, 5, 2, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5,
+                  6
+                ],
+                "op": "×",
+                "target": 40
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "−",
+                "target": 2
+              },
+              {
+                "cells": [
+                  3,
+                  8
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  4,
+                  9,
+                  14
+                ],
+                "op": "×",
+                "target": 10
+              },
+              {
+                "cells": [
+                  7,
+                  12
+                ],
+                "op": "×",
+                "target": 2
+              },
+              {
+                "cells": [
+                  10,
+                  11,
+                  15
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  13,
+                  18
+                ],
+                "op": "×",
+                "target": 5
+              },
+              {
+                "cells": [
+                  16,
+                  17
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  19,
+                  24,
+                  23
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  20,
+                  21
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  22
+                ],
+                "op": "=",
+                "target": 5
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 955,
+    "title": "Number Constraints · 71",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 4, 3, 1, 2, 4, 2, 5, 3, 1, 3, 5, 1, 2, 4, 1, 3, 2, 4, 5, 2, 1, 4, 5, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5,
+                  6
+                ],
+                "op": "×",
+                "target": 40
+              },
+              {
+                "cells": [
+                  1,
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  7,
+                  8
+                ],
+                "op": "−",
+                "target": 2
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "×",
+                "target": 15
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  15,
+                  16,
+                  20
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  17,
+                  22,
+                  23
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  18
+                ],
+                "op": "=",
+                "target": 4
+              },
+              {
+                "cells": [
+                  21
+                ],
+                "op": "=",
+                "target": 1
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 956,
+    "title": "Number Constraints · 72",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[1, 3, 2, 4, 5, 4, 2, 5, 3, 1, 5, 4, 3, 1, 2, 2, 1, 4, 5, 3, 3, 5, 1, 2, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  3,
+                  4,
+                  8
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  5,
+                  6
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  7,
+                  12,
+                  13
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  9,
+                  14
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  10,
+                  15,
+                  11
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  16,
+                  21
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  17,
+                  18,
+                  22
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  19,
+                  24
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 3
+              },
+              {
+                "cells": [
+                  23
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 957,
+    "title": "Number Constraints · 73",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 1, 5, 3, 2, 2, 4, 1, 5, 3, 1, 5, 3, 2, 4, 3, 2, 4, 1, 5, 5, 3, 2, 4, 1]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  2,
+                  7
+                ],
+                "op": "×",
+                "target": 5
+              },
+              {
+                "cells": [
+                  3,
+                  4
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  5,
+                  10,
+                  11
+                ],
+                "op": "×",
+                "target": 10
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8,
+                  13,
+                  14
+                ],
+                "op": "×",
+                "target": 40
+              },
+              {
+                "cells": [
+                  9
+                ],
+                "op": "=",
+                "target": 3
+              },
+              {
+                "cells": [
+                  12,
+                  17
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  15,
+                  20
+                ],
+                "op": "−",
+                "target": 2
+              },
+              {
+                "cells": [
+                  16,
+                  21
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  18,
+                  19
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  22,
+                  23
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 958,
+    "title": "Number Constraints · 74",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 4, 3, 1, 2, 2, 5, 4, 3, 1, 1, 2, 5, 4, 3, 4, 3, 1, 2, 5, 3, 1, 2, 5, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  2,
+                  7
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  3,
+                  4
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6,
+                  11,
+                  12
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  10,
+                  15
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  13,
+                  14
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  16,
+                  17
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  18,
+                  23
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  19,
+                  24
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  20,
+                  21
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  22
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 959,
+    "title": "Number Constraints · 75",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 5, 1, 3, 2, 5, 1, 3, 2, 4, 2, 4, 5, 1, 3, 3, 2, 4, 5, 1, 1, 3, 2, 4, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  3,
+                  4,
+                  8
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  9,
+                  14
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  12,
+                  13,
+                  18
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  15,
+                  16
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  17,
+                  22,
+                  21
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  19,
+                  24,
+                  23
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 960,
+    "title": "Number Constraints · 76",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 4, 3, 5, 1, 4, 3, 1, 2, 5, 5, 2, 4, 1, 3, 1, 5, 2, 3, 4, 3, 1, 5, 4, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  1,
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8,
+                  13,
+                  18
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  12,
+                  17,
+                  16
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  15,
+                  20
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  21,
+                  22
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  23,
+                  24
+                ],
+                "op": "÷",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 961,
+    "title": "Number Constraints · 77",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 5, 2, 4, 1, 4, 3, 1, 2, 5, 5, 1, 4, 3, 2, 1, 2, 3, 5, 4, 2, 4, 5, 1, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  2,
+                  3,
+                  7
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "×",
+                "target": 5
+              },
+              {
+                "cells": [
+                  5,
+                  6
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  8,
+                  13
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  10,
+                  15
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  11,
+                  16
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  12,
+                  17
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  18,
+                  23
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  20,
+                  21
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  22
+                ],
+                "op": "=",
+                "target": 5
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 962,
+    "title": "Number Constraints · 78",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 5, 1, 4, 4, 5, 1, 3, 2, 1, 4, 2, 5, 3, 2, 1, 3, 4, 5, 5, 3, 4, 2, 1]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  5,
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  8,
+                  13,
+                  18
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  12,
+                  17
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  15,
+                  16,
+                  21
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 5
+              },
+              {
+                "cells": [
+                  22,
+                  23,
+                  24
+                ],
+                "op": "+",
+                "target": 7
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 963,
+    "title": "Number Constraints · 79",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 5, 1, 4, 3, 3, 4, 2, 1, 5, 1, 3, 4, 5, 2, 5, 1, 3, 2, 4, 4, 2, 5, 3, 1]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "×",
+                "target": 10
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  5,
+                  6,
+                  7
+                ],
+                "op": "×",
+                "target": 24
+              },
+              {
+                "cells": [
+                  8,
+                  13
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  12,
+                  17
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  15,
+                  20
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  16,
+                  21
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  18,
+                  23
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  22
+                ],
+                "op": "=",
+                "target": 5
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 964,
+    "title": "Number Constraints · 80",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 5, 3, 1, 4, 5, 4, 2, 3, 1, 4, 1, 5, 2, 3, 1, 3, 4, 5, 2, 3, 2, 1, 4, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  5,
+                  10
+                ],
+                "op": "×",
+                "target": 20
+              },
+              {
+                "cells": [
+                  6,
+                  11
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  7,
+                  8,
+                  12
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  13,
+                  18
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  14,
+                  19,
+                  24
+                ],
+                "op": "×",
+                "target": 30
+              },
+              {
+                "cells": [
+                  15,
+                  16
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  17,
+                  22
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  20,
+                  21
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  23
+                ],
+                "op": "=",
+                "target": 4
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 965,
+    "title": "Number Constraints · 81",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 3, 2, 5, 1, 3, 5, 4, 1, 2, 5, 1, 3, 2, 4, 2, 4, 1, 3, 5, 1, 2, 5, 4, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  1,
+                  2,
+                  7
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  3,
+                  4
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  6,
+                  11
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  8,
+                  13
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  9,
+                  14
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  10,
+                  15
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  12,
+                  17
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  16,
+                  21
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  18,
+                  19,
+                  23
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 1
+              },
+              {
+                "cells": [
+                  22
+                ],
+                "op": "=",
+                "target": 5
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 966,
+    "title": "Number Constraints · 82",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 1, 4, 5, 2, 2, 5, 3, 4, 1, 5, 3, 1, 2, 4, 4, 2, 5, 1, 3, 1, 4, 2, 3, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  1,
+                  6
+                ],
+                "op": "×",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  7,
+                  3
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  8,
+                  13
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  10,
+                  11,
+                  12
+                ],
+                "op": "×",
+                "target": 15
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  15,
+                  20
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  16,
+                  17
+                ],
+                "op": "×",
+                "target": 10
+              },
+              {
+                "cells": [
+                  18,
+                  23
+                ],
+                "op": "×",
+                "target": 3
+              },
+              {
+                "cells": [
+                  21,
+                  22
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  24
+                ],
+                "op": "=",
+                "target": 5
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 967,
+    "title": "Number Constraints · 83",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 3, 1, 2, 5, 3, 2, 4, 5, 1, 5, 1, 2, 4, 3, 2, 5, 3, 1, 4, 1, 4, 5, 3, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5,
+                  6
+                ],
+                "op": "×",
+                "target": 24
+              },
+              {
+                "cells": [
+                  1,
+                  2,
+                  3
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  4,
+                  9
+                ],
+                "op": "×",
+                "target": 5
+              },
+              {
+                "cells": [
+                  7,
+                  8
+                ],
+                "op": "×",
+                "target": 20
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  12,
+                  13,
+                  18
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  14,
+                  19
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  15,
+                  16
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  17,
+                  22,
+                  21
+                ],
+                "op": "×",
+                "target": 60
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 1
+              },
+              {
+                "cells": [
+                  23,
+                  24
+                ],
+                "op": "×",
+                "target": 6
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 968,
+    "title": "Number Constraints · 84",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 4, 5, 3, 1, 5, 1, 3, 4, 2, 1, 3, 2, 5, 4, 3, 2, 4, 1, 5, 4, 5, 1, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  6
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  2,
+                  3,
+                  8
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  4,
+                  9,
+                  14
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  5,
+                  10
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  7,
+                  12
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  11,
+                  16
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  13,
+                  18
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  15,
+                  20
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  17,
+                  22
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  19,
+                  24
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  21
+                ],
+                "op": "=",
+                "target": 5
+              },
+              {
+                "cells": [
+                  23
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 969,
+    "title": "Number Constraints · 85",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:standard"
+    ],
+    "challengeLevel": "standard",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–5 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[2, 1, 5, 4, 3, 5, 2, 3, 1, 4, 3, 5, 4, 2, 1, 4, 3, 1, 5, 2, 1, 4, 2, 3, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–5 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 5,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  5
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  6
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  2,
+                  3,
+                  4
+                ],
+                "op": "×",
+                "target": 60
+              },
+              {
+                "cells": [
+                  7,
+                  8,
+                  13
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  9,
+                  14
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  10,
+                  11,
+                  12
+                ],
+                "op": "×",
+                "target": 60
+              },
+              {
+                "cells": [
+                  15,
+                  20
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  16,
+                  17
+                ],
+                "op": "×",
+                "target": 3
+              },
+              {
+                "cells": [
+                  18,
+                  19,
+                  24
+                ],
+                "op": "×",
+                "target": 50
+              },
+              {
+                "cells": [
+                  21,
+                  22
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  23
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 970,
+    "title": "Number Constraints · 86",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 5, 3, 1, 6, 2, 3, 6, 5, 4, 2, 1, 2, 4, 1, 6, 3, 5, 6, 1, 2, 5, 4, 3, 5, 2, 6, 3, 1, 4, 1, 3, 4, 2, 5, 6]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  6
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  1,
+                  7
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  2,
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  3,
+                  4
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  5,
+                  11,
+                  17
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  10,
+                  16
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  14,
+                  20
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  15,
+                  21
+                ],
+                "op": "×",
+                "target": 30
+              },
+              {
+                "cells": [
+                  18,
+                  19,
+                  25
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  22,
+                  28
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  23,
+                  29
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  24,
+                  30,
+                  31
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  26,
+                  27
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  32,
+                  33
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  34,
+                  35
+                ],
+                "op": "+",
+                "target": 11
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 971,
+    "title": "Number Constraints · 87",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 5, 2, 3, 4, 1, 3, 6, 5, 1, 2, 4, 2, 4, 1, 5, 3, 6, 1, 3, 6, 4, 5, 2, 5, 2, 4, 6, 1, 3, 4, 1, 3, 2, 6, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  6
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  1,
+                  7
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  2,
+                  8
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  3,
+                  9
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  10,
+                  11,
+                  16
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  14,
+                  20
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  15,
+                  21
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  17,
+                  23,
+                  29
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  18,
+                  19
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  22,
+                  28
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  24,
+                  25,
+                  31
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  26,
+                  32,
+                  33
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  27
+                ],
+                "op": "=",
+                "target": 6
+              },
+              {
+                "cells": [
+                  30
+                ],
+                "op": "=",
+                "target": 4
+              },
+              {
+                "cells": [
+                  34,
+                  35
+                ],
+                "op": "+",
+                "target": 11
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 972,
+    "title": "Number Constraints · 88",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 2, 1, 5, 6, 3, 5, 3, 6, 4, 1, 2, 3, 1, 5, 2, 4, 6, 1, 4, 3, 6, 2, 5, 2, 6, 4, 3, 5, 1, 6, 5, 2, 1, 3, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  6
+                ],
+                "op": "×",
+                "target": 40
+              },
+              {
+                "cells": [
+                  2,
+                  8
+                ],
+                "op": "÷",
+                "target": 6
+              },
+              {
+                "cells": [
+                  3,
+                  4
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  5,
+                  11
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  7,
+                  13
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  9,
+                  10
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  12,
+                  18
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  14,
+                  20,
+                  21
+                ],
+                "op": "+",
+                "target": 14
+              },
+              {
+                "cells": [
+                  15,
+                  16
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  17,
+                  23
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  19,
+                  25
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  22,
+                  28,
+                  27
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  24,
+                  30
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  26,
+                  32,
+                  33
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  29,
+                  35,
+                  34
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  31
+                ],
+                "op": "=",
+                "target": 5
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 973,
+    "title": "Number Constraints · 89",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 4, 2, 6, 5, 1, 1, 3, 4, 5, 2, 6, 6, 1, 3, 2, 4, 5, 5, 6, 1, 4, 3, 2, 2, 5, 6, 3, 1, 4, 4, 2, 5, 1, 6, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  2,
+                  8
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  3,
+                  9
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  4,
+                  5,
+                  11
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  6,
+                  12
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  7,
+                  13
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  10,
+                  16,
+                  17
+                ],
+                "op": "×",
+                "target": 40
+              },
+              {
+                "cells": [
+                  14,
+                  15
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  18,
+                  19
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  20,
+                  21
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  22,
+                  23
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  24,
+                  25,
+                  26
+                ],
+                "op": "+",
+                "target": 13
+              },
+              {
+                "cells": [
+                  27,
+                  33
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  28,
+                  34
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  29,
+                  35
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  30,
+                  31
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  32
+                ],
+                "op": "=",
+                "target": 5
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 974,
+    "title": "Number Constraints · 90",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 2, 3, 6, 4, 1, 1, 4, 6, 5, 3, 2, 4, 6, 1, 2, 5, 3, 3, 5, 2, 4, 1, 6, 6, 1, 4, 3, 2, 5, 2, 3, 5, 1, 6, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  6
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  1,
+                  7
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  4,
+                  10
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  5,
+                  11
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  12,
+                  18
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  13,
+                  19
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  14,
+                  15
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  16,
+                  22
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  17,
+                  23,
+                  29
+                ],
+                "op": "+",
+                "target": 14
+              },
+              {
+                "cells": [
+                  20,
+                  26
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  21,
+                  27,
+                  28
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  24,
+                  25
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  30,
+                  31
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  32,
+                  33,
+                  34
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  35
+                ],
+                "op": "=",
+                "target": 4
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 975,
+    "title": "Number Constraints · 91",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 1, 3, 6, 2, 4, 4, 2, 5, 1, 6, 3, 6, 4, 2, 5, 3, 1, 2, 5, 1, 3, 4, 6, 3, 6, 4, 2, 1, 5, 1, 3, 6, 4, 5, 2]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  12,
+                  13,
+                  19
+                ],
+                "op": "+",
+                "target": 15
+              },
+              {
+                "cells": [
+                  14,
+                  15
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  16,
+                  22
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  17,
+                  23
+                ],
+                "op": "÷",
+                "target": 6
+              },
+              {
+                "cells": [
+                  18,
+                  24
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  20,
+                  21
+                ],
+                "op": "×",
+                "target": 3
+              },
+              {
+                "cells": [
+                  25,
+                  26
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  27,
+                  33
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  28,
+                  34,
+                  29
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  30,
+                  31,
+                  32
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  35
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 976,
+    "title": "Number Constraints · 92",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 4, 3, 6, 2, 1, 1, 3, 6, 5, 4, 2, 6, 2, 4, 3, 1, 5, 3, 1, 2, 4, 5, 6, 4, 5, 1, 2, 6, 3, 2, 6, 5, 1, 3, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "×",
+                "target": 20
+              },
+              {
+                "cells": [
+                  2,
+                  8
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  3,
+                  4
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  5,
+                  11
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  6,
+                  12
+                ],
+                "op": "÷",
+                "target": 6
+              },
+              {
+                "cells": [
+                  7,
+                  13,
+                  14
+                ],
+                "op": "×",
+                "target": 24
+              },
+              {
+                "cells": [
+                  9,
+                  10,
+                  16
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  15,
+                  21
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  17,
+                  23
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  18,
+                  19
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  20,
+                  26,
+                  27
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  22,
+                  28
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  24,
+                  30
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  25,
+                  31
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  29,
+                  35
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  32,
+                  33
+                ],
+                "op": "×",
+                "target": 5
+              },
+              {
+                "cells": [
+                  34
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 977,
+    "title": "Number Constraints · 93",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 6, 3, 4, 1, 2, 1, 4, 5, 2, 3, 6, 6, 1, 2, 3, 4, 5, 4, 3, 6, 5, 2, 1, 2, 5, 4, 1, 6, 3, 3, 2, 1, 6, 5, 4]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  10,
+                  16
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  11,
+                  17,
+                  23
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  12,
+                  18
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  13,
+                  19
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  14,
+                  15
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  20,
+                  21,
+                  26
+                ],
+                "op": "+",
+                "target": 15
+              },
+              {
+                "cells": [
+                  22,
+                  28
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  24,
+                  30
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  25,
+                  31,
+                  32
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  27,
+                  33,
+                  34
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  29,
+                  35
+                ],
+                "op": "+",
+                "target": 7
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 978,
+    "title": "Number Constraints · 94",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[4, 2, 6, 5, 1, 3, 6, 1, 5, 2, 3, 4, 2, 4, 1, 3, 6, 5, 3, 5, 4, 6, 2, 1, 1, 6, 3, 4, 5, 2, 5, 3, 2, 1, 4, 6]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  4,
+                  10
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  5,
+                  11
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  6,
+                  12
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  7,
+                  13
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8,
+                  9,
+                  14
+                ],
+                "op": "×",
+                "target": 10
+              },
+              {
+                "cells": [
+                  15,
+                  21
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  16,
+                  17,
+                  23
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  18,
+                  24
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  19,
+                  20,
+                  26
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  22,
+                  28
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  25,
+                  31,
+                  30
+                ],
+                "op": "×",
+                "target": 90
+              },
+              {
+                "cells": [
+                  27,
+                  33,
+                  34
+                ],
+                "op": "×",
+                "target": 16
+              },
+              {
+                "cells": [
+                  29,
+                  35
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  32
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 979,
+    "title": "Number Constraints · 95",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[5, 2, 1, 3, 6, 4, 4, 3, 6, 2, 1, 5, 6, 5, 2, 4, 3, 1, 3, 6, 5, 1, 4, 2, 2, 1, 4, 6, 5, 3, 1, 4, 3, 5, 2, 6]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  6
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "×",
+                "target": 2
+              },
+              {
+                "cells": [
+                  3,
+                  9,
+                  10
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "×",
+                "target": 24
+              },
+              {
+                "cells": [
+                  7,
+                  13,
+                  14
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 6
+              },
+              {
+                "cells": [
+                  11,
+                  17
+                ],
+                "op": "×",
+                "target": 5
+              },
+              {
+                "cells": [
+                  12,
+                  18
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  15,
+                  21,
+                  16
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  19,
+                  20
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  22,
+                  28,
+                  23
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  24,
+                  25
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  26,
+                  32,
+                  33
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  27
+                ],
+                "op": "=",
+                "target": 6
+              },
+              {
+                "cells": [
+                  29,
+                  35
+                ],
+                "op": "×",
+                "target": 18
+              },
+              {
+                "cells": [
+                  30,
+                  31
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  34
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 980,
+    "title": "Number Constraints · 96",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 1, 5, 6, 4, 6, 5, 4, 2, 3, 1, 2, 4, 3, 1, 5, 6, 4, 6, 2, 3, 1, 5, 1, 3, 5, 6, 4, 2, 5, 1, 6, 4, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  6
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  1,
+                  7
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  10,
+                  16
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  11,
+                  17
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  12,
+                  18
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  13,
+                  14
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  15,
+                  21
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  19,
+                  25,
+                  26
+                ],
+                "op": "+",
+                "target": 14
+              },
+              {
+                "cells": [
+                  20
+                ],
+                "op": "=",
+                "target": 2
+              },
+              {
+                "cells": [
+                  22,
+                  23,
+                  29
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  24,
+                  30
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  27,
+                  33,
+                  28
+                ],
+                "op": "+",
+                "target": 14
+              },
+              {
+                "cells": [
+                  31,
+                  32
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  34,
+                  35
+                ],
+                "op": "+",
+                "target": 5
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 981,
+    "title": "Number Constraints · 97",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 2, 4, 1, 5, 6, 6, 5, 3, 2, 1, 4, 5, 3, 2, 4, 6, 1, 1, 6, 5, 3, 4, 2, 2, 4, 1, 6, 3, 5, 4, 1, 6, 5, 2, 3]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  3
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  10,
+                  11
+                ],
+                "op": "×",
+                "target": 20
+              },
+              {
+                "cells": [
+                  5
+                ],
+                "op": "=",
+                "target": 6
+              },
+              {
+                "cells": [
+                  6,
+                  12
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  7,
+                  13,
+                  8
+                ],
+                "op": "×",
+                "target": 45
+              },
+              {
+                "cells": [
+                  9,
+                  15
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  14,
+                  20,
+                  21
+                ],
+                "op": "×",
+                "target": 30
+              },
+              {
+                "cells": [
+                  16,
+                  17,
+                  23
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  18,
+                  19
+                ],
+                "op": "÷",
+                "target": 6
+              },
+              {
+                "cells": [
+                  22,
+                  28
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  24,
+                  30
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  25,
+                  31,
+                  26
+                ],
+                "op": "×",
+                "target": 4
+              },
+              {
+                "cells": [
+                  27,
+                  33,
+                  34
+                ],
+                "op": "×",
+                "target": 60
+              },
+              {
+                "cells": [
+                  29,
+                  35
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  32
+                ],
+                "op": "=",
+                "target": 6
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 982,
+    "title": "Number Constraints · 98",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 3, 2, 5, 1, 4, 3, 4, 5, 6, 2, 1, 5, 6, 1, 2, 4, 3, 2, 5, 4, 1, 3, 6, 4, 1, 6, 3, 5, 2, 1, 2, 3, 4, 6, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1,
+                  2
+                ],
+                "op": "×",
+                "target": 36
+              },
+              {
+                "cells": [
+                  3,
+                  4
+                ],
+                "op": "÷",
+                "target": 5
+              },
+              {
+                "cells": [
+                  5,
+                  11
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "×",
+                "target": 30
+              },
+              {
+                "cells": [
+                  10,
+                  16
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  12,
+                  13
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  14,
+                  15,
+                  21
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  17,
+                  23
+                ],
+                "op": "÷",
+                "target": 2
+              },
+              {
+                "cells": [
+                  18,
+                  24,
+                  25
+                ],
+                "op": "×",
+                "target": 8
+              },
+              {
+                "cells": [
+                  19,
+                  20,
+                  26
+                ],
+                "op": "×",
+                "target": 120
+              },
+              {
+                "cells": [
+                  22,
+                  28
+                ],
+                "op": "−",
+                "target": 2
+              },
+              {
+                "cells": [
+                  27,
+                  33
+                ],
+                "op": "−",
+                "target": 1
+              },
+              {
+                "cells": [
+                  29,
+                  35,
+                  34
+                ],
+                "op": "×",
+                "target": 60
+              },
+              {
+                "cells": [
+                  30,
+                  31
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  32
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 983,
+    "title": "Number Constraints · 99",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[6, 3, 1, 4, 2, 5, 2, 4, 3, 1, 5, 6, 5, 1, 4, 3, 6, 2, 1, 6, 5, 2, 3, 4, 4, 5, 2, 6, 1, 3, 3, 2, 6, 5, 4, 1]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  2,
+                  3,
+                  9
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  6,
+                  12,
+                  13
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  7,
+                  8
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  10,
+                  11
+                ],
+                "op": "+",
+                "target": 11
+              },
+              {
+                "cells": [
+                  14,
+                  20
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  15,
+                  21
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  16,
+                  22
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  17,
+                  23
+                ],
+                "op": "+",
+                "target": 6
+              },
+              {
+                "cells": [
+                  18,
+                  19
+                ],
+                "op": "+",
+                "target": 7
+              },
+              {
+                "cells": [
+                  24,
+                  25
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  26,
+                  32
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  27,
+                  28,
+                  29
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  30,
+                  31
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  33,
+                  34
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  35
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 984,
+    "title": "Number Constraints · 100",
+    "focus": "number constraints",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:stretch"
+    ],
+    "challengeLevel": "stretch",
+    "fixed": true,
+    "setSize": 3,
+    "estimatedMinutes": 8,
+    "variations": [
+      {
+        "prompt": "Enter 1–6 once in each row and column. Each labelled cage must meet its target using the shown operation. For subtraction and division, use the larger value first.",
+        "hint": "List combinations that meet a small cage target, then eliminate those that would repeat a digit in its row or column.",
+        "parts": [
+          {
+            "id": "0",
+            "kind": "cage-grid",
+            "prompt": "Solve the puzzle.",
+            "marks": 3,
+            "answer": "[3, 1, 4, 5, 6, 2, 1, 4, 3, 2, 5, 6, 6, 5, 2, 1, 3, 4, 2, 6, 5, 3, 4, 1, 5, 2, 6, 4, 1, 3, 4, 3, 1, 6, 2, 5]",
+            "explanation": "The completed grid meets every cage target and uses 1–6 exactly once in each row and column. Combine arithmetic possibilities with row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 6,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  2,
+                  3,
+                  4
+                ],
+                "op": "×",
+                "target": 120
+              },
+              {
+                "cells": [
+                  5,
+                  11
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "÷",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8,
+                  9
+                ],
+                "op": "×",
+                "target": 6
+              },
+              {
+                "cells": [
+                  10,
+                  16,
+                  17
+                ],
+                "op": "+",
+                "target": 12
+              },
+              {
+                "cells": [
+                  12,
+                  18
+                ],
+                "op": "×",
+                "target": 12
+              },
+              {
+                "cells": [
+                  13,
+                  14
+                ],
+                "op": "−",
+                "target": 3
+              },
+              {
+                "cells": [
+                  15,
+                  21
+                ],
+                "op": "×",
+                "target": 3
+              },
+              {
+                "cells": [
+                  19,
+                  20,
+                  25
+                ],
+                "op": "+",
+                "target": 13
+              },
+              {
+                "cells": [
+                  22,
+                  23,
+                  29
+                ],
+                "op": "+",
+                "target": 8
+              },
+              {
+                "cells": [
+                  24,
+                  30
+                ],
+                "op": "×",
+                "target": 20
+              },
+              {
+                "cells": [
+                  26,
+                  27
+                ],
+                "op": "+",
+                "target": 10
+              },
+              {
+                "cells": [
+                  28,
+                  34,
+                  33
+                ],
+                "op": "+",
+                "target": 9
+              },
+              {
+                "cells": [
+                  31,
+                  32
+                ],
+                "op": "÷",
+                "target": 3
+              },
+              {
+                "cells": [
+                  35
+                ],
+                "op": "=",
+                "target": 5
               }
             ],
             "validation": {

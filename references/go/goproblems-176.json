@@ -1,0 +1,30 @@
+{
+  "id": 176,
+  "rank": {
+    "value": 30,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]SZ[19]RU[Japanese]PW[White]PB[Black]GN[White (W) vs. Black (B)]DT[1999-07-28]TM[30:00(5x1:00)]AW[ja][la][jb][lb][kc][kd][ke][le]AB[ia][ma][ib][mb][jc][lc][jd][ld][md][ie][ne]C[black to quickly capture some white stones\n](;B[kb];W[ka];B[kb]C[RIGHT\nsnapback\n])(;B[mf];W[kb])(;B[jf];W[kb])(;B[ka];W[kb])(;B[kg];W[kb];B[jf];W[mf]))",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "2000-08-29T15:32:20+00:00",
+  "problemLevel": 0,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 10,
+  "attempts": {
+    "solved": 77429,
+    "failed": 10118,
+    "tries": 87547,
+    "speedSolved": 316,
+    "speedPlay": 405
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/176"
+}

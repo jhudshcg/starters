@@ -1,0 +1,30 @@
+{
+  "id": 25,
+  "rank": {
+    "value": 9,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]C[black to get a ko\r\n]\r\nAW[jn][kn][jo][lo][jp][kp][gq][hq][iq][jq][gr][jr]\r\nAB[hm][jm][km][lm][in][mn][ho][mo][ep][gp][hp][ip][mp][fq][kq][lq][mq][fr][kr][fs]\r\n(;B[js];W[is]\r\n(;B[hs];W[gs];B[ir];W[hr]\r\n(;B[is];W[ks])\r\n\r\n(;B[ks];W[is])\r\n)\r\n\r\n(;B[gs];W[hs])\r\n)\r\n\r\n(;B[gs];W[is]\r\n(;B[hs];W[hr];B[ks];W[js])\r\n\r\n(;B[hr];W[hs])\r\n)\r\n\r\n(;B[hs];W[gs]\r\n(;B[js];W[is]\r\n(;B[ir];W[hr]\r\n(;B[is];W[ks])\r\n\r\n(;B[ks];W[is])\r\n)\r\n\r\n(;B[ks];W[hr])\r\n)\r\n\r\n(;B[is];W[js])\r\n)\r\n\r\n(;B[is];W[hs]\r\n(;B[js];W[ir]\r\n(;B[ks];W[gs])\r\n\r\n(;B[gs];W[ks])\r\n)\r\n\r\n(;B[gs];W[ir];B[hr]C[RIGHT\r\nblack gets a ko\r\n])\r\n\r\n(;B[js];W[ir]\r\n(;B[ks];W[gs])\r\n\r\n(;B[gs];W[ks])\r\n)\r\n)\r\n\r\n)",
+  "source": "",
+  "playerColor": "black",
+  "createdAt": "1999-08-07T19:30:19+00:00",
+  "problemLevel": 21,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 38,
+  "attempts": {
+    "solved": 6117,
+    "failed": 16554,
+    "tries": 22671,
+    "speedSolved": 1,
+    "speedPlay": 16
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/25"
+}

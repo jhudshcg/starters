@@ -1,0 +1,30 @@
+{
+  "id": 300,
+  "rank": {
+    "value": 28,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "tesuji",
+  "specificGenre": "tesuji",
+  "description": "",
+  "sgf": "(;SZ[19]AB[dr]AB[cp]AB[cr]AW[co]AW[bo]AW[bp]AW[br]AW[bq]AB[gq]AB[fq]AW[fo]AW[go]AB[hp]AW[dp]AW[dq]AB[cq]AW[eo]AW[ep]AB[do]AB[dn]AB[cn]AB[bn]AB[an]GM[1]FF[4]CA[UTF-8]RU[Japanese]KM[0]TM[1800,0,30,5]PW[kiet]PB[adam]AE[eq]AE[cl]AE[bl]AE[dm]AE[hb]AE[hc]AE[hd]AE[jc]AE[ic]AE[ib]AE[jb]AE[lb]AE[kb]AE[kc]AE[kd]AE[jd]AE[id]AE[ie]AE[je]AE[mc]AE[nc]PL[W]\n(;W[er];B[eq]\n(;W[ds]C[correct playRIGHT])\n(;W[cs]C[correct playRIGHT])\n(;W[fr];B[gr]C[this exchange just makes black more solid]\n(;W[ds]C[RIGHT])\n(;W[cs]C[RIGHT]))\n(;W[es]C[RIGHT]))\n(;W[eq];B[er]C[now balack is safe])\n(;W[ho];B[eq])\n(;W[en];B[eq])\n(;W[bs];B[eq];W[ao]C[white lives but black does too])\n(;W[ao];B[eq]C[white lives but black does too])\n(;W[gp];B[eq]))",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2000-12-04T00:28:45+00:00",
+  "problemLevel": 2,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 18,
+  "attempts": {
+    "solved": 73258,
+    "failed": 20654,
+    "tries": 93912,
+    "speedSolved": 39,
+    "speedPlay": 72
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/300"
+}

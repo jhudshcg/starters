@@ -19,9 +19,10 @@ export const focusNames = {iteration:'Iteration',selection:'Selection',functions
 Object.assign(focusNames, Object.fromEntries(['validation','arrays','operators','data types','strings','lists','records','boolean logic','nested iteration','input output','robust code','testing','sorting','design','collections','code style'].map(f=>[f,f[0].toUpperCase()+f.slice(1)])));
 Object.assign(focusNames, {"CA1.1": "CA1.1 · Computational thinking", "CA1.2": "CA1.2 · Algorithmic design", "CA1.3": "CA1.3 · Problem-solving strategies", "CA2.1": "CA2.1 · Data types", "CA2.2": "CA2.2 · Variables and constants", "CA2.3": "CA2.3 · Data structures", "CA2.4": "CA2.4 · Operators", "CA2.5": "CA2.5 · Input and output", "CA2.6": "CA2.6 · Sequence, selection and iteration", "CA2.7": "CA2.7 · Functions and procedures", "CA2.8": "CA2.8 · Validation", "CA2.9": "CA2.9 · Design and code style", "CA2.10": "CA2.10 · Robust code", "CA2.11": "CA2.11 · Searching and sorting", "CA2.12": "CA2.12 · Testing"});
 Object.assign(focusNames, {"logic grids": "Logic grids", "logic equations": "Logic equations", "tangrams": "Tangram silhouettes", "cover paths": "Cover every dot", "sudoku": "Sudoku", "number constraints": "Arithmetic cages", "sequences": "Sequences", "classic maths": "Classic maths"});
-export const challengeLevels = {all:'Mixed challenge',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
-export const puzzlePool = (focus, level='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level));
-export const availableChallenges = focus => Object.keys(challengeLevels).filter(level=>puzzlePool(focus,level).length>=3);
+export const challengeLevels = {all:'Mixed challenge',beginner:'Beginner',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
+export const challengeLabel = (level,focus) => focus==='go'?({all:'Mixed challenge',beginner:'Beginner · 25k+',foundation:'Foundation · 18–24k',standard:'Standard · 12–17k',stretch:'Stretch · 11k and stronger'}[level]??challengeLevels[level]):challengeLevels[level];
+export const puzzlePool = (focus, level='all', topic='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level)&&(topic==='all'||q.tags.includes(`maths:${topic}`)));
+export const availableChallenges = (focus,topic='all') => Object.keys(challengeLevels).filter(level=>puzzlePool(focus,level,topic).length>=3);
 export const focuses = type => [...new Set(banks[type].filter(q=>!q.retired).map(q => q.focus))];
 export const examSubtopics = focus => subtopicOptions(banks[1],focus);
 // Sequence only through selectable references, so every step has bank coverage.
@@ -117,7 +118,15 @@ export function choose(type, focus, previous = null, mode = 'new', challengeLeve
       if(!options.length)throw Error('These questions have no other matching permutation. Choose a new set.');
       return {slot:e.slot,variation:pick(options)};
     });
-    return {...resolve({...previous,version:BANK_VERSION,entries}),examSubtopic:type===1?subtopic:'all'};
+    return {...resolve({...previous,version:BANK_VERSION,entries}),examSubtopic:type===1?subtopic:'all',mathsTopic:type===0&&focus==='classic maths'?subtopic:'all'};
+  }
+  if(type===0) {
+    const topic=focus==='classic maths'?subtopic:'all',pool=puzzlePool(focus,challengeLevel,topic);
+    if(pool.length<3||pool.length===3&&previous&&slotsKey(pool)===slotsKey(previous.entries))throw Error('No other question combination matches this selection. Use Get new permutation.');
+    const remaining=pool.slice(),selected=[];
+    for(let i=0;i<3;i++)selected.push(remaining.splice(Math.floor(Math.random()*remaining.length),1)[0]);
+    if(previous&&slotsKey(selected)===slotsKey(previous.entries))selected[2]=pick(remaining);
+    return {...resolve({version:BANK_VERSION,type,entries:selected.map(q=>({slot:q.slot,variation:pick(variationPool(q))})),minutes:previous?.minutes??null}),mathsTopic:topic};
   }
   // Choose the best matching combinations before excluding the last set: never
   // weaken the filter just to manufacture another combination.
@@ -146,6 +155,7 @@ export function validateBank() {
         if(v.code && v.code.split('\n').filter(l=>l.trim()&&!l.trim().startsWith('#')).length>12) errors.push(`${q.title}: too many lines`);
         v.parts.forEach((p,j)=>{
           if(!Number.isInteger(p.marks)||p.marks<1||p.marks>3) errors.push(`${q.title}: invalid marks`);
+          if(p.kind==='algebra' && (!Array.isArray(p.variables)||!p.variables.length||p.variables.some(v=>!/^[a-z]$/.test(v))||!['equivalent','simplified','expanded','factorised','rearranged'].includes(p.algebraForm)||!Number.isInteger(p.equivalentMarks)||p.equivalentMarks<0||p.equivalentMarks>=p.marks)) errors.push(`${q.title}: invalid algebra marking policy`);
           if(p.options && !p.options.includes(p.answer)) errors.push(`${q.title} V${i}: answer absent from options`);
           if(p.termRules!==undefined) {
             const strings=list=>Array.isArray(list)&&list.length>0&&list.every(s=>typeof s==='string'&&s.trim()===s&&s.length>0);

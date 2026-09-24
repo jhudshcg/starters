@@ -1,0 +1,30 @@
+{
+  "id": 497,
+  "rank": {
+    "value": 10,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[fa][fb][hb][ib][kb][mb][fc][kc][fd][kd][ke][ff][gf][hf][if][jf][kf]\r\nAB[ga][gb][jb][gc][hc][jc][hd][jd][he][ie][je]PL[2]C[white to kill\r\n]\r\n(;W[ia];B[ja]\r\n(;W[ic]C[RIGHT\r\ndead shape\r\n])\r\n\r\n(;W[ka];B[ic])\r\n\r\n(;W[ha];B[ic])\r\n)\r\n\r\n(;W[ja];B[ia]\r\n(;W[ha];B[ic]\r\n(;W[ia];B[ka])\r\n\r\n(;W[ka];B[ia])\r\n)\r\n\r\n(;W[ka];B[ic])\r\n\r\n(;W[ic];B[ka]C[seki\r\n])\r\n)\r\n\r\n(;W[ic];B[ia]C[seki\r\n])\r\n\r\n(;W[ka];B[ic]\r\n(;W[ja];B[ia])\r\n\r\n(;W[ia];B[ja])\r\n)\r\n\r\n(;W[ha];B[ic])\r\n\r\n)",
+  "source": "",
+  "playerColor": "white",
+  "createdAt": "2001-04-05T12:18:55+00:00",
+  "problemLevel": 20,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 29,
+  "attempts": {
+    "solved": 4629,
+    "failed": 8784,
+    "tries": 13413,
+    "speedSolved": 4,
+    "speedPlay": 33
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/497"
+}

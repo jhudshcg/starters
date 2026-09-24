@@ -1,0 +1,30 @@
+{
+  "id": 90,
+  "rank": {
+    "value": 18,
+    "unit": "kyu",
+    "exact": false,
+    "mark": false
+  },
+  "genre": "life and death",
+  "specificGenre": "life and death",
+  "description": "",
+  "sgf": "(;GM[1]FF[3]\r\nRU[Japanese]SZ[19]HA[0]KM[5.5]\r\nPW[White]\r\nPB[Black]\r\nGN[White (W) vs. Black (B)]\r\nDT[1999-07-28]\r\nSY[Cgoban 1.9.2]TM[30:00(5x1:00)]\r\nAW[kb][qb][kc][oc][qc][od][pd][rd][ke][re][lf][of]\r\nAB[ob][pb][lc][nc][pc][qd][pe][qe]C[black to do the right thing\r\n]\r\n(;B[oe];W[nd]\r\n(;B[me];W[md];B[ld];W[mc]\r\n(;B[mb];W[nb];B[ne]C[RIGHT\r\n])\r\n\r\n(;B[nb];W[mb];B[lb];W[la])\r\n\r\n(;B[ne];W[mb])\r\n)\r\n\r\n(;B[ne];W[md])\r\n\r\n(;B[md];W[ne]\r\n(;B[nf];W[me])\r\n\r\n(;B[me];W[nf])\r\n)\r\n)\r\n\r\n(;B[nd];W[oe])\r\n\r\n(;B[ne];W[oe])\r\n\r\n(;B[md];W[oe])\r\n\r\n)",
+  "source": "pamphlet",
+  "playerColor": "black",
+  "createdAt": "1999-09-23T00:07:16+00:00",
+  "problemLevel": 12,
+  "hasNegativeFlags": false,
+  "isStandard": true,
+  "isCanon": true,
+  "avgSolveTimeSeconds": 46,
+  "attempts": {
+    "solved": 7584,
+    "failed": 11591,
+    "tries": 19175,
+    "speedSolved": 16,
+    "speedPlay": 39
+  },
+  "author": "adum",
+  "url": "https://goproblems.com/problems/90"
+}
