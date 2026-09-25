@@ -2,6 +2,8 @@
 
 ## Working efficiently and preserving handovers
 
+For exam-related work, use the [exam resource map](docs/exam-resource-map.md) to select only the relevant specification, paper/task, mark scheme and commentary.
+
 - Work efficiently: reuse existing research, cached references, tools and completed checks. Do not repeat downloads or investigations when the required material is already available.
 - Save downloaded reference material that may be useful in future in the repository, with source URLs and enough metadata to support reuse. Reference importers must use the local cache first. Keep temporary build/browser artefacts outside the repository.
 - **Before starting any job expected to take more than 20 seconds, persist its plan in `checkpoint.md`.** Use a dated work-plan entry with the objective, scope, concrete steps and checks. This applies to follow-on jobs as well as the initial task.

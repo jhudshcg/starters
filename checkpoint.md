@@ -435,3 +435,66 @@ This is the current work plan/status. Earlier dated entries below are historical
 - `/opt/homebrew/bin/node --test tests/algebra.test.js`; `python3 scripts/validate-puzzles.py`; `npm run codes:update`; `npm run validate`; `npm run build`; `npm test`.
 - Browser: `/opt/homebrew/bin/node scripts/browser-smoke.mjs` requires local debug-socket access outside the sandbox. Current output in `/private/tmp/browser-smoke.log`.
 - Working tree changes are uncommitted. Initial Go-card change predates the latest user request and is intentional. Generated `live/` currently predates the new Go bank. Preserve stable slots/variation positions; no commit/deployment was requested.
+
+## 2026-09-25 — Workflow summary, puzzle band audit and exam-resource map
+
+**Objective/scope:** summarise persisted efficiency guidance; investigate and report puzzle-family difficulty gaps without changing content; inspect only directory/file names under `../agents` and write a concise resource-routing guide linked from AGENTS.md.
+
+- [x] Read recent workflow guidance and current puzzle selection/band metadata.
+- [x] Calculate active challenge counts and selectable sets per family/band; report gaps and causes without editing puzzles.
+- [x] List exam-resource directories/file names only; map resource types to suitable tasks in a new documentation file and link it from AGENTS.md.
+- [x] Verify links and audit results; record findings, limitations and exact next action here.
+
+**Checks:** use existing local files/caches; no downloads or exam-resource content reads. No build/browser rerun for documentation-only changes. Preserve unrelated unfinished work from 24 September.
+
+**Completed findings:** seven puzzle families have no Beginner templates. All nine support Foundation/Standard/Stretch. Number and measures filtering supports only Foundation (counts 0/13/2/0); Algebra supports all bands (12/11/8/4). Source counts match the cached inventory, 901 active templates. See `docs/reviews/2026-09-25-puzzle-level-coverage.md` for counts, cause, thresholds and suggested follow-up. No puzzles changed.
+
+**Resource routing:** created `docs/exam-resource-map.md`, linked from AGENTS.md and docs/README.md. Inspected only directory/file names under `../agents`; no exam-resource contents read. Covers Core SAM and summer 2026 papers/schemes/reports, ESP SAM/AdSAM/live tasks, A/E exemplars, OS and old-spec topic questions. Conversion/PDF equivalence remains unverified.
+
+**Current-state correction:** working tree was clean before this documentation job except the newly appended plan. The 24 September entry's claim that implementation was uncommitted is historical, not current evidence; its unfinished verification items were not rerun in this task.
+
+**Next action:** report findings for review; await the user's direction on Beginner authoring/reclassification and Number and measures gaps. Do not silently implement puzzle changes. Prior implementation verification remains outside this audit's scope.
+
+**Verification:** fresh runtime pool counts matched the saved inventory for every family/band; inspected actual selection threshold and topic filtering. All 20 local Markdown links across the changed guide/index/instructions and audit resolve. `git diff --check` passed. Documentation only; no source-bank edits, downloads, rebuild, commit or deployment.
+
+## 2026-09-25 — ESP conversion, evidence review and starter design programme
+
+**Authorised objective:** (1) carefully convert ESP PDF/DOCX resources into adjacent `md/` directories with matching basenames, retaining assessment images/tables/lists and removing repeating headers/footers; (2) document a repeatable cross-session evidence-review process; (3) apply it to starter designs for every ESP task; (4) ONLY AFTER teacher discussion/agreement, implement Task 1 and Task 2 designs. User explicitly requires checkpointed progress and a working site throughout. No delegation requested.
+
+### Programme checklist
+
+- [x] Inventory sources, existing extracts and reliable local tooling; build a resumable converter/manifest with source hashes and quality checks. Original resources remain untouched. Obtain sandbox approval for adjacent output under `../agents`.
+- [x] Convert/check original ESP SAM (RBSX): pre-release, tasks, scheme, DOCX log.
+- [x] Convert/check additional ESP SAM (RetailX): pre-release, tasks, scheme, PDF/DOCX logs; preserve both formats without basename collisions.
+- [x] Convert/check summer 2026 ESP (Glenstar): pre-release, task papers and DOCX log.
+- [x] Convert/check summer 2026 ESP mark scheme and examiner report.
+- [x] Convert/check ESP Grade A/E exemplification reports and task PDFs; inspect extensionless Grade E flowchart format and preserve relevant visual evidence.
+- [x] Record conversion completeness, tables/images, review evidence and limitations per resource. Verify provenance, output links, page coverage and representative/all flagged visual pages. Do not equate extraction with verified fidelity.
+- [x] Document repeatable ESP analysis workflow and task evidence matrices: requirements → assessed criteria → top-band evidence → examiner difficulties → teachable subskills → starter design → marking/validation.
+- [ ] Apply workflow across Task 1, Task 2, Task 3, Task 4a and Task 4b; triangulate SAM/AdSAM/live scheme, examiner commentary and A/E exemplars. Reuse existing `docs/esp` notes and cached assets, verify current paths. Read supplied Python/CSV/XLSX as needed for analysis, without expanding PDF/DOCX conversion scope to OS/Core written exams.
+- [ ] Write detailed activity-set designs, progression, meaningful variations, accessible UI, deterministic versus rubric/self/teacher assessment, feedback and review limits. Document implementation increments and checks for Tasks 1/2.
+- [ ] Share designs and material choices with teacher; STOP before implementation until agreement.
+- [ ] After agreement: implement/test Task 1 in independently usable increments; checkpoint each.
+- [ ] After agreement: implement/test Task 2 in independently usable increments; checkpoint each.
+
+**Current state:** previous documentation edits are present, including user's scenario-label clarification; preserve them. No application changes required for conversion/design phases. Original sibling resource area is read-only under current sandbox; prepare converter/output review before requesting narrowly scoped write approval. Keep transient extraction/render files in `/private/tmp`, reusable tools/manifests/notes in this repo; published conversions/images beside sources as requested. Cache first; no repeated successful conversion if source and converter hashes match.
+
+**Next action:** inspect existing ESP source guide/assessment notes and local converter availability, inventory PDF pages/structure and DOCX tables/images. Choose tooling based on evidence, then pilot representative task/scheme/exemplar conversions before batch processing.
+
+**Conversion increment completed:** 36 documents (33 PDFs including the extensionless Grade E flowchart; 3 DOCX), 341 PDF pages, 269 linked table/figure assets. Generated outputs are in source-adjacent `md/` directories, with unchanged basenames and `.conversion.json` provenance records. PDF/DOCX names do not collide in this inventory. `references/esp/conversion-manifest.json` records every page, source hash, outputs and checks. Published successfully with approved filesystem escalation; originals unchanged. Used installed pdfplumber 0.11.9/PDFium 5.5.0 and Pandoc 3.11, no downloads.
+
+**Conversion checks/limits:** page anchors, source/converter/output hashes, native alphanumeric retention (normalised sub-bullets accounted for), all linked assets and DOCX five-column labels checked. Initial contact sheets sampled 138 visual-bearing pages; some first-pilot stale assets appeared in contacts but were excluded from publication, which copies only current links. Visually checked the original SAM rubric, live scheme p17 and Grade A contents p2 at readable size. Fixed open-bottom pseudocode table loss (live scheme p17), Grade A overlapping contents text, native code indentation and live print-ID footers. This is structural verification plus visual sampling, not word-for-word certification or complete diagram transcription. Figures remain linked images. No source content silently corrected; source mistakes retained.
+
+**Repeatable workflow:** `docs/esp/review-process.md` created. Source review currently confirms Task 3 revised SAM/AdSAM booklets explicitly total 18 including communication, superseding old notes' 21/18 discrepancy. Examiner report pp5–23/33/55/65–66 read for planning/testing/design/evaluation weaknesses. Current original SAM + AdSAM + live Task2–4b requirements read (some initial oversized output was truncated; AdSAM T2/T3 reread in full). Local spec ESP section read.
+
+**Exact next action:** finish task evidence matrices from scheme bands, Grade A/E commentary and artefacts; review Task1 briefs and supplied data/code as needed, independently verify proposed numeric examples; write all-task starter designs for teacher discussion. Do not implement before agreement. Conversion tools: `python3 scripts/check-esp-conversions.py` restores published cache to staging when missing and checks; only run `convert-esp-resources.py --match <resource>` for missing/changed resources, then check/publish. Use non-login shell for escalated commands to avoid unrelated pyenv startup lock delay.
+
+### 2026-09-25 — Added Task 1 workbook conversion (user steering)
+
+User explicitly adds XLSX Task 1 spreadsheets to conversion scope, requesting a readable open format that preserves formulas and charts. Preserve the original ESP programme and approval gate.
+
+- [ ] Inventory all ESP Task1 XLSX files, including A/E example plans; inspect sheets, formulas, cached results, native charts/images, merges and conditional formatting.
+- [ ] Export source-adjacent `md/<same-stem>.md` workbook guide plus linked CSV/JSON data with exact cell addresses, formulas and separately identified cached values. Preserve chart definitions/images and meaningful Gantt formatting; record any rendering/recalculation limitations.
+- [ ] Verify cell/formula counts and source hashes; inspect representative plan views. Add outputs/provenance to conversion register and source review. Reuse originals/existing tools; no source edits.
+
+**Next action:** inspect workbook structures using installed openpyxl and OOXML ZIP metadata. Choose the least complex faithful representation before exporting. Do not imply cached formula results are freshly recalculated.

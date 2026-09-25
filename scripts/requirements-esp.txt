@@ -1,0 +1,3 @@
+# Existing local versions used for ESP conversion; Pandoc 3.11 is a system binary.
+pdfplumber==0.11.9
+pypdfium2==5.5.0

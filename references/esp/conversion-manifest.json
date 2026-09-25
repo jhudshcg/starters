@@ -1,0 +1,4842 @@
+{
+  "date": "2026-09-25",
+  "published": true,
+  "documents": [
+    {
+      "source": "SAM/DSD ESP AdSAM/Digital_DSD_AdSAM_Core_ESP_Mark_Scheme.pdf",
+      "source_sha256": "9b4414bc8fab6f74ec317111de7f58d7d8f195a2ad2071b9bc495d5dfa0ca527",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Digital_DSD_AdSAM_Core_ESP_Mark_Scheme.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 137,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "1"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 2,
+          "native_characters": 1183,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "2"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 3,
+          "native_characters": 1815,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "3"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 4,
+          "native_characters": 1744,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "4"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 5,
+          "native_characters": 1879,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "5"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 6,
+          "native_characters": 1813,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "6"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 7,
+          "native_characters": 2052,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "7"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 8,
+          "native_characters": 1795,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "8"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 9,
+          "native_characters": 811,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "9"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 10,
+          "native_characters": 1010,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "10"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 11,
+          "native_characters": 1123,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "11"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 12,
+          "native_characters": 586,
+          "tables": 1,
+          "figures": 4,
+          "removed_margin_lines": [
+            "12"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 13,
+          "native_characters": 482,
+          "tables": 1,
+          "figures": 4,
+          "removed_margin_lines": [
+            "13"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 14,
+          "native_characters": 304,
+          "tables": 1,
+          "figures": 3,
+          "removed_margin_lines": [
+            "14"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 15,
+          "native_characters": 490,
+          "tables": 1,
+          "figures": 6,
+          "removed_margin_lines": [
+            "15"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 16,
+          "native_characters": 1550,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "16"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 17,
+          "native_characters": 1094,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "17"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 18,
+          "native_characters": 608,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "18"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 19,
+          "native_characters": 1609,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "19"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 20,
+          "native_characters": 1294,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "20"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 21,
+          "native_characters": 83,
+          "tables": 1,
+          "figures": 2,
+          "removed_margin_lines": [
+            "21"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 22,
+          "native_characters": 1534,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "22"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 23,
+          "native_characters": 509,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "23"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 24,
+          "native_characters": 1149,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "24"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 25,
+          "native_characters": 1317,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "25"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 26,
+          "native_characters": 1351,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "26"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 27,
+          "native_characters": 601,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "27"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 28,
+          "native_characters": 173,
+          "tables": 1,
+          "figures": 3,
+          "removed_margin_lines": [
+            "28"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 29,
+          "native_characters": 41,
+          "tables": 1,
+          "figures": 1,
+          "removed_margin_lines": [
+            "29"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 30,
+          "native_characters": 941,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "30"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 31,
+          "native_characters": 465,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "31"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 32,
+          "native_characters": 925,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "32"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 33,
+          "native_characters": 643,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "33"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 34,
+          "native_characters": 1473,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "34"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 35,
+          "native_characters": 1442,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "35"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 36,
+          "native_characters": 289,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "36"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 37,
+          "native_characters": 1081,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Copyright in th is document belongs to, and is used under licence from the Department for Education, \u00a9 2025.",
+            "Depar3tm7en t for Education. Pearson is authorised by the Department for Education to develop and deliver this T Level Technical Qualification."
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        }
+      ],
+      "output_sha256": "4c5375b978886194e5e395bcd65011962e335d966884522f2aae75372ed5ed10",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 42
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Digital_DSD_AdSAM_Core_ESP_Pre-release_Booklet.pdf",
+      "source_sha256": "9cd5525300ab726a1812acff45c89de10252c8b6711828e0b57c9c936a2477ed",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Digital_DSD_AdSAM_Core_ESP_Pre-release_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 733,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89051A",
+            "\u2018T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 919,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89051A 2"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1221,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89051A 3"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 234,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Department for Education to develop and deliver this",
+            "T Level Technical Qualification.",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S89051A 4"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "74f11f812b173a6508b612c430d93f7292da1265d427c64ec0f1ce6385c09ec8",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Digital_DSD_AdSAM_Core_ESP_Task_1_Booklet.pdf",
+      "source_sha256": "296e2b8e2ba3c5dc40e5a0eb4df58fc821de2b5592c1fe3931e36984cad5c34f",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Digital_DSD_AdSAM_Core_ESP_Task_1_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 584,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A",
+            "\u2018T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 892,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1722,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 1036,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 4",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 1296,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 5",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 6,
+          "native_characters": 876,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 6",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 7,
+          "native_characters": 933,
+          "tables": 2,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 7",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 8,
+          "native_characters": 1000,
+          "tables": 2,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 8",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 9,
+          "native_characters": 990,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 9",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 10,
+          "native_characters": 394,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89054A 10"
+          ],
+          "flags": []
+        },
+        {
+          "page": 11,
+          "native_characters": 234,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Department for Education to develop and deliver this",
+            "T Level Technical Qualification.",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S89054A 11"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "bef9f271a07a1e4bb1084dbb42814d26e466605de71e53344963fe5ad78be930",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 7
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Digital_DSD_AdSAM_Core_ESP_Task_2_Booklet.pdf",
+      "source_sha256": "1e8e972e2625f17c5a307bd9a7222e6571fcd91193a80a2f1cd4939139fbc6cd",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Digital_DSD_AdSAM_Core_ESP_Task_2_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 642,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89052A",
+            "\u2018T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 1059,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89052A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1327,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89052A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 984,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89052A 4",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 496,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89052A 5"
+          ],
+          "flags": []
+        },
+        {
+          "page": 6,
+          "native_characters": 234,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Department for Education to develop and deliver this",
+            "T Level Technical Qualification.",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S89052A 6"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "4d747483a487ef11af6171663a8be03e6009f388744167ea0cf4b7a438c2e46e",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 1
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Digital_DSD_AdSAM_Core_ESP_Task_3_Booklet_V2.0.pdf",
+      "source_sha256": "3c8e096d42dafd230bbfda506cd47695949f6cbd9b0ed93a4cb9e7faec4e9e57",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Digital_DSD_AdSAM_Core_ESP_Task_3_Booklet_V2.0.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 591,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89056A",
+            "\u2018T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 782,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89056A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1738,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89056A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 480,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89056A 4"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 239,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Department for Education to develop and deliver this",
+            "T Level Technical Qualification.",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S89056A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "b62d76ac3762b08d5e67d311e9aac96d18129c2f62779051f16adbe1411b5687",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Digital_DSD_AdSAM_Core_ESP_Task_4a_Booklet.pdf",
+      "source_sha256": "504e9a76fd3ef2411463a45a0ca1b6df3e389c33263e911ff4f80f063f25a97c",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Digital_DSD_AdSAM_Core_ESP_Task_4a_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 598,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89055A",
+            "\u2018T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 819,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89055A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1507,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89055A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 765,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89055A 4"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 234,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Department for Education to develop and deliver this",
+            "T Level Technical Qualification.",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S89055A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "ff3bfc261b4cbcaff5ab86c7e9dce96498eb0d7ec7e50bf148e6f882e06c2040",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Digital_DSD_AdSAM_Core_ESP_Task_4b_Booklet.pdf",
+      "source_sha256": "4fd09e8d14e4d0283750ab3bd9ff571c0ad8185c835cb8b3d541155922b94188",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Digital_DSD_AdSAM_Core_ESP_Task_4b_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 650,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89053A",
+            "\u2018T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 919,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89053A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1188,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89053A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 816,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S89053A 4"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 234,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Department for Education to develop and deliver this",
+            "T Level Technical Qualification.",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S89053A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "bff5d88b0905b1abfe0e664567eb472bd1233b8cd4dcb400c8f177880b340b16",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Task2_Test_Log_Template.docx",
+      "source_sha256": "f24820336631f0b45baa6bc2d03cdff61988b059f4da79cf11d32da135997fa2",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Task2_Test_Log_Template.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [],
+      "notes": [
+        "DOCX has no stable source page numbers; body order retained. Headers/footers excluded by Pandoc."
+      ],
+      "output_sha256": "2352c6bca8bcecd21e8854d13728b4a4737203d8621467fa759a545ddb5a951f",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP AdSAM/Task_2_Test_Log_Template.pdf",
+      "source_sha256": "57c19bd3112987c17726b28ab3bb33ff1dffbb323efc9201fffabdc1b057b40b",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP AdSAM/md/Task_2_Test_Log_Template.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 307,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Copyright in th is document belongs to, and is used under licence from the Department for Education, \u00a9 2025.",
+            "Departm1e nt for Education. Pearson is authorised by the Department for Education to develop and deliver this T Level Technical Qualification."
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        }
+      ],
+      "output_sha256": "5d33ab0b9e2ffeef55775dac304c7ae30f7098d1eb8198e77d1ddd02bf44c8b4",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 1
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Digital_DSD_Core_ESP_Mark_Scheme.pdf",
+      "source_sha256": "1a4b634445f7aea3e4ab9a93faf79c1aa6d9a63fac1133b5da116518d3ba09f7",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Digital_DSD_Core_ESP_Mark_Scheme.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 126,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "1"
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 2055,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "2"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 943,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "3"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 4,
+          "native_characters": 2357,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "4"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 5,
+          "native_characters": 2121,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "5"
+          ],
+          "flags": []
+        },
+        {
+          "page": 6,
+          "native_characters": 2161,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "6"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 7,
+          "native_characters": 1714,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "7"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 8,
+          "native_characters": 1370,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "8"
+          ],
+          "flags": []
+        },
+        {
+          "page": 9,
+          "native_characters": 761,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "9"
+          ],
+          "flags": []
+        },
+        {
+          "page": 10,
+          "native_characters": 775,
+          "tables": 1,
+          "figures": 7,
+          "removed_margin_lines": [
+            "10"
+          ],
+          "flags": []
+        },
+        {
+          "page": 11,
+          "native_characters": 794,
+          "tables": 1,
+          "figures": 6,
+          "removed_margin_lines": [
+            "11"
+          ],
+          "flags": []
+        },
+        {
+          "page": 12,
+          "native_characters": 1181,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "12"
+          ],
+          "flags": []
+        },
+        {
+          "page": 13,
+          "native_characters": 1650,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "13"
+          ],
+          "flags": []
+        },
+        {
+          "page": 14,
+          "native_characters": 2118,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "14"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 15,
+          "native_characters": 930,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "15"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 16,
+          "native_characters": 117,
+          "tables": 1,
+          "figures": 2,
+          "removed_margin_lines": [
+            "16"
+          ],
+          "flags": []
+        },
+        {
+          "page": 17,
+          "native_characters": 1440,
+          "tables": 3,
+          "figures": 0,
+          "removed_margin_lines": [
+            "17"
+          ],
+          "flags": []
+        },
+        {
+          "page": 18,
+          "native_characters": 1229,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "18"
+          ],
+          "flags": []
+        },
+        {
+          "page": 19,
+          "native_characters": 429,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "19"
+          ],
+          "flags": []
+        },
+        {
+          "page": 20,
+          "native_characters": 1803,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "20"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 21,
+          "native_characters": 604,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "21"
+          ],
+          "flags": []
+        },
+        {
+          "page": 22,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "22"
+          ],
+          "flags": []
+        },
+        {
+          "page": 23,
+          "native_characters": 927,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "23"
+          ],
+          "flags": []
+        },
+        {
+          "page": 24,
+          "native_characters": 1321,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "24"
+          ],
+          "flags": []
+        },
+        {
+          "page": 25,
+          "native_characters": 641,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "25"
+          ],
+          "flags": []
+        },
+        {
+          "page": 26,
+          "native_characters": 2071,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "26"
+          ],
+          "flags": [
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 27,
+          "native_characters": 1069,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "27"
+          ],
+          "flags": []
+        },
+        {
+          "page": 28,
+          "native_characters": 967,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "28"
+          ],
+          "flags": []
+        },
+        {
+          "page": 29,
+          "native_characters": 833,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "29"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "bf84feefc11893789c0e0a560451a1c4d1c1ae6af6878d1f07570108aa58e136",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 31
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Digital_DSD_Core_ESP_Pre-release_Booklet.pdf",
+      "source_sha256": "9f83c51d5207db6b8ca73a3e7b16551997d18b022339a2028c522e286a918653",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Digital_DSD_Core_ESP_Pre-release_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 725,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85727A"
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 919,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85727A 2"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1221,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85727A 3"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 677,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Institute for Apprenticeships and Technical Education to develop and",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S85727A 4"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "5ce9f03b318d06c65ecc14f0f5f2b7ac70f31c1484bfaa90b4cdb008ca9176af",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Digital_DSD_Core_ESP_Task_1_Booklet.pdf",
+      "source_sha256": "8f310940b2d617a2f35c2ba34fa85874d5d085f2d331e94b1744a2d3b20f7df2",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Digital_DSD_Core_ESP_Task_1_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 572,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A"
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 889,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1359,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 352,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 4",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 901,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 5",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 6,
+          "native_characters": 1265,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 6",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 7,
+          "native_characters": 939,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 7",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 8,
+          "native_characters": 769,
+          "tables": 2,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 8",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 9,
+          "native_characters": 845,
+          "tables": 2,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 9",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 10,
+          "native_characters": 1201,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85728A 10"
+          ],
+          "flags": []
+        },
+        {
+          "page": 11,
+          "native_characters": 677,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Institute for Apprenticeships and Technical Education to develop and",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S85728A 11"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "5ddce506d2853a9f7c6c880012e079a012dbbef0a84f6ab271e7a30c22e071ac",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 7
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Digital_DSD_Core_ESP_Task_2_Booklet.pdf",
+      "source_sha256": "9cf9d5c0ea5cd0806cf7f4a2ac0836c1b840e06bebdf2fc4d3f5c72aac6b9651",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Digital_DSD_Core_ESP_Task_2_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 629,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85729A"
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 1056,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85729A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1324,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85729A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 1149,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85729A 4"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 677,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Institute for Apprenticeships and Technical Education to develop and",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S85729A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "6b6d1058ddcb9d14855d33e823ccb7cab1c8a57cad23434de58bb2b27185b24e",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 1
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Digital_DSD_Core_ESP_Task_3_Booklet_V2.0.pdf",
+      "source_sha256": "c8efd26b0b20e30cc8e027dd3bbf77b9529a93f76d2b1f3d3c147a5e5d88bd17",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Digital_DSD_Core_ESP_Task_3_Booklet_V2.0.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 581,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85730A"
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 779,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85730A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1726,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85730A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 485,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "SS8855773300AA 44"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 239,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Department for Education to develop and deliver this",
+            "T Level Technical Qualification.",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S85730A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "ba6b42e8629bb7840e1771ef452a0ce278f83308e96edec476be83bb79add905",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Digital_DSD_Core_ESP_Task_4a_Booklet.pdf",
+      "source_sha256": "aca8ba473ad45f274ae570f05edf6b7a91edbe85f4bbf805ae96abd200b2665f",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Digital_DSD_Core_ESP_Task_4a_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 602,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85731A"
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 833,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85731A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1527,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85731A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 833,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85731A 4"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 677,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Institute for Apprenticeships and Technical Education to develop and",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S85731A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "92770cf6d22efab02308204600c56b80bde7e39a61ab5112cdee7b182bcacaf6",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Digital_DSD_Core_ESP_Task_4b_Booklet.pdf",
+      "source_sha256": "e48cd8c1dc5671d3ca68072bb710ad4ce74c0e6b299eb5d74bdc894e29014133",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Digital_DSD_Core_ESP_Task_4b_Booklet.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 640,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85732A"
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 919,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85732A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1191,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85732A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 882,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "S85732A 4"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 677,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Pearson Education Limited is authorised by the Institute for Apprenticeships and Technical Education to develop and",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "S85732A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "74f667530a122a5e3ada8ba719c559417eaa0469e6453d4711b8b9dd74e09ed4",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "SAM/DSD ESP SAM/Task_2_Test_Log_Template.docx",
+      "source_sha256": "3b096984f3a0570e40c76ce9fb489bf9e213cea08ed7cf4d5d266407d58306d0",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "SAM/DSD ESP SAM/md/Task_2_Test_Log_Template.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [],
+      "notes": [
+        "DOCX has no stable source page numbers; body order retained. Headers/footers excluded by Pandoc."
+      ],
+      "output_sha256": "9734db1a5a77c6b409261da478141e791aa7f24ff8ac69615cae0a83a3b9e1d2",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "core past papers/t-level-dsd-19612-esp-summer-2026/88835-t-level-dsd-19612-pre-release-summer-2026.pdf",
+      "source_sha256": "3a652c1074623c82727a232347830a1348b23ca2d6de53e825adcd745f736582",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "core past papers/t-level-dsd-19612-esp-summer-2026/md/88835-t-level-dsd-19612-pre-release-summer-2026.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 706,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88835A",
+            "\u00a92026 Pearson Education Ltd.",
+            "\u2019T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 920,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88835A 2"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1237,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88835A 3"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "ec7eb724cbc88e98314d0755f2244a99cf6f715a1ad76ac9e0d30067222e6795",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "core past papers/t-level-dsd-19612-esp-summer-2026/88836-2606-19612-C8D5FEL-Task-4B-QP-E17E.pdf",
+      "source_sha256": "1e7c459489689195e341fa779dcf1604903c304f29c29a9d69288017e8765233",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "core past papers/t-level-dsd-19612-esp-summer-2026/md/88836-2606-19612-C8D5FEL-Task-4B-QP-E17E.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 617,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88836A",
+            "\u00a92026 Pearson Education Ltd.",
+            "\u2019T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 920,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88836A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1192,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88836A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 846,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88836A 4"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "9dbe225fcb839595c14d42907aeeb49937478c0667472263032f0c720313ed76",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "core past papers/t-level-dsd-19612-esp-summer-2026/88861-2606-19612-JBMWIU5-Task-4A-QP-2F66.pdf",
+      "source_sha256": "69e43fcb26854072dbbe33dda18900a74101c41e8202f69ed11d5658af824fe2",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "core past papers/t-level-dsd-19612-esp-summer-2026/md/88861-2606-19612-JBMWIU5-Task-4A-QP-2F66.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 584,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88861A",
+            "\u00a92026 Pearson Education Ltd.",
+            "\u2019T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 834,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88861A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1544,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88861A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 863,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88861A 4"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "43a9d17130b3ab0d7295b236ef597400945e0271e6f400a0b5d46b64b4129c60",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "core past papers/t-level-dsd-19612-esp-summer-2026/88866-2606-19612-4SCTMZN-Task-1-QP-4697.pdf",
+      "source_sha256": "a5a59b34b29e89a25dfa9bcc9a5935d953da13147c829a7d549b2cff1607b8b2",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "core past papers/t-level-dsd-19612-esp-summer-2026/md/88866-2606-19612-4SCTMZN-Task-1-QP-4697.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 557,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A",
+            "\u00a92026 Pearson Education Ltd.",
+            "\u2019T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 893,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1375,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 352,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 4",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 919,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 5",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 6,
+          "native_characters": 1348,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 6",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 7,
+          "native_characters": 873,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 7",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 8,
+          "native_characters": 1545,
+          "tables": 3,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 8",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 9,
+          "native_characters": 1014,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 9",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 10,
+          "native_characters": 434,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88866A 10"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "d429800b461a2018f6365fdaa93b24a46f6abd9631bbcd76024509abf6c514fa",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 6
+    },
+    {
+      "source": "core past papers/t-level-dsd-19612-esp-summer-2026/88871-2606-19612-HTPOAGA-Task-3-QP-F82B.pdf",
+      "source_sha256": "c9e77bd1cd32fc3c128b348f271a888593f4249581ec04cdbb05788fd21309ec",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "core past papers/t-level-dsd-19612-esp-summer-2026/md/88871-2606-19612-HTPOAGA-Task-3-QP-F82B.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 558,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88871A",
+            "\u00a92026 Pearson Education Ltd.",
+            "\u2019T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 784,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88871A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1455,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88871A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 248,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88871A 4",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 574,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88871A 5"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "c07e8f238f0d8801bef7588b1e2b50d0d8dddc94f8274b58f353aaefb5f64461",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "core past papers/t-level-dsd-19612-esp-summer-2026/88876-2606-19612-ZALDLGR-Task-2-QP-EF52.pdf",
+      "source_sha256": "afd6d92b798e4d7e7f848c7f2b2862c8ad84296139c79f8d93ba7bd7f292816e",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "core past papers/t-level-dsd-19612-esp-summer-2026/md/88876-2606-19612-ZALDLGR-Task-2-QP-EF52.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 612,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88876A",
+            "\u00a92026 Pearson Education Ltd.",
+            "\u2019T-LEVELS\u2019 and \u2018T Level\u2019 are registered trade marks of the Department for Education.",
+            "Pearson\u2019s development and delivery of this qualification and use of the mark is under the authority of the Department for Education."
+          ],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 1061,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88876A 2",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1327,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88876A 3",
+            "Continue"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 1308,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "W88876A 4"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "5288227004fc44aee7d20064f9b57bd5922394afe739683bdcfca7f74e5670e0",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 1
+    },
+    {
+      "source": "core past papers/t-level-dsd-19612-esp-summer-2026/Task2_Test_Log_Template.docx",
+      "source_sha256": "871c570f95bdd6ed69fbff1c6e34131ad71d00b1024497e8950b2ba7a4e04bf0",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "core past papers/t-level-dsd-19612-esp-summer-2026/md/Task2_Test_Log_Template.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [],
+      "notes": [
+        "DOCX has no stable source page numbers; body order retained. Headers/footers excluded by Pandoc."
+      ],
+      "output_sha256": "574e5cf1f5db1ff6f494356ffd815dd90744513a6cdaa6e1f6528b5a56abfb55",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "examiner reports/esp-principal-examiner-report-19612-summer-2026.pdf",
+      "source_sha256": "c8e13ecf69084762e0db0deec930d0c23ad0724d2f6c45ede8e56f78a6ce5ad3",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "examiner reports/md/esp-principal-examiner-report-19612-summer-2026.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 122,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "1"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 2,
+          "native_characters": 2041,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "2"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 3,
+          "native_characters": 643,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "3"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 4,
+          "native_characters": 298,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "4"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 5,
+          "native_characters": 1660,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "5"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 6,
+          "native_characters": 2107,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "6"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 7,
+          "native_characters": 31,
+          "tables": 0,
+          "figures": 3,
+          "removed_margin_lines": [
+            "7"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 8,
+          "native_characters": 1120,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "8"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 9,
+          "native_characters": 522,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "9"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 10,
+          "native_characters": 230,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "10"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 11,
+          "native_characters": 416,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "11"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 12,
+          "native_characters": 217,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "12"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 13,
+          "native_characters": 1516,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "13"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 14,
+          "native_characters": 2583,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "14"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 15,
+          "native_characters": 2791,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "15"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 16,
+          "native_characters": 2619,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "16"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 17,
+          "native_characters": 1405,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "17"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 18,
+          "native_characters": 702,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "18"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 19,
+          "native_characters": 327,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "19"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 20,
+          "native_characters": 16,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "20"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 21,
+          "native_characters": 884,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "21"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 22,
+          "native_characters": 2664,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "22"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 23,
+          "native_characters": 982,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "23"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 24,
+          "native_characters": 16,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "24"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 25,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "25"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 26,
+          "native_characters": 1046,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "26"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 27,
+          "native_characters": 16,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "27"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 28,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "28"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 29,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "29"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 30,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "30"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 31,
+          "native_characters": 746,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "31"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 32,
+          "native_characters": 115,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "32"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 33,
+          "native_characters": 2293,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "33"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 34,
+          "native_characters": 967,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "34"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 35,
+          "native_characters": 888,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "35"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 36,
+          "native_characters": 960,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "36"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 37,
+          "native_characters": 1237,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "37"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 38,
+          "native_characters": 1758,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "38"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 39,
+          "native_characters": 1403,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "39"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 40,
+          "native_characters": 1114,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "40"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 41,
+          "native_characters": 378,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "41"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 42,
+          "native_characters": 1040,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "42"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 43,
+          "native_characters": 954,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "43"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 44,
+          "native_characters": 1389,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "44"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 45,
+          "native_characters": 1645,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "45"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 46,
+          "native_characters": 1688,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "46"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 47,
+          "native_characters": 1520,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "47"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 48,
+          "native_characters": 1734,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "48"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 49,
+          "native_characters": 1490,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "49"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 50,
+          "native_characters": 1706,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "50"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 51,
+          "native_characters": 1348,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "51"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 52,
+          "native_characters": 1411,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "52"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 53,
+          "native_characters": 1519,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "53"
+          ],
+          "flags": [
+            "Code-like native text retained in a layout-preserving text block; source wrapping is not executable code.",
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 54,
+          "native_characters": 709,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "54"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 55,
+          "native_characters": 1370,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "55"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 56,
+          "native_characters": 14,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "56"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 57,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "57"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 58,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "58"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 59,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "59"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 60,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "60"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 61,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "61"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 62,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "62"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 63,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "63"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 64,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "64"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 65,
+          "native_characters": 627,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "65"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 66,
+          "native_characters": 953,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "66"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 67,
+          "native_characters": 256,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "Copyright in this document belongs to Pearson Education Limited, \u00a9 2025."
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        }
+      ],
+      "output_sha256": "514f2905748b659e674ec45030523cb647526e064999348dec162ed30740e271",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 33
+    },
+    {
+      "source": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_ESP_EGrade_GER_V1.0.pdf",
+      "source_sha256": "1e4ab4bf89ca72dcfa95674c456efa1b6d7b245c1630b6376d06839f19e62377",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-esp-grade-e-ger-v1-0/md/DSD_ESP_EGrade_GER_V1.0.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 140,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 2,
+          "native_characters": 350,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "22"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 3,
+          "native_characters": 353,
+          "tables": 0,
+          "figures": 5,
+          "removed_margin_lines": [
+            "3 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 4,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 4,
+          "removed_margin_lines": [
+            "4 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 5,
+          "native_characters": 1147,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "5 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 6,
+          "native_characters": 1575,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "6 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 7,
+          "native_characters": 2504,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "7 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 8,
+          "native_characters": 717,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "8 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 9,
+          "native_characters": 542,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "9 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 10,
+          "native_characters": 191,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "10 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 11,
+          "native_characters": 2227,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "11 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 12,
+          "native_characters": 242,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "12 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 13,
+          "native_characters": 1526,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "13 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 14,
+          "native_characters": 490,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "14 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 15,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "15 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 16,
+          "native_characters": 1532,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "16 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 17,
+          "native_characters": 1114,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "17 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 18,
+          "native_characters": 229,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "18 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 19,
+          "native_characters": 880,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "19 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 20,
+          "native_characters": 1664,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "20 T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 21,
+          "native_characters": 360,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "\u2018T Level\u2019 is a registered trade mark of the Institute for Apprenticeships and Technical Education.",
+            "\u2018Institute for Apprenticeships & Technical Education\u2019 and logo are registered trade marks of the Institute for Apprenticeships",
+            "The T Level Technical Qualification is a qualification approved and managed by the Institute for Apprenticeships and Technical",
+            "Pearson Education Limited is authorised by the Institute for Apprenticeships and Technical Education to develop and deliver this",
+            "i n \u00a9",
+            "2"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        }
+      ],
+      "output_sha256": "58b9383ff48f90c19948e27f5e38b32707f02e671a78b473967224d78ce89bdc",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 20
+    },
+    {
+      "source": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/DSD_ESP_Task1_Rationale_Grade_E_Example.pdf",
+      "source_sha256": "4ca4c21c78ae8e91da54a1a20b417351f0f9d80a718d690c333a975d34379a82",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/md/DSD_ESP_Task1_Rationale_Grade_E_Example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 2044,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 569,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": []
+        }
+      ],
+      "output_sha256": "80d6fb1925a8eeaa63b316a3d064aa7fffde52ba38b9686fd0c51f3f950cb2e5",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/DSD_ESP_Task2_Test_Log_Grade_E_Example.pdf",
+      "source_sha256": "865b291740c9f2b0b2a902506392e12e90c98eccc2fbdc163606a18ebecbc40f",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/md/DSD_ESP_Task2_Test_Log_Grade_E_Example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 748,
+          "tables": 1,
+          "figures": 6,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 785,
+          "tables": 1,
+          "figures": 5,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 400,
+          "tables": 1,
+          "figures": 4,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 174,
+          "tables": 1,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        }
+      ],
+      "output_sha256": "8ce26d1e5ebb682f3ed0bfdee353acefa5624bc87ded3345afd4d33c01bb79cb",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 20
+    },
+    {
+      "source": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/DSD_ESP_Task3_Flowchart_Grade_E_Example",
+      "source_sha256": "c7e5762f8c0f8cd7c3c66a3ea77b3074fb299425de1228db9a5a44cf63a3c10c",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/md/DSD_ESP_Task3_Flowchart_Grade_E_Example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 392,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": [
+            "Vector-rich body retained as image."
+          ]
+        }
+      ],
+      "output_sha256": "919c18124d26b16d55e3d3d281e52ab10fd78b8355d574e2ac0a7c1e01d36e70",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 1
+    },
+    {
+      "source": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/DSD_ESP_Task4b_Review_Grade_E_Example.pdf",
+      "source_sha256": "7a3f0f983d2aa9715f7ccfbaaa74d5772f4eb6ab0bd7fe4981b0ce8fcd5f2ba4",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-esp-grade-e-ger-v1-0/DSD_GradeE_Example_Work/md/DSD_ESP_Task4b_Review_Grade_E_Example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 869,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 229,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 877,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        }
+      ],
+      "output_sha256": "6a8007fe8a0c3fcbf28d2af2616c700403319fce9f5cd5ea6c446601a61789b4",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 3
+    },
+    {
+      "source": "exemplification material/dsd-grade-a-ger-v1-0/DSD_ESP_AGrade_GER_V1.0.pdf",
+      "source_sha256": "e3e9edfb0a9d9e0c7f430a39dc4a4f18604c1975d37e8a1d9e2489b1fa32b0dc",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-grade-a-ger-v1-0/md/DSD_ESP_AGrade_GER_V1.0.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 140,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 2,
+          "native_characters": 370,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "2"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 3,
+          "native_characters": 349,
+          "tables": 0,
+          "figures": 3,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "3"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 4,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 3,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "4"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 5,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 5,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "5"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 6,
+          "native_characters": 1224,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "6"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 7,
+          "native_characters": 3068,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "7"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 8,
+          "native_characters": 2665,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "8"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 9,
+          "native_characters": 642,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "9"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 10,
+          "native_characters": 2521,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "10"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 11,
+          "native_characters": 2309,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "11"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 12,
+          "native_characters": 535,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "12"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 13,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "13"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 14,
+          "native_characters": 2057,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "14"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 15,
+          "native_characters": 242,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "15"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 16,
+          "native_characters": 2070,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "16"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 17,
+          "native_characters": 486,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "17"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 18,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "18"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 19,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "19"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 20,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "20"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 21,
+          "native_characters": 2039,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "21"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 22,
+          "native_characters": 834,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "22"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 23,
+          "native_characters": 845,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "23"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 24,
+          "native_characters": 395,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "24"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 25,
+          "native_characters": 1048,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "25"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 26,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "26"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 27,
+          "native_characters": 636,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "27"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 28,
+          "native_characters": 1999,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014",
+            "Guide Exemplar Response \u2014 Grade A \u2014 Version 1.0 \u2014 September 2025",
+            "28"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 29,
+          "native_characters": 1490,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "T Level Technical Qualification in Digital Software Development \u2014 Employer Set Project \u2014 29",
+            "Guide Exemplar Response \u2013 A Grade \u2014 Version 1.0 \u2014 September 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 30,
+          "native_characters": 28,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "\u2018T-LEVELS\u2019 is a registered trade mark of the Department for Education.",
+            "\u2018T Level\u2019 is a registered trade mark of the Institute for Apprenticeships and Technical Education.",
+            "\u2018Institute for Apprenticeships & Technical Education\u2019 and logo are registered trade marks of the Institute for Apprenticeships and Technical",
+            "The T Level Technical Qualification is a qualification approved and managed by the Institute for Apprenticeships and Technical Education.",
+            "Pearson Education Limited is authorised by the Institute for Apprenticeships and Technical Education to develop and deliver this Technical",
+            "Pearson and logo are registered trade marks of Pearson.",
+            "Copyright in this document belongs to, and is used under licence from, the Institute for Apprenticeships and Technical Education, \u00a9 2025"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Image-only/near-empty page retained in full; review required."
+          ]
+        }
+      ],
+      "output_sha256": "b35fb3502711a06a596849e5bdb23d886d1f1d88e3057e1990e7b88f5b4931d0",
+      "editorial_repairs": [
+        "Contents p2: separated overlapping Table of Contents / Task 1 text after visual comparison with original."
+      ],
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 31
+    },
+    {
+      "source": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/DSD_ESP_Task1_Rationale_Grade_A_Example.pdf",
+      "source_sha256": "85ff0d91f2cd7e35408218f7ffb41ba1ca1f5a29eb308ed46f871503fe5810d4",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/md/DSD_ESP_Task1_Rationale_Grade_A_Example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 2726,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 2811,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1952,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": []
+        }
+      ],
+      "output_sha256": "2f0cbeb9632b384f12e23e1e90af342093ae0865dff264eac7d531eb76e15977",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 0
+    },
+    {
+      "source": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/DSD_ESP_Task2_Test_Log_Grade_A_Example.pdf",
+      "source_sha256": "0d985e75de7a5eefd253df8d3d17890e494a56e987d525cf6f0baed3b05f79a3",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/md/DSD_ESP_Task2_Test_Log_Grade_A_Example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 1055,
+          "tables": 1,
+          "figures": 6,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 1229,
+          "tables": 1,
+          "figures": 7,
+          "removed_margin_lines": [
+            "Description of test Test data to be used (if required) Expected outcome Actual outcome Comments and intended actions"
+          ],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 1014,
+          "tables": 1,
+          "figures": 4,
+          "removed_margin_lines": [
+            "Description of test Test data to be used (if required) Expected outcome Actual outcome Comments and intended actions"
+          ],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 643,
+          "tables": 1,
+          "figures": 7,
+          "removed_margin_lines": [
+            "Description of test Test data to be used (if required) Expected outcome Actual outcome Comments and intended actions"
+          ],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 221,
+          "tables": 1,
+          "figures": 1,
+          "removed_margin_lines": [
+            "Description of test Test data to be used (if required) Expected outcome Actual outcome Comments and intended actions"
+          ],
+          "flags": []
+        }
+      ],
+      "output_sha256": "8408d93f4dfa7fbecb1e828a3c413fb98ab2aaf025ee9ca804020356649f6bf2",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 30
+    },
+    {
+      "source": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/DSD_ESP_Task3_Flowcharts_Grade_A_example.pdf",
+      "source_sha256": "3dd52549712de0d9510a45b0825ba2f68ff4d043275f7bc89d91bc343c10d07e",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/md/DSD_ESP_Task3_Flowcharts_Grade_A_example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 24,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        }
+      ],
+      "output_sha256": "5394d8f4907d6b671769ac6be82b5effbde69fbeb6a72d2d966cca21042f7b45",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 4
+    },
+    {
+      "source": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/DSD_ESP_Task4b_Review_Grade_A_Example.pdf",
+      "source_sha256": "e58c870021da49086c83a7cedeab3cb359124eafd98ab395ad44e11184411738",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "exemplification material/dsd-grade-a-ger-v1-0/DSD_Grade_A_Example_Work/md/DSD_ESP_Task4b_Review_Grade_A_Example.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 588,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 2,
+          "native_characters": 861,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 3,
+          "native_characters": 394,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 4,
+          "native_characters": 737,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 5,
+          "native_characters": 310,
+          "tables": 0,
+          "figures": 2,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 6,
+          "native_characters": 637,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 7,
+          "native_characters": 704,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [],
+          "flags": []
+        },
+        {
+          "page": 8,
+          "native_characters": 1294,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [],
+          "flags": []
+        }
+      ],
+      "output_sha256": "c98e70198f24f7349326f67312fe4558a788a901985dd0c15de8bd3b2f283d14",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 9
+    },
+    {
+      "source": "mark schemes/esp-mark-scheme-19612-summer-2026.pdf",
+      "source_sha256": "c734f3d792c483ba707e035bb5ed00b2e5a18c1ee4df7be7f6ddba949f6dbb0a",
+      "converter_sha256": "eff9669437dabe8f93fb5466b0ef4f33a9b91f465ca5355981ceede7073d2c7a",
+      "converted": "2026-09-25",
+      "output": "mark schemes/md/esp-mark-scheme-19612-summer-2026.md",
+      "tools": {
+        "pdfplumber": "0.11.9",
+        "pypdfium2": "5.5.0",
+        "pandoc": "3.11"
+      },
+      "review_status": "structural checks passed; visual sampling recorded in conversion register; not word-for-word certified",
+      "pages": [
+        {
+          "page": 1,
+          "native_characters": 109,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "1"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 2,
+          "native_characters": 1184,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "2"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 3,
+          "native_characters": 871,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "3"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 4,
+          "native_characters": 941,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "4"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 5,
+          "native_characters": 2680,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "5"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 6,
+          "native_characters": 1859,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "6"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 7,
+          "native_characters": 2549,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "7"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 8,
+          "native_characters": 2854,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "8"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 9,
+          "native_characters": 1180,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "9"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 10,
+          "native_characters": 2064,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "10"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 11,
+          "native_characters": 1328,
+          "tables": 1,
+          "figures": 9,
+          "removed_margin_lines": [
+            "11"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 12,
+          "native_characters": 1436,
+          "tables": 1,
+          "figures": 2,
+          "removed_margin_lines": [
+            "12"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 13,
+          "native_characters": 2130,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "13"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 14,
+          "native_characters": 2335,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "14"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 15,
+          "native_characters": 525,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "15"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 16,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "16"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 17,
+          "native_characters": 1539,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "17"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 18,
+          "native_characters": 1612,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "18"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 19,
+          "native_characters": 2073,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "19"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text.",
+            "Alphanumeric difference explained by o-shaped sub-bullets converted to Markdown list markers."
+          ]
+        },
+        {
+          "page": 20,
+          "native_characters": 1306,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "20"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 21,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "21"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 22,
+          "native_characters": 0,
+          "tables": 0,
+          "figures": 1,
+          "removed_margin_lines": [
+            "22"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 23,
+          "native_characters": 2761,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "23"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 24,
+          "native_characters": 1644,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "24"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 25,
+          "native_characters": 1723,
+          "tables": 0,
+          "figures": 0,
+          "removed_margin_lines": [
+            "25"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        },
+        {
+          "page": 26,
+          "native_characters": 983,
+          "tables": 1,
+          "figures": 0,
+          "removed_margin_lines": [
+            "26"
+          ],
+          "flags": [
+            "Excluded full-page background image; inspect if page lacks native text."
+          ]
+        }
+      ],
+      "output_sha256": "5b5a80478cdd98f2ff6c855c45d97bd59bfe6acc079b3a0e6e7915026151e640",
+      "quality_checks": [
+        "source/converter hashes",
+        "sequential PDF page anchors",
+        "native alphanumeric retention",
+        "linked assets exist",
+        "DOCX field labels where applicable"
+      ],
+      "linked_assets": 22
+    }
+  ],
+  "output_files": 342,
+  "total_pdf_pages": 341,
+  "assets": 270
+}
