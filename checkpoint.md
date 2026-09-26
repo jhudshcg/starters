@@ -471,8 +471,8 @@ This is the current work plan/status. Earlier dated entries below are historical
 - [x] Convert/check ESP Grade A/E exemplification reports and task PDFs; inspect extensionless Grade E flowchart format and preserve relevant visual evidence.
 - [x] Record conversion completeness, tables/images, review evidence and limitations per resource. Verify provenance, output links, page coverage and representative/all flagged visual pages. Do not equate extraction with verified fidelity.
 - [x] Document repeatable ESP analysis workflow and task evidence matrices: requirements → assessed criteria → top-band evidence → examiner difficulties → teachable subskills → starter design → marking/validation.
-- [ ] Apply workflow across Task 1, Task 2, Task 3, Task 4a and Task 4b; triangulate SAM/AdSAM/live scheme, examiner commentary and A/E exemplars. Reuse existing `docs/esp` notes and cached assets, verify current paths. Read supplied Python/CSV/XLSX as needed for analysis, without expanding PDF/DOCX conversion scope to OS/Core written exams.
-- [ ] Write detailed activity-set designs, progression, meaningful variations, accessible UI, deterministic versus rubric/self/teacher assessment, feedback and review limits. Document implementation increments and checks for Tasks 1/2.
+- [x] Apply workflow across Task 1, Task 2, Task 3, Task 4a and Task 4b; triangulate SAM/AdSAM/live scheme, examiner commentary and A/E exemplars. Reuse existing `docs/esp` notes and cached assets, verify current paths. Read supplied Python/CSV/XLSX as needed for analysis, without expanding PDF/DOCX conversion scope to OS/Core written exams.
+- [x] Write detailed activity-set designs, progression, meaningful variations, accessible UI, deterministic versus rubric/self/teacher assessment, feedback and review limits. Document implementation increments and checks for Tasks 1/2.
 - [ ] Share designs and material choices with teacher; STOP before implementation until agreement.
 - [ ] After agreement: implement/test Task 1 in independently usable increments; checkpoint each.
 - [ ] After agreement: implement/test Task 2 in independently usable increments; checkpoint each.
@@ -493,8 +493,63 @@ This is the current work plan/status. Earlier dated entries below are historical
 
 User explicitly adds XLSX Task 1 spreadsheets to conversion scope, requesting a readable open format that preserves formulas and charts. Preserve the original ESP programme and approval gate.
 
-- [ ] Inventory all ESP Task1 XLSX files, including A/E example plans; inspect sheets, formulas, cached results, native charts/images, merges and conditional formatting.
-- [ ] Export source-adjacent `md/<same-stem>.md` workbook guide plus linked CSV/JSON data with exact cell addresses, formulas and separately identified cached values. Preserve chart definitions/images and meaningful Gantt formatting; record any rendering/recalculation limitations.
-- [ ] Verify cell/formula counts and source hashes; inspect representative plan views. Add outputs/provenance to conversion register and source review. Reuse originals/existing tools; no source edits.
+- [x] Inventory all ESP Task1 XLSX files, including A/E example plans; inspect sheets, formulas, cached results, native charts/images, merges and conditional formatting.
+- [x] Export source-adjacent `md/<same-stem>.md` workbook guide plus linked CSV/JSON data with exact cell addresses, formulas and separately identified cached values. Preserve chart definitions/images and meaningful Gantt formatting; record any rendering/recalculation limitations.
+- [x] Verify cell/formula counts and source hashes; inspect representative plan views. Add outputs/provenance to conversion register and source review. Reuse originals/existing tools; no source edits.
 
 **Next action:** inspect workbook structures using installed openpyxl and OOXML ZIP metadata. Choose the least complex faithful representation before exporting. Do not imply cached formula results are freshly recalculated.
+
+## 2026-09-26 — Resume ESP evidence-to-design work
+
+**Objective:** finish the conversion handover and evidence review, then produce concrete all-task activity designs for discussion. No implementation before teacher agreement; later implementation is limited to Tasks 1 and 2.
+
+- [x] Reconcile published PDF/DOCX/workbook manifests with the stale last checkpoint; check output presence/hashes without reconverting unchanged sources. Finish the conversion register, useful links and limitations.
+- [x] Read saved evidence review/process and only targeted outstanding source sections; verify any new worked-example calculations/code. Record new findings so subsequent sessions do not repeat source review.
+- [x] Document sets for all five assessed tasks, with progression, worked examples, meaningful variations, UI, marking contracts, feedback, transfer limits and Task1/Task2 delivery increments.
+- [x] Verify documentation links, examples and source claims; record completion/remaining decisions and present the designs for discussion. STOP at this gate.
+
+**Resume observation:** initial `git status --short` is clean. The previous turn successfully published five XLSX exports (17 sheets, 698 formulas, zero chart objects), but the final checkpoint checkboxes were not updated. `docs/esp/evidence-review.md` and both manifests exist; `conversion-register.md` has not yet been created. Reuse them; do not restart extraction. No application files have changed during this programme.
+
+
+### 2026-09-26 completion and exact handover
+
+**Conversion reconciliation complete:** all 36 PDF/DOCX source/output hashes and linked assets checked without reconversion. Final manifest count is **270** linked assets, superseding the earlier 269. Five published XLSX exports contain 17 sheets and 698 formulas; source hashes and declared output files checked. Workbook exports include same-stem MD guides, formula/value CSVs, addressed-cell JSON, styled HTML and retained OOXML. No native charts or conditional formatting present. Cached results were not recalculated. Direct Gantt cell fills and basic merges are preserved; theme/tint colours, exact number formats, printing/interactivity and browser visual fidelity are not certified. Checkbox completion does not imply those limitations were removed. Originals unchanged; no sibling-folder writes this session.
+
+**Evidence/design complete for discussion:** `docs/esp/conversion-register.md` indexes all outputs. `docs/esp/source-guide.md` is now the current entry point, linked from docs/README.md; old source guide retained as historical research, superseded Task3 21/18 discrepancy corrected in task notes. `docs/esp/evidence-review.md` records targeted source reads, all three supplied Task2 code reviews (read only), examiner testing examples, scheme wording anomaly and CSV findings. `references/esp/dataset-inventory.json` records six file hashes/schemas/counts/date ranges. Both RetailX CSVs contain a 2026 date among November 2025 records; preserve and state assumptions, do not silently correct.
+
+**Proposals:** `docs/esp/activity-designs.md` covers 21 three-question set recipes (T1:5, T2:5, T3:4, T4a:4, T4b:3), UI/feedback/marking contracts, progression and implementation increments. `task-1-designs.md` and `task-2-designs.md` provide detailed worked examples and meaningful variation axes. First-phase scope proposes five coordinated variations for each of ten T1/T2 recipes: 30 question templates / 150 variations. These are designs, not completed question banks. Recommended marking combines automatic constrained checks with separately reviewed short prose; no automatic ESP grade. Review statuses do not imply a teacher inbox/account system.
+
+**Verification:** `python3 scripts/validate-esp-designs.py` passed independent schedule/availability, costs/forecast, boundary/ID, tier/rounding, repair and small data examples. All 98 local Markdown links across docs/esp and docs/README.md resolve. `git diff --check` passed. Application files untouched; no app build/browser tests repeated for this documentation-only change. Workbook rendering limits and unverified full exemplar formulas remain recorded.
+
+**Exact next action:** discuss the proposed activity coverage, separate ESP navigation and hybrid marking with the teacher. Do not implement until agreement, as explicitly requested. After agreement, persist the next incremental plan before code changes; first deliver one usable T1/T2 slice, then expand the agreed scope. Existing codec rejects type 3 despite two type bits, so explicitly test backward-compatible code/loader/navigation/progress integration. Preserve existing share codes. Do not restart conversions or bulk source reading. No commit or deployment performed.
+
+## 2026-09-26 — Teacher refinement: timing, close reading and validation practice
+
+**Objective:** incorporate teacher acceptance of the broad progression with explicit refinements: each set is three self-contained multipart questions of about five minutes each; Task2 needs generous validation fault-finding and repeated practice of every test-template column. This turn updates design requirements, not application code.
+
+- [x] Confirm exact template headings from cached conversions and identify evidence-review requirements before authoring.
+- [x] Update shared and Task1/Task2 designs for timing, validation coverage, column-level objectives and deliberate repetition.
+- [x] Check documentation consistency and record exact next authoring action, including any evidence still needing close comparison.
+
+**Scope decision:** broad activity progression accepted by teacher (“seems reasonable”), subject to these refinements. Do not request the same broad approval again. Prior design-level evidence synthesis is not certification of every future question/variation; source-to-question checks remain required.
+
+
+**Completed refinement:** shared designs, both task designs and review process now require three independently answerable multipart questions, **at most five minutes each**, with reading/interaction included; shorter questions/sets explicitly welcome (teacher clarification). Task2 now has a validation coverage requirement, all five exact AdSAM template headings with column-specific objectives/exercises, a recipe-to-column map and deliberate small-variation repetition. T2.5 is revised to three independent miniature investigations rather than a chain relying on previous answers. Existing worked examples remain reusable design material; they are not yet final timed questions.
+
+**Close-reading requirement:** before authoring each question family, compare all relevant scheme bands, examiner judgement against the actual response, and A/E artefacts/commentary; inspect relevant figures and persist claim → evidence → question/feedback links. Task-level summaries alone do not certify every future question. Reuse completed close comparisons, fill specific gaps, and record limitations. No application changes or source reconversion this turn.
+
+**Checks:** cached AdSAM DOCX headings read directly; `git diff --check` passed. No executable content changed; no runtime tests required. **Next action:** begin the question-family evidence/coverage matrix for Tasks1/2, then author a small representative slice under the accepted progression and refined requirements. Do not seek repeated approval of the broad progression. Classroom timing remains unverified; narrow any question that exceeds the five-minute ceiling instead of requiring every question to use the whole allowance.
+
+## 2026-09-26 — Authorised ESP close-reading and implementation
+
+**User authorisation:** complete close reading of all supplied ESP assessment references, persist high-signal distillations, refine designs, then implement Task1/Task2. The previous discussion gate is satisfied; no repeat approval required. Three independent multipart questions per set, each <=5 minutes, with strong validation and all test-log columns. Keep existing app functional; no deployment requested.
+
+- [ ] Audit source/page coverage; complete missing task/scheme/report/exemplar reading and relevant visuals; persist a coverage ledger and concise distilled findings with precise references and limits.
+- [ ] Reconcile question designs against evidence; persist family/column/validation coverage and concrete scope.
+- [ ] Implement ESP infrastructure and an independently usable vertical slice; verify compatibility before expansion.
+- [ ] Complete five Task1 and five Task2 recipes with five variations each, bounded marking, feedback, separate prose review and accessible controls.
+- [ ] Run focused and shared tests, validation/build and browser checks; update checkpoint at each working boundary with exact next action.
+
+**Starting state:** earlier documentation edits remain uncommitted; preserve them. Read cached conversions, never repeat unchanged extraction. No subagents authorised. Close reading must distinguish fully examined material from sampled visuals; do not overclaim completion.
+
+**Close-reading increment 1:** reread all three Task1/Task2 scheme guidance/bands; completed SAM/AdSAM later-task textual guidance, all live report commentary through33 and53–66 (remaining code/visual examples still to cover). Read both complete A/E Task2 logs and all nine full table images, plus both Python solutions; matched against commentary. Inspected live Task1 report figures pp7,9–12 and all task1 staff/task tables. Added `docs/esp/assessment-distilled.md`, including new live scheme income/cost label conflict and exemplar expected-result limitations. Broader remaining visual/code reading must not be claimed complete. No application changes yet.

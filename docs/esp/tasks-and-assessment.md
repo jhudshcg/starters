@@ -1,6 +1,8 @@
 # ESP task and assessment notes
 
-Reference digest of the supplied specimen pack. Read the [source guide](source-guide.md) for exact filenames, versions and fingerprints, and [source issues](supplied-assets.md#source-issues-and-authoring-decisions) before using numerical examples. Page numbers below are **PDF page numbers**, including covers. `MS` means the **V0.2 PDF mark scheme**, not the older HTML conversion.
+**Historical specimen digest.** Current cross-series findings and corrected discrepancy status are in the [evidence review](evidence-review.md). Original source fingerprints are retained in the [historical guide](source-guide-historical.md); current paths are in the [conversion register](conversion-register.md).
+
+Reference digest of the supplied specimen pack. Read the [source guide](source-guide.md) for exact filenames, versions and fingerprints, and [source issues](evidence-review.md) before using numerical examples. Page numbers below are **PDF page numbers**, including covers. `MS` means the **V0.2 PDF mark scheme**, not the older HTML conversion.
 
 ## Assessment shape and limits of starter practice
 
@@ -11,11 +13,11 @@ The specification's Employer Set Project section describes a portfolio respondin
 | Pre-release | Recommended maximum 4 hours | No submitted evidence | Unassessed |
 | Task 1: Planning | 3 hours | Project-plan XLSX; rationale PDF | 18 |
 | Task 2: Defect repair | 3 hours | Corrected Python; test-log PDF | 21 |
-| Task 3: Design | 2 hours 30 minutes | Design-document PDFs | 18 across rubric rows; booklet activity page says 21 including communication |
+| Task 3: Design | 2 hours 30 minutes | Design-document PDFs | 18 including communication in the currently reviewed booklet |
 | Task 4a: Development | 4 hours | Working Python, code PDF and TXT | 34 |
 | Task 4b: Evaluation | 2 hours | Review PDF; read-only access to Task 4a work | 9 |
 
-The rubric totals give 100; the Task 3 activity-page interpretation would give 103. Do not present 103 as the settled qualification total. These sources need clarification, not silent reconciliation. The supplied specification states 100 and 14 hours 30 minutes of assessed work.
+The rubric totals give 100. The previous 21/18 Task 3 discrepancy in these notes is superseded: the current original SAM and AdSAM booklets explicitly total 18 including communication. The supplied specification states 100 and 14 hours 30 minutes of assessed work.
 
 The specimen assessed tasks prohibit internet/AI assistance; Task 2 also explicitly requires independent work. Offline relevant software is allowed where specified. These are notes about the supplied assessment documents. The starters are teaching and practice before assessment, not an assessment-session tool or a replacement for current administration guidance.
 
@@ -97,7 +99,7 @@ MS pp. 4–7 offer alternatives, not one canonical Gantt chart. Sensible paralle
 
 ## Task 2: identify, fix and retest defects
 
-Sources: Task 2 pp. 3–4; MS pp. 10–13; specification, Task 2; supplied Python and test-log notes in [assets](supplied-assets.md).
+Sources: Task 2 pp. 3–4; MS pp. 10–13; specification, Task 2; supplied Python and test-log notes in [assets](evidence-review.md).
 
 The investment quotation must accept customer name, a ten-character client ID, contribution amount and investment type. It reports customer details, maximum/minimum value after five years, profit and fees, with GBP amounts to two decimal places, and handles user errors.
 
@@ -136,7 +138,7 @@ MS p. 15 identifies currency headers, date interpretation and rate precision. Th
 | Logic and conventions | 6 | Correct, efficient sequence/structure and consistent accepted notation |
 | Communication | 3 | Clear design using technical language appropriate to its audience |
 
-These rows sum to 18 including communication. The booklet's p. 3 separately says 18 + 3 = 21. Do not write an automatically marked “How many marks?” question from this conflict.
+These rows sum to 18 including communication, matching the current reviewed booklet. The previously recorded conflict is superseded; see the evidence review.
 
 ## Task 4a: extend an existing solution
 

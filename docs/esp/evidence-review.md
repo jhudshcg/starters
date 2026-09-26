@@ -1,8 +1,10 @@
-# ESP evidence review — 25 September 2026
+# ESP evidence review — 25–26 September 2026
 
-**Status:** substantial source review completed; activity designs NOT yet written or agreed. This record preserves findings so the next session can design without rereading the whole collection. Follow [review process](review-process.md); exact source paths/hashes are in the [conversion register](conversion-register.md) and manifests. PDF page numbers include covers. Sources are supplied local assessment materials, not a current-series administration audit.
+**Status:** source review and activity design proposals completed; teacher discussion/agreement pending. This record preserves findings so the next session can resume without rereading the collection. Follow [review process](review-process.md); exact source paths/hashes are in the [conversion register](conversion-register.md) and manifests. PDF page numbers include covers. Sources are supplied local assessment materials, not a current-series administration audit.
 
-## Sources actually read in this session
+## Sources read on 25 September — historical inventory
+
+Outstanding targeted reads listed here were completed on 26 September as recorded at the end of this document. Full independent evaluation of exemplar workbook formulas remains outside the completed checks.
 
 - Local `../agents/spec.md`, ESP section (lines 2466–2708): pre-release and Tasks 1, 2, 3, 4a, 4b.
 - All three packs' Task 2, 3, 4a and 4b substantive requirements and deliverables. Initial combined output truncated part of AdSAM T2/T3; these were separately reread completely. Scenario contexts: RBSX finance; RetailX retail loyalty/sales; Glenstar athlete training/performance.
@@ -93,6 +95,34 @@ Official marking is holistic/best-fit. Starter marks can check bounded component
 4. Grade E contents page calls its Task3 example “A Grade”; retain as a source typo, not evidence of a different grade.
 5. Grade A/E examples contain imperfect reasoning and formulas. Distinguish source commentary, source artefact, independent calculation and instructional inference.
 
-## Next design pass — no repeat bulk reading
+## Design pass completed 26 September 2026
+
+The [activity designs](activity-designs.md), [Task 1 detail](task-1-designs.md) and [Task 2 detail](task-2-designs.md) now apply this review. They remain proposals for discussion. The following paragraph records the original design remit; no repeat bulk reading is needed.
+
+### Original design remit
 
 Use the evidence above to draft named 5–15-minute activity sets for every task, with worked examples, progression, meaningful variations, accessible UI and explicit marking contracts. Read only outstanding targeted items noted at the top when needed. Prioritise Task1 rationale/consistency and Task2 requirements → test → repair → retest. Complete and discuss documentation before any implementation. Initial implementation scope after agreement remains Task1/Task2 only.
+
+
+## Targeted follow-up — 26 September 2026
+
+- **Task 1 constraints:** AdSAM p10 specifies eight-hour days, five-day weeks, an 18-week deadline, database engineer unavailable in weeks 3–4, at least three minor tests per module and no more than four major tests overall. Live p10 specifies seven-hour days, five-day weeks, a 12-week deadline, network engineer unavailable in weeks 1–2, at least three minor tests per module and no more than three major tests overall. These are scenario-specific constraints, not universal ESP rules.
+- **Scheme wording:** original SAM p23 top-band logic/structure text repeats “some” wording. AdSAM/live schemes state precision and consistency. Preserve the original anomaly; triangulate rather than silently rewrite the source.
+- **Testing evidence:** live examiner p18 describes logs with unspecified inputs and vague expectations (two testing marks, one process mark). The p21 example has boundary tests and calculated expectations but lacks confirmation testing (eight testing, three process, nine solution marks). Both example images were inspected at readable size. These support explicit input, independent expected result, observation, repair and retest steps; they do not define an automatic grade conversion.
+- **Strong development:** live examiner p53 gives six functionality, three logic/structure and three robustness marks, while chart comparisons could still improve. A working solution can support a justified improvement in Task 4b.
+
+### Supplied Task 2 code — read, not executed
+
+Original RBSX defects include a missing colon, identifier length logic, discarded float conversion/string return, an inclusive threshold error, four rather than five iterations, an incorrect rate, formatting and spelling issues. Its monthly brief versus annual implementation requires an explicit interpretation when designing practice.
+
+RetailX includes a validation loop skipped by its initial flag, string menu input compared with integers, an identifier length inequality, incorrect category/tier logic, a missing argument, list/range misuse, whole-pound bonus interpretation and no main entry call. Glenstar includes inappropriate name validation, a misspelled function, a boundary exclusion, indexing/empty-input problems, a missing parameter, an incorrect rate, zero-timeframe handling, subtraction direction and a missing closing parenthesis. These findings inform original bounded examples; the supplied programs are not executed or silently repaired.
+
+### CSV coverage and date anomaly
+
+[Dataset inventory](../../references/esp/dataset-inventory.json) records six source hashes, schemas, row counts and date ranges. RBSX has 86 rows per file with one chronological row per date; Glenstar has 235 rows per file and multiple chronological rows per date. Both RetailX files have 252 rows and contain **03/11/2026** among November 2025 dates. The resulting order/range conflicts with a simple four-week assumption. Preserve the source; parse dates explicitly, inspect range/order, and state any authored exercise's date assumptions. Do not teach positional slicing as a universally valid date filter.
+
+### Verification and implementation boundary
+
+The [worked-example validator](../../scripts/validate-esp-designs.py) passes schedules, availability/capacity, costs, forecasts, tier calculations, rounding, boundary/identifier checks, harmful repairs and small data calculations. It verifies original design examples, not a future UI or marking engine. All 36 PDF/DOCX source/output hashes and linked assets were reconciled; all five workbook source hashes and declared output paths passed. No conversions were repeated. The final document manifest lists 270 linked assets (superseding the earlier checkpoint's 269).
+
+Code integration review found that the existing codec has two type bits but explicitly rejects type 3 and currently recognises only PZ/EX/PY. Adding ESP needs a deliberate compatibility-preserving change to codes, loaders, navigation and progress, with tests; it is not just another bank import. Implementation remains blocked on the requested design discussion, not on further bulk source review.

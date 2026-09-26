@@ -1,0 +1,104 @@
+[
+  {
+    "source": "SAM/DSD ESP AdSAM/Task_3_RetailX_data.csv",
+    "sha256": "fc0c0a419c4bcb12d9fd16f14e5e00b8318aa7a8fb8a46cea353e530cc84150b",
+    "rows": 252,
+    "fields": [
+      "Date",
+      "Product ID",
+      "Cost Price",
+      "Sales Price",
+      "Qty Sold"
+    ],
+    "date_min": "2025-11-03",
+    "date_max": "2026-11-03",
+    "dates_nondecreasing": false,
+    "multiple_rows_per_date": true
+  },
+  {
+    "source": "SAM/DSD ESP AdSAM/Task_4a_RetailX_data.csv",
+    "sha256": "76d6732fe43ebe0a09bc117345f516626cb0458550f1e3cb6b09a184dc6181ef",
+    "rows": 252,
+    "fields": [
+      "Date",
+      "Product ID",
+      "Category",
+      "Cost Price",
+      "Sales Price",
+      "Qty Sold"
+    ],
+    "date_min": "2025-11-03",
+    "date_max": "2026-11-03",
+    "dates_nondecreasing": false,
+    "multiple_rows_per_date": true
+  },
+  {
+    "source": "SAM/DSD ESP SAM/Task3_RBSX_data.csv",
+    "sha256": "95050347e581753ccbe32c0055f24b01a8669afd7798b21db82ee47cb5df2c02",
+    "rows": 86,
+    "fields": [
+      "Date",
+      "GBP - EUR",
+      "EUR - GBP",
+      "GBP - AUD",
+      "AUD - GBP",
+      "GBP - JPY",
+      "JPY - GBP"
+    ],
+    "date_min": "2024-03-04",
+    "date_max": "2024-05-28",
+    "dates_nondecreasing": true,
+    "multiple_rows_per_date": false
+  },
+  {
+    "source": "SAM/DSD ESP SAM/Task4a_RBSX_data.csv",
+    "sha256": "cff9aa2c22b55c4d4b1168a3d6db68ff37529cd56b4822b2368913b079b6f8ab",
+    "rows": 86,
+    "fields": [
+      "Date",
+      "GBP - EUR",
+      "EUR - GBP",
+      "GBP - AUD",
+      "AUD - GBP",
+      "GBP - JPY",
+      "JPY - GBP",
+      "GBP - USD",
+      "USD - GBP"
+    ],
+    "date_min": "2024-03-04",
+    "date_max": "2024-05-28",
+    "dates_nondecreasing": true,
+    "multiple_rows_per_date": false
+  },
+  {
+    "source": "core past papers/t-level-dsd-19612-esp-summer-2026/Task3_Glenstar_data.csv",
+    "sha256": "da356bb9349ae34a42aeb9f8ccac5e1811f09fc0ef8ed6af4b80f86135437350",
+    "rows": 235,
+    "fields": [
+      "Date",
+      "Athlete",
+      "Place",
+      "Prize Money"
+    ],
+    "date_min": "2026-01-03",
+    "date_max": "2026-04-26",
+    "dates_nondecreasing": true,
+    "multiple_rows_per_date": true
+  },
+  {
+    "source": "core past papers/t-level-dsd-19612-esp-summer-2026/Task4a_Glenstar_data.csv",
+    "sha256": "4653fc09f3a5b8708f586bb75eb7e1667f87067f52b153c50a4ed7d56a45f2b2",
+    "rows": 235,
+    "fields": [
+      "Date",
+      "Athlete",
+      "Rule Set",
+      "Place",
+      "Prize Money"
+    ],
+    "date_min": "2026-01-03",
+    "date_max": "2026-04-26",
+    "dates_nondecreasing": true,
+    "multiple_rows_per_date": true
+  }
+]

@@ -30,7 +30,7 @@ Do not compare marks across versions until the allocation is verified. Scenario-
 For every proposed set, record:
 
 - Task/assessment trait and source pages; gap it addresses; prerequisite knowledge.
-- One bounded 5–15-minute outcome and a small coherent scenario with all necessary information.
+- Three bounded, self-contained multipart questions of up to five minutes each, with all necessary context and independent starting states. Budget reading and interaction as well as answering. Five minutes is a ceiling per complete multipart question, not a minimum or target to fill; sets may be shorter than 15 minutes.
 - Questions/parts, expected response, marks, time, meaningful permutations and progression from recognition through completion to independently constructed evidence.
 - UI chosen for the evidence: editable schedule/cost table, dependency links, test-log rows, trace grid, code repair, algorithm blocks, chart interpretation, or short justified judgement. Include keyboard and non-drag alternatives.
 - Marking contract: exact numeric/structural constraints; accepted alternatives; partial-credit boundaries; contradiction checks; dependencies/error-carried-forward policy; representative wrong responses.
@@ -53,3 +53,16 @@ Each task should offer a progression and more than one evidence format. Vary the
 ## Implementation handover after agreement
 
 Record selected sets and deferred sets, navigation/task labels, code and storage compatibility, bank schema, marking/progress treatment, reusable controls, generated files and relevant tests. Build Task 1 and Task 2 as separate reviewable increments. Record each working boundary so a later session can resume without rerunning unchanged extraction or investigation. Publication remains a separate action; no commit or deployment is implied by document preparation.
+
+
+## Close-reading gate before question authoring — teacher refinement, 26 September 2026
+
+For each Task1/Task2 question family, persist a compact evidence record before implementation:
+
+1. Read the relevant mark-scheme guidance and **all bands** together. Describe the observable difference between weak, adequate and strong evidence; record page/trait references and acceptable alternatives.
+2. Compare the examiner's judgement with the actual student response or log being discussed. Inspect the full relevant image/table; a commentary summary alone is insufficient where the artefact carries the evidence.
+3. Compare relevant A/E exemplar work with its commentary. Identify exactly what is present, missing or inconsistent. Independently verify calculations or program behaviour used in a question. Reuse already recorded close comparisons where sufficient; target gaps rather than repeat the whole collection.
+4. Link each question part, accepted answer, plausible mistake and feedback to that evidence or label it explicitly as an instructional inference. Do not claim an authored teaching threshold is an official mark-scheme rule.
+5. Check independence and a five-minute workload: brief, bounded work, response and feedback. Record unverified classroom timing honestly. If a part needs too much context, narrow it instead of dropping the reasoning objective.
+
+Existing task-level mappings are a foundation, not proof this gate has passed for every uncreated question. Persist coverage and outstanding evidence per family so later sessions do not repeat completed reading. Maintain a coverage matrix for Task2 validation families and every test-log column. Repetition with small meaningful variations is explicitly authorised for procedural fluency; retain contrasting/transfer cases to test understanding.

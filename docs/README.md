@@ -5,6 +5,7 @@ Start content work with the two shared guides below, then the relevant type spec
 | Document | Scope |
 | --- | --- |
 | [Exam resource map](exam-resource-map.md) | Task-based routing to sibling exam resources; filename-only inventory |
+| [ESP resource and design guide](esp/source-guide.md) | Converted sources, repeatable evidence review and proposed activity sets; implementation awaits agreement |
 | [Puzzle level audit](reviews/2026-09-25-puzzle-level-coverage.md) | Difficulty-band and maths-topic availability gaps |
 | [Content authoring](content-authoring.md) | Shared sources, wording, marking and hints |
 | [Content refinement](content-refinement.md) | Update checklist, evidence and definitions of done |
