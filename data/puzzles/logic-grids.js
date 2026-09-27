@@ -1,4 +1,4 @@
-// Deterministic instances; see scripts/enrich-puzzles.py.
+// Deterministic instances; see build/expand/enrich/add-beginner-puzzles.py.
 export default [
   {
     "slot": 100,
@@ -17651,6 +17651,2222 @@ export default [
                   3
                 ]
               ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1024,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 1",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[3, 2, 1, 0]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                1,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Alex starts at 12:00.",
+              "Drew starts earlier than Blair.",
+              "Drew starts earlier than Casey.",
+              "Casey starts earlier than Blair."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1025,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 2",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[3, 0, 1, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Blair starts at 09:00.",
+              "Alex does not start at 11:00.",
+              "Casey starts earlier than Drew.",
+              "Alex does not start at 10:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1026,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 3",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[3, 0, 1, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                2,
+                1,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                3,
+                0
+              ]
+            ],
+            "clues": [
+              "Casey starts at 10:00.",
+              "Alex does not start at 09:00.",
+              "Drew does not start at 09:00.",
+              "Drew does not start at 12:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1027,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 4",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 2, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                3,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Drew starts at 12:00.",
+              "Blair starts earlier than Alex.",
+              "Casey does not start at 09:00.",
+              "Alex does not start at 11:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1028,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 5",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[0, 1, 3, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                1,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Alex starts at 09:00.",
+              "Blair does not start at 12:00.",
+              "Casey does not start at 11:00.",
+              "Casey does not start at 10:00.",
+              "Blair does not start at 11:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1029,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 6",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 2, 0, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                1,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                1,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            "clues": [
+              "Blair starts at 11:00.",
+              "Drew does not start at 09:00.",
+              "Alex starts earlier than Drew.",
+              "Casey starts earlier than Blair.",
+              "Alex does not start at 09:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1030,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 7",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 2, 0, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Casey starts at 09:00.",
+              "Drew does not start at 11:00.",
+              "Blair starts earlier than Drew.",
+              "Alex starts earlier than Blair."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1031,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 8",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[2, 3, 1, 0]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "clues": [
+              "Drew starts at 09:00.",
+              "Casey does not start at 11:00.",
+              "Blair does not start at 11:00.",
+              "Casey starts earlier than Alex."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1032,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 9",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[2, 1, 3, 0]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                1,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Alex starts at 11:00.",
+              "Drew starts earlier than Casey.",
+              "Drew does not start at 10:00.",
+              "Blair starts earlier than Casey."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1033,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 10",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 3, 2, 0]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                1,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Blair starts at 12:00.",
+              "Casey does not start at 09:00.",
+              "Casey does not start at 10:00.",
+              "Drew does not start at 10:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1034,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 11",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[2, 1, 0, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Casey starts at 09:00.",
+              "Drew does not start at 11:00.",
+              "Blair does not start at 11:00.",
+              "Drew does not start at 10:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1035,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 12",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[3, 1, 2, 0]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Drew starts at 09:00.",
+              "Blair does not start at 12:00.",
+              "Alex does not start at 11:00.",
+              "Casey starts earlier than Alex.",
+              "Casey does not start at 10:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1036,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 13",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[3, 2, 1, 0]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Alex starts at 12:00.",
+              "Blair does not start at 09:00.",
+              "Casey does not start at 09:00.",
+              "Casey starts earlier than Blair."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1037,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 14",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[2, 0, 3, 1]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Blair starts at 09:00.",
+              "Drew starts earlier than Alex.",
+              "Casey does not start at 11:00.",
+              "Alex starts earlier than Casey."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1038,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 15",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 3, 2, 0]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                2,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                0,
+                0
+              ]
+            ],
+            "clues": [
+              "Casey starts at 11:00.",
+              "Alex starts earlier than Casey.",
+              "Drew starts earlier than Alex."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1039,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 16",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[0, 2, 1, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                3,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                0,
+                0
+              ]
+            ],
+            "clues": [
+              "Drew starts at 12:00.",
+              "Blair does not start at 09:00.",
+              "Blair does not start at 10:00.",
+              "Casey does not start at 09:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1040,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 17",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[0, 1, 3, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Alex starts at 09:00.",
+              "Blair starts earlier than Drew.",
+              "Drew starts earlier than Casey."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1041,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 18",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[0, 2, 3, 1]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                1,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Blair starts at 11:00.",
+              "Alex starts earlier than Drew.",
+              "Drew starts earlier than Casey."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1042,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 19",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[2, 1, 0, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Casey starts at 09:00.",
+              "Drew does not start at 11:00.",
+              "Blair starts earlier than Drew.",
+              "Blair does not start at 11:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1043,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 20",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 3, 0, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                3,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                1,
+                0
+              ]
+            ],
+            "clues": [
+              "Drew starts at 11:00.",
+              "Casey does not start at 12:00.",
+              "Casey starts earlier than Alex.",
+              "Drew starts earlier than Blair."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1044,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 21",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 3, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Alex starts at 10:00.",
+              "Alex starts earlier than Casey.",
+              "Blair starts earlier than Drew.",
+              "Drew starts earlier than Casey."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1045,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 22",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[3, 1, 0, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                "before",
+                0,
+                3,
+                0,
+                0
+              ],
+              [
+                "before",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                3,
+                0,
+                0
+              ]
+            ],
+            "clues": [
+              "Blair starts at 10:00.",
+              "Drew starts earlier than Alex.",
+              "Casey starts earlier than Alex.",
+              "Drew does not start at 09:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1046,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 23",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 3, 0, 2]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                2,
+                0,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                "ne",
+                0,
+                1,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                3,
+                0
+              ]
+            ],
+            "clues": [
+              "Casey starts at 09:00.",
+              "Alex does not start at 12:00.",
+              "Blair does not start at 10:00.",
+              "Blair does not start at 11:00.",
+              "Alex starts earlier than Drew."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1047,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 24",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 2, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                3,
+                3,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                2,
+                0
+              ],
+              [
+                "ne",
+                0,
+                0,
+                2,
+                0
+              ]
+            ],
+            "clues": [
+              "Drew starts at 12:00.",
+              "Alex does not start at 09:00.",
+              "Blair starts earlier than Casey.",
+              "Alex does not start at 11:00."
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1048,
+    "focus": "logic grids",
+    "title": "Logic Grids · Beginner 25",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Match four people to four start times. Each time is used once. One assignment is supplied; combine the remaining exclusions and ordering clues.",
+        "hint": "Start with the supplied match and cross out that time for the other people. Read earlier-than clues as an order, not necessarily consecutive times.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "logic-grid",
+            "marks": 3,
+            "answer": "[[1, 2, 0, 3]]",
+            "explanation": "Use the stated starting assignment, then remove its time from the other rows. Combine exclusions and earlier-than clues with the one-to-one rule.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "Alex",
+              "Blair",
+              "Casey",
+              "Drew"
+            ],
+            "categories": [
+              {
+                "name": "Start time",
+                "values": [
+                  "09:00",
+                  "10:00",
+                  "11:00",
+                  "12:00"
+                ]
+              }
+            ],
+            "rules": [
+              [
+                "eq",
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                "ne",
+                0,
+                2,
+                2,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                1,
+                0
+              ],
+              [
+                "before",
+                0,
+                0,
+                3,
+                0
+              ],
+              [
+                "before",
+                0,
+                1,
+                3,
+                0
+              ]
+            ],
+            "clues": [
+              "Alex starts at 10:00.",
+              "Casey does not start at 11:00.",
+              "Alex starts earlier than Blair.",
+              "Alex starts earlier than Drew.",
+              "Blair starts earlier than Drew."
             ],
             "validation": {
               "solutionCount": 1,

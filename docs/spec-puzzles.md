@@ -1,8 +1,8 @@
 # Puzzle specification
 
-## Current bank — 24 September 2026
+## Current bank — 27 September 2026
 
-This section supersedes earlier numerical minima and challenge descriptions below. The bank contains 901 puzzle templates: 100 in each family, with 101 Go problems. Exact variation counts and level distributions are in the generated [puzzle inventory](../data/coverage/puzzle-inventory.json), maintained by `node scripts/puzzle-inventory.mjs`.
+This section supersedes earlier numerical minima and challenge descriptions below. The bank contains 1119 puzzle templates, with at least25 at every challenge level in every family. Good existing content above25 is retained. Exact variation counts and level distributions are in the generated [puzzle inventory](../data/coverage/puzzle-inventory.json), maintained by `node scripts/puzzle-inventory.mjs`.
 
 - Go uses source rank: Beginner 25k+, Foundation 18–24k, Standard 12–17k, Stretch 11k and stronger. Counts are 26/25/25/25 respectively. Tree depth is no longer a difficulty proxy. Cached sources and offline import instructions are in [references/go](../references/go/README.md). The card depicts a ko shape.
 - Logic grids include three-person introductions and four-person systems with two/three categories. Equations mix domains and arithmetic constraints, including systems without multiplication.
@@ -145,7 +145,7 @@ Every puzzle has a `challengeLevel` (`foundation`, `standard` or `stretch`) and 
 - **Standard:** combine several deductions or stages. Examples include three-category logic grids with an explicit starting relationship and five-by-five cages.
 - **Stretch:** more interdependent constraints, less scaffolding or deeper planning. Examples include eight-variable equation grids, six-by-six cages, Sudoku with further uniqueness-preserving clue removal, mixed recurrences and counting/optimisation problems.
 
-Tangram levels use compactness as a provisional indication of how much the outline conceals piece placement. Go levels use recorded tree depth, including replies; this is a reading-depth proxy, not a rank assessment. Both need classroom calibration. A level need not exist for every subtype. Only levels with at least three puzzles are selectable.
+This historical expansion originally used tree depth for Go. That method is superseded: Go must use recorded source problem ranks and the mapping at the top of this document. Other puzzle levels use scaffolding and reasoning demand, with classroom calibration pending. All families now have at least25 puzzles per level; the UI selection threshold remains three.
 
 The puzzle page has a Challenge selector, initially Mixed challenge. Changing it requests a new three-puzzle set within the current subtype. New set and New set in this focus respect the selection; Get new permutation preserves the exact templates. Each puzzle displays its own level. Switching to a subtype without the selected level falls back to Mixed challenge. A shared code always opens its exact questions regardless of the saved filter. Cancelling replacement preserves the previous activity and filter.
 

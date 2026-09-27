@@ -7,11 +7,15 @@ import numbers from './puzzles/number-constraints.js';
 import sequences from './puzzles/sequences.js';
 import classics from './puzzles/classic-maths.js';
 import go from './puzzles/go.js';
+import sequenceBeginner from './puzzles/sequences-beginner.js';
+import mathsApplied from './puzzles/maths-applied.js';
+import mathsReasoningStretch from './puzzles/maths-reasoning-stretch.js';
 import sequenceMore from './puzzles/sequences-more.js';
 import mathsMore from './puzzles/maths-more.js';
 import mathsPractice from './puzzles/maths-practice.js';
+import mathsBeginner from './puzzles/maths-beginner.js';
 import sequencesEnriched from './puzzles/sequences-enriched.js';
-export default [...logic,...equations,...tangrams,...paths,...sudoku,...numbers,...sequences,...classics,...go,...sequenceMore,...mathsMore,...mathsPractice,...sequencesEnriched].map(question=>{
+export default [...logic,...equations,...tangrams,...paths,...sudoku,...numbers,...sequences,...classics,...go,...sequenceMore,...mathsMore,...mathsPractice,...mathsBeginner,...sequencesEnriched,...sequenceBeginner,...mathsApplied,...mathsReasoningStretch].map(question=>{
  // GoProblems ranks are retained with source attribution. The original OGS
  // exercise has puzzle_rank 5 (=25 kyu), cached in references/go/ogs-2625.json.
  const rank=question.focus==='go'?(question.sourceRank??(question.slot===175?25:Number(question.source?.note.match(/(\d+) kyu/)?.[1]))):null;

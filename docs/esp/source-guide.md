@@ -1,6 +1,6 @@
 # ESP resource and design guide
 
-Updated 26 September 2026. Conversions and evidence review are complete to the limits recorded below. Activity designs are **proposals awaiting teacher discussion**; no ESP application changes have been made. Implementation after agreement is limited to Tasks 1 and 2.
+Updated 27 September 2026. Task 1/2 implementation is authorised and underway. Use the latest checkpoint for verification status. Read the [distilled assessment conclusions](assessment-distilled.md), [close-reading ledger](close-reading-ledger.md) and [activity evidence map](activity-evidence.md) before reopening full sources.
 
 | Work | Read first | Open next only as needed |
 | --- | --- | --- |

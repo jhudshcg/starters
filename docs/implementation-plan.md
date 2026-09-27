@@ -24,7 +24,7 @@ The draft supplies concrete defaults so review can be targeted. These decisions 
 
 ## Settled set-code decision
 
-Use the settled [48-bit Base64url contract](spec-common.md#set-codes-and-compatibility), superseding the six-character hash/catalogue proposal. Eight case-sensitive characters encode six bytes, without padding; an optional ninth configures timing.
+Use the settled [54-bit Base64url contract](spec-common.md#set-codes-and-compatibility), superseding the six-character hash/catalogue proposal. Nine case-sensitive characters encode54 bits, without padding; an optional tenth configures timing. See the current compatibility/migration rules in the common specification.
 
 Reversible fields remove the need for a server, exhaustive set catalogue, collision registry or shared hash seed. Base36 would require ten characters; raw ASCII contains unsuitable controls. Stable slots preserve identities independently of file order. The user explicitly chose URL-safe `-` and `_`, not standard Base64 `+` and `/`.
 
@@ -60,7 +60,7 @@ Use native controls and browser capabilities first. Select maintained libraries 
 2. Expand the worked examples into complete machine-readable records with all options, marking rules, hints and solutions.
 3. Create the coverage inventory from the agreed source. Keep unreviewed and unmapped elements visible.
 4. Implement content validation: unique IDs, part totals, allowed set totals, variation counts, option references, dependency cycles and deterministic generation.
-5. Implement the 48-bit codec and prove round-trip and cross-build stability. Use boundary fixtures, two- and three-question sets, all timer suffixes and old-bank fixtures after a content revision. Use BigInt or explicit byte packing; avoid packing the entire payload through 32-bit JavaScript bitwise operations.
+5. Implement the 54-bit codec and prove round-trip and cross-build stability. Use boundary fixtures, two- and three-question sets, all timer suffixes and old-bank fixtures after a content revision. Use BigInt or explicit byte packing; avoid packing the entire payload through 32-bit JavaScript bitwise operations.
 
 Exit: one validated set per type opens from data; every example answer is independently checked. No complete curriculum claim yet.
 
@@ -95,7 +95,7 @@ Expand by curriculum gaps using the [shared completion criteria](content-refinem
 | Area | Meaningful checks |
 | --- | --- |
 | Content | Mark sums, accepted/rejected answers, reference outputs, puzzle validity/uniqueness, coverage gaps |
-| Codes | 48-bit round-trip/boundaries, case preservation, - and _ in URLs, rejection of + and /, invalid fields, unused slots, old banks, timed suffix |
+| Codes | 54-bit round-trip/boundaries, case preservation, - and _ in URLs, rejection of + and /, invalid fields, unused slots, old banks, timed suffix |
 | Selection | Different focus/templates as required; all variations change; no-alternative state |
 | Marking | Negation, close but incorrect terms, equivalent allowed tokens, linked reasons, blank answers |
 | Timing | Fake-clock tests for expiry/reset/refresh; expired recovery; one submission per attempt |

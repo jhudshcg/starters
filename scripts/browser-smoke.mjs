@@ -45,7 +45,7 @@ try{
  const clearOnLoad=await send('Page.addScriptToEvaluateOnNewDocument',{source:'localStorage.removeItem("dsd-starters-v1");localStorage.removeItem("dsd-starters-theme")'});
  await send('Page.navigate',{url:base+'/?smoke='+Date.now()});await until('Boolean(document.querySelector("#code-form"))');
  await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:clearOnLoad.identifier});
- assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
+ assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),4);
  assert.deepEqual(await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)'),[],'Fresh home must not download banks');
  await click('#theme-toggle');assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');
  await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');
@@ -111,13 +111,13 @@ try{
  assert.ok(await evaluate('document.querySelector(".priority-row").textContent.includes("CA2.1.1")'));
  assert.ok(await evaluate('document.querySelector(".priority-row").textContent.includes("15 marks assessed")'));
  const legacyAggregate={...detailed,id:'legacy-aggregate',finished:detailed.finished-6*3600000,earned:0,percentage:0,firstEarned:0};delete legacyAggregate.partScores;
- const backup={schema:1,history:[detailed,legacyAggregate]};
+ const backup={schema:1,codeFormat:54,history:[detailed,legacyAggregate]};
  await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify(${JSON.stringify(backup)})],"mixed-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
  await until('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.length===2');
  assert.equal(await evaluate('document.querySelector(".priority-row meter").value'),100);
  assert.deepEqual(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.find(r=>r.id==='+JSON.stringify(detailed.id)+').partScores'),detailed.partScores);
  const invalid={...detailed,id:'invalid-parts',partScores:detailed.partScores.map((p,i)=>i? p:{...p,refs:[]})};
- await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify({schema:1,history:[${JSON.stringify(invalid)}]})],"invalid-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
+ await evaluate(`{const transfer=new DataTransfer();transfer.items.add(new File([JSON.stringify({schema:1,codeFormat:54,history:[${JSON.stringify(invalid)}]})],"invalid-progress.json",{type:"application/json"}));const input=document.querySelector('#backup-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
  await until('document.querySelector("#toast").textContent.includes("invalid part scores")');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.length'),2);
  await screenshot('subtopic-progress');
@@ -388,7 +388,7 @@ try{
    assert.deepEqual(await peerEval('[...document.querySelectorAll(".question")].map(q=>q.dataset.question)'),await evaluate('[...document.querySelectorAll(".question")].map(q=>q.dataset.question)'));
    assert.equal(await peerEval('document.querySelector(".questions").textContent'),await evaluate('document.querySelector(".questions").textContent'));
    await evaluate('document.querySelector("#minutes").value="10"');await click('#timer-toggle');await click('#copy-code');
-   const timed=await evaluate('window.copiedForTest');assert.equal(timed.length,9);await peerOpen(timed,true);
+   const timed=await evaluate('window.copiedForTest');assert.equal(timed.length,10);await peerOpen(timed,true);
    assert.ok(await peerEval('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.deadline>Date.now()'));
    const current=resolve(timed),single=encode({...current,minutes:null,entries:[current.entries[0]]});await peerOpen(single,true);
    assert.equal(await peerEval('document.querySelectorAll(".question").length'),1);

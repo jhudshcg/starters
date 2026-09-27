@@ -20,8 +20,8 @@ test('the deployable site contains hashed bundles, no authoring banks or source 
  const meta=JSON.parse(readFileSync(join(root,'.build-meta.json'),'utf8'));
  assert.ok(!Object.keys(meta.inputs).some(f=>/exam-ca[12]|exam-helpers|data\/drafts/.test(f)));
  assert.ok(!bundle.includes('sourceMappingURL'));
- const bankFiles=files.filter(f=>/^banks\/(puzzles|exam|python)-[a-f0-9]+\.txt$/.test(f));
- assert.equal(bankFiles.length,3);
+ const bankFiles=files.filter(f=>/^banks\/(puzzles|exam|python|esp)-[a-f0-9]+\.txt$/.test(f));
+ assert.equal(bankFiles.length,4);
  const payloads=bankFiles.map(file=>readFileSync(join(root,'live',file),'utf8'));
  for(const [index,payload] of payloads.entries()){
    assert.ok(!bundle.includes(payload),'Bank must not be embedded in the app');

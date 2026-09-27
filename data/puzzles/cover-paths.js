@@ -1,4 +1,4 @@
-// Deterministic instances; see scripts/enrich-puzzles.py.
+// Deterministic instances; see build/expand/enrich/add-beginner-puzzles.py.
 export default [
   {
     "slot": 115,
@@ -4854,6 +4854,1074 @@ export default [
             "validation": {
               "method": "Hamiltonian witness with adjacency and coverage checks",
               "shape": "two regions"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1099,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 1",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[9, 6, 7, 8, 5, 2, 1, 4]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              0,
+              3,
+              10,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1100,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 2",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[5, 1, 0, 4, 8, 9, 10, 6, 2]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              3,
+              7,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 9
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1101,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 3",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[12, 8, 9, 13, 14, 10, 6, 5, 4, 0]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              1,
+              2,
+              3,
+              7,
+              11,
+              15
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1102,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 4",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[6, 7, 4, 3, 0, 1, 2, 5, 8, 11]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              9,
+              10
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1103,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 5",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[6, 7, 11, 10, 9, 8, 4, 0, 1, 5]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              2,
+              3
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1104,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 6",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[11, 10, 9, 5, 1, 2, 3, 7]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              0,
+              4,
+              6,
+              8,
+              12,
+              13,
+              14,
+              15
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1105,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 7",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[10, 7, 4, 5, 2, 1, 0, 3, 6]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              8,
+              9,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 9
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1106,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 8",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[11, 7, 6, 5, 9, 8, 4, 0, 1, 2]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              3,
+              10
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1107,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 9",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[12, 8, 9, 10, 6, 2, 3, 7, 11, 15, 14]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              0,
+              1,
+              4,
+              5,
+              13
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 11
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1108,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 10",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[11, 10, 9, 6, 7, 8, 5, 2, 1, 0]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              3,
+              4
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1109,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 11",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[3, 7, 6, 5, 1, 0, 4, 8]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              2,
+              9,
+              10,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1110,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 12",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[9, 5, 6, 2, 3, 7, 11, 10, 14]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              0,
+              1,
+              4,
+              8,
+              12,
+              13,
+              15
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 9
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1111,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 13",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[1, 2, 5, 8, 7, 4, 3, 6, 9, 10]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              0,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1112,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 14",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[3, 7, 6, 2, 1, 0, 4, 8, 9, 5]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              10,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1113,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 15",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[8, 4, 5, 9, 13, 14, 15, 11, 7, 6, 2, 1]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              0,
+              3,
+              10,
+              12
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 12
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1114,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 16",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[11, 10, 9, 6, 3, 4, 1, 2]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              0,
+              5,
+              7,
+              8
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1115,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 17",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[7, 6, 10, 9, 8, 4, 0, 1, 5]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              2,
+              3,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 9
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1116,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 18",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[7, 6, 5, 1, 0, 4, 8, 9, 10, 14]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              2,
+              3,
+              11,
+              12,
+              13,
+              15
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1117,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 19",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[10, 11, 8, 7, 4, 1, 0, 3, 6, 9]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              2,
+              5
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1118,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 20",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[3, 7, 11, 10, 9, 8, 4, 5, 1, 2]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              0,
+              6
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1119,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 21",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[10, 11, 15, 14, 13, 12, 8, 4]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              0,
+              1,
+              2,
+              3,
+              5,
+              6,
+              7,
+              9
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 8
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1120,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 22",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[2, 1, 0, 3, 6, 7, 4, 5, 8]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              9,
+              10,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 9
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1121,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 23",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[11, 10, 9, 5, 6, 7, 3, 2, 1, 0]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 3,
+            "blocked": [
+              4,
+              8
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1122,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 24",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[9, 5, 1, 0, 4, 8, 12, 13, 14, 15, 11]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "rows": 4,
+            "blocked": [
+              2,
+              3,
+              6,
+              7,
+              10
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 11
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1123,
+    "focus": "cover paths",
+    "title": "Cover Paths · Beginner 25",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Visit each open dot once with horizontal or vertical moves. Choose your own start and finish. Dark squares are blocked.",
+        "hint": "A dot with only one neighbour must be an endpoint. Check these before choosing where to start.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cover-path",
+            "marks": 3,
+            "answer": "[9, 6, 7, 8, 5, 2, 1, 4, 3, 0]",
+            "explanation": "Start by examining dots with only one neighbour. Choose a route that leaves all remaining dots reachable; any complete valid route is accepted.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "rows": 4,
+            "blocked": [
+              10,
+              11
+            ],
+            "validation": {
+              "method": "checked path witness",
+              "openDots": 10
             }
           }
         ]

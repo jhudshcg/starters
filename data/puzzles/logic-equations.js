@@ -1,4 +1,4 @@
-// Deterministic instances; see scripts/enrich-puzzles.py.
+// Deterministic instances; see build/expand/enrich/add-beginner-puzzles.py.
 export default [
   {
     "slot": 105,
@@ -10893,6 +10893,1720 @@ export default [
                 1,
                 5,
                 13
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1049,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 1",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 2, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A < B",
+              "A + C = 3",
+              "A − B = -2"
+            ],
+            "rules": [
+              [
+                "less",
+                0,
+                1,
+                0
+              ],
+              [
+                "sum",
+                0,
+                2,
+                3
+              ],
+              [
+                "difference",
+                0,
+                1,
+                -2
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1050,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 2",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 0, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B < C",
+              "A + B = 4"
+            ],
+            "rules": [
+              [
+                "less",
+                1,
+                2,
+                0
+              ],
+              [
+                "sum",
+                0,
+                1,
+                4
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1051,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 3",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 2, 0]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A + B = 5",
+              "A − B = -1"
+            ],
+            "rules": [
+              [
+                "sum",
+                0,
+                1,
+                5
+              ],
+              [
+                "difference",
+                0,
+                1,
+                -1
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1052,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 4",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 0, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A + B = 4",
+              "A + C = 5"
+            ],
+            "rules": [
+              [
+                "sum",
+                0,
+                1,
+                4
+              ],
+              [
+                "sum",
+                0,
+                2,
+                5
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1053,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 5",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 2, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A − B = -2"
+            ],
+            "rules": [
+              [
+                "difference",
+                0,
+                1,
+                -2
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1054,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 6",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 2, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A < B",
+              "B + C = 5",
+              "A + B = 4"
+            ],
+            "rules": [
+              [
+                "less",
+                0,
+                1,
+                0
+              ],
+              [
+                "sum",
+                1,
+                2,
+                5
+              ],
+              [
+                "sum",
+                0,
+                1,
+                4
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1055,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 7",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 1, 0]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B − C = 1",
+              "A + C = 4"
+            ],
+            "rules": [
+              [
+                "difference",
+                1,
+                2,
+                1
+              ],
+              [
+                "sum",
+                0,
+                2,
+                4
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1056,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 8",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A + C = 5",
+              "A − B = 1"
+            ],
+            "rules": [
+              [
+                "sum",
+                0,
+                2,
+                5
+              ],
+              [
+                "difference",
+                0,
+                1,
+                1
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1057,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 9",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 1, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B + C = 5",
+              "B − C = -1"
+            ],
+            "rules": [
+              [
+                "sum",
+                1,
+                2,
+                5
+              ],
+              [
+                "difference",
+                1,
+                2,
+                -1
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1058,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 10",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 0, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A + B = 4",
+              "A − C = 1"
+            ],
+            "rules": [
+              [
+                "sum",
+                0,
+                1,
+                4
+              ],
+              [
+                "difference",
+                0,
+                2,
+                1
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1059,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 11",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 1, 0]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A − C = 2"
+            ],
+            "rules": [
+              [
+                "difference",
+                0,
+                2,
+                2
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1060,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 12",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 2, 0]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A < B",
+              "A + B = 5"
+            ],
+            "rules": [
+              [
+                "less",
+                0,
+                1,
+                0
+              ],
+              [
+                "sum",
+                0,
+                1,
+                5
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1061,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 13",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 1, 0]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A − B = 1",
+              "B + C = 3"
+            ],
+            "rules": [
+              [
+                "difference",
+                0,
+                1,
+                1
+              ],
+              [
+                "sum",
+                1,
+                2,
+                3
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1062,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 14",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 2, 0]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B + C = 4",
+              "A < B"
+            ],
+            "rules": [
+              [
+                "sum",
+                1,
+                2,
+                4
+              ],
+              [
+                "less",
+                0,
+                1,
+                0
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1063,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 15",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 1, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A < C",
+              "A − B = -1"
+            ],
+            "rules": [
+              [
+                "less",
+                0,
+                2,
+                0
+              ],
+              [
+                "difference",
+                0,
+                1,
+                -1
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1064,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 16",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 1, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B − C = -1",
+              "B + C = 5"
+            ],
+            "rules": [
+              [
+                "difference",
+                1,
+                2,
+                -1
+              ],
+              [
+                "sum",
+                1,
+                2,
+                5
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1065,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 17",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A − C = -1",
+              "B + C = 4"
+            ],
+            "rules": [
+              [
+                "difference",
+                0,
+                2,
+                -1
+              ],
+              [
+                "sum",
+                1,
+                2,
+                4
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1066,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 18",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A − C = -1",
+              "A − B = 1"
+            ],
+            "rules": [
+              [
+                "difference",
+                0,
+                2,
+                -1
+              ],
+              [
+                "difference",
+                0,
+                1,
+                1
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1067,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 19",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 1, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B < C",
+              "A < C",
+              "B + C = 5"
+            ],
+            "rules": [
+              [
+                "less",
+                1,
+                2,
+                0
+              ],
+              [
+                "less",
+                0,
+                2,
+                0
+              ],
+              [
+                "sum",
+                1,
+                2,
+                5
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1068,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 20",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A + B = 3",
+              "A − C = -1"
+            ],
+            "rules": [
+              [
+                "sum",
+                0,
+                1,
+                3
+              ],
+              [
+                "difference",
+                0,
+                2,
+                -1
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1069,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 21",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 1, 0]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A + B = 5",
+              "A + C = 4"
+            ],
+            "rules": [
+              [
+                "sum",
+                0,
+                1,
+                5
+              ],
+              [
+                "sum",
+                0,
+                2,
+                4
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1070,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 22",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 2, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B + C = 5",
+              "A + C = 3"
+            ],
+            "rules": [
+              [
+                "sum",
+                1,
+                2,
+                5
+              ],
+              [
+                "sum",
+                0,
+                2,
+                3
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1071,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 23",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[2, 0, 1]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "A − C = 1",
+              "A + C = 5"
+            ],
+            "rules": [
+              [
+                "difference",
+                0,
+                2,
+                1
+              ],
+              [
+                "sum",
+                0,
+                2,
+                5
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1072,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 24",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[1, 0, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B + C = 4",
+              "A + C = 5"
+            ],
+            "rules": [
+              [
+                "sum",
+                1,
+                2,
+                4
+              ],
+              [
+                "sum",
+                0,
+                2,
+                5
+              ]
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "permutation enumeration"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1073,
+    "focus": "logic equations",
+    "title": "Logic Equations · Beginner 25",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Assign the integers 1 to 3 to the variables, using each once. All equations and inequalities must hold. × means multiplication.",
+        "hint": "List the allowed pairs for a sum or difference. Use the fact that a value cannot be assigned twice.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "equation-grid",
+            "marks": 3,
+            "answer": "[[0, 1, 2]]",
+            "explanation": "List the small number pairs that fit a sum or difference. Each integer is used once, so assigning one removes it from the other variables.",
+            "solutionText": "See the completed board below.",
+            "names": [
+              "A",
+              "B",
+              "C"
+            ],
+            "categories": [
+              {
+                "name": "Value",
+                "values": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              }
+            ],
+            "clues": [
+              "B < C",
+              "A + B = 3",
+              "A + C = 4"
+            ],
+            "rules": [
+              [
+                "less",
+                1,
+                2,
+                0
+              ],
+              [
+                "sum",
+                0,
+                1,
+                3
+              ],
+              [
+                "sum",
+                0,
+                2,
+                4
               ]
             ],
             "validation": {

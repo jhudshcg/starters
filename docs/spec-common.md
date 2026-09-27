@@ -40,13 +40,13 @@ Authoring generators must use deterministic inputs. **Proposal:** materialise a 
 
 ## Set codes and compatibility
 
-**Settled decision:** use Base64url (`A–Z`, `a–z`, `0–9`, `-`, `_`), preserving case. Eight characters encode a six-byte, 48-bit payload exactly, without padding. An optional ninth character configures timing. This supersedes the earlier six-character hash and finite set-catalogue proposals. See the [rationale](implementation-plan.md#settled-set-code-decision).
+**Settled decision:** use Base64url (`A–Z`, `a–z`, `0–9`, `-`, `_`), preserving case. Nine characters encode a 54-bit payload exactly, without padding. An optional tenth character configures timing. Eight-character untimed codes remain readable and open a canonical new code; old nine-character timed share codes are superseded. Saved progress/JSON backups record `codeFormat:54`; older unmarked/48-bit records are explicitly migrated, preserving deadlines and scores. Nine-character pasted codes are never guessed to be old timers. This supersedes the earlier six-character hash and finite set-catalogue proposals. See the [rationale](implementation-plan.md#settled-set-code-decision).
 
-Pack fields in this order, most-significant bit first, and encode the resulting six bytes:
+Pack fields in this order, most-significant bit first, and encode the resulting 54 bits in six-bit groups:
 
-`[version:7][type:2][question1:10][variation1:3][question2:10][variation2:3][question3:10][variation3:3]`
+`[version:7][type:2][question1:12][variation1:3][question2:12][variation2:3][question3:12][variation3:3]`
 
-Capacity: 128 bank versions, four types, 1,024 question slots per type and eight variations per question. **Proposal:** type values 0=puzzles, 1=exam practice, 2=programming, 3=reserved. Reserve question slot 1023 for an unused trailing position, with variation zero; this leaves 1,023 usable question slots per type and permits shorter activities. Reject gaps between used positions.
+Capacity: 128 bank versions, four types, 4,096 question slots per type and eight variations per question. Type values 0=puzzles, 1=exam practice, 2=programming, 3=ESP practice. Reserve question slot 4095 for an unused trailing position, with variation zero; this leaves 4,095 usable question slots per type and permits shorter activities. Reject gaps between used positions.
 
 Question slots and variation positions are permanent identities. Corrections and refinements retain those identities: old codes open current content and show “This set has been updated since this code was created” when any contained fingerprint differs. Substantive changes to the task, assessed concept or required solution need a new question slot. Retire superseded questions to exclude them from selection while preserving direct access; remove only when they should no longer be accessible. Never recycle removed identities. Bank versions record content changes for notices and historical score metadata; they do not invalidate surviving identities. Revision 1 remains unsupported as previously agreed. Unused addresses can extend a revision; content edits create a new revision, styling does not. Do not wrap version numbers on exhaustion.
 
@@ -54,7 +54,7 @@ The browser encodes eligible combinations directly. An optional generated index 
 
 Decode and validate version, type, question existence, variation existence, canonical unused fields, duplicate questions and activity composition/mark rules before displaying a set. Unknown versions may offer reload; never guess a nearest match. Validate an older set against its original composition metadata, then resolve its surviving identities to current content. A removed item produces an unavailable message and an explicit replacement-set action; never silently substitute questions.
 
-Trim surrounding whitespace only; never lowercase, uppercase or silently substitute characters in the eight-character payload. Reject padding and invalid lengths. There is no checksum: some transcription errors can identify another valid set. Display decoded type/focus prominently and provide Copy code and Copy link controls.
+Trim surrounding whitespace only; never lowercase, uppercase or silently substitute characters in the nine-character payload. Reject padding and invalid lengths. There is no checksum: some transcription errors can identify another valid set. Display decoded type/focus prominently and provide Copy code and Copy link controls.
 
 Timed codes append `5`–`9` or `A`–`F` for 5–15 minutes. Parse the suffix by length, separately from Base64url decoding. Individual prefixed question codes retain their own format and do not take this suffix.
 
@@ -126,7 +126,7 @@ Production build details and the client-side obfuscation boundary are documented
 
 The footer identifies the loaded application asset and bank revision. Since production app and bank assets have content-based filenames, the application filename distinguishes builds even when additions retain the same question revision. A malformed, unsupported or unavailable code entered through either form, or a failing shared link, offers Copy error details. This explicitly copied report includes the entered string and Unicode character values, decoded code fields where possible, the error, build, bank revision, page origin/path and browser identification. It excludes answers, progress history, local storage and URL query strings. It is not sent anywhere automatically.
 
-The encoding remains the existing eight-character, case-sensitive, 48-bit format with an optional timer suffix. No automatic case changes or lookalike-character substitutions are made. Sharing tests exercise actual activity-start and copy-button handlers, open the resulting code in another browser context without shared storage, and compare the displayed questions. They also cover timers, single-question codes, shared links, malformed-input diagnostics and the existing compatibility tests. Copy-button tests capture the exact clipboard-write argument; they do not access the operating-system clipboard.
+The current encoding uses nine case-sensitive Base64url characters (54 bits) with an optional tenth timer character; the legacy-format rules above apply. No automatic case changes or lookalike-character substitutions are made. Sharing tests exercise actual activity-start and copy-button handlers, open the resulting code in another browser context without shared storage, and compare the displayed questions. They also cover timers, single-question codes, shared links, malformed-input diagnostics and the existing compatibility tests. Copy-button tests capture the exact clipboard-write argument; they do not access the operating-system clipboard.
 
 `scripts/audit-shared-codes.mjs` extracts the saved 14 September commit `45cc13e` into a temporary directory, tests its own encoder/resolver and bank, then audits the current bank. It leaves the working checkout unchanged. Passing these checks does not identify the earlier classroom failure or prove that this commit was the deployed classroom release. The exact failing code, error and loaded release remain unknown.
 

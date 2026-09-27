@@ -17,7 +17,7 @@ await rm(output,{recursive:true,force:true});
 await mkdir(output);
 await mkdir(join(output,'banks'));
 const bankPaths=[];
-for(const [i,name] of ['puzzles','exam','python'].entries()){
+for(const [i,name] of ['puzzles','exam','python','esp'].entries()){
   const payload=pack(packBank(banks[i]));
   const hash=createHash('sha256').update(payload).digest('hex').slice(0,16);
   const path=`banks/${name}-${hash}.txt`;

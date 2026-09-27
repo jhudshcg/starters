@@ -13,12 +13,14 @@ export async function loadSet(input){
 export const types = [
   {name:'Puzzles', icon:'◇', description:'Logic, shapes, paths and number grids. A fresh way to get thinking.', label:'Think it through', minutes:10},
   {name:'Exam practice', icon:'≡', description:'Short questions, clear feedback. Build your Core knowledge.', label:'Know your Core', minutes:10},
-  {name:'Programming', icon:'</>', description:'Trace, complete and fix Python. One small challenge at a time.', label:'Read. Reason. Code.', minutes:10}
+  {name:'Programming', icon:'</>', description:'Trace, complete and fix Python. One small challenge at a time.', label:'Read. Reason. Code.', minutes:10},
+  {name:'ESP practice',icon:'▦',description:'Plan a project, find code faults and document tests. Practise Tasks 1 and 2.',label:'Plan. Test. Explain.',minutes:15}
 ];
-export const focusNames = {iteration:'Iteration',selection:'Selection',functions:'Functions',algorithms:'Searching and sorting',go:'Go · life and death'};
+export const focusNames = {task1:'Task 1 · Planning',task2:'Task 2 · Testing and repair',iteration:'Iteration',selection:'Selection',functions:'Functions',algorithms:'Searching and sorting',go:'Go · life and death'};
 Object.assign(focusNames, Object.fromEntries(['validation','arrays','operators','data types','strings','lists','records','boolean logic','nested iteration','input output','robust code','testing','sorting','design','collections','code style'].map(f=>[f,f[0].toUpperCase()+f.slice(1)])));
 Object.assign(focusNames, {"CA1.1": "CA1.1 · Computational thinking", "CA1.2": "CA1.2 · Algorithmic design", "CA1.3": "CA1.3 · Problem-solving strategies", "CA2.1": "CA2.1 · Data types", "CA2.2": "CA2.2 · Variables and constants", "CA2.3": "CA2.3 · Data structures", "CA2.4": "CA2.4 · Operators", "CA2.5": "CA2.5 · Input and output", "CA2.6": "CA2.6 · Sequence, selection and iteration", "CA2.7": "CA2.7 · Functions and procedures", "CA2.8": "CA2.8 · Validation", "CA2.9": "CA2.9 · Design and code style", "CA2.10": "CA2.10 · Robust code", "CA2.11": "CA2.11 · Searching and sorting", "CA2.12": "CA2.12 · Testing"});
 Object.assign(focusNames, {"logic grids": "Logic grids", "logic equations": "Logic equations", "tangrams": "Tangram silhouettes", "cover paths": "Cover every dot", "sudoku": "Sudoku", "number constraints": "Arithmetic cages", "sequences": "Sequences", "classic maths": "Classic maths"});
+export const espRecipeNames={'T1.1':'Build a feasible schedule','T1.2':'Calculate costs and forecasts','T1.3':'Adapt to constraints','T1.4':'Justify planning decisions','T1.5':'Reconcile the plan','T2.1':'Choose discriminating tests','T2.2':'Derive expected results','T2.3':'Repair and retest','T2.4':'Complete the test log','T2.5':'Investigate independently'};
 export const challengeLevels = {all:'Mixed challenge',beginner:'Beginner',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
 export const challengeLabel = (level,focus) => focus==='go'?({all:'Mixed challenge',beginner:'Beginner · 25k+',foundation:'Foundation · 18–24k',standard:'Standard · 12–17k',stretch:'Stretch · 11k and stronger'}[level]??challengeLevels[level]):challengeLevels[level];
 export const puzzlePool = (focus, level='all', topic='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level)&&(topic==='all'||q.tags.includes(`maths:${topic}`)));
@@ -83,6 +85,7 @@ export function resolve(input) {
     if (questions.length !== (fields.type===2?2:3)) throw Error('This set has the wrong number of questions.');
     if (new Set(questions.map(q=>q.focus)).size!==1) throw Error('Choose questions with the same focus.');
     if (fields.type===1 && (total<15 || total>22) || fields.type===2 && (total<10 || total>15)) throw Error('This set does not meet the mark limits.');
+    if(fields.type===3&&(new Set(questions.map(q=>q.recipe)).size!==1||new Set(questions.map(q=>q.variation)).size!==1))throw Error('ESP sets require one recipe and a shared variation.');
     if (fields.type===2 && new Set(questions.map(q=>q.format)).size!==2) throw Error('Programming questions must test different aspects.');
   }
   return {...fields, code, questions, total, focus:questions[0].focus, updated};
@@ -108,6 +111,19 @@ export function hasAlternativeExamSet(set,subtopic='all') {
   return candidateSets(1,set.focus,'all',subtopic).some(qs=>slotsKey(qs)!==slotsKey(set.entries));
 }
 export function choose(type, focus, previous = null, mode = 'new', challengeLevel = 'all', subtopic = 'all') {
+  if(type===3){
+    const pool=banks[3].filter(q=>q.focus===focus&&!q.retired&&(subtopic==='all'||q.recipe===subtopic));
+    let group;
+    if(mode==='permutation'&&previous)group=previous.entries.map(e=>banks[3].find(q=>q.slot===e.slot));
+    else {
+      const recipes=[...new Set(pool.map(q=>q.recipe))].filter(r=>!previous||r!==previous.questions?.[0]?.recipe);
+      if(!recipes.length)throw Error('Choose another recipe or a new permutation.');
+      const recipe=pick(recipes);group=pool.filter(q=>q.recipe===recipe);
+    }
+    const variations=group[0].variations.map((_,i)=>i).filter(i=>mode!=='permutation'||i!==previous.entries[0].variation);
+    const variation=pick(variations);
+    return resolve({version:BANK_VERSION,type,entries:group.map(q=>({slot:q.slot,variation})),minutes:previous?.minutes??null});
+  }
   const variationPool=q=>{
     const matching=type===1&&subtopic!=='all'?matchingVariations(q,subtopic):[];
     return matching.length?matching:q.variations.map((_,i)=>i);

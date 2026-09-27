@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {banks,resolve,historicalSet,choose} from '../js/bank.js';
-import {encode,BANK_VERSION} from '../js/codes.js';
+import {encode,decodeLegacyCode,BANK_VERSION} from '../js/codes.js';
 import {revisions} from '../js/code-compatibility.js';
 import {snapshotBanks,nextHistory,compatibilityModule} from '../scripts/question-identities.mjs';
 import {setIdentity,attemptEligibility} from '../js/progress.js';
@@ -45,8 +45,8 @@ test('retirement preserves old links; removal offers an explicit replacement',()
   if(retired===undefined)delete q.retired;else q.retired=retired;
  }
 });
-test('old timers, single-question codes and new permutations work for unchanged content',()=>{
- const old=resolve('BA8D_x_4A');assert.equal(old.minutes,10);assert.equal(old.version,2);
+test('explicitly migrated old timers, single-question codes and new permutations work for unchanged content',()=>{
+ const old=resolve(encode(decodeLegacyCode('BA8D_x_4A')));assert.equal(old.minutes,10);assert.equal(old.version,2);
  assert.equal(resolve('PZ-2-120-0').questions.length,1);
  const next=choose(0,old.focus,old,'permutation');assert.equal(next.version,BANK_VERSION);
  assert.notEqual(next.entries[0].variation,old.entries[0].variation);

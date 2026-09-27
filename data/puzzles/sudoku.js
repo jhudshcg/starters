@@ -1,4 +1,4 @@
-// Deterministic instances; see scripts/enrich-puzzles.py.
+// Deterministic instances; see build/expand/enrich/add-beginner-puzzles.py.
 export default [
   {
     "slot": 110,
@@ -38703,6 +38703,2151 @@ export default [
                 }
               ],
               "singlesComplete": false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1074,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 1",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[2, 3, 4, 1, 4, 1, 2, 3, 3, 4, 1, 2, 1, 2, 3, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              2,
+              3,
+              4,
+              1,
+              4,
+              1,
+              2,
+              0,
+              0,
+              4,
+              1,
+              2,
+              1,
+              0,
+              3,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1075,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 2",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 3, 4, 2, 4, 2, 1, 3, 3, 4, 2, 1, 2, 1, 3, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              3,
+              4,
+              0,
+              4,
+              2,
+              1,
+              0,
+              3,
+              4,
+              2,
+              0,
+              0,
+              1,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 3,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1076,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 3",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[2, 3, 4, 1, 4, 1, 2, 3, 3, 4, 1, 2, 1, 2, 3, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              2,
+              3,
+              0,
+              0,
+              4,
+              1,
+              0,
+              3,
+              3,
+              4,
+              1,
+              2,
+              0,
+              0,
+              3,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1077,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 4",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[2, 4, 1, 3, 1, 3, 2, 4, 4, 1, 3, 2, 3, 2, 4, 1]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              2,
+              4,
+              0,
+              0,
+              0,
+              3,
+              2,
+              4,
+              0,
+              1,
+              3,
+              2,
+              3,
+              2,
+              4,
+              1
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 2,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1078,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 5",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 3, 2, 4, 2, 4, 1, 3, 3, 2, 4, 1, 4, 1, 3, 2]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              3,
+              2,
+              4,
+              0,
+              4,
+              0,
+              3,
+              0,
+              0,
+              4,
+              1,
+              0,
+              1,
+              3,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 4,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1079,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 6",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[3, 1, 4, 2, 4, 2, 3, 1, 1, 4, 2, 3, 2, 3, 1, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              3,
+              1,
+              4,
+              2,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              2,
+              0,
+              2,
+              3,
+              1,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 4,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1080,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 7",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[2, 4, 1, 3, 1, 3, 2, 4, 4, 1, 3, 2, 3, 2, 4, 1]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              2,
+              4,
+              1,
+              3,
+              0,
+              3,
+              2,
+              0,
+              0,
+              0,
+              3,
+              2,
+              3,
+              2,
+              4,
+              1
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 4,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1081,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 8",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[4, 2, 3, 1, 3, 1, 4, 2, 2, 3, 1, 4, 1, 4, 2, 3]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              4,
+              0,
+              3,
+              1,
+              0,
+              0,
+              4,
+              2,
+              2,
+              3,
+              0,
+              4,
+              1,
+              4,
+              0,
+              3
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 1,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1082,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 9",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[2, 1, 4, 3, 4, 3, 2, 1, 1, 4, 3, 2, 3, 2, 1, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              1,
+              4,
+              0,
+              4,
+              3,
+              0,
+              1,
+              0,
+              4,
+              3,
+              0,
+              3,
+              2,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1083,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 10",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 2, 4, 3, 4, 3, 1, 2, 2, 4, 3, 1, 3, 1, 2, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              2,
+              0,
+              3,
+              4,
+              3,
+              1,
+              0,
+              2,
+              4,
+              3,
+              1,
+              3,
+              1,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 0,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1084,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 11",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 4, 2, 3, 2, 3, 1, 4, 4, 2, 3, 1, 3, 1, 4, 2]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              0,
+              2,
+              3,
+              2,
+              3,
+              0,
+              0,
+              4,
+              0,
+              3,
+              1,
+              3,
+              0,
+              4,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 1,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1085,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 12",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[3, 1, 2, 4, 2, 4, 3, 1, 1, 2, 4, 3, 4, 3, 1, 2]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              1,
+              2,
+              4,
+              2,
+              4,
+              3,
+              0,
+              0,
+              0,
+              0,
+              3,
+              4,
+              3,
+              1,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 0,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1086,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 13",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 3, 4, 2, 4, 2, 1, 3, 3, 4, 2, 1, 2, 1, 3, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              3,
+              0,
+              0,
+              0,
+              2,
+              1,
+              3,
+              3,
+              4,
+              2,
+              0,
+              2,
+              1,
+              3,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 4,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1087,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 14",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[3, 1, 4, 2, 4, 2, 3, 1, 1, 4, 2, 3, 2, 3, 1, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              3,
+              1,
+              0,
+              2,
+              4,
+              0,
+              3,
+              1,
+              0,
+              4,
+              2,
+              0,
+              0,
+              3,
+              1,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1088,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 15",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 2, 4, 3, 4, 3, 1, 2, 2, 4, 3, 1, 3, 1, 2, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              2,
+              4,
+              0,
+              4,
+              0,
+              0,
+              2,
+              2,
+              0,
+              3,
+              1,
+              0,
+              0,
+              2,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 5,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1089,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 16",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[4, 3, 1, 2, 1, 2, 4, 3, 3, 1, 2, 4, 2, 4, 3, 1]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              0,
+              0,
+              2,
+              1,
+              2,
+              4,
+              0,
+              3,
+              1,
+              2,
+              4,
+              2,
+              4,
+              3,
+              1
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 0,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 2,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1090,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 17",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 3, 4, 2, 4, 2, 1, 3, 3, 4, 2, 1, 2, 1, 3, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              3,
+              4,
+              2,
+              4,
+              2,
+              0,
+              0,
+              3,
+              4,
+              0,
+              1,
+              0,
+              1,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 7,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1091,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 18",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[3, 1, 4, 2, 4, 2, 3, 1, 1, 4, 2, 3, 2, 3, 1, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              3,
+              1,
+              0,
+              0,
+              4,
+              2,
+              0,
+              0,
+              1,
+              4,
+              2,
+              3,
+              2,
+              0,
+              1,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 2,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1092,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 19",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 2, 4, 3, 4, 3, 1, 2, 2, 4, 3, 1, 3, 1, 2, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              2,
+              4,
+              3,
+              0,
+              3,
+              1,
+              2,
+              2,
+              4,
+              0,
+              0,
+              3,
+              1,
+              0,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 4,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 2,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1093,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 20",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[2, 3, 1, 4, 1, 4, 2, 3, 3, 1, 4, 2, 4, 2, 3, 1]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              2,
+              0,
+              1,
+              4,
+              1,
+              4,
+              2,
+              3,
+              3,
+              1,
+              4,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 1,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 13,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 15,
+                  "value": 1,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1094,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 21",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[3, 2, 1, 4, 1, 4, 3, 2, 2, 1, 4, 3, 4, 3, 2, 1]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              3,
+              2,
+              1,
+              4,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              4,
+              0,
+              0,
+              3,
+              2,
+              1
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 5,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 6,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 7,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1095,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 22",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[1, 4, 2, 3, 2, 3, 1, 4, 4, 2, 3, 1, 3, 1, 4, 2]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              1,
+              4,
+              2,
+              3,
+              2,
+              3,
+              0,
+              4,
+              4,
+              0,
+              0,
+              1,
+              3,
+              1,
+              0,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 14,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1096,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 23",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[2, 1, 4, 3, 4, 3, 2, 1, 1, 4, 3, 2, 3, 2, 1, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              0,
+              1,
+              4,
+              0,
+              4,
+              3,
+              2,
+              1,
+              0,
+              4,
+              3,
+              0,
+              0,
+              2,
+              1,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 5,
+              "deductionTrace": [
+                {
+                  "cell": 0,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 3,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1097,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 24",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[3, 1, 2, 4, 2, 4, 3, 1, 1, 2, 4, 3, 4, 3, 1, 2]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              3,
+              1,
+              2,
+              0,
+              2,
+              4,
+              3,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              1,
+              2
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 6,
+              "deductionTrace": [
+                {
+                  "cell": 3,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 2,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 10,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 12,
+                  "value": 4,
+                  "technique": "naked single"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1098,
+    "focus": "sudoku",
+    "title": "Sudoku · Beginner 25",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Fill the empty cells with 1–4. Each row, column and 2×2 box must contain each digit once. Most cells are already filled.",
+        "hint": "Look for a row, column or small box with only one missing digit.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "sudoku",
+            "marks": 3,
+            "answer": "[3, 1, 4, 2, 4, 2, 3, 1, 1, 4, 2, 3, 2, 3, 1, 4]",
+            "explanation": "Find a missing digit in a nearly complete row, column or box. Repeat as each filled cell removes another possibility.",
+            "solutionText": "See the completed board below.",
+            "size": 4,
+            "boxRows": 2,
+            "boxCols": 2,
+            "givens": [
+              3,
+              1,
+              4,
+              2,
+              4,
+              2,
+              0,
+              1,
+              0,
+              0,
+              2,
+              0,
+              2,
+              3,
+              1,
+              4
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "techniques": [
+                "naked single"
+              ],
+              "deductionSteps": 4,
+              "deductionTrace": [
+                {
+                  "cell": 6,
+                  "value": 3,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 8,
+                  "value": 1,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 9,
+                  "value": 4,
+                  "technique": "naked single"
+                },
+                {
+                  "cell": 11,
+                  "value": 3,
+                  "technique": "naked single"
+                }
+              ]
             }
           }
         ]

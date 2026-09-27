@@ -6,25 +6,25 @@ import {markQuestion} from '../js/marking.js';
 import {appendAttempt,deadlineState,priorities,exportCSV} from '../js/progress.js';
 import {execFileSync} from 'node:child_process';
 
-test('48-bit Base64url round-trip agrees with an independent byte encoder',()=>{
+test('54-bit Base64url round-trip agrees with an independent bit encoder',()=>{
  for(let version of [0,1,63,127])for(let type of [0,1,2])for(let count of [1,2,3]) {
   const fields={version,type,entries:[{slot:0,variation:0},{slot:511,variation:7},{slot:1022,variation:6}].slice(0,count),minutes:null};
-  const code=encode(fields);assert.equal(code.length,8);assert.deepEqual(decode(code),fields);
+  const code=encode(fields);assert.equal(code.length,9);assert.deepEqual(decode(code),fields);
   let bits=version.toString(2).padStart(7,'0')+type.toString(2).padStart(2,'0');
-  for(let j=0;j<3;j++){let e=fields.entries[j]??{slot:1023,variation:0};bits+=e.slot.toString(2).padStart(10,'0')+e.variation.toString(2).padStart(3,'0');}
-  assert.equal(Buffer.from(bits.match(/.{8}/g).map(b=>parseInt(b,2))).toString('base64url'),code);
+  for(let j=0;j<3;j++){let e=fields.entries[j]??{slot:4095,variation:0};bits+=e.slot.toString(2).padStart(12,'0')+e.variation.toString(2).padStart(3,'0');}
+  assert.equal(bits.match(/.{6}/g).map(b=>'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'[parseInt(b,2)]).join(''),code);
  }
 });
 test('timer suffixes are separate from payload and preserve all durations',()=>{
  for(let minutes=5;minutes<=15;minutes++){
   const f={version:2,type:2,entries:[{slot:0,variation:0},{slot:1,variation:0}],minutes};
-  assert.equal(encode(f).length,9);assert.deepEqual(decode(encode(f)),f);
+  assert.equal(encode(f).length,10);assert.deepEqual(decode(encode(f)),f);
  }
 });
 test('URL symbols, leading zero fields and case survive copying',()=>{
  const code=encode({version:127,type:2,entries:[{slot:1022,variation:7},{slot:1021,variation:7},{slot:1020,variation:7}]});
  assert.match(code,/[_-]/);assert.equal(new URL('https://example.org/#set='+code).hash.slice(5),code);
- assert.equal(encode({version:0,type:0,entries:[{slot:0,variation:0},{slot:1,variation:0},{slot:2,variation:0}]}).length,8);
+ assert.equal(encode({version:0,type:0,entries:[{slot:0,variation:0},{slot:1,variation:0},{slot:2,variation:0}]}).length,9);
  const a=encode({version:2,type:2,entries:[{slot:0,variation:0},{slot:1,variation:0}]});
  assert.notEqual(a,a.toLowerCase());assert.throws(()=>resolve(a.toLowerCase()));
 });

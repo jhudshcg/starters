@@ -1,6 +1,9 @@
 # Task 1 — planning starter designs
 
-**Broad progression accepted with teacher refinements, 26 September 2026; detailed content still to be authored and checked.** Apply the [shared design/marking contract](activity-designs.md). Five recipes, three questions each, five coordinated variations per recipe. These are original bounded cases calibrated to ESP Task1 evidence, not reproductions of an official assessment. Short explanations are separately reviewed; automatic totals below exclude them.
+**27 September implementation update:** authorised first release implemented with native bounded controls and separately reviewed prose. The [activity evidence map](activity-evidence.md) records exact slots, coverage, refinements and verification limits; it supersedes earlier optional UI proposals.
+
+
+**Broad progression accepted with teacher refinements, 26 September 2026.** The first-release implementation is recorded above; the Excel formula requirements below were added on 27 September and remain to be implemented. Apply the [shared design/marking contract](activity-designs.md). Five recipes, three questions each, five coordinated variations per recipe. These are original bounded cases calibrated to ESP Task1 evidence, not reproductions of an official assessment. Short explanations are separately reviewed; automatic totals below exclude them.
 
 ## Agreed question size and independence
 
@@ -48,11 +51,39 @@ Stimulus: three or four tasks with given duration, named staff, prerequisites an
 
 **Worked case:** staff: 18 hours at £25 and 12 at £40; manager: five working days at £160/day; setup: £300 once; hosting: £25/month for the full year. Staff £450 + £480; manager £800; first-year incremental costs **£2,330**, of which £2,030 is one-off and £300 recurs. Base income £10,000 rises by 10% each year, compounded; base annual costs stay £6,000. All project one-off costs occur in year1. Income year1/2/3: £11,000/£12,100/£13,310; profit: **£2,670/£5,800/£7,010**. Three-year cumulative profit is £15,480. The set need only ask for two years; year3 is the reveal/extension. No VAT, discounting or financing assumptions are implied.
 
-A formula-completion variation can provide `B3=hours`, `C3=rate`, with `D3=B3*C3`. Later variants use absolute references for a fixed rate or select which cells belong in an annual total. Do not build a general spreadsheet formula evaluator for this initial feature; provide bounded formula choices/fields.
+Explicit Excel formula writing/completion and debugging are required additions, not optional numeric-calculation variants. Apply the [Excel formula requirements](#required-addition--excel-formula-practice) below within T1.2 and T1.5. Use bounded formula choices/fields rather than requiring a general spreadsheet editor.
 
 **Variations:** working days versus calendar days; monthly versus annual cost; one-off server versus hosted service; rate reference when copying a formula; staff effort retained while calendar duration changes. Keep the requested comparison explicit; different options can be justified if their stated assumptions fit.
 
 **Hint:** “Label each rate as per hour, per day, per month or per year before multiplying.” **Feedback:** distinguish missing ×12, manager paid for calendar days, and repeated one-off cost. **Reveal:** show units in every calculation. **Transfer:** extend the template cost sheet and trace a formula's inputs; check that it matches the actual chosen plan.
+
+## Required addition — Excel formula practice
+
+**Agreed requirement, 27 September 2026; not yet implemented.** Students must practise writing/completing formulas **and “fix the errors in this formula” questions**, using the formulas needed to turn their Task1 plan into a working cost/forecast spreadsheet. Calculating the numerical result alone does not satisfy this requirement. Integrate this coverage into T1.2 (costing/forecasting) and T1.5 (reconciliation); do not automatically add a sixth recipe or lengthen the sets.
+
+| Required formula skill | Writing/completion and fault-finding coverage |
+| --- | --- |
+| Hours × hourly rate; days × daily rate; monthly ×12 | Enter the formula using the displayed cells; repair a wrong operator, wrong rate reference or missing annual conversion. |
+| `SUM` | Total all required cost rows; fix an omitted first/last row, an unrelated included row, or double-counting a subtotal. |
+| `SUMIF` | Aggregate scheduled hours for a named staff member; repair the criteria cell, criteria range or sum range. Use aligned ranges over the same task rows. |
+| Relative, absolute and mixed references where needed | Predict references after filling down/across; repair a rate or source range that moves unintentionally, or a row/year reference incorrectly locked with `$`. State the intended copy direction and destination. |
+| Percentage growth | Build a next-year income formula from the previous year and stated percentage cell; repair a missing `1+`, growth repeatedly applied to the original year instead of compounding, or the wrong year/rate reference. |
+| Annual and cumulative profit | Subtract all relevant costs for the year and carry forward profit correctly; repair a repeated one-off cost, missing recurring cost, wrong carry-forward cell or duplicated prior profit. |
+
+**Evidence:** reuse the preserved workbook formulas and [assessment distillation](assessment-distilled.md). The A/E workbooks use staff aggregation, rate multiplication and linked forecasts; both omit listed developer costs from final totals. These are useful error patterns, not trusted answer keys. Formula skills support the assessed accuracy/consistency of the plan; they are not an invented separate official marking category.
+
+**Question contract:** supply a small spreadsheet extract with visible row numbers, column letters, values, units and destination cell. State which cells contain percentages, the forecast period, copying behaviour and rounding rules. Each question remains independent and at most five minutes including reading, with three multipart questions per set and meaningful variations. Include both formulas that produce an Excel error and formulas that calculate a plausible but wrong result. Early cases can isolate one fault; later cases may contain two explicitly stated faults within the same time limit.
+
+Use varied bounded formats: choose the faulty reference/range; fill missing formula tokens; enter a corrected short formula; predict the copied formula; or pair a correction with its reason. A short multipart debugging question should locate/explain the fault, repair it, then check a result or copied-cell behaviour. Provide fresh data for each question; avoid supplying its answer in a neighbouring question. Give hints that direct attention to units, range boundaries or copying, without revealing the corrected formula.
+
+**Example shapes (original authoring seeds):**
+
+- B3 contains hours and C3 the hourly rate: complete `=B3*C3`, or repair `=B3+C3`.
+- D3:D8 contains six required cost amounts: repair `=SUM(D4:D8)` and check the omitted amount against the corrected total.
+- A3:A8 contains staff names, B3:B8 assigned hours and F3 the required name: complete `=SUMIF($A$3:$A$8,F3,$B$3:$B$8)` for filling down the staff summary.
+- B2 contains a fixed hourly rate and B5 each row's hours: repair `=B5*B2` before filling down; the fixed rate reference must remain B2.
+
+**Marking and verification:** credit diagnosis, correction and independent check as distinct points where separately assessed. Accept valid equivalent formulas for the stated range/copying contract; whitespace or function-name case alone must not cause rejection. Do not accept a formula merely because it happens to match one dataset: test changed values, relevant boundary rows and filled destinations. Unsupported free-form alternatives need a clear review route; do not silently mis-mark them as mathematically wrong. Use a constrained parser or authored bounded alternatives, never arbitrary code execution. Verify reference formulas independently with reliable spreadsheet tooling where possible, record the tested semantics and retain teacher review/timing status. Preserve existing published question identities when adding this coverage.
 
 ## T1.3 — Respond to a resource constraint
 

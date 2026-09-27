@@ -3,5 +3,6 @@
 import puzzles from '../data/puzzles.js';
 import exam from '../data/exam.js';
 import python from '../data/python.js';
-export const banks=[puzzles,exam,python];
+import esp from '../data/esp.js';
+export const banks=[puzzles,exam,python,esp];
 export async function ensureBank(type){if(!banks[type])throw Error('Unknown activity type.');return banks[type];}

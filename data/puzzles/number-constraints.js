@@ -1,4 +1,4 @@
-// Deterministic instances; see scripts/enrich-puzzles.py.
+// Deterministic instances; see build/expand/enrich/add-beginner-puzzles.py.
 export default [
   {
     "slot": 125,
@@ -18569,6 +18569,2206 @@ export default [
                 ],
                 "op": "=",
                 "target": 5
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1149,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 1",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[2, 1, 3, 1, 3, 2, 3, 2, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1150,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 2",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 2, 1, 2, 1, 3, 1, 3, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1151,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 3",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 1, 2, 1, 2, 3, 2, 3, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1152,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 4",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 2, 1, 1, 3, 2, 2, 1, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1153,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 5",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 3, 2, 2, 1, 3, 3, 2, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1154,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 6",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 2, 3, 3, 1, 2, 2, 3, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1155,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 7",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 2, 3, 2, 3, 1, 3, 1, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1156,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 8",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 2, 3, 2, 3, 1, 3, 1, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1157,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 9",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 3, 2, 3, 2, 1, 2, 1, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1158,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 10",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[2, 3, 1, 1, 2, 3, 3, 1, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1159,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 11",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 2, 1, 1, 3, 2, 2, 1, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1160,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 12",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 1, 2, 2, 3, 1, 1, 2, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1161,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 13",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[2, 1, 3, 1, 3, 2, 3, 2, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1162,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 14",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[2, 3, 1, 3, 1, 2, 1, 2, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1163,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 15",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 2, 1, 2, 1, 3, 1, 3, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1164,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 16",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 1, 2, 2, 3, 1, 1, 2, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1165,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 17",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[2, 1, 3, 3, 2, 1, 1, 3, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1166,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 18",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 2, 3, 3, 1, 2, 2, 3, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1167,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 19",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[2, 3, 1, 1, 2, 3, 3, 1, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  5,
+                  8
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  6
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1168,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 20",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 3, 2, 3, 2, 1, 2, 1, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1169,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 21",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 1, 2, 2, 3, 1, 1, 2, 3]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 3
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1170,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 22",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[2, 1, 3, 3, 2, 1, 1, 3, 2]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 2
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1171,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 23",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 1, 2, 1, 2, 3, 2, 3, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1172,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 24",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[1, 2, 3, 3, 1, 2, 2, 3, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  3
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  1,
+                  2
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  4,
+                  5
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  6,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 1
+              }
+            ],
+            "validation": {
+              "solutionCount": 1,
+              "method": "Latin-square constraint solver"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slot": 1173,
+    "focus": "number constraints",
+    "title": "Number Constraints · Beginner 25",
+    "format": "Reasoning puzzle",
+    "tags": [
+      "challenge:beginner"
+    ],
+    "challengeLevel": "beginner",
+    "fixed": true,
+    "estimatedMinutes": 5,
+    "reviewStatus": "pending",
+    "setSize": 3,
+    "variations": [
+      {
+        "prompt": "Use 1–3 once in each row and column. A single-cell cage gives its value; a two-cell cage shows their sum.",
+        "hint": "Use a single-cell cage first, then subtract its value from a neighbouring sum where possible.",
+        "parts": [
+          {
+            "id": "0",
+            "prompt": "Solve the puzzle.",
+            "kind": "cage-grid",
+            "marks": 3,
+            "answer": "[3, 1, 2, 1, 2, 3, 2, 3, 1]",
+            "explanation": "Use the single-cell values first. For a two-cell sum, subtract a known value from the target, then check row and column exclusions.",
+            "solutionText": "See the completed board below.",
+            "size": 3,
+            "givens": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "cages": [
+              {
+                "cells": [
+                  0,
+                  1
+                ],
+                "op": "+",
+                "target": 4
+              },
+              {
+                "cells": [
+                  2,
+                  5
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  3,
+                  6
+                ],
+                "op": "+",
+                "target": 3
+              },
+              {
+                "cells": [
+                  4,
+                  7
+                ],
+                "op": "+",
+                "target": 5
+              },
+              {
+                "cells": [
+                  8
+                ],
+                "op": "=",
+                "target": 1
               }
             ],
             "validation": {

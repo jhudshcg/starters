@@ -7,8 +7,11 @@ import {renderChallenge} from '../js/challenge-controls.js';
 import {choose,availableChallenges,puzzlePool} from '../js/bank.js';
 import {markQuestion} from '../js/marking.js';
 
-test('all puzzle families meet the 100-template floor; Go follows rank bands',()=>{
-  for(const focus of new Set(puzzles.map(q=>q.focus)))assert.ok(puzzlePool(focus).length>=100,focus);
+test('all puzzle families have at least 25 per challenge level; Go follows source rank bands',()=>{
+  for(const focus of new Set(puzzles.map(q=>q.focus)))for(const level of ['beginner','foundation','standard','stretch']){
+    assert.ok(puzzlePool(focus,level).length>=25,`${focus}: ${level}`);
+    assert.ok(availableChallenges(focus).includes(level));
+  }
   for(const [low,high,level] of [[25,99,'beginner'],[18,24,'foundation'],[12,17,'standard'],[0,11,'stretch']]){
     const pool=puzzlePool('go',level);assert.ok(pool.length>=25,level);
     assert.ok(pool.every(q=>q.sourceRank>=low&&q.sourceRank<=high));

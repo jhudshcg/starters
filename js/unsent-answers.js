@@ -1,7 +1,7 @@
 import {challengeKinds,stateOf} from './challenge-rules.js';
 export function hasUnsubmittedAnswers(attempt,set){
   if(!attempt||attempt.finished||!set)return false;
-  return set.questions.some(q=>q.parts.some(p=>{
+  return set.questions.some(q=>String(attempt.answers?.[q.slot]?.reflection??'').trim().length>0||q.parts.some(p=>{
     const raw=attempt.answers?.[q.slot]?.[p.id];
     if(!challengeKinds.includes(p.kind))return String(raw??'').trim().length>0;
     const s=stateOf(raw,p);

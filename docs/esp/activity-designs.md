@@ -1,6 +1,6 @@
 # ESP starter designs for discussion
 
-**26 September 2026 — broad progression accepted with teacher refinements; detailed content not yet authored or implemented.** Grounded in the [evidence review](evidence-review.md), using the [repeatable process](review-process.md). Detailed first-phase designs: [Task 1](task-1-designs.md) and [Task 2](task-2-designs.md). Resource/page references below resolve through the [conversion register](conversion-register.md).
+**27 September 2026 — Task1/Task2 implementation authorised and authored.** See the [implementation/evidence map](activity-evidence.md) for final first-release controls, coverage and checks. Tasks3–4b remain documentation only. Grounded in the [evidence review](evidence-review.md), using the [repeatable process](review-process.md). Detailed first-phase designs: [Task 1](task-1-designs.md) and [Task 2](task-2-designs.md). Resource/page references below resolve through the [conversion register](conversion-register.md).
 
 ## Intended experience
 
@@ -100,7 +100,7 @@ Optional later set, outside the 21 assessed-task recipes: read a short unfamilia
 4. Add reviewed-response storage/display and T1.4/T2.4, then connected cases T1.5/T2.5. If reviewed responses are not agreed, revise these designs before coding; do not quietly drop their reasoning outcome.
 5. Finish focused validation and classroom-facing preview of all Task1/2 recipes. Tasks3/4a/4b stay documented until separately authorised for implementation.
 
-Technical findings from current code: the 48-bit format has two type bits, but `js/codes.js` explicitly rejects type 3 and knows only PZ/EX/PY. A fourth type therefore requires deliberate codec/identity/loader/build/progress changes and tests, not a data-only edit. Preserve eight-character set codes and existing meanings; proposal prefix `ES`. Reject unsupported/new codes gracefully in older clients. Audit all type assumptions before implementation.
+Implemented: the 48-bit format now uses type3 for ESP, with individual prefix `ESP`. Eight-character set codes and earlier type meanings are preserved. Codec, identity, loader, production build and progress integration are tested. Older clients still require an updated build to recognise ESP codes.
 
 Progress proposal: store automatic marks and review state separately, tagged `ESP.T1.dependencies`, `ESP.T2.boundaries`, etc. Keep ESP revision priorities separate from Core CA coverage and exclude self-review from attainment calculations. Imports/exports must retain these distinctions. Three set roles fit the current code slots; coordinated variation selection and related-question assistance need explicit tests.
 

@@ -1,4 +1,4 @@
-import {decode, encode, parseQuestionCode} from './codes.js';
+import {decode, decodeLegacyCode, encode, parseQuestionCode} from './codes.js';
 import {revisions} from './code-compatibility.js';
 export const REATTEMPT_HOURS=4;
 const gapMs=REATTEMPT_HOURS*60*60*1000;
@@ -34,9 +34,23 @@ export function loadStorage(storage=globalThis.localStorage) {
   if(!raw) return empty;
   const data=JSON.parse(raw);
   if(data.schema!==1 || !Array.isArray(data.history)) throw Error('Saved progress has an unsupported format.');
-  return data;
+  return migrateStoredCodes(data);
 }
-export function saveStorage(data,storage=globalThis.localStorage) {storage.setItem(STORAGE_KEY,JSON.stringify(data));}
+export function migrateStoredCodes(data){
+  if(data.codeFormat===54)return data;
+  if(data.codeFormat!==undefined&&data.codeFormat!==48)throw Error('Unsupported saved code format.');
+  const convert=code=>typeof code==='string'&&!parseQuestionCode(code)?encode(decodeLegacyCode(code)):code;
+  for(const row of data.history??[])row.code=convert(row.code);
+  if(data.active){
+    const prior=data.active.code;data.active.code=convert(prior);
+    if(prior!==data.active.code)data.active.migratedCodeFrom=prior;
+    if(data.active.result)data.active.result.code=convert(data.active.result.code);
+    if(data.active.tracking?.key)data.active.tracking.key=convert(data.active.tracking.key);
+  }
+  if(data.recentAttempts)data.recentAttempts=Object.fromEntries(Object.entries(data.recentAttempts).map(([code,at])=>[convert(code),at]));
+  data.codeFormat=54;return data;
+}
+export function saveStorage(data,storage=globalThis.localStorage) {data.codeFormat=54;storage.setItem(STORAGE_KEY,JSON.stringify(data));}
 export function deadlineState(attempt,now=Date.now()) {
   return {expired:attempt.deadline!==null && now>=attempt.deadline,remaining:attempt.deadline===null?null:Math.max(0,Math.ceil((attempt.deadline-now)/1000))};
 }
@@ -112,7 +126,7 @@ export function priorities(history, level='topic') {
   return [...groups.values()].map(g=>({...g,score:Math.round(g.earned/g.max*100)})).sort((a,b)=>a.score-b.score||a.focus.localeCompare(b.focus));
 }
 export function exportCSV(history) {
-  const keys=['id','code','type','focus','finished','earned','max','percentage','seconds','attemptChecks','assisted','outcome','firstEarned','firstMax','partScores'];
+  const keys=['id','code','type','focus','finished','earned','max','percentage','seconds','attemptChecks','assisted','outcome','firstEarned','firstMax','partScores','espReview'];
   const cell=v=>`"${String(v??'').replace(/^[=+@-]/,"'$&").replaceAll('"','""')}"`;
-  return '\ufeff'+[keys.join(','),...history.map(a=>keys.map(k=>cell(k==='finished'?new Date(a[k]).toISOString():k==='partScores'&&a.partScores?JSON.stringify(a.partScores):a[k])).join(','))].join('\r\n');
+  return '\ufeff'+[keys.join(','),...history.map(a=>keys.map(k=>cell(k==='finished'?new Date(a[k]).toISOString():['partScores','espReview'].includes(k)&&a[k]?JSON.stringify(a[k]):a[k])).join(','))].join('\r\n');
 }

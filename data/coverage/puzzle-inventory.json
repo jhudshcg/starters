@@ -1,86 +1,93 @@
 {
-  "date": "2026-09-24",
-  "total": 901,
+  "date": "2026-09-27",
+  "total": 1119,
   "families": [
     {
       "focus": "logic grids",
-      "templates": 100,
-      "variations": 120,
+      "templates": 125,
+      "variations": 145,
       "levels": {
         "standard": 40,
         "foundation": 30,
-        "stretch": 30
+        "stretch": 30,
+        "beginner": 25
       }
     },
     {
       "focus": "logic equations",
-      "templates": 100,
-      "variations": 120,
+      "templates": 125,
+      "variations": 145,
       "levels": {
         "standard": 40,
         "foundation": 30,
-        "stretch": 30
+        "stretch": 30,
+        "beginner": 25
       }
     },
     {
       "focus": "tangrams",
-      "templates": 100,
-      "variations": 120,
+      "templates": 125,
+      "variations": 145,
       "levels": {
         "standard": 27,
         "stretch": 43,
-        "foundation": 30
+        "foundation": 30,
+        "beginner": 25
       }
     },
     {
       "focus": "cover paths",
-      "templates": 100,
-      "variations": 120,
+      "templates": 125,
+      "variations": 145,
       "levels": {
         "standard": 40,
         "foundation": 30,
-        "stretch": 30
+        "stretch": 30,
+        "beginner": 25
       }
     },
     {
       "focus": "sudoku",
-      "templates": 100,
-      "variations": 120,
+      "templates": 125,
+      "variations": 145,
       "levels": {
         "standard": 40,
         "foundation": 30,
-        "stretch": 30
+        "stretch": 30,
+        "beginner": 25
       }
     },
     {
       "focus": "number constraints",
-      "templates": 100,
-      "variations": 120,
+      "templates": 125,
+      "variations": 145,
       "levels": {
         "standard": 40,
         "foundation": 30,
-        "stretch": 30
+        "stretch": 30,
+        "beginner": 25
       }
     },
     {
       "focus": "sequences",
-      "templates": 100,
-      "variations": 500,
+      "templates": 125,
+      "variations": 625,
       "levels": {
         "standard": 45,
         "foundation": 30,
-        "stretch": 25
+        "stretch": 25,
+        "beginner": 25
       }
     },
     {
       "focus": "classic maths",
-      "templates": 100,
-      "variations": 380,
+      "templates": 143,
+      "variations": 595,
       "levels": {
-        "standard": 52,
+        "standard": 67,
         "foundation": 26,
-        "stretch": 10,
-        "beginner": 12
+        "stretch": 25,
+        "beginner": 25
       }
     },
     {

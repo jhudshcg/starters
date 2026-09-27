@@ -87,3 +87,13 @@
 
 .feedback.partial{background:#fff3ce;color:#674b05;border-left:3px solid #b78327}
 [data-theme=dark] .feedback.partial{background:#3a3422;color:#f3ddaa}
+
+/* ESP review keeps prose separate from the automatic score. */
+.type-3 .card-art{background:#e5ecff;color:#233e79}
+.esp-notice,.esp-review{padding:1rem;border:1px solid var(--border,#b8c5d3);border-radius:.75rem;margin:1rem 0}
+.esp-review textarea{display:block;width:100%;box-sizing:border-box;font:inherit;padding:.75rem;margin:.5rem 0;resize:vertical;min-height:6rem}
+.esp-review small{display:block;margin-top:.5rem}
+.esp-review select{max-width:100%}
+
+@media(min-width:1000px){.activity-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+textarea:focus-visible{outline:3px solid #ce7b14;outline-offset:4px}

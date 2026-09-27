@@ -60,3 +60,7 @@ Exact length (short/equal/long); inclusive bounds (below/at/above); character an
 ## Authoring consequences
 
 Each question is an independent, bounded investigation of <=5 minutes including reading. Use a short original brief and concrete artefact. Test valid alternatives and characteristic wrong answers. Store assessment-source links with the family; keep learner screens free of source-management detail. Mark constrained evidence automatically and show prose review separately. Test-log practice must include passing observations and honest unresolved states. Starter success supports later unaided spreadsheet/IDE work; it does not demonstrate a complete ESP portfolio.
+
+### Workbook reconciliation update (27 September)
+
+Both exemplar cost models omit the separately listed developer costs from the project/forecast total: E Costs!D26 and A Costs!H15. The omitted rows total £79,491.50 and £97,261.50 respectively. A's forecast structure is useful, but its numbers are not a verified model answer. Include a starter that traces a displayed total back to **all** its component rows. See the [reading ledger](close-reading-ledger.md) for exact workbook observations and remaining visual limits.

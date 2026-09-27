@@ -1,6 +1,6 @@
 # ESP evidence review — 25–26 September 2026
 
-**Status:** source review and activity design proposals completed; teacher discussion/agreement pending. This record preserves findings so the next session can resume without rereading the collection. Follow [review process](review-process.md); exact source paths/hashes are in the [conversion register](conversion-register.md) and manifests. PDF page numbers include covers. Sources are supplied local assessment materials, not a current-series administration audit.
+**Status:** historical research record; teacher agreement and implementation authorisation are now recorded. The [close-reading ledger](close-reading-ledger.md) supersedes the old outstanding-reading list. This record preserves findings so the next session can resume without rereading the collection. Follow [review process](review-process.md); exact source paths/hashes are in the [conversion register](conversion-register.md) and manifests. PDF page numbers include covers. Sources are supplied local assessment materials, not a current-series administration audit.
 
 ## Sources read on 25 September — historical inventory
 
@@ -101,7 +101,7 @@ The [activity designs](activity-designs.md), [Task 1 detail](task-1-designs.md) 
 
 ### Original design remit
 
-Use the evidence above to draft named 5–15-minute activity sets for every task, with worked examples, progression, meaningful variations, accessible UI and explicit marking contracts. Read only outstanding targeted items noted at the top when needed. Prioritise Task1 rationale/consistency and Task2 requirements → test → repair → retest. Complete and discuss documentation before any implementation. Initial implementation scope after agreement remains Task1/Task2 only.
+Use the evidence above to draft named 5–15-minute activity sets for every task, with worked examples, progression, meaningful variations, accessible UI and explicit marking contracts. Read only outstanding targeted items noted at the top when needed. Prioritise Task1 rationale/consistency and Task2 requirements → test → repair → retest. The teacher subsequently authorised implementation; current scope remains Task1/Task2 only.
 
 
 ## Targeted follow-up — 26 September 2026

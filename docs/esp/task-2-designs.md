@@ -1,5 +1,8 @@
 # Task 2 — testing and debugging starter designs
 
+**27 September implementation update:** authorised first release implemented with native bounded controls and separately reviewed prose. The [activity evidence map](activity-evidence.md) records exact slots, coverage, refinements and verification limits; it supersedes earlier optional UI proposals.
+
+
 **Broad progression accepted with teacher refinements, 26 September 2026; detailed content still to be authored and checked.** Apply the [shared design/marking contract](activity-designs.md). Five recipes, three questions each, five coordinated variations per recipe. All program fragments are original teaching examples; source faults calibrate the skills and demand. The initial release uses bounded repairs/authored run evidence, not arbitrary student-code execution.
 
 ## Agreed question size and independence
