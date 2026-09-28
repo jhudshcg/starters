@@ -1,1 +1,19 @@
-:root{--page:#f7f8f2;--surface:#fff;--text:#20372f;--muted:#59665e;--green:#173e35;--line:#dbe0d4;--mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace}
+:root{
+	--page:#f7f8f2;
+	--surface:#fff;
+	--text:#20372f;
+	--muted:#59665e;
+	--green:#173e35;
+	--line:#dbe0d4;
+	--mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+	/* Warm amber means selected but not yet marked; correctness uses separate feedback colours. */
+	--selection-bg:#ffe6a0;
+	--selection-border:#9b7122;
+	--selection-text:#403111;
+}
+
+:root[data-theme=dark]{
+	--selection-bg:#9b7712;
+	--selection-border:#6d511d;
+	--selection-text:#32260b;
+}

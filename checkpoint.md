@@ -867,3 +867,18 @@ Puzzle and exam paragraphs now use rotated `shape-outside` polygons matched to t
 - [x] Remove obsolete breakpoint-specific card layout/graphic sizing rules, rebuild and inspect representative three/two/one-column widths.
 
 **Completed:** `.activity-grid` is one centered wrapping flex row; cards use `flex:1 1 340px` and `max-width:380px`. The current 380 px card is the canonical design. Three, two or one card fits per row according to available width; cards stay within 340–380 px unless the content area itself is narrower than 340 px. Removed mobile/tablet changes to card padding, typography, artwork dimensions/transforms/offsets and paragraph-shape alignment. Production build passes. Focused checks confirm centered 380 px two-card and one-card layouts, 323/263 px constrained cards at narrow widths, unchanged artwork dimensions and no horizontal overflow. No full suite was needed for this isolated layout change.
+
+### Neutral multiple-choice selection colour
+
+- [x] Audit pre-marking selected-option styles and existing shared colour tokens.
+- [x] Define one commented amber selection source of truth and apply it only to unanswered/selected multiple-choice options.
+- [x] Preserve marked correct/incorrect feedback colours; rebuild and inspect selected and submitted states.
+
+**Completed:** `css/tokens.css` now owns the commented semantic `--selection-bg`, `--selection-border` and `--selection-text` values, including the dark-theme amber background. Generic multiple-choice options and existing puzzle/challenge pre-marking selections use those tokens; the dark green checked-option override was removed. Correct/incorrect feedback retains its separate green/red palette. Production build passes. Focused browser checks confirm amber selected options in both themes and a submitted 100% answer retains dark-theme green correctness feedback. No full suite was needed for this isolated styling change.
+
+## 2026-09-29 — Plan simple semantic colour theming
+
+Objective: first correct the dark-theme selected tone, then migrate the current visual palette to five centrally defined semantic roles: main tone, accent, selected, correct and incorrect. Planning and risk review precede implementation.
+- [ ] Inventory current tokens, hard-coded component colours, theme overrides and state-specific contrast dependencies.
+- [ ] Define light/dark role tokens and a bounded mapping from existing UI roles; identify colours that should remain neutral or component-specific.
+- [ ] Present migration order, validation scope and risks before implementation. First implementation increment will correct dark selected styling; broader token conversion follows only after the plan is reviewed.

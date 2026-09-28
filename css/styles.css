@@ -69,7 +69,7 @@
 [data-theme=dark] :is(button,input,select,textarea,dialog,.question,.type-card,.stat,.progress-panel,.set-toolbar,.skip,.sequence-tooltip){background:var(--surface);color:var(--text)}
 [data-theme=dark] button:hover:not(:disabled){background:#334a3d}
 [data-theme=dark] :is(button.primary,.brand-icon,#toast){background:#a1d5b6;color:#14271d}
-[data-theme=dark] :is(.code-entry,.note-panel,.hint-text,.solution,.logic-clues,.result-banner,.option:has(input:checked),.subtopic-context,.subtopic-notice,.subtopic-match){background:#293d32;color:var(--text)}
+[data-theme=dark] :is(.code-entry,.note-panel,.hint-text,.solution,.logic-clues,.result-banner,.subtopic-context,.subtopic-notice,.subtopic-match){background:#293d32;color:var(--text)}
 [data-theme=dark] :is(.feedback,.tracking-notice){background:#3a3422;color:#f3ddaa}
 [data-theme=dark] .feedback.correct{background:#1f402d;color:#b1edc4}
 [data-theme=dark] :is(.feedback.incorrect,.error){color:#ffb89c}
@@ -101,6 +101,8 @@ textarea:focus-visible{outline:3px solid #ce7b14;outline-offset:4px}
 .development-notice{display:inline-block;padding:.25rem .65rem;border:1px solid currentColor;border-radius:.35rem;background:var(--surface);font-weight:700;}
 .spreadsheet td{min-width:3rem;white-space:normal}.spreadsheet th{font-weight:700}
 
+/* Premarking selection is neutral amber; edit the shared values in tokens.css. */
+.option:has(input:checked){background:var(--selection-bg);border-color:var(--selection-border);color:var(--selection-text)}
 /* Decorative graphics sit behind the complete card content. */
 .type-card{position:relative;isolation:isolate}
 .activity-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.15rem}
