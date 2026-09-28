@@ -85,4 +85,10 @@ for v in range(5):
     digits=[[0,1,2,3,5],[0,1,2,4,5],[0,1,3,4,5],[0,2,3,4,5],[0,1,2,5,6]][v];codes=[100*a+10*b+c for a,b,c in itertools.permutations(digits,3) if a];check('hard',12,v,[len(codes),sum(n%5==0 for n in codes),sum(n%15==0 for n in codes)])
     stock=[1+v%2,3+v,4+v];draws=list(itertools.product(*(range(n+1) for n in stock)));check('hard',13,v,[max(sum(d) for d in draws if sum(n>=3 for n in d)==0)+1,max(sum(d) for d in draws if sum(n>=3 for n in d)<2)+1])
     w=16+2*v;h=12;boxes=[(c*(w-2*c)*(h-2*c),-c) for c in range(1,6)];volume,cut=max(boxes);check('hard',14,v,[-cut,volume])
-print('PASS:275 numerical variations independently checked (125 sequences,150 maths).')
+    n=v+3;orders=list(itertools.combinations(range(2*n),n));safe=positive=0
+    for ups in orders:
+        balances=list(itertools.accumulate(1 if k in ups else -1 for k in range(2*n)))
+        safe+=min(balances)>=0
+        positive+=min(balances[:-1])>0
+    check('hard',15,v,[len(orders),safe,positive])
+print('PASS:280 numerical variations independently checked (125 sequences,155 maths).')

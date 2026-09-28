@@ -57,3 +57,48 @@ Added13 original Beginner Number and measures templates in `data/puzzles/maths-b
 Classic maths now has25 Beginner /26 Foundation /52 Standard /10 Stretch (113 templates); Number and measures has13 Beginner /15 Foundation /5 Standard /4 Stretch. All65 new variations independently checked using arithmetic/unit conversions and Python statistics; model marking and production build pass. Removed redundant assessed parts during editorial review. No new UI or shared runtime behaviour.
 
 The remaining family-level target requires190 additions:25 Beginner for each of seven families and15 Stretch Classic maths. Current historical slot audit finds122 previously unused puzzle addresses before this increment (109 remain afterward). Completing all additions therefore needs an explicit backward-compatible codec extension; do not recycle historical slots or renumber existing puzzles.
+
+## 28 September — expansion and fairness review completed
+
+This supersedes the earlier gap counts and retirement proposal. The bank now has **1,120 templates**, with at least25 at every level in every family. Existing surplus content is retained. Counts come from the [generated inventory](../../data/coverage/puzzle-inventory.json).
+
+| Family | Beginner | Foundation | Standard | Stretch | Total |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Logic grids | 25 | 30 | 40 | 30 | 125 |
+| Logic equations | 25 | 30 | 40 | 30 | 125 |
+| Tangrams | 25 | 30 | 27 | 43 | 125 |
+| Cover paths | 25 | 30 | 40 | 30 | 125 |
+| Sudoku | 25 | 30 | 40 | 30 | 125 |
+| Number constraints | 25 | 30 | 40 | 30 | 125 |
+| Sequences | 25 | 30 | 45 | 25 | 125 |
+| Classic maths | 25 | 26 | 68 | 25 | 144 |
+| Go | 26 | 25 | 25 | 25 | 101 |
+
+Number and measures now offers13/15/20/20 templates across the four levels; Algebra retains12/11/8/4. Both filters are selectable at every level. The25-per-level target applies to puzzle families, not each maths topic filter.
+
+### Basis for difficulty labels
+
+| Family | Beginner additions and comparison with existing content |
+| --- | --- |
+| Logic grids | Four people, one category, an explicit starting match and short exclusion/order chains. Existing Foundation puzzles coordinate two or three categories. Uniqueness is exhaustively checked; clue count alone is not a difficulty measure. |
+| Logic equations | Three variables and sum/difference/order constraints, without products. Existing Foundation generally uses four or five variables; upper bands require more interacting constraints. |
+| Sudoku | 4×4 grids with10–12 givens and short single-candidate deductions. Existing small Foundation grids have substantially fewer givens; upper bands use9×9 boards with less scaffolding. |
+| Cover paths | Small masks with8–12 open dots. Existing Foundation boards generally have14–24. Branches and bottlenecks matter as well as size; all valid routes remain accepted. |
+| Tangrams | Four visible piece guides, compared with two at Foundation and one or none at Standard. Stretch outlines have no guides. Outline compactness alone does not establish difficulty. |
+| Arithmetic cages | 3×3 grids with single cells and two-cell addition cages. Existing Foundation/Standard/Stretch generally use4×4/5×5/6×6 with increasing interaction and mixed operations. |
+| Sequences | Explicit equal-step, doubling, halving or repeating-group rules. Five task forms practise continuation, missing positions, error finding, totals and backward steps. Rule families are deliberately repeated with meaningful value changes; these are25 templates, not25 unrelated concepts. |
+| Classic maths | Beginner additions use familiar quantities, conversions and short calculations. Routine applied multi-step work is Standard; Stretch requires constrained counting, optimisation, a guarantee or strategy. |
+| Go | **Only recorded source problem grading:** Beginner25k+, Foundation18–24k, Standard12–17k, Stretch11k and stronger. No Go content/grades changed; tree depth is not substituted. |
+
+Fairness corrections: existing Weighing capacity (621) and Reliable majority (632) moved from Stretch to Standard because their supplied structure reduces inference. Thirteen of the15 applied maths drafts were classified Standard. The new cumulative doubling task (1223) also moved to Standard; its recurrence is supplied. A separate constrained-order counting task (1229), with five independently enumerated variations, maintains Stretch coverage. The misleading “Optimal adjacent merges” title at633 became “Optimal merges”; its prompt already allowed any pair. Permanent slots and variation positions were preserved.
+
+These are author judgements about the reasoning and scaffolding, not measured classroom difficulty. Existing non-Go levels can overlap in structural measures; those measures alone do not prove an item is correctly calibrated. Teacher approval and student timing/hint trials remain pending. Estimated durations are not a guarantee that three Stretch puzzles fit a15-minute set.
+
+### Checks and reuse
+
+- Independent interactive solver check:870 served variations, including all150 new Beginner boards; uniqueness where required, valid paths/tilings and source-based Go behaviour checked by the appropriate existing validators/tests.
+- Independent numerical checks:65 earlier Beginner maths variations, plus280 sequence/applied/reasoning variations. Reference checker: `scripts/verify-puzzle-additions.py`; enumeration and Python arithmetic are independent of JavaScript answer generation.
+- Full suite:123 tests passed after correcting the obsolete logic clue-count assertion. Following the final numerical addition, all18 relevant puzzle/codec tests and all-bank model validation passed. Current bank total across activity types:1325 templates/2885 variations.
+- Production build passed. Shared browser checks cover canonical legacy links, sharing across all four activity types in a separate browser context, backups, timers, puzzle interactions and mobile layout. Focused expansion checks exercise13 high-slot examples through actual controls, reload, scoring and reveal, plus320px and200% zoom reflow. Old timed active work retains its answers and deadline through migration and another reload.
+
+Use `scripts/browser-puzzle-expansion.mjs` against the isolated preview for the focused checks (`--migration-only` skips already-checked puzzle examples). Do not regenerate checked boards or reconvert exam resources when resuming. The checkpoint records final completion and any later limitations.

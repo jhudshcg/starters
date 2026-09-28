@@ -48,6 +48,8 @@ A recipe's variations must be independently reviewed; five variations do not cou
 
 ## Task 3 — designing a solution
 
+See the [28 September review](tasks-3-4-design-review.md) for proposed drag-and-drop make/fix activities, per-question timing, Task4 refinements and reusable editor options.
+
 Sources: all three Task3 briefs; SAM scheme pp18–19; AdSAM pp23–24; live scheme p18; examiner pp22–26; Grade A p16 and Grade E p13. Common gap: diagrams name processes but do not explain how they work. Prerequisites: selection/iteration, lists or tabular data, basic flowchart/pseudocode conventions.
 
 | Set / time | Three questions and evidence | UI / automatic points | Variations and feedback |

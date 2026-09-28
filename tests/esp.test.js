@@ -10,7 +10,7 @@ import {hasUnsubmittedAnswers} from '../js/unsent-answers.js';
 import {exportCSV} from '../js/progress.js';
 
 test('ESP codes, recipe selection and coordinated permutations preserve complete independent questions',()=>{
- assert.equal(esp.length,30);
+ assert.ok(esp.length>=36);
  for(const focus of ['task1','task2'])for(let i=0;i<30;i++){
   const a=choose(3,focus),b=choose(3,focus,a),c=choose(3,focus,a,'permutation');
   assert.equal(a.questions.length,3);assert.equal(new Set(a.questions.map(q=>q.recipe)).size,1);

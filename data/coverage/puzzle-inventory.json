@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-27",
-  "total": 1119,
+  "date": "2026-09-28",
+  "total": 1120,
   "families": [
     {
       "focus": "logic grids",
@@ -81,10 +81,10 @@
     },
     {
       "focus": "classic maths",
-      "templates": 143,
-      "variations": 595,
+      "templates": 144,
+      "variations": 600,
       "levels": {
-        "standard": 67,
+        "standard": 68,
         "foundation": 26,
         "stretch": 25,
         "beginner": 25

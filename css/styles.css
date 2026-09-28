@@ -97,3 +97,6 @@
 
 @media(min-width:1000px){.activity-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 textarea:focus-visible{outline:3px solid #ce7b14;outline-offset:4px}
+
+.development-notice{display:inline-block;padding:.25rem .65rem;border:1px solid currentColor;border-radius:.35rem;background:var(--surface);font-weight:700;}
+.spreadsheet td{min-width:3rem;white-space:normal}.spreadsheet th{font-weight:700}

@@ -21,7 +21,8 @@ test('logic clues uniquely determine each mapping across all categories',()=>{
  for(const q of puzzles.filter(q=>q.focus==='logic grids'))for(const v of q.variations){
   const p=v.parts[0],perm=permutations(p.names.map((_,i)=>i));let count=0;
   function search(rows){if(rows.length===p.categories.length){if(p.rules.every(c=>logicRule(c,rows)))count++;return;}for(const row of perm)search([...rows,row]);}
-  search([]);assert.equal(count,1);assert.ok(p.rules.length>=p.names.length);
+  // Uniqueness is the requirement; one-category puzzles can need fewer clues than people.
+  search([]);assert.equal(count,1,`${q.slot}: ${q.title}`);
  }
 });
 test('every path layout is feasible, with no fixed endpoints; reverse routes also pass',()=>{

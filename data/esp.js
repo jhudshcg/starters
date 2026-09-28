@@ -1,3 +1,4 @@
+import formulas from './esp-formulas.js';
 // Original micro-cases. Evidence and design decisions: docs/esp/activity-evidence.md.
 // Stable slots: Task 1 0–14; Task 2 15–29. Never reorder variations.
 const number=(prompt,answer,explanation)=>({kind:'number',prompt,answer:String(answer),marks:1,explanation});
@@ -146,4 +147,4 @@ add(2,5,'Recognise a passing test and its limits',v=>{
  const min=2+v,max=min+8;
  return {prompt:`Whole quantities ${min}–${max} inclusive are allowed. A recorded run entered ${min} and returned "Accepted". No other inputs have been tested.`,hint:'A passing test is real evidence for one case, but does not establish untested behaviour.',parts:[choice('Does the recorded test pass?','Yes',['No','Only if all future tests pass'],'The observed result matches the requirement for this input.'),number('Give the nearest invalid input below the minimum.',min-1,'This tests the neighbouring rejection path.'),choice('Which comment is justified?','This boundary passed; test other boundaries and invalid data',['All validation is correct','Change this working comparison immediately'],'No repair is required by this observation alone.')],review:review('Write the next test data and expected outcome in one sentence.',['Gives an exact untested value','Uses a requirement-derived accept/reject expectation','Keeps the new expectation separate from the recorded run'],`Enter ${min-1}; expect rejection. This is a planned test, not an observed result.`),skills:['validation','passing-test','test-data','expected','actions']};
 });
-export default bank;
+export default [...bank,...formulas];

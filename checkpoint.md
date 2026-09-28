@@ -704,3 +704,72 @@ User explicitly adds XLSX Task 1 spreadsheets to conversion scope, requesting a 
 6. Record final checks and remaining limits in this checkpoint; mark the codec/content plan complete only when those checks pass. No deployment authorised/requested here.
 
 **Other preserved scope:** dedicated Task1 Excel formula writing/debugging is documented in `docs/esp/task-1-designs.md` but not implemented. Existing ESP Task1/Task2 activity implementation and source research remain saved; do not repeat conversions or close reading. Preserve all pre-existing repository modifications. No further implementation or tests were run after the stop request.
+
+## 2026-09-28 — Resume final puzzle/codec verification
+
+Objective: finish the saved slice without repeating completed generation or solution checks. The repository starts clean; prior work has been persisted in its current baseline.
+- [x] Review final numerical wording and current coverage/code documentation; document fair difficulty criteria and final counts.
+- [x] Rerun numerical checker after its rename, validate identities/bank/coverage, build and run full tests for shared codec/progress changes.
+- [x] Verify browser sharing, timers/migration and representative new high-slot puzzles; resolve concrete failures.
+- [x] Record results and exact remaining limitations; keep the site build functional. No deployment or ESP formula implementation in this slice.
+
+**28 September checks:** numerical reference checker passes275 variations; identities, bank validation (1324 templates/2880 variations), coverage freshness and production build pass. Full suite now123/123 after removing an obsolete clue-count assertion; exhaustive logic-grid uniqueness remains enforced. Browser checks required canonical nine-character display expectations for legacy links; updated assertions and added ESP to peer-browser sharing. Browser completion pending.
+
+**Final fairness correction plan:** the newly added cumulative doubling task (slot1223) supplies its recurrence and only requires running totals, so classify it Standard. Preserve the question/identity. Add one genuinely Stretch constrained-order counting task at unused slot1229, independently enumerate its five variations, refresh identities/inventory/build and verify. This avoids retaining an inflated difficulty label to satisfy the25 minimum.
+
+**28 September final verification progress:** shared browser smoke passed, including peer-browser sharing for all four types and timer/backup/legacy-code flows. The final fairness correction added slot1229 (five independently enumerated variations) and relabelled1223 Standard; inventory now1120 puzzles, Classic maths144 (25/26/68/25), all families at least25 per level. Independent numerical checker now passes280 variations. Final bank validation1325 templates/2885 variations and production build pass;18 focused puzzle/codec tests pass after the numerical addition. Full123-test pass remains applicable to unchanged shared runtime code.
+
+Focused browser checks exercised13 high-slot puzzles through actual controls, marking, saved-answer reload, reveal,320px and200% zoom. All passed. Legacy timed active work also passed migration/second reload with the same ID, answers and deadline. Test harness corrections: use a full navigation to install a legacy fixture (hash navigation does not reload scripts), and check persisted migration after pagehide/reload, matching the app's existing save lifecycle. No application runtime fix was needed. Screenshots/logs in `/private/tmp/starters-*`; updated review in `docs/reviews/2026-09-25-puzzle-level-coverage.md`.
+
+## 2026-09-28 — Slice complete
+
+The puzzle coverage and54-bit sharing-code slice is complete for local use. All current plan steps above are checked. Earlier unchecked historical plans describe interrupted stages, not remaining implementation. Final ESP navigation check also passed; `git diff --check` passed. The current `live/` build matches source and includes all1120 puzzles. No commit or deployment performed in this session.
+
+**Outcome:** all nine puzzle families have at least25 templates per challenge level; existing good surplus questions retained. Source-graded Go unchanged. Nine-character set codes and optional tenth timer support slots0–4094; legacy untimed links and explicitly old saved data/backup migration verified. See the28September review for counts, fairness criteria and test evidence.
+
+**Remaining limitations, not unfinished checks:** teacher subject approval and measured student timing/hint calibration remain pending. Browser verification used isolated Chrome, not a cross-browser accessibility certification. Dedicated ESP Task1 formula challenges remain documented but unimplemented and were outside this slice. No further puzzle additions, broad reruns or deployment are needed merely to resume; await the next task.
+
+**Clarification to user:**1119 puzzles were already authored at the prior stop. This session primarily completed the previously outstanding whole-slice verification and documentation. The one additional question replaced Stretch coverage after a fairness-driven reclassification; it was not the main workload.
+
+## 2026-09-28 — ESP Excel formula slice and optional design review
+
+Objective: prepare the agreed two Task1 Excel formula sets, using cached assessment/workbook evidence, and present the concrete outline for teacher review before implementation, as agreed in the immediately preceding exchange.
+- [x] Read only relevant Task1 requirements, evidence routing and existing activity structure.
+- [x] Document two three-question sets (each question ≤5 minutes), meaningful variations, equivalent-formula marking, feedback and independent checks; share for review.
+- [ ] Pending outline review: implement the agreed sets, validate/build and run focused checks in a subsequent authorised increment.
+- [x] If capacity permits, review saved Task3/Task4a/4b designs and primary documentation for reusable browser flowchart editing; document recommendations without implementation.
+
+**28 September formula outline completed:** `docs/esp/task-1-formula-outline.md` now specifies six independent questions, timing/points, worked spreadsheet cells, five meaningful variation roles, equivalent/copy-aware formula marking and integration checks. Reused cached A/E workbook cell evidence and distilled assessment; no conversions repeated. Verified current Microsoft SUMIF and reference semantics to avoid teaching that unequal SUMIF range sizes necessarily raise an error. The outline is awaiting the teacher's requested pre-implementation review; an asynchronous question is pending while the independent Task3/4 design review continues.
+
+**Buildability constraint reaffirmed:** this increment changes documentation only; tested source and `live/` remain intact. Future implementation must use small validated/buildable boundaries, record exact pending work before approaching a limit, and avoid partially wired runtime features.
+
+**28 September design increment complete, awaiting outline response:** `docs/esp/tasks-3-4-design-review.md` records revised Task3 make/fix/trace flowchart practice, focused Task4a/4b refinements, bounded semantic grading/accessibility requirements and primary-source comparison of draw.io embed, maxGraph and React Flow. Recommend a later two-question maxGraph prototype, not a new custom canvas editor; no package installation/prototype performed. Source-guide links and parent design links updated. Six Task1 outline arithmetic seeds independently checked with Python/Decimal; spreadsheet-engine verification belongs to implementation. Documentation diff checks pass; no runtime/source-bank/build changes in this design increment, so the previously tested working build remains intact without an unnecessary rebuild.
+
+**Exact next action:** read the teacher's response to the pending Task1 outline review. If accepted, plan the smallest complete formula-marking/content increment, preserving buildability; use `task-1-formula-outline.md` instead of repeating workbook/web research. If changes requested, revise the outline first. The preceding offer explicitly put outline review before implementation; no skill-imposed approval barrier. Task3/4 work remains design-only. Current completed scope is the concrete outline plus optional design/tooling review, not implemented formula activities.
+
+## 2026-09-28 — Compare Task3 interactive flowchart options
+
+User redirects the active task to Task3 tooling comparison. Task1 formula implementation remains pending; no pre-implementation outline approval is needed merely for its later student-facing review, but do not resume it during this Task3 comparison.
+- [x] Reuse saved tooling research; verify primary documentation for maxGraph and credible alternatives against standard shapes, editing, persistence, accessible interaction and assessment integration.
+- [x] Persist a concise comparison and recommend the best bounded prototype for this vanilla-JS/esbuild static site.
+- [x] Present choices and material trade-offs. Research/documentation only; preserve the working build without dependency or runtime changes.
+
+**Completed:** expanded comparison saved in `docs/esp/flowchart-editor-comparison.md`, linked from design/source guides. Verified maxGraph conventional primitives/custom stencils and editing/persistence; compared draw.io complete hosted editor, JointJS core versus commercial UI plugins, and React Flow custom shapes/framework/accessibility trade-offs. Recommend a bounded maxGraph make/repair prototype; documentation evidence only, no performance/usability claims from testing. No dependency/runtime/build changes; documentation diff check passed and existing functional site preserved.
+
+**Exact next action:** follow the user's Task3 direction after presenting the comparison; if proceeding, plan a small buildable editor prototype with normal flowchart shapes, saved graph semantics, keyboard edge controls and a make/fix pair. Task1 outline-review gate from the previous entry is superseded by the user's preference to review implemented activities later; Task1 implementation itself is deferred while Task3 is the focus. Do not repeat completed source conversions or library research.
+
+## 2026-09-28 — Implement Task1 formula activities; record Task3 decision
+
+User authorises implementation for evaluation in the starter pages. No further outline approval required.
+- [ ] Record maxGraph/vanilla-JS choice, limited standard-shape UI, inspectable marking model and rationale in Task3 plan.
+- [ ] Inspect existing marker/renderer/ESP recipe contracts; implement a bounded Excel formula marker with meaningful equivalence/copy tests as a standalone buildable increment.
+- [ ] Add six independent questions ×five variations in two formula recipes under Task1, preserving existing slots; wire rendering/marking/selection and regenerate compatibility/build.
+- [ ] Verify independent spreadsheet/reference calculations, accepted/wrong formulas, browser scoring/navigation/reload and relevant shared tests. Record direct review codes and limitations.
+
+**Standalone marker boundary:** Task3 maxGraph choice/plan recorded. Added `js/excel-answer.js` and three focused tests; all pass. Parser admits only bounded Excel syntax and reuses the existing exact polynomial comparator, keeping cell inputs symbolic and checking each copy destination. SUMIF uses symbolic match/amount dependencies; unsupported functions/range semantics return a Needs review message. No app wiring yet; existing build remains functional. Added the six-question draft bank in a separate unimported module; next integrate it atomically with renderer/marker/recipe changes, verify all models, then build.
+
+**Scope update — user clarification:** implement the Excel activities directly in the app now, also implement draft Task3 activities, and add a centrally configured per-activity-type “In development” header notice (ESP enabled; exam configurable). No further design approval. Complete Excel integration/build first, then a small maxGraph integration and Task3 draft bank with focused checks. Preserve buildable boundaries; no live deployment requested.
+- [ ] Add central page/type development-status configuration and ESP header notice.
+- [ ] Implement draft Task3 activities with standard-shape make/fix controls, inspectable marking and existing persistence.
+
+**Excel integration boundary complete:** six questions ×five variations are now imported into ESP as T1.2F and T1.5F (slots30–35). The spreadsheet extract renderer, equivalent/copy-aware marker and review routing are wired. All models validate (1331 total templates/2915 variations), production build succeeds and focused Excel/ESP tests pass. Browser/reference checks still pending. Central `js/page-status.js` enables the header notice for ESP(type3) only; exam(type1), programming and puzzles are disabled. User explicitly reconfirmed ESP-only notice.

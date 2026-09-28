@@ -1,10 +1,11 @@
 # Puzzle specification
 
-## Current bank — 27 September 2026
+## Current bank — 28 September 2026
 
-This section supersedes earlier numerical minima and challenge descriptions below. The bank contains 1119 puzzle templates, with at least25 at every challenge level in every family. Good existing content above25 is retained. Exact variation counts and level distributions are in the generated [puzzle inventory](../data/coverage/puzzle-inventory.json), maintained by `node scripts/puzzle-inventory.mjs`.
+This section supersedes earlier numerical minima and challenge descriptions below. The bank contains 1120 puzzle templates, with at least 25 at every challenge level in every family. Good existing content above 25 is retained. Exact variation counts and level distributions are in the generated [puzzle inventory](../data/coverage/puzzle-inventory.json), maintained by `node scripts/puzzle-inventory.mjs`.
 
 - Go uses source rank: Beginner 25k+, Foundation 18–24k, Standard 12–17k, Stretch 11k and stronger. Counts are 26/25/25/25 respectively. Tree depth is no longer a difficulty proxy. Cached sources and offline import instructions are in [references/go](../references/go/README.md). The card depicts a ko shape.
+- Beginner boards add single-category logic grids, three-variable equations, heavily supplied4×4 Sudoku, short dot paths, four-guide tangrams and3×3 addition cages. [Level review](reviews/2026-09-25-puzzle-level-coverage.md#28-september--expansion-and-fairness-review-completed) records the criteria, counts and remaining calibration limits.
 - Logic grids include three-person introductions and four-person systems with two/three categories. Equations mix domains and arithmetic constraints, including systems without multiplication.
 - Dot paths support rectangular boards and stepped, L-shaped, central-gap and linked-region masks. Starts and finishes remain player-chosen, and all complete valid routes are accepted.
 - Sudoku includes 4×4 with 2×2 boxes and 6×6 with 2×3 boxes alongside 9×9. Every board is uniquely solvable; small boards retain human deduction traces. Standard is singles-solvable; Stretch may need additional techniques.
@@ -145,7 +146,7 @@ Every puzzle has a `challengeLevel` (`foundation`, `standard` or `stretch`) and 
 - **Standard:** combine several deductions or stages. Examples include three-category logic grids with an explicit starting relationship and five-by-five cages.
 - **Stretch:** more interdependent constraints, less scaffolding or deeper planning. Examples include eight-variable equation grids, six-by-six cages, Sudoku with further uniqueness-preserving clue removal, mixed recurrences and counting/optimisation problems.
 
-This historical expansion originally used tree depth for Go. That method is superseded: Go must use recorded source problem ranks and the mapping at the top of this document. Other puzzle levels use scaffolding and reasoning demand, with classroom calibration pending. All families now have at least25 puzzles per level; the UI selection threshold remains three.
+This historical expansion originally used tree depth for Go. That method is superseded: Go must use recorded source problem ranks and the mapping at the top of this document. Other puzzle levels use scaffolding and reasoning demand, with classroom calibration pending. All families now have at least 25 puzzles per level; the UI selection threshold remains three.
 
 The puzzle page has a Challenge selector, initially Mixed challenge. Changing it requests a new three-puzzle set within the current subtype. New set and New set in this focus respect the selection; Get new permutation preserves the exact templates. Each puzzle displays its own level. Switching to a subtype without the selected level falls back to Mixed challenge. A shared code always opens its exact questions regardless of the saved filter. Cancelling replacement preserves the previous activity and filter.
 

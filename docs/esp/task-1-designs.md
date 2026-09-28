@@ -59,6 +59,8 @@ Explicit Excel formula writing/completion and debugging are required additions, 
 
 ## Required addition — Excel formula practice
 
+The [28 September six-question outline](task-1-formula-outline.md) makes this requirement concrete for review, including copying/equivalence rules and integration without replacing published questions.
+
 **Agreed requirement, 27 September 2026; not yet implemented.** Students must practise writing/completing formulas **and “fix the errors in this formula” questions**, using the formulas needed to turn their Task1 plan into a working cost/forecast spreadsheet. Calculating the numerical result alone does not satisfy this requirement. Integrate this coverage into T1.2 (costing/forecasting) and T1.5 (reconciliation); do not automatically add a sixth recipe or lengthen the sets.
 
 | Required formula skill | Writing/completion and fault-finding coverage |

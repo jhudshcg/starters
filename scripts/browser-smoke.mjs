@@ -4,6 +4,8 @@ import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import {encode,BANK_VERSION} from '../js/codes.js';
 import {choose,resolve,banks} from '../js/bank.js';
+const legacyExamDisplay=resolve('BIAkAiAg').code;
+const legacyPuzzleDisplay=resolve('BA8D_x_4').code;
 const currentExamCode=encode({version:BANK_VERSION,type:1,entries:[{slot:1,variation:1},{slot:2,variation:1},{slot:4,variation:0}]});
 const endpoint=process.env.STARTERS_DEBUG_URL??'http://127.0.0.1:9227';
 const base=process.env.STARTERS_PREVIEW_URL??'http://127.0.0.1:8765';
@@ -150,9 +152,9 @@ try{
  await until('Boolean(document.querySelector("#global-code-error").textContent)');
  assert.ok(await evaluate('Boolean(document.querySelector("#submit"))'));
  await evaluate('document.querySelector("#global-code").value="BIAkAiAg";document.querySelector("#global-code-form").requestSubmit()');
- await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(legacyExamDisplay)}`);
  assert.equal(await evaluate('document.querySelector(".set-update-notice").textContent'),'This set has been updated since this code was created.');
- await send('Page.reload');await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ await send('Page.reload');await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(legacyExamDisplay)}`);
  assert.ok(await evaluate('Boolean(document.querySelector(".set-update-notice"))'));
  assert.equal(await evaluate('Boolean(document.querySelector("dialog"))'),false);
  await enterUnsubmittedAnswer();
@@ -275,10 +277,10 @@ try{
  await until('JSON.parse(localStorage.getItem("dsd-starters-v1")).history.some(r=>r.id==="legacy-changed-question")');
  await evaluate('document.querySelector("#global-code").value="BA8D_x_4";document.querySelector("#global-code-form").requestSubmit()');
  await acceptLeaveIfShown();
- await until('document.querySelector("#display-code")?.textContent==="BA8D_x_4"');
+ await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(legacyPuzzleDisplay)}`);
  assert.ok(await evaluate('document.querySelector(".question").textContent.includes("PZ-2-120-0")'));
  await click('#permutation');await acceptLeaveIfShown();
- await until('document.querySelector("#display-code")?.textContent!=="BA8D_x_4"');
+ await until(`document.querySelector("#display-code")?.textContent!==${JSON.stringify(legacyPuzzleDisplay)}`);
  assert.ok(await evaluate(`document.querySelector(".question").textContent.includes("PZ-${BANK_VERSION}-120-")`));
 
  // Select a fine reference while retaining all parts and related-question context.
@@ -373,7 +375,7 @@ try{
    await peerUntil(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}&&!document.querySelector('dialog')`);
   }
   await peerSend('Page.enable');
-  for(const type of [0,1,2]){
+  for(const type of [0,1,2,3]){
    await send('Page.navigate',{url:base+'/#home'});await acceptLeaveIfShown();await until('Boolean(document.querySelector("#code-form"))');
    await click(`[data-start="${type}"]`);await until('Boolean(document.querySelector("dialog"))||Boolean(document.querySelector("#display-code"))');
    if(await evaluate('Boolean(document.querySelector("dialog"))'))await click('dialog button[value="leave"]');
@@ -464,11 +466,11 @@ try{
  // A saved draft from before a correction must not be silently regraded.
  await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
  await evaluate('document.querySelector("#code-form input").value="BIAkAiAg";document.querySelector("#code-form").requestSubmit()');
- await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(legacyExamDisplay)}`);
  const preservedHistory=await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)');
  const staleId=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.id');
  const staleFixture=await send('Page.addScriptToEvaluateOnNewDocument',{source:'const saved=JSON.parse(localStorage.getItem("dsd-starters-v1"));saved.active.contentVersion=2;saved.active.answers={1:{0:"old draft"}};saved.active.deadline=Date.now()-1000;localStorage.setItem("dsd-starters-v1",JSON.stringify(saved))'});
- await send('Page.reload');await until('document.querySelector("#display-code")?.textContent==="BIAkAiAg"');
+ await send('Page.reload');await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(legacyExamDisplay)}`);
  await until(`JSON.parse(localStorage.getItem("dsd-starters-v1"))?.active?.contentVersion===${BANK_VERSION} && JSON.parse(localStorage.getItem("dsd-starters-v1"))?.active?.id!==${JSON.stringify(staleId)}`);
  await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:staleFixture.identifier});
  const refreshed=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active');
@@ -476,7 +478,7 @@ try{
  assert.equal(await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1")).history)'),preservedHistory);
  await click('#submit');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.result.code'),currentExamCode);
- assert.equal(await evaluate('document.querySelector("#display-code").textContent'),'BIAkAiAg');
+ assert.equal(await evaluate('document.querySelector("#display-code").textContent'),legacyExamDisplay);
  const completedId=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.id');
  await send('Page.reload');await until('Boolean(document.querySelector("#submit-result"))');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1")).active.id'),completedId);

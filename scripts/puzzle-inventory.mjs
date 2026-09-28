@@ -1,6 +1,6 @@
 import {writeFile} from 'node:fs/promises';
 import puzzles from '../data/puzzles.js';
-const report={date:'2026-09-27',total:puzzles.length,families:[...new Set(puzzles.map(q=>q.focus))].map(focus=>{
+const report={date:'2026-09-28',total:puzzles.length,families:[...new Set(puzzles.map(q=>q.focus))].map(focus=>{
   const bank=puzzles.filter(q=>q.focus===focus&&!q.retired);
   return {focus,templates:bank.length,variations:bank.reduce((sum,q)=>sum+q.variations.length,0),levels:bank.reduce((out,q)=>(out[q.challengeLevel]=(out[q.challengeLevel]??0)+1,out),{})};
 })};

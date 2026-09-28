@@ -1,3 +1,4 @@
+import {markExcel} from './excel-answer.js';
 import {markingPart} from './packed-data.js';
 import {sameCode} from './code-answer.js';
 import {expressionValue,validCoinSystems,fractionValue} from './maths-answer.js';
@@ -13,6 +14,7 @@ export function markQuestion(question, answers={}) {
   for(const publicPart of question.parts) {
     const p=markingPart(publicPart);
     const raw=answers[p.id]??'', value=normalise(raw,p.caseSensitive);
+    if(p.kind==='excel'){const result=value?markExcel(raw,p):{earned:0,message:'No answer entered.'};results.push({id:p.id,...result,max:p.marks,blank:!value});continue;}
     if(interactiveKinds.includes(p.kind)){
       const result=value?markPuzzle(p,raw):{earned:0,message:'No answer entered.'};
       results.push({id:p.id,...result,max:p.marks,blank:!value});continue;
