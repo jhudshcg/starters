@@ -773,3 +773,51 @@ User authorises implementation for evaluation in the starter pages. No further o
 - [ ] Implement draft Task3 activities with standard-shape make/fix controls, inspectable marking and existing persistence.
 
 **Excel integration boundary complete:** six questions ×five variations are now imported into ESP as T1.2F and T1.5F (slots30–35). The spreadsheet extract renderer, equivalent/copy-aware marker and review routing are wired. All models validate (1331 total templates/2915 variations), production build succeeds and focused Excel/ESP tests pass. Browser/reference checks still pending. Central `js/page-status.js` enables the header notice for ESP(type3) only; exam(type1), programming and puzzles are disabled. User explicitly reconfirmed ESP-only notice.
+
+## 2026-09-28 — Navigation, theme and question-language review
+
+Objective: place ESP within exam practice, fix card graphic layering, simplify the theme toggle, assess search tags and audit ambiguous synonym choices and reasoning coverage.
+- [x] Inspect navigation/style contracts; implement ESP entry within exam practice and compact adaptive theme icon.
+- [x] Audit authored question wording across banks; correct concrete awkward synonyms without changing assessed concepts or stable slots; record scope and limitations.
+- [x] Inspect tagging and data-structure/computational-thinking choice/reason coverage; document findings and search proposal (no search implementation requested).
+- [x] Refresh affected generated data/build, run proportionate validation and focused browser checks; record outcomes and next action.
+
+**Scope clarification:** future Year 2 OS belongs beside Core and ESP within Exam practice. Preserve independent full-capacity banks (4,095 usable slots each), never partition Core's slots or encode section IDs in question-slot bits. Current sharing format has only four bank IDs; OS will require a backward-compatible bank-ID extension before its content is added. This navigation increment will use a section registry, with the codec extension recorded as an explicit OS prerequisite rather than silently claiming a fifth bank already works.
+
+
+**Completed:** home now has three full-width cards with content over faded background graphics. Exam practice opens registry-driven Core/ESP choices, and activity back links return there. Theme control is a 22px changing moon/sun icon with a 44px keyboard/touch target and persisted preference. Independent banks/codes remain unchanged by navigation. Future OS capacity contract is in `docs/spec-common.md` and `docs/reviews/2026-09-28-navigation-wording-search.md`; the 2-bit bank identifier still requires expansion before a fifth bank can be added.
+
+**Wording/coverage:** targeted vocabulary screen of all rendered banks, followed by contextual review of candidates, corrected nine templates (exam26/43/101/103/117/142/151/152, ESP15). Pre/post rendered-data comparison confirms all answers, alternatives, options, marks, dependencies, coverage, hints and explanations unchanged. Search proposal and precise choice/reason gaps are in the review. No search feature or new questions added. Teacher subject review remains pending; this is not an exhaustive fresh subject approval.
+
+**Verification:** coverage regeneration, compatibility revision18, bank/model validation (1331 templates/2915 variations), production build and32 focused tests passed. Full existing browser smoke passed including peer-browser sharing for all four banks, persistence, scoring and navigation. Final focused browser checks passed at1280/640/320px in both themes, keyboard focus, menu reload and ESP recipes. Visual inspection caught obsolete four-column desktop and90px mobile card rules; both removed, rebuilt and focused checks repeated with an explicit full-card text-width assertion. Final light desktop/dark mobile screenshots inspected. Artefacts remain in `/private/tmp/starters-*`. `git diff --check` passes. No deployment or commit.
+
+**Resolved check harness issues:** pre/post comparison initially distinguished undefined properties from missing JSON properties; normalised both snapshots before comparing. Browser access required approved local server/Chrome commands. One non-login npm call could not find npm; used the absolute Node path for the build. These were tooling issues, not remaining application failures.
+
+**Exact next action:** present the implemented changes and search/coverage discussion. Await direction on keyword search and/or new linked-reason question authoring. OS content/codec implementation is future work; keep its full independent bank capacity requirement. Prior session Task3 drafting is not part of this navigation/wording increment.
+
+## 2026-09-28 — Record agreed rollover policy and finish numbered review
+
+Objective: document the agreed eight-bank/nine-character design and rollover-aware progress policy, then complete the original five-item response using the verified implementation and saved audit.
+- [x] Record six version bits/three bank bits, rollover metadata/date fallback, stable topic-level revision evidence and explicit old-code compatibility cutoff; distinguish agreed design from current runtime.
+- [x] Reconcile conflicting current specification statements and link the decision from the navigation review.
+- [x] Finish items3/5 with concrete tagging/selection recommendations and existing-versus-missing justification coverage; reuse completed items1/2/4 and checks.
+- [x] Check documentation diff and record completed work. No search, question expansion or codec implementation inferred from a request to document/discuss.
+
+
+**Completed:** `docs/code-rollover.md` records the agreed6+3-bit successor layout,64 version values/eight independent banks, generation metadata, latest UTC rollover date, live-versus-tracked version fallback, date limitations, import/export preservation and retained comparable CA/topic evidence. Old shared-code ambiguity after rollover is explicitly accepted. Initial7+2→6+3 layout migration is separately identified as unresolved implementation design; runtime remains unchanged. Reconciled no-rollover and permanent-identity wording in `docs/spec-common.md` / `docs/implementation-plan.md`, linked the decision from the navigation review. Documentation diff check passed; no build/tests repeated for documentation-only work.
+
+**Original numbered list:**1/2 implemented and browser-verified in the preceding entry;4 targeted wording audit and nine-template corrections complete with recorded scope;3 search suitability/design discussion and5 existing/missing choice-reason coverage ready for final response. Search implementation and new question authoring were not requested by those discussion/check questions and are not silently treated as completed features.
+
+**Exact next action:** deliver the five-item findings and documentation link, then follow the user's choice of search implementation or linked-reason content expansion. Do not reopen completed UI checks or implement the new codec merely because its design is now documented.
+
+## 2026-09-28 — Implement eight-bank encoding and reasoning questions
+
+Objective: implement the agreed six-version-bit/three-bank-bit code format and add a few linked choice/reason questions for data structures, computational thinking and specification search algorithms.
+- [ ] Inspect codec/history/progress contracts and choose an explicit compatible format transition; implement eight-bank encoding, generation/rollover metadata and necessary persistence protections.
+- [ ] Reuse source mapping; author a small grounded batch of new stable-slot questions with two meaningful variations each and linked reasons.
+- [ ] Update focused codec/progress/content checks, generated compatibility/coverage and production build; run shared regression checks appropriate to the encoding change.
+- [ ] Record exact compatibility behaviour, verification and remaining limits.
+
+**Scope update:** user adds sorting comparisons, naming bubble/quicksort/merge. Current spec CA2.11 lists bubble/insertion/merge, so include insertion as Core and clearly label quicksort extension; do not claim quicksort-specific work as assessable Core coverage. Encoding transition uses published legacy versions<=18 in7+2 and new versions19–63 in6+3 for generation0; after rollover all0–63 use6+3. No ambiguous best-guess decoding.
+
+**Paused mid-implementation, pre checks** must carefully check for incomplete work and finish testing.

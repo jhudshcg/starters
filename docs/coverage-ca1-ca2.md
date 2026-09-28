@@ -2,7 +2,7 @@
 
 Generated from the live exam bank. Run `npm run coverage` after editing questions or the inventory. Do not edit counts manually.
 
-112 live questions; 369 assessable subelements. 341 elements have at least one question with two applicable variations; 285 have at least two. 0 meet the reviewed coverage target.
+121 live questions; 369 assessable subelements. 341 elements have at least one question with two applicable variations; 289 have at least two. 0 meet the reviewed coverage target.
 
 **Live** counts distinct question templates with at least two variations assessing the element. **Reviewed** additionally requires explicit subject approval. **Practice** covers constrained exercises that do not demonstrate the complete specified skill; it does not count towards the target. Zero-count rows remain visible. Letters are internal, permanent identifiers beneath the official reference.
 
@@ -32,21 +32,21 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Identify the component: decomposition. | 1 | 0 | 0 | needs more questions |
-| b | Identify the component: pattern recognition. | 1 | 0 | 0 | needs more questions |
-| c | Identify the component: abstraction. | 1 | 0 | 0 | needs more questions |
+| a | Identify the component: decomposition. | 3 | 0 | 0 | awaiting review |
+| b | Identify the component: pattern recognition. | 3 | 0 | 0 | awaiting review |
+| c | Identify the component: abstraction. | 3 | 0 | 0 | awaiting review |
 | d | Identify the component: algorithmic design. | 1 | 0 | 0 | needs more questions |
 
 ## CA1.1.5
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Benefit: decomposition. | 2 | 0 | 0 | awaiting review |
-| b | Drawback: decomposition. | 2 | 0 | 0 | awaiting review |
-| c | Benefit: pattern recognition. | 2 | 0 | 0 | awaiting review |
-| d | Drawback: pattern recognition. | 2 | 0 | 0 | awaiting review |
-| e | Benefit: abstraction. | 1 | 0 | 0 | needs more questions |
-| f | Drawback: abstraction. | 2 | 0 | 0 | awaiting review |
+| a | Benefit: decomposition. | 3 | 0 | 0 | awaiting review |
+| b | Drawback: decomposition. | 3 | 0 | 0 | awaiting review |
+| c | Benefit: pattern recognition. | 3 | 0 | 0 | awaiting review |
+| d | Drawback: pattern recognition. | 3 | 0 | 0 | awaiting review |
+| e | Benefit: abstraction. | 2 | 0 | 0 | awaiting review |
+| f | Drawback: abstraction. | 3 | 0 | 0 | awaiting review |
 | g | Benefit: algorithmic design. | 1 | 0 | 0 | needs more questions |
 | h | Drawback: algorithmic design. | 1 | 0 | 0 | needs more questions |
 
@@ -365,11 +365,11 @@ Teacher review of the inventory and content is pending. A count verifies links a
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
 | a | Identify the structure: list. | 1 | 0 | 0 | needs more questions |
-| b | Purpose and appropriate use: list. | 2 | 0 | 0 | awaiting review |
+| b | Purpose and appropriate use: list. | 4 | 0 | 0 | awaiting review |
 | c | Identify the structure: array. | 2 | 0 | 0 | awaiting review |
-| d | Purpose and appropriate use: array. | 2 | 0 | 0 | awaiting review |
+| d | Purpose and appropriate use: array. | 3 | 0 | 0 | awaiting review |
 | e | Identify the structure: dictionary. | 1 | 0 | 0 | needs more questions |
-| f | Purpose and appropriate use: dictionary. | 2 | 0 | 0 | awaiting review |
+| f | Purpose and appropriate use: dictionary. | 4 | 0 | 0 | awaiting review |
 
 ## CA2.3.2
 
@@ -762,44 +762,44 @@ Teacher review of the inventory and content is pending. A count verifies links a
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Benefit: linear search. | 2 | 0 | 0 | awaiting review |
+| a | Benefit: linear search. | 3 | 0 | 0 | awaiting review |
 | b | Drawback: linear search. | 2 | 0 | 0 | awaiting review |
-| c | Benefit: binary search. | 2 | 0 | 0 | awaiting review |
-| d | Drawback: binary search. | 2 | 0 | 0 | awaiting review |
-| e | Benefit: bubble sort. | 2 | 0 | 0 | awaiting review |
+| c | Benefit: binary search. | 3 | 0 | 0 | awaiting review |
+| d | Drawback: binary search. | 3 | 0 | 0 | awaiting review |
+| e | Benefit: bubble sort. | 3 | 0 | 0 | awaiting review |
 | f | Drawback: bubble sort. | 2 | 0 | 0 | awaiting review |
-| g | Benefit: insertion sort. | 2 | 0 | 0 | awaiting review |
+| g | Benefit: insertion sort. | 3 | 0 | 0 | awaiting review |
 | h | Drawback: insertion sort. | 2 | 0 | 0 | awaiting review |
-| i | Benefit: merge sort. | 2 | 0 | 0 | awaiting review |
-| j | Drawback: merge sort. | 3 | 0 | 0 | awaiting review |
+| i | Benefit: merge sort. | 3 | 0 | 0 | awaiting review |
+| j | Drawback: merge sort. | 4 | 0 | 0 | awaiting review |
 
 ## CA2.11.4
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Understand efficiency metric: memory space. | 3 | 0 | 0 | awaiting review |
-| b | Understand efficiency metric: execution time. | 2 | 0 | 0 | awaiting review |
-| c | Understand efficiency metric: number of comparisons. | 3 | 0 | 0 | awaiting review |
+| a | Understand efficiency metric: memory space. | 3 | 0 | 1 | awaiting review |
+| b | Understand efficiency metric: execution time. | 3 | 0 | 1 | awaiting review |
+| c | Understand efficiency metric: number of comparisons. | 5 | 0 | 0 | awaiting review |
 
 ## CA2.11.5
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Reason about common algorithms without Big O: best case. | 3 | 0 | 0 | awaiting review |
-| b | Reason about common algorithms without Big O: worst case. | 2 | 0 | 0 | awaiting review |
+| a | Reason about common algorithms without Big O: best case. | 4 | 0 | 0 | awaiting review |
+| b | Reason about common algorithms without Big O: worst case. | 2 | 0 | 1 | awaiting review |
 | c | Reason about common algorithms without Big O: average case. | 2 | 0 | 0 | awaiting review |
 
 ## CA2.11.6
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Judge suitability of search algorithms. | 3 | 0 | 0 | awaiting review |
+| a | Judge suitability of search algorithms. | 5 | 0 | 0 | awaiting review |
 
 ## CA2.11.7
 
 | Element | Requirement | Live | Reviewed | Practice | Status |
 | --- | --- | ---: | ---: | ---: | --- |
-| a | Judge suitability of sorting algorithms. | 3 | 0 | 0 | awaiting review |
+| a | Judge suitability of sorting algorithms. | 5 | 0 | 0 | awaiting review |
 
 ## CA2.12.1.1
 

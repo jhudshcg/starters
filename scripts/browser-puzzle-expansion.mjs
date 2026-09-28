@@ -78,6 +78,6 @@ try{
  assert.equal(await evaluate('location.hash'),'#set='+migrated);
  await send('Page.reload');await until(`document.querySelector('#display-code')?.textContent===${JSON.stringify(migrated)}`);
  const saved=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1"))');
- assert.equal(saved.codeFormat,54);assert.equal(saved.active.code,migrated);assert.equal(saved.active.id,fixture.active.id);assert.equal(saved.active.deadline,fixture.active.deadline);assert.deepEqual(saved.active.answers,fixture.active.answers);
+ assert.equal(saved.codeFormat,'54-bank3');assert.equal(saved.active.code,migrated);assert.equal(saved.active.id,fixture.active.id);assert.equal(saved.active.deadline,fixture.active.deadline);assert.deepEqual(saved.active.answers,fixture.active.answers);
  assert.deepEqual(errors,[]);console.log('Expanded puzzle browser checks passed; legacy timed work and deadline survive migration and a second reload.');
 }finally{ws.close();}

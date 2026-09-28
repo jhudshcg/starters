@@ -87,7 +87,7 @@ const faults=[
  {rule:'A name is valid only if it contains at least one non-space character. Ordinary spaces at either end are ignored.',code:'def valid(text):\n    return len(text) > 0',input:'"   "',expected:'False',actual:'True',fix:'text.strip()',bad:'text',repair:'return len(text.strip()) > 0',reason:'Spaces have length until surrounding whitespace is removed.',confirm:'"   "',regression:'"Ada"',description:'Check that an all-space name is rejected',extra:'""'}
 ];
 const literal=f=>f.input.startsWith('"')?f.input: f.code.includes('text')?JSON.stringify(f.input):f.input;
-add(2,1,'Choose a discriminating test',v=>{
+add(2,1,'Choose a test that exposes the fault',v=>{
  const f=faults[v];return {prompt:`Requirement: ${f.rule} Inspect the supplied Python. All inputs have the type described in the requirement.`,code:f.code,hint:'Choose an input where the requirement and the current condition disagree.',parts:[choice(`${columns[0]}: choose the most precise purpose.`,f.description,['Check everything works','Check the screen has text'],'Name the particular requirement and path being tested.'),choice(`${columns[1]}: which input exposes this defect?`,f.input,[f.regression,f.extra],f.reason),choice(`${columns[2]}: what should the function return for ${literal(f)}?`,f.expected,[f.actual],'Derive the expectation from the requirement, before trusting the code.')],skills:['validation','test-purpose','test-data','expected']};
 });
 add(2,1,'Cover a boundary systematically',v=>{

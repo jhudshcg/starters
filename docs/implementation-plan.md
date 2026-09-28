@@ -28,7 +28,7 @@ Use the settled [54-bit Base64url contract](spec-common.md#set-codes-and-compati
 
 Reversible fields remove the need for a server, exhaustive set catalogue, collision registry or shared hash seed. Base36 would require ten characters; raw ASCII contains unsuitable controls. Stable slots preserve identities independently of file order. The user explicitly chose URL-safe `-` and `_`, not standard Base64 `+` and `/`.
 
-Trade-offs: visually similar characters, no checksum, eight variations per question and 128 bank versions. Provide copy controls; never truncate overflowing fields or reuse exhausted versions. Future expansion needs a new format. An optional question index can resolve coordinates. Validate set composition before encoding.
+Trade-offs: visually similar characters, no checksum, eight variations per question and 64 bank versions. Provide copy controls and never truncate overflowing fields. The implemented layout uses six version bits/three bank bits with controlled rollover; see [bank rollover and progress](code-rollover.md) for metadata, compatibility cutoff and the initial format-migration requirement. This supersedes the earlier blanket prohibition on reusing exhausted versions under the explicit rollover procedure. An optional question index can resolve coordinates. Validate set composition before encoding.
 
 ## Proposed architecture
 

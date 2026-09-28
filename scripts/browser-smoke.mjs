@@ -47,7 +47,7 @@ try{
  const clearOnLoad=await send('Page.addScriptToEvaluateOnNewDocument',{source:'localStorage.removeItem("dsd-starters-v1");localStorage.removeItem("dsd-starters-theme")'});
  await send('Page.navigate',{url:base+'/?smoke='+Date.now()});await until('Boolean(document.querySelector("#code-form"))');
  await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:clearOnLoad.identifier});
- assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),4);
+ assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
  assert.deepEqual(await evaluate('performance.getEntriesByType("resource").filter(r=>r.name.includes("/banks/")).map(r=>r.name)'),[],'Fresh home must not download banks');
  await click('#theme-toggle');assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');
  await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');
@@ -377,7 +377,7 @@ try{
   await peerSend('Page.enable');
   for(const type of [0,1,2,3]){
    await send('Page.navigate',{url:base+'/#home'});await acceptLeaveIfShown();await until('Boolean(document.querySelector("#code-form"))');
-   await click(`[data-start="${type}"]`);await until('Boolean(document.querySelector("dialog"))||Boolean(document.querySelector("#display-code"))');
+   if(type===1||type===3){await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click(`[data-exam-start="${type}"]`);}else await click(`[data-start="${type}"]`);await until('Boolean(document.querySelector("dialog"))||Boolean(document.querySelector("#display-code"))');
    if(await evaluate('Boolean(document.querySelector("dialog"))'))await click('dialog button[value="leave"]');
    await until('Boolean(document.querySelector("#display-code"))&&!document.querySelector("dialog")');
    // Capture the exact strings passed by the copy buttons without touching the OS clipboard.

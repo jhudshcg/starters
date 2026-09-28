@@ -43,9 +43,9 @@ try{
  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
  await send('Page.navigate',{url:base+'/#home'});await acceptLeaveIfShown();await until('Boolean(document.querySelector("#code-form"))');
  await evaluate('localStorage.removeItem("dsd-starters-v1")');await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');
- assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),4);
+ assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
  if(process.argv.includes('--navigation-only')){
-  await click('[data-start="3"]');await until('Boolean(document.querySelector("#esp-recipe"))');
+  await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until('Boolean(document.querySelector("#esp-recipe"))');
   await evaluate('{const s=document.querySelector("#esp-recipe");s.value="T1.4";s.dispatchEvent(new Event("change"));}');
   await until('document.querySelector("#esp-recipe")?.value==="T1.4" && Boolean(document.querySelector("textarea"))');
   const before=await evaluate('document.querySelector("#display-code").textContent');
@@ -56,12 +56,30 @@ try{
   await until('document.querySelector("#esp-recipe").value.startsWith("T2.")');
   await evaluate('{const s=document.querySelector("#esp-recipe");s.value="T2.3";s.dispatchEvent(new Event("change"));}');
   await until('document.querySelector("#esp-recipe").value==="T2.3" && Boolean(document.querySelector("pre"))');
-  assert.ok(await evaluate('document.querySelector(".page-top p").textContent.includes("Up to 15")'));
+  assert.ok(await evaluate('document.querySelector(".page-top p.muted").textContent.includes("Up to 15")'));
   await send('Emulation.setDeviceMetricsOverride',{width:320,height:900,deviceScaleFactor:1,mobile:true});
   assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
-  await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector(".type-3 [data-start]"))');
-  assert.ok(await evaluate('document.querySelector(".type-3 .card-art").textContent.includes("explain")'));
-  assert.deepEqual(errors,[]);console.log('ESP final navigation passed: home, task, recipe, new set, permutation, up-to timing and320px reflow.');
+  await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector(".type-1 [data-start]"))');
+  assert.ok(await evaluate('document.querySelector(".type-1 .card-body").textContent.includes("ESP")'));
+  for(const width of [1280,640,320]){
+   await send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:width===320});
+   for(const theme of ['light','dark']){
+    if(await evaluate('document.documentElement.dataset.theme')!==theme)await click('#theme-toggle');
+    assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
+    assert.ok(await evaluate('[...document.querySelectorAll(".type-card")].every(c=>{const a=c.querySelector(".card-art").getBoundingClientRect(),b=c.querySelector(".card-body").getBoundingClientRect();return a.top<=b.top+1&&a.bottom>=b.bottom-1&&b.width>=c.getBoundingClientRect().width-3;})'));
+    assert.equal(await evaluate('document.querySelector("#theme-toggle svg").getBoundingClientRect().width'),22);
+    await evaluate('document.querySelector("#theme-toggle").focus()');
+    assert.ok(await evaluate('document.activeElement.id==="theme-toggle"'));
+    await screenshot(`home-${theme}-${width}`);
+   }
+   await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');
+   assert.equal(await evaluate('document.querySelectorAll("[data-exam-start]").length'),2);
+   assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
+   await screenshot(`exam-menu-${width}`);
+   await send('Page.reload');await until('Boolean(document.querySelector("[data-exam-start]"))');
+   await click('a.back');await until('Boolean(document.querySelector("#code-form"))');
+  }
+  assert.deepEqual(errors,[]);console.log('ESP navigation and home layout passed: Core/ESP menu, recipe, permutation, reload, light/dark icon, keyboard focus and 1280/640/320px reflow.');
  }else{
  let savedRecord;
  for(let recipe=0;recipe<10;recipe++)for(let variation=0;variation<5;variation++){

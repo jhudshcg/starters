@@ -1,9 +1,10 @@
+import {sameGeneration} from './progress-generation.js';
 import {matchingVariations,subtopicOptions,preferSubtopic} from './exam-selection.js';
 export {matchesSubtopic} from './exam-selection.js';
 import {revisions,revisionDetails} from './code-compatibility.js';
 import {banks,ensureBank} from './bank-data.js';
 export {banks,ensureBank};
-import {BANK_VERSION, decode, encode, parseQuestionCode} from './codes.js';
+import {BANK_VERSION, decode, decodeRecordedCode, encode, parseQuestionCode} from './codes.js';
 export async function loadSet(input){
   const fields=typeof input==='string'?parseQuestionCode(input)??decode(input):input;
   historicalSet(fields);
@@ -20,7 +21,7 @@ export const focusNames = {task1:'Task 1 · Planning',task2:'Task 2 · Testing a
 Object.assign(focusNames, Object.fromEntries(['validation','arrays','operators','data types','strings','lists','records','boolean logic','nested iteration','input output','robust code','testing','sorting','design','collections','code style'].map(f=>[f,f[0].toUpperCase()+f.slice(1)])));
 Object.assign(focusNames, {"CA1.1": "CA1.1 · Computational thinking", "CA1.2": "CA1.2 · Algorithmic design", "CA1.3": "CA1.3 · Problem-solving strategies", "CA2.1": "CA2.1 · Data types", "CA2.2": "CA2.2 · Variables and constants", "CA2.3": "CA2.3 · Data structures", "CA2.4": "CA2.4 · Operators", "CA2.5": "CA2.5 · Input and output", "CA2.6": "CA2.6 · Sequence, selection and iteration", "CA2.7": "CA2.7 · Functions and procedures", "CA2.8": "CA2.8 · Validation", "CA2.9": "CA2.9 · Design and code style", "CA2.10": "CA2.10 · Robust code", "CA2.11": "CA2.11 · Searching and sorting", "CA2.12": "CA2.12 · Testing"});
 Object.assign(focusNames, {"logic grids": "Logic grids", "logic equations": "Logic equations", "tangrams": "Tangram silhouettes", "cover paths": "Cover every dot", "sudoku": "Sudoku", "number constraints": "Arithmetic cages", "sequences": "Sequences", "classic maths": "Classic maths"});
-export const espRecipeNames={'T1.1':'Build a feasible schedule','T1.2':'Calculate costs and forecasts','T1.2F':'Excel · Costs and copied formulas','T1.3':'Adapt to constraints','T1.4':'Justify planning decisions','T1.5':'Reconcile the plan','T1.5F':'Excel · Forecasts and reconciliation','T2.1':'Choose discriminating tests','T2.2':'Derive expected results','T2.3':'Repair and retest','T2.4':'Complete the test log','T2.5':'Investigate independently'};
+export const espRecipeNames={'T1.1':'Build a feasible schedule','T1.2':'Calculate costs and forecasts','T1.2F':'Excel · Costs and copied formulas','T1.3':'Adapt to constraints','T1.4':'Justify planning decisions','T1.5':'Reconcile the plan','T1.5F':'Excel · Forecasts and reconciliation','T2.1':'Choose tests that expose faults','T2.2':'Derive expected results','T2.3':'Repair and retest','T2.4':'Complete the test log','T2.5':'Investigate independently'};
 export const challengeLevels = {all:'Mixed challenge',beginner:'Beginner',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
 export const challengeLabel = (level,focus) => focus==='go'?({all:'Mixed challenge',beginner:'Beginner · 25k+',foundation:'Foundation · 18–24k',standard:'Standard · 12–17k',stretch:'Stretch · 11k and stronger'}[level]??challengeLevels[level]):challengeLevels[level];
 export const puzzlePool = (focus, level='all', topic='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level)&&(topic==='all'||q.tags.includes(`maths:${topic}`)));
@@ -70,6 +71,7 @@ export function resolve(input) {
     if(state===undefined)throw Error('This question or variation was not available in that bank version.');
   }
   const questions = fields.entries.map(e => {
+    if(!banks[fields.type])throw Error('This question bank is not installed in this release.');
     const template = banks[fields.type].find(q => q.slot === e.slot);
     if (!template || !template.variations[e.variation]) {
       const error=new Error('A question in this set is no longer available. You can choose a replacement set.');
@@ -187,4 +189,15 @@ export function validateBank() {
     }
   });
   return errors;
+}
+
+// Historical generations use their recorded score/topic snapshot, never the
+// current content at a possibly reused slot. Import still validates fields/scores.
+export function recordedSet(record){
+  if(record.generation!==undefined&&record.generation!==null&&(!Number.isSafeInteger(record.generation)||record.generation<0))throw Error('Invalid recorded generation.');
+  if(sameGeneration(record))return historicalSet(record.code);
+  if(!Number.isInteger(record.type)||record.type<0||record.type>7||typeof record.focus!=='string'||!record.focus.trim()||record.focus.length>120||!Number.isInteger(record.max)||record.max<1||record.max>100)throw Error('Invalid historical record metadata.');
+  const fields=parseQuestionCode(record.code)??decodeRecordedCode(record.code,record.generation);
+  if(fields.type!==record.type)throw Error('Historical bank does not match its code.');
+  return {...fields,code:record.code,focus:record.focus,total:record.max};
 }

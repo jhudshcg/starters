@@ -1,3 +1,5 @@
+import {bankRelease,CODE_FORMAT} from './bank-release.js';
+import {sameGeneration} from './progress-generation.js';
 import {decode, decodeLegacyCode, encode, parseQuestionCode} from './codes.js';
 import {revisions} from './code-compatibility.js';
 export const REATTEMPT_HOURS=4;
@@ -14,15 +16,18 @@ export function attemptEligibility(data,code,now=Date.now()) {
   const key=setIdentity(code);
   let previous=null;
   // Include keys written by earlier releases, even for untracked practice.
-  for(const [code,finished] of Object.entries(data.recentAttempts??{})) {
+  for(const [code,finished] of Object.entries((data.recentAttemptsGeneration===undefined&&bankRelease.generation===0)||data.recentAttemptsGeneration===bankRelease.generation?data.recentAttempts??{}:{})) {
     try {if(setIdentity(code)===key)previous=Math.max(previous??0,finished);} catch {}
   }
   for(const r of data.history) {
+    if(!sameGeneration(r))continue;
     try {if(setIdentity(r.code)===key)previous=Math.max(previous??0,r.finished);} catch {/* Ignore unavailable legacy identities. */}
   }
   return {key,previous,eligible:previous===null||now-previous>=gapMs,checkedAt:now};
 }
 export function recordPractice(data,record,eligibility) {
+  if(data.recentAttemptsGeneration!==undefined&&data.recentAttemptsGeneration!==bankRelease.generation)data.recentAttempts={};
+  data.recentAttemptsGeneration=bankRelease.generation;
   data.recentAttempts??={};
   data.recentAttempts[eligibility.key]=Math.max(data.recentAttempts[eligibility.key]??0,record.finished);
   if(eligibility.eligible)data.history=appendAttempt(data.history,record);
@@ -37,9 +42,10 @@ export function loadStorage(storage=globalThis.localStorage) {
   return migrateStoredCodes(data);
 }
 export function migrateStoredCodes(data){
-  if(data.codeFormat===54)return data;
+  if(data.codeFormat===CODE_FORMAT)return classifySavedGenerations(data);
+  if(data.codeFormat===54){stampLegacyGeneration(data);data.codeFormat=CODE_FORMAT;return classifySavedGenerations(data);}
   if(data.codeFormat!==undefined&&data.codeFormat!==48)throw Error('Unsupported saved code format.');
-  const convert=code=>typeof code==='string'&&!parseQuestionCode(code)?encode(decodeLegacyCode(code)):code;
+  const convert=code=>typeof code==='string'&&!parseQuestionCode(code)?encode(decodeLegacyCode(code),{generation:0}):code;
   for(const row of data.history??[])row.code=convert(row.code);
   if(data.active){
     const prior=data.active.code;data.active.code=convert(prior);
@@ -48,9 +54,28 @@ export function migrateStoredCodes(data){
     if(data.active.tracking?.key)data.active.tracking.key=convert(data.active.tracking.key);
   }
   if(data.recentAttempts)data.recentAttempts=Object.fromEntries(Object.entries(data.recentAttempts).map(([code,at])=>[convert(code),at]));
-  data.codeFormat=54;return data;
+  stampLegacyGeneration(data);data.codeFormat=CODE_FORMAT;return classifySavedGenerations(data);
 }
-export function saveStorage(data,storage=globalThis.localStorage) {data.codeFormat=54;storage.setItem(STORAGE_KEY,JSON.stringify(data));}
+function stampLegacyGeneration(data){
+  for(const row of data.history??[])row.generation??=0;
+  if(data.active)data.active.generation??=0;
+  data.recentAttemptsGeneration??=0;
+}
+export function classifySavedGenerations(data){
+  if(data.active&&!sameGeneration(data.active)){
+    data.archivedActive??=[];data.archivedActive.push(data.active);data.active=null;
+  }
+  if((data.recentAttemptsGeneration!==undefined&&data.recentAttemptsGeneration!==bankRelease.generation)||(data.recentAttemptsGeneration===undefined&&bankRelease.generation>0&&data.recentAttempts)){
+    data.archivedRecentAttempts??=[];
+    data.archivedRecentAttempts.push({generation:data.recentAttemptsGeneration,attempts:data.recentAttempts??{}});
+    data.recentAttempts={};data.recentAttemptsGeneration=bankRelease.generation;
+  }
+  return data;
+}
+export function saveStorage(data,storage=globalThis.localStorage) {
+  data.codeFormat=CODE_FORMAT;data.lastSeenRelease={...bankRelease};
+  storage.setItem(STORAGE_KEY,JSON.stringify(data));
+}
 export function deadlineState(attempt,now=Date.now()) {
   return {expired:attempt.deadline!==null && now>=attempt.deadline,remaining:attempt.deadline===null?null:Math.max(0,Math.ceil((attempt.deadline-now)/1000))};
 }
@@ -126,7 +151,7 @@ export function priorities(history, level='topic') {
   return [...groups.values()].map(g=>({...g,score:Math.round(g.earned/g.max*100)})).sort((a,b)=>a.score-b.score||a.focus.localeCompare(b.focus));
 }
 export function exportCSV(history) {
-  const keys=['id','code','type','focus','finished','earned','max','percentage','seconds','attemptChecks','assisted','outcome','firstEarned','firstMax','partScores','espReview'];
+  const keys=['id','code','generation','bankVersion','type','focus','started','finished','earned','max','percentage','seconds','attemptChecks','assisted','outcome','firstEarned','firstMax','partScores','espReview'];
   const cell=v=>`"${String(v??'').replace(/^[=+@-]/,"'$&").replaceAll('"','""')}"`;
   return '\ufeff'+[keys.join(','),...history.map(a=>keys.map(k=>cell(k==='finished'?new Date(a[k]).toISOString():['partScores','espReview'].includes(k)&&a[k]?JSON.stringify(a[k]):a[k])).join(','))].join('\r\n');
 }

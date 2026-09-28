@@ -379,7 +379,7 @@ export default [
             "id": "3"
           },
           {
-            "prompt": "Characterise a booking's capacity rule: occupied seats must not exceed available seats.",
+            "prompt": "Occupied seats must not exceed available seats. Which category describes this rule?",
             "answer": "A constraint",
             "options": [
               "A programming language",
@@ -511,7 +511,7 @@ export default [
             "id": "3"
           },
           {
-            "prompt": "Characterise a receipt produced after payment.",
+            "prompt": "A receipt is produced after payment. Which category describes the receipt?",
             "answer": "An output",
             "options": [
               "A file extension",
@@ -993,7 +993,7 @@ export default [
         "hint": "Follow one item of data from its source to the component that needs it. At a decision, test the condition before choosing the next action.",
         "parts": [
           {
-            "prompt": "Which block breakdown separates a reporting pipeline?",
+            "prompt": "Which set of blocks shows the stages of producing a report?",
             "answer": "Import \u2192 analyse \u2192 present",
             "options": [
               "One block labelled everything",
@@ -4899,7 +4899,7 @@ export default [
             "id": "3"
           },
           {
-            "prompt": "Using integration testing, a report module consumes an import module output. Why is this method appropriate?",
+            "prompt": "Using integration testing, a report module uses the output from an import module. Why is this method appropriate?",
             "answer": "Check interactions between connected components",
             "options": [
               "It replaces the need to define expected results",
@@ -4920,7 +4920,7 @@ export default [
             "id": "4"
           },
           {
-            "prompt": "Using integration testing, a report module consumes an import module output. What is a benefit of this method?",
+            "prompt": "Using integration testing, a report module uses the output from an import module. What is a benefit of this method?",
             "answer": "Interface and data-transfer faults can be exposed",
             "options": [
               "Interface and data-transfer faults can be exposed",
@@ -4941,7 +4941,7 @@ export default [
             "id": "5"
           },
           {
-            "prompt": "Using integration testing, a report module consumes an import module output. What is a limitation of this method?",
+            "prompt": "Using integration testing, a report module uses the output from an import module. What is a limitation of this method?",
             "answer": "Diagnosing a failure can involve several components",
             "options": [
               "It makes it impossible to record actual results",
