@@ -25,15 +25,16 @@ The preview builds and serves `live`, the same artifact deployed to Pages. Rebui
 | New CA2 exam practice | [Loop state and stopping conditions](http://127.0.0.1:8765/#set=CpEkHQDx) |
 | Python | [Iteration](http://127.0.0.1:8765/#set=BQAAAR_4) |
 
-The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. Revision 5 includes the revised hints and reading cautions. Older codes open current versions of their questions with a discreet update notice when needed. Removed questions offer an explicit replacement-set action. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; an unsupported unfinished activity is cleared rather than interpreted as different questions.
+The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. The current bank revision is **19**. New set codes use nine characters, plus an optional tenth timer character; legacy eight-character untimed codes remain readable and open a canonical current code. Older codes open current versions of their questions with a discreet update notice when needed. Removed questions offer an explicit replacement-set action. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; unsupported or historical unfinished work is never interpreted as different current questions.
 
 ## Current content
 
-- **Puzzles:** 450 templates across nine subtypes; three puzzles per set. Individual codes open one. Some sets exceed the starter timer.
-- **Exam practice:** 112 multipart templates with 628 parts, each in two variations (1,256 part instances), across all 15 CA1–CA2 subsections. Three questions per set, 15–21 marks; short terms, values, constrained code and linked reasons.
+- **Puzzles:** 1,120 templates across nine subtypes; three puzzles per set. Every subtype has at least 25 templates at each challenge level. Individual codes open one. Some sets exceed the starter timer.
+- **Core exam practice:** 121 multipart templates, each in two variations, across all 15 CA1–CA2 subsections. Three questions per set, 15–22 marks; short terms, values, constrained code and linked reasons.
 - **Python:** 63 templates, five variations each; two challenges testing different aspects, 12 marks per set.
+- **ESP practice:** 36 templates, five variations each, covering Task 1 planning/Excel formula practice and Task 2 testing/repair. Task 3–4 activities are designed but not implemented.
 
-Teacher review and mixed-ability timing trials remain pending. The [generated coverage report](docs/coverage-ca1-ca2.md) distinguishes direct assessment, supporting practice and reviewed coverage. Every CA1–CA2 inventory element has a linked activity, with 285 of 369 having the required two distinct questions; 56 still have one and 28 broader practical skills have supporting practice only. This is not complete or approved Core coverage.
+Teacher review and mixed-ability timing trials remain pending. The [generated coverage report](docs/coverage-ca1-ca2.md) distinguishes direct assessment, supporting practice and reviewed coverage. Every CA1–CA2 inventory element has a linked activity: 289 of 369 have at least two distinct direct questions, 52 have one and 28 broader practical skills have supporting practice only. None is yet teacher-approved complete.
 
 ## Interaction
 
@@ -45,7 +46,7 @@ Progress stays in browser-local storage. CSV export and JSON backup/restore are 
 
 ## Maintaining content
 
-`data/puzzles.js`, `data/exam.js` and `data/python.js` are the public activity banks. Each puzzle subtype has its own module under `data/puzzles/`; exam content uses `data/exam-ca1.js`, `data/exam-ca2.js`, `data/exam-expanded.js` the three `data/exam-depth-*.js` modules and `data/exam-priority.js`. The [expansion review](docs/exam-depth-review.md) records their source calibration and distinct angles. Shared controls and rule checks live in `js/challenge-controls.js` and `js/challenge-rules.js`.
+`data/puzzles.js`, `data/exam.js`, `data/python.js` and `data/esp.js` are the public activity banks. Each puzzle subtype has its own module under `data/puzzles/`; exam content uses `data/exam-ca1.js`, `data/exam-ca2.js`, `data/exam-expanded.js`, the three `data/exam-depth-*.js` modules, `data/exam-priority.js` and `data/exam-comparisons.js`. The [expansion review](docs/exam-depth-review.md) records their source calibration and distinct angles. Shared controls and rule checks live in `js/challenge-controls.js` and `js/challenge-rules.js`.
 
 `data/coverage/core-inventory.json` is the authoritative nested inventory. Each official CA focus has permanent local letter keys. Parts carry structured `{focus, elements}` links; the report displays `CA2.1.1[a,b]`. Counts are generated, not edited. Supporting practice does not establish full practical-skill coverage. See [spec-exam.md](docs/spec-exam.md) for counting and review rules.
 
@@ -54,6 +55,8 @@ Use [content authoring](docs/content-authoring.md) and the [refinement checklist
 `scripts/build-puzzles.py` reproducibly generates the six grid/geometry family files, checking uniqueness or a valid solution witness. It overwrites those generated files; edit generator inputs or keep additional authored templates in separate modules. Sequence and classic-maths banks are authored separately. `scripts/validate-puzzles.py` independently checks the served grid instances.
 
 `scripts/browser-smoke.mjs` uses an isolated Chrome debugging session on port 9227 and the preview on 8765. It clears test-profile storage; do not point it at a student profile. VS Code’s browser is preferred for manual testing; this session could not automate it.
+
+Browser checks are deliberately proportionate. Focused scripts such as `scripts/browser-comparisons.mjs`, `scripts/browser-esp.mjs` and `scripts/browser-puzzle-expansion.mjs` cover only the changed surface and are run directly when relevant; they are not bundled into a standard all-purpose script. Bank-only or minor visual changes do not require the full suite or whole-app smoke. Run `npm test` and the shared browser smoke when shared application behavior, storage, codecs, schemas, markers, selection or build tooling changes, or when a focused failure suggests wider risk. See the [refinement checklist](docs/content-refinement.md#proportionate-checks).
 
 The [puzzle specification](docs/spec-puzzles.md) gives each subtype’s format, interaction, difficulty and marking requirements. [checkpoint.md](checkpoint.md) records decisions, source findings and remaining work. The live site is https://jhudshcg.github.io/starters/.
 
@@ -90,13 +93,13 @@ Identity uses slots and exact variations, ignoring order/timer; another permutat
 
 `npm run build` uses pinned **esbuild** and **fflate** dependencies. It validates the source bank, compresses JSON using zlib, wraps it in Base64 with a fixed 17-position alphabet rotation, and emits minified content-hashed JavaScript/CSS. All assets use relative paths for repository Pages hosting. Install local dependencies with `npm ci`.
 
-Readable `data/*.js` stays in Git; bundling replaces its imports with an on-demand loader. `live` excludes authoring banks, drafts, coverage reports, build metadata and source maps. Separate encoded assets are `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt` and `banks/python-<hash>.txt`, addressed relative to the app bundle for repository Pages hosting. Only the selected/restored activity's bank downloads; home/progress downloads none. Loaded display data is reused for the visit; failed downloads can be retried.
+Readable `data/*.js` stays in Git; bundling replaces its imports with an on-demand loader. `live` excludes authoring banks, drafts, coverage reports, build metadata and source maps. Separate encoded assets are `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt`, `banks/python-<hash>.txt` and `banks/esp-<hash>.txt`, addressed relative to the app bundle for repository Pages hosting. Only the selected/restored activity's bank downloads; home/progress downloads none. Loaded display data is reused for the visit; failed downloads can be retried.
 
 Parts retain separate encoded marking and reveal payloads. Marking decodes accepted answers as needed; explicit reveal decodes model answers/explanations. Neither decoded payload is cached on the bank or stored locally. Generic checking feedback does not decode explanations.
 
 Go also has a separately encoded playing tree, decoded as needed for board rendering, opponent replies, hints and marking; those interactive features necessarily need the tree before submission. The rest of the bank does not need its model solutions for display.
 
-This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Slot numbering and the 48-bit encoding layout remain unchanged; content revisions preserve codes for all surviving question identities. The rotation applies only to bank payloads, never to share codes.
+This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Current codes use the 54-bit, six-version-bit/three-bank-bit layout documented in [bank rollover and progress](docs/code-rollover.md); generation-zero revisions 0–18 retain their published legacy layout. Content revisions preserve codes for surviving question identities within a generation. The rotation applies only to bank payloads, never to share codes.
 
 Checks: `npm test`, `npm run validate`, `npm run build`. Run `scripts/browser-smoke.mjs` against a server serving `live`; `STARTERS_PREVIEW_URL` can include a repository path. The smoke runner reads authoring fixtures locally, never via the production page.
 

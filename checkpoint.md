@@ -821,3 +821,33 @@ Objective: implement the agreed six-version-bit/three-bank-bit code format and a
 **Scope update:** user adds sorting comparisons, naming bubble/quicksort/merge. Current spec CA2.11 lists bubble/insertion/merge, so include insertion as Core and clearly label quicksort extension; do not claim quicksort-specific work as assessable Core coverage. Encoding transition uses published legacy versions<=18 in7+2 and new versions19–63 in6+3 for generation0; after rollover all0–63 use6+3. No ambiguous best-guess decoding.
 
 **Paused mid-implementation, pre checks** must carefully check for incomplete work and finish testing.
+
+## 2026-09-28 — Reconcile README and current status
+
+Objective: update current-facing documentation after the paused implementation was reviewed and tested, without rewriting historical checkpoint records.
+- [x] Update README counts, bank revision/code format and implemented ESP scope from generated/current sources.
+- [x] Append a minimal current-state clarification distinguishing implemented, planned and pending-review work.
+- [x] Confirm the browser-test guidance reflects proportionate checks for minor changes; verify links and documentation diffs. No application changes.
+
+**Current true state:** the clean repository baseline implements bank revision 19, the generation-aware 54-bit six-version-bit/three-bank-bit code format, four lazy banks, 1,120 puzzles, 121 Core exam questions, 63 Python questions and 36 ESP questions. ESP Task 1/2, including the six Excel-formula questions, is implemented. Core comparison/reasoning slots 161–169 are implemented. Task 3 flowchart activities, Tasks 4a/4b, keyword search and Year 2 OS content are planned only; maxGraph is installed and the Task 3 design is recorded, but there is no Task 3 runtime bank, editor integration or test coverage yet.
+
+**Verification after the paused commit:** 132 tests pass; question identities, all 1,340 templates / 2,933 variations and generated coverage validate; all 18 new comparison variations pass focused browser scoring, reload, reveal and 320 px checks; shared browser smoke passes current/legacy sharing, migration, timers, persistence and all four banks. Teacher subject approval and classroom timing remain pending.
+
+**Efficient-check policy:** focused browser scripts are intentionally standalone and selected for the changed surface. Bank-only and minor visual changes use focused checks rather than the full suite. Shared codec, storage, schema, marker, selection or build changes justify broader tests and shared smoke; the revision-19 codec change received those broader checks. README now states this explicitly. Documentation diff checks pass; no application files changed in this clarification.
+
+## 2026-09-28 — Restore home-card artwork presentation
+
+Objective: retain selector-card artwork behind content while surgically restoring its prior opacity and vertical position.
+- [x] Compare the current CSS with the immediate pre-layering commit and identify only the artwork opacity/position changes.
+- [x] Restore those values without changing card structure, layering or unrelated responsive rules.
+- [x] Build and inspect the home cards at desktop/mobile widths; record the exact change and checks.
+
+**Completed:** retained the absolute full-card background layer and `z-index:-1`, removed the added light/dark opacity reductions and restored the three graphics to their measured pre-layering vertical offsets. Desktop rendered positions match within 0.5 px; opacity is `1`. Production build passes with 1,340 templates. Light/dark desktop and 320 px mobile cards were inspected; no card/page overflow or hidden controls. This isolated CSS correction used the documented focused visual check rather than the full suite. Generated `live/` is current; no other application behavior changed.
+
+### Card-art readability follow-up
+
+- [x] Add white/light-theme and black/dark-theme shadows to selector-card paragraph text only.
+- [x] Move only the puzzle grid background artwork up 10 px.
+- [x] Rebuild and inspect desktop/mobile cards in both themes; record completion.
+
+Paragraph text now uses a 5 px white shadow in light mode and black shadow in dark mode. The puzzle grid top offset is 17 px, exactly 10 px above the prior restored 27 px position; the other graphics are unchanged. Production build, computed-style checks and light/dark desktop plus 320 px inspection pass with no page/card overflow. No full suite was needed for this isolated CSS follow-up.
