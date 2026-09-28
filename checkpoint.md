@@ -851,3 +851,19 @@ Objective: retain selector-card artwork behind content while surgically restorin
 - [x] Rebuild and inspect desktop/mobile cards in both themes; record completion.
 
 Paragraph text now uses a 5 px white shadow in light mode and black shadow in dark mode. The puzzle grid top offset is 17 px, exactly 10 px above the prior restored 27 px position; the other graphics are unchanged. Production build, computed-style checks and light/dark desktop plus 320 px inspection pass with no page/card overflow. No full suite was needed for this isolated CSS follow-up.
+
+### Paragraph wrapping around card artwork
+
+- [x] Add per-card floated exclusion shapes inside paragraph text, aligned with the existing artwork bounds.
+- [x] Use a small negative inline margin so text intentionally overlaps the exclusion boundary.
+- [x] Rebuild and inspect desktop/mobile wrapping in light and dark themes; preserve artwork position and opacity.
+
+Puzzle and exam paragraphs now use rotated `shape-outside` polygons matched to their rendered artwork bounds, with `margin-inline-start:-8px` for the requested slight overlap. The programming artwork ends above its paragraph, so no unnecessary exclusion is added. Shapes apply from 601 px upward with adjusted tablet alignment; at 600 px and below the artwork already ends at the paragraph boundary, so wrapping remains unchanged. Production build and focused 1280/640/320 px checks pass without horizontal overflow; artwork position, opacity and theme shadows are unchanged.
+
+### Simplify responsive home-card layout
+
+- [x] Replace the selector grid with one centered, wrapping flex layout that fits three, two or one card per row.
+- [x] Keep one card composition and one artwork size at all breakpoints; allow cards below 340 px only when the viewport requires it and cap them at the current 380 px design.
+- [x] Remove obsolete breakpoint-specific card layout/graphic sizing rules, rebuild and inspect representative three/two/one-column widths.
+
+**Completed:** `.activity-grid` is one centered wrapping flex row; cards use `flex:1 1 340px` and `max-width:380px`. The current 380 px card is the canonical design. Three, two or one card fits per row according to available width; cards stay within 340–380 px unless the content area itself is narrower than 340 px. Removed mobile/tablet changes to card padding, typography, artwork dimensions/transforms/offsets and paragraph-shape alignment. Production build passes. Focused checks confirm centered 380 px two-card and one-card layouts, 323/263 px constrained cards at narrow widths, unchanged artwork dimensions and no horizontal overflow. No full suite was needed for this isolated layout change.
