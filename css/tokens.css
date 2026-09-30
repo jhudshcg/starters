@@ -1,19 +1,234 @@
-:root{
-	--page:#f7f8f2;
-	--surface:#fff;
-	--text:#20372f;
-	--muted:#59665e;
-	--green:#173e35;
-	--line:#dbe0d4;
-	--mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
-	/* Warm amber means selected but not yet marked; correctness uses separate feedback colours. */
-	--selection-bg:#ffe6a0;
-	--selection-border:#9b7122;
-	--selection-text:#403111;
+/* Edit theme colours and decoration here. See docs/theming.md. */
+:root {
+  color-scheme: light;
+  --page: #f7f8f2;
+  --surface: #fff;
+  --surface-soft: #eff2e9;
+  --surface-hover: #edf1ed;
+  --text: #20372f;
+  --muted: #59665e;
+  --line: #dbe0d4;
+  --control-border: #7a867d;
+
+  /* Main actions and accent panels/focus. Foregrounds belong with their fills. */
+  --main: #173e35;
+  --main-hover: #245849;
+  --main-text: #fff;
+  --accent: #6b4585;
+  --accent-bg: #f1edf7;
+  --accent-text: #443162;
+  --accent-border: #9276ae;
+
+  /* Selected means unmarked, never correct. */
+  --selection-base: #ffe9b8;
+  --selection-border-base: #9b7122;
+  --selection-text: #403111;
+  --correct-base: #e3f4e6;
+  --correct-border-base: #39815c;
+  --correct-text: #175532;
+  --incorrect-base: #fff0f1;
+  --incorrect-border-base: #b4485a;
+  --incorrect-text: #8c2539;
+  /* Semantic aliases also provide a fallback without color-mix support. */
+  --selection-bg: var(--selection-base);
+  --selection-border: var(--selection-border-base);
+  --correct-bg: var(--correct-base);
+  --correct-border: var(--correct-border-base);
+  --incorrect-bg: var(--incorrect-base);
+  --incorrect-border: var(--incorrect-border-base);
+  --warning-bg: #fff3ce;
+  --warning-border: #9b7122;
+  --warning-text: #674b05;
+
+  /* Code and the prominent code-entry panel retain a dark fill in either mode. */
+  --code-bg: #182f2b;
+  --code-text: #edf5e7;
+  --code-muted: #d3dfd8;
+  --on-code-error: #ffdad6;
+  --art-shadow: rgb(255 255 255 / 50%);
+
+  /* Decoration: image values accept gradients or none. Solid is the default. */
+  --page-image: none;
+  --card-image: linear-gradient(var(--surface), var(--surface));
+  --card-border-image: none;
+  --card-border-color: var(--line);
+  --card-border-width: 1px;
+  --card-border-style: solid;
+  --card-radius: 16px;
+  --card-shadow: none;
+  --mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
 }
 
-:root[data-theme=dark]{
-	--selection-bg:#9b7712;
-	--selection-border:#6d511d;
-	--selection-text:#32260b;
+:root[data-theme=dark] {
+  color-scheme: dark;
+  --page: #121c19;
+  --surface: #1c2b25;
+  --surface-soft: #293d32;
+  --surface-hover: #334a3d;
+  --text: #e7eee9;
+  --muted: #b2c1b8;
+  --line: #485d50;
+  --control-border: #899e90;
+  --main: #a1d5b6;
+  --main-hover: #c0e5cd;
+  --main-text: #14271d;
+  --accent: #c7aae7;
+  --accent-bg: #353047;
+  --accent-text: #eee4ff;
+  --accent-border: #a58bbf;
+  --selection-base: #514019;
+  --selection-border-base: #d3aa4f;
+  --selection-text: #ffe9b8;
+  --correct-base: #1f402d;
+  --correct-border-base: #6ab783;
+  --correct-text: #b1edc4;
+  --incorrect-base: #44262f;
+  --incorrect-border-base: #d78897;
+  --incorrect-text: #ffc2ca;
+  --warning-bg: #3a3422;
+  --warning-border: #d3aa4f;
+  --warning-text: #f3ddaa;
+  --art-shadow: rgb(0 0 0 / 50%);
+}
+
+/* Sage/Forest use the base palette above. Each other palette overrides only
+   appearance: selection and marking colours remain shared across all themes. */
+:root[data-palette=blue] {
+  --page: #f0f5fc;
+  --page-glow: #e1edff;
+  --surface: #ffffff;
+  --surface-soft: #eaf1fc;
+  --surface-hover: #dce8f8;
+  --text: #20324d;
+  --muted: #53657d;
+  --line: #cfdaeb;
+  --control-border: #7789a1;
+  --main: #28569a;
+  --main-hover: #1e447d;
+  --accent: #654b94;
+  --accent-bg: #eeebf8;
+  --accent-text: #493663;
+  --accent-border: #947fb0;
+  --code-bg: #172b46;
+  --code-text: #edf3ff;
+  --code-muted: #ccd9ef;
+}
+:root[data-theme=dark][data-palette=blue] {
+  --page: #101c30;
+  --page-glow: #1b3357;
+  --surface: #1a2940;
+  --surface-soft: #243650;
+  --surface-hover: #304662;
+  --text: #e7effc;
+  --muted: #b5c5dd;
+  --line: #405572;
+  --control-border: #839ab8;
+  --main: #a7caff;
+  --main-hover: #c7ddff;
+  --main-text: #152a47;
+  --accent: #c9b6ee;
+  --accent-bg: #35304b;
+  --accent-text: #eee7ff;
+  --accent-border: #a995c7;
+}
+
+:root[data-palette=rose] {
+  --page: #fbf3f7;
+  --page-glow: #f6e2ef;
+  --surface: #ffffff;
+  --surface-soft: #f8edf3;
+  --surface-hover: #f1dfeb;
+  --text: #432b3b;
+  --muted: #765b6d;
+  --line: #e4ccda;
+  --control-border: #a17d93;
+  --main: #8b3869;
+  --main-hover: #702b54;
+  --accent: #674b94;
+  --accent-bg: #f0eaf8;
+  --accent-text: #51356d;
+  --accent-border: #a082b6;
+  --code-bg: #352432;
+  --code-text: #fff0f6;
+  --code-muted: #e7ccd9;
+}
+:root[data-theme=dark][data-palette=rose] {
+  --page: #251823;
+  --page-glow: #402437;
+  --surface: #302231;
+  --surface-soft: #3d2c3c;
+  --surface-hover: #503b4c;
+  --text: #f8e8f1;
+  --muted: #d2b7c8;
+  --line: #65495c;
+  --control-border: #b18ea5;
+  --main: #f0b1d5;
+  --main-hover: #f8cfe5;
+  --main-text: #3d2033;
+  --accent: #cab8ec;
+  --accent-bg: #3c3050;
+  --accent-text: #f0e7ff;
+  --accent-border: #b299cc;
+}
+
+:root[data-palette=apricot] {
+  --page: #fcf5ec;
+  --surface: #fffcf8;
+  --surface-soft: #f7ecdf;
+  --surface-hover: #f0dfcb;
+  --text: #422f24;
+  --muted: #76604f;
+  --line: #e5d4c1;
+  --control-border: #9c826c;
+  --main: #934822;
+  --main-hover: #763819;
+  --accent: #82573b;
+  --accent-bg: #f5e5d6;
+  --accent-text: #67412b;
+  --accent-border: #aa8260;
+  --code-bg: #38271e;
+  --code-text: #fff1e4;
+  --code-muted: #e5ceba;
+}
+:root[data-theme=dark][data-palette=apricot] {
+  --page: #251b16;
+  --surface: #30251f;
+  --surface-soft: #403026;
+  --surface-hover: #534033;
+  --text: #f9ecdf;
+  --muted: #d2bba7;
+  --line: #665040;
+  --control-border: #b4987e;
+  --main: #f1b68c;
+  --main-hover: #f8d0ad;
+  --main-text: #3d2618;
+  --accent: #dfbd98;
+  --accent-bg: #453426;
+  --accent-text: #fae6d2;
+  --accent-border: #b99a78;
+}
+
+/* Two gradient palettes per mode; only Rose/Berry has gradient borders. */
+:root:is([data-palette=blue],[data-palette=rose]) {
+  --page-image: linear-gradient(135deg, var(--page), var(--page-glow), var(--page));
+  --card-image: linear-gradient(145deg, var(--surface), var(--surface-soft));
+  --card-shadow: 0 4px 18px rgb(0 0 0 / 5%);
+}
+:root[data-palette=rose] {
+  --card-border-image: linear-gradient(135deg, var(--main), var(--accent));
+  --card-border-color: transparent;
+  --card-border-width: 2px;
+}
+
+/* A small perceptual tint ties feedback to its palette without changing meaning.
+   Amber gets the smallest contribution so it never suggests correctness. */
+@supports (color: color-mix(in oklab, red, blue)) {
+  :root {
+    --selection-bg: color-mix(in oklab, var(--selection-base) 94%, var(--main));
+    --selection-border: color-mix(in oklab, var(--selection-border-base) 94%, var(--main));
+    --correct-bg: color-mix(in oklab, var(--correct-base) 90%, var(--main));
+    --correct-border: color-mix(in oklab, var(--correct-border-base) 90%, var(--main));
+    --incorrect-bg: color-mix(in oklab, var(--incorrect-base) 86%, var(--main));
+    --incorrect-border: color-mix(in oklab, var(--incorrect-border-base) 86%, var(--main));
+  }
 }

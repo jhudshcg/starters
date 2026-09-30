@@ -8,26 +8,11 @@ Colourful, calm and age-appropriate. Use clear question cards, generous spacing 
 
 ## Shared CSS tokens
 
-Initial palette; validate all actual foreground/background combinations before release.
+The implemented light/dark palette is in [`css/tokens.css`](../css/tokens.css). See [theme editing](theming.md) for the five semantic roles, supporting neutral/warning colours and page/card decoration settings. This replaces the original proposed purple-primary palette.
 
-| Token | Value | Use |
-| --- | --- | --- |
-| `--page` | `#F5F7FB` | Page background |
-| `--surface` | `#FFFFFF` | Cards and input surfaces |
-| `--text` | `#172033` | Main text |
-| `--muted` | `#475569` | Supporting text |
-| `--primary` | `#3730A3` | Main actions, white label |
-| `--puzzle` | `#6B21A8` | Puzzle accent |
-| `--exam` | `#075985` | Exam accent |
-| `--python` | `#065F46` | Programming accent |
-| `--success` | `#166534` | Correct-answer text and icon |
-| `--error` | `#991B1B` | Error text and icon |
-| `--warning` | `#854D0E` | Partial-answer and timer text |
-| `--border` | `#64748B` | Control boundaries |
+Use accents sparingly. Every type and feedback state also has a text label. Selection is distinct from correct/incorrect feedback. Do not colour a whole code snippet as an error. Validate actual foreground/background combinations, including gradient extremes.
 
-Use type accents sparingly on labels, borders and navigation. Every type and feedback state also has a text label. Do not colour a whole code snippet as an error.
-
-Font stack: system sans-serif for interface and prose; system monospace for code, codes and trace values. Base size `1rem`, line height `1.5`; code at least `1rem`. Use `rem` for spacing and controls. Spacing scale: `0.25`, `0.5`, `0.75`, `1`, `1.5`, `2`, `3rem`. Card radius `0.75rem`; avoid heavy shadows. Prose width about `65ch`, page width at most `72rem`.
+Font stack: system sans-serif for interface and prose; system monospace for code, codes and trace values. Base size `1rem`, line height `1.5`; code at least `1rem`. Use `rem` for spacing and controls. Spacing scale: `0.25`, `0.5`, `0.75`, `1`, `1.5`, `2`, `3rem`. Card radius uses `--card-radius` (default `16px`); shadows default to none. Prose width about `65ch`, page width at most `72rem`.
 
 ## Layout and components
 

@@ -4,26 +4,26 @@ A static, self-marking starter page for year 1 Digital Software Development T-Le
 
 ## Try it
 
-Open [the local preview](http://127.0.0.1:8765) in VS Code’s integrated browser. If needed, start the server from this directory:
+Open [the local preview](http://127.0.0.1:5173) in VS Code’s integrated browser. If needed, start the server from this directory:
 
 ```sh
 npm ci
-npm start
+npm run dev
 ```
 
-The preview builds and serves `live`, the same artifact deployed to Pages. Rebuild after editing source files. Do not serve the repository root or open its authoring HTML directly; production bundles resolve the browser dependencies. Students need only a browser.
+Vite previews source files and updates CSS on save. `npm start` retains the production build/preview at port 8765. See [local development and removal instructions](docs/local-development.md) and [theme editing](docs/theming.md). Use these servers rather than opening HTML directly. Students need only a browser.
 
 | Activity | Direct preview |
 | --- | --- |
-| Logic grid | [Four-person deduction](http://127.0.0.1:8765/#set=CAyD_x_4) |
-| Cover every dot | [Choose a start and drag a route](http://127.0.0.1:8765/#set=BA5j_x_4) |
-| Tangram | [Fit seven pieces into a silhouette](http://127.0.0.1:8765/#set=BA8D_x_4) |
-| Sudoku | [Grid with pencil notes](http://127.0.0.1:8765/#set=BA3D_x_4) |
-| CA1 exam practice | [Computational thinking](http://127.0.0.1:8765/#set=CoAAAQAQ) |
-| CA2 exam practice | [Data types](http://127.0.0.1:8765/#set=CIGADQBw) |
-| Function/procedure practice | [Build and repair code](http://127.0.0.1:8765/#set=CpKglgRQ) |
-| New CA2 exam practice | [Loop state and stopping conditions](http://127.0.0.1:8765/#set=CpEkHQDx) |
-| Python | [Iteration](http://127.0.0.1:8765/#set=BQAAAR_4) |
+| Logic grid | [Four-person deduction](http://127.0.0.1:5173/#set=CAyD_x_4) |
+| Cover every dot | [Choose a start and drag a route](http://127.0.0.1:5173/#set=BA5j_x_4) |
+| Tangram | [Fit seven pieces into a silhouette](http://127.0.0.1:5173/#set=BA8D_x_4) |
+| Sudoku | [Grid with pencil notes](http://127.0.0.1:5173/#set=BA3D_x_4) |
+| CA1 exam practice | [Computational thinking](http://127.0.0.1:5173/#set=CoAAAQAQ) |
+| CA2 exam practice | [Data types](http://127.0.0.1:5173/#set=CIGADQBw) |
+| Function/procedure practice | [Build and repair code](http://127.0.0.1:5173/#set=CpKglgRQ) |
+| New CA2 exam practice | [Loop state and stopping conditions](http://127.0.0.1:5173/#set=CpEkHQDx) |
+| Python | [Iteration](http://127.0.0.1:5173/#set=BQAAAR_4) |
 
 The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. The current bank revision is **19**. New set codes use nine characters, plus an optional tenth timer character; legacy eight-character untimed codes remain readable and open a canonical current code. Older codes open current versions of their questions with a discreet update notice when needed. Removed questions offer an explicit replacement-set action. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; unsupported or historical unfinished work is never interpreted as different current questions.
 

@@ -882,3 +882,85 @@ Objective: first correct the dark-theme selected tone, then migrate the current 
 - [ ] Inventory current tokens, hard-coded component colours, theme overrides and state-specific contrast dependencies.
 - [ ] Define light/dark role tokens and a bounded mapping from existing UI roles; identify colours that should remain neutral or component-specific.
 - [ ] Present migration order, validation scope and risks before implementation. First implementation increment will correct dark selected styling; broader token conversion follows only after the plan is reviewed.
+
+## 2026-09-30 — Investigate theming progress and requirements
+
+Objective: establish the implemented theming baseline and locate the intended approach/features without changing application behaviour.
+- [x] Read theming handovers, design/decision documents and relevant source/history.
+- [x] Compare the current implementation with the latest five-role migration plan; identify gaps and stale documentation.
+- [x] Record findings, verification limits and the exact next action; report relevant references to the user.
+
+Scope: repository investigation and checkpoint update only. Checks: source/history comparison and documentation diff; no build or browser run unless needed to resolve a discrepancy.
+
+**Findings:** the light/dark toggle is implemented in `js/theme.js`, wired by `js/app.js`, with a changing sun/moon icon, `aria-pressed`, and browser-local preference (`dsd-starters-theme`). It defaults to light when no dark preference is stored. Selection background/border/text tokens are centralised in `css/tokens.css` and used by generic choices plus puzzle/challenge controls. Latest commit `b448cd9` (29 September) includes dark selection values and generated assets; its title says the dark highlight was fixed. This is more progress than the unchecked 29 September planning entry alone suggests, but does not establish that the latest requested tone is visually accepted.
+
+**Outstanding:** five-role conversion (main tone, accent, selected, correct, incorrect) is not implemented. Most dark base overrides remain in `css/styles.css:68`; feedback, hover and other component colours remain hard-coded. The 29 September checkpoint is the only located explicit five-role migration brief: inventory first, define light/dark role mapping and exceptions, then present migration order/checks/risks before broader implementation. No completed mapping or dedicated migration design document was found. `docs/style-guide.md` remains explicitly a draft and its initial purple primary palette is not the implemented green palette. `docs/decisions/2026-09-student-experience-and-shared-codes.md#selectable-theme` is the adopted functional requirement: saved local toggle and readable controls, feedback, puzzles and progress in both themes. Style-guide contrast/reflow/keyboard targets remain relevant.
+
+**Verification/limits:** compared source, relevant documentation and Git history; existing smoke/ESP browser scripts contain theme persistence, icon and light/dark layout checks. Did not rerun browser tests or build for this investigation; historical passing checks are not a new visual or contrast certification. Application files unchanged.
+
+**Exact next action:** if implementation is requested, inventory remaining colour declarations and prepare the five-role light/dark token mapping, neutral/component exceptions and focused contrast/state checks for review; first reconcile the already-committed dark selection tone with the intended correction.
+
+## 2026-09-30 — Assess a faster local development workflow
+
+Objective: recommend a local preview workflow before implementation, and preserve the expanded theming scope (configurable page gradients and card borders, including gradient borders).
+- [x] Inspect source/production bank routing, dependency imports and commit build behaviour.
+- [x] Compare a manual local/prod flag with automatic development serving; record a concrete recommendation and limitations.
+- [x] Report findings without implementing the workflow or theme changes.
+
+Checks: inspect existing scripts and relevant official tooling documentation. No production rebuild needed for this assessment.
+
+**Assessment completed:** source `js/bank-data.js` already imports readable banks; `scripts/build-site.mjs` substitutes the encoded lazy loader only for production. `scripts/pre-commit-build.mjs` builds an isolated staged snapshot and stages `live/`; changing a tracked mode flag is unnecessary and would complicate that boundary. A plain static root server is insufficient because browser imports include npm packages (`mathjs`, `fflate`).
+
+**Recommendation (not implemented):** add Vite for local development only, with `npm run dev` serving the authoring entry, resolving dependencies and updating CSS on save; preserve the existing esbuild production build and staged-source hook. No tracked local/prod switch. Source banks remain readable and currently load eagerly; production retains encoded lazy loading. Development skips production packing/validation; keep those checks at production/commit boundaries and verify production behaviour separately. An esbuild watch/serve alternative reuses the existing dependency but still incrementally bundles and requires additional reload plumbing. Official references checked: https://vite.dev/guide/why.html and https://esbuild.github.io/api/#serve .
+
+**Expanded theme scope:** add centrally controlled page/card backgrounds (solid or gradient), card border width/style/colour and optional gradient treatment, radius and shadow, with light/dark definitions and semantic feedback colours kept legible. This is a proposed design scope, not implemented token names or defaults.
+
+**Verification/next action:** source and hook inspection only; no build/test run needed, no runtime edits. Discuss recommendation with user, then implement the selected dev workflow before the theme migration. Validate live CSS/source edits, bank loading/scoring and unchanged encoded production output.
+
+## 2026-09-30 — Implement Vite preview and minimal theme system
+
+Objective: add lightweight source preview with removal instructions, then implement central light/dark semantic colours and decorative settings.
+- [x] Add Vite dev command/config and concise use/reversal documentation; retain staged production build.
+- [x] Centralise main/accent/selected/correct/incorrect palettes, neutral/partial states and page/card decoration; remove superseded dark overrides.
+- [x] Verify source preview, CSS live updates, both themes and selection/feedback contrast; run production build, appropriate tests and production smoke.
+- [x] Document theme editing, completed checks and limitations.
+
+Mapping: main = actions/headings; accent = contextual panels/focus; selected = unmarked amber; correct/incorrect = feedback. Neutral surfaces/text/borders and partial/warning remain explicit supporting roles. Puzzle artwork/board geometry colours remain component-specific where meaningful. Decoration uses page background image plus card fill/border image, width/style/radius/shadow with solid defaults. Risks: cascade overrides, gradient fill masking, contrast and source/production differences; check these directly. User has authorised this implementation and the earlier review gate is satisfied by the discussed approach.
+
+**Completed:** pinned Vite 8.3.1 adds only `npm run dev` and a small `vite.config.js` (loopback 5173, strict port, no public directory, dependency scan limited to authoring index). Existing source-bank adapter, production esbuild/encoding and staged-source pre-commit hook are unchanged. `npm start` remains the original production preview. `docs/local-development.md` documents use, separate-origin browser storage, validation boundaries and complete removal without reverting theming. README now defaults to source preview.
+
+**Theming:** `css/tokens.css` now defines light/dark main, accent, selected, correct/incorrect, warning and neutral pairs. Shared CSS consumes tokens instead of a second hard-coded dark cascade. Dark selection uses a dark amber fill/light amber label; feedback remains separate. Page image and shared card fill/border-image/colour/width/style/radius/shadow are centrally editable. Solid defaults; gradient recipe in `docs/theming.md`. Layered card backgrounds support rounded gradient borders; home artwork no longer masks the fill. Selected puzzle controls retain their fill on hover. Code surfaces and meaningful puzzle artwork have explicit exceptions. Updated stale palette guidance in `docs/style-guide.md`.
+
+**Verification:** npm install reported zero vulnerabilities. All 132 tests pass; identities/coverage and 1,340 templates / 2,933 variations validate. Final production build passes and `live/` is regenerated. New `scripts/browser-theme.mjs` passes against Vite and production: both palettes, semantic text contrast >=4.5:1, distinct selected/correct/incorrect states, selected digit styling, gradient borders/radius, 1280/320px reflow, theme persistence and rendering all four banks. Its optional `--hmr` check passed: source token changed/restored with no reload or lost input. Final Vite configuration rechecked. Sampled control/selection/feedback boundaries exceed 3:1 in both themes. Full existing production browser smoke passes encoded lazy loading, scoring/reveal, sharing, progress, timers and puzzle interactions. Light desktop and dark narrow gradient screenshots visually inspected; screenshots remain in `/private/tmp/starters-theme-*.png`. Documentation diff check passes.
+
+**Limits/next action:** this is not a full accessibility audit or certification of arbitrary future gradients. Defaults are deliberately solid; edit documented token values to enable decoration. No commit/deployment. Vite remains available at http://127.0.0.1:5173 and production preview at http://127.0.0.1:8765. User can review the appearance, then adjust only the central tokens. Infrastructure note: network/server/browser commands needed sandbox escalation; shell startup also emitted existing pyenv rehash-lock warnings, avoided for later browser commands with direct Node and non-login shell. These did not prevent successful checks.
+
+## 2026-09-30 — Eight selectable themes and marked-answer colours
+
+Objective: provide four light/four dark themes (blue, rose, apricot, sage), with two gradient themes per mode and rose gradient borders; preserve amber pre-marking and green/red marked answers.
+- [x] Add paired palette presets and a persistent accessible theme selector, retaining the light/dark shortcut and old preference.
+- [x] Apply outcome colours to marked selections/answer fields; clear stale outcome styling on edits and retry. Partial remains amber.
+- [x] Check all eight themes, contrast at gradient extremes, responsive selector, persistence, scoring/retry and live/production behaviour.
+- [x] Update concise theme docs, build output and handover with results.
+
+Scope: theme CSS/UI and outcome presentation only; no content, code identities or marking rules change. Existing uncommitted Vite/theme work is retained. Tests: focused theme browser checks, marker/review tests and production build; broaden only for failures or shared-state concerns.
+
+**Selector refinement:** user requests a discreet palette button adjacent to the light/dark button, explicit light/dark names and paired opposite-mode switching with default fallback. Implemented direction: native popover with labelled native select; all four palettes have counterparts, with Sage/Forest as fallback. No changes to answers when switching themes.
+
+### Follow-on plan — Subtle semantic colour mixing
+
+User asks for unmarked/correct/incorrect tones to blend with the palette, e.g. red leaning purple in blue themes.
+- [x] Add CSS perceptual mixing of semantic base fills/borders with the active main colour; retain amber/green/red identity and readable text.
+- [x] Recheck all eight palettes, gradient/semantic contrast and marking behaviour; update documentation and production assets.
+
+Approach: `color-mix(in oklab, …)` with a smaller theme contribution for amber than correctness feedback; unmixed fallback for unsupported browsers. No changes to marks or outcome logic.
+
+**Implemented so far:** paired Sage/Forest, Blue sky/Midnight blue, Rose/Berry and Apricot/Ember. Blue and Rose pairs have page/card gradients; only Rose/Berry have gradient borders. Discreet palette icon opens a native popover next to the sun/moon shortcut; native select labels include light/dark. Saved palette complements the existing saved mode, with validated fallback and paired toggling. No answer or score changes on theme switches.
+
+**Marking/mixing:** current results annotate the part container so selected options, radio indicators, direct answer fields and interactive selections consume correct/incorrect (partial/review amber) tokens. Edits clear stale outcome attributes and hide stale feedback across re-render; retry starts unmarked. Shared semantic fills/borders mix in the active main colour using OKLab: 6% amber, 10% green, 14% red. Foreground text retains semantic colours. Unsupported CSS mixing falls back to the base colours. `docs/theming.md` covers presets, pairing and mixing controls.
+
+**Checks to date:** eight-theme browser suite passes on Vite and final production: preset gradient counts, text contrast >=4.5:1 including gradient endpoints (CSS colours sampled into sRGB), popover bounds/Escape at 1280/640/320px, paired toggles, saved/invalid-palette fallback, mixed correct/incorrect MCQs and text fields before/after submission, retry and all four banks. Twenty-two focused core/packed-data/review/unsent-answer tests pass. Production build passes (1,340 templates); no bank content/identity changes. Inspected blue light desktop and Berry dark narrow screenshots, including mixed feedback. Full existing production smoke is running; exact next action: collect its result, then finish this handover. Earlier pre-mixing contrast checks are historical; current checks use mixed colours.
+
+**Completed / final handover:** full production browser smoke passed, including encoded bank loading, scoring/reveal, persistence, shared codes, timers and puzzle interactions. All steps in this entry and the mixing follow-on are complete. Source and production previews remain on ports 5173 and 8765. `live/` matches the final implementation; changes are uncommitted and undeployed. No outstanding implementation blocker. Next action is user visual review; any aesthetic adjustments belong in `css/tokens.css`.
+
+**Mixing source of truth:** the final `@supports` block in `css/tokens.css` derives semantic fills/borders from `--selection-base`, `--correct-base`, `--incorrect-base` (and border-base equivalents) plus the active palette's `--main`. It uses variables, not precomputed/hard-coded mixed colours per theme. Only the shared mix proportions are fixed (6/10/14% main). `docs/theming.md` documents editing and fallback; `js/theme.js` owns paired names/preference handling; `js/app.js` supplies visible marking-state attributes. The final browser contrast checks cover all eight palettes with the actual CSS mixes, but are not a full accessibility audit. No further testing is required absent new changes.
