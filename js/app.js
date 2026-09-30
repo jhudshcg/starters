@@ -19,7 +19,7 @@ import {loadStorage, saveStorage, migrateStoredCodes, deadlineState, priorities,
 
 const $=s=>document.querySelector(s);
 const main=$('#main');
-initTheme($('#theme-toggle'),$('#theme-select'));
+initTheme($('#theme-toggle'));
 $('#build-info').textContent=`Build ${new URL(import.meta.url).pathname.split('/').pop()} · bank ${BANK_VERSION}`;
 function showCodeError(element,input,error){
   element.textContent=error.message;

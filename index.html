@@ -17,8 +17,15 @@
     <div class="theme-controls">
       <button type="button" id="theme-picker" popovertarget="theme-menu" aria-label="Choose colour theme" title="Choose colour theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/></svg></button>
       <div id="theme-menu" popover>
-        <label for="theme-select">Colour theme</label>
-        <select id="theme-select"></select>
+        <h2>Colour theme</h2>
+        <div id="theme-previews"></div>
+        <div class="theme-adjustments">
+          <label for="theme-saturation">Saturation <output id="theme-saturation-value" for="theme-saturation">50%</output></label>
+          <input id="theme-saturation" type="range" min="0" max="100" step="5" value="50">
+          <label for="theme-lightness">Background lightness <output id="theme-lightness-value" for="theme-lightness">90%</output></label>
+          <input id="theme-lightness" type="range" min="55" max="96" step="1" value="90">
+          <button type="button" id="theme-reset" class="subtle">Reset adjustments</button>
+        </div>
       </div>
       <button type="button" id="theme-toggle" aria-label="Dark theme" title="Switch to dark theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
     </div>

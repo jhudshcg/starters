@@ -36,6 +36,8 @@ The Focus selector chooses other subtypes/topics. Copy controls share the exact 
 
 Teacher review and mixed-ability timing trials remain pending. The [generated coverage report](docs/coverage-ca1-ca2.md) distinguishes direct assessment, supporting practice and reviewed coverage. Every CA1–CA2 inventory element has a linked activity: 289 of 369 have at least two distinct direct questions, 52 have one and 28 broader practical skills have supporting practice only. None is yet teacher-approved complete.
 
+See [planned work](docs/planned-work.md) for the current unfinished-feature backlog and superseded planning notes.
+
 ## Interaction
 
 Logic/equation candidate cells cycle unknown → excluded → selected. Sudoku and arithmetic cages support a digit palette, keyboard entry and pencil notes. Tangrams use a piece tray, board placement, rotation, flipping and movement controls. Paths start anywhere: hold and drag to draw, or use clicks/keyboard; every dot must be visited exactly once and every blocked position avoided. Alternative valid paths and tilings are accepted.

@@ -964,3 +964,72 @@ Approach: `color-mix(in oklab, …)` with a smaller theme contribution for amber
 **Completed / final handover:** full production browser smoke passed, including encoded bank loading, scoring/reveal, persistence, shared codes, timers and puzzle interactions. All steps in this entry and the mixing follow-on are complete. Source and production previews remain on ports 5173 and 8765. `live/` matches the final implementation; changes are uncommitted and undeployed. No outstanding implementation blocker. Next action is user visual review; any aesthetic adjustments belong in `css/tokens.css`.
 
 **Mixing source of truth:** the final `@supports` block in `css/tokens.css` derives semantic fills/borders from `--selection-base`, `--correct-base`, `--incorrect-base` (and border-base equivalents) plus the active palette's `--main`. It uses variables, not precomputed/hard-coded mixed colours per theme. Only the shared mix proportions are fixed (6/10/14% main). `docs/theming.md` documents editing and fallback; `js/theme.js` owns paired names/preference handling; `js/app.js` supplies visible marking-state attributes. The final browser contrast checks cover all eight palettes with the actual CSS mixes, but are not a full accessibility audit. No further testing is required absent new changes.
+
+## 2026-09-30 — Planned-feature audit and theme preview/tweak controls
+
+Objective: identify genuinely planned but unfinished features, replace the theme dropdown with eight abstract preview buttons, and add saturation plus primary-colour lightness sliders to the popover.
+- [x] Reconcile current source with search/ESP/OS and remaining-feature docs; record a concise current backlog without treating historical gaps as current.
+- [x] Implement accessible preview tiles and persistent tweak sliders/reset; saturation affects rendered colours, lightness changes dominant backgrounds with gently linked accents (revised by the subsequent user clarification).
+- [x] Update focused browser checks for previews, sliders, reload/reset, popover bounds, selection/outcome colours and production build.
+- [x] Update theme documentation and final handover; report backlog and completed changes.
+
+Scope: implement only theme controls in this request; search and other backlog items are an investigation. Reuse existing eight-theme/token system and browser tests. Preserve paired mode switching, saved preferences and answer state. Check filter/top-layer behaviour and primary-label contrast before selecting final slider ranges.
+
+**Current clarification / pause boundary:** user suggests 55–96% brightness for light themes and 5–45% for dark themes. Current implementation is a signed −8…+8 OKLCH primary-accent adjustment (headings/buttons), not page brightness. Explained that the proposed ranges fit background lightness better and would break primary foreground contrast if applied directly. Asked whether the slider should target page/card backgrounds or retain the bounded accent adjustment. Do not implement the proposed new range/target until the user answers. Keep already authorised preview/saturation work and backlog audit. Broad background ranges would also need foreground contrast checking before claiming them safe.
+
+**Independent progress:** added `docs/planned-work.md` and README link, reconciling keyword search, ESP3/4, CA3–8/coverage review, OS, CSV import and later Python execution with current source. Preview buttons reuse the actual token blocks via `.theme-swatch`; no duplicated colour map or dependency. Saturation uses one CSS rule for root plus top-layer popovers/dialogs (native top layer bypasses root filters). Source browser tests passed the previews and original ±8 lightness endpoints before the top-layer filter addition; final screenshot/filter/persistence checks and docs/build remain pending.
+
+**Independent check completed while awaiting clarification:** source eight-theme suite passes after the top-layer saturation fix. Pixel inspection of the full 0%-saturation screenshot found maximum RGB channel difference 0, including the open popout; all rendered colours are desaturated. No library or filter workaround beyond the shared root/top-layer rule was required. Updated theme docs for previews/saturation and explicitly marked lightness range/target provisional. No production build yet: resolve the lightness question first, then add final tweak persistence/reset/bounds tests and rebuild once.
+
+**Latest design discussion:** user confirmed the lightness control targets dominant page/card backgrounds and wants accents to track it somewhat for coherence. Background-only wide ranges have foreground-contrast problems. Proposed a single coordinated lightness value: largest background shift, smaller hue-preserving accent shift, contrast-safe foregrounds/feedback. Asked whether to use a narrower tested range (minimal) or the proposed broad ranges with automatic foreground adjustment; this choice remains unresolved. User explicitly requested pausing/discussion if implementation becomes non-minimal, so do not introduce a recolouring/contrast engine without resolving that choice. Current lightness code is still the earlier provisional ±8 primary-accent prototype, NOT the final background-target design. Preview/saturation work and backlog audit are complete at source level, but final persistence tests, correct background/linked-accent implementation, documentation reconciliation and production build remain outstanding. Exact next action: agree range/contrast policy, then replace the provisional slider mapping with the agreed coordinated background/accent mapping and complete focused checks.
+
+## 2026-09-30 — Finish full-range background lightness controls
+
+User resolves the range decision: keep the implementation minimal, expose 55–96% (light) and 5–45% (dark), and leave contrast refinement for their own exploration. This supersedes the earlier pause and safe-range proposal.
+- [x] Replace provisional primary slider with absolute background OKLCH lightness, related surface offsets and a gentle shared accent shift; no contrast engine.
+- [x] Persist separate light/dark settings, retain global saturation and preview tiles, and implement reset/defaults.
+- [x] Check full endpoints, mode changes, persistence/reset, source/production rendering and update documentation/build/checkpoint.
+
+Defaults: 96% light, 20% dark. Related surfaces retain small mode-specific offsets; main/accent colours shift by 20% of the change from the mode default, retaining hue. Shared CSS tokens own these mappings. Test baseline contrast separately from full-range behaviour; do not claim all user-selected settings meet contrast targets.
+
+**Completed — current state supersedes the earlier pause/prototype notes:** full requested ranges are implemented, without a contrast/recolouring engine or new dependency. The lightness slider sets page OKLCH L to 55–96% in light mode and 5–45% in dark mode. Defaults are 96% and 20%. Related surfaces/glow use fixed mode offsets; main/hover/accent track 20% of movement from the mode default. Text and code surfaces remain unchanged. The two mode values persist independently with shared saturation 0–150%; reset restores all defaults. Eight abstract buttons reuse the real CSS palette definitions. Saturation filters the root and independently rendered top-layer popovers/dialogs exactly once.
+
+**Final verification:** focused browser suite passes against Vite and generated production output: eight previews, 1280/640/320px layouts/popover bounds, default contrast, exact full-range endpoints, background and surface movement, 20% linked accent movement, unchanged text/code colours, mode-specific limits, persistence across reload and paired mode switch, reset, global saturation, selected/marked/retry states and all four banks. Production build passes with 1,340 templates and matching identities; `live/` is current. Default preview popout screenshot inspected. `git diff --check` passes. Existing marking/codec/bank logic was not changed; no repeat full unit/smoke run was needed for this focused theme change.
+
+**Documentation and next action:** `docs/theming.md` records tokens/ranges/defaults, persistence and deliberate lack of full-range contrast correction. `docs/planned-work.md` is the reconciled unfinished-feature backlog, linked from README. Source preview remains http://127.0.0.1:5173; production preview http://127.0.0.1:8765. Changes are uncommitted/undeployed. No unresolved implementation work; user will explore full-range appearance and decide any later refinement. Do not narrow ranges or add automatic contrast handling without a new request.
+
+## 2026-09-30 — Make saturation an absolute 0–100% control
+
+User requests efficient, proportionate work: 100% should mean maximum background saturation at the current lightness, not a relative 150% boost to low-chroma presets.
+- [x] Use fully saturated HSL background colours at the slider's selected lightness, with the existing global saturation filter reducing them from 100% to 0%. Keep palette hue, surface offsets and gentle accent tracking.
+- [x] Change slider/storage bounds to 0–100%, update docs/check expectations, and run one production build plus diff check. No broad browser/unit suite for this bounded CSS/control change.
+
+This changes dominant background lightness from OKLCH L to HSL lightness so 100% saturation has a standard, explicit meaning at each lightness. Very pale colours near white are a gamut/lightness constraint, not an additional saturation cap. Existing full-range contrast exploration remains intentional.
+
+Completed: backgrounds and related surfaces now derive full HSL saturation from the palette main hue; the global filter reduces saturation across the interface. Slider and saved-value bounds are 0–100 (legacy values above 100 clamp on load). Documentation and browser-check expectations now reflect HSL backgrounds and exploratory background contrast.
+
+Verification: production build passed (1340 templates), and `git diff --check` passed. Updated browser checks were not run, as requested to keep verification proportionate. Initial build invocation could not find npm; succeeded with `PATH=/opt/homebrew/bin:$PATH npm run build`. No outstanding implementation steps; next action is user exploration of saturation/lightness in the local preview.
+
+## 2026-09-30 — Give theme defaults adjustment room
+
+Objective: start both controls inside their ranges so colour/lightness can move in either direction.
+- [x] Set defaults to saturation 50%, light lightness 90%, dark lightness 20%; align CSS, initial controls and reset.
+- [x] Migrate the exact previous saved default combination; preserve other custom settings. Update documentation/check expectations, build once and check the diff. No browser suite.
+
+Completed: defaults/reset and initial HTML/CSS agree at 50% saturation, 90% light-mode lightness and 20% dark-mode lightness. Exact old saved defaults migrate on load; other custom preferences remain. Production build passed (1340 templates), diff check passed; no browser suite run. Next action: reload preview; use Reset adjustments if existing custom settings should also return to these defaults.
+
+## 2026-09-30 — Independent colour controls and palette defaults
+
+- [x] Replace rendered-page saturation filter with relative HSL token adjustments; retain 0–100 saturation and 55–96 / 5–45 lightness ranges.
+- [x] Restore palette-derived default background saturation/lightness (Rose 90/92); use per-theme saved overrides and CSS defaults shared with previews. Preserve authored non-background colours at defaults.
+- [x] Update docs and focused check expectations; run production build and diff check. Small browser control check deferred at user request to wrap up.
+
+Current state: page-wide saturation filter removed. Relative HSL colour tokens adjust saturation without changing their numerical HSL lightness. Dominant backgrounds use absolute saturation; other authored theme colours scale around their original saturation at palette default. Fixed artwork is no longer globally filtered. Lightness ranges remain 55–96% light / 5–45% dark; saturation remains 0–100%. Accent OKLCH lightness still tracks 20% of background movement. No contrast guard.
+
+Defaults derive from original page backgrounds, with light defaults capped at 94% to leave upward room and Rose explicitly 90% saturation / 92% lightness. Related surfaces retain existing offsets, so the original palette is a starting point, not an exact reconstruction of every old surface. CSS drives defaults and preview swatches. Slider display rounds defaults to whole percentages. Each light/dark palette has separate overrides in `dsd-starters-theme-adjustments`; Reset clears only the current theme. Prior global filter-based tweaks are ignored (different colour mapping), while saved mode/palette remain.
+
+Relevant files: `css/tokens.css` (raw colours, defaults and relative transforms), `css/styles.css` (filter removed), `js/theme.js` (per-theme overrides/defaults), `docs/theming.md` (current behaviour), `scripts/browser-theme.mjs` (updated expectations), generated `live/` output.
+
+Verification: `PATH=/opt/homebrew/bin:$PATH npm run build` passed with 1340 templates; `git diff --check` passed. No browser suite or visual check run for this change. Existing browser script expectations were updated but remain unverified. Perceived brightness may still vary with saturation even though numerical HSL lightness does not. Fixed artwork no longer follows saturation; theme token colours do. Changes remain uncommitted and undeployed.
+
+Next action, only when resumed: inspect Rose at default 90/92 and compare low/high saturation at one fixed low lightness; confirm per-theme persistence/reset. Do not repeat broad suites or add contrast handling without need. User requested wrap-up now.

@@ -20,22 +20,26 @@ async function click(selector){await evaluate(`document.querySelector(${JSON.str
 async function screenshot(name){const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/starters-${name}.png`,Buffer.from(r.data,'base64'));}
 
 async function selectTheme(mode,palette) {
- await click('#theme-picker');await until('document.querySelector("#theme-menu").matches(":popover-open")');
+ if(!await evaluate('document.querySelector("#theme-menu").matches(":popover-open")'))await click('#theme-picker');
+ await until('document.querySelector("#theme-menu").matches(":popover-open")');
  assert.ok(await evaluate('(()=>{const b=document.querySelector("#theme-menu").getBoundingClientRect();return b.left>=0&&b.right<=innerWidth&&b.top>=0&&b.bottom<=innerHeight;})()'));
- await evaluate(`{const select=document.querySelector('#theme-select');select.value=${JSON.stringify(mode+':'+palette)};select.dispatchEvent(new Event('change'));}`);
- assert.equal(await evaluate('document.activeElement.id'),'theme-picker');
- assert.equal(await evaluate('document.querySelector("#theme-menu").matches(":popover-open")'),false);
+ const selector=`[data-theme-choice="${mode}:${palette}"]`;
+ await click(selector);
+ assert.equal(await evaluate(`document.querySelector(${JSON.stringify(selector)}).getAttribute('aria-pressed')`),'true');
+ assert.equal(await evaluate('document.querySelectorAll(".theme-preview[aria-pressed=true]").length'),1);
+ assert.equal(await evaluate('document.querySelector("#theme-menu").matches(":popover-open")'),true);
+ await evaluate('document.querySelector("#theme-menu").hidePopover()');
 }
 const colours=()=>evaluate(`(()=>{const s=getComputedStyle(document.documentElement);return Object.fromEntries(['selection','correct','incorrect','warning'].map(k=>{const e=document.createElement('i');e.style.backgroundColor=s.getPropertyValue('--'+k+'-bg');document.body.append(e);const value=getComputedStyle(e).backgroundColor;e.remove();return [k,value];}));})()`);
 try {
  await send('Runtime.enable');await send('Page.enable');
  await send('Page.navigate',{url:base+'/#home'});await until('Boolean(document.querySelector("#code-form"))');
  // Legacy mode preference and unknown palettes fall back without resetting the mode.
- await evaluate('localStorage.removeItem("dsd-starters-v1");localStorage.setItem("dsd-starters-theme","dark");localStorage.setItem("dsd-starters-palette","unknown")');
+ await evaluate('localStorage.removeItem("dsd-starters-v1");localStorage.setItem("dsd-starters-theme","dark");localStorage.setItem("dsd-starters-palette","unknown");localStorage.removeItem("dsd-starters-theme-adjustments")');
  let oldOrigin=await evaluate('performance.timeOrigin');
  await send('Page.reload');await until(`performance.timeOrigin!==${oldOrigin} && Boolean(document.querySelector('#code-form')) && document.documentElement.dataset.palette==='sage'`);
  assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');
- assert.equal(await evaluate('document.querySelectorAll("#theme-select option").length'),8);
+ assert.equal(await evaluate('document.querySelectorAll(".theme-preview").length'),8);
  await click('#theme-picker');
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
@@ -55,8 +59,8 @@ try {
   for(const {id:palette} of themePalettes)for(const mode of ['light','dark']) {
    await selectTheme(mode,palette);
    assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
-   assert.ok(await evaluate('document.querySelector("#theme-select option:checked").textContent.includes(document.documentElement.dataset.theme)'));
-   const contrast=await evaluate(`(() => {
+   assert.ok(await evaluate('document.querySelector(".theme-preview[aria-pressed=true]").getAttribute("aria-label").includes(document.documentElement.dataset.theme)'));
+   const contrast=await evaluate(`(window.themeContrast=() => {
     const root=getComputedStyle(document.documentElement);
     function rgb(token){const e=document.createElement('i');e.style.color=root.getPropertyValue(token);document.body.append(e);const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const ctx=canvas.getContext('2d');ctx.fillStyle=getComputedStyle(e).color;ctx.fillRect(0,0,1,1);const c=[...ctx.getImageData(0,0,1,1).data].slice(0,3);e.remove();return c;}
     function lum(c){return c.map(v=>{v/=255;return v<=.04045?v/12.92:((v+.055)/1.055)**2.4;}).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0);}
@@ -65,7 +69,8 @@ try {
     if(root.getPropertyValue('--page-image').trim()!=='none')pairs.push(['--text','--page-glow'],['--muted','--page-glow']);
     return pairs.map(([a,b])=>[a+'/'+b,ratio(a,b)]);
    })()`);
-   for(const [role,ratio] of contrast)assert.ok(ratio>=4.5,`${palette} ${mode} ${role} contrast ${ratio}`);
+   // Adjustable backgrounds are exploratory; retain assertions for fixed semantic/action pairs.
+   for(const [role,ratio] of contrast.filter(([role])=>!/^--(?:text|muted)\//.test(role)))assert.ok(ratio>=4.5,`${palette} ${mode} ${role} contrast ${ratio}`);
    const decoration=await evaluate(`(()=>{const s=getComputedStyle(document.querySelector('.type-card'));return {page:getComputedStyle(document.body).backgroundImage,card:s.backgroundImage,width:s.borderTopWidth,color:s.borderTopColor};})()`);
    assert.equal(decoration.page!=='none',['blue','rose'].includes(palette));
    assert.equal(decoration.color==='rgba(0, 0, 0, 0)',palette==='rose');
@@ -80,6 +85,45 @@ try {
    assert.equal(await evaluate('document.documentElement.dataset.theme'),mode==='light'?'dark':'light');
   }
  }
+ // Full ranges are exploratory: verify behaviour, not contrast at extremes.
+ const setSlider=async(id,value)=>evaluate(`{const e=document.querySelector(${JSON.stringify('#'+id)});e.value=${value};e.dispatchEvent(new Event('input'));}`);
+ const readTones=()=>evaluate(`(()=>{const e=document.createElement('i');document.body.append(e);const result={};for(const name of ['page','surface','main','accent','text','code-bg']){e.style.color='var(--'+name+')';result[name]=getComputedStyle(e).color;}const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const ctx=canvas.getContext('2d');ctx.fillStyle=result.page;ctx.fillRect(0,0,1,1);const rgb=[...ctx.getImageData(0,0,1,1).data].slice(0,3);result.pageLightness=(Math.max(...rgb)+Math.min(...rgb))/510;result.pageSaturated=Math.min(...rgb)===0||Math.max(...rgb)===255;e.remove();return result;})()`);
+ const lightnessOf=color=>Number(color.match(/^oklch\(([^ ]+)/)?.[1]);
+ for(const {id} of themePalettes)for(const mode of ['light','dark']) {
+  await selectTheme(mode,id);
+  await setSlider('theme-saturation',100);
+  const bounds=mode==='light'?[55,96]:[5,45];
+  assert.deepEqual(await evaluate('[Number(document.querySelector("#theme-lightness").min),Number(document.querySelector("#theme-lightness").max)]'),bounds);
+  const states=[];
+  for(const value of bounds) {
+   await setSlider('theme-lightness',value);
+   const tones=await readTones();states.push(tones);
+   assert.ok(Math.abs(tones.pageLightness-value/100)<.003);
+   assert.ok(tones.pageSaturated);
+   assert.equal(await evaluate('document.querySelector("#theme-lightness-value").value'),value+'%');
+   assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
+  }
+  assert.notEqual(states[0].surface,states[1].surface);
+  for(const role of ['main','accent'])assert.ok(Math.abs(lightnessOf(states[1][role])-lightnessOf(states[0][role])-(bounds[1]-bounds[0])*.002)<.0001);
+  assert.equal(states[0].text,states[1].text);assert.equal(states[0]['code-bg'],states[1]['code-bg']);
+ }
+ // Independent light/dark levels and global saturation survive mode changes/reload.
+ await selectTheme('light','blue');await setSlider('theme-lightness',61);
+ await selectTheme('dark','blue');await setSlider('theme-lightness',37);await setSlider('theme-saturation',65);
+ oldOrigin=await evaluate('performance.timeOrigin');
+ await send('Page.reload');await until(`performance.timeOrigin!==${oldOrigin} && document.documentElement.dataset.palette==='blue' && Boolean(document.querySelector('#code-form'))`);
+ assert.deepEqual(await evaluate('[Number(document.querySelector("#theme-lightness").value),Number(document.querySelector("#theme-saturation").value)]'),[37,65]);
+ await click('#theme-toggle');assert.equal(await evaluate('Number(document.querySelector("#theme-lightness").value)'),61);
+ await click('#theme-picker');await click('#theme-reset');
+ await evaluate(`{const e=document.querySelector('#theme-saturation');e.value=0;e.dispatchEvent(new Event('input'));}`);
+ await screenshot('theme-popout-desaturated');
+ assert.equal(await evaluate('getComputedStyle(document.documentElement).filter'),'none');
+ assert.equal(await evaluate('getComputedStyle(document.querySelector("#theme-menu")).filter'),'none');
+ await evaluate(`{const e=document.querySelector('#theme-saturation');e.value=100;e.dispatchEvent(new Event('input'));}`);
+ await screenshot('theme-popout-saturated');
+ await click('#theme-reset');await screenshot('theme-popout-previews');
+ assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-theme-adjustments"))["light:blue"]'),undefined);
+ await evaluate('document.querySelector("#theme-menu").hidePopover()');
  await selectTheme('dark','blue');oldOrigin=await evaluate('performance.timeOrigin');
  await send('Page.reload');await until(`performance.timeOrigin!==${oldOrigin} && document.documentElement.dataset.palette==='blue' && Boolean(document.querySelector('#code-form'))`);
  assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');
@@ -118,5 +162,5 @@ try {
   assert.ok(await evaluate('document.querySelectorAll(".question").length>0'));
  }
  assert.deepEqual(errors,[]);
- console.log('Theme checks passed: eight presets, gradient counts, text/gradient contrast, responsive popover, paired toggle, persistence/fallback, amber selections, green/red marking, retry and four banks.');
+ console.log('Theme checks passed: eight previews, full background ranges, linked accents, saturation, semantic/action contrast, responsive popover, paired toggle, persistence/reset, amber selections, green/red marking, retry and four banks.');
 } finally {ws.close();}

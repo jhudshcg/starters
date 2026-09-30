@@ -135,9 +135,22 @@ textarea{background:var(--surface);color:var(--text);border:1px solid var(--cont
 #theme-picker{display:grid;place-items:center;width:44px;height:44px;padding:11px;border:0;border-radius:50%;background:transparent}
 #theme-picker svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
 #theme-picker svg circle:first-child{fill:var(--main);stroke:var(--main)}
-#theme-menu{position:fixed;inset:auto;margin:0;width:min(18rem,calc(100vw - 2rem));padding:1rem;border:1px solid var(--control-border);border-radius:12px;background:var(--surface);color:var(--text);box-shadow:0 8px 28px rgb(0 0 0 / 18%)}
+#theme-menu{position:fixed;inset:auto;margin:0;width:min(24rem,calc(100vw - 2rem));max-height:calc(100dvh - 2rem);overflow:auto;padding:1rem;border:1px solid var(--control-border);border-radius:12px;background:var(--surface);color:var(--text);box-shadow:0 8px 28px rgb(0 0 0 / 18%)}
 #theme-menu label{display:block;margin-bottom:.5rem;font-size:.85rem;font-weight:650}
-#theme-menu select{width:100%;min-height:44px;font-size:.9rem}
+#theme-menu h2{font-size:1rem;margin:0 0 .75rem}
+.theme-group{border:0;padding:0;margin:0 0 .75rem;min-width:0}
+.theme-group legend{font-size:.75rem;font-weight:650;margin-bottom:.4rem;color:var(--muted)}
+.theme-preview-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.35rem}
+.theme-preview{min-width:0;padding:.25rem;display:grid;gap:.3rem;background:var(--surface);font-size:.62rem;line-height:1.3;font-weight:500;align-content:start}
+.theme-preview[aria-pressed=true]{outline:2px solid var(--main);outline-offset:1px}
+.theme-swatch{display:grid;gap:5px;padding:6px;width:100%;height:48px;border-radius:5px;background:var(--page) var(--page-image)}
+.theme-swatch:before{content:"";display:block;width:40%;height:4px;border-radius:3px;background:var(--main)}
+.theme-swatch:after{content:"";display:block;height:22px;border:var(--card-border-width) solid var(--card-border-color);border-radius:4px;background:var(--card-image) padding-box,var(--card-border-image) border-box;box-shadow:inset 3px 0 var(--main)}
+.theme-adjustments{padding-top:.5rem;border-top:1px solid var(--line)}
+#theme-menu .theme-adjustments label{display:flex;justify-content:space-between;margin:0;font-size:.8rem}
+.theme-adjustments input[type=range]{display:block;width:100%;padding:0;min-height:32px;accent-color:var(--main)}
+#theme-reset{font-size:.75rem;margin-top:.25rem}
+@media(forced-colors:active){.theme-preview[aria-pressed=true]{outline-color:Highlight}}
 .site-header{flex-wrap:wrap}
 
 /* Outcome tokens exist only while current marking feedback is visible. */

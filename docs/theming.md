@@ -1,15 +1,15 @@
 # Theme editing
 
-The small palette button beside the sun/moon control opens the colour-theme menu. Every option includes “light” or “dark”. The sun/moon button switches to the same palette in the opposite mode, falling back to Sage/Forest when there is no counterpart. Mode and palette are saved locally; existing light/dark preferences are retained.
+The small palette button beside the sun/moon control opens eight selectable abstract previews, grouped into light and dark themes. Each button has a name and an accessible light/dark label. The menu stays open for comparison and adjustments. The sun/moon button switches to the same palette in the opposite mode, falling back to Sage/Forest when there is no counterpart. Mode and palette are saved locally; existing light/dark preferences are retained.
 
 | Light | Dark | Treatment |
 | --- | --- | --- |
-| Sage | Forest | Solid, quiet green neutrals (default) |
+| Sage | Forest | Solid green (default) |
 | Blue sky | Midnight blue | Blue page and card gradients |
 | Rose | Berry | Pink/plum gradients and gradient borders |
-| Apricot | Ember | Solid warm orange/brown neutrals |
+| Apricot | Ember | Solid warm orange |
 
-Edit `css/tokens.css`: the base `:root` and dark block define Sage/Forest; `data-palette` blocks define the other colours. Paired names live in `js/theme.js`. Use `npm run dev` for immediate CSS preview.
+Edit `css/tokens.css`: the shared base and dark blocks define Sage/Forest; `data-palette` blocks define the other colours. Paired names live in `js/theme.js`. Use `npm run dev` for immediate CSS preview.
 
 | Role | Tokens | Used for |
 | --- | --- | --- |
@@ -20,6 +20,18 @@ Edit `css/tokens.css`: the base `:root` and dark block define Sage/Forest; `data
 | Supporting | `--warning-*`, `--page`, `--surface*`, `--text`, `--muted`, `--line`, `--control-border` | Partial marks, notices and neutral UI |
 
 Change foreground/background/border combinations together. Before marking, all palettes use pastel amber selections (light in light mode, deeper in dark mode), including radio indicators. Visible marking results switch the chosen option or answer field to green for correct, red for incorrect, or amber for partial/unreviewed answers. Retry and edits clear stale outcome styling; changing themes does not change answers or marks. Palette blocks must not override the shared selection/feedback colours. Code panels have their own paired colours. Puzzle illustrations, Go boards/stones, blocked-cell hatching and geometric piece colours remain component-specific; they can carry information and are not global theme colours.
+
+## Preview and adjustment controls
+
+Preview swatches reuse the palette CSS through `.theme-swatch`. Saturation spans **0–100%**: it directly sets background HSL saturation while holding HSL lightness constant. Other theme colour tokens scale down to grey or up to full saturation around their authored saturation at the palette default. There is no page filter; fixed artwork colours are not transformed. Perceived brightness can still vary with hue/saturation.
+
+Background lightness retains **55–96% in light mode** and **5–45% in dark mode**. Related surfaces retain small offsets; main/hover/accent lightness tracks 20% of movement from the default. No contrast guard is applied.
+
+Each palette defines `--theme-saturation-default` and `--theme-bg-default` in `css/tokens.css`, based on its original background. Light defaults are capped at 94% to leave upward adjustment room. Rose uses the requested 90% saturation / 92% lightness. Original foreground and semantic colours are retained at the default saturation; their `--*-raw` values are the authoring inputs. CSS defaults also drive preview swatches and slider initial values.
+
+`dsd-starters-theme-adjustments` stores overrides keyed by mode and palette, e.g. `{"light:rose": {"saturation": 90, "lightness": 92}}`. Switching themes restores their own settings; Reset adjustments restores the current theme. Old global filter-based preferences are ignored because their saturation/lightness mapping differs. Mode and palette preferences remain.
+
+The full adjustment ranges are intentionally exploratory, without automatic contrast correction. Relative-colour support is required for adjustments; older browsers retain authored fallback colours.
 
 ## Blend feedback with the palette
 
