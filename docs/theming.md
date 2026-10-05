@@ -19,6 +19,8 @@ Edit `css/tokens.css`: the shared base and dark blocks define Sage/Forest; `data
 | Correct / incorrect | `--correct-*`, `--incorrect-*` | Marking feedback |
 | Supporting | `--warning-*`, `--page`, `--surface*`, `--text`, `--muted`, `--line`, `--control-border` | Partial marks, notices and neutral UI |
 
+Feedback mixes its semantic colours with `--surface`, the normal selectable surface, rather than the dominant theme accent. Progress priorities use separate `--priority-*` tokens: RAG fills/borders and the icy fill/border/texture colours mix 90% semantic base with 10% `--main` in OKLab. Text colours and icy texture geometry remain unchanged; unmixed semantic bases provide the fallback. Missing and stale evidence retain grey and icy treatments plus text labels. Missing-data `--missing-bg` and `--missing-border` mix 90% neutral grey with 10% `--main` (the dominant theme colour) in OKLab, subtly tying the grey to its surroundings; browsers without colour mixing retain neutral grey. This is a perceptual adjustment, not a guarantee of identical perceived grey in every theme.
+
 Change foreground/background/border combinations together. Before marking, all palettes use pastel amber selections (light in light mode, deeper in dark mode), including radio indicators. Visible marking results switch the chosen option or answer field to green for correct, red for incorrect, or amber for partial/unreviewed answers. Retry and edits clear stale outcome styling; changing themes does not change answers or marks. Palette blocks must not override the shared selection/feedback colours. Code panels have their own paired colours. Puzzle illustrations, Go boards/stones, blocked-cell hatching and geometric piece colours remain component-specific; they can carry information and are not global theme colours.
 
 ## Preview and adjustment controls
@@ -35,7 +37,7 @@ The full adjustment ranges are intentionally exploratory, without automatic cont
 
 ## Blend feedback with the palette
 
-The shared semantic base colours use `--selection-base`, `--correct-base`, `--incorrect-base` and corresponding `--*-border-base` tokens. Their public fill/border tokens use `color-mix(in oklab, …)` with the active `--main`: **6% theme colour for amber, 10% for green and 14% for red**. This keeps unmarked amber distinct while giving feedback a subtle palette tint (blue themes soften red towards purple). Text stays in its semantic colour for clarity and contrast. Browsers without `color-mix` use the unmixed aliases.
+The shared semantic base colours use `--selection-base`, `--correct-base`, `--incorrect-base` and corresponding `--*-border-base` tokens. Their public fill/border tokens use `color-mix(in oklab, …)` with the default selectable `--surface`: **6% surface colour for amber, 10% for green and 14% for red**. This keeps feedback related to the surface it replaces. Text stays in its semantic colour for clarity and contrast. Browsers without `color-mix` use the unmixed aliases.
 
 Adjust the percentages in the single `@supports` block, then rerun the theme checks. Keep the amber contribution small; selection must never look like a correct-answer state.
 

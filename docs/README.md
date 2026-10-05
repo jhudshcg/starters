@@ -9,6 +9,7 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Puzzle level audit](reviews/2026-09-25-puzzle-level-coverage.md) | Completed difficulty-band expansion, fairness criteria, maths-topic counts and checks |
 | [Content authoring](content-authoring.md) | Shared sources, wording, marking and hints |
 | [Content refinement](content-refinement.md) | Update checklist, evidence and definitions of done |
+| [Progress specification](spec-progress.md) | Named profiles, dated evidence, RAG/stale priorities, recommended sets, weekly trends and backup restore |
 | [Common specification](spec-common.md) | Data, codes, navigation, marking lifecycle, timing and progress |
 | [Puzzle specification](spec-puzzles.md) | Puzzle families, interactions, scoring and examples |
 | [CA1–CA2 coverage report](coverage-ca1-ca2.md) | Generated subelement counts and remaining gaps |

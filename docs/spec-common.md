@@ -86,35 +86,17 @@ Record first-check marks per part, final marks, check counts, hint use and answe
 
 ## Timing and recovery
 
-Start hidden elapsed-time tracking when an activity starts. Enabling a visible timer resets the timing origin and starts the selected 5–15-minute countdown, as permitted by AGENTS.md. Record original start and reset time separately. Update the displayed/shareable set code with the duration suffix.
+Start hidden estimated-engagement tracking when an activity starts. Pause after 120 seconds without page interaction and when the activity is hidden; see [practice time](spec-progress.md#estimated-engaged-practice-time). Enabling a visible timer resets its elapsed-time origin and starts the selected 5–15-minute countdown, but does not reset accumulated engaged time. Record original start and reset time separately. Update the displayed/shareable set code with the duration suffix.
 
 Persist answers, attempt ID, timing origin, deadline and last saved timestamp. Calculate remaining time from the absolute deadline; background-tab throttling must not extend the deadline. Auto-submit saved current answers when the deadline passes, including on return to the page. Do not announce every second to assistive technology.
 
 **Proposal for the 45-minute rule:** an unfinished, untimed activity last saved more than 45 minutes ago is offered as a fresh attempt, with its old draft marked abandoned. A timed activity whose deadline passed is submitted as expired first, regardless of absence length. It may then be retried with a fresh timer. Within 45 minutes, refresh restores the original timing origin and answers.
 
-**Proposal:** stopping or changing a running timer is allowed for practice but flags the attempt `timingAdjusted`; enabling again starts the selected duration anew. Preserve the timing event history. Record both total elapsed time and elapsed time since the latest timing origin; the UI labels the latter “Time taken” with a reset indicator when applicable.
+Stopping or restarting a visible timer is allowed for practice; enabling again starts the selected duration anew and preserves timing events. Retain total elapsed time and elapsed time since the latest countdown origin for compatibility. Current UI practice durations use estimated engaged time when available, explicitly distinguishing older elapsed-time records. A separate `timingAdjusted` reporting flag remains a proposal.
 
-## Progress and CSV
+## Progress, profiles and exports
 
-Persist a versioned local record with attempt ID, activity kind, code, content revision, type, primary focus, start/submission timestamps, outcome, earned/available marks, percentage, elapsed times, timing settings, assistance flags and per-part first/final marks with reporting focuses. Store UTC timestamps; display local dates. Compute attempt counts from records.
-
-Views: sortable attempt table, score-over-time chart with equivalent table, type/focus/date filters and revision priorities. Date boundaries use the student's local date. Puzzles are excluded from revision priorities; their history remains visible. This interprets the incomplete sentence about puzzles in AGENTS.md.
-
-**Implemented detailed tracking:** new exam and programming attempts save optional `partScores`, containing question slot/variation, part ID, distinct reporting references, final earned/available marks and unassisted first-response earned/available marks. A question assisted before its first check contributes zero first-response earned and available marks, retaining the existing question-level assistance rule. Puzzle attempts have no detailed-priority contribution.
-
-Only records containing `partScores` contribute to revision priorities. Earlier aggregate-only results remain unchanged in history, charts, summary statistics, exports and repeat-attempt checks. This aggregate-to-part-score policy performs no historical score allocation; the separate [rollover policy](code-rollover.md) will add generation classification without inventing missing part scores. A completed older attempt remains aggregate-only when reopened; an unfinished attempt submitted under the new code receives detailed scores.
-
-After applying history filters, select the latest five eligible detailed attempts with nonzero first-response available marks per broad topic or programming focus. Both priority views use this **same parent-level window**. Topic scores count each part once; exam-subtopic scores divide each part's earned and available marks equally across its distinct references (multiple subelement letters or repeated links do not multiply its credit). Sum marks before calculating percentages; round only display values. Do not add child totals to parent totals. Programming remains a named-focus measure because its tags are not authored part-level CA mappings.
-
-The priorities view switches between Topic / programming focus and Exam subtopic, shows assessed marks and contributing attempts, and labels fewer than three attempts or fewer than ten assessed marks “Limited evidence”. The note explains that earlier results remain in history without contributing to priorities. A narrow subtopic with no evidence in the selected parent window has no rating.
-
-JSON backups retain `partScores` as recorded rather than re-deriving mappings from today's bank. Import accepts absent legacy detail but rejects malformed detail, duplicate part identities/references, invalid question coordinates, references outside the parent focus, invalid marks and totals inconsistent with the aggregate record. All validation finishes before writing history. CSV adds first-response totals and a quoted JSON `partScores` column; full restoration continues to use JSON backups.
-
-**Proposal:** CSV schema v1 uses one row per attempt, with fixed scalar columns plus quoted JSON cells for part results and timing events. Use a maintained CSV parser/writer; support commas, quotes, Unicode and newlines. Export enough metadata to preserve focus results even if questions later change. Exclude raw student answer text from exports by default.
-
-Import validates schema version, required fields, dates, numeric ranges and nested result structure before writing. Show valid, invalid and duplicate counts. Merge by attempt ID; skip identical duplicates and report conflicts without overwriting. Reject unsupported versions. Display imported strings as text and protect spreadsheet exports from formula interpretation. Re-importing an export must not change totals.
-
-Encourage download to student OneDrive; import uses a standard file picker. No direct OneDrive connection is required. Show the date of last export. Provide a clearly confirmed local-history reset. If storage is unavailable or full, keep the activity usable, show that saving failed and offer export; never claim data was saved.
+The adopted [progress specification](spec-progress.md) defines dated topic/subtopic records, named local profiles and last tracked dates, idle-aware estimated practice time, RAG/missing/stale priorities, persistent three-set recommendations, weekly statistics and trends, and validated JSON restore with automatic profile switching. It supersedes the previous parent-level priority-window and manual profile-switching rules. Existing aggregate-only history remains intact without invented subtopic evidence. CSV import and the other explicitly listed backlog items remain unimplemented.
 
 ## Implemented repeat-attempt policy (15 September 2026)
 

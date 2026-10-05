@@ -151,7 +151,7 @@ export function priorities(history, level='topic') {
   return [...groups.values()].map(g=>({...g,score:Math.round(g.earned/g.max*100)})).sort((a,b)=>a.score-b.score||a.focus.localeCompare(b.focus));
 }
 export function exportCSV(history) {
-  const keys=['id','code','generation','bankVersion','type','focus','started','finished','earned','max','percentage','seconds','attemptChecks','assisted','outcome','firstEarned','firstMax','partScores','espReview'];
+  const keys=['id','code','generation','bankVersion','type','focus','started','finished','earned','max','percentage','seconds','engagedSeconds','practiceMeasuredFrom','totalSeconds','attemptChecks','assisted','outcome','firstEarned','firstMax','partScores','espReview'];
   const cell=v=>`"${String(v??'').replace(/^[=+@-]/,"'$&").replaceAll('"','""')}"`;
   return '\ufeff'+[keys.join(','),...history.map(a=>keys.map(k=>cell(k==='finished'?new Date(a[k]).toISOString():['partScores','espReview'].includes(k)&&a[k]?JSON.stringify(a[k]):a[k])).join(','))].join('\r\n');
 }

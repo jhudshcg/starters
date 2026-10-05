@@ -16,7 +16,7 @@ Font stack: system sans-serif for interface and prose; system monospace for code
 
 ## Layout and components
 
-Home: title and short instruction, three type cards, focus selector, prominent code-entry form, progress link. Activity: breadcrumb/back control, heading, prominent copyable code, marks/duration, timer controls, stacked questions and final submit action. Keep answer fields adjacent to their prompts. Progress: filters, revision priorities, chart with table, attempt table, import/export controls.
+Home: title and short instruction, three type cards, focus selector, prominent code-entry form, progress link. Activity: breadcrumb/back control, heading, prominent copyable code, marks/duration, timer controls, stacked questions and final submit action. Keep answer fields adjacent to their prompts. Progress: filters, overall and weekly statistics, eight-week average-score chart with equivalent table, three recommended sets, revision priorities, dated attempt table and import/export controls. The header shows the selected username, last tracked date and Not you? action. See [progress specification](spec-progress.md) for labels and colour rules.
 
 Use shared components for buttons, labels, inputs, choice groups, question cards, part marks, hints, feedback, code panels, grid controls and progress tables. Primary action is visually stronger than randomisation and answer reveal. Use the exact navigation labels in the common specification.
 

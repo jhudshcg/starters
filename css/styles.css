@@ -160,3 +160,34 @@ textarea{background:var(--surface);color:var(--text);border:1px solid var(--cont
 .part[data-result]>input{background:var(--selection-bg);border-color:var(--selection-border);color:var(--selection-text);opacity:1}
 .option input[type=radio]{accent-color:var(--selection-border)}
 .feedback.review{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}
+
+/* Progress blends semantic colours with the dominant theme; question feedback uses its surface. */
+.priority-row{padding:.8rem;border:1px solid var(--line);border-radius:8px;margin-block:.5rem;gap:.8rem}
+.priority-red{background:var(--priority-red-bg);color:var(--incorrect-text);border-color:var(--priority-red-border)}
+.priority-amber{background:var(--priority-amber-bg);color:var(--selection-text);border-color:var(--priority-amber-border)}
+.priority-green{background:var(--priority-green-bg);color:var(--correct-text);border-color:var(--priority-green-border)}
+.priority-missing{background:var(--missing-bg);color:#333;border-color:var(--missing-border)}
+.priority-stale{background-color:var(--priority-stale-bg);background-image:repeating-linear-gradient(125deg,transparent 0 14px,var(--priority-ice-light) 15px 17px,transparent 18px 32px),repeating-linear-gradient(35deg,transparent 0 25px,var(--priority-ice-shade) 26px 28px,transparent 29px 45px);color:#193e56;border-color:var(--priority-stale-border)}
+.priority-row small{color:inherit}
+.recommended-sets{display:flex;flex-wrap:wrap;gap:1rem}.recommended-sets>div{flex:1;min-width:12rem}
+#profile-welcome{font-size:.85rem}#profile-welcome button{font-size:.8rem;text-decoration:underline}
+#profile-name{display:block;width:100%;margin-block:.5rem}#profile-message button{margin:.3rem}
+#profile-welcome{overflow-wrap:anywhere}
+.last-tracked{display:block;color:var(--muted);margin-top:.2rem}
+.restore-notice{padding:1rem;border:1px solid var(--accent-border);border-radius:8px;background:var(--accent-bg);color:var(--accent-text)}
+.weekly-chart{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:.5rem;margin:1rem 0 1.5rem}
+.weekly-column{text-align:center;min-width:0;font-size:.85rem}.weekly-column small{display:block;margin-top:.4rem}
+.weekly-track{height:100px;display:flex;align-items:flex-end;border-bottom:1px solid var(--control-border);margin-top:.4rem}
+.weekly-bar{width:100%;background:var(--main);border-radius:4px 4px 0 0}
+@media(max-width:500px){.weekly-chart{gap:.3rem}.weekly-column{font-size:.7rem}}
+
+#weekly-progress .progress-summary{grid-template-columns:repeat(auto-fit,minmax(min(100%,9rem),1fr))}
+
+.progress-transfers{flex:0 1 25rem;min-width:min(100%,20rem)}
+.progress-transfer-actions{display:flex;flex-wrap:wrap;align-items:start;gap:.5rem}
+.progress-transfers>p,.spreadsheet-options{font-size:.8rem}
+.progress-transfers>p{margin:.65rem 0 0}
+.spreadsheet-options summary{cursor:pointer;min-height:44px;align-content:center;text-decoration:underline}
+.spreadsheet-options p{margin:.5rem 0;max-width:26rem}
+.spreadsheet-options button{font-size:.8rem}
+@media(max-width:600px){.progress-transfers{flex:auto;width:100%}}

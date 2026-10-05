@@ -1033,3 +1033,157 @@ Relevant files: `css/tokens.css` (raw colours, defaults and relative transforms)
 Verification: `PATH=/opt/homebrew/bin:$PATH npm run build` passed with 1340 templates; `git diff --check` passed. No browser suite or visual check run for this change. Existing browser script expectations were updated but remain unverified. Perceived brightness may still vary with saturation even though numerical HSL lightness does not. Fixed artwork no longer follows saturation; theme token colours do. Changes remain uncommitted and undeployed.
 
 Next action, only when resumed: inspect Rose at default 90/92 and compare low/high saturation at one fixed low lightness; confirm per-theme persistence/reset. Do not repeat broad suites or add contrast handling without need. User requested wrap-up now.
+
+## 2026-10-05 — Feedback surfaces, revision priorities and named progress
+
+Objective: blend feedback with selectable surfaces; retain dated topic/subtopic outcomes per named local profile; colour priorities and automatically maintain three recommended exam revision sets.
+- [x] Inspect existing tokens, storage, progress aggregation, recommendations and UI.
+- [x] Implement surface blending, dated records, RAG/missing/stale priorities and persistent recommendation batches.
+- [x] Add local username selection, close-match confirmation, profile isolation and named JSON import/export; preserve legacy records.
+- [x] Run relevant unit/browser checks and production build; record outcomes and limitations.
+Scope: local profiles are convenience only, with no authentication. Missing evidence ranks first, scored weaknesses second, stale evidence third. Stale means more than 15 days since latest practice. Preserve existing unrelated work.
+Next action: inspect progress and application code before implementing.
+
+
+Completed: semantic feedback fills/borders now mix with `--surface` rather than `--main`. Local named profiles isolate active activity, history, repeat-attempt dates and recommendation batches. The first profile inherits unnamed legacy progress; the original save remains intact. Case/spacing normalisation reuses exact names; bounded edit-distance suggestions require explicit confirmation. Header supports switching profiles. JSON backup embeds the username and rejects restoring into a differently named profile with instructions to switch first. Older unnamed backups remain supported.
+
+Progress review: existing attempt timestamps and `partScores` already retain topic/subtopic attribution and first/final results. History now exposes per-attempt subtopic first-response scores. No invented backfill for legacy aggregate-only records. Priorities use the latest five eligible independent attempts for each area, splitting shared marks across references, excluding assisted-only visits, and using exact unrounded thresholds (<45, <65, otherwise green). More than 15 days is stale; no independent evidence is missing. Labels accompany grey/RAG/icy styles. Displayed whole percentages truncate to avoid rounding below-threshold evidence into the next colour band.
+
+Recommendations appear above the full priority list. Three distinct eligible exam sets persist until completed, then show the requested encouragement and generate another batch. Ordering is missing evidence, fresh results ascending, then stale evidence. Selection uses complete profile history, independent of display filters, and honours the four-hour repeat rule. Progress now loads exam/programming banks for the available-area inventory. README and theming documentation updated.
+
+Relevant files: `js/profiles.js`, `js/revision.js`, `js/app.js`, `css/tokens.css`, `css/styles.css`, `tests/profiles-revision.test.js`, `scripts/browser-profiles.mjs`; regenerated `live/`.
+
+Verification: all 16 initial targeted profile/revision/subtopic/repeat tests passed (the existing all-variation subtopic check takes about four minutes including module setup). After refining shared-subtopic weighting, 10 profile/revision/repeat tests passed, including a new regression for assisted-only visits and fractional shared marks. Production build passed with 1340 templates; compatibility records unchanged. Focused production browser checks pass for first-use modal, fuzzy confirmation, switching, profile isolation, reload persistence, genuine set submissions, three-set batch renewal, named export, dated subtopic evidence, stale display and 390px layout; no browser exceptions. No full unrelated bank test suite was run. Browser artefacts stay under `/private/tmp`.
+
+Final next action: record final backup round-trip/browser result and diff check, then hand back for user review. No deployment or commit requested; local preview is http://127.0.0.1:8765. Local profiles are intentionally not secure accounts. Aggregate-only historical results cannot supply subtopic evidence. Existing four-hour tracking policy remains in force.
+
+Final verification complete: the expanded production browser check also passed a named JSON backup restore round-trip (three duplicate records correctly skipped), after the shared-subtopic weighting fix. Final `git diff --check` passed. Implementation complete, uncommitted and undeployed; next action is user review of the local preview.
+
+## 2026-10-05 — Document progress rules and improve profile restore / weekly feedback
+
+Objective: faithfully document the updated progress specification; automatically switch to the username in a restored backup; show the last tracked date in the header; add weekly activity and average-score trends.
+- [x] Inspect current progress documentation, import/profile lifecycle and test coverage.
+- [x] Implement validated automatic named-backup profile switching with feedback, last tracked date and weekly statistics/chart.
+- [x] Document exact behaviours, calculations, migration and limitations in the project specification.
+- [x] Run focused unit/browser checks, build static output and record results.
+Scope: preserve existing named profiles and reject invalid backups before switching or merging. Weekly figures use tracked completions, Monday–Sunday local calendar weeks, with clear labels and accessible chart data.
+Next action: inspect existing progress specifications and restore logic.
+
+
+Completed: `docs/spec-progress.md` is the adopted detailed progress/profile specification. It records exact dated evidence, profile matching/migration, last tracked dates, RAG thresholds and missing/stale annotations, independent per-area latest-five windows, shared-mark attribution, recommendation ordering/batch renewal, weekly metrics, named JSON restore and known backlog. The common spec links to it instead of retaining superseded parent-window/limited-evidence/manual-restore rules; docs index, README and style guide are aligned. Historic checkpoint entries remain unchanged as history.
+
+Named restores now validate/merge against the backup’s target profile without mutation, then activate the merged target and update the remembered username. Existing case/spacing-equivalent names are reused; new exact backup names create profiles; fuzzy backup matching is not automatic. A persistent on-page status and toast explain the switch and restored/duplicate counts. Invalid backups do not switch/create profiles. The outgoing profile remains intact. Header last-tracked date/time uses the latest tracked completion across that profile’s whole history, with an explicit no-records label, and refreshes on selection, submission and restore.
+
+Weekly section: selected-history filters apply; Monday–Sunday local calendar weeks; current-week tracked sets, equal-weight average final percentage per set, practice days; eight-week chart and equivalent table including minutes; comparison with the previous week when both have records. No-data weeks differ from 0%; current week is labelled incomplete; future records excluded. Unit checks cover Monday boundaries, UK daylight-saving change (169-hour week), empty/zero/future records, equal weighting and last tracked dates. Implementation in `js/weekly-progress.js`, `js/app.js`, `js/profiles.js`, shared CSS; tests in `tests/weekly-progress.test.js` and expanded `scripts/browser-profiles.mjs`.
+
+Verification: 13 focused weekly/profile/revision/repeat-attempt tests passed. Production build passed with 1340 templates and unchanged bank compatibility records. Production browser checks passed existing/new-profile automatic restore, same-profile duplicate restore, invalid-backup isolation, header dates, reload persistence, weekly stats/filtering, recommendation completion/renewal and mobile layout; no browser exceptions. Desktop (1280px) and mobile (390px) weekly screenshots inspected; temporary artefacts at `/private/tmp/starters-weekly-{desktop,mobile}.png`. No full unrelated bank suite repeated. Final diff check passed.
+
+Current next action: user review at http://127.0.0.1:8765. No required work remains for this request; changes are uncommitted and undeployed. The older 5 October manual profile-switch requirement is superseded by this completed entry and `docs/spec-progress.md`.
+
+## 2026-10-05 — Idle-aware practice time and named text backups
+
+Objective: record estimated engaged practice time, pausing after over one minute of inactivity, and export restorable JSON in `tlevel-practice-[username]-[datestring].txt` files.
+- [x] Inspect activity timing, resume/submission lifecycle and existing export/import tests.
+- [x] Implement persistent idle-aware practice timing without changing countdown deadlines; update export filenames and .txt restore support.
+- [x] Document timing semantics, compatibility and filename format; run focused tests, browser checks and production build.
+Scope: meaningful interaction resumes timing; reading/thinking without input can be undercounted. Preserve historical elapsed seconds and label the timing basis. Visible countdowns continue by deadline. Use a filename-safe username and local date/time string.
+Next action: inspect start, submit, tick and persistence handlers.
+
+Latest clarification: use 120 seconds (not 60) before pausing, and count any mouse movement, clicks/taps or scroll anywhere on the page while the activity is open; keyboard input also continues to count. Updated implementation/docs/tests accordingly. Recommended `.json` as the format-matching backup extension; a filename preference question is pending while timing work continues. Keep .txt until the user chooses otherwise. During focused testing, fixed a clock-accounting edge case so extending a countdown cannot retroactively add previously excluded time.
+
+Resolved filename choice: user selects `.json` (recommended). Final backup name is `tlevel-practice-[filename-safe username]-YYYY-MM-DD-HHMMSS.json`, using local export date/time. JSON-formatted .txt imports remain accepted. This supersedes the original .txt output request and pending question above.
+
+
+Completed with latest user choices: 120-second inactivity threshold; any mouse/pointer movement, clicks/taps, scrolling/touch movement or keyboard interaction across the open practice page resumes/renews measurement. Hidden documents, leaving the activity, profile switches and unload pause it immediately. Accumulated practice time persists separately from countdown/wall-clock time; loaded profile checkpoints never charge the offline gap. Visible timer deadlines continue running and submission caps measurement at the deadline. New `engagedSeconds` and `practiceMeasuredFrom` fields are stored with results and exported in JSON/CSV; old elapsed fields remain intact. Result/history/overall/weekly durations prefer engaged seconds and label older elapsed records. No engagement backfill for older completed work; older unfinished work begins measurement when displayed.
+
+Backup download is `tlevel-practice-[filename-safe username]-YYYY-MM-DD-HHMMSS.json` using local date/time; username inside JSON remains unchanged. Restore accepts JSON and JSON-formatted TXT and validates optional engaged-time fields. README, progress specification and shared timing specification document the 120-second policy, raw/engaged time distinction and filenames. No pause-state ticker was added: measurement remains hidden, with its policy explained on My progress.
+
+Verification: 18 focused timing/weekly/profile/revision/repeat tests passed. Production browser checks passed 120-second idle capping, mouse/click/scroll/keyboard renewal, hidden/reload gap exclusion, unchanged countdown deadline, engaged-time submission, final JSON filename and existing named-profile/recommendation/restore flows, with no browser exceptions. Browser scenario advances its isolated clock; no multi-minute idle wait. Production build passed with 1340 templates. One initial clock test exposed post-deadline accounting; the fixed implementation marks deadline-capped clocks inactive and retains the latest accounted timestamp. Final small profile-load hardening additionally marks loaded clocks paused; rerun focused profile/timing checks and rebuild before handoff.
+
+Remaining limitation: interaction is only a proxy for engagement; quiet reading/thinking longer than two minutes is undercounted. Abrupt browser termination can lose up to the latest 15-second checkpoint interval. Normal reloads preserve recorded accumulation. Next action: final focused checks/build/diff check, then user review; no deployment or commit requested.
+
+Final checks complete: all 10 focused timing/profile tests passed after profile-load hardening; final production rebuild (1340 templates) and `git diff --check` passed. Required work is complete. Next action is user review of the local preview; changes remain uncommitted and undeployed.
+
+## 2026-10-05 — Flag-and-poll inactivity tracking
+
+Objective: replace per-interaction clock settlement with a lightweight activity flag, consumed every five seconds to renew a two-minute expiry. Resume paused practice measurement immediately on interaction; start when the first question is displayed. Keep countdown deadlines independent.
+- [x] Inspect existing practice clock and browser tests.
+- [x] Implement flag/poll lifecycle, migrate active clock checkpoints and update exact documentation.
+- [x] Run focused clock/browser checks, rebuild and record outcomes.
+Next action: inspect practice-time module and activity lifecycle integration.
+
+
+Completed: page interactions now set IV; once pending, repeated mouse/pointer/click/scroll/keyboard events return without DOM queries, Date reads, clock settlement, storage writes or timer renewal. A single five-second interval consumes IV and renews the timestamp expiry by 120 seconds. Paused measurement resumes immediately on interaction. Initial display of Q1 starts measurement; ordinary rerendering alone cannot revive an idle clock. Settlement still caps at expiry/deadline so callback delays cannot add unlimited absence. Hiding/leaving/profile loading clears pending flags, and older clock checkpoints migrate their lastActivity-based expiry without losing measured totals. Countdown deadlines and JSON export conventions remain unchanged.
+
+Documentation: `docs/spec-progress.md` now states the exact IV/IT polling mechanism, ordinary 120–125-second inactivity window, fast event path, timestamp-based expiry and delayed-callback handling; README aligned. This supersedes the earlier per-event renewal mechanism, not the general policy of recording continuous engaged practice with idle pauses.
+
+Verification: 12 focused timing/profile tests passed, including bursts of thousands of events, five-second flag consumption, immediate resume, delayed polls, pause flag clearing and old clock migration. Production build passed (1340 templates), complete focused profile/progress/timing browser regression passed with no browser exceptions, and `git diff --check` passed. Browser simulated idle/background/reload intervals still record the expected engaged duration. No unrelated whole-bank suite repeated.
+
+Current next action: user review at http://127.0.0.1:8765. All requested work is complete, uncommitted and undeployed. The previous implementation updated timestamps rather than recreating timers per event; this change specifically reduces per-event processing and adopts the requested flag/poll timing semantics.
+
+## 2026-10-05 — Weekly minutes and priority colour verification
+
+- [x] Add current/previous-week practice minutes to the weekly card and document the display.
+- [x] Verify missing, red, amber, green and stale rules; remove the missing-state grey tint.
+- [x] Build and check the affected browser view/styles and focused statistics tests.
+Next action: inspect weekly markup and shared priority CSS.
+
+
+Completed: weekly card now displays minutes practised this week and last week, using existing filtered calendar-week totals and engaged-time/legacy fallback. Five stat tiles wrap responsively. Missing-data CSS was a cool grey (#e5e7eb), not the green state; replaced fill/text/border with neutral greys (#e6e6e6/#333/#888) to remove colour tint. RAG classes still reuse question feedback tokens; stale rows retain icy blue cross-line texture and annotation. Priority thresholds remain <45 red, >=45/<65 amber, >=65 green; missing overrides absence, stale overrides scored evidence older than 15 days.
+
+Verification: eight weekly/profile/revision unit tests passed, including threshold and stale boundaries. Production build passed (1340 templates), final diff check passed. Isolated browser fixture verified 5 current-week minutes and 7 prior-week minutes, exact rgb(230,230,230) missing fill across all eight palettes, distinct RAG fills and stale texture; no browser exceptions. Desktop 1280px and mobile 390px screenshots inspected, with no horizontal overflow. Temporary check/script/screenshots are under /private/tmp/browser-weekly-colours.mjs and /private/tmp/starters-weekly-colours-*.png; no student profile was modified (dedicated test browser only). Documentation updated in docs/spec-progress.md. No unrelated full browser/bank suite repeated.
+
+Next action: user reloads http://127.0.0.1:8765 to inspect. Implementation complete, uncommitted and undeployed.
+
+## 2026-10-05 — Clarify progress export controls
+
+- [x] Prioritise Save backup and Restore backup; reveal secondary CSV export through a small labelled disclosure.
+- [x] Explain backup versus spreadsheet use, update documentation, build and check the affected UI.
+Next action: update progress toolbar while preserving export/import handlers.
+
+
+Completed: Save backup and Restore backup use primary styling and appear before the smaller native “Spreadsheet options” disclosure. CSV is initially hidden; opening the disclosure explains spreadsheet viewing versus restoring progress. Backup actions also carry a concise preservation/transfer explanation. Handlers, filenames and data formats are unchanged. The disclosure supports touch and native keyboard activation, without requiring a prior download. Documentation updated in docs/spec-progress.md.
+
+Verification: production build passed (1340 templates). Focused isolated browser check passed initial CSV invisibility, primary backup styling, Space-key disclosure activation, backup/CSV download names and contents, restore-file-picker handler and desktop/mobile bounds. Inspected screenshots at /private/tmp/starters-backup-controls-{1280,390}.png. Initial Enter-only CDP key dispatch did not activate the disclosure; Space activation passed using native behaviour. Widened the desktop control group slightly after inspection to keep both primary buttons together. No data/marking tests repeated for this presentation-only change. Final rebuild/diff check pending; next action: finish those and user reloads preview.
+
+Final production rebuild and diff check passed. No required work remains. Next action: user review at http://127.0.0.1:8765; changes remain uncommitted and undeployed.
+
+## 2026-10-05 — Clarify and refine percentage averages
+
+- [x] Use exact per-set earned/available percentages for overall/weekly averages, rounding only the displayed mean.
+- [x] Make percentage labels explicit in cards, weekly chart/table and specification.
+- [x] Check mixed-maxima and rounding cases; rebuild static output.
+Finding: current implementation already averages saved percentages and displays %, but saved percentages are rounded first. Preserve equal weighting per set and improve precision; no marks pooling.
+
+
+Completed: shared averageSetPercentage calculates each set’s earned/max × 100 before taking an equal-weight mean; only the display is rounded. Legacy percentage-only values remain supported. Overall and weekly cards now say “Average final percentage”; weekly chart/table labels explicitly say percentage and explain normalisation. Specification includes the 1/2 + 9/10 → 70% example. Existing saved records are unchanged.
+
+Verification: all four weekly-statistics tests passed, including unequal maxima (70%, not pooled 83%) and a double-rounding regression (2/3 plus 1/2 displays 58%, not 59%). Production build passed (1340 templates) and diff check passed. No browser suite repeated for this arithmetic/label change. Next action: user reloads local preview; complete, uncommitted and undeployed.
+
+## 2026-10-05 — Blend missing-data grey with the default surface
+
+- [x] Apply a subtle default-surface mix to missing-data grey, with a neutral fallback.
+- [x] Update colour documentation; build and check the CSS change.
+Scope: use the same surface-based mixing approach as semantic feedback, with a small 5% surface contribution. Perceived neutrality remains theme/context dependent.
+
+
+Completed: missing-data fill and border use shared --missing-bg/--missing-border tokens with 95% neutral grey and 5% --surface mixed in OKLab; plain grey fallback retained. No main-accent blend or extra separator added. Progress/theming documentation updated.
+
+Verification: production build (1340 templates), diff check and focused isolated browser check passed. Verified colour-mix output across all eight palettes, distinct RAG colours, unchanged icy texture, desktop/mobile bounds; desktop Rose screenshot inspected. Perceived neutrality remains contextual and requires user judgement. Next action: user refreshes local preview to judge the subtle tint; no outstanding implementation work. Uncommitted/undeployed.
+
+
+## 2026-10-05 — Increase missing-data surface blend
+
+Plan: change missing-data fill/border to 90% grey and 10% surface; update docs and rebuild local preview. User explicitly requests no testing; visual review belongs to the user.
+Completed: fill/border now mix 90% grey with 10% surface. Documentation aligned and production preview rebuilt. No tests or browser checks run, as requested. Next action: user refreshes preview and judges colour.
+
+
+## 2026-10-05 — Mix missing-data grey with the dominant theme colour
+
+Plan: retain 90% grey, replace its 10% surface contribution with the main theme colour for fill and border only; align docs and rebuild. User will test; no tests or browser checks.
+Completed: missing-data fill and border now mix 90% grey with 10% --main. RAG highlights continue to mix with --surface. Documentation aligned; local production preview rebuilt. No tests/browser checks run as requested. Next action: user refreshes and evaluates appearance.
+
+## 2026-10-05 — Theme-blend progress RAG and icy highlights
+
+Plan: apply 90% semantic colour / 10% dominant theme colour to progress-only RAG fills/borders and icy fill/texture/border, retaining shared question-option surface blends. Update docs and rebuild preview. Preserve user's preference to do visual testing themselves; no test/browser runs.
+Completed: progress RAG fill/border tokens and stale icy fill/border/texture-line tokens now mix 90% semantic base with 10% --main in OKLab. Text colours, icy geometry, priority rules and question-option surface blends are unchanged. Unmixed fallbacks retained. Documentation aligned and preview rebuilt (1340 templates). No tests or browser checks run, respecting the user's ongoing visual-testing preference. Next action: user refreshes local preview; complete, uncommitted and undeployed.

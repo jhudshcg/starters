@@ -1,3 +1,7 @@
+import {initialisePractice,settlePractice,engagePractice,notePracticeInteraction,pollPractice,INTERACTION_POLL_MS,pausePractice,practiceSeconds,validPracticeTime,backupFilename} from './practice-time.js';
+import {lastTracked,weeklyProgress,averageSetPercentage} from './weekly-progress.js';
+import {profiles,loadProfile,saveProfile,selectProfile,activateProfile,nameMatch,normaliseName} from './profiles.js';
+import {revisionPriorities,updateRecommendations} from './revision.js';
 import {bankRelease,CODE_FORMAT} from './bank-release.js';
 import {generationLabel,sameGeneration} from './progress-generation.js';
 import {examSections,isExamBank} from './exam-sections.js';
@@ -15,7 +19,7 @@ import {codeDiagnostics} from './code-diagnostics.js';
 import {openIssueReport} from './issue-report.js';
 import {encode, questionCode, BANK_VERSION} from './codes.js';
 import {markQuestion} from './marking.js';
-import {loadStorage, saveStorage, migrateStoredCodes, deadlineState, priorities, exportCSV, attemptEligibility, recordPractice, REATTEMPT_HOURS, partScores, validatePartScores} from './progress.js';
+import {loadStorage, migrateStoredCodes, deadlineState, exportCSV, attemptEligibility, recordPractice, REATTEMPT_HOURS, partScores, validatePartScores} from './progress.js';
 
 const $=s=>document.querySelector(s);
 const main=$('#main');
@@ -53,8 +57,44 @@ const canReview=()=>hasRecentSubmission(data.active);
 let priorityLevel='topic';
 let filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
 function storageError(){storageOK=false;$('#storage-warning').hidden=false;$('#storage-warning').textContent='Progress could not be saved on this browser. You can keep practising. Export a backup from My progress to keep your results.';}
-try{data=loadStorage();if(data.active?.migratedCodeFrom){if(location.hash===`#set=${encodeURIComponent(data.active.migratedCodeFrom)}`)history.replaceState(null,'',`#set=${encodeURIComponent(data.active.code)}`);delete data.active.migratedCodeFrom;}if(data.active){try{historicalSet(data.active.code);}catch{data.active=null;saveStorage(data);}}}catch{storageError();}
-function persist(){try{saveStorage(data);}catch{storageError();}}
+try{data=profiles().current?loadProfile(profiles().current):loadStorage();if(data.active?.migratedCodeFrom){if(location.hash===`#set=${encodeURIComponent(data.active.migratedCodeFrom)}`)history.replaceState(null,'',`#set=${encodeURIComponent(data.active.code)}`);delete data.active.migratedCodeFrom;}if(data.active){try{historicalSet(data.active.code);}catch{data.active=null;saveProfile(data);}}}catch{storageError();}
+function persist(){if(data.active&&!data.active.finished)settlePractice(data.active);try{saveProfile(data);}catch{storageError();}if(data.username)profileHeader();}
+function profileHeader(){
+  let el=$('#profile-welcome');
+  if(!el){el=document.createElement('div');el.id='profile-welcome';$('.site-header').append(el);}
+  const last=lastTracked(data.history);
+  el.innerHTML=`<span>Welcome back ${esc(data.username??'')}</span> <button class="subtle" id="switch-profile">Not you?</button><small class="last-tracked">${last===null?'No tracked practice yet':`Last tracked: ${esc(new Date(last).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'}))}`}</small>`;
+  $('#switch-profile').onclick=()=>chooseProfile(true);
+}
+function chooseProfile(switching=false){
+  if(data.active&&!data.active.finished){pausePractice(data.active);persist();}
+  return new Promise(resolve=>{
+    const dialog=document.createElement('dialog');dialog.setAttribute('aria-labelledby','profile-title');
+    dialog.innerHTML=`<h2 id="profile-title">Your progress profile</h2><p>Enter your name to keep your progress on this computer. Export regularly to your student OneDrive.</p><form><label for="profile-name">Your name</label><input id="profile-name" name="username" maxlength="80" required autocomplete="name"><p id="profile-message" role="status"></p><div class="actions"><button class="primary" type="submit">Continue</button>${switching?'<button type="button" id="profile-cancel">Cancel</button>':''}</div></form>`;
+    document.body.append(dialog);dialog.showModal();
+    dialog.oncancel=e=>{if(!switching)e.preventDefault();};dialog.onclose=()=>{dialog.remove();if(practiceVisible())engagePractice(data.active);resolve();};
+    dialog.querySelector('#profile-cancel')?.addEventListener('click',()=>dialog.close());
+    const finish=name=>{
+      try{persist();data=selectProfile(name);}catch{storageError();data={schema:1,active:null,history:[],username:name};}
+      filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};profileHeader();dialog.close();
+      if(switching){history.replaceState(null,'','#home');main.innerHTML='';render();}
+    };
+    dialog.querySelector('form').onsubmit=e=>{
+      e.preventDefault();const name=normaliseName(dialog.querySelector('input').value);if(!name)return;
+      let names=[];try{names=profiles().names;}catch{storageError();}
+      const match=nameMatch(name,names);
+      if(match.suggestion){
+        const message=dialog.querySelector('#profile-message');
+        message.innerHTML=`Did you mean <strong>${esc(match.suggestion)}</strong>? <button type="button" id="use-match">Yes, use this profile</button> <button type="button" id="use-entered">No, use ${esc(name)}</button>`;
+        message.querySelector('#use-match').onclick=()=>finish(match.suggestion);
+        message.querySelector('#use-entered').onclick=()=>finish(name);
+      }else finish(match.exact??name);
+    };
+  });
+}
+function revisionAreas(level){
+  return level==='subtopic'?focuses(1).flatMap(parent=>examSubtopics(parent).map(({reference})=>({type:1,focus:reference,parent}))):[1,2].flatMap(type=>focuses(type).map(focus=>({type,focus})));
+}
 function toast(message){$('#toast').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').textContent='',4500);}
 function activeSet(){return data.active?{...resolve(data.active.code),examSubtopic:data.active.examSubtopic??'all'}:null;}
 function navigate(hash){if(location.hash===hash)render();else location.hash=hash;}
@@ -76,10 +116,12 @@ function askLeave(){
 }
 async function start(set,{force=false,challengeLevel=null,inSequence=false}={}){
   if(!force && !await askLeave())return;
+  if(data.active&&!data.active.finished){pausePractice(data.active);persist();}
   if(set.type===0){const levels=new Set(set.questions.map(q=>q.challengeLevel));data.puzzleChallenge=challengeLevel??(levels.size===1?[...levels][0]:'all');}
   const now=Date.now();
   clearTimeout(toastTimer);$('#toast').textContent='';
   data.active={generation:bankRelease.generation,bankVersion:BANK_VERSION,id:crypto.randomUUID(),contentVersion:BANK_VERSION,code:set.code,mathsTopic:set.mathsTopic??'all',examSubtopic:set.type===1?(set.examSubtopic??'all'):'all',inSequence:set.type===1&&inSequence,answers:{},checks:{},first:{},hints:{},reveals:{},started:now,origin:now,saved:now,deadline:set.minutes?now+set.minutes*60000:null,finished:null,outcome:null,timingEvents:[],tracking:attemptEligibility(data,set.code,now)};
+  initialisePractice(data.active,now);
   persist();setHash(set.code);render();main.focus();
 }
 function home(){
@@ -135,6 +177,7 @@ function activity(){
   $('.global-code-entry').hidden=false;
   const set=activeSet(),a=data.active;
   if(!set){home();return;}
+  if(!a.finished&&!document.hidden&&!document.querySelector('dialog[open]')&&$('#display-code')?.textContent!==a.code)engagePractice(a);
   const record=a.result??data.history.find(r=>r.id===a.id);
   a.tracking??={...attemptEligibility({...data,history:data.history.filter(r=>r.id!==a.id)},a.code,a.started),...(record?{eligible:true}:{})};
   const untracked=!a.tracking.eligible;
@@ -152,10 +195,10 @@ function activity(){
   ${trackingNotice}
   ${set.type===3?'<p class="esp-notice">Each question is independent and designed for no more than 5 minutes. Scores cover automatic checks only; written reasoning needs separate review. These are practice marks, not ESP grades.</p>':''}
   ${subtopic!=='all'?`<details class="subtopic-notice"><summary>In sequence questions info</summary><p>Primary focus: <strong>${esc(subtopic)}</strong>. ${matchingQuestions} of ${set.questions.length} questions match.${matchingQuestions<set.questions.length?` ${set.questions.length-matchingQuestions} ${set.questions.length-matchingQuestions===1?'question adds':'questions add'} related ${esc(set.focus)} practice.`:''} Matching parts are labelled; marks are tracked against each part’s spec references.</p></details>`:''}
-  ${record?`<section class="result-banner" aria-label="Activity result"><span class="result-score">${record.percentage}%</span><div><h2>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</h2><p>${record.earned}/${record.max} marks · time: ${duration(record.seconds).replace(':','.')}${record.assisted?' · Assisted practice':''}${untracked?' · Practice only — progress not updated':''}. ${canReview()?'Review your feedback below.':'Submit your saved answers to unlock review for another four hours.'}</p></div><button id="retry">Try this set again</button></section>`:''}
+  ${record?`<section class="result-banner" aria-label="Activity result"><span class="result-score">${record.percentage}%</span><div><h2>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</h2><p>${record.earned}/${record.max} marks · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}${untracked?' · Practice only — progress not updated':''}. ${canReview()?'Review your feedback below.':'Submit your saved answers to unlock review for another four hours.'}</p></div><button id="retry">Try this set again</button></section>`:''}
   <section class="set-toolbar" aria-label="Set code and timing"><div class="code-block"><div><div class="code-label">YOUR ${set.questions.length===1?'ACTIVITY':'SET'} CODE</div><div class="set-code" id="display-code">${esc(a.code)}</div></div><div class="code-actions"><button id="copy-code">Copy code</button><button id="copy-link">Copy link</button></div></div><div class="timer-controls"><span class="timer-display" id="timer">${a.deadline?'':'Untimed'}</span><label for="minutes">Timer</label><select id="minutes" ${a.finished?'disabled':''}>${Array.from({length:11},(_,i)=>i+5).map(m=>`<option value="${m}" ${m===(set.minutes??types[set.type].minutes)?'selected':''}>${m} min</option>`).join('')}</select><button id="timer-toggle" ${a.finished?'disabled':''}>${a.deadline?'Stop timer':'Start timer'}</button></div></section>
   <div class="random-controls"><button id="new-type" ${inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':''}>${inSequence?'Next question set':'Get new question set ↗'}</button><button id="new-focus" ${inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':!inSequence&&!sameFocusAlternatives?'disabled title="No other question combination matches this selection. Use Get new permutation."':''}>${inSequence?'Next set in sequence':subtopic==='all'?'New set in this focus':'New set with this subtopic'}</button><button id="permutation" ${set.questions.some(q=>q.variations.length<2)?'disabled title="This set includes a fixed problem. Choose a new set for different puzzles."':''}>Get new permutation ↻</button></div>
-  <section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · time: ${duration(record.seconds).replace(':','.')}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>`;
+  <section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>`;
   bindPuzzles(main,set,a,(slot,id,value,selector)=>{
     a.answers[slot]??={};a.answers[slot][id]=value;a.saved=Date.now();
     // New puzzle moves invalidate visible feedback but retain first-response evidence.
@@ -209,7 +252,7 @@ function activity(){
     const now=Date.now(),stop=a.deadline!==null,minutes=stop?null:Number($('#minutes').value);
     a.deadline=stop?null:now+minutes*60000;if(!stop){a.origin=now;a.warned=false;}
     a.timingEvents.push({at:now,minutes});a.code=encode({...set,minutes});a.saved=now;
-    setHash(a.code);persist();activity();toast(stop?'Timer stopped. You can continue at your own pace.':'Timer started. Time taken starts from now.');
+    setHash(a.code);persist();activity();toast(stop?'Timer stopped. You can continue at your own pace.':'Timer started. Estimated practice time continues accumulating.');
   };
   tick();
 }
@@ -253,6 +296,7 @@ function submit(outcome){
   }
   a.finished=now;a.outcome=outcome;
   const stop=outcome==='expired'?a.deadline:now;
+  if(a.practiceClock)pausePractice(a,stop);
   const record={generation:a.generation,bankVersion:BANK_VERSION,started:a.started,id:a.id,code:encode({...set,version:BANK_VERSION}),type:set.type,focus:set.focus,finished:now,earned,max:set.total,percentage:Math.round(earned/set.total*100),seconds:Math.max(0,Math.round((stop-a.origin)/1000)),totalSeconds:Math.max(0,Math.round((stop-a.started)/1000)),attemptChecks:Object.values(a.checks).reduce((s,n)=>s+n,0),assisted:Object.keys(a.hints).length>0||Object.keys(a.reveals).length>0,outcome,firstEarned,firstMax,partScores:partScores(set,a.first,finalResults)};
   if(set.type===3){
     a.espReview=Object.fromEntries(set.questions.flatMap(q=>{
@@ -262,12 +306,16 @@ function submit(outcome){
     record.espReview=structuredClone(a.espReview);
   }
   a.tracking??=attemptEligibility(data,a.code,a.started);
+  if(a.practiceClock){record.engagedSeconds=Math.floor(a.practiceClock.milliseconds/1000);record.practiceMeasuredFrom=a.practiceClock.measuredFrom;}
   recordPractice(data,record,a.tracking);a.result=record;persist();render();if(location.hash.startsWith('#set=')&&outcome==='submitted')$('#submit-result')?.focus();toast(`${outcome==='expired'?'Time’s up. ':''}${record.percentage}%. ${!a.tracking.eligible?'Practice only — progress not updated.':storageOK?'Result saved.':'Export to keep your result.'}`);
 }
+let lastPracticeSave=Date.now();
+function practiceVisible(){return data.active&&!data.active.finished&&!document.hidden&&$('#display-code')?.textContent===data.active.code&&!document.querySelector('#profile-name');}
 function tick(){
   if(data.active&&!banks[historicalSet(data.active.code).type])return;
   const a=data.active;if(!a)return;
   if(a.finished&&!canReview()&&main.querySelector('[data-reveal]')){activity();return;}
+  if(!a.finished&&a.practiceClock){settlePractice(a);if(Date.now()-lastPracticeSave>=15000){lastPracticeSave=Date.now();persist();}}
   const state=deadlineState(a);
   if(!a.finished&&state.expired){submit('expired');return;}
   const el=$('#timer');if(!el)return;
@@ -278,21 +326,32 @@ function tick(){
 }
 async function copy(value){try{await navigator.clipboard.writeText(value);toast('Copied.');}catch{const dialog=document.createElement('dialog');dialog.innerHTML=`<h2>Copy this code or link</h2><input aria-label="Text to copy" value="${esc(value)}" style="width:100%"><form method="dialog"><button>Close</button></form>`;document.body.append(dialog);dialog.onclose=()=>dialog.remove();dialog.showModal();dialog.querySelector('input').select();}}
 function download(content,name,type){const url=URL.createObjectURL(new Blob([content],{type}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function weeklyHTML(rows){
+  const weeks=weeklyProgress(rows),current=weeks.at(-1),previous=weeks.at(-2);
+  const label=at=>new Date(at).toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+  const change=current.average===null||previous.average===null?null:Math.round(current.average-previous.average);
+  const trend=change===null?'Complete tracked sets each week to build your trend.':change===0?'Your average so far this week matches last week.':`Your average so far this week is ${Math.abs(change)} percentage points ${change>0?'higher':'lower'} than last week.`;
+  return `<section class="progress-panel" id="weekly-progress"><h2>This week’s practice</h2><p class="muted">Week beginning ${label(current.start)} · Monday–Sunday · uses the filters above.</p><div class="progress-summary"><div class="stat"><strong>${current.count}</strong><span>Sets completed so far</span></div><div class="stat"><strong>${current.average===null?'—':Math.round(current.average)+'%'}</strong><span>Average final percentage</span></div><div class="stat"><strong>${current.days}</strong><span>Days practised this week</span></div><div class="stat"><strong>${current.minutes}</strong><span>Minutes practised this week</span></div><div class="stat"><strong>${previous.minutes}</strong><span>Minutes practised last week</span></div></div><p>${trend}</p><h3>Weekly average percentage</h3><p class="muted">Last eight weeks, including this week so far. Each set’s marks are converted to a percentage, then averaged equally. Final scores include retries. Different topics and difficulty can affect the trend.</p><div class="weekly-chart" role="img" aria-label="Weekly average final percentages. Exact dates, scores and completion counts follow in the weekly results table.">${weeks.map(w=>`<div class="weekly-column"><strong>${w.average===null?'—':Math.round(w.average)+'%'}</strong><div class="weekly-track">${w.average===null?'':`<div class="weekly-bar" style="height:${Math.max(2,w.average)}%"></div>`}</div><small>${label(w.start)}</small></div>`).join('')}</div><details><summary>Weekly results table</summary><div class="history-wrap"><table class="history"><caption>Weeks beginning Monday · current week is incomplete</caption><thead><tr><th>Week beginning</th><th>Sets completed</th><th>Average percentage</th><th>Days practised</th><th>Minutes</th></tr></thead><tbody>${weeks.map(w=>`<tr><td>${esc(new Date(w.start).toLocaleDateString('en-GB'))}</td><td>${w.count}</td><td>${w.average===null?'No tracked sets':Math.round(w.average)+'%'}</td><td>${w.days}</td><td>${w.minutes}</td></tr>`).join('')}</tbody></table></div></details></section>`;
+}
 function progress(){
   $('.global-code-entry').hidden=false;
   let rows=data.history.filter(r=>(filters.type==='all'||r.type===Number(filters.type))&&(filters.focus==='all'||r.focus===filters.focus)&&(!filters.from||r.finished>=new Date(`${filters.from}T00:00:00`).getTime())&&(!filters.to||r.finished<new Date(`${filters.to}T23:59:59.999`).getTime()+1));
   rows.sort((a,b)=>filters.sort==='score'?b.percentage-a.percentage:filters.sort==='oldest'?a.finished-b.finished:b.finished-a.finished);
-  const average=rows.length?Math.round(rows.reduce((s,r)=>s+r.percentage,0)/rows.length):0,priority=priorities(rows,priorityLevel);
+  const average=rows.length?Math.round(averageSetPercentage(rows)):0,priority=revisionPriorities(rows,revisionAreas(priorityLevel).filter(a=>(filters.type==='all'||a.type===Number(filters.type))&&(filters.focus==='all'||a.focus===filters.focus||a.parent===filters.focus)));
+  if(updateRecommendations(data,revisionAreas('subtopic'),area=>choose(1,area.parent,null,'new','all',area.focus)))persist();
   const evidenceMarks=value=>Number(value.toFixed(2)).toString();
   const select=(key,options)=>`<select id="filter-${key}">${options.map(([v,l])=>`<option value="${v}" ${filters[key]===v?'selected':''}>${esc(l)}</option>`).join('')}</select>`;
-  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><div class="eyebrow">A little better, every time</div><h1>My progress</h1><p class="muted">Tracked attempts, saved on this browser. Leave at least four hours after completing a set before starting another tracked attempt at it. Export regularly to your student OneDrive.</p></div><div class="code-actions"><button id="export-csv">Export CSV</button><button id="export-backup">Save backup</button><button id="import-backup">Restore backup</button><input type="file" id="backup-file" accept="application/json,.json" hidden></div></div>
+  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><div class="eyebrow">A little better, every time</div><h1>My progress</h1><p class="muted">Tracked attempts, saved on this browser. Leave at least four hours after completing a set before starting another tracked attempt at it. Export regularly to your student OneDrive. Practice time pauses after two minutes without interaction and while the activity is hidden. Older records retain elapsed time.</p></div><div class="progress-transfers"><div class="progress-transfer-actions"><button class="primary" id="export-backup">Save backup</button><button class="primary" id="import-backup">Restore backup</button><details class="spreadsheet-options"><summary>Spreadsheet options</summary><p>CSV is for viewing results in a spreadsheet. Use a backup to restore your progress.</p><button id="export-csv">Export CSV</button></details></div><p class="muted">Save a backup to keep your progress or move it to another computer.</p><input type="file" id="backup-file" accept="text/plain,application/json,.txt,.json" hidden></div></div>
   <div class="filters"><label>Type${select('type',[['all','All types'],...types.map((t,i)=>[String(i),t.name])])}</label><label>Focus${select('focus',[['all','All focuses'],...Object.entries(focusNames)])}</label><label>From<input type="date" id="filter-from" value="${filters.from}"></label><label>To<input type="date" id="filter-to" value="${filters.to}"></label><label>Sort${select('sort',[['newest','Newest first'],['oldest','Oldest first'],['score','Highest score']])}</label></div>
-  <section class="progress-summary" style="margin-top:1.5rem"><div class="stat"><strong>${rows.length}</strong><span>Completed activities</span></div><div class="stat"><strong>${rows.length?average+'%':'—'}</strong><span>Average final score</span></div><div class="stat"><strong>${Math.round(rows.reduce((s,r)=>s+r.seconds,0)/60)}</strong><span>Minutes of practice</span></div></section>
+  <section class="progress-summary" style="margin-top:1.5rem"><div class="stat"><strong>${rows.length}</strong><span>Completed activities</span></div><div class="stat"><strong>${rows.length?average+'%':'—'}</strong><span>Average final percentage</span></div><div class="stat"><strong>${Math.round(rows.reduce((s,r)=>s+practiceSeconds(r),0)/60)}</strong><span>Minutes of practice</span></div></section>
+  ${weeklyHTML(rows)}
+  <section class="progress-panel"><h2>Recommended exam revision</h2><p>Missing data first, then scores from lowest to highest, then stale data.</p>${data.recommendations?.celebrate?'<p role="status">good job on completing some recommended revision! see what’s next...</p>':''}<div class="recommended-sets">${data.recommendations?.items.map(item=>`<div><p>${esc(item.focus)} · ${esc(item.reason)}</p>${item.completed?`<strong>Completed · <code>${esc(item.code)}</code></strong>`:`<button class="history-code" data-code="${esc(item.code)}"><code>${esc(item.code)}</code> · Practise</button>`}</div>`).join('')??'<p>No available recommendations yet.</p>'}</div></section>
   <section class="progress-panel"><h2>What to practise next</h2><label for="priority-level">Show priorities by</label> <select id="priority-level"><option value="topic" ${priorityLevel==='topic'?'selected':''}>Topic / programming focus</option><option value="subtopic" ${priorityLevel==='subtopic'?'selected':''}>Exam subtopic</option></select>
-  <p class="muted" style="font-size:.8rem">First responses from your latest five eligible detailed attempts per topic or programming focus. Subtopics use those same attempts. Answers assisted before the first check and puzzles are excluded.</p>
+  <p class="muted" style="font-size:.8rem">First responses from your latest five eligible detailed attempts per topic or programming focus. Subtopics use their latest five relevant attempts. Answers assisted before the first check and puzzles are excluded.</p>
   <p class="muted" style="font-size:.8rem">Earlier results without subtopic scores stay in your history, but do not contribute to these priorities.</p>
-  ${priority.length?priority.map(p=>`<div class="priority-row"><span>${esc(focusNames[p.focus]??p.focus)}</span><meter min="0" max="100" value="${p.score}" aria-label="${esc(p.focus)} first-response score">${p.score}%</meter><strong>${p.score}%</strong><small>${p.count<3||p.max<10?'Limited evidence · ':''}${p.count} ${p.count===1?'attempt':'attempts'} · ${evidenceMarks(p.max)} marks assessed</small></div>`).join(''):'<p class="muted">No detailed evidence in this view yet. Complete a new exam or programming activity, or adjust the filters.</p>'}</section>
-  ${rows.length?`<section class="progress-panel"><h2>Score over time</h2><div class="chart" role="img" aria-label="Final scores for up to 12 recent activities, oldest to newest. Exact scores and dates are in the table below.">${[...rows].sort((a,b)=>a.finished-b.finished).slice(-12).map(r=>`<div class="chart-column"><span>${r.percentage}%</span><div class="chart-bar" style="height:${Math.max(2,r.percentage)}%"></div></div>`).join('')}</div><div class="history-wrap"><table class="history"><caption>Activity history · final scores include retries within an activity</caption><thead><tr><th>Date</th><th>Activity / focus</th><th>Code</th><th>Score</th><th>Time</th><th>Checks</th><th>Practice</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(new Date(r.finished).toLocaleString('en-GB',{dateStyle:'short',timeStyle:'short'}))}</td><td>${types[r.type]?.name??'Bank '+r.type}<br><span class="muted">${esc(focusNames[r.focus])}</span></td><td>${sameGeneration(r)?`<button class="subtle history-code" data-code="${esc(r.code)}">`: '<span>'}<code>${esc(r.code)}</code>${sameGeneration(r)?'</button>':'</span>'}${generationLabel(r)?`<br><small>${esc(generationLabel(r))}</small>`:''}</td><td><strong>${r.percentage}%</strong><br>${r.earned}/${r.max}</td><td>${duration(r.seconds)}</td><td>${r.attemptChecks}</td><td>${r.assisted?'Assisted':'Independent'}${r.outcome==='expired'?'<br>Timer expired':''}</td></tr>`).join('')}</tbody></table></div></section>`:'<div class="empty-state"><h2>No results here yet.</h2><p class="muted">Try an activity, or adjust your filters.</p><a href="#home">Find an activity →</a></div>'}
+  ${priority.map(p=>`<div class="priority-row priority-${p.status}"><span>${esc(focusNames[p.focus]??p.focus)}</span><strong>${p.score===null?'No score':Math.floor(p.score)+'%'}</strong><small>${p.status==='missing'?'missing data, please practice this area to assess revision priority':p.status==='stale'?'stale data, revise this area soon to check if you still have the skills!':p.status==='red'?'High revision priority':p.status==='amber'?'Developing skills':'Secure skills'}${p.last?` · Last practised ${esc(new Date(p.last).toLocaleDateString('en-GB'))} · ${p.count} attempts · ${evidenceMarks(p.max)} marks assessed`:''}</small></div>`).join('')}</section>
+
+  ${rows.length?`<section class="progress-panel"><h2>Score over time</h2><div class="chart" role="img" aria-label="Final scores for up to 12 recent activities, oldest to newest. Exact scores and dates are in the table below.">${[...rows].sort((a,b)=>a.finished-b.finished).slice(-12).map(r=>`<div class="chart-column"><span>${r.percentage}%</span><div class="chart-bar" style="height:${Math.max(2,r.percentage)}%"></div></div>`).join('')}</div><div class="history-wrap"><table class="history"><caption>Activity history · final scores include retries within an activity</caption><thead><tr><th>Date</th><th>Activity / focus</th><th>Code</th><th>Score</th><th>Time</th><th>Checks</th><th>Practice</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(new Date(r.finished).toLocaleString('en-GB',{dateStyle:'short',timeStyle:'short'}))}</td><td>${types[r.type]?.name??'Bank '+r.type}<br><span class="muted">${esc(focusNames[r.focus]??r.focus)}</span>${r.partScores?.length?`<details><summary>Topic / subtopic results</summary>${revisionPriorities([r],[...new Set(r.partScores.flatMap(p=>p.refs))].map(focus=>({type:r.type,focus})),r.finished).map(p=>`<div>${esc(p.focus)}: ${p.score===null?'Assisted — no independent score':Math.round(p.score)+'% first response'}</div>`).join('')}</details>`:''}</td><td>${sameGeneration(r)?`<button class="subtle history-code" data-code="${esc(r.code)}">`: '<span>'}<code>${esc(r.code)}</code>${sameGeneration(r)?'</button>':'</span>'}${generationLabel(r)?`<br><small>${esc(generationLabel(r))}</small>`:''}</td><td><strong>${r.percentage}%</strong><br>${r.earned}/${r.max}</td><td>${duration(practiceSeconds(r))}<br><small>${r.engagedSeconds===undefined?'Elapsed (older record)':'Estimated active time'}</small></td><td>${r.attemptChecks}</td><td>${r.assisted?'Assisted':'Independent'}${r.outcome==='expired'?'<br>Timer expired':''}</td></tr>`).join('')}</tbody></table></div></section>`:'<div class="empty-state"><h2>No results here yet.</h2><p class="muted">Try an activity, or adjust your filters.</p><a href="#home">Find an activity →</a></div>'}
   <p class="muted" style="font-size:.8rem">${bankRelease.latestRolloverAt?`Latest bank rollover: ${esc(new Date(bankRelease.latestRolloverAt).toLocaleDateString('en-GB'))}. Codes issued before that date may open different questions. `:''}CSV is for viewing in a spreadsheet. Use Save backup / Restore backup to move your complete history between browsers. CSV import is planned for a later release.</p>`;
   for(const key of Object.keys(filters))$(`#filter-${key}`).onchange=e=>{filters[key]=e.target.value;progress();$(`#filter-${key}`).focus();};
   $('#priority-level').onchange=e=>{priorityLevel=e.target.value;progress();$('#priority-level').focus();};
@@ -300,24 +359,30 @@ function progress(){
   if(rows.some(r=>r.espReview)){
     main.insertAdjacentHTML('beforeend',`<section class="esp-review"><h2>Saved ESP written reasoning</h2><p>Automatic percentages exclude these responses. Review status records a review, not a grade. Backups and CSV exports include the text.</p>${rows.filter(r=>r.espReview).map(r=>`<details><summary>${esc(r.code)} · ${esc(new Date(r.finished).toLocaleDateString())}</summary>${Object.entries(r.espReview).map(([slot,v])=>`<h3>Question slot ${esc(slot)} · ${esc(v.status)}</h3><p>${esc(v.text||'No written response entered.')}</p>`).join('')}</details>`).join('')}</section>`);
   }
-  $('#export-backup').onclick=()=>download(JSON.stringify({schema:1,codeFormat:CODE_FORMAT,lastSeenRelease:{...bankRelease},history:data.history,recentAttempts:data.recentAttempts??{},recentAttemptsGeneration:data.recentAttemptsGeneration??bankRelease.generation,archivedActive:data.archivedActive??[],archivedRecentAttempts:data.archivedRecentAttempts??[]},null,2),'starter-progress-backup.json','application/json');
+  $('#export-backup').onclick=()=>download(JSON.stringify({schema:1,codeFormat:CODE_FORMAT,lastSeenRelease:{...bankRelease},username:data.username,history:data.history,recentAttempts:data.recentAttempts??{},recentAttemptsGeneration:data.recentAttemptsGeneration??bankRelease.generation,archivedActive:data.archivedActive??[],archivedRecentAttempts:data.archivedRecentAttempts??[]},null,2),backupFilename(data.username),'application/json');
   $('#import-backup').onclick=()=>$('#backup-file').click();
   $('#backup-file').onchange=async e=>{
     try{
       const file=e.target.files[0];if(!file)return;if(file.size>5000000)throw Error('Backup is too large (maximum 5 MB).');
       const imported=JSON.parse(await file.text());
       if(imported.schema!==1||!Array.isArray(imported.history)||imported.history.length>10000)throw Error('Unsupported backup format.');
+      if(imported.username!==undefined&&(typeof imported.username!=='string'||!normaliseName(imported.username)||normaliseName(imported.username).length>80))throw Error('Backup contains an invalid username. Nothing was imported.');
+      const requested=imported.username===undefined?data.username:normaliseName(imported.username);
+      const username=nameMatch(requested,profiles().names).exact??requested;
+      const switching=username!==data.username;
+      const target=switching?loadProfile(username):data;
       migrateStoredCodes(imported);
-      let added=0,duplicate=0;let next=[...data.history];
+      let added=0,duplicate=0;let next=[...target.history];
       for(const r of imported.history){
         const set=recordedSet(r);
         if(typeof r.id!=='string'||r.id.length>100||r.type!==set.type||r.focus!==set.focus||r.max!==set.total||!Number.isFinite(r.finished)||!Number.isFinite(new Date(r.finished).getTime())||!Number.isFinite(r.seconds)||r.seconds<0||!Number.isInteger(r.earned)||r.earned<0||r.earned>r.max||r.percentage!==Math.round(r.earned/r.max*100)||!Number.isInteger(r.firstMax)||r.firstMax<0||r.firstMax>r.max||!Number.isInteger(r.firstEarned)||r.firstEarned<0||r.firstEarned>r.firstMax||!Number.isInteger(r.attemptChecks)||r.attemptChecks<0||typeof r.assisted!=='boolean'||!['submitted','expired'].includes(r.outcome))throw Error('Backup contains an invalid result. Nothing was imported.');
+        if(!validPracticeTime(r))throw Error('Backup contains invalid practice time. Nothing was imported.');
         if(!validatePartScores(r,set))throw Error('Backup contains invalid part scores. Nothing was imported.');
         if(r.espReview!==undefined&&(!r.espReview||typeof r.espReview!=='object'||Array.isArray(r.espReview)||Object.entries(r.espReview).some(([slot,v])=>!set.entries.some(e=>String(e.slot)===slot)||!v||typeof v.text!=='string'||v.text.length>1200||!['Needs review','Self-reviewed','Teacher-reviewed'].includes(v.status))))throw Error('Backup contains invalid written reviews.');
         const old=next.find(a=>a.id===r.id);
         if(old){if(JSON.stringify(old)!==JSON.stringify(r))throw Error('A result conflicts with this browser’s history. Nothing was imported.');duplicate++;}else{next.push(r);added++;}
       }
-      const recent={...data.recentAttempts};
+      const recent={...target.recentAttempts};
       if(imported.recentAttempts!==undefined&&imported.recentAttemptsGeneration===bankRelease.generation){
         if(!imported.recentAttempts||typeof imported.recentAttempts!=='object'||Array.isArray(imported.recentAttempts)||Object.keys(imported.recentAttempts).length>10000)throw Error('Backup contains invalid practice dates.');
         for(const [code,at] of Object.entries(imported.recentAttempts)){
@@ -326,7 +391,14 @@ function progress(){
           recent[key]=Math.max(recent[key]??0,at);
         }
       }
-      data.history=next;data.recentAttempts=recent;data.recentAttemptsGeneration=bankRelease.generation;for(const key of ['archivedActive','archivedRecentAttempts']){if(Array.isArray(imported[key]))data[key]=[...data[key]??[],...imported[key]];}persist();progress();toast(`${added} results restored; ${duplicate} duplicates skipped.`);
+      const merged={...target,history:next,recentAttempts:recent,recentAttemptsGeneration:bankRelease.generation};
+      for(const key of ['archivedActive','archivedRecentAttempts'])if(Array.isArray(imported[key]))merged[key]=[...target[key]??[],...imported[key]];
+      // Validation above is read-only: a bad backup must never select another profile.
+      try{data=activateProfile(merged);}catch{storageError();throw Error('Could not save the restored profile. Your selected profile has not changed.');}
+      if(switching)filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
+      profileHeader();progress();
+      const message=`${switching?`Switched to ${data.username}, the profile named in this backup. `:''}${added} results restored; ${duplicate} duplicates skipped.`;
+      const notice=document.createElement('p');notice.className='restore-notice';notice.setAttribute('role','status');notice.textContent=message;main.querySelector('.page-top').after(notice);toast(message);
     }catch(error){toast(error.message);}
   };
   main.querySelectorAll('.history-code').forEach(b=>b.onclick=async()=>{try{await start(await loadSet(b.dataset.code));}catch(e){toast(e.message);}});
@@ -339,9 +411,10 @@ async function render(){
     if(!await askLeave()){if(requestId===renderId)setHash(data.active.code);return;}
     if(requestId!==renderId)return;
   }
+  if(data.active&&!data.active.finished&&route!==`#set=${encodeURIComponent(data.active.code)}`){pausePractice(data.active);persist();}
   $('#nav-home').setAttribute('aria-current',route==='#progress'?'false':'page');
   $('#nav-progress').setAttribute('aria-current',route==='#progress'?'page':'false');
-  if(route==='#progress'){progress();return;}
+  if(route==='#progress'){await Promise.all([ensureBank(1),ensureBank(2)]);if(requestId===renderId)progress();return;}
   if(route==='#exam'){examHome();return;}
   if(route.startsWith('#set=')){
     try{
@@ -355,8 +428,10 @@ async function render(){
   }
   home();
 }
+if(!data.username)await chooseProfile();else profileHeader();
 try{
   if(data.active){
+    if(data.active.practiceClock)data.active.practiceClock.running=false;
     const restored=await loadSet(data.active.code);
     if(contentChanged(restored,data.active.contentVersion??restored.version)){
       data.active=null;persist();
@@ -386,7 +461,17 @@ document.addEventListener('click',async event=>{
   event.preventDefault();if(await askLeave())location.href=url.href;
 });
 window.addEventListener('hashchange',()=>{render();main.focus();});
-window.addEventListener('pagehide',()=>{if(data.active&&!data.active.finished){data.active.saved=Date.now();persist();}});
-window.addEventListener('visibilitychange',()=>{if(!document.hidden)tick();});
+window.addEventListener('pagehide',()=>{if(data.active&&!data.active.finished){pausePractice(data.active);data.active.saved=Date.now();persist();}});
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){if(data.active&&!data.active.finished){pausePractice(data.active);persist();}}
+  else {tick();if(practiceVisible())engagePractice(data.active);}
+});
+window.addEventListener('pageshow',()=>{if(practiceVisible())engagePractice(data.active);});
+for(const type of ['pointerdown','pointermove','mousemove','click','keydown','input','wheel','touchstart','touchmove','scroll'])document.addEventListener(type,()=>{
+  const clock=data.active?.practiceClock;
+  if(clock?.running&&clock.interacted)return;
+  if(practiceVisible())notePracticeInteraction(data.active);
+},{capture:true,passive:true});
+setInterval(()=>{if(practiceVisible())pollPractice(data.active);},INTERACTION_POLL_MS);
 setInterval(tick,1000);
 render();

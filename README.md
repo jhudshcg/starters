@@ -44,7 +44,7 @@ Logic/equation candidate cells cycle unknown → excluded → selected. Sudoku a
 
 Undo, Reset and hints are available during an attempt. Checking and solution reveal unlock after submitting the set (including timer expiry), and remain available for four hours across refreshes. Completed saved answers can be submitted again to unlock review without duplicating the progress record. A code-entry form is available on every page. Selected cells are yellow; correctness appears only after explicit checking or submission. The score appears beside Submit and at the top. Answers, notes and timing survive refresh. Timer expiry submits once. Puzzles are excluded from revision priorities.
 
-Progress stays in browser-local storage. CSV export and JSON backup/restore are available; accounts, OneDrive integration and CSV import are not implemented. Python code answers are compared as constrained tokens, never executed. Text marking uses explicit accepted answers and, for opted-in concepts, one authored term with up to one linked qualifier. Unrestricted sentence understanding is not implemented.
+Progress stays in browser-local storage. CSV export and JSON backup/restore are available; Named local profiles separate progress on a shared computer; these are not secure accounts. OneDrive integration and CSV import are not implemented. Python code answers are compared as constrained tokens, never executed. Text marking uses explicit accepted answers and, for opted-in concepts, one authored term with up to one linked qualifier. Unrestricted sentence understanding is not implemented.
 
 ## Maintaining content
 
@@ -95,7 +95,7 @@ Identity uses slots and exact variations, ignoring order/timer; another permutat
 
 `npm run build` uses pinned **esbuild** and **fflate** dependencies. It validates the source bank, compresses JSON using zlib, wraps it in Base64 with a fixed 17-position alphabet rotation, and emits minified content-hashed JavaScript/CSS. All assets use relative paths for repository Pages hosting. Install local dependencies with `npm ci`.
 
-Readable `data/*.js` stays in Git; bundling replaces its imports with an on-demand loader. `live` excludes authoring banks, drafts, coverage reports, build metadata and source maps. Separate encoded assets are `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt`, `banks/python-<hash>.txt` and `banks/esp-<hash>.txt`, addressed relative to the app bundle for repository Pages hosting. Only the selected/restored activity's bank downloads; home/progress downloads none. Loaded display data is reused for the visit; failed downloads can be retried.
+Readable `data/*.js` stays in Git; bundling replaces its imports with an on-demand loader. `live` excludes authoring banks, drafts, coverage reports, build metadata and source maps. Separate encoded assets are `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt`, `banks/python-<hash>.txt` and `banks/esp-<hash>.txt`, addressed relative to the app bundle for repository Pages hosting. Only the selected/restored activity's bank downloads; progress also loads exam and programming banks to list missing areas and generate recommendations. Loaded display data is reused for the visit; failed downloads can be retried.
 
 Parts retain separate encoded marking and reveal payloads. Marking decodes accepted answers as needed; explicit reveal decodes model answers/explanations. Neither decoded payload is cached on the bank or stored locally. Generic checking feedback does not decode explanations.
 
@@ -114,3 +114,15 @@ History stores SHA-256 fingerprints and focus/marks metadata, not old answers. F
 Never renumber/reuse slots or variation positions. Substantive task changes require a new question slot. Retirement removes a question from random selection while preserving codes. Corrections open under old codes with an update notice; removals offer an explicit replacement set. Historical results remain unchanged and importable. Old and current codes for the same question/variation identities share the four-hour tracking window. Saved attempts record their content revision: if their questions change, a fresh attempt avoids regrading stale answers. New scores record the revision actually marked.
 
 The replacement for `BIAkAiAg`, `BoAkAiAg` and `CIAkAiAg` is **`CoAkAiAg`**. Hint changes affect compatibility. Packaging format and code layout are separate from content revision.
+
+### Named profiles and revision recommendations
+
+The first visit asks for a name; the first profile inherits existing unnamed progress. “Not you?” switches profiles, preserving each profile’s active activity, history and recommendations. Similar spellings require confirmation. JSON backups embed the username; a validated restore automatically switches to that profile and reports the switch. The header shows its last tracked date. Unnamed older backups restore into the selected profile. Export regularly to your student OneDrive.
+
+Dated attempt records retain topic and part-level subtopic scores, including initial and final marks. Expand an activity’s topic/subtopic results in the history table. Earlier aggregate-only records remain visible but cannot supply subtopic evidence. Priorities use the latest five eligible independent first-response results for each area: below 45% red, 45–under 65% amber, and 65% or higher green. No evidence is grey; evidence older than 15 days has an icy pattern and reminder. Puzzles and assisted first responses are excluded.
+
+Three recommended exam sets persist per profile until all are completed. Selection uses all history, independently of display filters: missing areas first, fresh scores from lowest to highest next, then stale areas. Sets respect the existing four-hour repeat rule. Completing the batch displays encouragement and generates the next three.
+
+Weekly progress shows sets completed, average final score per set and practice days, with an eight-week trend chart and equivalent table. See the [progress specification](docs/spec-progress.md) for exact calculations, profile/restore rules, priority thresholds, recommendation ordering and current limitations.
+
+Practice duration now estimates engagement: a lightweight interaction flag is consumed every five seconds to renew a two-minute inactivity expiry; recording pauses on expiry and when the activity is hidden, without pausing the visible countdown. Older elapsed-time records remain intact. Save backup downloads JSON content as `tlevel-practice-[username]-[YYYY-MM-DD-HHMMSS].json`; Restore backup accepts `.txt` and older `.json` files.

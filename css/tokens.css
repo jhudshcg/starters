@@ -1,6 +1,18 @@
 /* Edit theme colours and decoration here. See docs/theming.md. */
 :where(:root,.theme-swatch) {
   color-scheme: light;
+  --priority-red-bg: var(--incorrect-base);
+  --priority-red-border: var(--incorrect-border-base);
+  --priority-amber-bg: var(--selection-base);
+  --priority-amber-border: var(--selection-border-base);
+  --priority-green-bg: var(--correct-base);
+  --priority-green-border: var(--correct-border-base);
+  --priority-stale-bg: #e3f5ff;
+  --priority-stale-border: #7caecb;
+  --priority-ice-light: #ffffffa8;
+  --priority-ice-shade: #b1d8ee80;
+  --missing-bg: #e6e6e6;
+  --missing-border: #888;
   --theme-saturation: var(--theme-saturation-default);
   --theme-bg-lightness: var(--theme-bg-default);
 
@@ -293,16 +305,28 @@
   --page-glow-base: var(--page-glow-base-raw);
 }
 
-/* A small perceptual tint ties feedback to its palette without changing meaning.
+/* A small perceptual tint ties feedback to its normal selectable surface without changing meaning.
    Amber gets the smallest contribution so it never suggests correctness. */
 @supports (color: color-mix(in oklab, red, blue)) {
   :where(:root,.theme-swatch) {
-    --selection-bg: color-mix(in oklab, var(--selection-base) 94%, var(--main));
-    --selection-border: color-mix(in oklab, var(--selection-border-base) 94%, var(--main));
-    --correct-bg: color-mix(in oklab, var(--correct-base) 90%, var(--main));
-    --correct-border: color-mix(in oklab, var(--correct-border-base) 90%, var(--main));
-    --incorrect-bg: color-mix(in oklab, var(--incorrect-base) 86%, var(--main));
-    --incorrect-border: color-mix(in oklab, var(--incorrect-border-base) 86%, var(--main));
+    --priority-red-bg: color-mix(in oklab, var(--incorrect-base) 90%, var(--main));
+    --priority-red-border: color-mix(in oklab, var(--incorrect-border-base) 90%, var(--main));
+    --priority-amber-bg: color-mix(in oklab, var(--selection-base) 90%, var(--main));
+    --priority-amber-border: color-mix(in oklab, var(--selection-border-base) 90%, var(--main));
+    --priority-green-bg: color-mix(in oklab, var(--correct-base) 90%, var(--main));
+    --priority-green-border: color-mix(in oklab, var(--correct-border-base) 90%, var(--main));
+    --priority-stale-bg: color-mix(in oklab, #e3f5ff 90%, var(--main));
+    --priority-stale-border: color-mix(in oklab, #7caecb 90%, var(--main));
+    --priority-ice-light: color-mix(in oklab, #ffffffa8 90%, var(--main));
+    --priority-ice-shade: color-mix(in oklab, #b1d8ee80 90%, var(--main));
+    --missing-bg: color-mix(in oklab, #e6e6e6 90%, var(--main));
+    --missing-border: color-mix(in oklab, #888 90%, var(--main));
+    --selection-bg: color-mix(in oklab, var(--selection-base) 94%, var(--surface));
+    --selection-border: color-mix(in oklab, var(--selection-border-base) 94%, var(--surface));
+    --correct-bg: color-mix(in oklab, var(--correct-base) 90%, var(--surface));
+    --correct-border: color-mix(in oklab, var(--correct-border-base) 90%, var(--surface));
+    --incorrect-bg: color-mix(in oklab, var(--incorrect-base) 86%, var(--surface));
+    --incorrect-border: color-mix(in oklab, var(--incorrect-border-base) 86%, var(--surface));
   }
 }
 
