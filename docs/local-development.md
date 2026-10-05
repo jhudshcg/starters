@@ -26,3 +26,23 @@ No application files, theme files, production scripts or commit hooks need rever
 ## Focused verification
 
 With an isolated Chrome debugging session on port 9227 (see existing browser smoke guidance), run `node scripts/browser-theme.mjs` against production. For source preview use `STARTERS_PREVIEW_URL=http://127.0.0.1:5173 node scripts/browser-theme.mjs --hmr`. The optional HMR check temporarily changes and restores `css/tokens.css`; run it while that file is not being edited. It checks CSS updates without reload/input loss. Both modes check all eight preview tiles, semantic/action contrast, full background-lightness ranges and linked accents, saturation, paired switching, persistence/reset, amber selections and green/red marking, retry, narrow layout and four-bank rendering. Full slider-range checks verify behaviour, not contrast compliance at every setting. Screenshots go to `/private/tmp`.
+
+## Continuing progress/profile work
+
+Read the latest dated entry in [checkpoint.md](../checkpoint.md), then [progress specification](spec-progress.md) and [theming](theming.md). Earlier checkpoint entries deliberately preserve superseded experiments; use the final handover for current choices. Check `git status` and the latest commit before assuming changes remain uncommitted.
+
+The latest session used the production preview at port 8765. First check whether it is responding; if not, serve the existing build with `python3 -m http.server 8765 --bind 127.0.0.1 --directory live`. Rebuild source changes with `PATH=/opt/homebrew/bin:$PATH npm run build` on this machine. A server from a previous session may no longer be running. No redeployment is implied by starting a local preview.
+
+Implementation map:
+
+- `js/profiles.js`: local profile registry, migration, name matching and activation.
+- `js/progress.js`: persisted results, detailed part scores, repeat eligibility and CSV export.
+- `js/revision.js`: missing/fresh/stale ranking and persistent recommendation batches.
+- `js/weekly-progress.js`: local calendar-week summaries and exact per-set percentage means.
+- `js/practice-time.js`: interaction flag/poll clock, engaged-time validation and backup filename.
+- `js/app.js`: UI, activity lifecycle, profile restore and export handlers.
+- `css/tokens.css`: `--missing-*` and `--priority-*` dominant-theme blends; question-option surface blends stay separate.
+
+When a functional change warrants checks, focused unit files are `tests/practice-time.test.js`, `tests/weekly-progress.test.js`, `tests/profiles-revision.test.js` and `tests/repeat-progress.test.js`. `scripts/browser-profiles.mjs` checks profiles, restore/export, recommendations, weekly UI and simulated inactivity against an isolated Chrome debugging session on port 9227. **It clears storage in that test browser**; never run it against the user’s normal browser/profile. Its default preview URL is port 8765. Temporary `/private/tmp` scripts/screenshots mentioned in the checkpoint are disposable and may not survive to the next session.
+
+The user explicitly chose to test the final highlight colour adjustments themselves. Those final adjustments were rebuilt but not browser-tested; do not present earlier palette checks as verification of the final colours. Avoid unnecessary rebuilds, downloads or full-bank tests for documentation-only continuation work.

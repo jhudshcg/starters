@@ -72,6 +72,8 @@ Exit: each type can be completed by keyboard, scored and retried. Known codes re
 
 ## Stage 3: timing and durable progress
 
+**Current status (5 October 2026):** the adopted [progress specification](spec-progress.md) supersedes the earlier detail below for profiles, idle tracking, priority windows, weekly summaries and JSON restore. These runtime features are implemented; CSV import remains deferred, so the original CSV-round-trip exit condition is not claimed complete.
+
 Implement attempt state, local recovery, hidden and visible timing, expiry, histories, filters, revision priorities, chart/table and CSV import/export.
 
 Exit: refresh does not reset a valid timer; background expiry submits once; stale recovery follows the agreed rule. CSV round-trip preserves records, repeated imports do not duplicate them, and malformed/conflicting data is reported. Storage failure does not lose the current visible activity or falsely report success.
