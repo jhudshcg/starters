@@ -30,7 +30,7 @@ try{
 
  for(const width of [1280,850,700,650,600,390,320]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:950,deviceScaleFactor:1,mobile:false});
-  assert.ok(await evaluate('document.querySelector(".code-entry").getBoundingClientRect().width>=270'));
+  assert.ok(await evaluate('document.querySelector(".code-entry").getBoundingClientRect().width>=295'));
   assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
   assert.equal(await evaluate('getComputedStyle(document.querySelector(".meta-row")).rowGap'),'0px');
   const buttonSizes=await evaluate('[...document.querySelectorAll(".card-bottom button")].map(b=>({width:b.getBoundingClientRect().width,height:b.getBoundingClientRect().height,wrap:getComputedStyle(b).whiteSpace}))');

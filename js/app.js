@@ -65,7 +65,7 @@ function profileHeader(){
   let el=$('#profile-welcome');
   if(!el){el=document.createElement('div');el.id='profile-welcome';$('.site-header').append(el);}
   const last=lastTracked(data.history);
-  el.innerHTML=`<span>Welcome back ${esc(data.username??'')}</span> <button class="subtle" id="switch-profile">Not you?</button><small class="last-tracked">${last===null?'No tracked practice yet':`Last tracked: ${esc(new Date(last).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'}))}`}</small>`;
+  el.innerHTML=`<span class="profile-greeting"><span>Welcome back ${esc(data.username??'')}</span> <button class="subtle" id="switch-profile">Not you?</button></span><small class="last-tracked">${last===null?'No tracked practice yet':`Last tracked: ${esc(new Date(last).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'}))}`}</small>`;
   $('#switch-profile').onclick=()=>chooseProfile(true);
 }
 function chooseProfile(switching=false){

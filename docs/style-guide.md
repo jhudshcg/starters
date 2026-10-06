@@ -74,6 +74,10 @@ Use warm yellow (#FFE6A0 with #9B7122 borders) for puzzle selections. Yellow ind
 Dialogs with a Close/Cancel action also dismiss when the user clicks the visible backdrop. This follows the Escape/cancel path: dismissing a leave-warning means Keep working, never Leave activity. Clicks inside the dialog (including its padding), and drags starting inside and ending outside, must not dismiss it. Retain visible buttons and keyboard dismissal. The required initial profile prompt has no Close/Cancel action and retains its existing requirement to enter a name; switching profiles remains cancellable. Use the shared `showModal` helper in `js/dialog.js` for native dialogs.
 
 
-Home hero: keep the code-entry card at least 270px wide and stack the hero columns at narrow widths. Introductory bullet labels retain their horizontal gap but have no extra row gap when wrapping, so successive rows use the normal text line height.
+Home hero: keep the code-entry card at least 295px wide and stack the hero columns at narrow widths. Introductory bullet labels retain their horizontal gap but have no extra row gap when wrapping, so successive rows use the normal text line height.
 
 Home activity cards: Let’s go buttons share the same single-line intrinsic dimensions and must not shrink or wrap. Let the surrounding footer content wrap and place the optional search link on its own row, keeping the primary button consistent with Exam practice.
+
+At wrapped-header widths (below 1024px), the profile section occupies its own row, with greeting, switch-profile action and Last tracked inline where space permits. Allow natural wrapping on phones. Home top padding is reduced by 20px from the general page spacing.
+
+Keep the main header on one row at 1024px and above, with Last tracked below the profile greeting. Tighten horizontal spacing between 1024px and 1200px rather than moving the profile onto an early second row.

@@ -1359,3 +1359,36 @@ Next action: inspect card-footer overrides and apply shared sizing.
 Completed both Home layout fixes in existing CSS: hero reserves a 270px minimum code-entry column and stacks at 650px; bullet labels keep their horizontal spacing but use zero added row gap. All Let’s go buttons retain identical single-line intrinsic dimensions without flex shrinking; optional search links occupy their own footer row. Style guide updated; later Tailwind/DaisyUI/Bits UI migration recorded in planned-work without adding dependencies.
 
 Verification: production build and git diff --check passed. Isolated browser checks verified card width >=270px, zero extra bullet row gap, equal widths/heights and nowrap on all three activity buttons, and no page overflow at 1280/850/700/650/600/390/320px. Existing navigation/search/modal suite also passed. Next action: user reviews Home in preview. Uncommitted and undeployed.
+
+## 2026-10-06 — Compact wrapped profile header
+
+Objective: keep Last tracked inline with Welcome back when the profile section wraps below the main header, and reduce the Home content's top gap by about 20px.
+- [x] Adjust existing responsive profile and Home spacing rules.
+- [x] Build and check the focused CSS changes; document results without repeating unrelated suites.
+Next action: inspect profile/header breakpoints and Home top spacing.
+
+
+Completed: profile details use a wrapping flex row, with greeting and switch action grouped. At <=1200px the section has its own header row; Last tracked sits alongside where space permits, wrapping naturally on phones. Home-only top padding reduced by 20px. Documented in style guide.
+Verification: build and diff whitespace check passed. Focused scripts/browser-header.mjs passed 1440/1100/1000/850/600/390/320px checks, including inline details at 1000/850/600, 28px/12px Home padding and no overflow. First check exposed the 600px partial-row case, corrected with explicit profile row breakpoint; a repeat used the old page, fixed by fresh navigation. No unrelated browser suites repeated. Next action: user reviews header in preview. Uncommitted and undeployed.
+
+## 2026-10-06 — Restore header down to 1024px
+
+Objective: correct the premature 1200px wrap introduced last turn; preserve a single header row at >=1024px, with tracking beneath the greeting, and inline profile details below that breakpoint.
+- [x] Adjust header sizing/breakpoint without reverting the Home spacing fix.
+- [x] Build and run focused checks at and around 1024px; update documentation.
+Next action: inspect header sizing rules and remove premature wrapping.
+
+
+Completed: removed the premature 1200px profile-row breakpoint. Header stays on one row at >=1024px, with tracking beneath the greeting; compact horizontal spacing between 1024–1200px retains all controls. Below 1024px the profile occupies its own row with inline details where space allows. Home spacing fix retained. Style guide corrected.
+Verification: build and git diff --check passed. Focused browser checks passed at 1440/1280/1200/1100/1024/1023/1000/850/600/390/320px, explicitly asserting one-row header without overlapping controls at >=1024px, tracking beneath greeting, inline profile below breakpoint, no overflow and retained Home padding. No full suite rerun. Next action: user reviews corrected header. Uncommitted and undeployed.
+
+
+## 2026-10-06 — Home code-entry minimum 295px
+
+Objective: update the requested Home card minimum from 270px to 295px.
+- [x] Update hero constraints and narrow-screen padding so the card fits at 320px.
+- [x] Build, check CSS consistency and record results.
+Next action: replace the existing 270px Home sizing constraints.
+
+
+Completed: both hero grid constraints and the code-entry minimum now use 295px. Home horizontal padding reduces to 12px below 337px, leaving 296px at a 320px viewport. Updated style guide and existing browser assertion to 295px. Production build and git diff --check passed; browser suite not rerun for this sizing-only adjustment. Next action: review Home in preview. Uncommitted and undeployed.
