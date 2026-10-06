@@ -1,3 +1,4 @@
+import {showModal} from './dialog.js';
 // Leave blank to let students address the draft to their teacher.
 export const REPORT_EMAIL = '';
 
@@ -76,5 +77,5 @@ export function openIssueReport(context) {
   };
   find('#report-close').onclick = () => dialog.close();
   dialog.onclose = () => dialog.remove();
-  document.body.append(dialog); update(); dialog.showModal();
+  document.body.append(dialog); update(); showModal(dialog);
 }

@@ -6,6 +6,12 @@ Status: draft; shared behaviour is in [spec-common.md](spec-common.md).
 
 Two questions per set, testing different aspects, totalling 10–15 marks. Each focus has at least three distinct question templates, each with at least five variations. Code generally has no more than 12 nonblank, noncomment lines. Use readable PEP8 style except in deliberate style questions.
 
+Keep the whole snippet visible without horizontal scrolling, particularly when students must complete several blanks or substitutions. Insert valid Python line breaks at natural boundaries (for example, within parenthesised calls); aim for lines of about 64 characters. Preserve indentation and use responsive soft wrapping at narrow widths or high zoom. Do not shrink the code text to make it fit.
+
+Use familiar syntax for incidental setup. Represent arrays with ordinary Python lists for indexing, `len`, updates and algorithm examples; do not require the `array` module or type codes. Keep the conceptual array/list distinction where it is assessed: Python lists do not enforce a single element type. Use ordinary file operations and explicitly supplied file contents, rather than exposing `StringIO` setup. Ask for a value’s data type directly rather than requiring `type(...).__name__`. Prefer explicit steps to compressed swaps, conditional expressions or Boolean shortcuts when those constructs are not the learning objective. Clearly label deliberately retained extension topics.
+
+Source evidence: Core CA2.3.1–2.3.4 and Appendix 2; SAM Paper 1 Q15(a), Figure 11, uses list literals for collections described as arrays. Its mark scheme assesses indexing, length, copying and iteration, not library construction. Q12(b–d) calibrates short code completion, tracing and boundary reasoning. These support the teaching convention without claiming arrays and Python lists are identical in every language or implementation.
+
 **Proposal for v1:** token completion, token replacement, multiple choice, output prediction, trace tables and selected style issues. Defer free-form function writing and arbitrary code execution. This is a staged delivery of the full brief, not removal of those formats.
 
 Topic tags include iteration, selection, functions, data types, operators, Boolean expressions, input/output and algorithms. Format tags include completion, debugging, prediction, tracing and style. A set focused on iteration can pair tracing with debugging. Secondary tags allow overlap without treating every tag as a separate minimum-size bank.
@@ -92,9 +98,9 @@ The bank now contains **63 distinct programming challenges, each with five varia
 | Core scope | Programming coverage |
 | --- | --- |
 | CA2.1–2.2 | Conversion, numeric and Boolean types, constants, local scope and returned values |
-| CA2.3 | Lists, nested lists, typed standard-library arrays, dictionaries, tuples, aliasing and copies |
+| CA2.3 | Lists (also used to represent arrays), nested lists, dictionaries, tuples, aliasing and copies |
 | CA2.4 | Arithmetic, precedence, floor division/remainders, augmented assignment, relational and Boolean expressions, short circuiting |
-| CA2.5 | Input-like text conversion, string formatting, reading/writing and cursor behaviour using in-memory text files |
+| CA2.5 | Input-like text conversion, string formatting, reading/writing ordinary text files with supplied contents |
 | CA2.6 | Sequence, if/elif/else, match/case and guards, for/while loops, nested loops, break/continue and sentinels |
 | CA2.7 | Parameters, calls, return versus print, scope, composition, built-in functions and in-place procedures |
 | CA2.8–2.10 | Presence, length/type/range/format constraints, check-digit generation and its limitations, boundary errors, exceptions, readable naming/layout and defensive empty-input handling |
@@ -102,6 +108,18 @@ The bank now contains **63 distinct programming challenges, each with five varia
 | CA2.12 | Normal, empty, boundary and erroneous cases; assertion outcomes and exposing faulty comparisons |
 | Beyond Core | Sets, comprehensions, enumerate, identity, slicing and a small recursive base-case trace |
 
-This is breadth across the programming sections, not certification of every assessable Core element. Full independent program development is not assessed by the programming bank. The linked exam inventory separately records direct knowledge coverage and supporting practice for broader skills. In-memory text-file examples explain the same read/write/cursor operations without executing student code or accessing real files.
+This is breadth across the programming sections, not certification of every assessable Core element. Full independent program development is not assessed by the programming bank. The linked exam inventory separately records direct knowledge coverage and supporting practice for broader skills. File examples use ordinary open/read/write/close operations. Offline checks create temporary fixture files; the student application does not execute Python or access files.
 
-`data/coverage/python-reference.json` stores offline reference programs for the 42-template expansion; it is not imported by the student application. The tests execute these programs and compare all predicted fields. The original challenges retain their reference tests. Additional array and match/case tasks are short authored fragments. Code answers compare tokens, including method-access dots, preserve case/string content, and never execute student input.
+`data/coverage/python-reference.json` stores offline reference programs for the 42-template expansion; it is not imported by the student application. The tests execute these programs and compare all predicted fields. The original challenges retain their reference tests. Additional list-based array and match/case tasks are short authored fragments. The October readability pass keeps all 63 question IDs and their five variation positions; file and array refinements replace the previous versions in place. Code answers compare tokens, including method-access dots, preserve case/string content, and never execute student input.
+
+## Near-term plan: answers embedded in code
+
+Move fill-in-the-blank and substitution inputs into the displayed code, at the relevant gap, so students can read and complete the snippet in one place. This is planned, not implemented in the current renderer.
+
+- Bind each embedded field to its existing part ID, marks, answer rules, hints and feedback; avoid a second competing answer field below the code.
+- Keep all code visible using authored line breaks and responsive wrapping. Preserve Python indentation, readable text size and clear gap boundaries.
+- Give each field an accessible label identifying its gap and purpose; maintain logical keyboard order and visible focus. Checking, retry, reveal and read-only submitted states must work in context.
+- Preserve unfinished answers on rerender, reload and profile switches, using the existing answer storage.
+- Pilot a single-gap and a multiple-gap question before migrating the rest; verify desktop, narrow-screen and high-zoom layouts, keyboard use, marking and saved-answer restoration.
+
+Implement this as a separate renderer slice; it does not require free-form Python execution.

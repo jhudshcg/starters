@@ -13,7 +13,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 3 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 3, -7 // 3, -7 % 3)",
+        "code": "count = 3 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 3, -7 // 3,\n    -7 % 3,\n)",
         "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
         "parts": [
           {
@@ -37,10 +37,10 @@ export default [
           {
             "kind": "text",
             "prompt": "Printed value 3 (count / size) \u2014 no quotes",
-            "answer": "3.4285714285714284",
+            "answer": "3.75",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "count / size evaluates to 3.4285714285714284. Floor division rounds down; remainder and quotient reconstruct the dividend.",
+            "explanation": "count / size evaluates to 3.75. Ordinary division retains the fractional part.",
             "id": "2"
           },
           {
@@ -74,7 +74,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 4 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 4, -7 // 3, -7 % 3)",
+        "code": "count = 4 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 4, -7 // 3,\n    -7 % 3,\n)",
         "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
         "parts": [
           {
@@ -98,10 +98,10 @@ export default [
           {
             "kind": "text",
             "prompt": "Printed value 3 (count / size) \u2014 no quotes",
-            "answer": "4.428571428571429",
+            "answer": "4.75",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "count / size evaluates to 4.428571428571429. Floor division rounds down; remainder and quotient reconstruct the dividend.",
+            "explanation": "count / size evaluates to 4.75. Ordinary division retains the fractional part.",
             "id": "2"
           },
           {
@@ -135,7 +135,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 5 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 5, -7 // 3, -7 % 3)",
+        "code": "count = 5 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 5, -7 // 3,\n    -7 % 3,\n)",
         "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
         "parts": [
           {
@@ -159,10 +159,10 @@ export default [
           {
             "kind": "text",
             "prompt": "Printed value 3 (count / size) \u2014 no quotes",
-            "answer": "5.428571428571429",
+            "answer": "5.75",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "count / size evaluates to 5.428571428571429. Floor division rounds down; remainder and quotient reconstruct the dividend.",
+            "explanation": "count / size evaluates to 5.75. Ordinary division retains the fractional part.",
             "id": "2"
           },
           {
@@ -196,7 +196,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 6 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 6, -7 // 3, -7 % 3)",
+        "code": "count = 6 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 6, -7 // 3,\n    -7 % 3,\n)",
         "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
         "parts": [
           {
@@ -220,10 +220,10 @@ export default [
           {
             "kind": "text",
             "prompt": "Printed value 3 (count / size) \u2014 no quotes",
-            "answer": "6.428571428571429",
+            "answer": "6.75",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "count / size evaluates to 6.428571428571429. Floor division rounds down; remainder and quotient reconstruct the dividend.",
+            "explanation": "count / size evaluates to 6.75. Ordinary division retains the fractional part.",
             "id": "2"
           },
           {
@@ -257,7 +257,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 7 * 7 + 3\nsize = 7\nprint(count // size, count % size, count / size, 2 ** 7, -7 // 3, -7 % 3)",
+        "code": "count = 7 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 7, -7 // 3,\n    -7 % 3,\n)",
         "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
         "parts": [
           {
@@ -281,10 +281,10 @@ export default [
           {
             "kind": "text",
             "prompt": "Printed value 3 (count / size) \u2014 no quotes",
-            "answer": "7.428571428571429",
+            "answer": "7.75",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "count / size evaluates to 7.428571428571429. Floor division rounds down; remainder and quotient reconstruct the dividend.",
+            "explanation": "count / size evaluates to 7.75. Ordinary division retains the fractional part.",
             "id": "2"
           },
           {
@@ -316,7 +316,8 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 13,
@@ -957,7 +958,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "raw = \"3\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+        "code": "raw = \"3\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
         "hint": "input-style text must be converted before numeric arithmetic.",
         "parts": [
           {
@@ -1018,7 +1019,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "raw = \"4\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+        "code": "raw = \"4\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
         "hint": "input-style text must be converted before numeric arithmetic.",
         "parts": [
           {
@@ -1079,7 +1080,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "raw = \"5\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+        "code": "raw = \"5\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
         "hint": "input-style text must be converted before numeric arithmetic.",
         "parts": [
           {
@@ -1140,7 +1141,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "raw = \"6\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+        "code": "raw = \"6\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
         "hint": "input-style text must be converted before numeric arithmetic.",
         "parts": [
           {
@@ -1201,7 +1202,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "raw = \"7\"\namount = int(raw)\nprice = float(raw)\nprint(amount + 2, raw + \"2\", price + 0.5, str(amount) == raw, bool(0), bool(raw))",
+        "code": "raw = \"7\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
         "hint": "input-style text must be converted before numeric arithmetic.",
         "parts": [
           {
@@ -1265,7 +1266,7 @@ export default [
   {
     "slot": 16,
     "focus": "data types",
-    "title": "Inspect type relationships",
+    "title": "Identify types after conversion",
     "format": "Complete the code",
     "tags": [
       "data types",
@@ -1274,306 +1275,367 @@ export default [
     ],
     "variations": [
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 3\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(___).__name__, type(value > 0).__name__, type([value]).__name__)",
-        "hint": "A one-item tuple needs a comma; / produces a float.",
+        "prompt": "Complete the conversion to text, then name the Python data type of each requested value.",
+        "code": "value = 3\nratio = value / 2\ntext = ___\nis_positive = value > 0\nvalues = [value]",
+        "hint": "Track the type produced by each operation. Division with / can produce a fractional result even when its operands are integers.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "The third output must report the type after conversion to text. Complete its conversion expression.",
+            "prompt": "Convert value to text. Complete the expression for text.",
             "answer": "str(value)",
             "marks": 1,
-            "explanation": "A one-item tuple needs a comma; / produces a float.",
+            "explanation": "str(value) converts the number to text.",
             "id": "0"
           },
           {
             "kind": "text",
-            "prompt": "Printed value 1 (type(value).__name__) \u2014 no quotes",
+            "prompt": "Python data type of value",
             "answer": "int",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value).__name__ evaluates to int. A one-item tuple needs a comma; / produces a float.",
-            "id": "1"
+            "explanation": "value has type int.",
+            "id": "1",
+            "accepted": [
+              "integer"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 2 (type(ratio).__name__) \u2014 no quotes",
+            "prompt": "Python data type of ratio",
             "answer": "float",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(ratio).__name__ evaluates to float. A one-item tuple needs a comma; / produces a float.",
-            "id": "2"
+            "explanation": "ratio has type float.",
+            "id": "2",
+            "accepted": []
           },
           {
             "kind": "text",
-            "prompt": "Printed value 3 (type(str(value)).__name__) \u2014 no quotes",
+            "prompt": "Python data type of text",
             "answer": "str",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(str(value)).__name__ evaluates to str. A one-item tuple needs a comma; / produces a float.",
-            "id": "3"
+            "explanation": "text has type str.",
+            "id": "3",
+            "accepted": [
+              "string"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 4 (type(value > 0).__name__) \u2014 no quotes",
+            "prompt": "Python data type of is_positive",
             "answer": "bool",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value > 0).__name__ evaluates to bool. A one-item tuple needs a comma; / produces a float.",
-            "id": "4"
+            "explanation": "is_positive has type bool.",
+            "id": "4",
+            "accepted": [
+              "Boolean",
+              "boolean"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type([value]).__name__) \u2014 no quotes",
+            "prompt": "Python data type of values",
             "answer": "list",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type([value]).__name__ evaluates to list. A one-item tuple needs a comma; / produces a float.",
-            "id": "5"
+            "explanation": "values has type list.",
+            "id": "5",
+            "accepted": []
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 4\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(___).__name__, type(value > 0).__name__, type([value]).__name__)",
-        "hint": "A one-item tuple needs a comma; / produces a float.",
+        "prompt": "Complete the conversion to text, then name the Python data type of each requested value.",
+        "code": "value = 4\nratio = value / 2\ntext = ___\nis_positive = value > 0\nvalues = [value]",
+        "hint": "Track the type produced by each operation. Division with / can produce a fractional result even when its operands are integers.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "The third output must report the type after conversion to text. Complete its conversion expression.",
+            "prompt": "Convert value to text. Complete the expression for text.",
             "answer": "str(value)",
             "marks": 1,
-            "explanation": "A one-item tuple needs a comma; / produces a float.",
+            "explanation": "str(value) converts the number to text.",
             "id": "0"
           },
           {
             "kind": "text",
-            "prompt": "Printed value 1 (type(value).__name__) \u2014 no quotes",
+            "prompt": "Python data type of value",
             "answer": "int",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value).__name__ evaluates to int. A one-item tuple needs a comma; / produces a float.",
-            "id": "1"
+            "explanation": "value has type int.",
+            "id": "1",
+            "accepted": [
+              "integer"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 2 (type(ratio).__name__) \u2014 no quotes",
+            "prompt": "Python data type of ratio",
             "answer": "float",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(ratio).__name__ evaluates to float. A one-item tuple needs a comma; / produces a float.",
-            "id": "2"
+            "explanation": "ratio has type float.",
+            "id": "2",
+            "accepted": []
           },
           {
             "kind": "text",
-            "prompt": "Printed value 3 (type(str(value)).__name__) \u2014 no quotes",
+            "prompt": "Python data type of text",
             "answer": "str",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(str(value)).__name__ evaluates to str. A one-item tuple needs a comma; / produces a float.",
-            "id": "3"
+            "explanation": "text has type str.",
+            "id": "3",
+            "accepted": [
+              "string"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 4 (type(value > 0).__name__) \u2014 no quotes",
+            "prompt": "Python data type of is_positive",
             "answer": "bool",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value > 0).__name__ evaluates to bool. A one-item tuple needs a comma; / produces a float.",
-            "id": "4"
+            "explanation": "is_positive has type bool.",
+            "id": "4",
+            "accepted": [
+              "Boolean",
+              "boolean"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type([value]).__name__) \u2014 no quotes",
+            "prompt": "Python data type of values",
             "answer": "list",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type([value]).__name__ evaluates to list. A one-item tuple needs a comma; / produces a float.",
-            "id": "5"
+            "explanation": "values has type list.",
+            "id": "5",
+            "accepted": []
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 5\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(___).__name__, type(value > 0).__name__, type([value]).__name__)",
-        "hint": "A one-item tuple needs a comma; / produces a float.",
+        "prompt": "Complete the conversion to text, then name the Python data type of each requested value.",
+        "code": "value = 5\nratio = value / 2\ntext = ___\nis_positive = value > 0\nvalues = [value]",
+        "hint": "Track the type produced by each operation. Division with / can produce a fractional result even when its operands are integers.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "The third output must report the type after conversion to text. Complete its conversion expression.",
+            "prompt": "Convert value to text. Complete the expression for text.",
             "answer": "str(value)",
             "marks": 1,
-            "explanation": "A one-item tuple needs a comma; / produces a float.",
+            "explanation": "str(value) converts the number to text.",
             "id": "0"
           },
           {
             "kind": "text",
-            "prompt": "Printed value 1 (type(value).__name__) \u2014 no quotes",
+            "prompt": "Python data type of value",
             "answer": "int",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value).__name__ evaluates to int. A one-item tuple needs a comma; / produces a float.",
-            "id": "1"
+            "explanation": "value has type int.",
+            "id": "1",
+            "accepted": [
+              "integer"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 2 (type(ratio).__name__) \u2014 no quotes",
+            "prompt": "Python data type of ratio",
             "answer": "float",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(ratio).__name__ evaluates to float. A one-item tuple needs a comma; / produces a float.",
-            "id": "2"
+            "explanation": "ratio has type float.",
+            "id": "2",
+            "accepted": []
           },
           {
             "kind": "text",
-            "prompt": "Printed value 3 (type(str(value)).__name__) \u2014 no quotes",
+            "prompt": "Python data type of text",
             "answer": "str",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(str(value)).__name__ evaluates to str. A one-item tuple needs a comma; / produces a float.",
-            "id": "3"
+            "explanation": "text has type str.",
+            "id": "3",
+            "accepted": [
+              "string"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 4 (type(value > 0).__name__) \u2014 no quotes",
+            "prompt": "Python data type of is_positive",
             "answer": "bool",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value > 0).__name__ evaluates to bool. A one-item tuple needs a comma; / produces a float.",
-            "id": "4"
+            "explanation": "is_positive has type bool.",
+            "id": "4",
+            "accepted": [
+              "Boolean",
+              "boolean"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type([value]).__name__) \u2014 no quotes",
+            "prompt": "Python data type of values",
             "answer": "list",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type([value]).__name__ evaluates to list. A one-item tuple needs a comma; / produces a float.",
-            "id": "5"
+            "explanation": "values has type list.",
+            "id": "5",
+            "accepted": []
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 6\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(___).__name__, type(value > 0).__name__, type([value]).__name__)",
-        "hint": "A one-item tuple needs a comma; / produces a float.",
+        "prompt": "Complete the conversion to text, then name the Python data type of each requested value.",
+        "code": "value = 6\nratio = value / 2\ntext = ___\nis_positive = value > 0\nvalues = [value]",
+        "hint": "Track the type produced by each operation. Division with / can produce a fractional result even when its operands are integers.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "The third output must report the type after conversion to text. Complete its conversion expression.",
+            "prompt": "Convert value to text. Complete the expression for text.",
             "answer": "str(value)",
             "marks": 1,
-            "explanation": "A one-item tuple needs a comma; / produces a float.",
+            "explanation": "str(value) converts the number to text.",
             "id": "0"
           },
           {
             "kind": "text",
-            "prompt": "Printed value 1 (type(value).__name__) \u2014 no quotes",
+            "prompt": "Python data type of value",
             "answer": "int",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value).__name__ evaluates to int. A one-item tuple needs a comma; / produces a float.",
-            "id": "1"
+            "explanation": "value has type int.",
+            "id": "1",
+            "accepted": [
+              "integer"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 2 (type(ratio).__name__) \u2014 no quotes",
+            "prompt": "Python data type of ratio",
             "answer": "float",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(ratio).__name__ evaluates to float. A one-item tuple needs a comma; / produces a float.",
-            "id": "2"
+            "explanation": "ratio has type float.",
+            "id": "2",
+            "accepted": []
           },
           {
             "kind": "text",
-            "prompt": "Printed value 3 (type(str(value)).__name__) \u2014 no quotes",
+            "prompt": "Python data type of text",
             "answer": "str",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(str(value)).__name__ evaluates to str. A one-item tuple needs a comma; / produces a float.",
-            "id": "3"
+            "explanation": "text has type str.",
+            "id": "3",
+            "accepted": [
+              "string"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 4 (type(value > 0).__name__) \u2014 no quotes",
+            "prompt": "Python data type of is_positive",
             "answer": "bool",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value > 0).__name__ evaluates to bool. A one-item tuple needs a comma; / produces a float.",
-            "id": "4"
+            "explanation": "is_positive has type bool.",
+            "id": "4",
+            "accepted": [
+              "Boolean",
+              "boolean"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type([value]).__name__) \u2014 no quotes",
+            "prompt": "Python data type of values",
             "answer": "list",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type([value]).__name__ evaluates to list. A one-item tuple needs a comma; / produces a float.",
-            "id": "5"
+            "explanation": "values has type list.",
+            "id": "5",
+            "accepted": []
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 7\nratio = value / 2\nprint(type(value).__name__, type(ratio).__name__, type(___).__name__, type(value > 0).__name__, type([value]).__name__)",
-        "hint": "A one-item tuple needs a comma; / produces a float.",
+        "prompt": "Complete the conversion to text, then name the Python data type of each requested value.",
+        "code": "value = 7\nratio = value / 2\ntext = ___\nis_positive = value > 0\nvalues = [value]",
+        "hint": "Track the type produced by each operation. Division with / can produce a fractional result even when its operands are integers.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "The third output must report the type after conversion to text. Complete its conversion expression.",
+            "prompt": "Convert value to text. Complete the expression for text.",
             "answer": "str(value)",
             "marks": 1,
-            "explanation": "A one-item tuple needs a comma; / produces a float.",
+            "explanation": "str(value) converts the number to text.",
             "id": "0"
           },
           {
             "kind": "text",
-            "prompt": "Printed value 1 (type(value).__name__) \u2014 no quotes",
+            "prompt": "Python data type of value",
             "answer": "int",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value).__name__ evaluates to int. A one-item tuple needs a comma; / produces a float.",
-            "id": "1"
+            "explanation": "value has type int.",
+            "id": "1",
+            "accepted": [
+              "integer"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 2 (type(ratio).__name__) \u2014 no quotes",
+            "prompt": "Python data type of ratio",
             "answer": "float",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(ratio).__name__ evaluates to float. A one-item tuple needs a comma; / produces a float.",
-            "id": "2"
+            "explanation": "ratio has type float.",
+            "id": "2",
+            "accepted": []
           },
           {
             "kind": "text",
-            "prompt": "Printed value 3 (type(str(value)).__name__) \u2014 no quotes",
+            "prompt": "Python data type of text",
             "answer": "str",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(str(value)).__name__ evaluates to str. A one-item tuple needs a comma; / produces a float.",
-            "id": "3"
+            "explanation": "text has type str.",
+            "id": "3",
+            "accepted": [
+              "string"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 4 (type(value > 0).__name__) \u2014 no quotes",
+            "prompt": "Python data type of is_positive",
             "answer": "bool",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type(value > 0).__name__ evaluates to bool. A one-item tuple needs a comma; / produces a float.",
-            "id": "4"
+            "explanation": "is_positive has type bool.",
+            "id": "4",
+            "accepted": [
+              "Boolean",
+              "boolean"
+            ]
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type([value]).__name__) \u2014 no quotes",
+            "prompt": "Python data type of values",
             "answer": "list",
-            "caseSensitive": true,
+            "caseSensitive": false,
             "marks": 1,
-            "explanation": "type([value]).__name__ evaluates to list. A one-item tuple needs a comma; / produces a float.",
-            "id": "5"
+            "explanation": "values has type list.",
+            "id": "5",
+            "accepted": []
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 17,
@@ -1588,7 +1650,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 3 + 0.75\nprint(int(value), round(value), round(-value), abs(-value), min(value, 3))",
+        "code": "value = 3 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 3),\n)",
         "hint": "int truncates towards zero; round selects the nearest integer here.",
         "parts": [
           {
@@ -1648,7 +1710,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 4 + 0.75\nprint(int(value), round(value), round(-value), abs(-value), min(value, 4))",
+        "code": "value = 4 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 4),\n)",
         "hint": "int truncates towards zero; round selects the nearest integer here.",
         "parts": [
           {
@@ -1708,7 +1770,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 5 + 0.75\nprint(int(value), round(value), round(-value), abs(-value), min(value, 5))",
+        "code": "value = 5 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 5),\n)",
         "hint": "int truncates towards zero; round selects the nearest integer here.",
         "parts": [
           {
@@ -1768,7 +1830,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 6 + 0.75\nprint(int(value), round(value), round(-value), abs(-value), min(value, 6))",
+        "code": "value = 6 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 6),\n)",
         "hint": "int truncates towards zero; round selects the nearest integer here.",
         "parts": [
           {
@@ -1828,7 +1890,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "value = 7 + 0.75\nprint(int(value), round(value), round(-value), abs(-value), min(value, 7))",
+        "code": "value = 7 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 7),\n)",
         "hint": "int truncates towards zero; round selects the nearest integer here.",
         "parts": [
           {
@@ -1901,7 +1963,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "label = \"AB3xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+        "code": "label = \"AB3xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
         "hint": "Slices exclude the stop; a negative step walks backwards.",
         "parts": [
           {
@@ -1962,7 +2024,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "label = \"AB4xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+        "code": "label = \"AB4xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
         "hint": "Slices exclude the stop; a negative step walks backwards.",
         "parts": [
           {
@@ -2023,7 +2085,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "label = \"AB5xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+        "code": "label = \"AB5xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
         "hint": "Slices exclude the stop; a negative step walks backwards.",
         "parts": [
           {
@@ -2084,7 +2146,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "label = \"AB6xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+        "code": "label = \"AB6xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
         "hint": "Slices exclude the stop; a negative step walks backwards.",
         "parts": [
           {
@@ -2145,7 +2207,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "label = \"AB7xyz\"\nprint(label[0], label[-1], label[2], label[3:5], label[::-1], len(label))",
+        "code": "label = \"AB7xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
         "hint": "Slices exclude the stop; a negative step walks backwards.",
         "parts": [
           {
@@ -2219,7 +2281,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "name = \"  Team3  \"\nclean = ___\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+        "code": "name = \"  Team3  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
         "hint": "strip returns a new string with whitespace removed at both ends.",
         "parts": [
           {
@@ -2279,7 +2341,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "name = \"  Team4  \"\nclean = ___\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+        "code": "name = \"  Team4  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
         "hint": "strip returns a new string with whitespace removed at both ends.",
         "parts": [
           {
@@ -2339,7 +2401,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "name = \"  Team5  \"\nclean = ___\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+        "code": "name = \"  Team5  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
         "hint": "strip returns a new string with whitespace removed at both ends.",
         "parts": [
           {
@@ -2399,7 +2461,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "name = \"  Team6  \"\nclean = ___\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+        "code": "name = \"  Team6  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
         "hint": "strip returns a new string with whitespace removed at both ends.",
         "parts": [
           {
@@ -2459,7 +2521,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "name = \"  Team7  \"\nclean = ___\nprint(len(name), clean, clean.lower(), clean.upper(), clean.startswith(\"Team\"))",
+        "code": "name = \"  Team7  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
         "hint": "strip returns a new string with whitespace removed at both ends.",
         "parts": [
           {
@@ -2532,7 +2594,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "row = \"a,3,b\"\nfields = row.split(\":\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+        "code": "row = \"a,3,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
         "hint": "split produces a list; join inserts its separator between items.",
         "parts": [
           {
@@ -2592,7 +2654,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "row = \"a,4,b\"\nfields = row.split(\":\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+        "code": "row = \"a,4,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
         "hint": "split produces a list; join inserts its separator between items.",
         "parts": [
           {
@@ -2652,7 +2714,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "row = \"a,5,b\"\nfields = row.split(\":\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+        "code": "row = \"a,5,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
         "hint": "split produces a list; join inserts its separator between items.",
         "parts": [
           {
@@ -2712,7 +2774,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "row = \"a,6,b\"\nfields = row.split(\":\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+        "code": "row = \"a,6,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
         "hint": "split produces a list; join inserts its separator between items.",
         "parts": [
           {
@@ -2772,7 +2834,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "row = \"a,7,b\"\nfields = row.split(\":\")\nprint(len(fields), fields[1], \"-\".join(fields), row.replace(\",\", \":\"), row.count(\",\"))",
+        "code": "row = \"a,7,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
         "hint": "split produces a list; join inserts its separator between items.",
         "parts": [
           {
@@ -2845,7 +2907,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "queue = [3, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+        "code": "queue = [3, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
         "hint": "pop removes and returns an item; remaining indices shift.",
         "parts": [
           {
@@ -2906,7 +2968,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "queue = [4, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+        "code": "queue = [4, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
         "hint": "pop removes and returns an item; remaining indices shift.",
         "parts": [
           {
@@ -2967,7 +3029,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "queue = [5, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+        "code": "queue = [5, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
         "hint": "pop removes and returns an item; remaining indices shift.",
         "parts": [
           {
@@ -3028,7 +3090,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "queue = [6, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+        "code": "queue = [6, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
         "hint": "pop removes and returns an item; remaining indices shift.",
         "parts": [
           {
@@ -3089,7 +3151,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "queue = [7, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(first, queue[0], queue[-1], len(queue), sum(queue), 10 in queue)",
+        "code": "queue = [7, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
         "hint": "pop removes and returns an item; remaining indices shift.",
         "parts": [
           {
@@ -3163,7 +3225,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "items = [3, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+        "code": "items = [3, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
         "hint": "An alias refers to the same list; slicing creates a shallow copy.",
         "parts": [
           {
@@ -3223,7 +3285,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "items = [4, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+        "code": "items = [4, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
         "hint": "An alias refers to the same list; slicing creates a shallow copy.",
         "parts": [
           {
@@ -3283,7 +3345,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "items = [5, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+        "code": "items = [5, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
         "hint": "An alias refers to the same list; slicing creates a shallow copy.",
         "parts": [
           {
@@ -3343,7 +3405,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "items = [6, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+        "code": "items = [6, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
         "hint": "An alias refers to the same list; slicing creates a shallow copy.",
         "parts": [
           {
@@ -3403,7 +3465,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "items = [7, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(items[0], alias[0], copy[0], items is alias, items is copy)",
+        "code": "items = [7, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
         "hint": "An alias refers to the same list; slicing creates a shallow copy.",
         "parts": [
           {
@@ -3476,7 +3538,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "grid = [[3, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+        "code": "grid = [[3, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
         "hint": "The first index selects a row and the second a column.",
         "parts": [
           {
@@ -3536,7 +3598,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "grid = [[4, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+        "code": "grid = [[4, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
         "hint": "The first index selects a row and the second a column.",
         "parts": [
           {
@@ -3596,7 +3658,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "grid = [[5, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+        "code": "grid = [[5, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
         "hint": "The first index selects a row and the second a column.",
         "parts": [
           {
@@ -3656,7 +3718,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "grid = [[6, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+        "code": "grid = [[6, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
         "hint": "The first index selects a row and the second a column.",
         "parts": [
           {
@@ -3716,7 +3778,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "grid = [[7, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(grid[0][0], grid[1][0], grid[1][2], len(grid), len(grid[0]))",
+        "code": "grid = [[7, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
         "hint": "The first index selects a row and the second a column.",
         "parts": [
           {
@@ -3789,7 +3851,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "stock = {\"pen\": 3, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+        "code": "stock = {\"pen\": 3, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
         "hint": "Dictionary membership checks keys; get can supply a default.",
         "parts": [
           {
@@ -3850,7 +3912,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "stock = {\"pen\": 4, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+        "code": "stock = {\"pen\": 4, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
         "hint": "Dictionary membership checks keys; get can supply a default.",
         "parts": [
           {
@@ -3911,7 +3973,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "stock = {\"pen\": 5, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+        "code": "stock = {\"pen\": 5, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
         "hint": "Dictionary membership checks keys; get can supply a default.",
         "parts": [
           {
@@ -3972,7 +4034,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "stock = {\"pen\": 6, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+        "code": "stock = {\"pen\": 6, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
         "hint": "Dictionary membership checks keys; get can supply a default.",
         "parts": [
           {
@@ -4033,7 +4095,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "stock = {\"pen\": 7, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0), len(stock), \"pen\" in stock, \"bag\" in stock)",
+        "code": "stock = {\"pen\": 7, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
         "hint": "Dictionary membership checks keys; get can supply a default.",
         "parts": [
           {
@@ -4107,7 +4169,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
         "hint": "In this example each new event starts at the stated baseline, not zero.",
         "parts": [
           {
@@ -4167,7 +4229,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
         "hint": "In this example each new event starts at the stated baseline, not zero.",
         "parts": [
           {
@@ -4227,7 +4289,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
         "hint": "In this example each new event starts at the stated baseline, not zero.",
         "parts": [
           {
@@ -4287,7 +4349,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
         "hint": "In this example each new event starts at the stated baseline, not zero.",
         "parts": [
           {
@@ -4347,7 +4409,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(counts[\"ok\"], counts[\"bad\"], len(counts), sum(counts.values()), counts.get(\"new\", 0))",
+        "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
         "hint": "In this example each new event starts at the stated baseline, not zero.",
         "parts": [
           {
@@ -4419,8 +4481,8 @@ export default [
     ],
     "variations": [
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "record = (\"item3\", 3, True)\ncount, name, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+        "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
+        "code": "record = (\"item3\", 3, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
         "hint": "Unpacking assigns tuple items in order.",
         "parts": [
           {
@@ -4469,18 +4531,18 @@ export default [
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type(record).__name__) \u2014 no quotes",
+            "prompt": "Python data structure used for record",
             "answer": "tuple",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "type(record).__name__ evaluates to tuple. Unpacking assigns tuple items in order.",
+            "explanation": "The comma-separated values in parentheses form a tuple.",
             "id": "5"
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "record = (\"item4\", 4, True)\ncount, name, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+        "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
+        "code": "record = (\"item4\", 4, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
         "hint": "Unpacking assigns tuple items in order.",
         "parts": [
           {
@@ -4529,18 +4591,18 @@ export default [
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type(record).__name__) \u2014 no quotes",
+            "prompt": "Python data structure used for record",
             "answer": "tuple",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "type(record).__name__ evaluates to tuple. Unpacking assigns tuple items in order.",
+            "explanation": "The comma-separated values in parentheses form a tuple.",
             "id": "5"
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "record = (\"item5\", 5, True)\ncount, name, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+        "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
+        "code": "record = (\"item5\", 5, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
         "hint": "Unpacking assigns tuple items in order.",
         "parts": [
           {
@@ -4589,18 +4651,18 @@ export default [
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type(record).__name__) \u2014 no quotes",
+            "prompt": "Python data structure used for record",
             "answer": "tuple",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "type(record).__name__ evaluates to tuple. Unpacking assigns tuple items in order.",
+            "explanation": "The comma-separated values in parentheses form a tuple.",
             "id": "5"
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "record = (\"item6\", 6, True)\ncount, name, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+        "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
+        "code": "record = (\"item6\", 6, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
         "hint": "Unpacking assigns tuple items in order.",
         "parts": [
           {
@@ -4649,18 +4711,18 @@ export default [
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type(record).__name__) \u2014 no quotes",
+            "prompt": "Python data structure used for record",
             "answer": "tuple",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "type(record).__name__ evaluates to tuple. Unpacking assigns tuple items in order.",
+            "explanation": "The comma-separated values in parentheses form a tuple.",
             "id": "5"
           }
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "record = (\"item7\", 7, True)\ncount, name, active = record\nprint(name, count, active, len(record), type(record).__name__)",
+        "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
+        "code": "record = (\"item7\", 7, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
         "hint": "Unpacking assigns tuple items in order.",
         "parts": [
           {
@@ -4709,16 +4771,17 @@ export default [
           },
           {
             "kind": "text",
-            "prompt": "Printed value 5 (type(record).__name__) \u2014 no quotes",
+            "prompt": "Python data structure used for record",
             "answer": "tuple",
             "caseSensitive": true,
             "marks": 1,
-            "explanation": "type(record).__name__ evaluates to tuple. Unpacking assigns tuple items in order.",
+            "explanation": "The comma-separated values in parentheses form a tuple.",
             "id": "5"
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 27,
@@ -4733,7 +4796,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "age = 3\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+        "code": "age = 3\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
         "hint": "Evaluate comparisons first, then not, and, or.",
         "parts": [
           {
@@ -4794,7 +4857,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "age = 4\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+        "code": "age = 4\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
         "hint": "Evaluate comparisons first, then not, and, or.",
         "parts": [
           {
@@ -4855,7 +4918,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "age = 5\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+        "code": "age = 5\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
         "hint": "Evaluate comparisons first, then not, and, or.",
         "parts": [
           {
@@ -4916,7 +4979,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "age = 6\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+        "code": "age = 6\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
         "hint": "Evaluate comparisons first, then not, and, or.",
         "parts": [
           {
@@ -4977,7 +5040,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "age = 7\nmember = True\nblocked = False\nprint(member and not blocked, age >= 5 and member, age < 5 or blocked, not (member or blocked), member != blocked, age == 5)",
+        "code": "age = 7\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
         "hint": "Evaluate comparisons first, then not, and, or.",
         "parts": [
           {
@@ -6621,7 +6684,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 3\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+        "code": "count = 3\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
         "hint": "A format specifier controls display, without changing the original number.",
         "parts": [
           {
@@ -6682,7 +6745,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 4\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+        "code": "count = 4\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
         "hint": "A format specifier controls display, without changing the original number.",
         "parts": [
           {
@@ -6743,7 +6806,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 5\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+        "code": "count = 5\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
         "hint": "A format specifier controls display, without changing the original number.",
         "parts": [
           {
@@ -6804,7 +6867,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 6\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+        "code": "count = 6\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
         "hint": "A format specifier controls display, without changing the original number.",
         "parts": [
           {
@@ -6865,7 +6928,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "count = 7\nprice = 2\ntotal = count * price\nprint(f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)), total, count)",
+        "code": "count = 7\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
         "hint": "A format specifier controls display, without changing the original number.",
         "parts": [
           {
@@ -6927,632 +6990,6 @@ export default [
     ]
   },
   {
-    "slot": 34,
-    "focus": "input output",
-    "title": "Read a file as lines",
-    "format": "Complete the code",
-    "tags": [
-      "input output",
-      "CA2.5",
-      "completion"
-    ],
-    "variations": [
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO(\"3\\n8\\n\")\nfirst = ___\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
-        "hint": "readline reads one line; read consumes the remaining contents.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read just the first line and remove its newline. Complete the first expression.",
-            "answer": "file.readline().strip()",
-            "marks": 1,
-            "explanation": "readline reads one line; read consumes the remaining contents.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (first) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "first evaluates to 3. readline reads one line; read consumes the remaining contents.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (rest) \u2014 no quotes",
-            "answer": "8",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "rest evaluates to 8. readline reads one line; read consumes the remaining contents.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (int(first) + int(rest)) \u2014 no quotes",
-            "answer": "11",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "int(first) + int(rest) evaluates to 11. readline reads one line; read consumes the remaining contents.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. readline reads one line; read consumes the remaining contents.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.tell()) \u2014 no quotes",
-            "answer": "4",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.tell() evaluates to 4. readline reads one line; read consumes the remaining contents.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO(\"4\\n8\\n\")\nfirst = ___\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
-        "hint": "readline reads one line; read consumes the remaining contents.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read just the first line and remove its newline. Complete the first expression.",
-            "answer": "file.readline().strip()",
-            "marks": 1,
-            "explanation": "readline reads one line; read consumes the remaining contents.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (first) \u2014 no quotes",
-            "answer": "4",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "first evaluates to 4. readline reads one line; read consumes the remaining contents.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (rest) \u2014 no quotes",
-            "answer": "8",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "rest evaluates to 8. readline reads one line; read consumes the remaining contents.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (int(first) + int(rest)) \u2014 no quotes",
-            "answer": "12",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "int(first) + int(rest) evaluates to 12. readline reads one line; read consumes the remaining contents.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. readline reads one line; read consumes the remaining contents.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.tell()) \u2014 no quotes",
-            "answer": "4",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.tell() evaluates to 4. readline reads one line; read consumes the remaining contents.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO(\"5\\n8\\n\")\nfirst = ___\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
-        "hint": "readline reads one line; read consumes the remaining contents.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read just the first line and remove its newline. Complete the first expression.",
-            "answer": "file.readline().strip()",
-            "marks": 1,
-            "explanation": "readline reads one line; read consumes the remaining contents.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (first) \u2014 no quotes",
-            "answer": "5",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "first evaluates to 5. readline reads one line; read consumes the remaining contents.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (rest) \u2014 no quotes",
-            "answer": "8",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "rest evaluates to 8. readline reads one line; read consumes the remaining contents.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (int(first) + int(rest)) \u2014 no quotes",
-            "answer": "13",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "int(first) + int(rest) evaluates to 13. readline reads one line; read consumes the remaining contents.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. readline reads one line; read consumes the remaining contents.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.tell()) \u2014 no quotes",
-            "answer": "4",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.tell() evaluates to 4. readline reads one line; read consumes the remaining contents.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO(\"6\\n8\\n\")\nfirst = ___\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
-        "hint": "readline reads one line; read consumes the remaining contents.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read just the first line and remove its newline. Complete the first expression.",
-            "answer": "file.readline().strip()",
-            "marks": 1,
-            "explanation": "readline reads one line; read consumes the remaining contents.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (first) \u2014 no quotes",
-            "answer": "6",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "first evaluates to 6. readline reads one line; read consumes the remaining contents.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (rest) \u2014 no quotes",
-            "answer": "8",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "rest evaluates to 8. readline reads one line; read consumes the remaining contents.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (int(first) + int(rest)) \u2014 no quotes",
-            "answer": "14",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "int(first) + int(rest) evaluates to 14. readline reads one line; read consumes the remaining contents.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. readline reads one line; read consumes the remaining contents.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.tell()) \u2014 no quotes",
-            "answer": "4",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.tell() evaluates to 4. readline reads one line; read consumes the remaining contents.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO(\"7\\n8\\n\")\nfirst = ___\nrest = file.read().strip()\nprint(first, rest, int(first) + int(rest), file.read() == \"\", file.tell())",
-        "hint": "readline reads one line; read consumes the remaining contents.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read just the first line and remove its newline. Complete the first expression.",
-            "answer": "file.readline().strip()",
-            "marks": 1,
-            "explanation": "readline reads one line; read consumes the remaining contents.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (first) \u2014 no quotes",
-            "answer": "7",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "first evaluates to 7. readline reads one line; read consumes the remaining contents.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (rest) \u2014 no quotes",
-            "answer": "8",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "rest evaluates to 8. readline reads one line; read consumes the remaining contents.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (int(first) + int(rest)) \u2014 no quotes",
-            "answer": "15",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "int(first) + int(rest) evaluates to 15. readline reads one line; read consumes the remaining contents.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. readline reads one line; read consumes the remaining contents.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.tell()) \u2014 no quotes",
-            "answer": "4",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.tell() evaluates to 4. readline reads one line; read consumes the remaining contents.",
-            "id": "5"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "slot": 35,
-    "focus": "input output",
-    "title": "Write and rewind",
-    "format": "Fix the code",
-    "tags": [
-      "input output",
-      "CA2.5",
-      "debugging"
-    ],
-    "variations": [
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID3\")\nposition = file.tell()\nfile.seek(1)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
-        "hint": "The cursor stays at the end after writing; seek(0) rewinds it.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read back the entire written ID. Repair the cursor-positioning call.",
-            "answer": "file.seek(0)",
-            "marks": 1,
-            "explanation": "The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (written) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "written evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (position) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "position evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (text) \u2014 no quotes",
-            "answer": "ID3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "text evaluates to ID3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (len(text)) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "len(text) evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID4\")\nposition = file.tell()\nfile.seek(1)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
-        "hint": "The cursor stays at the end after writing; seek(0) rewinds it.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read back the entire written ID. Repair the cursor-positioning call.",
-            "answer": "file.seek(0)",
-            "marks": 1,
-            "explanation": "The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (written) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "written evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (position) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "position evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (text) \u2014 no quotes",
-            "answer": "ID4",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "text evaluates to ID4. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (len(text)) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "len(text) evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID5\")\nposition = file.tell()\nfile.seek(1)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
-        "hint": "The cursor stays at the end after writing; seek(0) rewinds it.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read back the entire written ID. Repair the cursor-positioning call.",
-            "answer": "file.seek(0)",
-            "marks": 1,
-            "explanation": "The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (written) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "written evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (position) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "position evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (text) \u2014 no quotes",
-            "answer": "ID5",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "text evaluates to ID5. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (len(text)) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "len(text) evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID6\")\nposition = file.tell()\nfile.seek(1)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
-        "hint": "The cursor stays at the end after writing; seek(0) rewinds it.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read back the entire written ID. Repair the cursor-positioning call.",
-            "answer": "file.seek(0)",
-            "marks": 1,
-            "explanation": "The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (written) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "written evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (position) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "position evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (text) \u2014 no quotes",
-            "answer": "ID6",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "text evaluates to ID6. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (len(text)) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "len(text) evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "5"
-          }
-        ]
-      },
-      {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "from io import StringIO\nfile = StringIO()\nwritten = file.write(\"ID7\")\nposition = file.tell()\nfile.seek(1)\ntext = file.read()\nprint(written, position, text, len(text), file.read() == \"\")",
-        "hint": "The cursor stays at the end after writing; seek(0) rewinds it.",
-        "parts": [
-          {
-            "kind": "code",
-            "prompt": "Read back the entire written ID. Repair the cursor-positioning call.",
-            "answer": "file.seek(0)",
-            "marks": 1,
-            "explanation": "The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "0"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 1 (written) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "written evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "1"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 2 (position) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "position evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "2"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 3 (text) \u2014 no quotes",
-            "answer": "ID7",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "text evaluates to ID7. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "3"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 4 (len(text)) \u2014 no quotes",
-            "answer": "3",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "len(text) evaluates to 3. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "4"
-          },
-          {
-            "kind": "text",
-            "prompt": "Printed value 5 (file.read() == \"\") \u2014 no quotes",
-            "answer": "True",
-            "caseSensitive": true,
-            "marks": 1,
-            "explanation": "file.read() == \"\" evaluates to True. The cursor stays at the end after writing; seek(0) rewinds it.",
-            "id": "5"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "slot": 36,
     "focus": "robust code",
     "title": "Handle invalid integers",
@@ -7565,7 +7002,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"3\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"3\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
         "hint": "Catch the error raised by int for non-integer text.",
         "parts": [
           {
@@ -7626,7 +7063,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"4\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"4\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
         "hint": "Catch the error raised by int for non-integer text.",
         "parts": [
           {
@@ -7687,7 +7124,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"5\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"5\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
         "hint": "Catch the error raised by int for non-integer text.",
         "parts": [
           {
@@ -7748,7 +7185,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"6\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"6\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
         "hint": "Catch the error raised by int for non-integer text.",
         "parts": [
           {
@@ -7809,7 +7246,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(parse(\"7\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"), parse(\" 7 \"), parse(\"\"))",
+        "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"7\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
         "hint": "Catch the error raised by int for non-integer text.",
         "parts": [
           {
@@ -7882,13 +7319,13 @@ export default [
     ],
     "variations": [
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(value):\n    return ___\nprint(valid(3 - 1), valid(3), valid(3 + 4), valid(3 + 5), valid(0))",
+        "prompt": "Complete the function to accept integer values from 3 to 7, inclusive. Then predict the five printed values.",
+        "code": "def valid(value):\n    return ___\nprint(\n    valid(3 - 1), valid(3), valid(3 + 4), valid(3 + 5),\n    valid(0),\n)",
         "hint": "Test just below, on, and just above each inclusive boundary.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "Accept both endpoints of the shown interval. Complete the return expression.",
+            "prompt": "Complete the return expression for the stated inclusive range.",
             "answer": "3 <= value <= 3 + 4",
             "marks": 1,
             "explanation": "Test just below, on, and just above each inclusive boundary.",
@@ -7942,13 +7379,13 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(value):\n    return ___\nprint(valid(4 - 1), valid(4), valid(4 + 4), valid(4 + 5), valid(0))",
+        "prompt": "Complete the function to accept integer values from 4 to 8, inclusive. Then predict the five printed values.",
+        "code": "def valid(value):\n    return ___\nprint(\n    valid(4 - 1), valid(4), valid(4 + 4), valid(4 + 5),\n    valid(0),\n)",
         "hint": "Test just below, on, and just above each inclusive boundary.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "Accept both endpoints of the shown interval. Complete the return expression.",
+            "prompt": "Complete the return expression for the stated inclusive range.",
             "answer": "4 <= value <= 4 + 4",
             "marks": 1,
             "explanation": "Test just below, on, and just above each inclusive boundary.",
@@ -8002,13 +7439,13 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(value):\n    return ___\nprint(valid(5 - 1), valid(5), valid(5 + 4), valid(5 + 5), valid(0))",
+        "prompt": "Complete the function to accept integer values from 5 to 9, inclusive. Then predict the five printed values.",
+        "code": "def valid(value):\n    return ___\nprint(\n    valid(5 - 1), valid(5), valid(5 + 4), valid(5 + 5),\n    valid(0),\n)",
         "hint": "Test just below, on, and just above each inclusive boundary.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "Accept both endpoints of the shown interval. Complete the return expression.",
+            "prompt": "Complete the return expression for the stated inclusive range.",
             "answer": "5 <= value <= 5 + 4",
             "marks": 1,
             "explanation": "Test just below, on, and just above each inclusive boundary.",
@@ -8062,13 +7499,13 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(value):\n    return ___\nprint(valid(6 - 1), valid(6), valid(6 + 4), valid(6 + 5), valid(0))",
+        "prompt": "Complete the function to accept integer values from 6 to 10, inclusive. Then predict the five printed values.",
+        "code": "def valid(value):\n    return ___\nprint(\n    valid(6 - 1), valid(6), valid(6 + 4), valid(6 + 5),\n    valid(0),\n)",
         "hint": "Test just below, on, and just above each inclusive boundary.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "Accept both endpoints of the shown interval. Complete the return expression.",
+            "prompt": "Complete the return expression for the stated inclusive range.",
             "answer": "6 <= value <= 6 + 4",
             "marks": 1,
             "explanation": "Test just below, on, and just above each inclusive boundary.",
@@ -8122,13 +7559,13 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(value):\n    return ___\nprint(valid(7 - 1), valid(7), valid(7 + 4), valid(7 + 5), valid(0))",
+        "prompt": "Complete the function to accept integer values from 7 to 11, inclusive. Then predict the five printed values.",
+        "code": "def valid(value):\n    return ___\nprint(\n    valid(7 - 1), valid(7), valid(7 + 4), valid(7 + 5),\n    valid(0),\n)",
         "hint": "Test just below, on, and just above each inclusive boundary.",
         "parts": [
           {
             "kind": "code",
-            "prompt": "Accept both endpoints of the shown interval. Complete the return expression.",
+            "prompt": "Complete the return expression for the stated inclusive range.",
             "answer": "7 <= value <= 7 + 4",
             "marks": 1,
             "explanation": "Test just below, on, and just above each inclusive boundary.",
@@ -8181,7 +7618,8 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 38,
@@ -8196,7 +7634,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"323\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"323\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
         "hint": "Length and character checks must both succeed.",
         "parts": [
           {
@@ -8256,7 +7694,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"423\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"423\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
         "hint": "Length and character checks must both succeed.",
         "parts": [
           {
@@ -8316,7 +7754,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"523\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"523\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
         "hint": "Length and character checks must both succeed.",
         "parts": [
           {
@@ -8376,7 +7814,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"623\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"623\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
         "hint": "Length and character checks must both succeed.",
         "parts": [
           {
@@ -8436,7 +7874,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"723\"\nprint(valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"), valid(\"007\"))",
+        "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"723\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
         "hint": "Length and character checks must both succeed.",
         "parts": [
           {
@@ -8509,7 +7947,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def admitted(age):\n    return age > 3\n# Requirement: accept ages at least 3.\nprint(admitted(3 - 1), admitted(3), admitted(3 + 1), admitted(0), admitted(3 + 2), admitted(3) == True)",
+        "code": "def admitted(age):\n    return age > 3\n# Requirement: accept ages at least 3.\nprint(\n    admitted(3 - 1), admitted(3), admitted(3 + 1), admitted(0),\n    admitted(3 + 2), admitted(3) == True,\n)",
         "hint": "Trace the actual implementation, including its boundary error.",
         "parts": [
           {
@@ -8570,7 +8008,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def admitted(age):\n    return age > 4\n# Requirement: accept ages at least 4.\nprint(admitted(4 - 1), admitted(4), admitted(4 + 1), admitted(0), admitted(4 + 2), admitted(4) == True)",
+        "code": "def admitted(age):\n    return age > 4\n# Requirement: accept ages at least 4.\nprint(\n    admitted(4 - 1), admitted(4), admitted(4 + 1), admitted(0),\n    admitted(4 + 2), admitted(4) == True,\n)",
         "hint": "Trace the actual implementation, including its boundary error.",
         "parts": [
           {
@@ -8631,7 +8069,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def admitted(age):\n    return age > 5\n# Requirement: accept ages at least 5.\nprint(admitted(5 - 1), admitted(5), admitted(5 + 1), admitted(0), admitted(5 + 2), admitted(5) == True)",
+        "code": "def admitted(age):\n    return age > 5\n# Requirement: accept ages at least 5.\nprint(\n    admitted(5 - 1), admitted(5), admitted(5 + 1), admitted(0),\n    admitted(5 + 2), admitted(5) == True,\n)",
         "hint": "Trace the actual implementation, including its boundary error.",
         "parts": [
           {
@@ -8692,7 +8130,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def admitted(age):\n    return age > 6\n# Requirement: accept ages at least 6.\nprint(admitted(6 - 1), admitted(6), admitted(6 + 1), admitted(0), admitted(6 + 2), admitted(6) == True)",
+        "code": "def admitted(age):\n    return age > 6\n# Requirement: accept ages at least 6.\nprint(\n    admitted(6 - 1), admitted(6), admitted(6 + 1), admitted(0),\n    admitted(6 + 2), admitted(6) == True,\n)",
         "hint": "Trace the actual implementation, including its boundary error.",
         "parts": [
           {
@@ -8753,7 +8191,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def admitted(age):\n    return age > 7\n# Requirement: accept ages at least 7.\nprint(admitted(7 - 1), admitted(7), admitted(7 + 1), admitted(0), admitted(7 + 2), admitted(7) == True)",
+        "code": "def admitted(age):\n    return age > 7\n# Requirement: accept ages at least 7.\nprint(\n    admitted(7 - 1), admitted(7), admitted(7 + 1), admitted(0),\n    admitted(7 + 2), admitted(7) == True,\n)",
         "hint": "Trace the actual implementation, including its boundary error.",
         "parts": [
           {
@@ -8817,7 +8255,7 @@ export default [
   {
     "slot": 40,
     "focus": "testing",
-    "title": "Trace assertions",
+    "title": "Check function test results",
     "format": "Complete the code",
     "tags": [
       "testing",
@@ -8827,8 +8265,8 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def double(value):\n    return ___\nx = 3\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
-        "hint": "An assertion would pass when its tested expression is true.",
+        "code": "def double(value):\n    return ___\nx = 3\nprint(\n    double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x,\n    double(x) == x, double(x + 1) - double(x),\n)",
+        "hint": "Evaluate each comparison using the value returned by the function. True means that test matches its expected result.",
         "parts": [
           {
             "kind": "code",
@@ -8887,8 +8325,8 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def double(value):\n    return ___\nx = 4\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
-        "hint": "An assertion would pass when its tested expression is true.",
+        "code": "def double(value):\n    return ___\nx = 4\nprint(\n    double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x,\n    double(x) == x, double(x + 1) - double(x),\n)",
+        "hint": "Evaluate each comparison using the value returned by the function. True means that test matches its expected result.",
         "parts": [
           {
             "kind": "code",
@@ -8947,8 +8385,8 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def double(value):\n    return ___\nx = 5\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
-        "hint": "An assertion would pass when its tested expression is true.",
+        "code": "def double(value):\n    return ___\nx = 5\nprint(\n    double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x,\n    double(x) == x, double(x + 1) - double(x),\n)",
+        "hint": "Evaluate each comparison using the value returned by the function. True means that test matches its expected result.",
         "parts": [
           {
             "kind": "code",
@@ -9007,8 +8445,8 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def double(value):\n    return ___\nx = 6\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
-        "hint": "An assertion would pass when its tested expression is true.",
+        "code": "def double(value):\n    return ___\nx = 6\nprint(\n    double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x,\n    double(x) == x, double(x + 1) - double(x),\n)",
+        "hint": "Evaluate each comparison using the value returned by the function. True means that test matches its expected result.",
         "parts": [
           {
             "kind": "code",
@@ -9067,8 +8505,8 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def double(value):\n    return ___\nx = 7\nprint(double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x, double(x) == x, double(x + 1) - double(x))",
-        "hint": "An assertion would pass when its tested expression is true.",
+        "code": "def double(value):\n    return ___\nx = 7\nprint(\n    double(x) == 2 * x, double(0) == 0, double(-x) == -2 * x,\n    double(x) == x, double(x + 1) - double(x),\n)",
+        "hint": "Evaluate each comparison using the value returned by the function. True means that test matches its expected result.",
         "parts": [
           {
             "kind": "code",
@@ -9125,7 +8563,8 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 41,
@@ -9140,7 +8579,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([3]), mean([3, 3 + 2]), mean([0]), mean([-2, 2]))",
+        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([3]), mean([3, 3 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
         "hint": "The empty case returns before division by the list length.",
         "parts": [
           {
@@ -9200,7 +8639,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([4]), mean([4, 4 + 2]), mean([0]), mean([-2, 2]))",
+        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([4]), mean([4, 4 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
         "hint": "The empty case returns before division by the list length.",
         "parts": [
           {
@@ -9260,7 +8699,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([5]), mean([5, 5 + 2]), mean([0]), mean([-2, 2]))",
+        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([5]), mean([5, 5 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
         "hint": "The empty case returns before division by the list length.",
         "parts": [
           {
@@ -9320,7 +8759,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([6]), mean([6, 6 + 2]), mean([0]), mean([-2, 2]))",
+        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([6]), mean([6, 6 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
         "hint": "The empty case returns before division by the list length.",
         "parts": [
           {
@@ -9380,7 +8819,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(mean([]) is None, mean([7]), mean([7, 7 + 2]), mean([0]), mean([-2, 2]))",
+        "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([7]), mean([7, 7 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
         "hint": "The empty case returns before division by the list length.",
         "parts": [
           {
@@ -9771,7 +9210,7 @@ export default [
     "variations": [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "left = [3, 3 + 4]\nright = [3 + 1, 3 + 3]\nmerged = []\nwhile left and right:\n    source = left if ___ else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+        "code": "left = [3, 3 + 4]\nright = [3 + 1, 3 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
         "hint": "Always take the smaller first item; append the remaining tail.",
         "parts": [
           {
@@ -9831,7 +9270,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "left = [4, 4 + 4]\nright = [4 + 1, 4 + 3]\nmerged = []\nwhile left and right:\n    source = left if ___ else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+        "code": "left = [4, 4 + 4]\nright = [4 + 1, 4 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
         "hint": "Always take the smaller first item; append the remaining tail.",
         "parts": [
           {
@@ -9891,7 +9330,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "left = [5, 5 + 4]\nright = [5 + 1, 5 + 3]\nmerged = []\nwhile left and right:\n    source = left if ___ else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+        "code": "left = [5, 5 + 4]\nright = [5 + 1, 5 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
         "hint": "Always take the smaller first item; append the remaining tail.",
         "parts": [
           {
@@ -9951,7 +9390,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "left = [6, 6 + 4]\nright = [6 + 1, 6 + 3]\nmerged = []\nwhile left and right:\n    source = left if ___ else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+        "code": "left = [6, 6 + 4]\nright = [6 + 1, 6 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
         "hint": "Always take the smaller first item; append the remaining tail.",
         "parts": [
           {
@@ -10011,7 +9450,7 @@ export default [
       },
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "left = [7, 7 + 4]\nright = [7 + 1, 7 + 3]\nmerged = []\nwhile left and right:\n    source = left if ___ else right\n    merged.append(source.pop(0))\nmerged.extend(left or right)\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
+        "code": "left = [7, 7 + 4]\nright = [7 + 1, 7 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
         "hint": "Always take the smaller first item; append the remaining tail.",
         "parts": [
           {
@@ -10069,7 +9508,8 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 44,
@@ -10397,7 +9837,7 @@ export default [
     "variations": [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(3, 3), cost(3, 3), area(0, 3), cost(1, 3), area(3, 3), cost(2, 2))",
+        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(3, 3), cost(3, 3), area(0, 3), cost(1, 3), area(3, 3),\n    cost(2, 2),\n)",
         "hint": "Use each function as a small named step; pass the returned value onwards.",
         "parts": [
           {
@@ -10458,7 +9898,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(4, 3), cost(4, 3), area(0, 4), cost(1, 4), area(4, 4), cost(2, 2))",
+        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(4, 3), cost(4, 3), area(0, 4), cost(1, 4), area(4, 4),\n    cost(2, 2),\n)",
         "hint": "Use each function as a small named step; pass the returned value onwards.",
         "parts": [
           {
@@ -10519,7 +9959,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(5, 3), cost(5, 3), area(0, 5), cost(1, 5), area(5, 5), cost(2, 2))",
+        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(5, 3), cost(5, 3), area(0, 5), cost(1, 5), area(5, 5),\n    cost(2, 2),\n)",
         "hint": "Use each function as a small named step; pass the returned value onwards.",
         "parts": [
           {
@@ -10580,7 +10020,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(6, 3), cost(6, 3), area(0, 6), cost(1, 6), area(6, 6), cost(2, 2))",
+        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(6, 3), cost(6, 3), area(0, 6), cost(1, 6), area(6, 6),\n    cost(2, 2),\n)",
         "hint": "Use each function as a small named step; pass the returned value onwards.",
         "parts": [
           {
@@ -10641,7 +10081,7 @@ export default [
       },
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(area(7, 3), cost(7, 3), area(0, 7), cost(1, 7), area(7, 7), cost(2, 2))",
+        "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(7, 3), cost(7, 3), area(0, 7), cost(1, 7), area(7, 7),\n    cost(2, 2),\n)",
         "hint": "Use each function as a small named step; pass the returned value onwards.",
         "parts": [
           {
@@ -11027,7 +10467,7 @@ export default [
     ],
     "variations": [
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(3), steps(0), steps(1), steps(2), steps(3))",
         "hint": "Each call reduces value by two until the base case returns zero.",
         "parts": [
@@ -11087,7 +10527,7 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(4), steps(0), steps(1), steps(2), steps(3))",
         "hint": "Each call reduces value by two until the base case returns zero.",
         "parts": [
@@ -11147,7 +10587,7 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(5), steps(0), steps(1), steps(2), steps(3))",
         "hint": "Each call reduces value by two until the base case returns zero.",
         "parts": [
@@ -11207,7 +10647,7 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(6), steps(0), steps(1), steps(2), steps(3))",
         "hint": "Each call reduces value by two until the base case returns zero.",
         "parts": [
@@ -11267,7 +10707,7 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(7), steps(0), steps(1), steps(2), steps(3))",
         "hint": "Each call reduces value by two until the base case returns zero.",
         "parts": [
@@ -11340,8 +10780,8 @@ export default [
     ],
     "variations": [
       {
-        "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [3, 3, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 3 in unique, 0 in unique, len(set()))",
+        "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [3, 3, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 3 in unique,\n    0 in unique, len(set()),\n)",
         "hint": "Sets contain distinct values and have no positional order.",
         "parts": [
           {
@@ -11401,8 +10841,8 @@ export default [
         ]
       },
       {
-        "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [4, 4, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 4 in unique, 0 in unique, len(set()))",
+        "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [4, 4, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 4 in unique,\n    0 in unique, len(set()),\n)",
         "hint": "Sets contain distinct values and have no positional order.",
         "parts": [
           {
@@ -11462,8 +10902,8 @@ export default [
         ]
       },
       {
-        "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [5, 5, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 5 in unique, 0 in unique, len(set()))",
+        "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [5, 5, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 5 in unique,\n    0 in unique, len(set()),\n)",
         "hint": "Sets contain distinct values and have no positional order.",
         "parts": [
           {
@@ -11523,8 +10963,8 @@ export default [
         ]
       },
       {
-        "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [6, 6, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 6 in unique, 0 in unique, len(set()))",
+        "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [6, 6, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 6 in unique,\n    0 in unique, len(set()),\n)",
         "hint": "Sets contain distinct values and have no positional order.",
         "parts": [
           {
@@ -11584,8 +11024,8 @@ export default [
         ]
       },
       {
-        "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [7, 7, 8, 8, 9]\nunique = set(values)\nprint(len(values), len(unique), sum(unique), 7 in unique, 0 in unique, len(set()))",
+        "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [7, 7, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 7 in unique,\n    0 in unique, len(set()),\n)",
         "hint": "Sets contain distinct values and have no positional order.",
         "parts": [
           {
@@ -11658,8 +11098,8 @@ export default [
     ],
     "variations": [
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [value * 2 for value in range(3) if ___]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+        "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [value * 2 for value in range(3) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
         "hint": "Apply the filter to the original loop value before multiplying.",
         "parts": [
           {
@@ -11718,8 +11158,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [value * 2 for value in range(4) if ___]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+        "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [value * 2 for value in range(4) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
         "hint": "Apply the filter to the original loop value before multiplying.",
         "parts": [
           {
@@ -11778,8 +11218,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [value * 2 for value in range(5) if ___]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+        "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [value * 2 for value in range(5) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
         "hint": "Apply the filter to the original loop value before multiplying.",
         "parts": [
           {
@@ -11838,8 +11278,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [value * 2 for value in range(6) if ___]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+        "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [value * 2 for value in range(6) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
         "hint": "Apply the filter to the original loop value before multiplying.",
         "parts": [
           {
@@ -11898,8 +11338,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [value * 2 for value in range(7) if ___]\nprint(len(values), values[0], values[-1], sum(values), 2 in values)",
+        "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [value * 2 for value in range(7) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
         "hint": "Apply the filter to the original loop value before multiplying.",
         "parts": [
           {
@@ -11971,8 +11411,8 @@ export default [
     ],
     "variations": [
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [3, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+        "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [3, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
         "hint": "enumerate pairs each item with a counter; start changes that counter.",
         "parts": [
           {
@@ -12031,8 +11471,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [4, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+        "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [4, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
         "hint": "enumerate pairs each item with a counter; start changes that counter.",
         "parts": [
           {
@@ -12091,8 +11531,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [5, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+        "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [5, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
         "hint": "enumerate pairs each item with a counter; start changes that counter.",
         "parts": [
           {
@@ -12151,8 +11591,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [6, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+        "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [6, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
         "hint": "enumerate pairs each item with a counter; start changes that counter.",
         "parts": [
           {
@@ -12211,8 +11651,8 @@ export default [
         ]
       },
       {
-        "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
-        "code": "values = [7, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1], len(pairs))",
+        "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
+        "code": "values = [7, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
         "hint": "enumerate pairs each item with a counter; start changes that counter.",
         "parts": [
           {
@@ -12285,7 +11725,7 @@ export default [
     "variations": [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "unit_price = 3\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+        "code": "unit_price = 3\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
         "hint": "Descriptive snake_case names make each quantity clear.",
         "parts": [
           {
@@ -12358,7 +11798,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "unit_price = 4\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+        "code": "unit_price = 4\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
         "hint": "Descriptive snake_case names make each quantity clear.",
         "parts": [
           {
@@ -12431,7 +11871,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "unit_price = 5\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+        "code": "unit_price = 5\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
         "hint": "Descriptive snake_case names make each quantity clear.",
         "parts": [
           {
@@ -12504,7 +11944,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "unit_price = 6\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+        "code": "unit_price = 6\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
         "hint": "Descriptive snake_case names make each quantity clear.",
         "parts": [
           {
@@ -12577,7 +12017,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "unit_price = 7\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price, total_price // item_count, total_price - unit_price, type(total_price).__name__)",
+        "code": "unit_price = 7\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
         "hint": "Descriptive snake_case names make each quantity clear.",
         "parts": [
           {
@@ -12648,7 +12088,8 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 52,
@@ -12663,7 +12104,7 @@ export default [
     "variations": [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 3\nprint(square(number), square(0), square(-2), square(1), square(3))",
+        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 3\nprint(square(number), square(0))",
         "hint": "A docstring describes the function; return supplies its result.",
         "parts": [
           {
@@ -12735,7 +12176,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 4\nprint(square(number), square(0), square(-2), square(1), square(3))",
+        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 4\nprint(square(number), square(0))",
         "hint": "A docstring describes the function; return supplies its result.",
         "parts": [
           {
@@ -12807,7 +12248,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 5\nprint(square(number), square(0), square(-2), square(1), square(3))",
+        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 5\nprint(square(number), square(0))",
         "hint": "A docstring describes the function; return supplies its result.",
         "parts": [
           {
@@ -12879,7 +12320,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 6\nprint(square(number), square(0), square(-2), square(1), square(3))",
+        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 6\nprint(square(number), square(0))",
         "hint": "A docstring describes the function; return supplies its result.",
         "parts": [
           {
@@ -12951,7 +12392,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 7\nprint(square(number), square(0), square(-2), square(1), square(3))",
+        "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 7\nprint(square(number), square(0))",
         "hint": "A docstring describes the function; return supplies its result.",
         "parts": [
           {
@@ -13021,7 +12462,8 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   },
   {
     "slot": 53,
@@ -13036,7 +12478,7 @@ export default [
     "variations": [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "SECONDS_PER_MINUTE = 60\nminutes = 3\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+        "code": "SECONDS_PER_MINUTE = 60\nminutes = 3\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
         "hint": "Name fixed conversion factors so their purpose is visible.",
         "parts": [
           {
@@ -13108,7 +12550,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "SECONDS_PER_MINUTE = 60\nminutes = 4\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+        "code": "SECONDS_PER_MINUTE = 60\nminutes = 4\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
         "hint": "Name fixed conversion factors so their purpose is visible.",
         "parts": [
           {
@@ -13180,7 +12622,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "SECONDS_PER_MINUTE = 60\nminutes = 5\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+        "code": "SECONDS_PER_MINUTE = 60\nminutes = 5\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
         "hint": "Name fixed conversion factors so their purpose is visible.",
         "parts": [
           {
@@ -13252,7 +12694,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "SECONDS_PER_MINUTE = 60\nminutes = 6\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+        "code": "SECONDS_PER_MINUTE = 60\nminutes = 6\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
         "hint": "Name fixed conversion factors so their purpose is visible.",
         "parts": [
           {
@@ -13324,7 +12766,7 @@ export default [
       },
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
-        "code": "SECONDS_PER_MINUTE = 60\nminutes = 7\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE, minutes, seconds // 60, seconds % 60)",
+        "code": "SECONDS_PER_MINUTE = 60\nminutes = 7\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
         "hint": "Name fixed conversion factors so their purpose is visible.",
         "parts": [
           {
@@ -13394,6 +12836,7 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "reviewStatus": "teacher-review-pending"
   }
 ];

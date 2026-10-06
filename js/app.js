@@ -1,3 +1,5 @@
+import {showModal} from './dialog.js';
+import {searchGroups,searchPlan,chooseSearchEntries,searchSetMatches,cleanSearchQuery} from './search.js';
 import {initialisePractice,settlePractice,engagePractice,notePracticeInteraction,pollPractice,INTERACTION_POLL_MS,pausePractice,practiceSeconds,validPracticeTime,backupFilename} from './practice-time.js';
 import {lastTracked,weeklyProgress,averageSetPercentage} from './weekly-progress.js';
 import {profiles,loadProfile,saveProfile,selectProfile,activateProfile,nameMatch,normaliseName} from './profiles.js';
@@ -71,7 +73,7 @@ function chooseProfile(switching=false){
   return new Promise(resolve=>{
     const dialog=document.createElement('dialog');dialog.setAttribute('aria-labelledby','profile-title');
     dialog.innerHTML=`<h2 id="profile-title">Your progress profile</h2><p>Enter your name to keep your progress on this computer. Export regularly to your student OneDrive.</p><form><label for="profile-name">Your name</label><input id="profile-name" name="username" maxlength="80" required autocomplete="name"><p id="profile-message" role="status"></p><div class="actions"><button class="primary" type="submit">Continue</button>${switching?'<button type="button" id="profile-cancel">Cancel</button>':''}</div></form>`;
-    document.body.append(dialog);dialog.showModal();
+    document.body.append(dialog);showModal(dialog);
     dialog.oncancel=e=>{if(!switching)e.preventDefault();};dialog.onclose=()=>{dialog.remove();if(practiceVisible())engagePractice(data.active);resolve();};
     dialog.querySelector('#profile-cancel')?.addEventListener('click',()=>dialog.close());
     const finish=name=>{
@@ -96,7 +98,7 @@ function revisionAreas(level){
   return level==='subtopic'?focuses(1).flatMap(parent=>examSubtopics(parent).map(({reference})=>({type:1,focus:reference,parent}))):[1,2].flatMap(type=>focuses(type).map(focus=>({type,focus})));
 }
 function toast(message){$('#toast').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').textContent='',4500);}
-function activeSet(){return data.active?{...resolve(data.active.code),examSubtopic:data.active.examSubtopic??'all'}:null;}
+function activeSet(){return data.active?{...resolve(data.active.code),examSubtopic:data.active.examSubtopic??'all',search:data.active.search??null}:null;}
 function navigate(hash){if(location.hash===hash)render();else location.hash=hash;}
 function setHash(code){history.replaceState(null,'',`#set=${encodeURIComponent(code)}`);}
 function duration(seconds){const s=Math.max(0,Math.floor(seconds));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;}
@@ -110,7 +112,7 @@ function askLeave(){
     dialog.innerHTML='<h2>Leave unsubmitted answers?</h2><p>You have entered answers but have not submitted this activity. You can keep working and submit them first.</p><div class="actions"><button value="stay">Keep working</button><button class="primary" value="leave">Leave activity</button></div>';
     document.body.append(dialog);dialog.addEventListener('click',e=>{if(e.target.matches('button'))dialog.close(e.target.value);});
     dialog.addEventListener('cancel',e=>{e.preventDefault();dialog.close('stay');});
-    dialog.addEventListener('close',()=>{const yes=dialog.returnValue==='leave';dialog.remove();leaveDecision=null;resolveAnswer(yes);});dialog.showModal();
+    dialog.addEventListener('close',()=>{const yes=dialog.returnValue==='leave';dialog.remove();leaveDecision=null;resolveAnswer(yes);});showModal(dialog);
   });
   return leaveDecision;
 }
@@ -120,25 +122,75 @@ async function start(set,{force=false,challengeLevel=null,inSequence=false}={}){
   if(set.type===0){const levels=new Set(set.questions.map(q=>q.challengeLevel));data.puzzleChallenge=challengeLevel??(levels.size===1?[...levels][0]:'all');}
   const now=Date.now();
   clearTimeout(toastTimer);$('#toast').textContent='';
-  data.active={generation:bankRelease.generation,bankVersion:BANK_VERSION,id:crypto.randomUUID(),contentVersion:BANK_VERSION,code:set.code,mathsTopic:set.mathsTopic??'all',examSubtopic:set.type===1?(set.examSubtopic??'all'):'all',inSequence:set.type===1&&inSequence,answers:{},checks:{},first:{},hints:{},reveals:{},started:now,origin:now,saved:now,deadline:set.minutes?now+set.minutes*60000:null,finished:null,outcome:null,timingEvents:[],tracking:attemptEligibility(data,set.code,now)};
+  data.active={generation:bankRelease.generation,bankVersion:BANK_VERSION,id:crypto.randomUUID(),contentVersion:BANK_VERSION,code:set.code,search:set.search??null,mathsTopic:set.mathsTopic??'all',examSubtopic:set.type===1?(set.examSubtopic??'all'):'all',inSequence:set.type===1&&inSequence,answers:{},checks:{},first:{},hints:{},reveals:{},started:now,origin:now,saved:now,deadline:set.minutes?now+set.minutes*60000:null,finished:null,outcome:null,timingEvents:[],tracking:attemptEligibility(data,set.code,now)};
   initialisePractice(data.active,now);
   persist();setHash(set.code);render();main.focus();
 }
+async function openCodeOrSearch(e,errorSelector){
+    e.preventDefault();const input=String(new FormData(e.target).get('code')).trim(),error=$(errorSelector);error.textContent='';
+    try{const set=await loadSet(input);await start(set);if(data.active?.code===set.code)e.target.reset();}catch(problem){
+      // Existing valid codes always win; familiar words/references use search.
+      const looksLikeCode=/^(PZ|EX|PY|ESP|OS|B5|B6|B7)-/i.test(input)||/^[A-Za-z0-9_-]{8,10}$/.test(input)&&(/[0-9_-]/.test(input)||input===input.toUpperCase());
+      if(!looksLikeCode){navigate('#search=all&q='+encodeURIComponent(cleanSearchQuery(input)));return;}
+      showCodeError(error,input,problem);
+      const search=document.createElement('a');search.href='#search=all&q='+encodeURIComponent(cleanSearchQuery(input));search.textContent='Search for this term instead';error.append(' ',search);
+    }
+}
+
+function about(){
+  $('.global-code-entry').hidden=true;
+  main.innerHTML=`<article class="about-page"><nav class="breadcrumbs eyebrow" aria-label="Breadcrumb"><a href="#home">All activities</a><span aria-hidden="true">/</span><a href="#about" aria-current="page">About</a></nav>
+  <h1>A small start.<br>A stronger understanding.</h1>
+  <section aria-labelledby="about-purpose"><h2 id="about-purpose">Why this site?</h2><p>Short, regular practice helps students recall what they know, spot gaps and build confidence. This site brings together puzzles, Core exam practice, Python challenges and Employer Set Project activities for Digital Software Development T Level students.</p><p>Designed for 5–15 minute starters, the activities offer variety, immediate feedback/auto marking and repeat practice with different values and scenarios. Progress tracking, with revision priority identification and revision set generation helps students optimize revision time.</p></section>
+  <section aria-labelledby="about-roadmap"><h2 id="about-roadmap">What’s next?</h2><ul><li>Work through questions sets matching search term results.</li><li>Enter missing Python answers directly in the code.</li><li>Extend Core coverage beyond CA1 and CA2, and add more ESP activities, including flowcharts.</li><li>Develop Year 2 Occupational Specialism practice.</li></ul><p>These are planned developments. Classroom feedback will help shape the content, accessibility and order of work.</p></section>
+  <section aria-labelledby="about-author"><h2 id="about-author">Author and development</h2><p>Created by <strong>Joe Hudson</strong>. Agentic development—using AI agents to carry out development tasks—has been used extensively to build the site, in combination with expert human input to guide its educational purpose, content, design and UX.</p></section></article>`;
+}
+
 function home(){
   $('.global-code-entry').hidden=true;
   const completed=data.history.length;
-  main.innerHTML=`<section class="hero"><div><div class="eyebrow">A little practice goes a long way</div><h1>Start small.<br><em>Think bigger.</em></h1><p>Get your brain into gear with a quick puzzle, a little Core revision, a Python challenge or ESP practice.</p><div class="meta-row"><span>5–15 minutes</span><span>Instant feedback</span><span>Your own pace</span></div></div><aside class="code-entry"><div class="eyebrow">Got a code from your teacher?</div><h2>Jump straight in.</h2><p>Open the exact same questions, ready to go.</p><form id="code-form"><input name="code" aria-label="Question or set code" placeholder="Enter your code" autocomplete="off" autocapitalize="off" spellcheck="false" required><button type="submit">Open <span aria-hidden="true">↗</span></button></form><p class="error" id="code-error" role="alert"></p><small>9 characters · capitals matter · optional timer character</small></aside></section>
+  main.innerHTML=`<section class="hero"><div><div class="eyebrow">A little practice goes a long way</div><h1>Start small.<br><em>Think bigger.</em></h1><p>Get your brain into gear with a quick puzzle, a little Core revision, a Python challenge or ESP practice.</p><div class="meta-row"><span>5–15 minutes</span><span>Instant feedback</span><span>Your own pace</span></div></div><aside class="code-entry"><div class="eyebrow">Have a code or a topic in mind?</div><h2>Jump straight in.</h2><p>Open a question set or find practice by key term.</p><form id="code-form"><input name="code" aria-label="Question set code or key term" placeholder="Enter code or key term" autocomplete="off" autocapitalize="off" spellcheck="false" required><button type="submit">Open <span aria-hidden="true">↗</span></button></form><p class="error" id="code-error" role="alert"></p><small>9 characters · capitals matter · optional timer character<br>or enter key term to search for</small></aside></section>
   <div class="section-heading"><h2>What will you try today?</h2><span>Pick an activity to get started</span></div>
-  <section class="activity-grid" aria-label="Activity types">${types.slice(0,3).map((t,i)=>`<article class="type-card type-${i}"><div class="card-art" aria-hidden="true">${i===0?'<div class="mini-grid"><span>2</span><span>5</span><span>7</span><span>3</span><span>?</span><span>9</span><span>5</span><span>11</span><span>16</span></div>':i===1?'<div class="art-lines"><span>○ &nbsp; identify</span><span>● &nbsp; understand</span><span>○ &nbsp; explain</span></div>':i===3?'<div class="art-lines"><span>▦ &nbsp; plan</span><span>✓ &nbsp; test</span><span>≡ &nbsp; explain</span></div>':'<div class="art-code">for idea in ideas:<br>&nbsp; &nbsp; give_it_a_go()</div>'}</div><div class="card-body"><div class="eyebrow">0${i+1} / ${t.label}</div><h3>${t.name}</h3><p>${i===1?'Core exam questions and ESP tasks. Practise knowledge and apply your skills.':t.description}</p><div class="card-bottom"><small>${i===1?'Core papers and ESP':i===2?'2 challenges · 12 marks':i===3?'3 questions · up to 5 minutes each':'3 puzzles · choose your pace'}</small><button data-start="${i}" aria-label="Start ${t.name}">Let’s go <span aria-hidden="true">↗</span></button></div></div></article>`).join('')}</section>
+  <section class="activity-grid" aria-label="Activity types">${types.slice(0,3).map((t,i)=>`<article class="type-card type-${i}"><div class="card-art" aria-hidden="true">${i===0?'<div class="mini-grid"><span>2</span><span>5</span><span>7</span><span>3</span><span>?</span><span>9</span><span>5</span><span>11</span><span>16</span></div>':i===1?'<div class="art-lines"><span>○ &nbsp; identify</span><span>● &nbsp; understand</span><span>○ &nbsp; explain</span></div>':i===3?'<div class="art-lines"><span>▦ &nbsp; plan</span><span>✓ &nbsp; test</span><span>≡ &nbsp; explain</span></div>':'<div class="art-code">for idea in ideas:<br>&nbsp; &nbsp; give_it_a_go()</div>'}</div><div class="card-body"><div class="eyebrow">0${i+1} / ${t.label}</div><h3>${t.name}</h3><p>${i===1?'Core exam questions and ESP tasks. Practise knowledge and apply your skills.':t.description}</p><div class="card-bottom"><small>${i===1?'Core papers and ESP':i===2?'2 challenges · 12 marks':i===3?'3 questions · up to 5 minutes each':'3 puzzles · choose your pace'}</small><button data-start="${i}" aria-label="Start ${t.name}">Let’s go <span aria-hidden="true">↗</span></button>${i!==1?`<a class="topic-search-link" href="#search=all">Find practice by key term</a>`:''}</div></div></article>`).join('')}</section>
   <section class="lower-panel"><div class="note-panel"><span class="note-icon" aria-hidden="true">↗</span><div><h3>${completed?`${completed} ${completed===1?'activity':'activities'} completed. Keep building.`:'Small steps add up.'}</h3><p>See your results and find out what to practise next.</p></div><a href="#progress">My progress →</a></div><div class="note-panel"><span class="note-icon" aria-hidden="true">◷</span><div><h3>No rush. Unless you want one.</h3><p>Practise at your pace, or add a timer for a challenge.</p></div></div></section>
   ${data.active&&!data.active.finished?`<p class="muted" style="margin-top:1.5rem">You have an unfinished activity. <a href="#set=${encodeURIComponent(data.active.code)}">Continue ${esc(data.active.code)}</a></p>`:''}`;
-  $('#code-form').onsubmit=async e=>{e.preventDefault();const input=new FormData(e.target).get('code');$('#code-error').textContent='';try{await start(await loadSet(input));}catch(error){showCodeError($('#code-error'),input,error);}};
+  $('#code-form').onsubmit=e=>openCodeOrSearch(e,'#code-error');
   main.querySelectorAll('[data-start]').forEach(b=>b.onclick=async()=>{try{if(b.dataset.start==='1'){navigate('#exam');return;}await ensureBank(Number(b.dataset.start));await start(choose(Number(b.dataset.start),focuses(Number(b.dataset.start))[0]),{challengeLevel:'all'});}catch(e){toast(e.message);}});
 }
 function examHome(){
   $('.global-code-entry').hidden=false;
-  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><h1>Exam practice</h1><p class="muted">Choose Core paper questions or Employer Set Project (ESP) practice.</p></div></div><section class="exam-options" aria-label="Exam practice options">${examSections.map(section=>`<article class="note-panel"><div><h2>${esc(section.title)}</h2><p>${esc(section.description)}</p><button class="primary" data-exam-start="${section.bankType}">${esc(section.action)} <span aria-hidden="true">↗</span></button></div></article>`).join('')}</section>`;
+  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><h1>Exam practice</h1><p class="muted">Choose Core paper questions or Employer Set Project (ESP) practice.</p></div></div><section class="exam-options" aria-label="Exam practice options">${examSections.map(section=>`<article class="note-panel"><div><h2>${esc(section.title)}</h2><p>${esc(section.description)}</p><button class="primary" data-exam-start="${section.bankType}">${esc(section.action)} <span aria-hidden="true">↗</span></button><a class="topic-search-link" href="#search=all">Find practice by key term</a></div></article>`).join('')}</section>`;
   main.querySelectorAll('[data-exam-start]').forEach(button=>button.onclick=async()=>{try{const type=Number(button.dataset.examStart);await ensureBank(type);await start(choose(type,focuses(type)[0]));}catch(error){toast(error.message);}});
+}
+function matchingSearchGroup(set){
+  return set.search?searchGroups(banks[set.type],set.type,set.search.query,{focusNames,recipeNames:espRecipeNames}).find(g=>g.key===set.search.group):null;
+}
+function makeSearchSet(group,query,{previous=null,mode='new'}={}){
+  const selection=chooseSearchEntries(group,{previous,mode});
+  if(!selection)throw Error(mode==='permutation'?'No other permutation keeps these search matches. Choose another topic or broaden your search.':'No other question combination keeps these search matches. Try a new permutation or broaden your search.');
+  return {...resolve({version:BANK_VERSION,type:group.type,entries:selection.entries,minutes:previous?.minutes??null}),search:{query:cleanSearchQuery(query),group:group.key}};
+}
+function searchPage(type,query=''){
+  type='all';
+  query=cleanSearchQuery(query);
+  $('.global-code-entry').hidden=false;
+  const name=type==='all'?'all activities':type===1?'Core papers':types[type].name;
+  const selectedTypes=type==='all'?[0,1,2,3]:[type];
+  main.innerHTML=`<nav class="breadcrumbs eyebrow" aria-label="Breadcrumb"><a href="${isExamBank(type)?'#exam':'#home'}">${isExamBank(type)?'Exam practice':'All activities'}</a><span aria-hidden="true">/</span><a href="#search=${type}" aria-current="page">${esc(name)} search</a></nav><h1>Find practice by key term</h1><p class="muted">Search all questions by topic, skill or specification reference.</p><form class="topic-search-form" id="topic-search-form" role="search"><label for="topic-search">Key term or reference</label><div><input id="topic-search" type="search" maxlength="100" value="${esc(query)}" placeholder="Search all questions"><button class="primary" type="submit">Search</button></div></form><p id="search-status" role="status"></p><section id="search-results" class="search-results" aria-label="Matching topics"></section>`;
+  const show=()=>{
+    const value=cleanSearchQuery($('#topic-search').value);
+    history.replaceState(null,'',`#search=${type}${value?'&q='+encodeURIComponent(value):''}`);
+    const groups=selectedTypes.flatMap(bankType=>searchGroups(banks[bankType],bankType,value,{focusNames,recipeNames:espRecipeNames})).sort((a,b)=>b.rank-a.rank||b.matches.size-a.matches.size);
+    $('#search-status').textContent=!value?'Enter a key term to see matching topics and question counts.':groups.length?`${groups.reduce((total,g)=>total+g.matches.size,0)} matching questions across ${groups.length} ${groups.length===1?'topic':'topics'}.`:'No matching topics in this section. Try a broader term or a specification reference.';
+    $('#search-results').innerHTML=groups.map((group,index)=>{
+      const plan=searchPlan(group),titles=group.questions.filter(q=>group.matches.has(q.slot)).slice(0,3).map(q=>q.title);
+      return `<article class="search-result" data-search-bank="${group.type}"><h2>${type==='all'?esc(group.type===1?'Core papers':types[group.type].name)+' · ':''}${esc(group.label)}${group.recipe?' · '+esc(group.recipeLabel):''}</h2><p>${group.matches.size} matching ${group.matches.size===1?'question':'questions'}${group.topics.size?' · '+esc([...group.topics].slice(0,4).join(', ')):''}</p><p class="muted">${titles.map(esc).join(' · ')}${group.matches.size>3?' …':''}</p><p>${!plan?'These matches cannot form a complete starter set. Broaden your search.':plan.related?`This set includes ${plan.matched} matching ${plan.matched===1?'question':'questions'} and ${plan.related} related ${plan.related===1?'question':'questions'} from the same topic.`:`All ${plan.entries.length} questions in this set match your search.`}</p><button class="primary" data-search-result="${index}" ${plan?'':'disabled'}>${plan?.related?'Start set with related questions':'Start matching set'}</button></article>`;
+    }).join('');
+    main.querySelectorAll('[data-search-result]').forEach(button=>button.onclick=async()=>{try{await start(makeSearchSet(groups[Number(button.dataset.searchResult)],value));}catch(error){toast(error.message);}});
+  };
+  $('#topic-search-form').onsubmit=event=>{event.preventDefault();show();};
+  show();
+  $('#topic-search').focus();
 }
 function stimulus(q){
   if(q.sheet){
@@ -188,16 +240,20 @@ function activity(){
   const inSequence=set.type===1&&Boolean(a.inSequence);
   const nextSubtopic=inSequence?nextExamSubtopic(set.focus,subtopic):null;
   const matchingQuestions=subtopic==='all'?0:set.questions.filter(q=>q.parts.some(p=>matchesSubtopic(p,subtopic))).length;
+  const searchGroup=matchingSearchGroup(set);
+  const searchAlternatives=searchGroup?Boolean(chooseSearchEntries(searchGroup,{previous:set,random:null})):false;
+  const searchPermutation=searchGroup?Boolean(chooseSearchEntries(searchGroup,{previous:set,mode:'permutation',random:null})):false;
   const sameFocusAlternatives=set.type===1?hasAlternativeExamSet(set,subtopic):(set.type===0?puzzlePool(set.focus,level,mathsTopic):banks[set.type].filter(q=>q.focus===set.focus&&!q.retired)).length>set.questions.length;
-  main.innerHTML=`<a href="${isExamBank(set.type)?'#exam':'#home'}" class="back">← ${isExamBank(set.type)?'Exam practice':'All activities'}</a><div class="page-top"><div><div class="eyebrow">${types[set.type].name} / ${set.questions.length===1?'Single question':'Starter set'}</div><h1>${esc(focusNames[set.focus])}</h1>${pageStatus[set.type]?.inDevelopment?`<p class="development-notice" role="note">${esc(developmentNotice)}</p>`:''}<p class="muted">${set.questions.length} ${set.questions.length===1?'question':'questions'} · ${set.total} ${set.type===0?'points':'marks'} · ${set.type===3?'Up to':'About'} ${set.questions.length===1?(set.questions[0].estimatedMinutes??types[set.type].minutes):types[set.type].minutes} minutes</p></div><div class="focus-row">${set.type===0?'':`<span class="primary-focus-controls"><label for="focus">${set.type===1?'Topic':'Focus'}</label><select id="focus">${focuses(set.type).map(f=>`<option value="${f}" ${f===set.focus?'selected':''}>${esc(focusNames[f])}</option>`).join('')}</select></span>`}${set.type===3?`<span class="subtopic-controls"><label for="esp-recipe">Activity</label><select id="esp-recipe">${Object.entries(espRecipeNames).filter(([r])=>r.startsWith(set.focus==='task1'?'T1.':'T2.')).map(([r,label])=>`<option value="${r}" ${r===set.questions[0].recipe?'selected':''}>${esc(label)}</option>`).join('')}</select></span>`:''}${set.type===1?`<span class="subtopic-controls"><label for="subtopic">Subtopic</label><select id="subtopic"><option value="all">All subtopics</option>${examSubtopics(set.focus).map(({reference,count})=>`<option value="${reference}" ${reference===subtopic?'selected':''}>${reference} · ${count} ${count===1?'question':'questions'}</option>`).join('')}</select><label class="sequence-toggle"><input id="in-sequence" type="checkbox" aria-describedby="sequence-tooltip" ${inSequence?'checked':''}> In sequence<span class="sequence-tooltip" id="sequence-tooltip" role="tooltip">Advance new sets through subtopics in spec order.</span></label></span>`:''}${set.type===0&&set.focus==='classic maths'?`<label for="maths-topic">Maths topic</label><select id="maths-topic">${Object.entries({all:'All maths',algebra:'Algebra',number:'Number and measures'}).map(([key,label])=>`<option value="${key}" ${key===mathsTopic?'selected':''}>${label}</option>`).join('')}</select>`:''}${set.type===0?`<label for="challenge-level">Challenge</label><select id="challenge-level">${Object.entries(challengeLevels).map(([key,label])=>`<option value="${key}" ${key===level?'selected':''} ${availableChallenges(set.focus,mathsTopic).includes(key)?'':'disabled'}>${challengeLabel(key,set.focus)}${availableChallenges(set.focus,mathsTopic).includes(key)?'':' (not available)'}</option>`).join('')}</select>`:''}</div></div>
+  main.innerHTML=`<div class="page-top"><div><nav class="breadcrumbs eyebrow" aria-label="Breadcrumb"><a href="${isExamBank(set.type)?'#exam':'#home'}">${types[set.type].name}</a><span aria-hidden="true">/</span><a href="#set=${encodeURIComponent(a.code)}" aria-current="page">${set.questions.length===1?'Single question':'Starter set'}</a></nav><h1>${esc(focusNames[set.focus])}</h1>${pageStatus[set.type]?.inDevelopment?`<p class="development-notice" role="note">${esc(developmentNotice)}</p>`:''}</div><div class="focus-row">${set.type===0?'':`<span class="primary-focus-controls"><label for="focus">${set.type===1?'Topic':'Focus'}</label><select id="focus">${focuses(set.type).map(f=>`<option value="${f}" ${f===set.focus?'selected':''}>${esc(focusNames[f])}</option>`).join('')}</select></span>`}${set.type===3?`<span class="subtopic-controls"><label for="esp-recipe">Activity</label><select id="esp-recipe">${Object.entries(espRecipeNames).filter(([r])=>r.startsWith(set.focus==='task1'?'T1.':'T2.')).map(([r,label])=>`<option value="${r}" ${r===set.questions[0].recipe?'selected':''}>${esc(label)}</option>`).join('')}</select></span>`:''}${set.type===1?`<span class="subtopic-controls"><label for="subtopic">Subtopic</label><select id="subtopic"><option value="all">All subtopics</option>${examSubtopics(set.focus).map(({reference,count})=>`<option value="${reference}" ${reference===subtopic?'selected':''}>${reference} · ${count} ${count===1?'question':'questions'}</option>`).join('')}</select><label class="sequence-toggle"><input id="in-sequence" type="checkbox" aria-describedby="sequence-tooltip" ${inSequence?'checked':''}> In sequence<span class="sequence-tooltip" id="sequence-tooltip" role="tooltip">Advance new sets through subtopics in spec order.</span></label></span>`:''}${set.type===0&&set.focus==='classic maths'?`<label for="maths-topic">Maths topic</label><select id="maths-topic">${Object.entries({all:'All maths',algebra:'Algebra',number:'Number and measures'}).map(([key,label])=>`<option value="${key}" ${key===mathsTopic?'selected':''}>${label}</option>`).join('')}</select>`:''}${set.type===0?`<label for="challenge-level">Challenge</label><select id="challenge-level">${Object.entries(challengeLevels).map(([key,label])=>`<option value="${key}" ${key===level?'selected':''} ${availableChallenges(set.focus,mathsTopic).includes(key)?'':'disabled'}>${challengeLabel(key,set.focus)}${availableChallenges(set.focus,mathsTopic).includes(key)?'':' (not available)'}</option>`).join('')}</select>`:''}</div></div>
   ${set.type===0?puzzleCards(focuses(0),focusNames,set.focus):''}
   ${set.updated?'<p class="set-update-notice">This set has been updated since this code was created.</p>':''}
   ${trackingNotice}
+  ${set.search?`<p class="search-context">Search: <strong>${esc(set.search.query)}</strong> · ${searchGroup?searchSetMatches(searchGroup,set.entries):0} of ${set.questions.length} questions match${searchGroup&&searchSetMatches(searchGroup,set.entries)<set.questions.length?' · includes related practice':''}. <a href="#search=all&q=${encodeURIComponent(set.search.query)}">Change search</a> <button class="subtle" id="clear-search">Clear search</button></p>`:''}
   ${set.type===3?'<p class="esp-notice">Each question is independent and designed for no more than 5 minutes. Scores cover automatic checks only; written reasoning needs separate review. These are practice marks, not ESP grades.</p>':''}
   ${subtopic!=='all'?`<details class="subtopic-notice"><summary>In sequence questions info</summary><p>Primary focus: <strong>${esc(subtopic)}</strong>. ${matchingQuestions} of ${set.questions.length} questions match.${matchingQuestions<set.questions.length?` ${set.questions.length-matchingQuestions} ${set.questions.length-matchingQuestions===1?'question adds':'questions add'} related ${esc(set.focus)} practice.`:''} Matching parts are labelled; marks are tracked against each part’s spec references.</p></details>`:''}
   ${record?`<section class="result-banner" aria-label="Activity result"><span class="result-score">${record.percentage}%</span><div><h2>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</h2><p>${record.earned}/${record.max} marks · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}${untracked?' · Practice only — progress not updated':''}. ${canReview()?'Review your feedback below.':'Submit your saved answers to unlock review for another four hours.'}</p></div><button id="retry">Try this set again</button></section>`:''}
-  <section class="set-toolbar" aria-label="Set code and timing"><div class="code-block"><div><div class="code-label">YOUR ${set.questions.length===1?'ACTIVITY':'SET'} CODE</div><div class="set-code" id="display-code">${esc(a.code)}</div></div><div class="code-actions"><button id="copy-code">Copy code</button><button id="copy-link">Copy link</button></div></div><div class="timer-controls"><span class="timer-display" id="timer">${a.deadline?'':'Untimed'}</span><label for="minutes">Timer</label><select id="minutes" ${a.finished?'disabled':''}>${Array.from({length:11},(_,i)=>i+5).map(m=>`<option value="${m}" ${m===(set.minutes??types[set.type].minutes)?'selected':''}>${m} min</option>`).join('')}</select><button id="timer-toggle" ${a.finished?'disabled':''}>${a.deadline?'Stop timer':'Start timer'}</button></div></section>
-  <div class="random-controls"><button id="new-type" ${inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':''}>${inSequence?'Next question set':'Get new question set ↗'}</button><button id="new-focus" ${inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':!inSequence&&!sameFocusAlternatives?'disabled title="No other question combination matches this selection. Use Get new permutation."':''}>${inSequence?'Next set in sequence':subtopic==='all'?'New set in this focus':'New set with this subtopic'}</button><button id="permutation" ${set.questions.some(q=>q.variations.length<2)?'disabled title="This set includes a fixed problem. Choose a new set for different puzzles."':''}>Get new permutation ↻</button></div>
+  <section class="set-toolbar" aria-label="Set code and timing"><div class="code-block"><div><div class="code-label">YOUR ${set.questions.length===1?'ACTIVITY':'SET'} CODE</div><div class="set-code" id="display-code">${esc(a.code)}</div></div><div class="code-actions"><button id="copy-code">Copy code</button><button id="copy-link">Copy link</button></div></div><p class="set-summary muted">${set.questions.length} ${set.questions.length===1?'question':'questions'} · ${set.total} ${set.type===0?'points':'marks'} · ${set.type===3?'Up to':'About'} ${set.questions.length===1?(set.questions[0].estimatedMinutes??types[set.type].minutes):types[set.type].minutes} minutes</p><div class="timer-controls"><span class="timer-display" id="timer">${a.deadline?'':'Untimed'}</span><label for="minutes">Timer</label><select id="minutes" ${a.finished?'disabled':''}>${Array.from({length:11},(_,i)=>i+5).map(m=>`<option value="${m}" ${m===(set.minutes??types[set.type].minutes)?'selected':''}>${m} min</option>`).join('')}</select><button id="timer-toggle" ${a.finished?'disabled':''}>${a.deadline?'Stop timer':'Start timer'}</button></div></section>
+  <div class="random-controls"><button id="new-type" ${set.search?'':inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':''}>${set.search?'Other matching topics':inSequence?'Next question set':'Get new question set ↗'}</button><button id="new-focus" ${set.search?(!searchAlternatives?'disabled title="No other set keeps these search matches."':''):inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':!inSequence&&!sameFocusAlternatives?'disabled title="No other question combination matches this selection. Use Get new permutation."':''}>${inSequence?'Next set in sequence':subtopic==='all'?'New set in this focus':'New set with this subtopic'}</button><button id="permutation" ${set.search?!searchPermutation?'disabled title="No other permutation keeps these search matches."':'':set.questions.some(q=>q.variations.length<2)?'disabled title="This set includes a fixed problem. Choose a new set for different puzzles."':''}>Get new permutation ↻</button></div>
   <section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>`;
   bindPuzzles(main,set,a,(slot,id,value,selector)=>{
     a.answers[slot]??={};a.answers[slot][id]=value;a.saved=Date.now();
@@ -229,12 +285,13 @@ function activity(){
   });
   main.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>{a.hints[b.dataset.hint]=true;persist();activity();const panel=main.querySelector('[data-question="'+b.dataset.hint+'"] .hint-text');panel.tabIndex=-1;panel.focus();toast('Hint shown. This question is marked as assisted practice.');});
   main.querySelectorAll('[data-reveal]').forEach(b=>b.onclick=()=>{if(!canReview())return;a.reveals[b.dataset.reveal]=true;persist();activity();const panel=main.querySelector('[data-question="'+b.dataset.reveal+'"] .solution');panel.tabIndex=-1;panel.focus();toast('Model answers shown. Your submitted score is unchanged.');});
+  $('#clear-search')?.addEventListener('click',()=>{delete a.search;persist();activity();toast('Search cleared. Your current questions and answers are unchanged.');});
   $('#submit').onclick=()=>submit('submitted');
   $('#retry')?.addEventListener('click',()=>start(set,{inSequence}));
   $('#new-type').onclick=()=>replaceSet(set, 'type');$('#new-focus').onclick=()=>replaceSet(set,'focus');$('#permutation').onclick=()=>replaceSet(set,'permutation');
   if(set.type===3)$('#esp-recipe').onchange=async e=>{try{await start(choose(3,set.focus,null,'new','all',e.target.value));}catch(err){toast(err.message);}activity();};
   if(set.type===1){
-    $('#in-sequence').onchange=e=>{a.inSequence=e.target.checked;persist();activity();};
+    $('#in-sequence').onchange=e=>{delete a.search;a.inSequence=e.target.checked;persist();activity();};
     $('#subtopic').onchange=async e=>{const requested=e.target.value;try{await start(choose(1,set.focus,null,'new','all',requested),{inSequence});}catch(err){toast(err.message);}activity();};
   }
   if(set.type===0)$('#challenge-level').onchange=async e=>{const requested=e.target.value,prior=data.active?.id;try{await start(choose(0,set.focus,null,'new',requested,mathsTopic),{challengeLevel:requested});if(data.active?.id!==prior){data.puzzleChallenge=requested;persist();}}catch(err){toast(err.message);}activity();};
@@ -258,6 +315,12 @@ function activity(){
 }
 async function replaceSet(set,mode){
   try{
+    if(set.search){
+      if(mode==='type'){navigate(`#search=all&q=${encodeURIComponent(set.search.query)}`);return;}
+      const group=matchingSearchGroup(set);
+      if(!group)throw Error('These search matches are no longer available. Change or clear your search.');
+      await start(makeSearchSet(group,set.search.query,{previous:set,mode:mode==='permutation'?'permutation':'new'}));return;
+    }
     const level=set.type===0?(data.puzzleChallenge??'all'):'all';
     const inSequence=set.type===1&&Boolean(data.active.inSequence);
     if(inSequence&&mode!=='permutation'){
@@ -324,7 +387,7 @@ function tick(){
   el.classList.toggle('warning',state.remaining!==null&&state.remaining<=60);
   if(state.remaining!==null&&state.remaining<=60&&!a.warned){a.warned=true;persist();toast('One minute or less remaining. Your answers will submit automatically.');}
 }
-async function copy(value){try{await navigator.clipboard.writeText(value);toast('Copied.');}catch{const dialog=document.createElement('dialog');dialog.innerHTML=`<h2>Copy this code or link</h2><input aria-label="Text to copy" value="${esc(value)}" style="width:100%"><form method="dialog"><button>Close</button></form>`;document.body.append(dialog);dialog.onclose=()=>dialog.remove();dialog.showModal();dialog.querySelector('input').select();}}
+async function copy(value){try{await navigator.clipboard.writeText(value);toast('Copied.');}catch{const dialog=document.createElement('dialog');dialog.innerHTML=`<h2>Copy this code or link</h2><input aria-label="Text to copy" value="${esc(value)}" style="width:100%"><form method="dialog"><button>Close</button></form>`;document.body.append(dialog);dialog.onclose=()=>dialog.remove();showModal(dialog);dialog.querySelector('input').select();}}
 function download(content,name,type){const url=URL.createObjectURL(new Blob([content],{type}));const link=document.createElement('a');link.href=url;link.download=name;link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 function weeklyHTML(rows){
   const weeks=weeklyProgress(rows),current=weeks.at(-1),previous=weeks.at(-2);
@@ -412,10 +475,16 @@ async function render(){
     if(requestId!==renderId)return;
   }
   if(data.active&&!data.active.finished&&route!==`#set=${encodeURIComponent(data.active.code)}`){pausePractice(data.active);persist();}
-  $('#nav-home').setAttribute('aria-current',route==='#progress'?'false':'page');
+  $('#nav-home').setAttribute('aria-current',route==='#progress'||route==='#about'?'false':'page');
   $('#nav-progress').setAttribute('aria-current',route==='#progress'?'page':'false');
   if(route==='#progress'){await Promise.all([ensureBank(1),ensureBank(2)]);if(requestId===renderId)progress();return;}
+  if(route==='#about'){about();return;}
   if(route==='#exam'){examHome();return;}
+  if(route.startsWith('#search=')){
+    const params=new URLSearchParams(route.slice(1)),type=params.get('search')==='all'?'all':Number(params.get('search'));
+    if(type!=='all'&&(!Number.isInteger(type)||type<0||type>=types.length)){home();return;}
+    try{await Promise.all([0,1,2,3].map(ensureBank));if(requestId===renderId)searchPage(type,params.get('q')??'');}catch(error){if(requestId===renderId){home();toast(error.message);}}return;
+  }
   if(route.startsWith('#set=')){
     try{
       const code=decodeURIComponent(route.slice(5));
@@ -441,16 +510,7 @@ try{
     else if(data.active&&!data.active.finished&&Date.now()-data.active.saved>45*60000){data.active=null;persist();toast('Your previous untimed activity was inactive for over 45 minutes. Start a fresh attempt.');}
   }
 }catch(error){toast(error.message);}
-$('#global-code-form').onsubmit=async e=>{
-  e.preventDefault();
-  const error=$('#global-code-error');error.textContent='';
-  const input=new FormData(e.target).get('code');
-  try{
-    const set=await loadSet(input);
-    await start(set);
-    if(data.active?.code===set.code)e.target.reset();
-  }catch(err){showCodeError(error,input,err);}
-};
+$('#global-code-form').onsubmit=e=>openCodeOrSearch(e,'#global-code-error');
 document.addEventListener('click',async event=>{
   const link=event.target.closest('a[href]');
   if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.hasAttribute('download')||(link.target&&link.target!=='_self'))return;

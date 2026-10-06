@@ -10,6 +10,8 @@ Subsequent agreed decision: use six version bits and three bank bits, with rollo
 
 ## Search discussion
 
+Historical proposal: the user subsequently chose global search, cross-topic relevance, CA-tag matching across banks and shared code/search entry fields. The requested three-question result queue remains unimplemented. Use the [6 October decisions and rationale](../spec-common.md#decisions-and-rationale) for current direction; the single-bank/single-focus proposal below is not the final requirement.
+
 Existing metadata is a good foundation, but not yet a consistent keyword index:
 
 - Core: precise `CAx.y.z` tags and part-level coverage; parent focus labels and titles. The current imported Core bank covers CA1/CA2, not yet CA3–CA8.

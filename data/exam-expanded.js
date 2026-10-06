@@ -6756,7 +6756,7 @@ export default [
     "variations": [
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Sketch the collection you need before choosing syntax: ordered entries, a declared numeric element type, or labelled associations. Then check how an entry will be retrieved.",
+        "hint": "Sketch the collection you need: ordered entries or labelled associations. Check the item types and their order before choosing the syntax.",
         "parts": [
           {
             "prompt": "Which statement creates an empty list for incoming orders?",
@@ -6781,16 +6781,16 @@ export default [
             "id": "0"
           },
           {
-            "prompt": "After from array import array, create a signed-integer array with 2 and 4.",
-            "answer": "array(\"i\", [2, 4])",
+            "prompt": "Use a Python list to represent an array containing 2 and 4, in that order. Choose the list literal.",
+            "answer": "[2, 4]",
             "options": [
-              "array = 2, 4",
-              "array(\"i\", [\"red\"])",
-              "array(\"i\", [2, 4])"
+              "[2, 4]",
+              "[4, 2]",
+              "[\"2\", \"4\"]"
             ],
             "kind": "choice",
             "marks": 1,
-            "explanation": "Select the step that implements the stated requirement. This bounded task supports practice; it does not assess development of a complete independent solution.",
+            "explanation": "Square brackets create a Python list. Keep the requested order and use numbers without quotation marks. This is bounded practice in representing an array.",
             "coverage": [
               {
                 "focus": "CA2.3.3",
@@ -6866,7 +6866,7 @@ export default [
       },
       {
         "prompt": "Choose the best answer for each situation.",
-        "hint": "Sketch the collection you need before choosing syntax: ordered entries, a declared numeric element type, or labelled associations. Then check how an entry will be retrieved.",
+        "hint": "Sketch the collection you need: ordered entries or labelled associations. Check the item types and their order before choosing the syntax.",
         "parts": [
           {
             "prompt": "Which statement adds 7 to the end of readings?",
@@ -6891,16 +6891,16 @@ export default [
             "id": "0"
           },
           {
-            "prompt": "After from array import array, create a float array with 1.5 and 2.5.",
-            "answer": "array(\"f\", [1.5, 2.5])",
+            "prompt": "Use a Python list to represent an array containing 1.5 and 2.5, in that order. Choose the list literal.",
+            "answer": "[1.5, 2.5]",
             "options": [
-              "array(\"i\", [\"red\"])",
-              "array(\"f\", [1.5, 2.5])",
-              "array = 2, 4"
+              "[1.5, 2.5]",
+              "[2.5, 1.5]",
+              "[\"1.5\", \"2.5\"]"
             ],
             "kind": "choice",
             "marks": 1,
-            "explanation": "Select the step that implements the stated requirement. This bounded task supports practice; it does not assess development of a complete independent solution.",
+            "explanation": "Square brackets create a Python list. Keep the requested order and use numbers without quotation marks. This is bounded practice in representing an array.",
             "coverage": [
               {
                 "focus": "CA2.3.3",

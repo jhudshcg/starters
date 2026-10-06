@@ -13,7 +13,6 @@ test('new complete snippets and collection, file, operator and algorithm answers
   const script = String.raw`
 import contextlib, io, json, tempfile
 from pathlib import Path
-from array import array
 rows = {q['slot']: q for q in json.loads(input())}
 def part(slot, v, p):
     return rows[slot]['variations'][v]['parts'][p]
@@ -52,7 +51,7 @@ for v in (0, 1):
     stock = {'A': 4, 'B': 7} if v == 0 else {'C': 3, 'D': 8}
     stock['A' if v == 0 else 'C'] = 6 if v == 0 else 9
     check(134, v, 1, stock['B' if v == 0 else 'D'])
-    values = array('i', [3, 6, 9] if v == 0 else [4, 7, 10])
+    values = [3, 6, 9] if v == 0 else [4, 7, 10]
     values[1] += 2 if v == 0 else 3
     check(134, v, 3, values[1])
     check(135, v, 1, 4 * (6 if v == 0 else 8) + (5 if v == 0 else 2))

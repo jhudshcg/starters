@@ -33,7 +33,7 @@ export default [
   q(9, 'algorithms', 'Trace a binary search', 'Trace the code', ['algorithms','searching','program tracing'], i => {
     const a=Array.from({length:7},(_,j)=>(j+1)*(i+2)),target=a[5];
     return {prompt:'Trace this search of a sorted list. Indices start at zero. Record the midpoint indices as well as the result.',
-      code:`def locate(items, target):\n    low, high = 0, len(items) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1`,hint:'Track low and high after comparing the middle value with the target.',
+      code:`def locate(items, target):\n    low = 0\n    high = len(items) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1`,hint:'Track low and high after comparing the middle value with the target.',
       parts:[n(`For items = [${a.join(', ')}], target = ${target}: first mid`,3),n('Second mid',5),n('Returned index',5),
         n(`Returned value if target is ${a.at(-1)+1}`,-1),
         c('Required property of items','Sorted in ascending order',['Sorted in ascending order','All values are strings','An odd number of items']),
@@ -42,7 +42,7 @@ export default [
   q(10, 'algorithms', 'Finish a sorting pass', 'Complete the code', ['algorithms','sorting','iteration'], i => {
     const a=[6+i,2+i,5+i,1+i],after=[a[1],a[2],a[3],a[0]];
     return {prompt:'Complete one left-to-right bubble-sort pass that moves larger values towards the end. This is one pass, not the complete sort.',
-      code:`values = [${a.join(', ')}]\nfor index in range(len(values) - 1):\n    if values[index] ___ values[index + 1]:\n        values[index], values[index + 1] = (\n            values[index + 1], values[index]\n        )`,hint:'Swap a neighbouring pair when its left value is larger.',
+      code:`values = [${a.join(', ')}]\nfor index in range(len(values) - 1):\n    if values[index] ___ values[index + 1]:\n        temporary = values[index]\n        values[index] = values[index + 1]\n        values[index + 1] = temporary`,hint:'Swap a neighbouring pair when its left value is larger.',
       parts:[code('Comparison operator','>'),...after.map((v,j)=>n(`Value at index ${j} after the pass`,v)),
         c('What is guaranteed after this pass?','The largest value is at the end',['The largest value is at the end','The entire list is sorted','The smallest value is at the start'])]};
   }),

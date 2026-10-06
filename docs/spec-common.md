@@ -62,7 +62,7 @@ Share URLs use a fragment field to work on GitHub Pages without server routes, f
 
 ## Navigation and selection
 
-Home provides three type choices, focus selection, code entry and progress access. A shared question-set code form is also available on every page, including activities and progress. Invalid codes are reported beside that form; opening a different set preserves the existing unfinished-work confirmation. An activity shows its type, focus, code, total marks, estimated duration and timer control.
+Home provides three type choices, focus selection, code entry and progress access. A shared question-set code form is also available on every page, including activities and progress. Invalid codes are reported beside that form; opening a different set preserves the existing unfinished-work confirmation. An activity shows its type, focus, code, total marks, estimated duration and timer control. Its breadcrumb segments are links; no separate back link duplicates that navigation. Question count, marks/points and estimated duration share the set-code toolbar row with copy and timer controls. The toolbar wraps on narrow screens without horizontal page scrolling.
 
 **Proposal: three distinct actions.**
 
@@ -132,3 +132,63 @@ Store the bank revision used by the active attempt. If its questions change befo
 ### Exam navigation and future OS banks
 
 Exam practice is a navigation group, currently containing independent Core and ESP banks (`js/exam-sections.js`). Future Year 2 OS must receive its own bank with at least the same question-slot capacity as puzzles and programming; never divide the Core or ESP slot allocation between sections. The current four bank IDs are fully allocated. The agreed target is six version bits and three bank bits, preserving at least 4,095 usable slots per bank. Implement the explicit initial format migration and subsequent rollover/progress rules in [bank rollover and progress](code-rollover.md) before adding OS; do not assume the two nine-character layouts are automatically distinguishable. See the [navigation and capacity review](reviews/2026-09-28-navigation-wording-search.md).
+
+## Key-term search (6 October 2026)
+
+This section is the current search decision record. It supersedes the bank-scoped, single-focus starting proposal in the [28 September review](reviews/2026-09-28-navigation-wording-search.md#search-discussion). Distinguish the user's requested experience from the interim implementation below.
+
+### Decisions and rationale
+
+| Choice | Rationale | Status / provenance |
+| --- | --- | --- |
+| Search all questions from every entry point; helper says “Search all questions”. | A student should not lose relevant results because they started from a particular activity page. | Explicit user decision; implemented across the four available banks. “All” means authored available questions, not future CA3–CA8/OS content. |
+| Allow a term to span topics where the connection is real. | The user values meaningful links across topic boundaries; a search term is not necessarily a single focus. | Explicit user direction; discovery spans topics now. Current playable sets still stay within one focus/ESP recipe. |
+| Use CA tags to connect curriculum terms to programming practice as well as Core questions. | A programming question can practise the searched specification concept even if its activity type or title differs. | Explicit user decision; implemented using reference descriptions and authored metadata. Broad tags do not establish every child concept. |
+| Use one code-or-key-term field on Home and question-set pages. Remove the separate activity search field. | Reuse a familiar entry point and preserve the uncluttered space below the header. | Latest user placement decision; implemented. Supersedes the earlier separate left-hand search field. |
+| Show the number of matching questions and let students work through the results three at a time, with a final batch of one or two when needed. | Gives students a bounded starter-sized activity while allowing them to work through all matches, including the remainder. | Explicit user request; **queue not implemented**. Three is the requested batch size, not an unanswered preference. Applying this to programming requires changing its current two-question composition rule. |
+| Search assessed metadata, with bounded aliases; do not use answers, distractors or incidental prompt/code words as relevance evidence. | Mentioning a term does not mean a question assesses it; results should reflect the real connection requested by the user. | Implementation/design choice supporting relevance, not a claim that the user prescribed the matching algorithm. |
+| Valid codes take precedence; ambiguous invalid code-looking input keeps diagnostics and offers a search fallback. | Preserve reliable teacher-shared codes while supporting ordinary search terms in the same field. | Implemented interaction choice. A code-looking search term may require selecting the fallback. |
+
+### Current implementation
+
+Find practice by key term is available from Puzzles and Programming cards, the Core/ESP section cards and activity controls. Every entry point searches all four implemented banks, including older bank-specific search links. Results group matching questions by focus (and ESP recipe), show counts and example question titles, and disclose related-question fill before starting a set.
+
+Match only authored topic/skill tags, titles, explicit keywords, focus/recipe labels and specification references. For Core, use the exact part-level reference and element keys to obtain topic labels from the cached curriculum inventory. Do not index prompts, code, hints, options, answers or reveal text. ESP skills apply only to their authored variation. A small separate alias map handles terms such as loops/iteration and dict/dictionary; it is not unrestricted language understanding. Matching ignores case, normalises punctuation, accepts word prefixes of at least three characters and requires every search term to match the same variation. Specification references match themselves or their descendants, not similar-numbered siblings. References and topic metadata rank before title-only matches.
+
+Sets retain complete questions and one focus, normal question counts, actual selected-variation mark limits and distinct programming formats. ESP sets retain one recipe and a common variation. Maximise the number of matching questions before adding explicitly labelled related questions from the same focus/recipe. If no valid set includes a match, show an unavailable result and ask the student to broaden the search. Do not silently reduce match quality to manufacture another set.
+
+The active attempt stores its search query and result group as selection context. New set in this focus and Get new permutation preserve that context; permutations retain ordered templates and change every variation. Disable either action when no compatible alternative exists. Other matching topics returns to the results. Changing the ordinary topic/subtopic/recipe/challenge filters starts their usual selection and clears search; enabling sequence mode or using Clear search removes the constraint without replacing the current answers. Search state survives reload and remains isolated by local profile. Shared codes/links contain only the normal concrete question/variation identities; a recipient gets the same questions without inheriting the sender's search filter.
+
+Search metadata is separate from marking and does not change question IDs or content fingerprints. `npm run search:index` regenerates the compact Core topic lookup from `data/coverage/core-inventory.json`; production builds check its freshness. `data/search-keywords.js` supplements missing assessed programming tags. Metadata coverage limits search recall: this is not a full-text question or answer search.
+
+### Search entry points refinement
+
+The Home hero and existing top-strip code field both accept a question/set code or a key term through the same handler. Keep the top strip's left side empty; do not add a separate activity search field. Label the shared field “Code or key term”, with placeholder “Enter code or key term” and helper “Search all questions”. Home retains “or enter key term to search for” below the code-format guidance. Valid existing codes open directly. Ordinary words and references search every bank; results identify their bank. Invalid code-looking entries retain code diagnostics and offer an explicit search fallback. Leaving an unfinished activity retains the existing confirmation.
+
+CA tags on programming and other non-Core questions match explicit references and curriculum descriptions for the tagged subsection and parent headings. A broad tag does not inherit every child concept: CA2.3 alone does not establish a dictionary or array match. Exact Core coverage still uses part-level element labels. For example, searching “data type conversion” returns relevant Core and CA2.2.9-tagged programming questions. Search relevance adds no assessment credit and changes no progress attribution.
+
+### Requested next behaviour and remaining design work
+
+Implement the requested result queue in batches of three, with a smaller final batch. The intended interpretation is to work through each matching question once per traversal, selecting a matching variation rather than counting every permutation as a separate result. Show total matches and batch position. Do not pad the final batch with nonmatching related questions. These queue details are the proposed implementation of the user's request; the current related-fill selector is an interim limitation, not the agreed destination.
+
+Cross-topic discovery is settled. The user has expressed the value of real cross-topic links and asked about progress implications, but has not explicitly settled whether a single playable batch should mix activity banks. Keeping banks separate was the assistant's recommendation, not an approved user restriction. Resolve bank ordering/grouping and ESP scenario/recipe coherence during queue design; do not turn the old same-focus constraint into a permanent search rule. Changes to programming's two-question rule, mark bands and shorter-set validation are implementation work required by the requested batches, not grounds to describe the requested size as undecided.
+
+### Progress implications of mixed-topic batches
+
+Global discovery and CA-term matching currently change no stored scores, progress attribution or question identities. A tag used to find a question is not proof that each of its marks assesses that tag. Preserve that distinction when implementing the queue.
+
+The following are identified requirements/recommendations for queue design, **not completed progress changes or newly approved scoring policies**:
+
+- Attribute marks to the question/part actually assessed. Core already records part-level CA references, but validation currently requires them to belong to the set's parent focus. Programming currently attributes parts to the set's named focus; mixed-focus batches need question-specific attribution. Do not simply copy the entire batch score into every matching topic or CA tag.
+- Keep revision evidence specific: 4/4 on arrays and 1/4 on iteration should contribute 100% and 25% respectively, rather than 62.5% to both. Search aliases and related CA labels must not create duplicate evidence. Puzzles remain excluded from revision priorities.
+- History should identify all assessed topics while counting the completed batch and its time once. Preserve first-response/assisted distinctions, local-profile isolation and existing history/backup compatibility.
+- Decide and document weekly-score weighting for unequal batch sizes. The current weekly mean gives each activity equal weight; a one-question remainder would count as much as a three-question batch. A mark-weighted alternative was discussed as a design choice, not adopted.
+- Review the four-hour repeat rule: current identity is based on the concrete set, so regrouping the same questions can bypass it. Decide how repeated question/variation evidence should count without duplicating progress.
+- Keep shared codes tied to concrete questions and variations, not a live search result that can change as content grows. Validate mixed-focus/shorter batches and round-trip sharing before release. Search state and queue position need their own resume behaviour; they are not currently encoded in shared set codes.
+
+Next implementation step: design the queue's bank/recipe composition, concrete set validation and per-question progress attribution together, using the requested three-question batches and smaller remainder as the starting requirements. The unresolved bank-mixing and scoring-policy details must be stated explicitly rather than inferred from global search scope.
+
+
+## About page (6 October 2026)
+
+The footer links to the SPA route `#about`. Keep this page brief: explain short, varied practice and feedback for DSD T Level students; summarise the current roadmap without promising dates; credit Joe Hudson and explicitly acknowledge extensive agentic development combined with expert human input. Roadmap copy distinguishes planned features from available activities. Retain the normal unfinished-answer navigation protection.

@@ -9,6 +9,10 @@ import {auditHints} from './audit-hints.mjs';
 import {createHash} from 'node:crypto';
 import {pack, packBank} from './pack-bank.mjs';
 
+// Check the compact curriculum search metadata without publishing the full inventory.
+const {execFileSync}=await import('node:child_process');
+execFileSync(process.execPath,[fileURLToPath(new URL('search-index.mjs',import.meta.url)),'--check']);
+
 const root=fileURLToPath(new URL('../',import.meta.url));
 const output=join(root,'live');
 const errors=[...validateBank(),...auditHints(banks).errors];

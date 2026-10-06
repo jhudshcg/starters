@@ -1212,3 +1212,150 @@ Plan: reconcile current progress/theme specifications and development guidance, 
 **Next action:** wait for the user’s next request or visual feedback. If resuming the preview, check http://127.0.0.1:8765 before starting another server. If stopped, serve `live/` using the command in `docs/local-development.md`; rebuild only after runtime/source changes. Do not automatically run colour/browser tests, deploy, commit, clear user storage or resume an older superseded experiment. Inspect Git state anew in the next session. Known backlog remains CSV import, last-export-date display, confirmed history reset and the separately recorded content/search/ESP/OS work; none is implicitly authorised as the next task.
 
 Handover complete. No application code or generated build changed in this documentation pass.
+
+## 2026-10-05 — Simplify distracting Python examples
+
+Objective: review Python examples against the Core specification and remove incidental unfamiliar machinery (especially the array module) while preserving assessed concepts and stable question identities. Topic search remains the subsequent proposed slice.
+- [x] Check relevant specification/SAM evidence and inventory examples across programming and Core banks.
+- [x] Review all affected variations and simplify unnecessary complexity, retaining required distinctions and algorithms.
+- [x] Independently execute affected reference examples and check marking; regenerate coverage/compatibility, validate and build.
+- [x] Record reviewed scope, findings, limitations and exact next action.
+Scope: content-only refinements, including prompts, hints and explanations; no new execution/runtime features. Teacher approval remains pending.
+Next action: inspect arrays/data structures specification and bank authoring patterns.
+
+User steering: retain question IDs when the gist remains the same; update these replacement exercises in place rather than retiring them. Also wrap long displayed code so completing multiple blanks does not require horizontal scrolling, and document embedded code answer fields as near-future work. Extend this plan to inspect the code renderer/CSS, format authored snippets, and run a focused layout check if presentation changes. Existing content runtime remains bounded text marking; embedded fields are documentation only for this slice.
+
+2026-10-06 continuation: source review covers all 63 programming templates (five variations each), plus Python snippets/theory in Core CA2. Revisions retain all original slots and variation positions, following the user's clarification. Earlier plan to retire/replace slots 34/35/54 was superseded before completion; no extra slots or retired tasks remain. Library-free replacements live in data/python-readable.js (same slots 34, 35, 54). Array-index repairs remain 55/56. SAM Paper 1 Q15(a), Figure 11 explicitly uses list literals described as arrays; CA2.3 and Appendix 2 do not demand array-module syntax. Q12(b–d) and Q15(a) marking calibrate bounded completion, tracing and array operations.
+
+Implemented: ordinary lists for array examples; general array/list theory without library/type-code trivia; ordinary file operations instead of StringIO/seek/tell tasks; direct data-type questions instead of __name__; explicit swap and merge steps; manageable quarter-valued division outputs; missing inclusive bounds supplied; stale tuple assistance corrected; unused style-question outputs removed; extension topics visibly labelled. All code remains <=12 noncomment lines. Long print calls use valid parenthesised line breaks; .code-panel also soft-wraps for narrow/high-zoom views. Near-term embedded code-input plan recorded in docs/spec-python.md and docs/planned-work.md, without implementing that renderer change.
+
+Checks so far: focused readability execution/marking/identity checks pass; existing exam-depth checks pass; coverage unchanged (341 direct, 28 practice-only elements; 289 with >=2 direct questions). Coverage/compatibility validation and production build passed (1340 templates). Focused isolated browser check passed nine questions at 1280/390/320px and 640px with doubled text, without code/page horizontal overflow or browser exceptions. Screenshots /private/tmp/python-code-{1280,320}.png. Broader reference-program test still running; investigate before recording final outcome. Tiny final hint/accepted-index refinement needs final compatibility regeneration/build. Next action: finish reference check, regenerate final compatibility/build, inspect diff, record handoff. No commit/deployment requested.
+
+
+Completed 2026-10-06: all four plan steps complete. Final six focused tests passed, including execution of revised snippets with actual temporary file fixtures, boundary/error cases, marking alternatives and contradictions, and stable identities. All 210 offline Python references executed successfully with exact prediction-count checks (not a truncating zip); 165 variations with formatting-only program changes retain identical Python syntax trees. The existing expanded-banks test wrapper remained silent/running and was interrupted; its Python reference check was run directly against data/python.js instead, avoiding the unrelated full-bank setup. Do not report that interrupted wrapper as passed. Existing exam-depth tests passed independently and in the final focused run. Tests/expanded-banks.test.js now supports temporary file fixtures and directly named type questions for future runs.
+
+Final compatibility revision 21 and production build passed; every bank model answer validates, counts remain 1340 templates / 2933 variations / 46 focuses. No new question IDs, variation positions, or retired entries; coverage counts unchanged. Intermediate local revision 20 is retained in compatibility history. Final browser repeat passed after mobile padding adjustment; desktop and 320px screenshots inspected. At narrow widths long lines soft-wrap while preserving source whitespace; no horizontal scrolling is required. Embedded fields remain planned only. Final git diff --check passed. No full unrelated bank/browser suite, deployment or commit performed. Teacher approval and mixed-ability classroom timing remain pending.
+
+Current next action: user reviews http://127.0.0.1:8765 (live/ preview server started for this session). This requested slice is complete. Subsequent choices are the documented embedded-answer-field renderer slice or the previously agreed topic search; neither was implemented as part of this pass. Reuse /private/tmp/check-python-references.py, /private/tmp/python-references-payload.json, /private/tmp/python-final-focused.log and /private/tmp/browser-python-readable.mjs when relevant; regenerate the temporary payload from current data/python.js before reusing it after content changes.
+
+## 2026-10-06 — Compact activity heading and set summary
+
+Objective: save vertical space by replacing the separate activity back link with linked breadcrumbs and moving question count/marks/estimated time into the existing set-code card row.
+- [x] Inspect activity heading, navigation routes and responsive card layout.
+- [x] Implement linked breadcrumbs and inline set summary; preserve timer/copy behaviour and accessible wrapping.
+- [x] Build, check affected layout/navigation at desktop and mobile, and record results.
+Scope: presentation/navigation only; preserve existing uncommitted Python review work. Next action: inspect activity markup and relevant CSS.
+
+
+Completed: activity pages now use linked breadcrumb segments (parent activity landing page and current set, with aria-current) instead of a separate back link. Question count, marks/points and estimated duration moved into the set-code toolbar as a margin-free flexible inline item. Desktop retains one toolbar row; narrow layouts wrap accessibly. Existing copy/timer handlers and navigation protection are unchanged. Other pages without this activity breadcrumb retain their navigation.
+
+Verification: production build (1340 templates) and git diff --check passed. Focused isolated browser check passed breadcrumb targets, keyboard order and parent navigation; summary location; one-row desktop toolbar at 1100/1280px; no page overflow at 390/320px; copy-code/copy-link and start/stop timer controls. Desktop and mobile screenshots inspected at /private/tmp/compact-toolbar-{1280,390}.png. Initial temporary test-script quoting/selector mistakes were corrected before the successful run; no application failure found. No unrelated bank tests repeated. Relevant changes: js/app.js and css/styles.css, rebuilt live/. All earlier Python edits preserved.
+
+Next action: user reloads http://127.0.0.1:8765 to review. Task complete, uncommitted and undeployed.
+
+## 2026-10-06 — Document compact layout and implement key-term search
+
+Objective: document the approved compact activity header/toolbar, then implement section-scoped key-term search using canonical topics, specification references, titles and assessed skills, preserving complete question/variation/mark constraints.
+- [x] Read recorded search design and current selection/navigation/data APIs; document adopted layout.
+- [x] Implement search metadata/matching and accessible search results, integrating valid set generation and focus/subtopic constraints.
+- [x] Check relevant matching/selection behaviour and browser flows; regenerate/build as required.
+- [x] Record implementation, verification, limitations and next action.
+Scope: never search answers/distractors as topic evidence. Reuse existing search review and cached metadata; preserve previous uncommitted changes. Next action: read search review and shared UI specification.
+
+## 2026-10-06 — Search placement, shared Home input and proposed results queue
+
+User steering: place an activity search bar in the unused left side of the top global code-entry strip. Make Home's main code field dual-purpose (set code or key term), with same-size help text “or enter key term to search for”. User proposes working through every matching question in batches, with a smaller final batch, and asks how this differs from current matching/filler sets.
+- [ ] Implement the independent search-placement and Home dual-input changes; retain code diagnostics and accessible labels.
+- [ ] Resolve batch-size/topic-boundary preferences (async questions sent), then implement authorised queue changes with sharing/progress compatibility.
+- [ ] Run relevant UI/selection/code/progress checks, build, and document results.
+Current explanation: current search builds ordinary constrained starter sets with explicit related fill; requested queue should contain all matches once, no filler, and allow smaller final sets. Pending preferences: programming 2 versus 3; keep topics/ESP recipes together versus mixing. Do not treat elapsed time as approval for changes to shared-code/progress rules. Independent next action: inspect global and Home code-entry forms.
+
+
+Initial key-term search implementation completed before the subsequent queue request. Files: js/search.js, data/search-{topics,keywords}.js, scripts/search-index.mjs, js/app.js, shared CSS, and tests/search.test.js. Compact layout documented in docs/spec-common.md and docs/style-guide.md. Search behaviour/development notes are in README.md, docs/spec-common.md, docs/planned-work.md and docs/local-development.md. Ten focused search/bank-loader tests passed; validation and production builds passed, retaining bank revision 21 and unchanged content counts. Production browser checks passed all four banks, exact/related set disclosures, constrained alternatives/permutations, unsaved-answer cancellation, reload, profile isolation, shared-code reopening without inherited search context, no-result/empty input, 320/390px and doubled-text layout; screenshots inspected. One temporary browser test initially expected profile switching to resume directly rather than return Home; corrected test reopened the saved activity and passed. No application issue was found there.
+
+Independent placement refinement implemented: top-strip activity search at left, direct code entry at right; dual-purpose Home field with requested help text; valid codes win, normal terms/references search all banks, ambiguous invalid code-looking values retain diagnostics plus a search fallback. Search form remains visible if leaving an activity is cancelled. Production build passed. Expanded browser check underway for new entry points/layout. Queue implementation remains pending the two user choices; do not infer approval of mixed-topic batches or a programming batch-size change.
+
+Placement verification complete: expanded scripts/browser-search.mjs passed Home term → all-bank results, Home valid code → exact set, invalid code-looking entry → diagnostics/search fallback, visible activity-strip search prefilled with the active query, leave-cancel visibility, and desktop/mobile page bounds, alongside all original search flows. Desktop/mobile strip screenshots at /private/tmp/starters-search-strip-{1280,390}.png inspected. git diff --check passed. No queue changes implemented yet. Next action: obtain the pending choices (programming 2 versus all banks 3; same-topic/recipe groups versus mixed-topic fill), then plan the queue/codec/progress change using those answers. Preview remains http://127.0.0.1:8765. Uncommitted and undeployed.
+
+## 2026-10-06 — Global question search and cross-bank CA metadata
+
+Objective: all search entry points search every implemented question bank; use “Search all questions” helper text; map terms to CA topic metadata so appropriately tagged programming questions appear with Core results.
+- [x] Inspect tag granularity and current search matching/entry points.
+- [x] Implement global entry behaviour and accurate CA-term matching across banks, distinguishing broad from precise evidence.
+- [x] Run targeted search/UI checks, build and document semantics and limitations.
+Queue batching preferences remain unresolved and outside this independent change. Next action: inspect programming CA tags against inventory topics before choosing mapping rules.
+
+## 2026-10-06 — One shared code/search field
+
+User refinement supersedes the separate activity search placement: preserve header whitespace by making the existing global code field dual-purpose too.
+- [x] Share Home/global code-or-term submission behaviour and remove the separate activity search field.
+- [x] Verify global results and CA term matching, code opening, responsive layout and navigation protection.
+- [x] Update documentation, build and record outcomes.
+Next action: extract the existing Home submission handler for reuse by both entry points.
+
+
+Completed both refinements: every search entry point searches all four banks; programming CA tags match curriculum reference descriptions, without expanding a broad tag into every child concept. Core retains exact part-level coverage matching. Both Home and the global code field use one code-or-term handler, preserve code diagnostics/search fallback and leave protection. Removed the separate activity search field; desktop left-side whitespace is restored. Helper reads “Search all questions”. Shared specification and planned-work status updated. Search changes do not change question identities or progress attribution.
+
+Verification: 11 search/bank-loader tests passed; production build passed (1340 templates); git diff --check passed. Updated isolated browser suite passed global results, Core/programming matches for “data type conversion”, Home and global exact-code opening, diagnostic fallback, search persistence, navigation cancellation, all four banks, and mobile/doubled-text bounds. Desktop/mobile strip screenshots inspected. A temporary Python edit command had a quoting error and made no changes; corrected before the successful browser run.
+
+Next action: review the shared field in the preview at http://127.0.0.1:8765. Queue batching and mixed-topic progress attribution remain the next implementation discussion; current results still use disclosed matching/related starter sets. All work remains uncommitted and undeployed.
+
+## 2026-10-06 — Search decisions and rationale audit
+
+Objective: faithfully document the user's search decisions, their rationale, implementation status and genuinely outstanding design details.
+- [x] Compare conversation decisions with existing search specifications and planning notes.
+- [x] Correct stale or overly tentative statements; record rationale and progress-tracking implications without inventing agreement.
+- [x] Check documentation consistency and record exact next action.
+Next action: read current search specification, planned work and original design review.
+
+
+Completed: docs/spec-common.md now records each search choice, rationale, provenance and implementation status, plus the queue/progress implications. README and planned-work distinguish implemented discovery from the unimplemented queue; the September review links to the superseding decisions. Corrected the previous handover's misleading claim that batch size awaited a user answer: the user requested three, with a smaller remainder. Earlier checkpoint entries are historical; this correction is current. Cross-topic relevance is directed; mixed-bank playable batches and scoring policies were not explicitly approved. Same-focus related fill remains an interim implementation, not the final requested experience.
+
+Verification: compared the record with conversation wording, current search implementation, js/progress.js attribution/validation/repeat identity, and js/weekly-progress.js averaging. git diff --check passed. Documentation only; no application build or browser rerun needed. No new runtime behaviour claimed. Next action: implement the requested queue after resolving concrete bank/recipe composition and progress compatibility as described in docs/spec-common.md; do not re-ask whether the requested default batch size is three.
+
+## 2026-10-06 — Dismiss modals by clicking outside
+
+Objective: allow clicking visible space outside a modal to dismiss it, matching its existing close/cancel action.
+- [x] Inspect modal creation, cancellation and backdrop handling.
+- [x] Add consistent outside-click dismissal without treating clicks inside as dismissal or approving pending actions.
+- [x] Verify representative modal flows and build; document outcome.
+Next action: locate native dialogs and custom modal implementations.
+
+
+Completed: shared js/dialog.js helper routes a full primary-pointer backdrop click through the cancel event. Applied to all four native-dialog creation sites: profile, leave-warning, copy fallback and issue report. Inside clicks/padding and drags beginning inside do not dismiss. Leave-warning dismissal selects Keep working through its existing cancel handler. Initial required profile entry retains its existing non-cancellable policy (no close button); switching profiles is cancellable. Documented in docs/style-guide.md.
+
+Verification: production build and git diff --check passed. Isolated Chromium browser checks passed real backdrop dismissal for profile switching, leave-warning (answers retained), report and clipboard-fallback dialogs; inside-padding click and inside-to-outside drag kept the profile modal open. Existing search/code/profile/responsive suite also passed. No new question data or progress semantics. Next action: user reviews modal interaction in preview; changes remain uncommitted and undeployed.
+
+## 2026-10-06 — About page
+
+Objective: add a footer-linked About page with concise motivation, current roadmap, author credit and acknowledgement of extensive agentic development with expert human input.
+- [x] Inspect SPA routes, footer and current roadmap.
+- [x] Implement accessible About page and footer navigation with concise accurate copy.
+- [x] Build and check navigation/layout; record results.
+Next action: inspect route dispatch and footer markup.
+
+
+Completed: footer About link opens #about with motivation for short varied practice, concise planned search/Python/Core/ESP/OS developments, Joe Hudson credit and explicit acknowledgement of extensive agentic development combined with expert human input. Briefly explains agentic development in plain language. Uses existing SPA navigation and leave guard; no activity bank download required by the page. Documented in docs/spec-common.md.
+
+Verification: production build (1340 templates) and git diff --check passed. Isolated Chromium checks passed footer navigation, author/acknowledgement text, direct route after reload, return Home, and no horizontal overflow at 1280/390/320px. Existing browser suite also passed. Next action: review About via the preview footer. Uncommitted and undeployed.
+
+## 2026-10-06 — Home card and wrapped bullet spacing
+
+Objective (corrected by user): keep the Home code-entry card at least 270px wide, stacking the hero before it would shrink below that width, and reduce excessive vertical spacing when the introductory bullet points wrap.
+- [x] Inspect responsive hero/card and meta-row rules.
+- [x] Adjust intrinsic sizing and wrapped-row spacing.
+- [x] Build and verify narrow layouts; record results.
+Next action: inspect relevant CSS breakpoints.
+
+## 2026-10-06 — Uniform Home activity buttons
+
+Objective: preserve the Exam practice button's single-line dimensions across all three Let’s go buttons using existing site CSS. UI library migration (Tailwind, DaisyUI, Bits UI) is later work.
+- [x] Prevent button shrinking/wrapping and allow surrounding card-footer content to reflow.
+- [x] Verify equal button dimensions and no overflow across responsive widths alongside the pending hero fixes.
+- [x] Build and document both layout fixes.
+Next action: inspect card-footer overrides and apply shared sizing.
+
+
+Completed both Home layout fixes in existing CSS: hero reserves a 270px minimum code-entry column and stacks at 650px; bullet labels keep their horizontal spacing but use zero added row gap. All Let’s go buttons retain identical single-line intrinsic dimensions without flex shrinking; optional search links occupy their own footer row. Style guide updated; later Tailwind/DaisyUI/Bits UI migration recorded in planned-work without adding dependencies.
+
+Verification: production build and git diff --check passed. Isolated browser checks verified card width >=270px, zero extra bullet row gap, equal widths/heights and nowrap on all three activity buttons, and no page overflow at 1280/850/700/650/600/390/320px. Existing navigation/search/modal suite also passed. Next action: user reviews Home in preview. Uncommitted and undeployed.

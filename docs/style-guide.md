@@ -16,11 +16,11 @@ Font stack: system sans-serif for interface and prose; system monospace for code
 
 ## Layout and components
 
-Home: title and short instruction, three type cards, focus selector, prominent code-entry form, progress link. Activity: breadcrumb/back control, heading, prominent copyable code, marks/duration, timer controls, stacked questions and final submit action. Keep answer fields adjacent to their prompts. Progress: filters, overall and weekly statistics, eight-week average-score chart with equivalent table, three recommended sets, revision priorities, dated attempt table and import/export controls. The header shows the selected username, last tracked date and Not you? action. See [progress specification](spec-progress.md) for labels and colour rules.
+Home: title and short instruction, three type cards, focus selector, prominent code-entry form, progress link. Activity: linked breadcrumbs without a separate back link, heading, one desktop toolbar row containing the prominent copyable code, question count, marks/duration and timer controls, then stacked questions and final submit action. Keep answer fields adjacent to their prompts. Progress: filters, overall and weekly statistics, eight-week average-score chart with equivalent table, three recommended sets, revision priorities, dated attempt table and import/export controls. The header shows the selected username, last tracked date and Not you? action. See [progress specification](spec-progress.md) for labels and colour rules.
 
 Use shared components for buttons, labels, inputs, choice groups, question cards, part marks, hints, feedback, code panels, grid controls and progress tables. Primary action is visually stronger than randomisation and answer reveal. Use the exact navigation labels in the common specification.
 
-Small screens and high zoom use one column. Do not set fixed card heights or force question controls into narrow sidebars. Code and genuinely two-dimensional grids may scroll locally; the whole page must not require horizontal scrolling. Keep essential controls outside local scroll regions.
+Small screens and high zoom use one column. Do not set fixed card heights or force question controls into narrow sidebars. Code uses authored line breaks and responsive wrapping. Genuinely two-dimensional grids may scroll locally; the whole page must not require horizontal scrolling. Keep essential controls outside local scroll regions.
 
 ## Interaction and accessibility checks
 
@@ -67,3 +67,13 @@ After submission, show percentage, earned/available marks or points, time and as
 The brand subtitle is two lines: “Digital Software Development”, then “T-Level”.
 
 Use warm yellow (#FFE6A0 with #9B7122 borders) for puzzle selections. Yellow indicates a choice, never correctness; green feedback is reserved for marked results. Reference shapes remain purple. Spatial questions use a single clickable coordinate grid containing the given marker, with no duplicate radio-selector grid. Shape tasks show reference shapes beside a clickable answer board. Path tasks number each selected step and identify the current endpoint; they include Undo and Reset. All interactions have keyboard equivalents.
+
+
+## Modal dismissal
+
+Dialogs with a Close/Cancel action also dismiss when the user clicks the visible backdrop. This follows the Escape/cancel path: dismissing a leave-warning means Keep working, never Leave activity. Clicks inside the dialog (including its padding), and drags starting inside and ending outside, must not dismiss it. Retain visible buttons and keyboard dismissal. The required initial profile prompt has no Close/Cancel action and retains its existing requirement to enter a name; switching profiles remains cancellable. Use the shared `showModal` helper in `js/dialog.js` for native dialogs.
+
+
+Home hero: keep the code-entry card at least 270px wide and stack the hero columns at narrow widths. Introductory bullet labels retain their horizontal gap but have no extra row gap when wrapping, so successive rows use the normal text line height.
+
+Home activity cards: Let’s go buttons share the same single-line intrinsic dimensions and must not shrink or wrap. Let the surrounding footer content wrap and place the optional search link on its own row, keeping the primary button consistent with Exam practice.
