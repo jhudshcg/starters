@@ -1855,3 +1855,14 @@ The readable summaries were revised after the teacher clarified the documentatio
 **Files changed.** This work updated `DEV_LOG.md` and refreshed the current handover in `checkpoint.md`. The teacher's text in `docs/CODE_STYLE.md` and `feature_ideas.md` was read but not edited.
 
 **Decisions and checks.** The original records inside expandable sections were left unchanged. The checks compared those sections before and after the edit, confirmed chronological ordering and checked documentation links and whitespace. No application tests or production build were needed for this wording-only change.
+
+
+### Planning GitHub account selection and the move out of OneDrive
+
+Recorded a next-session plan to give each GitHub account its own SSH key and host alias. Each repository will select its account through its remote URL, avoiding repeated HTTPS account switches for Git operations. The plan also covers preserving local work when moving the checkout out of OneDrive and changing the remote if ownership changes later.
+
+**Files changed.** Created `docs/git-account-setup.md`, linked it from `docs/local-development.md` and `docs/planned-work.md`, and updated `checkpoint.md` and this log.
+
+**Decisions and challenges.** SSH setup remains deferred. Earlier in the session, GitHub rejected a push authenticated as `joe312213`; a repository-local HTTPS username setting selected `jhudshcg`, and the user subsequently reported successful browser authentication. At the start of this documentation task, Git showed `main` aligned with its local `origin/main` reference at `eaa7c99` and a clean working tree. The user then reported a further commit failure. The user subsequently confirmed that the operation cleared on its own; no cause or fix was established. The configured pre-commit hook builds staged source, so a local commit failure must be distinguished from a push authentication failure.
+
+**Checks and limits.** Checked the new guide against GitHub's SSH documentation, verified new local documentation links and ran the whitespace check. No application code changed, and no runtime tests or build were needed. No SSH keys, remote changes or commits were made by this documentation task.

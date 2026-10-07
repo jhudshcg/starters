@@ -1,5 +1,7 @@
 # Local development
 
+For the planned move out of OneDrive and automatic selection between GitHub accounts, follow [GitHub account and local repository setup](git-account-setup.md). SSH setup is deferred to the next session.
+
 Run `npm ci` once after checkout or dependency changes, then `npm run dev`.
 Open <http://127.0.0.1:5173>. Keep the terminal running; Ctrl+C stops it.
 Use a Node version supported by the pinned Vite release: 20.19+ within Node 20, or Node 22.12+. This integration was checked with Node 26.
