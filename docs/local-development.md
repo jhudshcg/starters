@@ -29,7 +29,7 @@ With an isolated Chrome debugging session on port 9227 (see existing browser smo
 
 ## Continuing progress/profile work
 
-Read the latest dated entry in [checkpoint.md](../checkpoint.md), then [progress specification](spec-progress.md) and [theming](theming.md). Earlier checkpoint entries deliberately preserve superseded experiments; use the final handover for current choices. Check `git status` and the latest commit before assuming changes remain uncommitted.
+Read the current [checkpoint.md](../checkpoint.md), then [progress specification](spec-progress.md) and [theming](theming.md). Completed work and superseded experiments are preserved in [DEV_LOG.md](../DEV_LOG.md); use the current checkpoint and adopted specifications for current choices. Check `git status` and the latest commit before assuming changes remain uncommitted.
 
 The latest session used the production preview at port 8765. First check whether it is responding; if not, serve the existing build with `python3 -m http.server 8765 --bind 127.0.0.1 --directory live`. Rebuild source changes with `PATH=/opt/homebrew/bin:$PATH npm run build` on this machine. A server from a previous session may no longer be running. No redeployment is implied by starting a local preview.
 

@@ -9,7 +9,7 @@ The draft supplies concrete defaults so review can be targeted. These decisions 
 | Decision | Draft proposal | Resolve before |
 | --- | --- | --- |
 | Programming v1 | Constrained answers, prediction and tracing; free-form execution later | Renderers and content authoring |
-| Exact sharing — settled | Eight Base64url characters encode version/type/question/variation fields; optional ninth timer character | Implement as documented below |
+| Exact sharing — settled | Nine Base64url characters encode the 54-bit version/type/question/variation fields; optional tenth timer character | Implement as documented below |
 | Similarity matching | Explicit aliases only; never guess from code similarity | Compatibility implementation |
 | Navigation | Three actions: new focus, new set within focus, same questions/new variations | Activity controls |
 | Focus | Exam subsection normally; primary topic separate from secondary tags | Content schema freeze |

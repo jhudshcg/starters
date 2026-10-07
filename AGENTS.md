@@ -1,14 +1,6 @@
 # DSD T-Level year 1 starters
 
-## Working efficiently and preserving handovers
-
-For exam-related work, use the [exam resource map](docs/exam-resource-map.md) to select only the relevant specification, paper/task, mark scheme and commentary.
-
-- Work efficiently: reuse existing research, cached references, tools and completed checks. Do not repeat downloads or investigations when the required material is already available.
-- Save downloaded reference material that may be useful in future in the repository, with source URLs and enough metadata to support reuse. Reference importers must use the local cache first. Keep temporary build/browser artefacts outside the repository.
-- **Before starting any job expected to take more than 20 seconds, persist its plan in `checkpoint.md`.** Use a dated work-plan entry with the objective, scope, concrete steps and checks. This applies to follow-on jobs as well as the initial task.
-- Maintain the checkpoint as a dated log of work plans and completed-work records. Mark each plan step when it is done. Record current failures, outstanding decisions, relevant files, useful commands and the exact next action so another agent can continue without repeating completed work.
-- Record verification results and remaining limitations honestly. Keep completed historical entries; correct stale assumptions in the current entry rather than treating old status text as current truth.
+## Purpose and audience
 
 The aim is to create a set of permutable starter activities (5 - 15 minutes) for Digital Software Development T-Level students in year 1, studying the Core component of the spec.
 
@@ -20,142 +12,46 @@ The starter will be accessed through an HTML page. The starter activities should
 - short series of spec related multi-choice or short text answer questions
 - Python programming challenges (complete the code, fix the code, write a function, etc.)
 
-## puzzzles and puzzle types
-
-All interactive with click, drag and drop, text or number entry
-
-Self-marking
-
-Varieties should include numerical/maths, spatial, sequence and logic puzzles and combinations there of, along with other types as found in the provided examples and links.
-
-Shapes, number grids, sequences and other forms should be grouped into similar selectable types.
-
-Perhaps also some basic Go tsumigo problems (10k to 20k difficulty). Students will have already had the rules explained, but a link to a short online tutorial (e.g. at online-go.com) could be provided with the puzzle if students want a reminder.
-
-Where possible all questions should link to aspects of spec content areas, with industry related examples and scenarios (won't be possible for all puzzles).
-
-These can be allocated points based on challenge level and time to complete. They are more here for variety and fun, and to wake the brain up.
-
-See the `example_puzzles` dir content for examples of puzzle types, and links to good puzzle collections online which you can use for inspiration, or copying in case of good ones.
-
-It may be good to have puzzle subtype selection/filtering for the user.
-
-## spec related questions
-
-Questions should focus on A) for programming related CA, lower point value logic and programming related knowledge questions, including questions involving applying the python operators listed in the spec and B) for all parts of the Core spec, name, state, list and describe lower point value questions, and on questions that link reasons/justications that students must pick to previous answers, to aid slightly deeper understanding of spec content areas. The aim is more towards coverage than question depth.
-
-For text entry questions, the HTML JS should be able to check for key words and phrases, match close spellings or synonyms, and provide informative feedback on the answer. Any text entry should be either single work or short sentence.
-
-Questions should be presented in groups of 3, where each question could have multiple parts, each with a 1-3 mark value. The total mark value for all question parts from all 3 questions should be in the range 15-22.
-
-For spec reference, see: `../agents/spec.md`. For past exam questions and mark schemes for Core paper 1 and paper 2 (covering CA1-CA8), see: `../agents/SAM/` folder. Again the focus is on lower point value, simple command word questions (1-4 points).
-
-The band of spec related questions should completely cover the Core CA spec (each assessible element in the spec should be covered by at least one question (each with at least 2 permutations for question phrasing, values and correct answers where appropriate), and each question should be tagged with the relevant spec content area and subsection, e.g. CA1.3.2).
-
-For spec related questions the question focus is the CA reference.
-
-For CA 2 (programming) related questions, some questions can be more probing, e.g. for a given function description, choose appropriate test types and input values and expected output values.
-
-## Python programming challenges
-
-These should focus on reinforcing understanding of basic syntax, data types, control structures, and functions. Challenges should include:
-
-- Completing partially written code snippets
-- Debugging code with intentional errors, both syntax and logic errors
-- Writing small functions to solve specific problems
-- Predicting the output of given code snippets, either per loop (multiple inputs for students to fill in) and/or final value(s).
-- Tracing the value of variables through a code snippet, with students filling in the values at each step.
-- Testing code style knowledge (e.g. 'find 3 reasons why this code is not PEP8')
-
-Code length should generally not exceed 12 lines (not including comments or blank lines). Each challenge should have a clear, concise problem statement.
-
-Code complexity should extend up to basic sorting and searching algorithms. Code style should be PEP8 (unless the question is to test student knowledge by identifying style issues)
-
-Automatic feedback should include hints and explanations for common mistakes, as well as the correct answer if student opts to view it, otherwise giving the student a chance to try again.
-
-Code challenge questions should be presented in sets of 2, each testing a different aspect of basic python programming knowledge, with a total mark value for both questions in the range 10-15.
-
-For Python programming challenges, question focus would be tags such as 'iteration', 'selection', 'boolean expressions', 'operators', 'syntax', 'logic', 'program tracing', 'typos', 'functions', 'data types', 'input/output', 'algorithms' etc. For each question focus, there should be at least 3 completely different questions, each with their own permutations.
-
-If puzzle questions do not contribute to revision priority calculations.
-
-## presentation and navigation
-
-SPA, colourful, responsive and accessible (layout should remain clear and functional even when zoomed in a lot for partially sighted students).
-
-Language should be clear and concise, using technical terms from the spec where appropriate, but avoiding additional jargon.
-
-Navigation should allow selection of question types and entry of a specific question set code directly from main page.
-
-## Question permutations and questions sets
-
-Each question should have multiple (at least 5 for code challenges) variations, with different values, scenarios, code snippets, and answer values, but essentially being quite similar questions. This is to give more variety but also help students identify the underlying concept or principle rather than simply memorize an arbitrary set of questions. Each unique question permutation must have a unique code, which can be used to access that specific question directly from the main page. The code should include a prefix to identify the question type (puzzle, spec question, or python challenge) and a unique identifier for the specific question. It should be extendable to allow for future additions of new question types and variations.
-
-Questions should support tags to record spec content area and subsections, e.g. CA1.3.2
-
-Questions sets (the 2-3 questions presented to students for a starter activity) should also have unique codes (which also specify the specific permutation of each question), which can be a short hash of the individual question codes, to allow for easy sharing and access to specific sets of questions.
-
-There should be a button for randomizing the question set ('get new question set') within a given question type and another button for randomizing within the question focus.
-
-Selecting 'get new question set' should keep the same question type (puzzles, exam practice, programming) but alter the focus of the questions, e.g. don't pick permutations of the same question, but an entirely different set of questions of the same type and also randomize the chosen permutations of those questions.
-
-Selecting 'get new permutation' should keep the same question type and focus, but alter the specific question permutations presented to the student.
-
-For viewing a new question (sets) a simple rule such as: random (with selected type or focus constraint) + not just seen, could be a good starting point.
-
-The idea is students can enter a code for a question set given by the teacher into the SPA and immediately access the exact intended question set.
-
-Whenever a question set is shown, its unique code should be displayed prominently, so students can share it with peers or teachers.
-
-A question can potentially cover more than one focus area (e.g. logic errors and boolean expressions, or functions and syntax).
-
-A 6 character hash should be sufficient for question set codes.
-
-## question data and codes
-
-Each question type should have it's own JSON/js file which the main script imports.
-The data file should include tags for each question as well as question permutations (or rules for generating them, per question).
-
-A separate questions_codes.js file could be maintained for caching question codes, and containing a function to make question set codes to individual question codes.
-
-The question code generation could be a function of the question text and tags, which has the benefit of making it independent of question order. Having these cached in a separate compiled js file would save the client computing each question code for the whole set of each client code.
-
-Using the question code cache file and a deterministic function for deriving question codes (same question always produces same question code), the same code for questions and question sets should produce the same outcome for all clients.
-
-question and cache files could be versioned to allow for updates and older client versions remaining usable.
-
-It might be helpful if the question code derivation function maps similar codes to similar functions, so that nearest match could be found, after minor updates. Then previous codes could be stored in the question code cache, to help old codes find the updated versions of questions.
-
-For question set codes, a shared seed may be required used to produce the 6 character hash from the individual question codes. Additionally, to map the other way, it would be helpful to also have a question_set_codes.js to cache those codes as well. An exhaustive list would be too large though.
-Alternatively, a scheme that relies of question and permutation order could be much more compact and reversible. e.g. [type][offset1][perm1][offset2][perm2][offset3][perm3] could work.  using a binary scheme where 2 bits are used for type, 10 for offset, 3 for permutation, would require 41 bits, which can be encoded in 6 ascii characters and decoded back into the type and offset data to match questions. There would even be upto 7 bits spare for a version number, to allow codes to match with versions of the question data files.
-
-## Timing
-
-There should be a timed mode option that displays a countdown timer for the entire question set, with a configurable time limit (e.g., 5-15 minutes). When the timer runs out, the student's answers should be automatically submitted and scored.
-
-Adding a 7th character to the question set code should indicate that the student has selected timed mode, and the SPA should display the countdown timer accordingly, according to the value of the 7th character, e.g. 6 for 6 minutes A for 10 minutes, F for 15 minutes, etc.
-
-Students should also be able to enable a timer on question sets whenever they want for their own practice.
-
-If a timer is enabled, then this can reset the hidden timer already running, so they are synced. A page refresh should not reset the timer, unless it's been > 45 minutes.
-
-## Record keeping and progress tracking
-
-The SPA should use local storage to keep track of student progress, including: date, % score on each question set, time taken to complete each set (whether timer visible or not), and the number of attempts made. Students should be able to view their progress over time, with visual representations such as graphs or charts. Data should be sortable and filterable by question type, focus, and date range. It should be easy for students to identify weaker and stronger areas. There should be a revision priorities box and/or 'sort by revision priority' feature.
-
-There should be an export feature than allows students to save their progress data as CSV. Similarly it should be possible to import data from csv.
-
-Students should be encouraged to save their data to their student account OneDrives regularly, so swapping computers and or computer rebuilds can be handled.
-
-## Hosting
+Exam practice now includes separate Core and ESP banks. This extends the original Core brief; use the specialist guides below for their distinct requirements.
 
 static Github pages site.
 
-## Implementation direction
+## Engineering guidance
 
-Make full use of reliable libraries, tools and common browser api features. Don't re-invent the wheel.
+For code changes, follow [code style](docs/CODE_STYLE.md) and the [code comments policy](docs/CODE_COMMENTS.md). Use [local development](docs/local-development.md) for development and verification commands, and the [documentation index](docs/README.md) to select relevant specialist guidance.
 
-This may include importing Pyscript (although a v1 could keep programming questions to fill in the blank/change the word/symbol/operator and multiple choice).
+For the framework migration, read the [refactoring brief](T_LEVEL_REFACTOR_AGENT_GUIDE.md) and [repository readiness review](docs/reviews/2026-10-07-refactor-readiness.md). The review is an assessment, not approval to start the migration.
+
+## Working efficiently and preserving handovers
+
+For exam-related work, use the [exam resource map](docs/exam-resource-map.md) to select only the relevant specification, paper/task, mark scheme and commentary.
+
+- Work efficiently: reuse existing research, cached references, tools and completed checks. Do not repeat downloads or investigations when the required material is already available.
+- Save downloaded reference material that may be useful in future in the repository, with source URLs and enough metadata to support reuse. Reference importers must use the local cache first. Keep temporary build/browser artefacts outside the repository.
+- **Before starting any job expected to take more than 20 seconds, persist its plan in `checkpoint.md`.** Use a dated current work plan with the objective, scope, concrete steps and checks. This applies to follow-on jobs as well as the initial task.
+- Use [DEV_LOG.md](DEV_LOG.md) for completed development history in chronological order (oldest first, append new entries): area of focus, files edited/created/deleted, challenges, key decisions and rationale, and bug finds/fixes. Follow the [documentation policy](docs/CODE_STYLE.md#documentation).
+- Keep `checkpoint.md` focused on current work: mark plan steps when done and record current failures, outstanding decisions, relevant files, useful commands and the exact next action. On completion, move the durable work record into `DEV_LOG.md` and replace stale checkpoint material with the current handover. Preserve meaningful historical evidence in the log rather than accumulating old sessions in the checkpoint.
+- Keep original feature ideas in [feature_ideas.md](feature_ideas.md), implementation tasks in [planned work](docs/planned-work.md), specific requirements/resources in `docs/`, and general developer documentation in `README.md`.
+- Record verification results and remaining limitations honestly. Keep completed historical entries in `DEV_LOG.md`; correct stale assumptions in the current checkpoint rather than treating old status text as current truth.
+
+## Read the relevant requirements before changing work
+
+The linked documents own the detailed requirements previously held here. Their authority is unchanged by the move. Explicit recorded teacher decisions supersede older defaults; a section labelled **Proposal** remains a proposal until adopted. Do not infer adoption from implementation alone. Where status or conflicting requirements are unclear, ask before changing their meaning.
+
+| Work | Required guidance |
+| --- | --- |
+| Shared data, question/set codes, permutations, navigation, marking and timers | [Common specification](docs/spec-common.md); [code compatibility and rollover](docs/code-rollover.md) |
+| Puzzle content and interactions | [Puzzle specification](docs/spec-puzzles.md); [local examples and source links](example_puzzles/links.md) |
+| Core exam content, marks and coverage | [Exam specification](docs/spec-exam.md); [exam resource map](docs/exam-resource-map.md) |
+| ESP content and assessment | [ESP source guide](docs/esp/source-guide.md); [tasks and assessment](docs/esp/tasks-and-assessment.md) |
+| Python programming challenges | [Python specification](docs/spec-python.md) |
+| Progress, profiles, revision priorities, practice time and backups | [Progress specification](docs/spec-progress.md) |
+| Presentation, accessibility and themes | [Style guide](docs/style-guide.md); [theming](docs/theming.md) |
+| Implementation, comments, testing, build and hosting | [Code style](docs/CODE_STYLE.md); [code comments](docs/CODE_COMMENTS.md); [local development](docs/local-development.md); [README](README.md) |
+
+The [documentation index](docs/README.md) links supporting evidence and reviews. The [consolidation record](docs/decisions/2026-10-agent-guidance-consolidation.md) maps the original sections and retains superseded wording with its replacement decision. Historical plans and checkpoints do not override later adopted requirements.
+
+## Content and documentation wording
 
 For further project spec files, for specific question types and features and style, content much remain high signal, accurate and concise. Avoid all synonym rotation in text, call a spade a spade.
 

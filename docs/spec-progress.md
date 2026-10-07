@@ -2,6 +2,20 @@
 
 Adopted requirements and implementation, updated **5 October 2026**. This specification records the teacher’s progress/profile requests and the concrete calculation and display rules used by the app. It supersedes the older common-specification parent-window priority rules and the earlier requirement to switch profiles manually before restoring a named backup. The [repeat-attempt policy](spec-common.md#implemented-repeat-attempt-policy-15-september-2026) remains in force.
 
+## Original tracking requirements and current delivery
+
+Requirements moved from AGENTS.md on 7 October 2026 retain their original status; moving them into a document containing drafts does not make them proposals. Later explicitly adopted decisions and the exceptions identified below still apply.
+
+The SPA should use local storage to keep track of student progress, including: date, % score on each question set, time taken to complete each set (whether timer visible or not), and the number of attempts made. Students should be able to view their progress over time, with visual representations such as graphs or charts. Data should be sortable and filterable by question type, focus, and date range. It should be easy for students to identify weaker and stronger areas. There should be a revision priorities box and/or 'sort by revision priority' feature.
+
+There should be an export feature than allows students to save their progress data as CSV. Similarly it should be possible to import data from csv.
+
+Students should be encouraged to save their data to their student account OneDrives regularly, so swapping computers and or computer rebuilds can be handled.
+
+Puzzle questions do not contribute to revision priority calculations.
+
+The adopted repeat-attempt policy below qualifies which completions enter tracked history and counts; do not treat early untracked repeats as extra tracked results. The dated records, filters, weekly displays and priority calculations below implement the original tracking intent. CSV export is implemented, full restoration uses JSON, and CSV import remains a deferred requirement rather than an implemented feature or deleted goal. Students can back up to OneDrive manually; no account integration is implied.
+
 ## Local named profiles
 
 Profiles are a low-complexity way to share a computer, not a secure login system. There is no password, identity verification, server account or automatic OneDrive sync.

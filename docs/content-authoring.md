@@ -4,6 +4,8 @@ Shared rules for all question types; type-specific limits remain in [exam](spec-
 
 ## Grounding and wording
 
+Where possible all questions should link to aspects of spec content areas, with industry related examples and scenarios (won't be possible for all puzzles).
+
 Use Core [specification 1.1](../../agents/spec.md) despite stale 1.0 labels; never edit reference materials. Calibrate original items against specimen [Paper 1](../../agents/SAM/paper1.md), [its mark scheme](../../agents/SAM/mark_scheme_paper1.md), [Paper 2](../../agents/SAM/paper2.md) and [its mark scheme](../../agents/SAM/mark_scheme_paper2.md): content, challenge, wording, command words and marking points.
 
 Record the assessed reference and, for new or materially revised assessment, a relevant SAM paper/question and why its command word, marks and demand fit. Batches may share evidence; record exceptions. Puzzle reasoning need not have a curriculum link. Source inventories retain attribution/review limits.

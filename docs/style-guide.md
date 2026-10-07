@@ -2,6 +2,14 @@
 
 Status: draft design proposal. Shared behaviour is defined in [spec-common.md](spec-common.md).
 
+## Original presentation requirements
+
+Requirements moved from AGENTS.md on 7 October 2026 retain their original status; moving them into a document containing drafts does not make them proposals. Later explicitly adopted decisions and the exceptions identified below still apply.
+
+SPA, colourful, responsive and accessible (layout should remain clear and functional even when zoomed in a lot for partially sighted students).
+
+Language should be clear and concise, using technical terms from the spec where appropriate, but avoiding additional jargon.
+
 ## Direction
 
 Colourful, calm and age-appropriate. Use clear question cards, generous spacing and short instructions. Avoid childish decoration, competitive speed pressure and animation unrelated to the task. Use the same words for the same controls throughout.

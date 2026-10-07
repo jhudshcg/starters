@@ -4,7 +4,7 @@ Updated 28 September 2026. Task 1/2 implementation is authorised and underway. U
 
 | Work | Read first | Open next only as needed |
 | --- | --- | --- |
-| Resume the programme | [Checkpoint](../../checkpoint.md), latest dated entry | Outstanding step and its named files |
+| Resume the programme | [Current checkpoint](../../checkpoint.md), with [ESP development history](../../DEV_LOG.md#2026-09-28) | Outstanding step and its named files |
 | Find a converted resource | [Conversion register](conversion-register.md) | One relevant booklet, scheme section, commentary or workbook guide |
 | Review assessment expectations | [Repeatable review process](review-process.md) | [Saved evidence review](evidence-review.md), then specific source pages |
 | Discuss starter coverage and marking | [Activity designs](activity-designs.md) | Relevant task detail below |

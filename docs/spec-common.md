@@ -18,9 +18,30 @@ Static GitHub Pages SPA for 16–18-year-old year 1 students. Activities take 5�
 
 Questions may have several tags. A set has one primary focus. Exam parts report against their distinct coverage references; a part with several references divides its earned and available marks equally between them. Programming parts report against the named programming focus. Other tags remain searchable.
 
+## Question permutations and question sets
+
+Requirements moved from AGENTS.md on 7 October 2026 retain their original status; moving them into a document containing drafts does not make them proposals. Later explicitly adopted decisions and the exceptions identified below still apply.
+
+Each question should have multiple (at least 5 for code challenges) variations, with different values, scenarios, code snippets, and answer values, but essentially being quite similar questions. This is to give more variety but also help students identify the underlying concept or principle rather than simply memorize an arbitrary set of questions. Each unique question permutation must have a unique code, which can be used to access that specific question directly from the main page. The code should include a prefix to identify the question type (puzzle, spec question, or python challenge) and a unique identifier for the specific question. It should be extendable to allow for future additions of new question types and variations.
+
+Questions should support tags to record spec content area and subsections, e.g. CA1.3.2
+
+Questions sets (the 2-3 questions presented to students for a starter activity) should also have unique codes (which also specify the specific permutation of each question), to allow for easy sharing and access to specific sets of questions.
+
+The idea is students can enter a code for a question set given by the teacher into the SPA and immediately access the exact intended question set.
+
+Whenever a question set is shown, its unique code should be displayed prominently, so students can share it with peers or teachers.
+
+A question can potentially cover more than one focus area (e.g. logic errors and boolean expressions, or functions and syntax).
+
+The fixed classic-maths/Go/grid exceptions in the [puzzle specification](spec-puzzles.md) do not claim artificial permutations; disable the permutation action where no alternative exists. The current code format and identity rules below supersede the original hash/cache proposals, without removing reproducibility, direct question access or future extensibility.
+
 ## Data contract
 
-Keep one authored JSON or JS entry file per type. Renderers and marking engines are shared modules, not copied into question records. Generated output may be split into smaller files when the bank grows.
+Each question type should have it's own JSON/js file which the main script imports.
+The data file should include tags for each question as well as question permutations (or rules for generating them, per question).
+
+Renderers and marking engines are shared modules, not copied into question records. Generated output may be split into smaller files when the bank grows. Core and ESP have separate bank entry points within the Exam practice navigation group.
 
 | Record | Required fields |
 | --- | --- |
@@ -50,6 +71,8 @@ Capacity: 64 bank versions, eight types, 4,096 question slots per type and eight
 
 Question slots and variation positions are permanent identities. Corrections and refinements retain those identities: old codes open current content and show “This set has been updated since this code was created” when any contained fingerprint differs. Substantive changes to the task, assessed concept or required solution need a new question slot. Retire superseded questions to exclude them from selection while preserving direct access; remove only when they should no longer be accessible. Never recycle removed identities within a generation. Bank versions record content changes for notices and historical score metadata; they do not invalidate surviving identities. Revision 1 remains unsupported as previously agreed. Unused addresses can extend a revision; content edits create a new revision, styling does not. Normal updates refuse version overflow. Explicit rollover tooling implements six version bits and three bank bits, with generation/date-aware progress; see [bank rollover and progress](code-rollover.md). That policy supersedes the earlier permanent no-rollover requirement through the explicit rollover command.
 
+The same question or question-set code must resolve consistently across clients, independently of source-file order. Permanent question slots and variation positions, with recorded compatibility metadata, provide this guarantee; do not derive identity from editable question text or guess a nearest code. This preserves the original deterministic-code and versioned-cache intent using the adopted mechanism.
+
 The browser encodes eligible combinations directly. An optional generated index resolves bank/type/question/variation coordinates; it is not a catalogue of combinations. See the linked rationale.
 
 Decode and validate version, type, question existence, variation existence, canonical unused fields, duplicate questions and activity composition/mark rules before displaying a set. Unknown versions may offer reload; never guess a nearest match. Validate an older set against its original composition metadata, then resolve its surviving identities to current content. A removed item produces an unavailable message and an explicit replacement-set action; never silently substitute questions.
@@ -61,6 +84,18 @@ Timed codes append `5`–`9` or `A`–`F` for 5–15 minutes. Parse the suffix b
 Share URLs use a fragment field to work on GitHub Pages without server routes, for example `#set=<code>`. Base64url uses URL-safe `-` and `_` in place of standard Base64’s `+` and `/`. Preserve case and both symbols through URL creation and parsing. Reject the standard Base64 alphabet rather than silently accepting two formats.
 
 ## Navigation and selection
+
+Navigation should allow selection of question types and entry of a specific question set code directly from main page.
+
+There should be a button for randomizing the question set ('get new question set') within a given question type and another button for randomizing within the question focus.
+
+Selecting 'get new question set' should keep the same question type (puzzles, exam practice, programming) but alter the focus of the questions, e.g. don't pick permutations of the same question, but an entirely different set of questions of the same type and also randomize the chosen permutations of those questions.
+
+Selecting 'get new permutation' should keep the same question type and focus, but alter the specific question permutations presented to the student.
+
+For viewing a new question (sets) a simple rule such as: random (with selected type or focus constraint) + not just seen, could be a good starting point.
+
+The selection table below elaborates these original requirements; it does not replace their constraints.
 
 Home provides three type choices, focus selection, code entry and progress access. A shared question-set code form is also available on every page, including activities and progress. Invalid codes are reported beside that form; opening a different set preserves the existing unfinished-work confirmation. An activity shows its type, focus, code, total marks, estimated duration and timer control. Its breadcrumb segments are links; no separate back link duplicates that navigation. Question count, marks/points and estimated duration share the set-code toolbar row with copy and timer controls. The toolbar wraps on narrow screens without horizontal page scrolling.
 
@@ -78,6 +113,8 @@ Before replacing an unfinished activity, offer to keep working or leave it. **Pr
 
 ## Marking and attempts
 
+**Adopted exam-practice requirement — 7 October 2026:** useful automatic marking must be possible for every exam-practice question, including its substantive linked reasoning and judgement where assessed. Teacher evaluation of student work may supplement automatic results but must not be required for a useful result or completion. Author bounded, automatically checkable response structures; when free wording is unrecognised, provide an automatically marked clarification/retry path rather than a teacher-only dead end. Distinguish unknown wording from a proven error and assisted results from independent evidence. Automatic practice scores are not claims of official holistic exam marks. The [extended-response plan](extended-response-plan.md) applies this requirement; existing Core/ESP written-response formats need the [recorded compliance audit](planned-work.md).
+
 Mark each part using its own rule. Scores are non-negative and capped at the part maximum. Blank answers score zero. Multi-select rules declare whether selection count is limited and how partial credit works. Dependencies and error-carried-forward credit are explicit, not inferred.
 
 Check answer and Show answer buttons are hidden until the active attempt has a submission within the last four hours. Both are direct, one-click buttons. Submission records current answers and ends the attempt; automatic timer submission also unlocks review. Review access survives reloads for that four-hour window, then the controls and answer feedback are hidden. A restored completed attempt offers Submit saved answers to renew review for four hours without changing its recorded score or adding another record. Post-submission checks redisplay feedback without increasing attempt check counts. Retry creates a fresh attempt with review locked. Submission is idempotent: repeated clicks or timer events cannot duplicate records. Hints remain available before submission.
@@ -85,6 +122,12 @@ Check answer and Show answer buttons are hidden until the active attempt has a s
 Record first-check marks per part, final marks, check counts, hint use and answer reveals. Hints used before submission flag the response as assisted. Revealing answers during review does not award marks or change the submitted record. Feedback distinguishes correct, partly correct, incorrect and blank, and gives a useful next step. After expiry, review is available; changing answers requires a new attempt.
 
 ## Timing and recovery
+
+There should be a timed mode option that displays a countdown timer for the entire question set, with a configurable time limit (e.g., 5-15 minutes). When the timer runs out, the student's answers should be automatically submitted and scored.
+
+Students should also be able to enable a timer on question sets whenever they want for their own practice.
+
+The current timer suffix is the optional tenth character described above; countdown and accumulated practice time have separate purposes as detailed below.
 
 Start hidden estimated-engagement tracking when an activity starts. Pause after 120 seconds without page interaction and when the activity is hidden; see [practice time](spec-progress.md#estimated-engaged-practice-time). Enabling a visible timer resets its elapsed-time origin and starts the selected 5–15-minute countdown, but does not reset accumulated engaged time. Record original start and reset time separately. Update the displayed/shareable set code with the duration suffix.
 
@@ -120,7 +163,6 @@ A preview includes the description, selected item numbers/titles/exact question 
 
 Open email draft uses a percent-encoded mailto subject/body with CRLF line endings. The student reviews and sends through their configured email app; the site neither sends nor claims delivery. Copy report provides a fallback for missing email handlers or client URL-length limits; if clipboard access fails, the preview is selected for manual copying. No server, reporting account or new dependency is required.
 
-
 ## Leaving an activity
 
 Warn only when the currently visible activity has entered, unsubmitted answers or puzzle work. Show the warning before navigating to another page or replacing the set, with Keep working and Leave activity choices. Starting from Home/Progress must not warn about a saved activity. Empty activities and submitted work do not warn. Puzzle selections, givens and undo history alone do not count as answers; entered notes and moves do. Cancel preserves the visible activity, route and answers.
@@ -131,7 +173,7 @@ Store the bank revision used by the active attempt. If its questions change befo
 
 ### Exam navigation and future OS banks
 
-Exam practice is a navigation group, currently containing independent Core and ESP banks (`js/exam-sections.js`). Future Year 2 OS must receive its own bank with at least the same question-slot capacity as puzzles and programming; never divide the Core or ESP slot allocation between sections. The current four bank IDs are fully allocated. The agreed target is six version bits and three bank bits, preserving at least 4,095 usable slots per bank. Implement the explicit initial format migration and subsequent rollover/progress rules in [bank rollover and progress](code-rollover.md) before adding OS; do not assume the two nine-character layouts are automatically distinguishable. See the [navigation and capacity review](reviews/2026-09-28-navigation-wording-search.md).
+Exam practice is a navigation group, currently containing independent Core and ESP banks (`js/exam-sections.js`). Future Year 2 OS must receive its own bank with at least the same question-slot capacity as puzzles and programming; never divide the Core or ESP slot allocation between sections. The earlier four-ID limit is superseded by the implemented six-version-bit/three-bank-bit layout described above, preserving 4,095 usable question slots per bank. Four banks are currently used and ID 4 is reserved for future OS. Follow the explicit format-migration and rollover/progress rules in [bank rollover and progress](code-rollover.md); do not assume the two nine-character layouts are automatically distinguishable. See the [navigation and capacity review](reviews/2026-09-28-navigation-wording-search.md).
 
 ## Key-term search (6 October 2026)
 
@@ -187,7 +229,6 @@ The following are identified requirements/recommendations for queue design, **no
 - Keep shared codes tied to concrete questions and variations, not a live search result that can change as content grows. Validate mixed-focus/shorter batches and round-trip sharing before release. Search state and queue position need their own resume behaviour; they are not currently encoded in shared set codes.
 
 Next implementation step: design the queue's bank/recipe composition, concrete set validation and per-question progress attribution together, using the requested three-question batches and smaller remainder as the starting requirements. The unresolved bank-mixing and scoring-policy details must be stated explicitly rather than inferred from global search scope.
-
 
 ## About page (6 October 2026)
 

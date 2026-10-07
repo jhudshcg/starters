@@ -1,5 +1,27 @@
 # Puzzle specification
 
+## Purpose and original requirements
+
+Requirements moved from AGENTS.md on 7 October 2026 retain their original status; moving them into a document containing drafts does not make them proposals. Later explicitly adopted decisions and the exceptions identified below still apply.
+
+All interactive with click, drag and drop, text or number entry
+
+Self-marking
+
+Varieties should include numerical/maths, spatial, sequence and logic puzzles and combinations there of, along with other types as found in the provided examples and links.
+
+Shapes, number grids, sequences and other forms should be grouped into similar selectable types.
+
+Apply the [shared requirement for specification links and industry scenarios where possible](content-authoring.md#grounding-and-wording).
+
+These can be allocated points based on challenge level and time to complete. They are more here for variety and fun, and to wake the brain up.
+
+See the `example_puzzles` dir content for examples of puzzle types, and links to good puzzle collections online which you can use for inspiration, or copying in case of good ones.
+
+The examples directory is [here](../example_puzzles/links.md); use the source review and attribution rules below when adapting examples. Click, drag and drop, and text/number entry are interaction options; accessible keyboard alternatives remain required.
+
+Go is now implemented and puzzle subtypes are selectable. The original 10k–20k suggestion is superseded by the current source-rank bands below. Students will have already had the rules explained; retain the short rules reminder link specified in the Go section.
+
 ## Current bank — 28 September 2026
 
 This section supersedes earlier numerical minima and challenge descriptions below. The bank contains 1120 puzzle templates, with at least 25 at every challenge level in every family. Good existing content above 25 is retained. Exact variation counts and level distributions are in the generated [puzzle inventory](../data/coverage/puzzle-inventory.json), maintained by `node scripts/puzzle-inventory.mjs`.

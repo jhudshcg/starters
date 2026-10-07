@@ -4,7 +4,28 @@ Status: draft; shared behaviour is in [spec-common.md](spec-common.md).
 
 ## Scope
 
-Two questions per set, testing different aspects, totalling 10–15 marks. Each focus has at least three distinct question templates, each with at least five variations. Code generally has no more than 12 nonblank, noncomment lines. Use readable PEP8 style except in deliberate style questions.
+Requirements moved from AGENTS.md on 7 October 2026 retain their original status; moving them into a document containing drafts does not make them proposals. Later explicitly adopted decisions and the exceptions identified below still apply.
+
+These should focus on reinforcing understanding of basic syntax, data types, control structures, and functions. Challenges should include:
+
+- Completing partially written code snippets
+- Debugging code with intentional errors, both syntax and logic errors
+- Writing small functions to solve specific problems
+- Predicting the output of given code snippets, either per loop (multiple inputs for students to fill in) and/or final value(s).
+- Tracing the value of variables through a code snippet, with students filling in the values at each step.
+- Testing code style knowledge (e.g. 'find 3 reasons why this code is not PEP8')
+
+Code length should generally not exceed 12 lines (not including comments or blank lines). Each challenge should have a clear, concise problem statement.
+
+Code complexity should extend up to basic sorting and searching algorithms. Code style should be PEP8 (unless the question is to test student knowledge by identifying style issues)
+
+Automatic feedback should include hints and explanations for common mistakes, as well as the correct answer if student opts to view it, otherwise giving the student a chance to try again.
+
+Code challenge questions should be presented in sets of 2, each testing a different aspect of basic python programming knowledge, with a total mark value for both questions in the range 10-15.
+
+For Python programming challenges, question focus would be tags such as 'iteration', 'selection', 'boolean expressions', 'operators', 'syntax', 'logic', 'program tracing', 'typos', 'functions', 'data types', 'input/output', 'algorithms' etc. For each question focus, there should be at least 6 completely different questions, each with their own permutations.
+
+Each question must have at least five variations, as required by the [shared variation requirements](spec-common.md#question-permutations-and-question-sets). The formats above describe the full brief; later execution support remains staged delivery, not removal of function-writing, syntax/logic debugging or other formats. The [shared marking lifecycle](spec-common.md#marking-and-attempts) governs when checking/reveal becomes available and when a fresh retry is required.
 
 Keep the whole snippet visible without horizontal scrolling, particularly when students must complete several blanks or substitutions. Insert valid Python line breaks at natural boundaries (for example, within parenthesised calls); aim for lines of about 64 characters. Preserve indentation and use responsive soft wrapping at narrow widths or high zoom. Do not shrink the code text to make it fit.
 
@@ -16,7 +37,7 @@ Source evidence: Core CA2.3.1–2.3.4 and Appendix 2; SAM Paper 1 Q15(a), Figure
 
 Topic tags include iteration, selection, functions, data types, operators, Boolean expressions, input/output and algorithms. Format tags include completion, debugging, prediction, tracing and style. A set focused on iteration can pair tracing with debugging. Secondary tags allow overlap without treating every tag as a separate minimum-size bank.
 
-**Proposal:** enforce the three-template minimum on selectable primary focuses. Classify other tags as searchable secondary tags until they have enough templates to become selectable focuses.
+**Adopted target — 7 October 2026:** at least six distinct Python questions per primary Python practice focus. This supersedes the earlier three-question minimum. Count distinct question templates, not their permutations. Each template must still have at least five variations. Other tags can remain searchable secondary tags; this clarification does not require every secondary tag to become a separate selectable focus. The six-question target is not yet met across the bank; expansion is on the [project todo list](planned-work.md).
 
 ## Marking rules
 
@@ -83,13 +104,17 @@ PY-ITER-003: complete a for-loop that prints four consecutive ticket numbers; on
 
 ## Later execution support
 
+This may include importing Pyscript (although a v1 could keep programming questions to fill in the blank/change the word/symbol/operator and multiple choice).
+
+This is an optional runtime suggestion, not a package requirement or a claim that execution is implemented.
+
 Add free-form completion, debugging and writing small functions only after an execution prototype is validated. Assess candidate browser Python runtimes against supported syntax, startup size, college network availability, timeout/cancellation, memory/output limits and accessible editing. Run student code in a terminable worker and isolate runs. Test behaviour with normal, boundary and invalid inputs; assess requested constructs and style separately. Do not rely on literal model-answer equality.
 
 Cover linear and binary search and bubble, insertion and merge sort through appropriate short snippets, tracing and completion. Use fragments for algorithms that cannot fit the line guidance clearly. Any exception to the line limit must have an authoring rationale.
 
 ## Acceptance
 
-Apply the [refinement checklist](content-refinement.md). Check five variations per template, three templates per selectable focus, reference trace/output agreement, and pairs testing different aspects totalling 10–15 marks.
+Apply the [refinement checklist](content-refinement.md). Check at least five variations per template, six distinct templates per selectable primary focus, reference trace/output agreement, and pairs testing different aspects totalling 10–15 marks. Six is the adopted expansion target; the existing runtime validator still enforces the former three-template floor until the planned content expansion and validator update are delivered.
 
 ## Expanded supported bank (20 September 2026)
 
@@ -123,3 +148,38 @@ Move fill-in-the-blank and substitution inputs into the displayed code, at the r
 - Pilot a single-gap and a multiple-gap question before migrating the rest; verify desktop, narrow-screen and high-zoom layouts, keyboard use, marking and saved-answer restoration.
 
 Implement this as a separate renderer slice; it does not require free-form Python execution.
+
+
+## Primary-focus minimum audit — 7 October 2026
+
+At the time of the three-question minimum audit, the active Python bank met that former minimum for **all 20 selectable primary focuses**: 63 distinct question templates, each with five variations (315 variations total). Selection has six templates; each other focus has three. Retired templates are excluded, and variations are not counted as separate questions.
+
+| Primary focus | Distinct questions |
+| --- | --- |
+| iteration | 3 |
+| selection | 6 |
+| functions | 3 |
+| algorithms | 3 |
+| operators | 3 |
+| data types | 3 |
+| strings | 3 |
+| lists | 3 |
+| records | 3 |
+| boolean logic | 3 |
+| nested iteration | 3 |
+| input output | 3 |
+| robust code | 3 |
+| testing | 3 |
+| sorting | 3 |
+| design | 3 |
+| collections | 3 |
+| code style | 3 |
+| arrays | 3 |
+| validation | 3 |
+
+Evidence: imported the current `banks[2]` and `focuses(2)` from `js/bank.js`; grouped non-retired templates by `focus` and counted unique question slots. Checked all templates have at least five variations and that `choose(2, focus)` produces a two-question set for every focus. Each focus currently offers three distinct exercise formats. The existing `validateBank()` check already rejects a Python primary focus with fewer than three active templates. This establishes the numeric/template target and available set selection, not teacher approval or a new pedagogical audit of every question.
+
+
+### Gap against the new six-question target
+
+The counts above remain the current baseline. Selection already meets six; the other 19 primary focuses each need three additional distinct templates. Total addition: **57 templates**, each with at least five variations (**at least 285 additional variations**). Meeting the target with the existing 20 focuses would produce at least **120 templates / 600 variations**. New questions must assess different tasks or reasoning, not merely rename scenarios or split existing permutations into separate slots. The backlog task includes the matching validation change; this documentation update does not add content or change runtime selection.

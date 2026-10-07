@@ -2,6 +2,14 @@
 
 A static, self-marking starter page for year 1 Digital Software Development T-Level students. Core specification content is treated as version 1.1.
 
+## Development records
+
+- [Development log](DEV_LOG.md): chronological completed-work history, with original detailed records preserved.
+- [Current checkpoint](checkpoint.md): current work plan, state, unresolved issues and exact next actions.
+- [Feature ideas](feature_ideas.md): persistent original ideas and requests.
+- [Planned work](docs/planned-work.md): outstanding implementation tasks.
+- [Feature and requirement docs](docs/README.md): specialist reference material.
+
 ## Try it
 
 Open [the local preview](http://127.0.0.1:5173) in VS Code’s integrated browser. If needed, start the server from this directory:
@@ -60,7 +68,7 @@ Use [content authoring](docs/content-authoring.md) and the [refinement checklist
 
 Browser checks are deliberately proportionate. Focused scripts such as `scripts/browser-comparisons.mjs`, `scripts/browser-esp.mjs` and `scripts/browser-puzzle-expansion.mjs` cover only the changed surface and are run directly when relevant; they are not bundled into a standard all-purpose script. Bank-only or minor visual changes do not require the full suite or whole-app smoke. Run `npm test` and the shared browser smoke when shared application behavior, storage, codecs, schemas, markers, selection or build tooling changes, or when a focused failure suggests wider risk. See the [refinement checklist](docs/content-refinement.md#proportionate-checks).
 
-The [puzzle specification](docs/spec-puzzles.md) gives each subtype’s format, interaction, difficulty and marking requirements. [checkpoint.md](checkpoint.md) records decisions, source findings and remaining work. The live site is https://jhudshcg.github.io/starters/.
+The [puzzle specification](docs/spec-puzzles.md) gives each subtype’s format, interaction, difficulty and marking requirements. [DEV_LOG.md](DEV_LOG.md) records completed decisions and source findings; [checkpoint.md](checkpoint.md) records the current handover. The live site is https://jhudshcg.github.io/starters/.
 
 ## GitHub Pages
 

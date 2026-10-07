@@ -1,5 +1,7 @@
 # ESP starter designs for discussion
 
+**7 October 2026 requirement update:** useful automatic marking is required for every exam-practice question. Teacher evaluation of student work is optional, so the earlier review-only written-reasoning approach below is not sufficient on its own. Existing content has not been changed by this note; audit and adapt those formats as recorded in [planned work](../planned-work.md), following the [shared marking requirement](../spec-common.md#marking-and-attempts).
+
 **27 September 2026 — Task1/Task2 implementation authorised and authored.** See the [implementation/evidence map](activity-evidence.md) for final first-release controls, coverage and checks. Tasks3–4b remain documentation only. Grounded in the [evidence review](evidence-review.md), using the [repeatable process](review-process.md). Detailed first-phase designs: [Task 1](task-1-designs.md) and [Task 2](task-2-designs.md). Resource/page references below resolve through the [conversion register](conversion-register.md).
 
 ## Intended experience

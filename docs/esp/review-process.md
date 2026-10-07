@@ -4,7 +4,7 @@ Adopted working process, 25 September 2026. Scope: teaching/practice before the 
 
 ## Resume with a small, explicit context
 
-1. Read the current ESP programme entry in `../../checkpoint.md`, then the conversion register and the task evidence/design record being worked on. Do not reread the collection.
+1. Read the current [checkpoint](../../checkpoint.md) and the relevant ESP handover in [development history](../../DEV_LOG.md#2026-09-28), then the conversion register and the task evidence/design record being worked on. Do not reread the collection.
 2. Identify the next unchecked unit: resource group, assessment focus, activity set or implementation increment. Write objective, files, checks and exact completion criterion in the checkpoint before work exceeding 20 seconds.
 3. Check source SHA-256 against the conversion sidecar. Reuse unchanged conversions and verified evidence. If a source changed, invalidate only dependent findings/designs; preserve old evidence as historical.
 4. Load only the relevant task booklet sections, matching scheme rows and needed commentary/exemplar extracts. Inspect linked figures for visual evidence; figure links alone do not count as reading them.

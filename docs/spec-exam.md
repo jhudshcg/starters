@@ -4,21 +4,33 @@ Status: draft; shared behaviour is in [spec-common.md](spec-common.md).
 
 ## Requirements
 
-- Three questions per set; 15–22 marks total; questions can be multi-part, with each part worth 1–3 marks.
-- At least two distinct questions per assessable Core specification element. Variations of one question do not count as two questions.
-- At least two variations per question.
-- Single words or short sentences for text responses. Prefer explicit response slots over a paragraph requesting several points.
-- For programming-related content areas, include lower-mark logic and programming-knowledge questions, including applying the Python operators listed in the specification. Appropriate CA2 questions may also involve selecting test types, inputs and expected results.
-- Across all Core content areas, primarily use name, state, list and describe questions. Include selected reasons or justifications linked to preceding answers for slightly deeper understanding. Prioritise coverage over depth; multiple choice should not displace the intended short-answer practice.
-- A question's focus is its CA reference. Add precise assessable-element references to the relevant parts; a part may assess more than one element. Full-bank coverage targets Core CA1–CA8, not Occupational Specialism content.
+Requirements moved from AGENTS.md on 7 October 2026 retain their original status; moving them into a document containing drafts does not make them proposals. Later explicitly adopted decisions and the exceptions identified below still apply.
+
+Questions should focus on A) for programming related CA, lower point value logic and programming related knowledge questions, including questions involving applying the python operators listed in the spec and B) for all parts of the Core spec, name, state, list and describe lower point value questions, and on questions that link reasons/justications that students must pick to previous answers, to aid slightly deeper understanding of spec content areas. The aim is more towards coverage than question depth.
+
+For text entry questions, the HTML JS should be able to check for key words and phrases, match close spellings or synonyms, and provide informative feedback on the answer. Any text entry should be either single word or short sentence.
+
+Questions should be presented in groups of 3, where each question could have multiple parts, each with a 1-3 mark value. The total mark value for all question parts from all 3 questions should be in the range 15-22.
+
+For spec related questions the question focus is the CA reference.
+
+For CA 2 (programming) related questions, some questions can be more probing, e.g. for a given function description, choose appropriate test types and input values and expected output values.
+
+The bank of spec related questions should completely cover the Core CA spec. Each assessable element must have at least **two distinct questions**, each with at least two permutations for question phrasing, values and correct answers where appropriate. Each question should be tagged with the relevant spec content area and subsection, e.g. CA1.3.2. The two-question minimum is the recorded teacher clarification; variations of one question do not count as two questions.
+
+Add precise assessable-element references to relevant parts; a part may assess more than one element. Full-bank coverage targets Core CA1–CA8, not Occupational Specialism content. Prefer explicit response slots over a paragraph requesting several points; multiple choice should not displace intended short-answer practice.
 
 **Proposal:** selectable focus is normally a subsection such as `CA2.4`; show precise references such as `CA2.4.1` on questions. Permit broader CA groupings where a subsection cannot support a useful three-question set. Declare these groupings in the question bank.
 
 ## Sources and coverage
 
+For spec reference, see: [`spec.md`](../../agents/spec.md). For past exam questions and mark schemes for Core paper 1 and paper 2 (covering CA1-CA8), see: [`SAM/`](../../agents/SAM/) folder. Again the focus is on lower point value, simple command word questions (1-4 points).
+
+Use the [exam resource map](exam-resource-map.md) to select only the relevant source extracts.
+
 Apply [shared authoring rules](content-authoring.md), including the specification/SAM source baseline, marking and hint requirements.
 
-Coverage must show whether every assessable Core element has at least two distinct questions, each with at least two variations. The two-question minimum follows the teacher's latest clarification; the older one-question wording in AGENTS.md does not apply to this minimum.
+Coverage must show whether every assessable Core element has at least two distinct questions, each with at least two variations. The two-question minimum follows the teacher's latest clarification; the older one-question wording is retained only in the [consolidation record](decisions/2026-10-agent-guidance-consolidation.md).
 
 **Implemented: nested JSON inventory and generated reports.** The authoritative inventory is [core-inventory.json](../data/coverage/core-inventory.json). Each official `focus` contains `elements` with permanent local letter keys and explicit requirements. For example, `CA2.1.1[a,b]` identifies integer definition and appropriate use. Letters are identifiers, not list positions: append new keys, retain retired keys, and never reuse a key for a changed requirement.
 
@@ -87,3 +99,8 @@ The selected subtopic is stored with the active attempt and survives refresh. Ca
 ## Further depth — 21 September 2026
 
 The [expansion review](exam-depth-review.md) records 23 additions, their comparison with existing tasks, SAM calibration, checks and remaining gaps. Counts remain in the generated coverage report. Cautions appear only in hints; original questions are unchanged.
+
+
+## Planned extended-response practice
+
+The student-requested [scaffolded discuss/evaluate plan](extended-response-plan.md) proposes a separate Core practice format: editable linked point, explanation and scenario-impact cards, plus an evidence-supported judgement for evaluate. This is planned, not implemented. It extends exam technique practice without replacing the short-answer coverage/mark requirements above or inserting longer questions into existing random sets. Useful automatic marking is required for every question, including the substantive reasoning; teacher marking is optional. Bounded recognition must include automatically marked clarification/retry for unrecognised wording, not a review-only completion path. Practice scores must not claim an official exam level; see the plan for source calibration and progress separation.
