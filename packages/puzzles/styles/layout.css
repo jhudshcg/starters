@@ -245,3 +245,21 @@
 :where(.puzzle-controls .option) { display: flex; gap: .6rem; align-items: center; padding: .65rem; border: 1px solid; border-radius: 9px; }
 :where(.puzzle-controls input[type=radio]) { min-height: auto; width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
 :where(.puzzle-controls > label, .puzzle-controls > small) { display: block; margin-bottom: .5rem; }
+
+:where(.puzzle-controls) .go-guidance,
+:where(.puzzle-controls) .go-hint-actions,
+:where(.puzzle-controls) .go-reference {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .5rem 1rem;
+}
+:where(.puzzle-controls) .go-guidance { margin-bottom: .75rem; }
+:where(.puzzle-controls) .go-guidance .puzzle-help { margin: 0; }
+:where(.puzzle-controls) .puzzle-link { padding: .2rem 0; min-height: 0; }
+:where(.puzzle-controls) .go-coordinate {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+:where(.puzzle-controls) [data-go-coordinate] { display: inline-block; inline-size: 4ch; }

@@ -8,6 +8,8 @@ Use a Node version supported by the pinned Vite release: 20.19+ within Node 20, 
 
 CSS saves update the page without a full reload. JavaScript/question-bank edits reload the page as needed. Vite resolves npm imports and serves readable authoring banks; no manual mode flag, packing or production build is needed. The existing authoring loader loads all four banks eagerly. Browser progress is separate from port 8765 because storage belongs to an origin.
 
+The source preview can start slowly after cold compilation or invalidation: on 8 October, a cache-disabled browser received about 79 MB of development modules/debugging data. A warm-server sample became ready in about 0.9 seconds, versus 0.3 seconds for the production preview; neither is a cold-start guarantee. Both previews now include initial loading text. Use the production preview for representative startup checks; a reported ten-second source startup was not reproduced in that warm measurement.
+
 `npm start` still builds and serves the production `live/` directory at <http://127.0.0.1:8765>. Use it for release checks, especially encoded/lazy bank loading. Vite does not run bank validation or update question identities: retain `npm run codes:update` when required, `npm run validate`, and the production checks. The commit hook still builds staged source with esbuild and stages `live/`; Vite does not change that process.
 
 Configuration is only `vite.config.js` plus the `dev` script and pinned development dependency. Vite listens on loopback and fails if port 5173 is occupied. No application code depends on Vite. See [Vite features](https://vite.dev/guide/features) and [server options](https://vite.dev/config/server-options).

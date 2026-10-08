@@ -34,7 +34,8 @@
 :where(.puzzle-controls a) { color: inherit; }
 :where(.puzzle-controls small) { color: var(--puzzle-muted); }
 :where(.puzzle-controls :focus-visible) { outline-color: var(--puzzle-accent); }
-:where(.puzzle-controls) .puzzle-help { font-size: .82rem; color: var(--puzzle-muted); }
+:where(.puzzle-controls) .puzzle-help,
+:where(.puzzle-controls) .go-guidance { font-size: .82rem; color: var(--puzzle-muted); }
 
 :where(.puzzle-controls) .candidate-table th {
   font-size: .8rem;
@@ -160,3 +161,18 @@
 :where(.puzzle-controls .option) { border-color: var(--puzzle-control-border); background: var(--puzzle-surface); }
 :where(.puzzle-controls .option:has(input:checked)) { background: var(--puzzle-selection-bg); border-color: var(--puzzle-selection-border); color: var(--puzzle-selection-text); }
 :where(.puzzle-controls input[type=radio]) { accent-color: var(--puzzle-selection-border); }
+
+:where(.puzzle-controls) .puzzle-link {
+  background: none;
+  border: 0;
+  box-shadow: none;
+  color: var(--puzzle-accent);
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+:where(.puzzle-controls) .puzzle-link:hover:not(:disabled) {
+  background: none;
+  text-decoration-thickness: .12em;
+}

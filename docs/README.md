@@ -16,6 +16,7 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Exam resource map](exam-resource-map.md) | Task-based routing to sibling exam resources; filename-only inventory |
 | [ESP resource and design guide](esp/source-guide.md) | Converted sources, distilled assessment evidence and Task1/Task2 practice; latest verification in checkpoint |
 | [Puzzle level audit](reviews/2026-09-25-puzzle-level-coverage.md) | Completed difficulty-band expansion, fairness criteria, maths-topic counts and checks |
+| [Cover Paths challenge correction](reviews/2026-10-08-cover-paths-challenge.md) | Review of all 30 Stretch boards, revised obstacles and independent route checks |
 | [Content authoring](content-authoring.md) | Shared sources, wording, marking and hints |
 | [Content refinement](content-refinement.md) | Update checklist, evidence and definitions of done |
 | [Progress specification](spec-progress.md) | Named profiles, dated evidence, RAG/stale priorities, recommended sets, weekly trends and backup restore |

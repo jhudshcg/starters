@@ -6,15 +6,16 @@
  */
 import {stateOf,near,placedPolygon} from '../rules/challenge-rules.js';
 import {renderGo} from './go.js';
-import {playGo,goPosition,nextGoHint} from '../rules/go-rules.js';
+import {bindGoPress} from './go-press.js';
+import {playGo,goPosition,nextGoHint,completeGoReply,GO_REPLY_DELAY_MS} from '../rules/go-rules.js';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 import {tangramPieceColours as palette} from '../graphics.js';
-export function renderChallenge(part,raw,locked,slot,{tools=true,assistance=true,liveFeedback=true}={}){
+export function renderChallenge(part,raw,locked,slot,{tools=true,assistance=true,liveFeedback=true,guidanceActionsHTML='',guidanceHTML='',referenceHTML=''}={}){
  const s=stateOf(raw,part),attrs=`data-challenge-slot="${slot}" data-challenge-part="${part.id}"`,disabled=locked?'disabled':'';
  const button=(action,text,value='',extra='')=>`<button type="button" data-challenge-action="${action}" data-value="${esc(value)}" ${disabled} ${extra}>${text}</button>`;
  const toolbar=tools?`<div class="challenge-toolbar">${button('undo','Undo')}${button('reset','Reset')}</div>`:'';
  let body='';
- if(part.kind==='go')body=renderGo(part,s,locked,{assistance,liveFeedback})+(locked?'':toolbar);
+ if(part.kind==='go')body=renderGo(part,s,locked,{assistance,liveFeedback,guidanceActionsHTML,guidanceHTML,referenceHTML})+(locked?'':toolbar);
  if(['logic-grid','equation-grid'].includes(part.kind)){
   const values=s.values??part.categories.map(()=>part.names.map(()=>-1));
   body=`<ol class="challenge-clues">${part.clues.map(c=>`<li>${esc(c)}</li>`).join('')}</ol><p class="puzzle-help">Click once for × excluded, again for ✓ selected, again to clear. Each value belongs to one row. Yellow means your selection, not a checked answer.</p><div class="candidate-grids">${part.categories.map((cat,c)=>`<div class="board-scroll" tabindex="0" aria-label="${esc(cat.name)} candidate grid"><table class="candidate-table"><caption>${esc(cat.name)}</caption><thead><tr><th scope="col">${part.kind==='equation-grid'?'Variable':'Person'}</th>${cat.values.map(v=>`<th scope="col">${esc(v)}</th>`).join('')}</tr></thead><tbody>${part.names.map((name,r)=>`<tr><th scope="row">${esc(name)}</th>${cat.values.map((v,i)=>{const key=`${c},${r},${i}`,selected=values[c]?.[r]===i,excluded=s.excluded?.includes(key);return `<td>${button('candidate',selected?'✓':excluded?'×':'·',key,`aria-label="${esc(name)}, ${esc(v)}: ${selected?'selected':excluded?'excluded':'unknown'}" aria-pressed="${selected}" class="candidate ${selected?'selected':''}"`)}</td>`;}).join('')}</tr>`).join('')}</tbody></table></div>`).join('')}</div>${toolbar}`;
@@ -46,6 +47,14 @@ export function bindChallenges(root,{getPart,getAnswer,isLocked=()=>false,onChan
  const listen=(node,type,handler)=>node?.addEventListener(type,handler,{signal:controller.signal});
  const find=container=>{const slot=container.dataset.challengeSlot,id=container.dataset.challengePart;return {slot,id,part:getPart(slot,id)};};
  const read=(slot,id,part)=>stateOf(getAnswer(slot,id),part);
+ // Coordinates are presentation only: never emit answer changes or rebuild the board.
+ root.querySelectorAll('.challenge[data-kind="go"]').forEach(container=>{
+  const display=point=>{const output=container.querySelector('[data-go-coordinate]');if(output)output.textContent=point&&container.contains(point)?point.dataset.goCoordinateValue:'—';};
+  listen(container,'pointerover',event=>{if(event.target.closest('.go-board'))display(event.target.closest('[data-go-coordinate-value]'));});
+  listen(container,'pointerout',event=>{if(event.target.closest('.go-board')&&event.target.closest('.go-board')!==event.relatedTarget?.closest?.('.go-board'))display(container.querySelector('[data-go-coordinate-value]:focus'));});
+  listen(container,'focusin',event=>{if(event.target.matches('[data-go-coordinate-value]'))display(event.target);});
+  listen(container,'focusout',event=>{if(event.target.matches('[data-go-coordinate-value]'))display(event.relatedTarget?.closest?.('[data-go-coordinate-value]'));});
+ });
  root.querySelectorAll('.challenge[data-locked][data-kind="go"]').forEach(container=>{
   const {part}=find(container);if(!part)return;
   const input=container.querySelector('[data-go-replay]');
@@ -83,6 +92,19 @@ export function bindChallenges(root,{getPart,getAnswer,isLocked=()=>false,onChan
  root.querySelectorAll('.challenge:not([data-locked])').forEach(container=>{
   const {slot,id,part}=find(container);if(!part)return;
   const selector=(action,value)=>`[data-challenge-slot="${slot}"][data-challenge-part="${id}"] [data-challenge-action="${action}"][data-value="${value}"]`;
+  if(part.kind==='go')bindGoPress(container,part,{getState:()=>read(slot,id,part),isLocked,signal:controller.signal});
+  const initial=read(slot,id,part);
+  if(part.kind==='go'&&initial.replyMove!==undefined&&initial.replyMove!==null){
+   const timer=setTimeout(()=>{
+    if(isLocked()||controller.signal.aborted)return;
+    const current=read(slot,id,part);
+    if(current.replyMove!==initial.replyMove||current.replyDue!==initial.replyDue)return;
+    const next=completeGoReply(part,current);
+    onChange(slot,id,JSON.stringify(next));
+    onStatus({instanceId:slot,partId:id,recordedWin:Boolean(goPosition(part,next.moves)?.success)});
+   },Math.max(0,Math.min(GO_REPLY_DELAY_MS,(initial.replyDue??Date.now())-Date.now())));
+   controller.signal.addEventListener('abort',()=>clearTimeout(timer),{once:true});
+  }
   listen(container.querySelector('[data-go-reply]'),'change',event=>{
    if(isLocked())return;
    const old=read(slot,id,part),moves=old.moves??[],move=Number(event.target.value);
@@ -95,14 +117,15 @@ export function bindChallenges(root,{getPart,getAnswer,isLocked=()=>false,onChan
     const action=button.dataset.challengeAction,value=button.dataset.value,old=read(slot,id,part),s=structuredClone(old);
     if(action==='path'){extend(slot,id,part,Number(value));return;}
     if(action==='go'){
-     const result=playGo(part,old,Number(value));
+     const result=playGo(part,old,Number(value),{deferReply:true});
      if(result.error)notify(result.error);else {update(slot,id,result.state,old,selector(action,value));onStatus({instanceId:slot,partId:id,recordedWin:Boolean(goPosition(part,result.state.moves)?.success)});}
      return;
     }
     if(action==='go-hint'){
+     if(s.hintMove!==undefined&&s.hintMove!==null){s.hintMove=null;onChange(slot,id,JSON.stringify(s),selector(action,value));return;}
      const move=nextGoHint(part,old);
      if(move===null){notify('No winning continuation is recorded here. Undo or Reset to explore another line.');return;}
-     onAssist(slot);s.hintMove=move;s.pending=null;
+     onAssist(slot);s.hintMove=move;
      onChange(slot,id,JSON.stringify(s),selector(action,value));return;
     }
     if(action==='undo'){

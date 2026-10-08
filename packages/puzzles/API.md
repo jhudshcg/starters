@@ -41,6 +41,12 @@ Callbacks do not access storage or record progress. `onChange` supplies an answe
 
 The parent may evaluate locked answers during submission/review. It may also restore state while locked; locking controls student edits, not parent authority. There is no automatic submit, timer, result history or attempt policy.
 
+Go controls preview a stone on pointer down or Enter/Space down, then commit on release. Moving off the pressed intersection, cancellation, focus loss or disposal removes the preview without changing answer state. Click activation remains available for assistive tools.
+
+Go controls pause 200 ms between the player's move and a recorded reply so captures remain understandable. Intermediate answer state includes `replyMove` and `replyDue`; save/restore it with the rest of the answer. Bindings cancel pending callbacks on disposal, locking or replacement and resume an outstanding reply when restored editable. Undo returns to the state before the player's turn. This is playback timing, separate from a parent-owned activity timer. Headless `playGo` remains synchronous by default; `{deferReply: true}` and `completeGoReply` expose the staged behaviour.
+
+Legal moves outside the tree are displayed and may be explored with alternating colours, captures, suicide rejection and simple ko. They receive no recorded-win credit; this is legal move simulation, not a strategic Go solver. The next-move hint toggles its marker and reports assistance only when shown. The parent independently controls the authored strategy hint through `showHint`; hiding either hint must not erase the parent's assistance history.
+
 ## Headless checking
 
 ```js
@@ -56,6 +62,8 @@ const result = evaluatePuzzle(variation, savedAnswers);
 Use readable parts with checking data for evaluation and solution data for reveal. The package knows nothing about app-specific compressed payloads. The existing app hydrates these in its adapters, preserving separate checking/reveal paths.
 
 ## Custom composition
+
+Go renderers accept optional trusted `guidanceActionsHTML` (parent hint controls beside the board range) `guidanceHTML` (their content below the board), and `referenceHTML` (parent source links beside the coordinate readout and package rules reminder). These options pass through `renderPart` and `renderChallenge`; the parent binds its own actions and retains assistance policy. Never insert untrusted HTML. The package supplies its own Show next move action and a hover/focus coordinate readout, which emits no answer changes.
 
 `renderPart(part, answer, options)` from `ui/render.js` produces a complete answer-part fragment. Options include `instanceId`, `index`, `locked`, optional per-part `result`, and the three control options above. `labelHTML` is an optional trusted parent-authored label; never pass untrusted user HTML. `renderHint(variation)`, `renderSolution(variation, instanceId, options)` and `renderSolutionPart(...)` support parent-positioned assistance views.
 

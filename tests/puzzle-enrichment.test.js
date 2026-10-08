@@ -26,6 +26,23 @@ test('rectangular paths use the true row count and reject row wrapping',()=>{
   const html=renderChallenge(p,'',false,0);
   assert.match(html,/viewBox="0 0 3 2"/);assert.match(html,/0 \/ 6 dots/);
 });
+test('Stretch paths cannot be solved by an ordinary row or column sweep',()=>{
+  for(const q of puzzles.filter(q=>q.focus==='cover paths'&&q.challengeLevel==='stretch'))for(const v of q.variations){
+    const p=v.parts[0],width=p.size,height=p.rows??width,blocked=new Set(p.blocked);
+    assert.ok(blocked.size>0,`${q.slot}: no obstacles`);
+    for(const transpose of [false,true])for(const reverseOuter of [false,true])for(const reverseInner of [false,true]){
+      const outer=transpose?width:height,inner=transpose?height:width;
+      const lines=Array.from({length:outer},(_,i)=>i);
+      if(reverseOuter)lines.reverse();
+      const route=lines.flatMap((line,index)=>{
+        const positions=Array.from({length:inner},(_,i)=>i);
+        if(Boolean(index%2)!==reverseInner)positions.reverse();
+        return positions.map(pos=>transpose?pos*width+line:line*width+pos).filter(cell=>!blocked.has(cell));
+      });
+      assert.equal(markChallenge(p,JSON.stringify(route)).earned,0,`${q.slot}: trivial sweep`);
+    }
+  }
+});
 test('small Sudoku checks boxes as well as Latin rows and columns',()=>{
   const p={kind:'sudoku',size:4,boxRows:2,boxCols:2,givens:Array(16).fill(0),marks:3};
   assert.equal(markChallenge(p,JSON.stringify([1,2,3,4,3,4,1,2,2,1,4,3,4,3,2,1])).earned,3);

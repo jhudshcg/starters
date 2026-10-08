@@ -2115,30 +2115,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[22, 15, 8, 9, 10, 11, 4, 3, 2, 1, 0, 7, 14, 21, 28, 29, 36, 35, 42, 43, 44, 45, 46, 47, 48, 41, 40, 39, 38, 31, 32, 25, 26, 33, 34, 27, 20, 13, 6, 5, 12, 19]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[6, 13, 12, 11, 10, 3, 2, 1, 0, 7, 8, 9, 16, 15, 22, 23, 24, 17, 18, 25, 26, 19, 20, 27, 34, 41, 48, 47, 40, 39, 32, 31, 38, 37, 36]",
+            "explanation": "The dots at row 1, column 7 and row 6, column 2 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              16,
-              17,
-              18,
-              23,
-              24,
+              4,
+              5,
+              14,
+              21,
+              28,
+              29,
               30,
-              37
+              33,
+              35,
+              42,
+              43,
+              44,
+              45,
+              46
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 12,
+              "unresolvedEdgesAfterDegreeRules": 34,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2159,30 +2169,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[48, 41, 40, 47, 46, 39, 38, 31, 32, 33, 34, 27, 26, 25, 24, 17, 16, 23, 30, 37, 44, 43, 42, 35, 36, 29, 28, 21, 22, 15, 14, 7, 8, 9, 2, 3, 10, 11, 4, 5, 12, 13]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[7, 0, 1, 2, 3, 4, 5, 12, 11, 10, 9, 16, 15, 22, 21, 28, 29, 30, 31, 24, 25, 18, 19, 26, 27, 34, 41, 48, 47, 40, 33, 32, 39, 38, 45]",
+            "explanation": "The dots at row 2, column 1 and row 7, column 4 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              0,
-              1,
               6,
-              18,
-              19,
+              8,
+              13,
+              14,
+              17,
               20,
-              45
+              23,
+              35,
+              36,
+              37,
+              42,
+              43,
+              44,
+              46
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 5,
+              "unresolvedEdgesAfterDegreeRules": 23,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2203,30 +2223,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[24, 31, 38, 39, 40, 33, 32, 25, 18, 17, 16, 23, 22, 15, 8, 9, 2, 1, 0, 7, 14, 21, 28, 29, 36, 37, 44, 45, 46, 47, 48, 41, 34, 27, 26, 19, 12, 5, 4, 11, 10, 3]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[28, 29, 22, 23, 16, 15, 8, 1, 2, 3, 4, 5, 6, 13, 12, 11, 10, 17, 18, 25, 26, 19, 20, 27, 34, 33, 40, 47, 46, 39, 38, 31, 30, 37, 44]",
+            "explanation": "The dots at row 5, column 1 and row 7, column 3 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              6,
-              13,
-              20,
-              30,
+              0,
+              7,
+              9,
+              14,
+              21,
+              24,
+              32,
               35,
+              36,
+              41,
               42,
-              43
+              43,
+              45,
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 4,
+              "unresolvedEdgesAfterDegreeRules": 32,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2247,30 +2277,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[7, 0, 1, 2, 3, 4, 5, 6, 13, 20, 19, 18, 25, 24, 23, 16, 17, 10, 9, 8, 15, 14, 21, 22, 29, 36, 43, 44, 45, 46, 39, 38, 37, 30, 31, 32, 33, 26, 27, 34, 41, 40]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[6, 5, 12, 11, 10, 17, 18, 19, 26, 27, 34, 41, 48, 47, 40, 33, 32, 25, 24, 31, 30, 23, 22, 15, 8, 7, 14, 21, 28, 29, 36, 35, 42, 43, 44]",
+            "explanation": "The dots at row 1, column 7 and row 7, column 3 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              11,
-              12,
-              28,
-              35,
-              42,
-              47,
-              48
+              0,
+              1,
+              2,
+              3,
+              4,
+              9,
+              13,
+              16,
+              20,
+              37,
+              38,
+              39,
+              45,
+              46
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 4,
+              "unresolvedEdgesAfterDegreeRules": 25,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2291,30 +2331,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[14, 7, 0, 1, 8, 15, 22, 23, 16, 9, 2, 3, 4, 5, 6, 13, 20, 27, 34, 41, 48, 47, 40, 33, 26, 25, 18, 17, 24, 31, 38, 39, 46, 45, 44, 43, 36, 35, 28, 29, 30, 37]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[0, 1, 8, 9, 10, 3, 4, 5, 6, 13, 12, 19, 18, 17, 16, 23, 24, 25, 32, 31, 30, 29, 28, 35, 42, 43, 44, 45, 38, 39, 46, 47, 40, 41, 34]",
+            "explanation": "The dots at row 1, column 1 and row 5, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              10,
+              2,
+              7,
               11,
-              12,
-              19,
+              14,
+              15,
+              20,
               21,
-              32,
-              42
+              22,
+              26,
+              27,
+              33,
+              36,
+              37,
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 12,
+              "unresolvedEdgesAfterDegreeRules": 21,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2335,30 +2385,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[35, 42, 43, 44, 45, 46, 39, 40, 47, 48, 41, 34, 27, 20, 13, 6, 5, 12, 19, 26, 25, 18, 11, 4, 3, 2, 1, 0, 7, 8, 15, 14, 21, 22, 29, 30, 31, 24, 17, 10, 9, 16]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[11, 10, 3, 2, 1, 0, 7, 14, 15, 8, 9, 16, 23, 30, 29, 28, 35, 42, 43, 36, 37, 44, 45, 38, 31, 32, 39, 46, 47, 40, 41, 34, 27, 26, 19]",
+            "explanation": "The dots at row 2, column 5 and row 3, column 6 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              23,
-              28,
-              32,
+              4,
+              5,
+              6,
+              12,
+              13,
+              17,
+              18,
+              20,
+              21,
+              22,
+              24,
+              25,
               33,
-              36,
-              37,
-              38
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 6,
+              "unresolvedEdgesAfterDegreeRules": 22,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2379,30 +2439,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[34, 33, 32, 31, 24, 23, 30, 29, 36, 37, 38, 39, 46, 45, 44, 43, 42, 35, 28, 21, 22, 15, 14, 7, 0, 1, 8, 9, 16, 17, 10, 3, 4, 11, 18, 25, 26, 19, 12, 5, 6, 13]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[21, 14, 15, 8, 1, 2, 9, 10, 11, 12, 5, 6, 13, 20, 19, 18, 17, 16, 23, 30, 31, 32, 25, 26, 27, 34, 33, 40, 47, 46, 45, 44, 43, 42, 35]",
+            "explanation": "The dots at row 4, column 1 and row 6, column 1 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              2,
-              20,
-              27,
-              40,
+              0,
+              3,
+              4,
+              7,
+              22,
+              24,
+              28,
+              29,
+              36,
+              37,
+              38,
+              39,
               41,
-              47,
               48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 6,
+              "unresolvedEdgesAfterDegreeRules": 21,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2423,15 +2493,15 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[36, 29, 30, 31, 24, 23, 22, 15, 16, 9, 10, 11, 4, 5, 6, 13, 12, 19, 18, 25, 26, 27, 34, 41, 48, 47, 40, 33, 32, 39, 46, 45, 38, 37, 44, 43, 42, 35, 28, 21, 14, 7]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[42, 35, 28, 29, 36, 37, 38, 31, 30, 23, 22, 21, 14, 15, 8, 9, 10, 11, 4, 5, 12, 13, 20, 19, 18, 17, 24, 25, 26, 27, 34, 41, 40, 47, 46]",
+            "explanation": "The dots at row 7, column 1 and row 7, column 5 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
@@ -2439,14 +2509,24 @@ export default [
               1,
               2,
               3,
-              8,
-              17,
-              20
+              6,
+              7,
+              16,
+              32,
+              33,
+              39,
+              43,
+              44,
+              45,
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 6,
+              "unresolvedEdgesAfterDegreeRules": 28,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2467,30 +2547,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[12, 19, 20, 27, 34, 41, 48, 47, 46, 45, 44, 43, 42, 35, 28, 21, 22, 29, 36, 37, 30, 23, 24, 31, 32, 39, 40, 33, 26, 25, 18, 11, 10, 9, 8, 7, 0, 1, 2, 3, 4, 5]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[5, 12, 11, 10, 9, 2, 1, 0, 7, 14, 21, 28, 29, 22, 15, 16, 17, 18, 19, 20, 27, 26, 25, 24, 31, 32, 33, 40, 39, 46, 45, 38, 37, 36, 43]",
+            "explanation": "The dots at row 1, column 6 and row 7, column 2 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
+              3,
+              4,
               6,
+              8,
               13,
-              14,
-              15,
-              16,
-              17,
-              38
+              23,
+              30,
+              34,
+              35,
+              41,
+              42,
+              44,
+              47,
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 3,
+              "unresolvedEdgesAfterDegreeRules": 23,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2511,30 +2601,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[44, 45, 46, 47, 48, 41, 34, 33, 26, 27, 20, 19, 12, 13, 6, 5, 4, 3, 2, 1, 0, 7, 14, 15, 8, 9, 16, 17, 18, 25, 24, 31, 30, 37, 36, 43, 42, 35, 28, 29, 22, 23]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[0, 1, 2, 3, 4, 11, 10, 17, 16, 9, 8, 15, 14, 21, 22, 23, 30, 29, 28, 35, 42, 43, 36, 37, 38, 39, 40, 33, 26, 27, 20, 19, 12, 13, 6]",
+            "explanation": "The dots at row 1, column 1 and row 1, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              10,
-              11,
-              21,
+              5,
+              7,
+              18,
+              24,
+              25,
+              31,
               32,
-              38,
-              39,
-              40
+              34,
+              41,
+              44,
+              45,
+              46,
+              47,
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 6,
+              "unresolvedEdgesAfterDegreeRules": 21,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2555,30 +2655,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[41, 40, 47, 46, 39, 38, 45, 44, 43, 42, 35, 36, 37, 30, 23, 16, 15, 22, 29, 28, 21, 14, 7, 0, 1, 2, 9, 10, 3, 4, 11, 12, 5, 6, 13, 20, 27, 34, 33, 32, 31, 24]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[6, 5, 4, 3, 2, 1, 0, 7, 14, 15, 16, 9, 10, 17, 18, 11, 12, 19, 26, 33, 34, 41, 48, 47, 46, 39, 38, 37, 30, 23, 22, 29, 28, 35, 42]",
+            "explanation": "The dots at row 1, column 7 and row 7, column 1 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
               8,
-              17,
-              18,
-              19,
+              13,
+              20,
+              21,
+              24,
               25,
-              26,
-              48
+              27,
+              31,
+              32,
+              36,
+              40,
+              43,
+              44,
+              45
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 12,
+              "unresolvedEdgesAfterDegreeRules": 24,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2599,30 +2709,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[40, 33, 26, 25, 24, 23, 16, 9, 8, 7, 0, 1, 2, 3, 10, 11, 4, 5, 12, 13, 20, 27, 34, 41, 48, 47, 46, 45, 44, 37, 38, 31, 30, 29, 36, 43, 42, 35, 28, 21, 14, 15]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[0, 1, 2, 9, 16, 17, 24, 23, 22, 21, 28, 35, 42, 43, 36, 37, 44, 45, 38, 31, 32, 39, 40, 41, 34, 33, 26, 25, 18, 11, 4, 5, 12, 19, 20]",
+            "explanation": "The dots at row 1, column 1 and row 3, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
+              3,
               6,
-              17,
-              18,
-              19,
-              22,
-              32,
-              39
+              7,
+              8,
+              10,
+              13,
+              14,
+              15,
+              27,
+              29,
+              30,
+              46,
+              47,
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 3,
+              "unresolvedEdgesAfterDegreeRules": 23,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2643,30 +2763,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[31, 30, 37, 38, 39, 32, 25, 18, 17, 10, 3, 2, 9, 16, 23, 22, 21, 28, 29, 36, 35, 42, 43, 44, 45, 46, 47, 40, 33, 26, 19, 12, 11, 4, 5, 6, 13, 20, 27, 34, 41, 48]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[6, 13, 12, 11, 18, 17, 16, 23, 22, 15, 8, 9, 2, 1, 0, 7, 14, 21, 28, 35, 36, 37, 44, 45, 38, 31, 24, 25, 32, 39, 46, 47, 48, 41, 34]",
+            "explanation": "The dots at row 1, column 7 and row 5, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              0,
-              1,
-              7,
-              8,
-              14,
-              15,
-              24
+              3,
+              4,
+              5,
+              10,
+              19,
+              20,
+              26,
+              27,
+              29,
+              30,
+              33,
+              40,
+              42,
+              43
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 4,
+              "unresolvedEdgesAfterDegreeRules": 27,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2687,30 +2817,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[14, 21, 28, 29, 30, 23, 16, 15, 8, 9, 10, 17, 24, 31, 32, 39, 38, 37, 36, 35, 42, 43, 44, 45, 46, 47, 40, 33, 34, 27, 26, 25, 18, 11, 12, 19, 20, 13, 6, 5, 4, 3]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[20, 19, 26, 25, 32, 31, 24, 17, 10, 11, 4, 3, 2, 1, 0, 7, 8, 9, 16, 15, 14, 21, 22, 23, 30, 29, 36, 35, 42, 43, 44, 45, 46, 39, 40]",
+            "explanation": "The dots at row 3, column 7 and row 6, column 6 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              0,
-              1,
-              2,
-              7,
-              22,
+              5,
+              6,
+              12,
+              13,
+              18,
+              27,
+              28,
+              33,
+              34,
+              37,
+              38,
               41,
+              47,
               48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 10,
+              "unresolvedEdgesAfterDegreeRules": 25,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -2731,30 +2871,40 @@ export default [
     "variations": [
       {
         "prompt": "Choose any open dot to start. Draw one continuous route visiting every dot exactly once. Move horizontally or vertically; blocked positions cannot be visited. Do not retrace or cross the route.",
-        "hint": "Avoid sealing off unvisited dots. Consider which dots have only one possible entrance or exit.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "prompt": "Solve the puzzle.",
             "kind": "cover-path",
             "marks": 3,
-            "answer": "[38, 45, 44, 43, 42, 35, 28, 29, 22, 21, 14, 15, 8, 9, 16, 23, 30, 31, 24, 17, 18, 19, 26, 33, 40, 47, 48, 41, 34, 27, 20, 13, 6, 5, 12, 11, 10, 3, 2, 1, 0, 7]",
-            "explanation": "This is one complete route. Other routes earn full credit if they visit every available dot exactly once and obey the adjacency rules.",
+            "answer": "[42, 35, 28, 21, 22, 15, 16, 9, 10, 17, 24, 25, 26, 19, 12, 11, 4, 5, 6, 13, 20, 27, 34, 41, 40, 33, 32, 39, 38, 31, 30, 29, 36, 37, 44]",
+            "explanation": "The dots at row 7, column 1 and row 7, column 3 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "blocked": [
-              4,
-              25,
-              32,
-              36,
-              37,
-              39,
-              46
+              0,
+              1,
+              2,
+              3,
+              7,
+              8,
+              14,
+              18,
+              23,
+              43,
+              45,
+              46,
+              47,
+              48
             ],
             "validation": {
-              "method": "complete witness route",
-              "requiredCells": 42
-            }
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 4,
+              "unresolvedEdgesAfterDegreeRules": 30,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
+            },
+            "rows": 7
           }
         ]
       }
@@ -4227,26 +4377,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[12, 5, 6, 13, 20, 19, 18, 11, 4, 3, 10, 17, 16, 9, 2, 1, 0, 7, 8, 15, 14, 21, 28, 35, 42, 43, 36, 29, 22, 23, 24, 25, 26, 27, 34, 41, 48, 47, 40, 33, 32, 39, 46, 45, 44, 37, 30, 31, 38]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[1, 2, 3, 4, 11, 10, 9, 16, 15, 14, 21, 22, 23, 24, 17, 18, 19, 12, 13, 20, 27, 34, 41, 48, 47, 46, 39, 32, 31, 38, 45, 44, 43, 42, 35]",
+            "explanation": "The dots at row 1, column 2 and row 6, column 1 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "rows": 7,
-            "blocked": [],
+            "blocked": [
+              0,
+              5,
+              6,
+              7,
+              8,
+              25,
+              26,
+              28,
+              29,
+              30,
+              33,
+              36,
+              37,
+              40
+            ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "rectangle"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 2,
+              "unresolvedEdgesAfterDegreeRules": 22,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4264,34 +4431,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[9, 3, 2, 1, 0, 6, 12, 13, 7, 8, 14, 15, 21, 20, 19, 25, 31, 32, 26, 27, 33, 39, 38, 44, 45, 46, 47, 41, 40, 34, 35, 29, 28, 22, 23, 17, 16, 10, 4, 5, 11]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[20, 19, 12, 5, 4, 3, 2, 1, 0, 7, 14, 15, 22, 21, 28, 35, 36, 43, 44, 45, 38, 31, 24, 17, 16, 9, 10, 11, 18, 25, 32, 39, 40, 41, 34]",
+            "explanation": "The dots at row 3, column 7 and row 5, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 6,
-            "rows": 8,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              18,
-              24,
+              6,
+              8,
+              13,
+              23,
+              26,
+              27,
+              29,
               30,
-              36,
+              33,
               37,
               42,
-              43
+              46,
+              47,
+              48
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "stepped"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 11,
+              "unresolvedEdgesAfterDegreeRules": 22,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4309,39 +4485,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[18, 19, 11, 3, 2, 10, 9, 1, 0, 8, 16, 17, 25, 24, 32, 40, 41, 33, 34, 26, 27, 28, 29, 30, 31, 39, 47, 46, 38, 37, 45, 44, 36, 35, 43, 42]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[8, 15, 16, 23, 24, 25, 18, 11, 10, 3, 4, 5, 6, 13, 20, 19, 26, 27, 34, 33, 32, 31, 30, 29, 28, 35, 42, 43, 44, 45, 46, 39, 40, 47, 48]",
+            "explanation": "The dots at row 2, column 2 and row 7, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 8,
-            "rows": 6,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              4,
-              5,
-              6,
+              0,
+              1,
+              2,
               7,
+              9,
               12,
-              13,
               14,
-              15,
-              20,
+              17,
               21,
               22,
-              23
+              36,
+              37,
+              38,
+              41
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "L shape"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 8,
+              "unresolvedEdgesAfterDegreeRules": 22,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4359,28 +4539,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[23, 30, 31, 38, 37, 44, 45, 46, 39, 32, 25, 18, 17, 16, 15, 22, 29, 36, 43, 42, 35, 28, 21, 14, 7, 0, 1, 8, 9, 2, 3, 10, 11, 4, 5, 6, 13, 12, 19, 20, 27, 26, 33, 34, 41, 40, 47, 48]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[20, 27, 26, 33, 32, 31, 24, 23, 16, 17, 18, 11, 10, 9, 2, 1, 0, 7, 14, 21, 22, 29, 36, 37, 38, 39, 40, 41, 48, 47, 46, 45, 44, 43, 42]",
+            "explanation": "The dots at row 3, column 7 and row 7, column 1 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "rows": 7,
             "blocked": [
-              24
+              3,
+              4,
+              5,
+              6,
+              8,
+              12,
+              13,
+              15,
+              19,
+              25,
+              28,
+              30,
+              34,
+              35
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "central gap"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 6,
+              "unresolvedEdgesAfterDegreeRules": 24,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4398,34 +4593,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[44, 38, 32, 31, 37, 43, 42, 36, 30, 24, 25, 19, 18, 12, 6, 0, 1, 2, 8, 7, 13, 14, 20, 26, 27, 28, 34, 40, 46, 47, 41, 35, 29, 23, 22, 16, 17, 11, 10, 4, 5]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[3, 4, 5, 6, 13, 12, 11, 18, 17, 24, 25, 26, 19, 20, 27, 34, 41, 40, 33, 32, 39, 46, 45, 44, 37, 30, 29, 22, 21, 14, 7, 0, 1, 8, 9]",
+            "explanation": "The dots at row 1, column 4 and row 2, column 3 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 6,
-            "rows": 8,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              3,
-              9,
+              2,
+              10,
               15,
-              21,
-              33,
-              39,
-              45
+              16,
+              23,
+              28,
+              31,
+              35,
+              36,
+              38,
+              42,
+              43,
+              47,
+              48
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "two regions"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 12,
+              "unresolvedEdgesAfterDegreeRules": 23,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4443,26 +4647,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[7, 15, 23, 31, 39, 47, 46, 38, 30, 22, 14, 6, 5, 4, 3, 2, 1, 0, 8, 16, 24, 32, 40, 41, 42, 43, 44, 45, 37, 36, 35, 34, 33, 25, 26, 27, 28, 29, 21, 13, 12, 20, 19, 11, 10, 9, 17, 18]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[1, 2, 3, 4, 11, 10, 9, 16, 17, 18, 25, 24, 23, 22, 29, 28, 35, 42, 43, 36, 37, 30, 31, 38, 45, 46, 39, 40, 41, 34, 33, 26, 19, 12, 13]",
+            "explanation": "The dots at row 1, column 2 and row 2, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 8,
-            "rows": 6,
-            "blocked": [],
+            "size": 7,
+            "rows": 7,
+            "blocked": [
+              0,
+              5,
+              6,
+              7,
+              8,
+              14,
+              15,
+              20,
+              21,
+              27,
+              32,
+              44,
+              47,
+              48
+            ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "rectangle"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 11,
+              "unresolvedEdgesAfterDegreeRules": 30,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4480,41 +4701,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[18, 12, 6, 0, 1, 2, 8, 7, 13, 14, 20, 19, 25, 26, 27, 28, 29, 35, 34, 33, 32, 31, 37, 36, 42, 43, 44, 38, 39, 45, 46, 40, 41, 47]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[22, 23, 16, 17, 10, 3, 4, 5, 6, 13, 12, 11, 18, 19, 20, 27, 34, 41, 48, 47, 40, 33, 32, 25, 24, 31, 30, 37, 38, 45, 44, 43, 42, 35, 28]",
+            "explanation": "The dots at row 4, column 2 and row 5, column 1 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 6,
-            "rows": 8,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              3,
-              4,
-              5,
+              0,
+              1,
+              2,
+              7,
+              8,
               9,
-              10,
-              11,
+              14,
               15,
-              16,
-              17,
               21,
-              22,
-              23,
-              24,
-              30
+              26,
+              29,
+              36,
+              39,
+              46
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "L shape"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 6,
+              "unresolvedEdgesAfterDegreeRules": 24,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4532,39 +4755,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[0, 1, 2, 8, 14, 20, 26, 27, 28, 29, 35, 41, 47, 46, 45, 44, 43, 42, 36, 30, 24, 18, 12, 6, 7, 13, 19, 25, 31, 37, 38, 32, 33, 34, 40, 39]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[1, 0, 7, 14, 15, 16, 17, 18, 25, 24, 23, 22, 29, 30, 37, 36, 43, 44, 45, 38, 31, 32, 39, 40, 47, 48, 41, 34, 27, 20, 19, 12, 5, 4, 3]",
+            "explanation": "The dots at row 1, column 2 and row 1, column 4 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 6,
-            "rows": 8,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              3,
-              4,
-              5,
+              2,
+              6,
+              8,
               9,
               10,
               11,
-              15,
-              16,
-              17,
+              13,
               21,
-              22,
-              23
+              26,
+              28,
+              33,
+              35,
+              42,
+              46
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "L shape"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 8,
+              "unresolvedEdgesAfterDegreeRules": 22,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4582,28 +4809,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[6, 7, 15, 23, 31, 39, 47, 46, 45, 44, 43, 42, 41, 40, 32, 24, 16, 8, 0, 1, 9, 17, 25, 33, 34, 26, 18, 10, 2, 3, 11, 19, 27, 35, 36, 37, 38, 30, 29, 21, 22, 14, 13, 5, 4, 12, 20]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[35, 28, 21, 14, 7, 0, 1, 2, 3, 4, 11, 10, 9, 16, 15, 22, 23, 24, 17, 18, 25, 26, 19, 20, 27, 34, 33, 40, 41, 48, 47, 46, 39, 38, 37]",
+            "explanation": "The dots at row 6, column 1 and row 6, column 3 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 8,
-            "rows": 6,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              28
+              5,
+              6,
+              8,
+              12,
+              13,
+              29,
+              30,
+              31,
+              32,
+              36,
+              42,
+              43,
+              44,
+              45
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "central gap"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 11,
+              "unresolvedEdgesAfterDegreeRules": 21,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4621,29 +4863,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[0, 6, 12, 18, 24, 30, 36, 42, 43, 44, 45, 46, 47, 41, 35, 29, 23, 17, 11, 5, 4, 3, 9, 10, 16, 15, 14, 8, 7, 13, 19, 20, 21, 22, 28, 27, 26, 25, 31, 37, 38, 32, 33, 39, 40, 34]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[6, 13, 20, 19, 12, 11, 10, 9, 8, 1, 0, 7, 14, 21, 22, 15, 16, 17, 18, 25, 24, 23, 30, 31, 32, 33, 40, 41, 48, 47, 46, 45, 44, 43, 36]",
+            "explanation": "The dots at row 1, column 7 and row 6, column 2 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 6,
-            "rows": 8,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              1,
-              2
+              2,
+              3,
+              4,
+              5,
+              26,
+              27,
+              28,
+              29,
+              34,
+              35,
+              37,
+              38,
+              39,
+              42
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "rectangle"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 7,
+              "unresolvedEdgesAfterDegreeRules": 23,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4661,26 +4917,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[9, 3, 4, 5, 11, 10, 16, 17, 23, 29, 35, 41, 47, 46, 45, 44, 43, 42, 36, 30, 24, 18, 12, 6, 0, 1, 2, 8, 7, 13, 19, 25, 31, 37, 38, 32, 26, 20, 14, 15, 21, 22, 28, 27, 33, 34, 40, 39]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[6, 5, 4, 11, 10, 9, 2, 1, 8, 7, 14, 21, 22, 23, 30, 29, 28, 35, 36, 37, 38, 45, 46, 39, 32, 31, 24, 17, 18, 25, 26, 33, 34, 41, 48]",
+            "explanation": "The dots at row 1, column 7 and row 7, column 7 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 6,
-            "rows": 8,
-            "blocked": [],
+            "size": 7,
+            "rows": 7,
+            "blocked": [
+              0,
+              3,
+              12,
+              13,
+              15,
+              16,
+              19,
+              20,
+              27,
+              40,
+              42,
+              43,
+              44,
+              47
+            ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "rectangle"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 12,
+              "unresolvedEdgesAfterDegreeRules": 26,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4698,30 +4971,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[43, 42, 41, 33, 34, 35, 27, 26, 25, 17, 16, 8, 0, 1, 9, 10, 2, 3, 4, 5, 6, 7, 15, 14, 13, 21, 22, 23, 31, 39, 47, 46, 38, 30, 29, 37, 45, 44, 36, 28, 20, 12, 11, 19, 18]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[0, 1, 2, 9, 8, 15, 16, 17, 18, 25, 24, 23, 22, 29, 28, 35, 42, 43, 36, 37, 30, 31, 32, 39, 40, 47, 48, 41, 34, 27, 26, 19, 12, 5, 4]",
+            "explanation": "The dots at row 1, column 1 and row 1, column 5 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 8,
-            "rows": 6,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              24,
-              32,
-              40
+              3,
+              6,
+              7,
+              10,
+              11,
+              13,
+              14,
+              20,
+              21,
+              33,
+              38,
+              44,
+              45,
+              46
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "stepped"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 8,
+              "unresolvedEdgesAfterDegreeRules": 20,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4739,39 +5025,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[30, 29, 28, 35, 42, 43, 36, 37, 44, 45, 38, 31, 32, 39, 46, 47, 48, 41, 40, 33, 34, 27, 26, 25, 24, 23, 22, 21, 14, 15, 16, 9, 2, 1, 0, 7, 8]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[6, 13, 12, 19, 20, 27, 34, 33, 32, 39, 40, 41, 48, 47, 46, 45, 38, 31, 24, 17, 18, 11, 4, 3, 2, 9, 16, 15, 14, 21, 22, 29, 36, 43, 42]",
+            "explanation": "The dots at row 1, column 7 and row 7, column 1 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
             "size": 7,
             "rows": 7,
             "blocked": [
-              3,
-              4,
+              0,
+              1,
               5,
-              6,
+              7,
+              8,
               10,
-              11,
-              12,
-              13,
-              17,
-              18,
-              19,
-              20
+              23,
+              25,
+              26,
+              28,
+              30,
+              35,
+              37,
+              44
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "L shape"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 8,
+              "unresolvedEdgesAfterDegreeRules": 20,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4789,28 +5079,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[4, 5, 11, 10, 9, 3, 2, 8, 14, 15, 16, 17, 23, 22, 21, 20, 26, 25, 19, 13, 7, 1, 0, 6, 12, 18, 24, 30, 36, 42, 43, 44, 45, 46, 47, 41, 35, 29, 28, 34, 40, 39, 33, 32, 38, 37, 31]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[41, 48, 47, 46, 39, 32, 25, 18, 19, 26, 27, 20, 13, 12, 11, 4, 3, 2, 1, 8, 7, 14, 15, 16, 9, 10, 17, 24, 23, 22, 29, 28, 35, 42, 43]",
+            "explanation": "The dots at row 6, column 7 and row 7, column 2 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 6,
-            "rows": 8,
+            "size": 7,
+            "rows": 7,
             "blocked": [
-              27
+              0,
+              5,
+              6,
+              21,
+              30,
+              31,
+              33,
+              34,
+              36,
+              37,
+              38,
+              40,
+              44,
+              45
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "central gap"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 10,
+              "unresolvedEdgesAfterDegreeRules": 23,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]
@@ -4828,32 +5133,43 @@ export default [
     "challengeLevel": "stretch",
     "fixed": true,
     "setSize": 3,
-    "estimatedMinutes": 8,
+    "estimatedMinutes": 10,
     "variations": [
       {
         "prompt": "Choose any open dot to start. Join every dot once using horizontal or vertical moves. Dark squares are blocked.",
-        "hint": "Look for dots with very few neighbours and narrow links between regions. Plan how to reach them without cutting off the rest.",
+        "hint": "Dots with only one neighbour must be the two ends. Work out the connections forced by dots with two neighbours, then avoid closing a loop before all dots are joined.",
         "parts": [
           {
             "id": "0",
             "kind": "cover-path",
             "prompt": "Solve the puzzle.",
             "marks": 3,
-            "answer": "[37, 45, 46, 47, 39, 38, 30, 31, 23, 15, 7, 6, 5, 13, 14, 22, 21, 29, 28, 27, 19, 11, 3, 2, 1, 0, 8, 9, 10, 18, 17, 16, 24, 32, 40, 41, 33, 25, 26, 34, 35, 43, 42]",
-            "explanation": "The route visits every open dot exactly once. Its reverse and any other valid complete route also work.",
+            "answer": "[6, 5, 12, 11, 18, 19, 20, 27, 26, 25, 32, 33, 34, 41, 40, 47, 46, 39, 38, 31, 24, 17, 16, 23, 22, 15, 8, 7, 14, 21, 28, 29, 36, 35, 42]",
+            "explanation": "The dots at row 1, column 7 and row 7, column 1 each have only one neighbour, so they must be the endpoints. Every other dot needs two route connections. Use these forced connections while keeping the remaining dots connected; closing a loop early leaves dots unreachable. The shown route covers all 35 open dots. Its reverse and every other valid complete route also work.",
             "solutionText": "See the completed board below.",
-            "size": 8,
-            "rows": 6,
+            "size": 7,
+            "rows": 7,
             "blocked": [
+              0,
+              1,
+              2,
+              3,
               4,
-              12,
-              20,
-              36,
-              44
+              9,
+              10,
+              13,
+              30,
+              37,
+              43,
+              44,
+              45,
+              48
             ],
             "validation": {
-              "method": "Hamiltonian witness with adjacency and coverage checks",
-              "shape": "two regions"
+              "method": "Exhaustive endpoint route enumeration; independent adjacency and coverage checks",
+              "routeCountIgnoringReversal": 4,
+              "unresolvedEdgesAfterDegreeRules": 24,
+              "difficultyReview": "2026-10-08: forced endpoints, interacting connections, no row/column sweep; classroom calibration pending"
             }
           }
         ]

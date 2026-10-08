@@ -1930,3 +1930,67 @@ Documented the adopted ownership and rationale before implementation in `package
 ### 8 October 2026 — Puzzle stack integration guidance
 
 Added a short SvelteKit, daisyUI and Bits UI section to `packages/puzzles/README.md`, covering client mounting and cleanup, plain state snapshots, global CSS and theme tokens, and portal focus/dragging checks. Clarified that retaining the package in this repository deferred a separate repository and Git submodule; `git submodule status` confirms none exists. Updated `checkpoint.md`. README local links and whitespace checks passed. No runtime changes or repeated runtime tests; integration with this exact framework stack remains untested.
+
+
+### 8 October 2026 — Correcting Stretch Cover Paths
+
+The teacher identified obstacle-free slot 875 as wrongly graded Stretch. Reviewed all 30 Stretch Cover Paths templates: the original generators relied mainly on size and silhouette, including three empty rectangles. Revised the 30 obstacle layouts at slots 465–479 and 870–884, their witnesses, hints, explanations and estimated duration. Each now has 35 open dots, forced endpoint deductions and competing connections after local degree rules; ordinary row/column sweeps fail. Kept permanent slots, variation positions, all other path records, Go ranks and runtime mechanics unchanged.
+
+**Files and rationale.** Updated `packages/puzzles/data/cover-paths.js`, added `scripts/audit-cover-paths.py`, and added a sweep regression to `tests/puzzle-enrichment.test.js`. Added the dated challenge review with per-board evidence and linked it from the puzzle specification/documentation index. Updated code history/compatibility to revision 22 and rebuilt `live/`. Structural checks screen the reported failure without treating size, solution count or computer search time as a human difficulty measurement. Historical generators can overwrite reviewed boards; the review requires auditing regenerated output. Teacher/student calibration remains pending.
+
+**Verification.** Independently validated all 145 path witnesses and exhaustively counted 2–12 routes for each revised board, ignoring reversal. All 221 enumerated routes and their reverses pass application marking. Cross-checked the independent enumerator against unpruned search on all 290 eligible 3×3 masks. Four focused path/coverage tests, full content validation (1,340 templates / 2,933 variations), coverage freshness, production build and whitespace checks passed. Browser testing of slot 875 passed controls, saved answers/reload, submission, reveal and desktop/mobile reflow; inspected its mobile screenshot. Corrected a test-only selector that initially included disabled obstacles in the open-dot count. The old `PZ-21-875-0` resolves with the normal content-change notice.
+
+**Preview and limits.** The existing Vite server responds at http://127.0.0.1:5173; left it running for the teacher. The focused review covers Stretch Cover Paths, not every hard puzzle in the other eight families. No full test suite, deployment or commit was performed.
+
+
+### 8 October 2026 — Go playback, exploration and hint visibility
+
+Fixed the reported Go interaction problems in the shared package. Recorded replies now follow the player move after 700 ms, so a sacrificial stone appears before it is captured. Reply state is serialisable, and bindings cancel stale callbacks on Undo, reset, state replacement, locking and disposal. Restoring an editable intermediate state resumes the reply. Undo removes the entire player/reply turn. Added legal unrecorded play with captures, suicide rejection and simple ko; it displays “No recorded response” and never infers a strategic win or loss. Recorded branches remain authoritative for marks.
+
+Both next-move and written hints now toggle off. Parent-owned assistance records remain true when hints are hidden. Moved the written Go hint above the board and separated its visibility from next-move assistance tracking. Confirmed 98 distinct authored written hints across 101 Go questions. Cached source SGFs contain comments, including objective text and solution annotations; importers deliberately omit raw comments from published trees. No Go content, ranks or question identities changed.
+
+**Files.** Updated package `rules/go-rules.js`, `ui/go.js`, `ui/boards.js` and `API.md`; added `packages/puzzles/tests/go.test.js`. Updated `js/app.js`, both puzzle browser scripts, the puzzle specification and local development guide. Put initial loading text directly in `index.html` for both previews and removed the build-only injection from `scripts/build-site.mjs`. Rebuilt production. Preserved the uncommitted Cover Paths work and bank revision 22.
+
+**Startup evidence.** With browser cache disabled and the development server warm, source preview readiness was about 925 ms with 93 resources and 79 MB of decoded module/debug data; production was about 303 ms with five resources and 3 MB (including the resumed puzzle bank). First contentful paint was about 148/144 ms respectively. These local samples do not reproduce or rule out the reported ten-second cold development start. The readable authoring banks remain eagerly loaded in development; the new loading message addresses the empty content area, not that underlying startup cost. Both servers remain available at ports 5173 and 8765.
+
+**Verification.** Final npm test passed 173/173, including production/staged builds. Full validation passed 1,340 templates / 2,933 variations and current compatibility/coverage. The new Go simulator agrees with every independently imported branch board across all 101 problems. Package browser checks passed visible sacrifices, delayed captures, whole-turn Undo, cancellation, save/restore, locking, independent instances and disposal, plus hint toggling and unrecorded exploration. Production browser checks passed 14 puzzle examples, with dedicated Go assertions for written-hint visibility after reload, assistance retention and unrecorded stones. Documentation links and whitespace passed. One broad browser run overlapped the production-build test, which deletes/rebuilds served files, and timed out on reload; the sequential rerun passed. No deployment or commit.
+
+
+### 8 October 2026 — Compact Go guidance and coordinate readout
+
+Removed the repeated dashed-margin and input-instruction paragraph. The board-range text now sits above the board with link-styled Show hint and Show next move actions, wrapping when needed. Both retain their hide toggles. Added a coordinate readout below the board that updates on hover and keyboard focus without changing answers or rebuilding the board. Readouts remain local to each puzzle and work with replayed boards.
+
+**Files and boundary.** Updated package Go/board/part rendering and optional layout/theme CSS. Added trusted `guidanceActionsHTML` and `guidanceHTML` slots so the parent can position its written-hint control while retaining assistance ownership. Updated `js/app.js`, package API/style documentation, the puzzle specification and browser regression checks. Rebuilt production; no content/rank/code revision changed.
+
+**Verification.** All 12 package tests passed. Package browser checks passed hint toggles, hover/focus coordinates, unchanged answer state and board identity, plus existing Go playback/lifecycle checks. The initial focus assertion exposed inactive-window test conditions; enabling browser focus emulation exercised real focus events and passed. Focused production Go checks passed grouped controls, removed copy, assistance/persistence, playing, marking, reveal and 1280/640/320 layouts. Inspected the mobile screenshot. Final build and whitespace checks passed. Full suite was not repeated for this focused presentation change. Existing servers remain available on 5173 and 8765; no commit or deployment.
+
+
+### 8 October 2026 — Compact Go source and rules row
+
+Moved the Go Puzzle source link beside the coordinate readout and rules reminder in a small, wrapping row below the board. Removed the extra source-note text from the display and the redundant side-to-play heading; source attribution remains unchanged in the content. Other puzzle source displays are unchanged.
+
+Updated package Go/board/part renderers with a trusted `referenceHTML` slot, the parent question renderer, optional layout CSS, API/style documentation and puzzle specification. Production build and whitespace checks passed. A focused production Go browser check confirmed the source URL, adjacent rules link, absent duplicate heading/source paragraph, controls, persistence, scoring, reveal and desktop/mobile reflow. No content/code revision change, full-suite rerun, commit or deployment.
+
+
+### 8 October 2026 — Stable Go coordinate width
+
+Reserved a fixed four-character-width area for the coordinate value in `packages/puzzles/styles/layout.css`, keeping the label together and preventing flex shrink. Source/rules links no longer shift as coordinates change. Rebuilt production. Browser measurements confirmed identical link positions for —, A1, T19, M19 and J9 at 1280, 640 and 320 pixels. Whitespace checks passed; no runtime/content changes or full-suite rerun.
+
+
+### 8 October 2026 — Consistent Go hint links and stable board position
+
+Removed the parent-only subtle button class from Go's written-hint control so both hint actions use the same package link style and hover rule. The guidance row now shares the smaller board-range text size. Moved both written and next-move hint text below the board/reference row. Hint focus uses preventScroll so opening the written hint does not scroll the board away. Updated `js/app.js`, package Go rendering/theme CSS, API documentation and the puzzle specification.
+
+Rebuilt production. Focused browser checks confirmed identical computed hover styling, matching hint/range font sizes and unchanged board position and size when either hint is shown or hidden at 1280/640/320 pixels. Existing Go controls, assistance/persistence, scoring, replay and reflow checks also passed. Whitespace passed. No content change, full-suite rerun, commit or deployment.
+
+
+### 8 October 2026 — Halved Go reply delay
+
+Reduced the default recorded-reply pause from 700 ms to 350 ms as requested. Scheduling and restored-state timing share `GO_REPLY_DELAY_MS` in the package Go rules. Updated current API/specification wording. All five focused Go tests and the production build passed. No content or code identity changes.
+
+
+### 8 October 2026 — Go press preview and 200 ms replies
+
+Set the shared Go reply delay to 200 ms. Added `packages/puzzles/ui/go-press.js` and connected it through board bindings: pressing a legal intersection shows a transient stone, release commits through the existing move handler, and leaving the point/cancelling/focus loss/disposal clears the preview. Enter and Space use the same release-to-play behaviour; ordinary click activation remains available for assistive tools. Previewing never emits answer changes or starts an opponent reply.
+
+Updated package rules, board bindings, API/specification and the package browser regression script; rebuilt production through the test suite. All 173 tests passed. Real-input package browser checks passed held mouse/touch/key previews, unchanged saved state, release without duplicate moves, 200 ms reply behaviour, pointer/touch cancellation and disposal. Focused production browser checks confirmed preview-before-save, commit-on-release, Undo, persistence, marking, reveal and responsive layout. Whitespace passed. No content/code identity changes, commit or deployment.

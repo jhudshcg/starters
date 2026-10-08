@@ -212,19 +212,22 @@ function espReviewHTML(q,a){
 }
 function questionHTML(q,index,set){
   const a=data.active,answers=a.answers[q.slot]??{}, results=canReview()&&a.checks[q.slot]&&(!a.feedbackHidden?.[q.slot]||a.finished)?markQuestion(q,answers):null;
-  const locked=Boolean(a.finished);
+  const locked=Boolean(a.finished),hintVisible=Boolean(a.hints[q.slot]&&!a.hiddenHints?.[q.slot]);
+  const hintButton=`<button class="${q.focus==='go'?'puzzle-link':'subtle'}" data-hint="${q.slot}" aria-expanded="${hintVisible}">${hintVisible?'Hide hint':'Show hint'}</button>`;
+  const hintPanel=hintVisible?`<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`:'';
+  const goHint=set.type===0&&q.focus==='go';
   const subtopic=set.type===1?(a.examSubtopic??'all'):'all';
   const matchCount=subtopic==='all'?0:q.parts.filter(p=>matchesSubtopic(p,subtopic)).length;
-  return `<article class="question type-${set.type}" data-question="${q.slot}"><div class="question-top"><span class="question-number">${String(index+1).padStart(2,'0')}</span><div><h2>${esc(q.title)}</h2><div class="muted">${esc(q.format)}${set.type===0?` · ${esc(challengeLabel(q.challengeLevel,q.focus))}`:''} · <span title="Individual question code">${questionCode(set.type,q.slot,q.variation,set.version)}</span>${q.tags.filter(t=>t.startsWith('CA')).length?` · ${q.tags.filter(t=>t.startsWith('CA')).join(', ')}`:''}</div></div><span class="marks-badge">${marks(q)} ${set.type===0?'points':'marks'}</span></div><p class="question-prompt">${esc(q.prompt)}</p>${subtopic!=='all'?`<p class="subtopic-context">${matchCount?`Includes ${esc(subtopic)} · ${matchCount} matching ${matchCount===1?'part':'parts'}`:`Related practice from ${esc(set.focus)}`}</p>`:''}${q.source?`<p class="muted"><a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a> · ${esc(q.source.note)}</p>`:''}<div class="question-layout ${q.code||q.grid||q.sheet||q.clues?'':'no-stimulus'}">${stimulus(q)}<div class="parts">${q.parts.map((p,j)=>{
+  return `<article class="question type-${set.type}" data-question="${q.slot}"><div class="question-top"><span class="question-number">${String(index+1).padStart(2,'0')}</span><div><h2>${esc(q.title)}</h2><div class="muted">${esc(q.format)}${set.type===0?` · ${esc(challengeLabel(q.challengeLevel,q.focus))}`:''} · <span title="Individual question code">${questionCode(set.type,q.slot,q.variation,set.version)}</span>${q.tags.filter(t=>t.startsWith('CA')).length?` · ${q.tags.filter(t=>t.startsWith('CA')).join(', ')}`:''}</div></div><span class="marks-badge">${marks(q)} ${set.type===0?'points':'marks'}</span></div><p class="question-prompt">${esc(q.prompt)}</p>${subtopic!=='all'?`<p class="subtopic-context">${matchCount?`Includes ${esc(subtopic)} · ${matchCount} matching ${matchCount===1?'part':'parts'}`:`Related practice from ${esc(set.focus)}`}</p>`:''}${q.source&&!goHint?`<p class="muted"><a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a> · ${esc(q.source.note)}</p>`:''}<div class="question-layout ${q.code||q.grid||q.sheet||q.clues?'':'no-stimulus'}">${stimulus(q)}<div class="parts">${q.parts.map((p,j)=>{
     const id=`answer-${q.slot}-${p.id}`,answer=answers[p.id]??'',result=results?.[j];
     const outcome=result?(result.needsReview?'review':result.earned===result.max?'correct':result.earned>0?'partial':'incorrect'):'';
     const outcomeAttribute=outcome?` data-result="${outcome}"`:'';
     const codeBlock=p.code?`<pre class="code-panel part-code" tabindex="0" aria-label="Python code for part ${j+1}"><code>${esc(p.code)}</code></pre>`:'';
     const label=`${subtopic!=='all'&&matchesSubtopic(p,subtopic)?`<span class="subtopic-match">Selected subtopic · ${esc(subtopic)}</span> `:''}<span class="part-label">${String.fromCharCode(97+j)})</span> ${esc(p.prompt)} <span class="part-marks">(${p.marks})</span>`;
-    if(set.type===0)return puzzlePartHTML(p,answer,{instanceId:q.slot,index:j,locked,result,labelHTML:label});
+    if(set.type===0)return puzzlePartHTML(p,answer,{instanceId:q.slot,index:j,locked,result,labelHTML:label,guidanceActionsHTML:goHint?hintButton:'',guidanceHTML:goHint?hintPanel:'',referenceHTML:goHint&&q.source?`<a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a>`:''});
     const input=p.options?`<fieldset class="part"${outcomeAttribute} ${locked?'disabled':''}><legend>${label}</legend>${codeBlock}<div class="options">${p.options.map(option=>`<label class="option"><input type="radio" name="${id}" value="${esc(option)}" data-slot="${q.slot}" data-part="${p.id}" ${answer===option?'checked':''}>${esc(option)}</label>`).join('')}</div>`:`<div class="part"${outcomeAttribute}><label for="${id}">${label}</label>${codeBlock}<input id="${id}" data-slot="${q.slot}" data-part="${p.id}" value="${esc(answer)}" ${locked?'disabled':''} ${p.kind==='number'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" ${result?`aria-describedby="feedback-${q.slot}-${j}"`:''}>`;
     return input+(p.coverage?.length?`<details class="part-coverage"><summary>Spec reference</summary><small>${esc(formatCoverage(p.coverage))}${p.coverageMode==='practice'?' · Supporting practice':''}</small></details>`:'')+(result?`<p id="feedback-${q.slot}-${j}" class="feedback ${outcome}">${result.earned}/${result.max} · ${esc(result.message)}</p>`:'')+(p.options?'</fieldset>':'</div>');
-  }).join('')}</div></div>${espReviewHTML(q,a)}<div class="question-actions"><button class="subtle" data-hint="${q.slot}" ${a.hints[q.slot]?'disabled':''}>${a.hints[q.slot]?'Hint shown':'Show hint'}</button>${canReview()?`<button data-check="${q.slot}">Check answer</button><button class="subtle" data-reveal="${q.slot}" ${a.reveals[q.slot]?'disabled':''}>${a.reveals[q.slot]?'Answer shown':'Show answer'}</button>`:''}${a.hints[q.slot]||a.reveals[q.slot]?'<small>Assisted practice</small>':''}</div>${a.hints[q.slot]?`<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`:''}${canReview()&&a.reveals[q.slot]?`<div class="solution"><h3>Answers and explanations</h3><ol class="solution-list" role="list">${q.parts.map((publicPart,j)=>set.type===0?puzzleSolutionHTML(publicPart,j,q.slot):((p)=>`<li class="solution-part"><p class="solution-answer"><span class="part-label">${String.fromCharCode(97+j)})</span> <strong>${esc(p.solutionText??p.answer)}</strong></p><p class="solution-explanation">${esc(p.explanation)}</p></li>`)(revealPart(publicPart))).join('')}</ol></div>`:''}</article>`;
+  }).join('')}</div></div>${espReviewHTML(q,a)}<div class="question-actions">${goHint?'':hintButton}${canReview()?`<button data-check="${q.slot}">Check answer</button><button class="subtle" data-reveal="${q.slot}" ${a.reveals[q.slot]?'disabled':''}>${a.reveals[q.slot]?'Answer shown':'Show answer'}</button>`:''}${a.hints[q.slot]||a.reveals[q.slot]?'<small>Assisted practice</small>':''}</div>${goHint?'':hintPanel}${canReview()&&a.reveals[q.slot]?`<div class="solution"><h3>Answers and explanations</h3><ol class="solution-list" role="list">${q.parts.map((publicPart,j)=>set.type===0?puzzleSolutionHTML(publicPart,j,q.slot):((p)=>`<li class="solution-part"><p class="solution-answer"><span class="part-label">${String.fromCharCode(97+j)})</span> <strong>${esc(p.solutionText??p.answer)}</strong></p><p class="solution-explanation">${esc(p.explanation)}</p></li>`)(revealPart(publicPart))).join('')}</ol></div>`:''}</article>`;
 }
 function activity(){
   $('.global-code-entry').hidden=false;
@@ -263,7 +266,7 @@ function activity(){
     const control=selector?main.querySelector(selector):null;
     if(control&&!control.disabled)control.focus({preventScroll:true});
     else main.querySelector(`[data-question="${slot}"] [data-puzzle-action]:not(:disabled)`)?.focus({preventScroll:true});
-  },toast,slot=>{a.hints[slot]=true;persist();});
+  },toast,slot=>{a.hiddenHints??={};if(!a.hints[slot])a.hiddenHints[slot]=true;a.hints[slot]=true;persist();});
   main.querySelectorAll('[data-part]').forEach(el=>el.addEventListener(el.type==='radio'?'change':'input',()=>{
     if(a.finished)return;
     a.answers[el.dataset.slot]??={};a.answers[el.dataset.slot][el.dataset.part]=el.value;
@@ -284,7 +287,14 @@ function activity(){
     if(!canReview())return;
     check(Number(b.dataset.check));persist();activity();main.querySelector(`[data-check="${b.dataset.check}"]`).focus();
   });
-  main.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>{a.hints[b.dataset.hint]=true;persist();activity();const panel=main.querySelector('[data-question="'+b.dataset.hint+'"] .hint-text');panel.tabIndex=-1;panel.focus();toast('Hint shown. This question is marked as assisted practice.');});
+  main.querySelectorAll('[data-hint]').forEach(b=>b.onclick=()=>{
+    const slot=b.dataset.hint,visible=a.hints[slot]&&!a.hiddenHints?.[slot];
+    a.hiddenHints??={};a.hiddenHints[slot]=Boolean(visible);a.hints[slot]=true;
+    persist();activity();
+    const panel=main.querySelector('[data-question="'+slot+'"] .hint-text');
+    if(panel){panel.tabIndex=-1;panel.focus({preventScroll:true});toast('Hint shown. This question is marked as assisted practice.');}
+    else main.querySelector('[data-hint="'+slot+'"]').focus();
+  });
   main.querySelectorAll('[data-reveal]').forEach(b=>b.onclick=()=>{if(!canReview())return;a.reveals[b.dataset.reveal]=true;persist();activity();const panel=main.querySelector('[data-question="'+b.dataset.reveal+'"] .solution');panel.tabIndex=-1;panel.focus();toast('Model answers shown. Your submitted score is unchanged.');});
   $('#clear-search')?.addEventListener('click',()=>{delete a.search;persist();activity();toast('Search cleared. Your current questions and answers are unchanged.');});
   $('#submit').onclick=()=>submit('submitted');

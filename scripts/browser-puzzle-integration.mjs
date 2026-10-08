@@ -33,8 +33,31 @@ try{
   await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
   await fresh(set.code);assert.equal(set.code.length,9);
   assert.equal(await evaluate('document.querySelector(".question").dataset.question'),String(slot));
+  if(slot===170){
+   assert.equal(await evaluate('document.querySelectorAll(".go-guidance [data-hint]").length'),1);
+   assert.equal(await evaluate('document.querySelector(".go-guidance [data-challenge-action=go-hint]").textContent'),'Show next move');
+   assert.ok(await evaluate('document.querySelector(".go-guidance").getBoundingClientRect().bottom<=document.querySelector(".go-board").getBoundingClientRect().top'));
+   assert.equal(await evaluate('document.querySelector(".question").textContent.includes("Dashed margins indicate")'),false);
+
+   // Written and move hints toggle independently; hiding never removes assistance.
+   await click('[data-hint]');assert.ok(await evaluate('Boolean(document.querySelector(".hint-text"))'));
+   await click('[data-hint]');assert.equal(await evaluate('Boolean(document.querySelector(".hint-text"))'),false);
+   assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Puzzle%20integration")).active.hints[170]'),true);
+   await send('Page.reload');await until('Boolean(document.querySelector("[data-hint]"))');
+   assert.equal(await evaluate('Boolean(document.querySelector(".hint-text"))'),false);
+   await click('[data-challenge-action="go-hint"]');
+   assert.equal(await evaluate('document.querySelector("[data-challenge-action=go-hint]").getAttribute("aria-expanded")'),'true');
+   await click('[data-challenge-action="go-hint"]');
+   assert.equal(await evaluate('document.querySelector("[data-challenge-action=go-hint]").getAttribute("aria-expanded")'),'false');
+   // This source position has a legal, unrecorded move at the upper-left corner.
+   assert.ok(!p.tree.children.some(child=>child.move===0));
+   await click('[data-challenge-action="go"][data-value="0"]');
+   assert.ok(await evaluate(`Boolean(document.querySelector('[data-go-stone="0"]'))`));
+   assert.match(await evaluate('document.querySelector(".go-status").textContent'),/No recorded response/);
+   await click('[data-challenge-action="undo"]');
+  }
   if(p.kind==='tiling')assert.equal(await evaluate('document.querySelectorAll("[data-tiling-board] [stroke-dasharray]").length'),4);
-  await evaluate(`(()=>{
+  await evaluate(`(async()=>{
    const q=${JSON.stringify(q)},p=q.parts[0];
    const button=(action,value)=>document.querySelector('[data-challenge-action="'+action+'"]'+(value===undefined?'':'[data-value="'+value+'"]')).click();
    if(['logic-grid','equation-grid'].includes(p.kind))JSON.parse(p.answer).forEach((row,c)=>row.forEach((v,r)=>{button('candidate',c+','+r+','+v);button('candidate',c+','+r+','+v);}));
@@ -47,7 +70,7 @@ try{
     for(let n=0;n<Math.abs(place.x-4)*2;n++)button('move',place.x<4?'-0.5,0':'0.5,0');
     for(let n=0;n<Math.abs(place.y-4)*2;n++)button('move',place.y<4?'0,-0.5':'0,0.5');
    });
-   else if(p.kind==='go'){const moves=JSON.parse(p.answer).moves;for(let i=0;i<moves.length;i++){const index=JSON.parse(document.querySelector('[data-go-moves]').dataset.goMoves).length;if(index>=moves.length)break;button('go',moves[index]);}}
+   else if(p.kind==='go'){const moves=JSON.parse(p.answer).moves;for(let i=0;i<moves.length;i++){const index=JSON.parse(document.querySelector('[data-go-moves]').dataset.goMoves).length;if(index>=moves.length)break;button('go',moves[index]);await new Promise(resolve=>setTimeout(resolve,750));}}
    else for(const part of q.parts){const inputs=[...document.querySelectorAll('[data-part="'+part.id+'"]')],input=part.options?inputs.find(input=>input.value===part.answer):inputs[0];input.value=part.answer;if(part.options)input.checked=true;input.dispatchEvent(new Event(part.options?'change':'input',{bubbles:true}));}
   })()`);
   // Real answer entry must persist unchanged and score through the production marker.

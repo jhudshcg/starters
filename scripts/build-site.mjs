@@ -44,7 +44,6 @@ for(const [file,meta] of Object.entries(result.metafile.outputs)){
   if(meta.entryPoint)html=html.replaceAll(meta.entryPoint,relative(output,join(root,file)));
 }
 if(html.includes('src="js/')||html.includes('href="css/'))throw Error('Unbundled entry in production HTML');
-html=html.replace('<main id="main" tabindex="-1"></main>', '<main id="main" tabindex="-1"><p>Loading activities…</p><p>If activities do not appear, <a href="">reload this page</a> to get the current build.</p></main>');
 await writeFile(join(output,'index.html'),html);
 await writeFile(join(output,'.nojekyll'),'');
 await cp(join(root,'node_modules/fflate/LICENSE'),join(output,'fflate-LICENSE.txt'));
