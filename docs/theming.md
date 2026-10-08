@@ -59,3 +59,7 @@ The base Sage/Forest decoration is solid, with a 1px border, 16px radius and no 
 The inner fill must be an **opaque CSS image** (a gradient, including a same-colour gradient). It masks the border gradient behind the card content. Rounded borders use layered backgrounds, not `border-image`. Keep border style `solid` and colour `transparent` for a gradient border. For solid/dashed borders set `--card-border-image: none` and a visible border colour. Shared declarations inherit into dark mode; override only values that need to differ. Forced-colour mode uses a solid system border.
 
 Check all eight themes, selected/hover/keyboard-focus and marked states, and a narrow viewport. Target 4.5:1 normal text contrast and 3:1 meaningful boundaries/focus indicators. Check gradient extremes as well as the middle. Production still needs a build before release.
+
+## Shared puzzle presentation
+
+Puzzle board geometry and default appearance now live in `packages/puzzles/styles/`. `css/challenges.css` imports them and maps the app's current colours to `--puzzle-*` properties, keeping all eight app themes. Type-card art and tangram piece colours come from `packages/puzzles/graphics.js`. Edit shared presentation there; keep question-card layout and navigation styles in this app. See the [library markup and styling contract](../packages/puzzles/styles/README.md) for consumer overrides and SVG limitations.

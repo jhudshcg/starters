@@ -78,7 +78,7 @@ Keep source URLs and adaptation notes in content records. Do not import an entir
 
 ## Data and validation
 
-One public `data/puzzles.js` bank imports the family data. Keep renderers and checkers separate from authored instances. Each puzzle records subtype, rules, prompt, hint, model solution, explanation, estimated duration and validation evidence. Generate data before publication, with reproducible seeds where relevant; no unbounded client-side search.
+The public `data/puzzles.js` bank adapts the reusable [puzzle library](../packages/puzzles/README.md). Family content now lives under `packages/puzzles/data/`; shared rules and type guidance live alongside it. Numeric challenge bands 1–4 have replaceable default labels, while Go also retains each individual source kyu rank. App slots, variation order, labels and codes are unchanged. The [adopted package boundary](../packages/puzzles/ARCHITECTURE.md) places all puzzle-specific rendering, interactions and evaluation in the library; parent apps control submission, persistence, question grouping/codes and cohesive presentation. The [integration API](../packages/puzzles/API.md) provides a mountable control and independent marking functions. Keep renderers and checkers separate from authored instances. Each puzzle records subtype, rules, prompt, hint, model solution, explanation, estimated duration and validation evidence. Generate data before publication, with reproducible seeds where relevant; no unbounded client-side search.
 
 - Logic/equations: independently enumerate solutions; enforce uniqueness; include a clue-dependency review. A simple list of direct assignments is insufficient.
 - Tangrams: verify piece identity, allowed transformations, polygon containment, pairwise non-overlap and complete target coverage. A saved reference arrangement is one solution, not the only permitted arrangement.
@@ -94,7 +94,7 @@ All actions work by click and keyboard; dragging is optional. Use warm yellow fo
 
 ## Go: format, approach and presentation
 
-`data/puzzles/go.js` contains 50 fixed positions with side to move, objective, original board size, cropped viewport and a tree of recorded moves, resulting boards and success/failure markers. `sgfmill` parses source SGF and computes captures during import. Keep the selected source inventory in `data/coverage/go-source-inventory.json`.
+`packages/puzzles/data/go.js` contains 50 fixed positions with side to move, objective, original board size, cropped viewport and a tree of recorded moves, resulting boards and success/failure markers. `sgfmill` parses source SGF and computes captures during import. Keep the selected source inventory in `data/coverage/go-source-inventory.json`.
 
 Click or keyboard activation plays a recorded move and the opponent’s reply immediately. Stone colours remain visible beneath yellow last-move rings. Offer Undo, Reset and a choice among recorded opponent replies. Unlisted moves are proposed but unverified, never declared proven losing. Ko/seki outcomes must be explicit in the question.
 

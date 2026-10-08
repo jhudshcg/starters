@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Puzzle styles: standalone example</title>
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+  <h1>Puzzle styles</h1>
+  <p>Static markup examples. Controls can receive focus but do not play or mark a puzzle.</p>
+  <button type="button" id="outside-control">Outside the puzzle: native browser styling</button>
+
+  <section class="puzzle-controls" aria-labelledby="sudoku-heading">
+    <h2 id="sudoku-heading">Sudoku</h2>
+    <div class="board-scroll" tabindex="0" aria-label="Sudoku grid">
+      <div class="digit-grid" style="--cells: 4" role="group" aria-label="Puzzle cells">
+        <button class="digit-cell given thick-left thick-top" aria-label="Row 1, column 1, given 1"><strong>1</strong></button>
+        <button class="digit-cell selected thick-top" aria-pressed="true" aria-label="Row 1, column 2, selected, empty"></button>
+        <button class="digit-cell thick-left thick-top" aria-label="Row 1, column 3, empty"></button>
+        <button class="digit-cell given thick-top" aria-label="Row 1, column 4, given 4"><strong>4</strong></button>
+        <button class="digit-cell thick-left" aria-label="Row 2, column 1, empty"></button>
+        <button class="digit-cell given" aria-label="Row 2, column 2, given 4"><strong>4</strong></button>
+        <button class="digit-cell given thick-left" aria-label="Row 2, column 3, given 1"><strong>1</strong></button>
+        <button class="digit-cell" aria-label="Row 2, column 4, notes 2 3"><small class="pencil-notes">2 3</small></button>
+        <button class="digit-cell thick-left thick-top" aria-label="Row 3, column 1, empty"></button>
+        <button class="digit-cell given thick-top" aria-label="Row 3, column 2, given 1"><strong>1</strong></button>
+        <button class="digit-cell given thick-left thick-top" aria-label="Row 3, column 3, given 4"><strong>4</strong></button>
+        <button class="digit-cell thick-top" aria-label="Row 3, column 4, empty"></button>
+        <button class="digit-cell given thick-left" aria-label="Row 4, column 1, given 4"><strong>4</strong></button>
+        <button class="digit-cell" aria-label="Row 4, column 2, empty"></button>
+        <button class="digit-cell thick-left" aria-label="Row 4, column 3, empty"></button>
+        <button class="digit-cell given" aria-label="Row 4, column 4, given 1"><strong>1</strong></button>
+      </div>
+    </div>
+    <div class="challenge-toolbar">
+      <button type="button">1</button><button type="button">2</button>
+      <button type="button">3</button><button type="button">4</button>
+      <button type="button" aria-pressed="true">Pencil notes</button>
+      <button type="button">Undo</button><button type="button" disabled>Reset</button>
+    </div>
+    <p class="puzzle-help">Amber indicates selection. A consuming app supplies the keyboard and pointer behaviour.</p>
+  </section>
+
+  <section class="puzzle-controls" aria-labelledby="logic-heading">
+    <h2 id="logic-heading">Candidate grid</h2>
+    <div class="candidate-grids">
+      <div class="board-scroll" tabindex="0" aria-label="Device candidate grid">
+        <table class="candidate-table">
+          <caption>Devices</caption>
+          <thead><tr><th scope="col">Person</th><th scope="col">Laptop</th><th scope="col">Tablet</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Alex</th><td><button aria-pressed="true" aria-label="Alex, laptop: selected">✓</button></td><td><button aria-pressed="false" aria-label="Alex, tablet: excluded">×</button></td></tr>
+            <tr><th scope="row">Blair</th><td><button aria-pressed="false" aria-label="Blair, laptop: unknown">·</button></td><td><button aria-pressed="false" aria-label="Blair, tablet: unknown">·</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="go-status go-success" role="status">Example of success feedback, separate from selection.</p>
+  </section>
+</body>
+</html>

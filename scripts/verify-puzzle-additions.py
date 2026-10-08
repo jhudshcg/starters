@@ -6,7 +6,7 @@ import json,subprocess,pathlib,itertools,math,statistics,shutil
 from decimal import Decimal,ROUND_HALF_UP
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 node=shutil.which('node') or '/opt/homebrew/bin/node'
-data=json.loads(subprocess.check_output([node,'--input-type=module','-e',"import seq from './data/puzzles/sequences-beginner.js';import maths from './data/puzzles/maths-applied.js';import hard from './data/puzzles/maths-reasoning-stretch.js';console.log(JSON.stringify({seq,maths,hard}));"],cwd=ROOT))
+data=json.loads(subprocess.check_output([node,'--input-type=module','-e',"import seq from './packages/puzzles/data/sequences-beginner.js';import maths from './packages/puzzles/data/maths-applied.js';import hard from './packages/puzzles/data/maths-reasoning-stretch.js';console.log(JSON.stringify({seq,maths,hard}));"],cwd=ROOT))
 def check(bank,j,v,expected):
     actual=[Decimal(p['answer']) for p in data[bank][j]['variations'][v]['parts']]
     want=[Decimal(str(x)).quantize(Decimal('.01'),rounding=ROUND_HALF_UP) for x in expected]

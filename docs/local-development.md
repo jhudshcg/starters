@@ -50,3 +50,9 @@ When a functional change warrants checks, focused unit files are `tests/practice
 The user explicitly chose to test the final highlight colour adjustments themselves. Those final adjustments were rebuilt but not browser-tested; do not present earlier palette checks as verification of the final colours. Avoid unnecessary rebuilds, downloads or full-bank tests for documentation-only continuation work.
 
 Search metadata: `js/search.js` provides matching and constrained candidate selection without reading marking data. `data/search-keywords.js` supplies reviewed extra tags; run `npm run search:index` after editing the Core coverage inventory. `node --test tests/search.test.js` checks aliases, variation-specific evidence, packed-bank equivalence and set constraints.
+
+## Shared puzzle library
+
+The [puzzle library](../packages/puzzles/README.md) is currently ordinary source under `packages/puzzles/`, not a submodule. Normal checkout and dependency installation are unchanged; it has no separate hosting. `npm test` includes its portable checks. For extraction changes, run the library tests plus puzzle, packed-bank, algebra and code-compatibility tests, followed by the production-build test. Keep `npm run codes:check` passing without a revision update when content is unchanged. The library README records the required staged-build-hook change before future submodule adoption.
+
+Puzzle control integration: `node scripts/browser-puzzle-player.mjs` builds a package-only fixture in a temporary directory and uses isolated Chrome on port 9227. `node scripts/browser-puzzle-integration.mjs` checks the production app on port 8765, including named-profile persistence, parent submission and reveal, and desktop/640px/320px reflow. It clears storage only in that dedicated test browser. The older broad smoke/expansion scripts assume legacy profile storage and are not evidence of a passing current integration run.

@@ -17,7 +17,7 @@ spec.loader.exec_module(b)
 SOURCE = (ROOT/'scripts/build-puzzles.py').read_text()
 
 def load(name):
-    return json.loads((ROOT/f'data/puzzles/{name}.js').read_text().split('export default ', 1)[1].strip().removesuffix(';'))
+    return json.loads((ROOT/f'packages/puzzles/data/{name}.js').read_text().split('export default ', 1)[1].strip().removesuffix(';'))
 
 def customised(start, end, replacements):
     source = SOURCE[SOURCE.index(start):SOURCE.index(end)]
@@ -217,7 +217,7 @@ def run():
             bank.append(dict(slot=base+j,title=f'{focus.title()} · {j+51}',focus=focus,format='Reasoning puzzle',tags=[f'challenge:{level}'],challengeLevel=level,fixed=True,setSize=3,estimatedMinutes=8,
                 variations=[dict(prompt=prompt,hint=hint,parts=[dict(id='0',kind=kind,prompt='Solve the puzzle.',marks=3,answer=json.dumps(solution),explanation=explanation,solutionText='See the completed board below.',**d)])]))
             if j%10==9:print(filename,j+51,flush=True)
-        (ROOT/f'data/puzzles/{filename}.js').write_text('// Deterministic instances; see scripts/enrich-puzzles.py.\nexport default '+json.dumps(bank,ensure_ascii=False,indent=2)+';\n')
+        (ROOT/f'packages/puzzles/data/{filename}.js').write_text('// Deterministic instances; see scripts/enrich-puzzles.py.\nexport default '+json.dumps(bank,ensure_ascii=False,indent=2)+';\n')
 
 if __name__=='__main__':
     run()

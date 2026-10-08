@@ -1,0 +1,26 @@
+{
+  "name": "@subject-apps/puzzles",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./catalogue": "./catalogue.js",
+    "./metadata": "./metadata.js",
+    "./rules/*": "./rules/*.js",
+    "./styles": "./styles/index.css",
+    "./styles/layout.css": "./styles/layout.css",
+    "./styles/theme.css": "./styles/theme.css",
+    "./graphics": "./graphics.js",
+    "./evaluation": "./evaluation.js",
+    "./player": "./player.js",
+    "./render": "./ui/render.js",
+    "./boards": "./ui/boards.js",
+    "./state": "./state.js"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "mathjs": "15.2.0"
+  }
+}

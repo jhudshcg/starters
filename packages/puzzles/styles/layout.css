@@ -1,0 +1,247 @@
+/* Optional scoped puzzle geometry and controls. No application shell styles. */
+
+:where(.puzzle-controls, .puzzle-controls *) { box-sizing: border-box; }
+:where(.puzzle-controls button, .puzzle-controls input, .puzzle-controls select, .puzzle-controls a) { touch-action: manipulation; }
+:where(.puzzle-controls button) { min-height: 44px; padding: .65rem 1rem; border: 1px solid; border-radius: 9px; cursor: pointer; }
+:where(.puzzle-controls input, .puzzle-controls select) { padding: .7rem .85rem; border: 1px solid; border-radius: 9px; min-height: 46px; max-width: 100%; }
+:where(.puzzle-controls p) { margin-top: 0; }
+:where(.puzzle-controls :focus-visible) { outline: 3px solid; outline-offset: 4px; }
+:where(.puzzle-controls) .puzzle-help { margin: 1rem 0; }
+
+.puzzle-controls {
+  min-width: 0;
+  width: var(--puzzle-width, 100%);
+}
+
+:where(.puzzle-controls) .challenge-clues {
+  padding-left: 1.4rem;
+  line-height: 1.7;
+}
+
+:where(.puzzle-controls) .candidate-grids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+:where(.puzzle-controls) .board-scroll {
+  max-width: 100%;
+  overflow: auto;
+  padding: .2rem;
+}
+
+:where(.puzzle-controls) .candidate-table {
+  border-collapse: collapse;
+}
+
+:where(.puzzle-controls) .candidate-table th {
+  padding: .4rem;
+  max-width: 7rem;
+  overflow-wrap: anywhere;
+}
+
+:where(.puzzle-controls) .candidate-table td {
+  border-width: 1px;
+  border-style: solid;
+  padding: 0;
+}
+
+:where(.puzzle-controls) .candidate-table caption {
+  text-align: left;
+  padding: .5rem 0;
+}
+
+:where(.puzzle-controls) .candidate-table button {
+  width: 2.7rem;
+  height: 2.7rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+:where(.puzzle-controls) .challenge-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--puzzle-control-gap, .4rem);
+  margin: .8rem 0;
+}
+
+:where(.puzzle-controls) .challenge-toolbar button {
+  padding: .5rem .7rem;
+}
+
+:where(.puzzle-controls) .digit-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cells), var(--puzzle-cell-width, 2.9rem));
+  width: max-content;
+  border-width: 2px;
+  border-style: solid;
+}
+
+:where(.puzzle-controls) .digit-cell {
+  position: relative;
+  width: var(--puzzle-cell-width, 2.9rem);
+  height: var(--puzzle-cell-height, 3.2rem);
+  padding: .4rem .1rem 0;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0;
+}
+
+:where(.puzzle-controls) .digit-cell.thick-left {
+  border-left-width: 2px;
+  border-left-style: solid;
+}
+
+:where(.puzzle-controls) .digit-cell.thick-top {
+  border-top-width: 2px;
+  border-top-style: solid;
+}
+
+:where(.puzzle-controls) .cage-label {
+  position: absolute;
+  top: 0;
+  left: .15rem;
+}
+
+:where(.puzzle-controls) .pencil-notes {
+  line-height: 1;
+  display: block;
+}
+
+:where(.puzzle-controls) .path-board {
+  position: relative;
+  width: min(100%, var(--puzzle-path-width, 29rem));
+  aspect-ratio: 1;
+  touch-action: none;
+  user-select: none;
+}
+
+:where(.puzzle-controls) .path-board svg,
+:where(.puzzle-controls) .tangram-board svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+:where(.puzzle-controls) .path-dot {
+  position: absolute;
+  background: transparent!important;
+  border: 0!important;
+  padding: 0;
+  border-radius: 50%;
+}
+
+:where(.puzzle-controls) .path-dot:focus-visible {
+  outline-width: 3px;
+  outline-style: solid;
+  outline-offset: -4px;
+}
+
+:where(.puzzle-controls) .piece-tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--puzzle-control-gap, .4rem);
+}
+
+:where(.puzzle-controls) .piece-tray button {
+  width: 5rem;
+  padding: .3rem;
+}
+
+:where(.puzzle-controls) .piece-tray svg {
+  width: 3rem;
+  height: 3rem;
+  display: block;
+  margin: auto;
+}
+
+:where(.puzzle-controls) .tangram-board {
+  width: min(100%, var(--puzzle-tangram-width, 30rem));
+  aspect-ratio: 1;
+  border-width: 1px;
+  border-style: solid;
+  cursor: crosshair;
+}
+
+.puzzle-controls button:disabled {
+  cursor: default;
+}
+
+:where(.puzzle-controls) .go-board {
+  position: relative;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 6px;
+  margin: .4rem;
+  flex-shrink: 0;
+}
+
+:where(.puzzle-controls) .go-board svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+:where(.puzzle-controls) .go-point {
+  position: absolute;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+}
+
+:where(.puzzle-controls) .go-point:focus-visible {
+  outline-width: 3px;
+  outline-style: solid;
+  outline-offset: -2px;
+}
+
+:where(.puzzle-controls) .go-moves {
+  overflow-wrap: anywhere;
+}
+
+:where(.puzzle-controls) .go-status {
+  padding: .65rem;
+  border-radius: 6px;
+}
+
+:where(.puzzle-controls) .go-reply,
+:where(.puzzle-controls) .go-replay label {
+  display: flex;
+  gap: .6rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+:where(.puzzle-controls) .go-replay {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+:where(.puzzle-controls) .go-replay input {
+  min-width: 180px;
+  flex: 1;
+}
+
+:where(.puzzle-controls) .go-scroll {
+  max-width: 100%;
+}
+
+.puzzle-controls .go-point,
+.puzzle-controls .go-point[aria-pressed="true"],
+.puzzle-controls .go-point:hover:not(:disabled) {
+  background: transparent!important;
+  border: 0!important;
+}
+
+:where(.puzzle-controls) .go-status.go-success {
+  border-width: 2px;
+  border-style: solid;
+}
+
+/* Zero-specificity defaults let a parent keep its own generic form styling. */
+:where(.puzzle-controls .options) { display: grid; gap: .6rem; margin-block: .8rem; }
+:where(.puzzle-controls .option) { display: flex; gap: .6rem; align-items: center; padding: .65rem; border: 1px solid; border-radius: 9px; }
+:where(.puzzle-controls input[type=radio]) { min-height: auto; width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
+:where(.puzzle-controls > label, .puzzle-controls > small) { display: block; margin-bottom: .5rem; }

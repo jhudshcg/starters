@@ -1,25 +1,17 @@
-import logic from './puzzles/logic-grids.js';
-import equations from './puzzles/logic-equations.js';
-import tangrams from './puzzles/tangrams.js';
-import paths from './puzzles/cover-paths.js';
-import sudoku from './puzzles/sudoku.js';
-import numbers from './puzzles/number-constraints.js';
-import sequences from './puzzles/sequences.js';
-import classics from './puzzles/classic-maths.js';
-import go from './puzzles/go.js';
-import sequenceBeginner from './puzzles/sequences-beginner.js';
-import mathsApplied from './puzzles/maths-applied.js';
-import mathsReasoningStretch from './puzzles/maths-reasoning-stretch.js';
-import sequenceMore from './puzzles/sequences-more.js';
-import mathsMore from './puzzles/maths-more.js';
-import mathsPractice from './puzzles/maths-practice.js';
-import mathsBeginner from './puzzles/maths-beginner.js';
-import sequencesEnriched from './puzzles/sequences-enriched.js';
-export default [...logic,...equations,...tangrams,...paths,...sudoku,...numbers,...sequences,...classics,...go,...sequenceMore,...mathsMore,...mathsPractice,...mathsBeginner,...sequencesEnriched,...sequenceBeginner,...mathsApplied,...mathsReasoningStretch].map(question=>{
- // GoProblems ranks are retained with source attribution. The original OGS
- // exercise has puzzle_rank 5 (=25 kyu), cached in references/go/ogs-2625.json.
- const rank=question.focus==='go'?(question.sourceRank??(question.slot===175?25:Number(question.source?.note.match(/(\d+) kyu/)?.[1]))):null;
- if(question.focus==='go'&&!Number.isFinite(rank))throw Error(`Missing Go source rank for slot ${question.slot}`);
- const level=question.focus==='go'?(rank>=25?'beginner':rank>=18?'foundation':rank>=12?'standard':'stretch'):(question.challengeLevel??'standard');
- return {...question,...(rank!==null?{sourceRank:rank}:{}),setSize:3,challengeLevel:level,tags:[...new Set([...question.tags.filter(tag=>!tag.startsWith('challenge:')),`challenge:${level}`])]};
+/**
+ * Purpose: adapt the shared puzzle catalogue to this app's existing bank contract.
+ * Main contents: legacy slots, variation order, challenge labels and set policy.
+ * Used by: bank-data and content tooling. Uses: shared puzzle library. Libs: none.
+ */
+import catalogue from '../packages/puzzles/catalogue.js';
+import {challengeBands} from '../packages/puzzles/metadata.js';
+
+export default catalogue.map(question => {
+  const {id, legacySlot, type, challenge, rank, variations, tags, ...content} = question;
+  const challengeLevel = challengeBands.find(band => band.level === challenge).key;
+  return {
+    ...content, slot: legacySlot, focus: type, setSize: 3, challengeLevel,
+    tags: [...new Set([...tags, `challenge:${challengeLevel}`])],
+    variations: variations.map(({id, ...variation}) => variation)
+  };
 });

@@ -28,7 +28,8 @@ test('the deployable site contains hashed bundles, no authoring banks or source 
    assert.ok(bundle.includes(bankFiles[index]),'App must reference the separate bank');
    assert.ok(unpack(payload).length>0);
  }
- assert.ok(!Object.keys(meta.inputs).some(f=>/^data\//.test(f)),'No authoring bank is bundled');
+ const allowedMetadata = new Set(['data/search-keywords.js', 'data/search-topics.js']);
+ assert.ok(!Object.keys(meta.inputs).some(f => (/^data\//.test(f) && !allowedMetadata.has(f)) || /^packages\/puzzles\/(data\/|catalogue\.js)/.test(f)), 'No authoring bank is bundled');
  // Rebuilding unchanged inputs is deterministic; no commit/deployment counter enters IDs.
  execFileSync(process.execPath,['scripts/build-site.mjs'],{cwd:root});
  assert.equal(readFileSync(join(root,'live/index.html'),'utf8'),html);

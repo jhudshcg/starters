@@ -1,0 +1,162 @@
+/* Optional default appearance. Override --puzzle-* on .puzzle-controls. */
+
+:where(.puzzle-controls) {
+  --puzzle-surface: #ffffff;
+  --puzzle-surface-soft: #f1f4f0;
+  --puzzle-text: #243329;
+  --puzzle-muted: #566358;
+  --puzzle-control-border: #89978a;
+  --puzzle-selection-bg: #ffe6a0;
+  --puzzle-selection-border: #9b7122;
+  --puzzle-selection-text: #49350d;
+  --puzzle-warning-bg: #fff0c7;
+  --puzzle-warning-text: #604811;
+  --puzzle-correct-bg: #e0f1df;
+  --puzzle-correct-border: #48733d;
+  --puzzle-correct-text: #264e21;
+  --puzzle-accent: #574176;
+  --puzzle-surface-hover: #eef2eb;
+  --puzzle-main: #3f622d;
+  --puzzle-path-board: #1f7f91;
+  --puzzle-path-focus: #fff;
+  --puzzle-go-board: #eed19a;
+  --puzzle-go-border: #a78346;
+  --puzzle-go-focus: #866000;
+  --puzzle-go-hover: #b78327;
+  font-family: var(--puzzle-font, ui-sans-serif, system-ui, sans-serif);
+  line-height: 1.55;
+  color: var(--puzzle-text);
+}
+:where(.puzzle-controls button, .puzzle-controls input, .puzzle-controls select) { font: inherit; background: var(--puzzle-surface); color: var(--puzzle-text); border-color: var(--puzzle-control-border); }
+:where(.puzzle-controls button) { font-weight: 650; }
+:where(.puzzle-controls button:hover:not(:disabled)) { background: var(--puzzle-surface-hover); border-color: var(--puzzle-main); }
+:where(.puzzle-controls button:disabled) { opacity: .55; }
+:where(.puzzle-controls a) { color: inherit; }
+:where(.puzzle-controls small) { color: var(--puzzle-muted); }
+:where(.puzzle-controls :focus-visible) { outline-color: var(--puzzle-accent); }
+:where(.puzzle-controls) .puzzle-help { font-size: .82rem; color: var(--puzzle-muted); }
+
+:where(.puzzle-controls) .candidate-table th {
+  font-size: .8rem;
+}
+
+:where(.puzzle-controls) .candidate-table td {
+  border-color: var(--puzzle-control-border);
+}
+
+:where(.puzzle-controls) .candidate-table caption {
+  font-weight: 700;
+}
+
+:where(.puzzle-controls) .candidate-table button {
+  font-size: 1.3rem;
+  background: var(--puzzle-surface);
+  color: var(--puzzle-text);
+}
+
+:where(.puzzle-controls) .digit-grid {
+  border-color: var(--puzzle-text);
+}
+
+:where(.puzzle-controls) .digit-cell {
+  border-color: var(--puzzle-control-border);
+  background: var(--puzzle-surface);
+  color: var(--puzzle-text);
+}
+
+:where(.puzzle-controls) .digit-cell strong {
+  font-size: 1.2rem;
+}
+
+:where(.puzzle-controls) .digit-cell.given {
+  background: var(--puzzle-surface-soft);
+}
+
+:where(.puzzle-controls) .digit-cell.thick-left {
+  border-left-color: var(--puzzle-text);
+}
+
+:where(.puzzle-controls) .digit-cell.thick-top {
+  border-top-color: var(--puzzle-text);
+}
+
+:where(.puzzle-controls) .cage-label {
+  font-size: .65rem;
+}
+
+:where(.puzzle-controls) .pencil-notes {
+  font-size: .65rem;
+}
+
+:where(.puzzle-controls) .path-board {
+  background: var(--puzzle-path-board);
+}
+
+:where(.puzzle-controls) .path-dot:focus-visible {
+  outline-color: var(--puzzle-path-focus);
+}
+
+:where(.puzzle-controls) .path-dot.path-end {
+  box-shadow: inset 0 0 0 3px var(--puzzle-selection-bg);
+}
+
+:where(.puzzle-controls) .path-dot:disabled {
+  opacity: 1;
+}
+
+:where(.puzzle-controls) .piece-tray button {
+  font-size: .65rem;
+}
+
+:where(.puzzle-controls) .tangram-board {
+  border-color: var(--puzzle-control-border);
+  background: var(--puzzle-surface-soft);
+}
+
+:where(.puzzle-controls) .go-board {
+  background: var(--puzzle-go-board);
+  border-color: var(--puzzle-go-border);
+}
+
+:where(.puzzle-controls) .go-point {
+  background: transparent;
+  box-shadow: none;
+}
+
+:where(.puzzle-controls) .go-point:focus-visible {
+  outline-color: var(--puzzle-go-focus);
+}
+
+:where(.puzzle-controls) .go-point:disabled {
+  opacity: 1;
+}
+
+:where(.puzzle-controls) .go-moves {
+  font-size: .8rem;
+}
+
+:where(.puzzle-controls) .go-status {
+  background: var(--puzzle-warning-bg);
+  color: var(--puzzle-warning-text);
+}
+
+.puzzle-controls .go-point:hover:not(:disabled) {
+  box-shadow: inset 0 0 0 2px var(--puzzle-go-hover);
+}
+
+:where(.puzzle-controls) .go-status.go-success {
+  background: var(--puzzle-correct-bg);
+  border-color: var(--puzzle-correct-border);
+  color: var(--puzzle-correct-text);
+  font-weight: 700;
+}
+
+.puzzle-controls :is(.selected,[aria-pressed="true"]) {
+  background: var(--puzzle-selection-bg);
+  color: var(--puzzle-selection-text);
+  border-color: var(--puzzle-selection-border);
+}
+
+:where(.puzzle-controls .option) { border-color: var(--puzzle-control-border); background: var(--puzzle-surface); }
+:where(.puzzle-controls .option:has(input:checked)) { background: var(--puzzle-selection-bg); border-color: var(--puzzle-selection-border); color: var(--puzzle-selection-text); }
+:where(.puzzle-controls input[type=radio]) { accent-color: var(--puzzle-selection-border); }

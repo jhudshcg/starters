@@ -5,7 +5,7 @@ spec=importlib.util.spec_from_file_location('puzzle_reference',root/'scripts/bui
 reference=importlib.util.module_from_spec(spec);spec.loader.exec_module(reference)
 count=0
 for filename in ['logic-grids','logic-equations','sudoku','cover-paths','tangrams','number-constraints']:
- text=(root/f'data/puzzles/{filename}.js').read_text()
+ text=(root/f'packages/puzzles/data/{filename}.js').read_text()
  bank=json.loads(text.split('export default ',1)[1].strip().removesuffix(';'))
  assert len(bank)>=100
  for q in bank:

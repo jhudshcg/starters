@@ -4,7 +4,7 @@ import pathlib
 from sgfmill import boards
 
 root=pathlib.Path(__file__).resolve().parents[1]
-text=(root/'data/puzzles/go.js').read_text()
+text=(root/'packages/puzzles/data/go.js').read_text()
 bank=json.loads(text.split('export default ',1)[1].strip().removesuffix(';'))
 count=0
 def encoded(board):

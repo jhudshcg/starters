@@ -12,7 +12,7 @@
 .question-layout.no-stimulus .parts:has(.interactive-part) { grid-template-columns: 1fr; }
 .puzzle-label { font-weight: 650; margin-bottom: 1rem; font-size: .95rem; }
 .puzzle-label .part-marks { font-weight: 400; }
-.puzzle-help, .route-status { font-size: .82rem; color: var(--muted); margin: 1rem 0; }
+.route-status { font-size: .82rem; color: var(--muted); margin: 1rem 0; }
 .job-bank { display: flex; flex-wrap: wrap; gap: .5rem; }
 .job-bank button { font-size: .85rem; }
 .job-order { counter-reset: position; padding: 0; display: grid; gap: .5rem; list-style: none; }

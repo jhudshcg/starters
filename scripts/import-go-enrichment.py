@@ -103,7 +103,7 @@ def merge_branches(node):
     for child in node['children']:merge_branches(child)
     return node
 
-bank_path=ROOT/'data/puzzles/go.js'
+bank_path=ROOT/'packages/puzzles/data/go.js'
 bank=json.loads(bank_path.read_text().split('export default ',1)[1].strip().removesuffix(';'))
 slots=list(range(50,100))+[165]
 bank=[q for q in bank if q['slot'] not in slots]

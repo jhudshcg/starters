@@ -1,7 +1,7 @@
 import sys, pathlib, json, random,importlib.util
 root=pathlib.Path.cwd();spec=importlib.util.spec_from_file_location('b',root/'scripts/build-puzzles.py');b=importlib.util.module_from_spec(spec);spec.loader.exec_module(b)
-def read(name):return json.loads((root/f'data/puzzles/{name}.js').read_text().split('export default ',1)[1].strip().removesuffix(';'))
-def write(name,bank):(root/f'data/puzzles/{name}.js').write_text('// Deterministic puzzle instances; see scripts/expand-puzzles.py.\nexport default '+json.dumps(bank,ensure_ascii=False,indent=2)+';\n')
+def read(name):return json.loads((root/f'packages/puzzles/data/{name}.js').read_text().split('export default ',1)[1].strip().removesuffix(';'))
+def write(name,bank):(root/f'packages/puzzles/data/{name}.js').write_text('// Deterministic puzzle instances; see scripts/expand-puzzles.py.\nexport default '+json.dumps(bank,ensure_ascii=False,indent=2)+';\n')
 bank=read('sudoku')
 for q in bank[5:20]:
  p=q['variations'][0]['parts'][0];answer=json.loads(p['answer'])

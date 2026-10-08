@@ -11,7 +11,7 @@ import sympy as s
 from sympy.parsing.sympy_parser import parse_expr,standard_transformations,implicit_multiplication_application,convert_xor
 
 node=shutil.which('node') or '/opt/homebrew/bin/node'
-rows=json.loads(subprocess.check_output([node,'--input-type=module','-e',"import q from './data/puzzles/maths-practice.js'; console.log(JSON.stringify(q));"],text=True))
+rows=json.loads(subprocess.check_output([node,'--input-type=module','-e',"import q from './packages/puzzles/data/maths-practice.js'; console.log(JSON.stringify(q));"],text=True))
 x,y=s.symbols('x y')
 def parse(text):
     text=text.replace('−','-').replace('×','*').replace('²','^2').replace('³','^3')
