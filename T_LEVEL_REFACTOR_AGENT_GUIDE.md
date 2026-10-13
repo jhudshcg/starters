@@ -1,6 +1,8 @@
 # T-Level starter: framework refactoring brief
 
-The starter currently uses plain HTML, CSS and JavaScript. Refactor it using **Svelte, Tailwind CSS, daisyUI and Bits UI**, drawing on the Maths project's experience while making decisions from this repository's needs.
+The starter currently uses plain HTML, CSS and JavaScript. Refactor it using **SvelteKit/Svelte, Tailwind CSS, daisyUI and Bits UI**, drawing on the Maths project's experience while making decisions from this repository's needs.
+
+**Target confirmed 14 October 2026:** full adoption, including semantic classes, theme-token mapping and Bits UI controls. See the [Maths implementation review](docs/reviews/2026-10-14-maths-framework-reuse.md) for reusable patterns and necessary adaptations. This confirms the target stack; the review's proposed migration sequence still needs architectural discussion before implementation.
 
 The live production site will remain static with no server for dynamic content or saving state, for the time being. The motivation for this move is to standardise tooling across different related apps and allow components/modules developed in one to be repurposed or reused in another. There will also come a point where serverside features are added, so this is prep for that too.  
 
@@ -8,7 +10,7 @@ The immediate aim is simpler, reusable UI code with clear ownership of state, be
 
 ## Role of each framework
 
-- **Svelte** owns component rendering, reactive state and UI events. Extract reusable components where there is a useful boundary; keep domain logic independent of the UI where practical. Choose SvelteKit or a smaller Vite/Svelte setup to suit routing and hosting.
+- **SvelteKit/Svelte** owns routing, component rendering, reactive state and UI events, using static prerendering for GitHub Pages. Extract reusable components where there is a useful boundary; keep domain logic independent of the UI where practical. Preserve existing incoming links, browser-history behaviour and deployment subpaths when designing the routes.
 - **Tailwind CSS** provides styling utilities and composition. Use it to simplify recurring layout and styling, with readable semantic classes where they help.
 - **daisyUI** provides consistent component foundations. Integrate those with the existing theme tokens and design rather than inheriting a new visual identity unintentionally.
 - **Bits UI** provides accessible interaction primitives such as dialogs and popovers. It is headless: the app must supply their visual styling. Native controls remain appropriate for simple interactions.

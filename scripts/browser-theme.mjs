@@ -75,7 +75,7 @@ try {
    assert.equal(decoration.page!=='none',['blue','rose'].includes(palette));
    assert.equal(decoration.color==='rgba(0, 0, 0, 0)',palette==='rose');
    assert.equal(decoration.width,palette==='rose'?'2px':'1px');
-   await evaluate(`{const e=document.createElement('section');e.id='theme-fixture';e.innerHTML='<label class="option"><input type="radio" checked>Selected</label><div class="feedback correct">Correct</div><div class="feedback incorrect">Incorrect</div><div class="feedback partial">Partial</div><div class="challenge"><button class="digit-cell selected">1</button></div>';document.querySelector('main').append(e);}`);
+   await evaluate(`{const e=document.createElement('section');e.id='theme-fixture';e.innerHTML='<label class="option"><input type="radio" checked>Selected</label><div class="feedback correct">Correct</div><div class="feedback incorrect">Incorrect</div><div class="feedback partial">Partial</div><div class="challenge puzzle-controls"><button class="selected" aria-pressed="true">1</button></div>';document.querySelector('main').append(e);}`);
    const styles=await evaluate(`[...document.querySelectorAll('#theme-fixture .option,#theme-fixture .feedback,#theme-fixture button')].map(e=>{const s=getComputedStyle(e);return [s.backgroundColor,s.color];})`);
    assert.deepEqual(styles[0],styles[4]);assert.notEqual(styles[0][0],styles[1][0]);assert.notEqual(styles[1][0],styles[2][0]);
    if(width!==640)await screenshot(`theme-${palette}-${mode}-${width}`);

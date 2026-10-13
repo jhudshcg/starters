@@ -1,3 +1,11 @@
+/**
+ * Purpose: Apply persisted themes and bind the header theme controls.
+ *
+ * Main contents: palette previews, adjustments, persistence and cleanup.
+ *
+ * Used by: application. Uses: theme CSS tokens and browser storage.
+ * Libs: none.
+ */
 export const themePalettes = [
   {id:'sage', light:'Sage', dark:'Forest'},
   {id:'blue', light:'Blue sky', dark:'Midnight blue'},
@@ -6,6 +14,8 @@ export const themePalettes = [
 ];
 
 export function initTheme(button) {
+  const events=new AbortController();
+  const {signal}=events;
   const root=document.documentElement,picker=document.querySelector('#theme-picker'),menu=document.querySelector('#theme-menu');
   const saturation=document.querySelector('#theme-saturation'),lightness=document.querySelector('#theme-lightness');
   const storageKey='dsd-starters-theme-adjustments';
@@ -81,7 +91,15 @@ export function initTheme(button) {
     menu.style.left=`${Math.max(16,Math.min(bounds.right-width,innerWidth-width-16))}px`;
     menu.style.top=`${Math.max(16,Math.min(bounds.bottom+8,innerHeight-height-16))}px`;
   };
-  menu.addEventListener('beforetoggle',event=>{if(event.newState==='open')positionMenu();});
-  menu.addEventListener('toggle',event=>{if(event.newState==='open')positionMenu();});
-  window.addEventListener('resize',()=>{if(menu.matches(':popover-open'))positionMenu();});
+  menu.addEventListener('beforetoggle',event=>{if(event.newState==='open')positionMenu();},{signal});
+  menu.addEventListener('toggle',event=>{if(event.newState==='open')positionMenu();},{signal});
+  window.addEventListener('resize',()=>{if(menu.matches(':popover-open'))positionMenu();},{signal});
+  return ()=>{
+    events.abort();
+    menu.hidePopover();
+    button.onclick=null;
+    saturation.oninput=lightness.oninput=null;
+    document.querySelector('#theme-reset').onclick=null;
+    document.querySelector('#theme-previews').replaceChildren();
+  };
 }

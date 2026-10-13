@@ -12,8 +12,10 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Project refactor checks](../.agents/skills/project-refactor-checks/SKILL.md) | Once-per-session review workflow, ordered stages and discussion gates |
 | [Code style](CODE_STYLE.md) | Maintainability, architectural decisions, focused testing and readable markup/styling |
 | [Code comments](CODE_COMMENTS.md) | Source headers and concise function/body comments |
+| [Application ownership](application-architecture.md) | Current state, view/controller and lifecycle boundaries; migration contracts |
 | [Local development](local-development.md) | Source preview, production build and focused verification commands |
 | [Framework refactoring brief](../T_LEVEL_REFACTOR_AGENT_GUIDE.md) | Requested framework roles, preservation requirements and migration process |
+| [Maths framework reuse review](reviews/2026-10-14-maths-framework-reuse.md) | Source-based SvelteKit/Tailwind/daisyUI/Bits UI patterns, required adaptations and proposed migration sequence |
 | [Documentation and refactor readiness review](reviews/2026-10-07-refactor-readiness.md) | Guidance split recommendation, migration risks, prerequisites and baseline evidence |
 | [Exam resource map](exam-resource-map.md) | Task-based routing to sibling exam resources; filename-only inventory |
 | [ESP resource and design guide](esp/source-guide.md) | Converted sources, distilled assessment evidence and Task1/Task2 practice; latest verification in checkpoint |

@@ -14,7 +14,7 @@ A static, self-marking starter page for year 1 Digital Software Development T-Le
 
 | Content | Edit |
 | --- | --- |
-| Card order, graphics, short metadata and button wording | `home()` in [`js/app.js`](js/app.js) |
+| Card order, graphics, short metadata and button wording | `home()` in [`js/entry-pages.js`](js/entry-pages.js) |
 | Card names and uppercase labels | `types` in [`js/bank.js`](js/bank.js); keep bank IDs/order unchanged |
 | Card spacing, artwork size and responsive layout | Home-card rules in [`css/styles.css`](css/styles.css) |
 | Theme colours, fills and border gradients | [`css/tokens.css`](css/tokens.css), following [theme editing](docs/theming.md) |

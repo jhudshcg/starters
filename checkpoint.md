@@ -1,30 +1,21 @@
-# Current checkpoint — 13 October 2026
+# Current work — 14 October 2026
 
-## Current handover — focused CSS cleanup complete
+## Objective
+Carefully study the related Maths app at `/Users/joehudson/Dev/Maths/practice-gcse-maths`: its SvelteKit, Tailwind, daisyUI and Bits UI implementation and docs. Identify reusable approaches and adaptations for the T-Level app. The teacher has confirmed full adoption, semantic classes, token mapping and Bits UI controls as the target. This review does not start the migration.
 
-The teacher approved the four stage-2 CSS corrections and deferred broader `js/app.js` maintainability work until after Svelte/Tailwind migration. Completed the agreed readable formatting, focused header/home/footer consolidation, stylesheet ownership moves, individually verified unused-rule removal and comment/shared-button cleanup. `app.js`, theme tokens, challenges.css and the portable puzzle package were unchanged in this step. Production is rebuilt; no commit or deployment.
+## Plan
+- [x] Read Maths guidance, framework/configuration and migration documentation.
+- [x] Trace actual routing/build, state/lifecycle, styling/theme and UI primitive implementations; distinguish current code from plans.
+- [x] Review relevant verification and compare the patterns against current T-Level ownership and packaging contracts.
+- [x] Record an evidence-linked assessment and concise reuse recommendations; update the development log and handover.
 
-## Skill status
+## Existing work
+The prior application separation is complete and uncommitted; preserve it. Its 199 passing tests and browser evidence are recorded in DEV_LOG.md and docs/application-architecture.md. No repeat build/tests are needed for this review. The prior skill presentation findings and broader test-quality gate remain separate.
 
-- [x] Stage 1: docs evaluated, discussed, corrected and reviewed. Local links/anchors and discoverability pass.
-- [x] Stage 2: CSS evaluated, discussed, corrected and reviewed. Build, equivalence and focused browser checks pass.
-- [x] Stage 3 evaluation: presentation/navigation requirements compared with current CSS/rendering. Findings recorded in DEV_LOG.md.
-- [ ] Stage 3 discussion: two pre-existing gaps remain unapproved — heading focus versus main-region focus, and .9rem question-fragment code versus the 1rem requirement. No fixes were silently included in the CSS refactor.
-- [ ] Stage 4: test-quality evaluation and its own discussion gate. Existing observation: browser-esp.mjs lines 64/70 target obsolete card-body/overlay markup; the earlier session claimed syntax checking only, not a passing full ESP browser suite.
+## Outcome and handover
+See `docs/reviews/2026-10-14-maths-framework-reuse.md` for source evidence and proposed migration slices. The brief now records the confirmed full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI target; linked from the documentation index and current ownership map. Durable review history is in DEV_LOG.md. Maths was read-only and clean at commit `6ac4e021f51b13edcf55ff8c6f59fd656733d00c`; no runtime, dependency, build or deployment changes in this review.
 
-Exact next action: discuss the stage-3 findings before any further review-driven implementation or advancing the ordered process. Preserve the teacher’s deferred app.js/migration boundary. No further CSS cleanup, broad test rerun, migration, commit or deployment is currently needed to finish the approved stage-2 work.
+Verification passed: all 89 local documentation/source link targets exist; `git diff --check` passed. No app suites were rerun for documentation-only edits.
 
-## Verification and reusable evidence
-
-Detailed completed records are in the latest DEV_LOG.md entries. Saved source/build CSS baseline: `/private/tmp/tlevel-css-cleanup-baseline`. Equivalence checks matched all eight themes across 19 home boundary widths, exam/progress/project/Go pages and five question examples, plus menu/focus/hover, guide, submission/reveal and forced-colour states. Explicit selected/correct/incorrect/partial/review fixtures matched at 360/1280px. Navigation passed 360–1280px; all 20 Python guides passed 320/640/1280px. CSS parsing, build/compatibility and whitespace passed. Built CSS decreased by 6,969 bytes. No known remaining failure in this cleanup; no full accessibility or physical-device claim.
-
-Temporary checkers/logs: `/private/tmp/tlevel-css-compare.mjs`, `tlevel-css-compare-remaining.log`, `tlevel-css-state-compare.mjs`, `tlevel-css-navigation.log`, `tlevel-css-guides.log`, `tlevel-css-cleanup-build.log`. They use isolated Chrome 9227 and production preview 8765. Scripts and logs outside the repo are disposable; reuse passing evidence for unchanged sources. Existing uncommitted work from earlier tasks is preserved.
-
-
-## Latest completed request — header subtitle and migration risk check
-
-The teacher clarified that the subject line stays below the logo at its existing y position, extending beneath the top-row controls without wrapping from 360px. Implemented natural content width plus nowrap; corrected the conflicting style-guide sentence and added subtitle assertions to the existing navigation check. Build, navigation, syntax/whitespace and 48 theme/width comparisons pass. Screenshot: `/private/tmp/tlevel-subtitle-360.png`; temporary checker: `/private/tmp/tlevel-subtitle-check.mjs`; build/navigation logs: `/private/tmp/tlevel-subtitle-*.log`.
-
-The requested current migration-risk assessment is recorded in the latest DEV_LOG entry: DOM/state/listener ownership, special production/staged-build contract, history/recall/persistence identities, eight-theme and breakpoint behaviour, portable puzzle mounting, historical docs and stale test selectors. The 7 October production-test rejection is already corrected in current source; do not report it as a current failure. No migration, runtime refactor or additional review-driven fix was undertaken.
-
-Exact next action: respond to the teacher’s choice of follow-up. Before migration implementation, agree architecture/state ownership and a current acceptance matrix. Existing skill stage-3/4 gates remain pending; broader app.js work remains deferred. No further checks are needed for this completed subtitle correction unless source or requirements change.
+## Next action
+Discuss route compatibility, static build/bank integration and application-session lifetime using the review's proposed sequence before implementing the migration. The prior heading-focus/small-code findings and broader refactor-checks test-quality gate remain pending. Do not repeat the completed app suites solely for these documentation edits.

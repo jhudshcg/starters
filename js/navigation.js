@@ -1,9 +1,10 @@
 /**
  * Purpose: Keep visible app pages and their saved state in browser history.
  * Main contents: guarded navigation, Back/Forward restoration and entry snapshots.
- * Used by: app.js. Uses: History API callbacks. Libs: none.
+ * Used by: application.js. Uses: History API callbacks. Libs: none.
  */
 export function createNavigation({beforeLeave,capture,restore,render}){
+  const events=new AbortController();
   let index=history.state?.pageIndex??0;
   let currentHash=location.hash||'#home';
   let returning=false;
@@ -17,7 +18,9 @@ export function createNavigation({beforeLeave,capture,restore,render}){
   }
   /** Navigate after confirmation. Replacement is reserved for canonical URLs and timers. */
   async function go(hash,{replace=false,guard=true,draw=true,snapshot=true,state={}}={}){
+    if(events.signal.aborted)return false;
     if(guard&&!await beforeLeave())return false;
+    if(events.signal.aborted)return false;
     if(snapshot)remember();
     if(hash!==currentHash){
       if(!replace)index++;
@@ -31,11 +34,13 @@ export function createNavigation({beforeLeave,capture,restore,render}){
     if(returning){returning=false;return;}
     const target=event.state?.pageIndex??index+1;
     if(!await beforeLeave()){
+      if(events.signal.aborted)return;
       returning=true;history.go(index-target);return;
     }
+    if(events.signal.aborted)return;
     index=target;currentHash=location.hash||'#home';
     restore(history.state);
     await render();
-  });
-  return {go,remember};
+  },{signal:events.signal});
+  return {go,remember,dispose:()=>events.abort()};
 }

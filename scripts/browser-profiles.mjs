@@ -72,13 +72,15 @@ try{
  const weeklyMobile=await send('Page.captureScreenshot',{format:'png'});await writeFile('/private/tmp/starters-weekly-mobile.png',Buffer.from(weeklyMobile.data,'base64'));
  await evaluate(`document.querySelector('#priority-level').value='subtopic';document.querySelector('#priority-level').dispatchEvent(new Event('change'))`);
  assert.ok(await evaluate('document.querySelectorAll(".priority-red").length>0'));
- await evaluate(`{const key='dsd-starters-v1:profile:Joe%20Hudson',data=JSON.parse(localStorage.getItem(key));data.history.forEach(r=>r.finished=Date.now()-16*86400000);localStorage.setItem(key,JSON.stringify(data));}`);
- await send('Page.reload');await until('Boolean(document.querySelector(".priority-stale"))');
+ // Advance the display clock: reload/pagehide deliberately saves the live profile over storage edits.
+ await evaluate(`window.__staleNow=Date.now;Date.now=()=>window.__staleNow()+16*86400000;document.querySelector('#nav-progress').click()`);
+ await until('Boolean(document.querySelector(".priority-stale"))');
  await evaluate('document.querySelector(".priority-stale").scrollIntoView()');
  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:false});
  await evaluate('document.querySelector(".priority-stale").scrollIntoView()');
  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'));
  const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile('/private/tmp/starters-progress-profiles.png',Buffer.from(shot.data,'base64'));
+ await evaluate('Date.now=window.__staleNow');
  // Advance the app clock, not real time, to exercise idle/active/background intervals.
  await click('#switch-profile');await name('Timing Test');await until('!document.querySelector("dialog")');
  await evaluate('location.hash="#progress"');await until('document.querySelectorAll(".recommended-sets button").length===3');

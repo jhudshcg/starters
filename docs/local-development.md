@@ -44,7 +44,9 @@ Implementation map:
 - `js/revision.js`: missing/fresh/stale ranking and persistent recommendation batches.
 - `js/weekly-progress.js`: local calendar-week summaries and exact per-set percentage means.
 - `js/practice-time.js`: interaction flag/poll clock, engaged-time validation and backup filename.
-- `js/app.js`: UI, activity lifecycle, profile restore and export handlers.
+- `js/application.js`: startup and routes; see [application ownership](application-architecture.md) for the view/controller boundaries.
+- `js/profile-session.js`: current profile, restore and persistence; `js/progress-page.js`: progress display and export controls.
+- `js/practice-controller.js`: attempt actions, answer events and timers; `js/activity-view.js` and `js/question-view.js`: markup.
 - `css/tokens.css`: `--missing-*` and `--priority-*` dominant-theme blends; question-option surface blends stay separate.
 
 When a functional change warrants checks, focused unit files are `tests/practice-time.test.js`, `tests/weekly-progress.test.js`, `tests/profiles-revision.test.js` and `tests/repeat-progress.test.js`. `scripts/browser-profiles.mjs` checks profiles, restore/export, recommendations, weekly UI and simulated inactivity against an isolated Chrome debugging session on port 9227. **It clears storage in that test browser**; never run it against the user’s normal browser/profile. Its default preview URL is port 8765. Temporary `/private/tmp` scripts/screenshots mentioned in the checkpoint are disposable and may not survive to the next session.
@@ -85,3 +87,7 @@ Browser scripts use the dedicated debugging profile on 9227 and a production ser
 `node --test tests/practice-selection.test.js tests/discovery-guide.test.js tests/repeat-progress.test.js tests/profiles-revision.test.js tests/practice-time.test.js tests/unsent-answers.test.js` covers the affected selection, guide, progress and leave-warning rules. After building, run `node scripts/browser-navigation.mjs` against isolated Chrome on 9227 and production on 8765. It clears only that test browser's storage and checks 360–1280px home/header layout, empty and two-hour recalled focus, Core/ESP subsection recall, reload, Back/Forward/cancellation, puzzle picker/breadcrumbs, projects, FAQ and search history. Screenshots go to `/private/tmp/tlevel-home-360.png` and `/private/tmp/tlevel-home-1280.png`.
 
 The Python guide browser check now verifies that general introductions preserve independent evidence; specific hints still count as assistance. Run browser scripts serially, without overlapping a build. `js/navigation.js` owns history entries and attempt snapshots; `js/practice-selection.js` owns two-hour recall separately from browser-history restoration.
+
+## Application lifecycle checks
+
+For changes to shared startup, controllers or disposal, use the [application ownership map](application-architecture.md). `node scripts/browser-app-lifecycle.mjs` runs against the same isolated Chrome/production setup and clears that test profile. It disposes and remounts the app twice, checks that polling/history/visibility/form listeners are removed, verifies eight theme choices, and retains an entered answer through remount and cancelled Back. Await each disposer before remounting. `node --test tests/navigation-lifecycle.test.js` checks a pending leave decision cannot navigate after disposal.

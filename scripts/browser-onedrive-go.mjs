@@ -30,6 +30,8 @@ try{
  await send('Page.reload');await until('Boolean(document.querySelector("#submit-result"))');await evaluate('location.hash="#progress"');await until('Boolean(document.querySelector("[data-file-status]"))');
  await evaluate(`(async()=>{window.__root=await navigator.storage.getDirectory();window.__file=await (await __root.getDirectoryHandle('T-Level')).getFileHandle(${JSON.stringify(name)});window.__originalWrite=FileSystemFileHandle.prototype.createWritable;FileSystemFileHandle.prototype.createWritable=async function(){throw Error('Simulated disk failure');};})()`);
  await click('.recommended-sets button');await until('Boolean(document.querySelector("#submit"))');await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
+ // File controls now live on My progress, rather than below question sets.
+ await click('#nav-progress');await until('Boolean(document.querySelector("[data-file-status]"))');
  await until('document.querySelector("[data-file-status]").textContent.includes("Simulated disk failure")');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:File%20Browser%20Test")).history.length'),2);
  assert.equal(JSON.parse(await evaluate('(async()=>await (await __file.getFile()).text())()')).history.length,1);

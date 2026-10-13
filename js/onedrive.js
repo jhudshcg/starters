@@ -1,7 +1,7 @@
 /**
  * Purpose: Connect each local profile to a verified JSON file in its synced OneDrive folder.
  * Main contents: controls, reviewed imports, serial automatic saves and permission recovery.
- * Used by: app.js. Uses: progress-file, progress-transfer and profile identity. Libs: none.
+ * Used by: profile-session.js. Uses: progress-file, progress-transfer and profile identity. Libs: none.
  */
 import {backupJSON} from './progress-transfer.js';
 import {chooseProgressFile,learnerFileLink,readProgressFile,saveProgressFile,withProgressFileLock} from './progress-file.js';
@@ -87,6 +87,12 @@ export function createOneDrive({current,saveLocal,restore,download,notify}) {
   }
   return {
     flush,
+    // Finish queued writes before another application instance owns this profile.
+    async dispose(){
+      clearTimeout(timer);
+      await Promise.all([...queues.values()]);
+      await flush(current());
+    },
     changed(profile=current()){
       clearTimeout(timer);
       // Keep the outgoing profile object in the callback when the user switches profiles.
