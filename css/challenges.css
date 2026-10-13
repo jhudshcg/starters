@@ -27,6 +27,5 @@
 
 /* Keep dense answers readable on phones by giving puzzle cards more of the viewport. */
 @media (max-width: 440px) {
-  main:has(.questions .puzzle-controls) { padding-inline: .5rem; }
   .question:has(.puzzle-controls) { padding-inline: .5rem; }
 }

@@ -43,9 +43,9 @@ Status: replacement content implemented for local testing; teacher difficulty re
 
 ## Difficulty and scope
 
-A starter should sustain 5–15 minutes of thought. Use linked deductions, interacting constraints, planning or systematic enumeration. A larger grid, longer calculation or more clicks alone does not meet this requirement. Each family needs five distinct puzzles, with meaningful variations; renamed clues or rotated copies do not count as five distinct puzzles. Timing remains an estimate until classroom trials.
+A starter should sustain 5–15 minutes of thought. Use linked deductions, interacting constraints, planning or systematic enumeration. A larger grid, longer calculation or more clicks alone does not meet this requirement. The original baseline required five distinct puzzles per family, with meaningful variations; the [current bank requirements](#current-bank--28-september-2026) supersede that minimum. Renamed clues or rotated copies do not count as distinct puzzles. Timing remains an estimate until classroom trials.
 
-The implemented bank includes the example types, numerical constraints and sequences, all 30 classic maths problems, and 50 Go problems. The maths and Go totals override the five-per-type baseline.
+The initial bank included the example types, numerical constraints and sequences, all 30 classic maths problems, and 50 Go problems. These historical totals and the original brief below are superseded by the current bank requirements above; interaction and correctness rules still apply.
 
 | Selectable subtype | Five-puzzle production brief | Interaction and correctness |
 | --- | --- | --- |
@@ -176,7 +176,7 @@ This historical expansion originally used tree depth for Go. That method is supe
 
 The puzzle page has a Challenge selector, initially Mixed challenge. Changing it requests a new three-puzzle set within the current subtype. New set and New set in this focus respect the selection; Get new permutation preserves the exact templates. Each puzzle displays its own level. Switching to a subtype without the selected level falls back to Mixed challenge. A shared code always opens its exact questions regardless of the saved filter. Cancelling replacement preserves the previous activity and filter.
 
-The bank has **50 puzzles per subtype**, including the existing 50 Go problems. Counts mean independently addressable puzzles, not 50 different mechanics. The sequence collection explicitly reuses named rule families with different values; grid puzzles have different checked layouts/constraints. Existing variations remain. New fixed grid/geometry boards do not claim artificial permutations; their permutation button is disabled. Sequences and new maths problems have five variations each.
+At this 20 September milestone, the bank had **50 puzzles per subtype**, including the existing 50 Go problems. This is a historical count; use the [current bank section](#current-bank--28-september-2026) and its generated inventory for current coverage. Counts mean independently addressable puzzles, not 50 different mechanics. The sequence collection explicitly reuses named rule families with different values; grid puzzles have different checked layouts/constraints. Existing variations remain. New fixed grid/geometry boards do not claim artificial permutations; their permutation button is disabled. Sequences and new maths problems have five variations each.
 
 Generation: `python3 scripts/expand-puzzles.py` appends deterministic boards and runs `scripts/refine-puzzles.py` to apply scaffolding and remove tangram silhouettes equivalent under translation, rotation or reflection. `python3 scripts/validate-puzzles.py` checks the served boards independently. Sudoku uniqueness is required at every level; stretch boards need not be solvable solely with singles. Multiple valid paths and tangram arrangements remain accepted.
 

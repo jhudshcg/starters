@@ -43,7 +43,7 @@ Adjust the percentages in the single `@supports` block, then rerun the theme che
 
 ## Decoration
 
-Page fill uses `--page` plus optional `--page-image`. Cards use `--card-image`, `--card-border-image`, `--card-border-color`, `--card-border-width`, `--card-border-style`, `--card-radius` and `--card-shadow`. These cover home/activity cards, question cards, progress panels/statistics, set toolbars and note panels. Layout and artwork positioning are unchanged.
+Page fill uses `--page` plus optional `--page-image`. Cards use `--card-image`, `--card-border-image`, `--card-mobile-border-image`, `--card-border-color`, `--card-border-width`, `--card-border-style`, `--card-radius` and `--card-shadow`. These cover home/activity cards, question cards, progress panels/statistics, set toolbars and note panels. Layout and artwork positioning are unchanged.
 
 The base Sage/Forest decoration is solid, with a 1px border, 16px radius and no shadow. Blue/Rose override it as listed above. To change a preset, edit its existing block (or the base for defaults), for example:
 
@@ -63,3 +63,5 @@ Check all eight themes, selected/hover/keyboard-focus and marked states, and a n
 ## Shared puzzle presentation
 
 Puzzle board geometry and default appearance now live in `packages/puzzles/styles/`. `css/challenges.css` imports them and maps the app's current colours to `--puzzle-*` properties, keeping all eight app themes. Type-card art and tangram piece colours come from `packages/puzzles/graphics.js`. Edit shared presentation there; keep question-card layout and navigation styles in this app. See the [library markup and styling contract](../packages/puzzles/styles/README.md) for consumer overrides and SVG limitations.
+
+Question-page cards at widths ≤440px use `--card-mobile-border-image` for their top/bottom borders: `none` for solid palettes, a 90-degree main-to-accent gradient for Rose/Berry. The ordinary 135-degree border remains at wider widths. Home’s lower note panels use `--line` and a solid `--surface` fill to remain quieter than activity choices.

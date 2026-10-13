@@ -7,7 +7,9 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Development log](../DEV_LOG.md) | Chronological work history, files, decisions and fixes; detailed historical records retained |
 | [Feature ideas](../feature_ideas.md) | Persistent original ideas; developed plans and tasks are linked separately |
 | [Checkpoint](../checkpoint.md) | Current work plan, state, unresolved issues and next actions |
+| [Student experience and durable shared codes](decisions/2026-09-student-experience-and-shared-codes.md) | Adopted teacher decisions and rationale for review access, themes, reports and shared codes |
 | [AGENTS.md consolidation record](decisions/2026-10-agent-guidance-consolidation.md) | Requirement ownership, preserved wording and explicitly superseded proposals |
+| [Project refactor checks](../.agents/skills/project-refactor-checks/SKILL.md) | Once-per-session review workflow, ordered stages and discussion gates |
 | [Code style](CODE_STYLE.md) | Maintainability, architectural decisions, focused testing and readable markup/styling |
 | [Code comments](CODE_COMMENTS.md) | Source headers and concise function/body comments |
 | [Local development](local-development.md) | Source preview, production build and focused verification commands |
@@ -28,6 +30,7 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Puzzle specification](spec-puzzles.md) | Puzzle families, interactions, scoring and examples |
 | [CA1–CA2 coverage report](coverage-ca1-ca2.md) | Generated subelement counts and remaining gaps |
 | [Exam expansion review](exam-depth-review.md) | Source calibration, distinct angles and remaining gaps for slots 126–148 |
+| [Comparison-question review](reviews/2026-09-28-comparison-questions.md) | Authored choice-and-reason questions, source evidence, checks and pending teacher review |
 | [Exam term review](exam-term-review.md) | Context clarifications, synonyms, linked qualifiers and marking checks |
 | [Exam specification](spec-exam.md) | Curriculum coverage, marking and examples |
 | [Scaffolded extended-response plan](extended-response-plan.md) | Proposed discuss/evaluate answer builder, bounded marking, scenario links and pilot gates |
@@ -35,5 +38,10 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Python specification](spec-python.md) | Challenge formats, variations and examples |
 | [Style guide](style-guide.md) | Shared visual and interaction rules |
 | [Implementation plan](implementation-plan.md) | Decisions, delivery stages and acceptance checks |
+
+## Historical references
+
+- [Original CA1–CA2 question draft](ca1-ca2-question-draft.md): superseded authoring draft, retained for provenance.
+- [14 September starter review](reviews/2026-09-14-starter-review.md): early assessment and recommendations; later adopted decisions take precedence.
 
 The examples are original draft content, not approved exam-board questions. They define behaviour and need content review before publication. No full curriculum coverage is claimed by this draft.

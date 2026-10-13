@@ -79,3 +79,9 @@ Reviewed the Maths repository's `maths-efficient-development` skill and cached v
 | Documentation only | Check changed local links and whitespace; no rebuild or browser suite |
 
 Browser scripts use the dedicated debugging profile on 9227 and a production server on 8765, and clear its test storage. Run them serially. Do not overlap a browser run with production-build tests, which replace `live/`. Keep temporary logs/screenshots outside the repo. A future cached runner should hash each job's relevant sources, tests, configuration and runtime identity, include additions/deletions, and cache only successes. Maintain an explicit conservative dependency map and an opt-in force mode; no watcher is started implicitly.
+
+## Header, practice entry and browser navigation
+
+`node --test tests/practice-selection.test.js tests/discovery-guide.test.js tests/repeat-progress.test.js tests/profiles-revision.test.js tests/practice-time.test.js tests/unsent-answers.test.js` covers the affected selection, guide, progress and leave-warning rules. After building, run `node scripts/browser-navigation.mjs` against isolated Chrome on 9227 and production on 8765. It clears only that test browser's storage and checks 360–1280px home/header layout, empty and two-hour recalled focus, Core/ESP subsection recall, reload, Back/Forward/cancellation, puzzle picker/breadcrumbs, projects, FAQ and search history. Screenshots go to `/private/tmp/tlevel-home-360.png` and `/private/tmp/tlevel-home-1280.png`.
+
+The Python guide browser check now verifies that general introductions preserve independent evidence; specific hints still count as assistance. Run browser scripts serially, without overlapping a build. `js/navigation.js` owns history entries and attempt snapshots; `js/practice-selection.js` owns two-hour recall separately from browser-history restoration.

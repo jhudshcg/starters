@@ -1,6 +1,6 @@
-# Task 1 formula practice — outline for review
+# Task 1 formula practice — retained design outline
 
-28 September 2026. **Design proposal; not yet implemented.** Two three-question sets, five coordinated variations each. Each question is independent and takes at most five minutes including reading. These extend the accepted [Task1 requirements](task-1-designs.md#required-addition--excel-formula-practice), rather than replacing existing numerical practice. Starter points are not official ESP marks.
+28 September 2026 design; status reconciled 13 October 2026. **Implemented; teacher subject review and classroom timing remain pending.** See the [implementation record](../../DEV_LOG.md#2026-09-28--reconcile-readme-and-current-status). The original design and integration plan below are retained as evidence, not a new implementation task. Two three-question sets, five coordinated variations each. Each question is independent and takes at most five minutes including reading. These extend the accepted [Task1 requirements](task-1-designs.md#required-addition--excel-formula-practice), rather than replacing existing numerical practice. Starter points are not official ESP marks.
 
 ## Evidence and intended learning
 
@@ -57,10 +57,10 @@ Keep each question's role stable. Where copy direction changes, redraw a small i
 - Use a constrained parser and dependency/normal-form checks where feasible; exercise changed cell values, first/last rows, duplicate staff, no matches and copy destinations. A finite set of matching outputs alone is not proof of arbitrary formula equivalence. Unsupported constructions must be labelled **Needs review**, with a supported answer route, rather than claimed mathematically wrong. Do not feed formulas to the existing Python-fragment marker.
 - Separate diagnosis, formula and independent-check points. Feedback should identify the fault, show a counterexample if useful and allow retry. Reveal gives a correct formula, accepted alternative and brief numerical check. Explicitly document each variation's accepted structure and rejected characteristic mistakes.
 
-## Integration and completion plan after outline review
+## Original integration and completion plan (historical)
 
 Preserve all existing30 ESP question slots and five variations. Add six new permanent slots30–35, subject to a fresh availability check. Keep these two sets under the existing costing/reconciliation skill families: T1.2 and T1.5. The current selector couples recipe IDs to exactly three questions, so introduce distinct compatible recipe IDs such as T1.2F/T1.5F with explicit display names rather than appending six questions to an existing recipe or replacing published variations. No sixth broad Task1 learning objective is implied.
 
 Implement the formula marker separately from existing numerical/code marking. Independently recalculate all30 question variations and expected copy destinations with installed spreadsheet tooling where available, plus changed-value reference checks. Test equivalent and faulty formulas, unsupported syntax, progress/reload, timer submission, sharing and keyboard/mobile use. Preserve review states in backups if unsupported formulas need review. Update identities, validate and build at functional boundaries. If reliable equivalent-formula marking exceeds this slice, discuss a constrained-token first release rather than silently using exact-string marking.
 
-**Review requested:** the learning progression, six question roles and mix of token completion/short formula repair. Timing remains a teacher/student trial estimate. No runtime changes or library installation have been made for this proposal.
+**Review still required:** teacher subject review of the learning progression, six question roles and mix of token completion/short formula repair. Timing remains a teacher/student trial estimate; implementation does not establish classroom suitability.

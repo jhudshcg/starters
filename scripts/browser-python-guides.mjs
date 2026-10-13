@@ -9,9 +9,11 @@ const ws=new WebSocket(pages.find(p=>p.type==='page').webSocketDebuggerUrl);awai
 let id=0;const pending=new Map();ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(m.error.message)):p.resolve(m.result);}};
 const send=(method,params={})=>new Promise((resolve,reject)=>{pending.set(++id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));});
 const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
-const until=async expression=>{for(let n=0;n<100;n++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,50));}throw Error('Timed out '+expression+' '+JSON.stringify(await evaluate('({open:document.querySelector("[data-python-guide]")?.open,focus:document.activeElement?.outerHTML,profile:localStorage.getItem("dsd-starters-v1:profile:Guide%20Test")})')));};
+const until=async expression=>{for(let n=0;n<100;n++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,50));}throw Error('Timed out '+expression+' '+JSON.stringify(await evaluate('({hash:location.hash,heading:document.querySelector("h1")?.textContent})')));};
 const profile='JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Guide%20Test"))';
 const open=async entries=>{
+ // Pace the 60 synthetic page changes below Chrome's history flood limit.
+ await new Promise(resolve=>setTimeout(resolve,500));
  const set=resolve({version:BANK_VERSION,type:2,entries,minutes:null});
  await evaluate(`location.hash='#set=${set.code}'`);await until(`document.querySelector('#display-code')?.textContent==='${set.code}'`);return set;
 };
@@ -28,13 +30,14 @@ try{
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',text:'\r',unmodifiedText:'\r',windowsVirtualKeyCode:13});
  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
  await until(`${profile}.active.pythonGuidesOpen?.lists===true`);
- assert.equal(await evaluate(`${profile}.active.hints[63]`),true);
- assert.equal(await evaluate(`${profile}.active.hints[64]`),true);
+ assert.equal(Boolean(await evaluate(`${profile}.active.hints[63]`)),false);
+ assert.equal(Boolean(await evaluate(`${profile}.active.hints[64]`)),false);
  await send('Page.reload');await until('Boolean(document.querySelector("[data-python-guide=lists][open]"))');
  await evaluate('document.querySelector("[data-python-guide=lists] summary").click()');await until(`${profile}.active.pythonGuidesOpen.lists===false`);
- assert.equal(await evaluate(`${profile}.active.hints[63]`),true,'Closing a guide must retain assistance');
+ assert.equal(Boolean(await evaluate(`${profile}.active.hints[63]`)),false,'Guides must not add question assistance');
  await evaluate('document.querySelector("#submit").click()');await until('Boolean(document.querySelector("#submit-result"))');
- assert.match(await evaluate('document.querySelector("#submit-result").textContent'),/Assisted practice/);
+ assert.doesNotMatch(await evaluate('document.querySelector("#submit-result").textContent'),/Assisted practice/);
+ assert.ok(await evaluate(`${profile}.history.at(-1).partScores.every(part=>part.firstMax>0)`),'Guide reading retains independent evidence');
  await open([{slot:67,variation:0}]);
  await evaluate('document.querySelector("#submit").click()');await until('Boolean(document.querySelector("#submit-result"))');
  await evaluate('document.querySelector("[data-python-guide=algorithms] summary").click()');await until(`${profile}.active.pythonGuidesOpen.algorithms===true`);
@@ -52,5 +55,5 @@ try{
  await send('Emulation.setDeviceMetricsOverride',{width:320,height:1000,deviceScaleFactor:1,mobile:false});await open([{slot:63,variation:1}]);
  await evaluate('document.querySelector("[data-python-guide]").open=true;document.querySelector("[data-python-guide]").scrollIntoView()');
  const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile('/private/tmp/tlevel-python-guide-mobile.png',Buffer.from(shot.data,'base64'));
- console.log('Python guides passed: 20 focuses at 320/640/1280px; keyboard disclosure, persistence, matching assistance, review and Maths link.');
+ console.log('Python guides passed: 20 focuses at 320/640/1280px; keyboard disclosure, persistence, independent progress, review and Maths link.');
 }finally{ws.close();}

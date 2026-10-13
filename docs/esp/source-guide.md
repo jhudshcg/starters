@@ -1,10 +1,10 @@
 # ESP resource and design guide
 
-Updated 28 September 2026. Task 1/2 implementation is authorised and underway. Use the latest checkpoint for verification status. Read the [distilled assessment conclusions](assessment-distilled.md), [close-reading ledger](close-reading-ledger.md) and [activity evidence map](activity-evidence.md) before reopening full sources.
+Updated 13 October 2026. Task 1/2 practice, including six Excel-formula questions, is implemented. Teacher subject review and classroom timing remain pending. See the [implementation record](../../DEV_LOG.md#2026-09-28--reconcile-readme-and-current-status) for completed verification and [planned work](../planned-work.md) for remaining tasks. Read the [distilled assessment conclusions](assessment-distilled.md), [close-reading ledger](close-reading-ledger.md) and [activity evidence map](activity-evidence.md) before reopening full sources.
 
 | Work | Read first | Open next only as needed |
 | --- | --- | --- |
-| Resume the programme | [Current checkpoint](../../checkpoint.md), with [ESP development history](../../DEV_LOG.md#2026-09-28) | Outstanding step and its named files |
+| Resume the programme | [Current checkpoint](../../checkpoint.md), with [ESP development history](../../DEV_LOG.md#2026-09-28--reconcile-readme-and-current-status) | Outstanding step and its named files |
 | Find a converted resource | [Conversion register](conversion-register.md) | One relevant booklet, scheme section, commentary or workbook guide |
 | Review assessment expectations | [Repeatable review process](review-process.md) | [Saved evidence review](evidence-review.md), then specific source pages |
 | Discuss starter coverage and marking | [Activity designs](activity-designs.md) | Relevant task detail below |

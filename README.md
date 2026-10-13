@@ -10,6 +10,17 @@ A static, self-marking starter page for year 1 Digital Software Development T-Le
 - [Planned work](docs/planned-work.md): outstanding implementation tasks.
 - [Feature and requirement docs](docs/README.md): specialist reference material.
 
+## Editing the home cards
+
+| Content | Edit |
+| --- | --- |
+| Card order, graphics, short metadata and button wording | `home()` in [`js/app.js`](js/app.js) |
+| Card names and uppercase labels | `types` in [`js/bank.js`](js/bank.js); keep bank IDs/order unchanged |
+| Card spacing, artwork size and responsive layout | Home-card rules in [`css/styles.css`](css/styles.css) |
+| Theme colours, fills and border gradients | [`css/tokens.css`](css/tokens.css), following [theme editing](docs/theming.md) |
+
+These are navigation cards; editing them does not change the question banks. Preview source changes with `npm run dev`; rebuild `live/` before checking production.
+
 ## Try it
 
 Open [the local preview](http://127.0.0.1:5173) in VS Code’s integrated browser. If needed, start the server from this directory:
@@ -142,4 +153,4 @@ Progress can now save to a linked JSON file in a locally synced OneDrive folder.
 
 The Go practice board is available from Activities and Go puzzles, with optional clocks, area counting and on-demand GNU Go estimates. See [integration notes](docs/go-integration.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
-Coding practice has optional, collapsed guides for all 20 Python focuses, with short examples and two search/sort diagrams. Opening a relevant guide before submission counts as assisted practice. Ten new search/sort/list tasks and the remaining six-per-focus gaps are recorded in the [Python review](docs/reviews/2026-10-13-python-sequences.md). Classic maths puzzles are hidden from discovery; the site links to [GCSE Maths practice](https://joe312213.github.io/practice-gcse-maths/), while existing puzzle codes still work.
+Coding practice has optional, collapsed guides for all 20 Python focuses, with short examples and two search/sort diagrams. Reading these introductions does not mark questions as assisted or reduce independent progress credit; question-specific hints still do. Programming also links to a separate page of 18 project ideas. Ten new search/sort/list tasks and the remaining six-per-focus gaps are recorded in the [Python review](docs/reviews/2026-10-13-python-sequences.md). Classic maths puzzles are hidden from discovery; the site links to [GCSE Maths practice](https://joe312213.github.io/practice-gcse-maths/), while existing puzzle codes still work.

@@ -30,9 +30,9 @@ export const pythonGuides={
     {text:'A slice excludes its stop index. + concatenates lists (joins their items).',code:'values = [10, 20, 30, 40]\nprint(values[1:3])\nprint(values[:2] + [50])',output:'[20, 30]\n[10, 20, 50]'},
     {text:'append adds one item; extend adds each item from a collection. pop removes and returns an item. Using append and pop at the end gives a last in, first out (LIFO) stack: append performs the push operation.',code:'items = [10]\nitems.append(20)\nitems.extend([30, 40])\nlast = items.pop()\nprint(last)\nprint(items)',output:'40\n[10, 20, 30]'},
     {text:'insert adds before an index; remove deletes the first matching value. pop(index) removes by position. A missing remove value raises ValueError; an invalid pop index raises IndexError.',code:'items = [10, 20, 10]\nitems.insert(1, 30)\nitems.remove(10)\nprint(items.pop(1))\nprint(items)',output:'20\n[30, 10]'}]},
-  records:{title:'Records: keep related fields together',intro:'A record groups named fields about one item, such as a learner. Here a Python dictionary represents a record: keys name the fields and values hold their data.',examples:[
+  records:{title:'Dictionaries: look up values by key',intro:'A dictionary stores key–value pairs. Use a key to look up or update its value. A dictionary can also group fields about one item, such as a learner.',examples:[
     {text:'Read or update a field using its key, rather than a numeric position.',code:'learner = {"name": "Amina", "score": 7}\nlearner["score"] += 2\nprint(learner["name"])\nprint(learner["score"])',output:'Amina\n9'},
-    {text:'A list can hold several records. The loop variable refers to one record at a time.',code:'jobs = [{"id": 4, "done": True},\n        {"id": 5, "done": False}]\nfor job in jobs:\n    if not job["done"]:\n        print(job["id"])',output:'5'}]},
+    {text:'A list can hold several dictionaries. The loop variable refers to one dictionary at a time.',code:'jobs = [{"id": 4, "done": True},\n        {"id": 5, "done": False}]\nfor job in jobs:\n    if not job["done"]:\n        print(job["id"])',output:'5'}]},
   'boolean logic':{title:'Boolean logic: combine conditions',intro:'Boolean expressions evaluate to True or False. and requires both conditions; or requires at least one; not reverses a truth value.',examples:[
     {text:'Combine lower and upper bounds to check a range, including both endpoints.',code:'age = 17\nhas_pass = False\nprint(age >= 16 and age <= 18)\nprint(age < 16 or has_pass)\nprint(not has_pass)',output:'True\nFalse\nTrue'},
     {text:'Short circuit evaluation skips the right-hand side of and when the left is false. This prevents division by zero here.',code:'count = 0\ntotal = 12\nif count > 0 and total / count >= 5:\n    print("Target met")\nelse:\n    print("Not met")',output:'Not met'}]},
@@ -76,7 +76,7 @@ export function pythonGuidesHTML(questions,opened={}){
     const guide=pythonGuides[key];
     return `<details class="algorithm-guide" data-python-guide="${esc(key)}" ${opened[key]?'open':''}>
       <summary>${esc(guide.title)}</summary>
-      <p class="muted">Before submission, opening this guide marks matching questions in this set as assisted practice.</p>
+      <p class="muted">Read this introduction whenever you need it. Your challenge answers still count towards progress.</p>
       <p>${esc(guide.intro)}</p>
       ${guide.examples.map(example=>`<p>${esc(example.text)}</p><pre><code>${esc(example.code)}</code></pre><p class="guide-output-label">Output:</p><pre class="guide-output"><samp>${esc(example.output)}</samp></pre>`).join('')}
     </details>`;

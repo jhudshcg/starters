@@ -45,7 +45,8 @@ try{
  await evaluate('localStorage.removeItem("dsd-starters-v1")');await send('Page.reload');await until('Boolean(document.querySelector("#code-form"))');
  assert.equal(await evaluate('document.querySelectorAll("[data-start]").length'),3);
  if(process.argv.includes('--navigation-only')){
-  await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until('Boolean(document.querySelector("#esp-recipe"))');
+  await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until('document.querySelector("#focus")?.value===""');
+  await evaluate('{const s=document.querySelector("#focus");s.value="task1";s.dispatchEvent(new Event("change"));}');await until('Boolean(document.querySelector("#esp-recipe"))');
   await evaluate('{const s=document.querySelector("#esp-recipe");s.value="T1.4";s.dispatchEvent(new Event("change"));}');
   await until('document.querySelector("#esp-recipe")?.value==="T1.4" && Boolean(document.querySelector("textarea"))');
   const before=await evaluate('document.querySelector("#display-code").textContent');

@@ -81,6 +81,7 @@
   --page-image: none;
   --card-image: linear-gradient(var(--surface), var(--surface));
   --card-border-image: none;
+  --card-mobile-border-image: none;
   --card-border-color: var(--line);
   --card-border-width: 1px;
   --card-border-style: solid;
@@ -265,6 +266,7 @@
 }
 :where(:root,.theme-swatch)[data-palette=rose] {
   --card-border-image: linear-gradient(135deg, var(--main), var(--accent));
+  --card-mobile-border-image: linear-gradient(90deg, var(--main), var(--accent));
   --card-border-color: transparent;
   --card-border-width: 2px;
 }

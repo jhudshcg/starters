@@ -11,7 +11,7 @@ const cells=(values,selected=-1)=>`<div class="algorithm-row">${values.map((valu
 export function algorithmGuideHTML(open=false){
  return `<details class="algorithm-guide" id="algorithm-guide" data-python-guide="algorithms" ${open?'open':''}>
   <summary>Search and sort guide</summary>
-  <p class="muted">Before submission, opening this guide marks the search/sort questions in this set as assisted practice.</p>
+  <p class="muted">Read this introduction whenever you need it. Your challenge answers still count towards progress.</p>
   <h2>Searching: find a target value</h2>
   <p><strong>Linear search</strong> checks items one by one until it finds a match or reaches the end. It works on unsorted lists. A version that stops at its first match can finish after one comparison; a missing target requires checking every item.</p>
   <pre><code>${algorithmExamples[0].code}</code></pre><p>Output: <samp>1</samp>, the index of the first match. Here <code>-1</code> means no match was found; do not use that sentinel as a list index.</p>

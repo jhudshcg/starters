@@ -1,6 +1,9 @@
+import {createNavigation} from './navigation.js';
+import {rememberSelection,recalledSelection} from './practice-selection.js';
+import {faqHTML} from './faq.js';
 import {pythonProjectsHTML} from './python-projects.js';
-import {pythonGuidesHTML,pythonGuideKey} from './python-guides.js';
-import {mathsPracticeURL,discoverableFocuses,discoverableQuestion} from './activity-discovery.js';
+import {pythonGuidesHTML} from './python-guides.js';
+import {discoverableFocuses,discoverableQuestion} from './activity-discovery.js';
 import {mountGoPractice} from './go-practice.js';
 import {createOneDrive} from './onedrive.js';
 import {backupJSON,prepareBackup} from './progress-transfer.js';
@@ -62,6 +65,7 @@ $('#report-issue').onclick=()=>{
 let data={schema:1,active:null,history:[]};
 let storageOK=true;
 let toastTimer;
+let navigation=null;
 const oneDrive=createOneDrive({current:()=>data,saveLocal:profile=>{try{saveProfile(profile);}catch(error){storageError();throw error;}},restore:restoreProgress,notify:toast,download:()=>download(backupJSON(data),progressFilename(data),'application/json')});
 async function restoreProgress(raw,review=false){
  const {merged,added,duplicate,switching}=await prepareBackup(raw,data);
@@ -78,7 +82,7 @@ let priorityLevel='topic';
 let filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
 function storageError(){storageOK=false;$('#storage-warning').hidden=false;$('#storage-warning').textContent='Progress could not be saved on this browser. You can keep practising. Export a backup from My progress to keep your results.';}
 try{data=profiles().current?loadProfile(profiles().current):loadStorage();if(data.username&&!data.profileId)data=activateProfile(data);if(data.active?.migratedCodeFrom){if(location.hash===`#set=${encodeURIComponent(data.active.migratedCodeFrom)}`)history.replaceState(null,'',`#set=${encodeURIComponent(data.active.code)}`);delete data.active.migratedCodeFrom;}if(data.active){try{historicalSet(data.active.code);}catch{data.active=null;saveProfile(data);}}}catch{storageError();}
-function persist(){if(data.active&&!data.active.finished)settlePractice(data.active);try{saveProfile(data);oneDrive.changed(data);}catch{storageError();}if(data.username)profileHeader();}
+function persist(){navigation?.remember();if(data.active&&!data.active.finished)settlePractice(data.active);try{saveProfile(data);oneDrive.changed(data);}catch{storageError();}if(data.username)profileHeader();}
 function profileHeader(){
   let el=$('#profile-welcome');
   if(!el){el=document.createElement('div');el.id='profile-welcome';$('.site-header').append(el);}
@@ -99,7 +103,7 @@ function chooseProfile(switching=false){
     const finish=name=>{
       try{persist();void oneDrive.flush(data);data=selectProfile(name);}catch{storageError();data={schema:1,active:null,history:[],username:name};}
       filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};profileHeader();dialog.close();
-      if(switching){history.replaceState(null,'','#home');main.innerHTML='';render();}
+      if(switching){main.innerHTML='';void navigation.go('#home',{guard:false});}
     };
     dialog.querySelector('form').onsubmit=e=>{
       e.preventDefault();const name=normaliseName(dialog.querySelector('#profile-name').value);if(!name)return;
@@ -119,8 +123,8 @@ function revisionAreas(level){
 }
 function toast(message){$('#toast').textContent=message;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').textContent='',4500);}
 function activeSet(){return data.active?{...resolve(data.active.code),examSubtopic:data.active.examSubtopic??'all',search:data.active.search??null}:null;}
-function navigate(hash){if(location.hash===hash)render();else location.hash=hash;}
-function setHash(code){history.replaceState(null,'',`#set=${encodeURIComponent(code)}`);}
+function navigate(hash){return navigation.go(hash);}
+function setHash(code){return navigation.go(`#set=${encodeURIComponent(code)}`,{replace:true,guard:false,draw:false});}
 function duration(seconds){const s=Math.max(0,Math.floor(seconds));return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;}
 function needsLeaveWarning(){return Boolean($('#display-code'))&&hasUnsubmittedAnswers(data.active,activeSet());}
 let leaveDecision=null;
@@ -136,15 +140,18 @@ function askLeave(){
   });
   return leaveDecision;
 }
-async function start(set,{force=false,challengeLevel=null,inSequence=false}={}){
+async function start(set,{force=false,challengeLevel=null,inSequence=false,replace=false}={}){
   if(!force && !await askLeave())return;
   if(data.active&&!data.active.finished){pausePractice(data.active);persist();}
+  navigation.remember();
   if(set.type===0){const levels=new Set(set.questions.map(q=>q.challengeLevel));data.puzzleChallenge=challengeLevel??(levels.size===1?[...levels][0]:'all');}
   const now=Date.now();
   clearTimeout(toastTimer);$('#toast').textContent='';
   data.active={generation:bankRelease.generation,bankVersion:BANK_VERSION,id:crypto.randomUUID(),contentVersion:BANK_VERSION,code:set.code,search:set.search??null,mathsTopic:set.mathsTopic??'all',examSubtopic:set.type===1?(set.examSubtopic??'all'):'all',inSequence:set.type===1&&inSequence,answers:{},checks:{},first:{},hints:{},reveals:{},started:now,origin:now,saved:now,deadline:set.minutes?now+set.minutes*60000:null,finished:null,outcome:null,timingEvents:[],tracking:attemptEligibility(data,set.code,now)};
   initialisePractice(data.active,now);
-  persist();setHash(set.code);render();main.focus();
+  rememberSelection(data,set);
+  await navigation.go(`#set=${encodeURIComponent(set.code)}`,{replace,guard:false,draw:false,snapshot:false});
+  persist();await render();main.focus();
 }
 async function openCodeOrSearch(e,errorSelector){
     e.preventDefault();const input=String(new FormData(e.target).get('code')).trim(),error=$(errorSelector);error.textContent='';
@@ -170,19 +177,53 @@ function home(){
   $('.global-code-entry').hidden=true;
   const completed=data.history.length;
   main.innerHTML=`<section class="hero"><div><div class="eyebrow">A little practice goes a long way</div><h1>Start small.<br><em>Think bigger.</em></h1><p>Get your brain into gear with a quick puzzle, a little Core revision, a Python challenge or ESP practice.</p><div class="meta-row"><span>5–15 minutes</span><span>Instant feedback</span><span>Your own pace</span></div></div><aside class="code-entry"><div class="eyebrow">Have a code or a topic in mind?</div><h2>Jump straight in.</h2><p>Open a question set or find practice by key term.</p><form id="code-form"><input name="code" aria-label="Question set code or key term" placeholder="Enter code or key term" autocomplete="off" autocapitalize="off" spellcheck="false" required><button type="submit">Open <span aria-hidden="true">↗</span></button></form><p class="error" id="code-error" role="alert"></p><small>9 characters · capitals matter · optional timer character<br>or enter key term to search for</small></aside></section>
-  <div class="section-heading"><h2>What will you try today?</h2><a href="#go">Go practice board</a><a href="${mathsPracticeURL}" target="_blank" rel="noopener">Maths practice ↗</a><span>Pick an activity to get started</span></div>
-  <section class="activity-grid" aria-label="Activity types">${types.slice(0,3).map((t,i)=>`<article class="type-card type-${i}"><div class="card-art" aria-hidden="true">${i===0?'<div class="mini-grid"><span>2</span><span>5</span><span>7</span><span>3</span><span>?</span><span>9</span><span>5</span><span>11</span><span>16</span></div>':i===1?'<div class="art-lines"><span>○ &nbsp; identify</span><span>● &nbsp; understand</span><span>○ &nbsp; explain</span></div>':i===3?'<div class="art-lines"><span>▦ &nbsp; plan</span><span>✓ &nbsp; test</span><span>≡ &nbsp; explain</span></div>':'<div class="art-code">for idea in ideas:<br>&nbsp; &nbsp; give_it_a_go()</div>'}</div><div class="card-body"><div class="eyebrow">0${i+1} / ${t.label}</div><h3>${t.name}</h3><p>${i===1?'Core exam questions and ESP tasks. Practise knowledge and apply your skills.':t.description}</p><div class="card-bottom"><small>${i===1?'Core papers and ESP':i===2?'2 challenges · 12 marks':i===3?'3 questions · up to 5 minutes each':'3 puzzles · choose your pace'}</small><button data-start="${i}" aria-label="Start ${t.name}">Let’s go <span aria-hidden="true">↗</span></button>${i!==1?`<a class="topic-search-link" href="#search=all">Find practice by key term</a>`:''}</div></div></article>`).join('')}</section>
+  <div class="section-heading"><h2>What will you try today?</h2><span>Pick an activity to get started</span></div>
+  <section class="activity-grid" aria-label="Activity types">${[1,2,0].map((i,order)=>{
+    const t=types[i];
+    const art=i===0?'<div class="mini-grid"><span>2</span><span>5</span><span>7</span><span>3</span><span>?</span><span>9</span><span>5</span><span>11</span><span>16</span></div>':i===1?'<div class="art-lines"><span>○ identify</span><span>● understand</span><span>○ explain</span></div>':'<div class="art-code">for idea in ideas:<br>&nbsp; give_it_a_go()<br>if persistent == True:<br>&nbsp; print("I ♥ coding!")</div>';
+    return `<article class="type-card type-${i}">
+      <div class="eyebrow">0${order+1} / ${t.label}</div>
+      <div class="card-art" aria-hidden="true">${art}</div>
+      <h3>${t.name}</h3>
+      <div class="card-bottom"><small>${i===1?'Core papers and ESP':i===2?'2 challenges · 12 marks':'3 puzzles · choose your pace'}</small><button data-start="${i}" aria-label="Start ${t.name}">Let’s go <span aria-hidden="true">↗</span></button></div>
+    </article>`;
+  }).join('')}</section>
   <section class="lower-panel"><div class="note-panel"><span class="note-icon" aria-hidden="true">↗</span><div><h3>${completed?`${completed} ${completed===1?'activity':'activities'} completed. Keep building.`:'Small steps add up.'}</h3><p>See your results and find out what to practise next.</p></div><a href="#progress">My progress →</a></div><div class="note-panel"><span class="note-icon" aria-hidden="true">◷</span><div><h3>No rush. Unless you want one.</h3><p>Practise at your pace, or add a timer for a challenge.</p></div></div></section>
   ${data.active&&!data.active.finished?`<p class="muted" style="margin-top:1.5rem">You have an unfinished activity. <a href="#set=${encodeURIComponent(data.active.code)}">Continue ${esc(data.active.code)}</a></p>`:''}`;
-  const reminder=document.createElement('div');main.append(reminder);oneDrive.mount(reminder,{compact:true});
   $('#code-form').onsubmit=e=>openCodeOrSearch(e,'#code-error');
-  main.querySelectorAll('[data-start]').forEach(b=>b.onclick=async()=>{try{if(b.dataset.start==='1'){navigate('#exam');return;}await ensureBank(Number(b.dataset.start));await start(choose(Number(b.dataset.start),discoverableFocuses(focuses(Number(b.dataset.start)),Number(b.dataset.start))[0]),{challengeLevel:'all'});}catch(e){toast(e.message);}});
+  main.querySelectorAll('[data-start]').forEach(button=>button.onclick=()=>navigate(button.dataset.start==='1'?'#exam':`#practice=${button.dataset.start}`));
 }
 function examHome(){
   $('.global-code-entry').hidden=false;
-  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><h1>Exam practice</h1><p class="muted">Choose Core paper questions or Employer Set Project (ESP) practice.</p></div></div><section class="exam-options" aria-label="Exam practice options">${examSections.map(section=>`<article class="note-panel"><div><h2>${esc(section.title)}</h2><p>${esc(section.description)}</p><button class="primary" data-exam-start="${section.bankType}">${esc(section.action)} <span aria-hidden="true">↗</span></button><a class="topic-search-link" href="#search=all">Find practice by key term</a></div></article>`).join('')}</section>`;
-  main.querySelectorAll('[data-exam-start]').forEach(button=>button.onclick=async()=>{try{const type=Number(button.dataset.examStart);await ensureBank(type);await start(choose(type,focuses(type)[0]));}catch(error){toast(error.message);}});
+  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><h1>Exam practice</h1><p class="muted">Choose Core paper questions or Employer Set Project (ESP) practice.</p></div></div><section class="exam-options" aria-label="Exam practice options">${examSections.map(section=>`<article class="note-panel"><div><h2>${esc(section.title)}</h2><p>${esc(section.description)}</p><button class="primary" data-exam-start="${section.bankType}">${esc(section.action)} <span aria-hidden="true">↗</span></button></div></article>`).join('')}</section>`;
+  main.querySelectorAll('[data-exam-start]').forEach(button=>button.onclick=()=>navigate(`#practice=${button.dataset.examStart}`));
 }
+const practiceName=type=>type===1?'Core exam practice':types[type].name;
+function practiceBreadcrumbs(type,focus=null){
+  return `<nav class="breadcrumbs eyebrow" aria-label="Breadcrumb"><a href="#home">Home</a><span aria-hidden="true">/</span>${isExamBank(type)?'<a href="#exam">Exam practice</a><span aria-hidden="true">/</span>':''}<a href="#practice=${type}" data-practice-picker ${focus?'':'aria-current="page"'}>${practiceName(type)}</a>${focus?`<span aria-hidden="true">/</span><span aria-current="page">${esc(focusNames[focus])}</span>`:''}</nav>`;
+}
+/** Show a blank selector on first entry; recall recent focus only on a fresh visit. */
+async function practiceHome(type){
+  const choice=!history.state?.practiceEntry&&recalledSelection(data,type);
+  history.replaceState({...history.state,practiceEntry:true},'');
+  if(choice&&discoverableFocuses(focuses(type),type).includes(choice.focus)){
+    if(data.active?.code===choice.code){
+      await setHash(choice.code);activity();return;
+    }
+    try{
+      await start(choose(type,choice.focus,null,'new',choice.challenge,type===1?choice.subtopic:type===3?choice.recipe:'all'),{force:true,replace:true,challengeLevel:choice.challenge,inSequence:choice.inSequence});return;
+    }catch(error){toast(error.message);}
+  }
+  $('.global-code-entry').hidden=false;
+  main.innerHTML=`${practiceBreadcrumbs(type)}${type===0?puzzleCards(focuses(0),focusNames,null):''}
+    <div class="page-top"><div><h1>${practiceName(type)}</h1>${pageStatus[type]?.inDevelopment?`<p class="development-notice">${esc(developmentNotice)}</p>`:''}</div>
+    ${type===0?'':`<div class="focus-row"><label for="focus">Focus</label><select id="focus"><option value="">--</option>${focuses(type).map(f=>`<option value="${f}">${esc(focusNames[f])}</option>`).join('')}</select></div>`}</div>
+    ${type===2?'<p class="project-link"><a href="#projects">Build something: Python project ideas ↗</a></p>':''}`;
+  const chooseFocus=async focus=>{if(!focus)return;try{await start(choose(type,focus),{challengeLevel:'all'});}catch(error){toast(error.message);}};
+  if($('#focus'))$('#focus').onchange=event=>chooseFocus(event.target.value);
+  main.querySelectorAll('[data-puzzle-focus]').forEach(button=>button.onclick=()=>chooseFocus(button.dataset.puzzleFocus));
+}
+function informationPage(content){$('.global-code-entry').hidden=true;main.innerHTML=content;}
 function matchingSearchGroup(set){
   return set.search?searchGroups(banks[set.type],set.type,set.search.query,{focusNames,recipeNames:espRecipeNames}).find(g=>g.key===set.search.group):null;
 }
@@ -200,7 +241,7 @@ function searchPage(type,query=''){
   main.innerHTML=`<nav class="breadcrumbs eyebrow" aria-label="Breadcrumb"><a href="${isExamBank(type)?'#exam':'#home'}">${isExamBank(type)?'Exam practice':'All activities'}</a><span aria-hidden="true">/</span><a href="#search=${type}" aria-current="page">${esc(name)} search</a></nav><h1>Find practice by key term</h1><p class="muted">Search all questions by topic, skill or specification reference.</p><form class="topic-search-form" id="topic-search-form" role="search"><label for="topic-search">Key term or reference</label><div><input id="topic-search" type="search" maxlength="100" value="${esc(query)}" placeholder="Search all questions"><button class="primary" type="submit">Search</button></div></form><p id="search-status" role="status"></p><section id="search-results" class="search-results" aria-label="Matching topics"></section>`;
   const show=()=>{
     const value=cleanSearchQuery($('#topic-search').value);
-    history.replaceState(null,'',`#search=${type}${value?'&q='+encodeURIComponent(value):''}`);
+    void navigation.go(`#search=${type}${value?'&q='+encodeURIComponent(value):''}`,{replace:true,guard:false,draw:false});
     const groups=selectedTypes.flatMap(bankType=>searchGroups(banks[bankType].filter(q=>discoverableQuestion(q,bankType)),bankType,value,{focusNames,recipeNames:espRecipeNames})).sort((a,b)=>b.rank-a.rank||b.matches.size-a.matches.size);
     $('#search-status').textContent=!value?'Enter a key term to see matching topics and question counts.':groups.length?`${groups.reduce((total,g)=>total+g.matches.size,0)} matching questions across ${groups.length} ${groups.length===1?'topic':'topics'}.`:'No matching topics in this section. Try a broader term or a specification reference.';
     $('#search-results').innerHTML=groups.map((group,index)=>{
@@ -209,7 +250,7 @@ function searchPage(type,query=''){
     }).join('');
     main.querySelectorAll('[data-search-result]').forEach(button=>button.onclick=async()=>{try{await start(makeSearchSet(groups[Number(button.dataset.searchResult)],value));}catch(error){toast(error.message);}});
   };
-  $('#topic-search-form').onsubmit=event=>{event.preventDefault();show();};
+  $('#topic-search-form').onsubmit=event=>{event.preventDefault();navigate(`#search=all&q=${encodeURIComponent(cleanSearchQuery($('#topic-search').value))}`);};
   show();
   $('#topic-search').focus();
 }
@@ -269,8 +310,9 @@ function activity(){
   const searchAlternatives=searchGroup?Boolean(chooseSearchEntries(searchGroup,{previous:set,random:null})):false;
   const searchPermutation=searchGroup?Boolean(chooseSearchEntries(searchGroup,{previous:set,mode:'permutation',random:null})):false;
   const sameFocusAlternatives=set.type===1?hasAlternativeExamSet(set,subtopic):(set.type===0?puzzlePool(set.focus,level,mathsTopic):banks[set.type].filter(q=>q.focus===set.focus&&!q.retired)).length>set.questions.length;
-  main.innerHTML=`<div class="page-top"><div><nav class="breadcrumbs eyebrow" aria-label="Breadcrumb"><a href="${isExamBank(set.type)?'#exam':'#home'}">${types[set.type].name}</a><span aria-hidden="true">/</span><a href="#set=${encodeURIComponent(a.code)}" aria-current="page">${set.questions.length===1?'Single question':'Starter set'}</a></nav><h1>${esc(focusNames[set.focus])}</h1>${pageStatus[set.type]?.inDevelopment?`<p class="development-notice" role="note">${esc(developmentNotice)}</p>`:''}</div><div class="focus-row">${set.type===0?'':`<span class="primary-focus-controls"><label for="focus">${set.type===1?'Topic':'Focus'}</label><select id="focus">${focuses(set.type).map(f=>`<option value="${f}" ${f===set.focus?'selected':''}>${esc(focusNames[f])}</option>`).join('')}</select></span>`}${set.type===3?`<span class="subtopic-controls"><label for="esp-recipe">Activity</label><select id="esp-recipe">${Object.entries(espRecipeNames).filter(([r])=>r.startsWith(set.focus==='task1'?'T1.':'T2.')).map(([r,label])=>`<option value="${r}" ${r===set.questions[0].recipe?'selected':''}>${esc(label)}</option>`).join('')}</select></span>`:''}${set.type===1?`<span class="subtopic-controls"><label for="subtopic">Subtopic</label><select id="subtopic"><option value="all">All subtopics</option>${examSubtopics(set.focus).map(({reference,count})=>`<option value="${reference}" ${reference===subtopic?'selected':''}>${reference} · ${count} ${count===1?'question':'questions'}</option>`).join('')}</select><label class="sequence-toggle"><input id="in-sequence" type="checkbox" aria-describedby="sequence-tooltip" ${inSequence?'checked':''}> In sequence<span class="sequence-tooltip" id="sequence-tooltip" role="tooltip">Advance new sets through subtopics in spec order.</span></label></span>`:''}${set.type===0&&set.focus==='classic maths'?`<label for="maths-topic">Maths topic</label><select id="maths-topic">${Object.entries({all:'All maths',algebra:'Algebra',number:'Number and measures'}).map(([key,label])=>`<option value="${key}" ${key===mathsTopic?'selected':''}>${label}</option>`).join('')}</select>`:''}${set.type===0?`<label for="challenge-level">Challenge</label><select id="challenge-level">${Object.entries(challengeLevels).map(([key,label])=>`<option value="${key}" ${key===level?'selected':''} ${availableChallenges(set.focus,mathsTopic).includes(key)?'':'disabled'}>${challengeLabel(key,set.focus)}${availableChallenges(set.focus,mathsTopic).includes(key)?'':' (not available)'}</option>`).join('')}</select>`:''}</div></div>
-  ${set.type===0?puzzleCards(focuses(0),focusNames,set.focus):''}
+  main.innerHTML=`${practiceBreadcrumbs(set.type,set.focus)}
+  ${set.type===0?`<details class="puzzle-picker"><summary>Puzzle type</summary>${puzzleCards(focuses(0),focusNames,set.focus)}</details>`:''}
+  <div class="page-top"><div><h1>${esc(focusNames[set.focus])}</h1>${pageStatus[set.type]?.inDevelopment?`<p class="development-notice" role="note">${esc(developmentNotice)}</p>`:''}</div><div class="focus-row">${set.type===0?'':`<span class="primary-focus-controls"><label for="focus">Focus</label><select id="focus">${focuses(set.type).map(f=>`<option value="${f}" ${f===set.focus?'selected':''}>${esc(focusNames[f])}</option>`).join('')}</select></span>`}${set.type===3?`<span class="subtopic-controls"><label for="esp-recipe">Activity</label><select id="esp-recipe">${Object.entries(espRecipeNames).filter(([r])=>r.startsWith(set.focus==='task1'?'T1.':'T2.')).map(([r,label])=>`<option value="${r}" ${r===set.questions[0].recipe?'selected':''}>${esc(label)}</option>`).join('')}</select></span>`:''}${set.type===1?`<span class="subtopic-controls"><label for="subtopic">Subtopic</label><select id="subtopic"><option value="all">All subtopics</option>${examSubtopics(set.focus).map(({reference,count})=>`<option value="${reference}" ${reference===subtopic?'selected':''}>${reference} · ${count} ${count===1?'question':'questions'}</option>`).join('')}</select><label class="sequence-toggle"><input id="in-sequence" type="checkbox" aria-describedby="sequence-tooltip" ${inSequence?'checked':''}> In sequence<span class="sequence-tooltip" id="sequence-tooltip" role="tooltip">Advance new sets through subtopics in spec order.</span></label></span>`:''}${set.type===0&&set.focus==='classic maths'?`<label for="maths-topic">Maths topic</label><select id="maths-topic">${Object.entries({all:'All maths',algebra:'Algebra',number:'Number and measures'}).map(([key,label])=>`<option value="${key}" ${key===mathsTopic?'selected':''}>${label}</option>`).join('')}</select>`:''}${set.type===0?`<label for="challenge-level">Challenge</label><select id="challenge-level">${Object.entries(challengeLevels).map(([key,label])=>`<option value="${key}" ${key===level?'selected':''} ${availableChallenges(set.focus,mathsTopic).includes(key)?'':'disabled'}>${challengeLabel(key,set.focus)}${availableChallenges(set.focus,mathsTopic).includes(key)?'':' (not available)'}</option>`).join('')}</select>`:''}</div></div>
   ${set.updated?'<p class="set-update-notice">This set has been updated since this code was created.</p>':''}
   ${trackingNotice}
   ${set.search?`<p class="search-context">Search: <strong>${esc(set.search.query)}</strong> · ${searchGroup?searchSetMatches(searchGroup,set.entries):0} of ${set.questions.length} questions match${searchGroup&&searchSetMatches(searchGroup,set.entries)<set.questions.length?' · includes related practice':''}. <a href="#search=all&q=${encodeURIComponent(set.search.query)}">Change search</a> <button class="subtle" id="clear-search">Clear search</button></p>`:''}
@@ -279,14 +321,10 @@ function activity(){
   ${record?`<section class="result-banner" aria-label="Activity result"><span class="result-score">${record.percentage}%</span><div><h2>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</h2><p>${record.earned}/${record.max} marks · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}${untracked?' · Practice only — progress not updated':''}. ${canReview()?'Review your feedback below.':'Submit your saved answers to unlock review for another four hours.'}</p></div><button id="retry">Try this set again</button></section>`:''}
   <section class="set-toolbar" aria-label="Set code and timing"><div class="code-block"><div><div class="code-label">YOUR ${set.questions.length===1?'ACTIVITY':'SET'} CODE</div><div class="set-code" id="display-code">${esc(a.code)}</div></div><div class="code-actions"><button id="copy-code">Copy code</button><button id="copy-link">Copy link</button></div></div><p class="set-summary muted">${set.questions.length} ${set.questions.length===1?'question':'questions'} · ${set.total} ${set.type===0?'points':'marks'} · ${set.type===3?'Up to':'About'} ${set.questions.length===1?(set.questions[0].estimatedMinutes??types[set.type].minutes):types[set.type].minutes} minutes</p><div class="timer-controls"><span class="timer-display" id="timer">${a.deadline?'':'Untimed'}</span><label for="minutes">Timer</label><select id="minutes" ${a.finished?'disabled':''}>${Array.from({length:11},(_,i)=>i+5).map(m=>`<option value="${m}" ${m===(set.minutes??types[set.type].minutes)?'selected':''}>${m} min</option>`).join('')}</select><button id="timer-toggle" ${a.finished?'disabled':''}>${a.deadline?'Stop timer':'Start timer'}</button></div></section>
   <div class="random-controls"><button id="new-type" ${set.search?'':inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':''}>${set.search?'Other matching topics':inSequence?'Next question set':'Get new question set ↗'}</button><button id="new-focus" ${set.search?(!searchAlternatives?'disabled title="No other set keeps these search matches."':''):inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':!inSequence&&!sameFocusAlternatives?'disabled title="No other question combination matches this selection. Use Get new permutation."':''}>${inSequence?'Next set in sequence':subtopic==='all'?'New set in this focus':'New set with this subtopic'}</button><button id="permutation" ${set.search?!searchPermutation?'disabled title="No other permutation keeps these search matches."':'':set.questions.some(q=>q.variations.length<2)?'disabled title="This set includes a fixed problem. Choose a new set for different puzzles."':''}>Get new permutation ↻</button></div>
-  ${set.type===2?pythonProjectsHTML()+pythonGuidesHTML(set.questions,a.pythonGuidesOpen):''}<section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>`;
-  const saveControls=document.createElement('div');main.append(saveControls);oneDrive.mount(saveControls,{compact:true});
+  ${set.type===2?pythonGuidesHTML(set.questions,a.pythonGuidesOpen):''}<section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>${set.type===2?'<p class="project-link"><a href="#projects">Build something: Python project ideas ↗</a></p>':''}`;
   main.querySelectorAll('[data-python-guide]').forEach(guide=>guide.addEventListener('toggle',event=>{
     const key=guide.dataset.pythonGuide;
     a.pythonGuidesOpen??={};a.pythonGuidesOpen[key]=event.target.open;
-    if(event.target.open&&!a.finished)for(const question of set.questions.filter(question=>pythonGuideKey(question)===key)){
-      a.hiddenHints??={};if(!a.hints[question.slot])a.hiddenHints[question.slot]=true;a.hints[question.slot]=true;
-    }
     persist();
   }));
   bindPuzzles(main,set,a,(slot,id,value,selector)=>{
@@ -332,7 +370,7 @@ function activity(){
   $('#new-type').onclick=()=>replaceSet(set, 'type');$('#new-focus').onclick=()=>replaceSet(set,'focus');$('#permutation').onclick=()=>replaceSet(set,'permutation');
   if(set.type===3)$('#esp-recipe').onchange=async e=>{try{await start(choose(3,set.focus,null,'new','all',e.target.value));}catch(err){toast(err.message);}activity();};
   if(set.type===1){
-    $('#in-sequence').onchange=e=>{delete a.search;a.inSequence=e.target.checked;persist();activity();};
+    $('#in-sequence').onchange=e=>{delete a.search;a.inSequence=e.target.checked;rememberSelection(data,set);persist();activity();};
     $('#subtopic').onchange=async e=>{const requested=e.target.value;try{await start(choose(1,set.focus,null,'new','all',requested),{inSequence});}catch(err){toast(err.message);}activity();};
   }
   if(set.type===0)$('#challenge-level').onchange=async e=>{const requested=e.target.value,prior=data.active?.id;try{await start(choose(0,set.focus,null,'new',requested,mathsTopic),{challengeLevel:requested});if(data.active?.id!==prior){data.puzzleChallenge=requested;persist();}}catch(err){toast(err.message);}activity();};
@@ -479,11 +517,6 @@ let renderId=0;
 async function render(){
   const requestId=++renderId;
   const route=location.hash;
-  if($('#display-code')&&route!==`#set=${encodeURIComponent(data.active.code)}`){
-    if(!await askLeave()){if(requestId===renderId)setHash(data.active.code);return;}
-    if(requestId!==renderId)return;
-  }
-  if(data.active&&!data.active.finished&&route!==`#set=${encodeURIComponent(data.active.code)}`){pausePractice(data.active);persist();}
   void oneDrive.flush(data);
   disposeGoPractice?.();disposeGoPractice=null;
   disposePuzzles(main);
@@ -492,6 +525,9 @@ async function render(){
   if(route==='#progress'){await Promise.all([ensureBank(1),ensureBank(2)]);if(requestId===renderId)progress();return;}
   if(route==='#go'){$('.global-code-entry').hidden=true;disposeGoPractice=mountGoPractice(main,goReturn);return;}
   if(route==='#about'){about();return;}
+  if(route==='#faq'){informationPage(faqHTML());return;}
+  if(route==='#projects'){informationPage(pythonProjectsHTML());return;}
+  if(/^#practice=[0-3]$/.test(route)){const type=Number(route.slice(-1));await ensureBank(type);if(requestId===renderId)await practiceHome(type);return;}
   if(route==='#exam'){examHome();return;}
   if(route.startsWith('#search=')){
     const params=new URLSearchParams(route.slice(1)),type=params.get('search')==='all'?'all':Number(params.get('search'));
@@ -505,11 +541,28 @@ async function render(){
       if(requestId!==renderId)return;
       if(data.active?.code===set.code){activity();return;}
       // External links are explicit navigation; preserve unfinished work until confirmed.
-      await start(set,{force:true});if(data.active?.code!==set.code)navigate('#home');return;
+      await start(set,{force:true,replace:true});if(data.active?.code!==set.code)navigate('#home');return;
     }catch(e){if(requestId!==renderId)return;home();showCodeError($('#code-error'),route.slice(5),e);return;}
   }
   home();
 }
+navigation=createNavigation({
+  beforeLeave:async()=>{
+    if(!await askLeave())return false;
+    if($('#display-code')&&data.active){rememberSelection(data,activeSet());if(!data.active.finished)pausePractice(data.active);persist();}
+    return true;
+  },
+  capture:()=>({profileId:data.profileId,attempt:location.hash===`#set=${encodeURIComponent(data.active?.code)}`?data.active:null}),
+  restore:state=>{
+    const saved=state?.profileId===data.profileId?state.attempt:null;
+    if(saved&&saved.generation===bankRelease.generation&&saved.id!==data.active?.id){
+      data.active=saved;
+      if(saved.practiceClock){saved.practiceClock.running=false;saved.practiceClock.interacted=false;}
+      persist();
+    }
+  },
+  render:async()=>{await render();main.focus();}
+});
 if(!data.username)await chooseProfile();else profileHeader();
 try{
   if(data.active){
@@ -530,12 +583,13 @@ document.addEventListener('click',async event=>{
   if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.hasAttribute('download')||(link.target&&link.target!=='_self'))return;
   if(link.getAttribute('href')==='#main'){event.preventDefault();main.focus();return;}
   const url=new URL(link.href,location.href);
-  if(url.origin===location.origin&&url.pathname===location.pathname&&url.search===location.search)return;
+  if(url.origin===location.origin&&url.pathname===location.pathname&&url.search===location.search){
+    event.preventDefault();$('#nav-menu').hidePopover();navigation.go(url.hash||'#home',{state:link.hasAttribute('data-practice-picker')?{practiceEntry:true}:{}});return;
+  }
   if(!needsLeaveWarning())return;
   event.preventDefault();if(await askLeave())location.href=url.href;
 });
-window.addEventListener('hashchange',()=>{render();main.focus();});
-window.addEventListener('pagehide',()=>{void oneDrive.flush(data);if(data.active&&!data.active.finished){pausePractice(data.active);data.active.saved=Date.now();persist();}});
+window.addEventListener('pagehide',()=>{if($('#display-code')&&data.active)rememberSelection(data,activeSet());void oneDrive.flush(data);if(data.active&&!data.active.finished){pausePractice(data.active);data.active.saved=Date.now();persist();}});
 document.addEventListener('visibilitychange',()=>{
   if(document.hidden){void oneDrive.flush(data);if(data.active&&!data.active.finished){pausePractice(data.active);persist();}}
   else {tick();if(practiceVisible())engagePractice(data.active);}

@@ -20,6 +20,8 @@ static Github pages site.
 
 For code changes, follow [code style](docs/CODE_STYLE.md) and the [code comments policy](docs/CODE_COMMENTS.md). Use [local development](docs/local-development.md) for development and verification commands, and the [documentation index](docs/README.md) to select relevant specialist guidance.
 
+Run [project-refactor-checks](.agents/skills/project-refactor-checks/SKILL.md) at least once per development session. Follow its ordered review stages and discussion gates; a review does not authorise unagreed refactoring.
+
 For the framework migration, read the [refactoring brief](T_LEVEL_REFACTOR_AGENT_GUIDE.md) and [repository readiness review](docs/reviews/2026-10-07-refactor-readiness.md). The review is an assessment, not approval to start the migration.
 
 ## Working efficiently and preserving handovers
