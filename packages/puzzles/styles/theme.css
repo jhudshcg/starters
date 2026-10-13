@@ -137,8 +137,7 @@
 }
 
 :where(.puzzle-controls) .go-status {
-  background: var(--puzzle-warning-bg);
-  color: var(--puzzle-warning-text);
+  color: var(--puzzle-text);
 }
 
 .puzzle-controls .go-point:hover:not(:disabled) {
@@ -176,3 +175,6 @@
   background: none;
   text-decoration-thickness: .12em;
 }
+
+/* Axis headings lead; value labels use lighter emphasis to keep compact columns readable. */
+:where(.puzzle-controls) .candidate-table thead th[scope="col"] { font-weight: 600; }

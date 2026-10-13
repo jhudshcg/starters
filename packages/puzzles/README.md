@@ -85,3 +85,6 @@ Before adopting a real submodule, update the parent's staged-source build hook: 
 ## Optional presentation
 
 Import `styles/index.css` for scoped layout and default appearance, or `styles/layout.css` for geometry with your own theme. Use `graphics.js` for default type icons/artwork and tangram piece colours. Neither is loaded automatically. The [style and markup contract](styles/README.md) documents imports, overrides, accessible state and a standalone example. The T-Level app now consumes these defaults through its own theme adapter; the package now supplies framework-independent embeddable controls and separate render/bind APIs.
+
+
+Human Go drawing, press handling, rules, clocks and an optional GNU Go worker client are now exported alongside recorded puzzles. Hosts retain controls, routing and engine distribution. See [API](API.md#human-go-companions) and the [Maths reconciliation record](../../docs/go-integration.md). Puzzle content and identities are unchanged.

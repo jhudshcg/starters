@@ -5,38 +5,22 @@
  */
 import {puzzleTypes} from '../metadata.js';
 const rulesLink=puzzleTypes.find(type=>type.id==='go').links[0];
+import {renderGoBoard} from './go-board.js';
 import {goPosition,goCoordinate} from '../rules/go-rules.js';
 
 export function renderGo(part,state,locked,{assistance=true,liveFeedback=true,guidanceActionsHTML='',guidanceHTML='',referenceHTML=''}={}){
-  const moves=state.moves??[],node=goPosition(part,moves)??goPosition(part,[]),n=part.size,coordinate=i=>goCoordinate(i,n);
-  const [x0,y0,x1,y1]=part.view,w=x1-x0+1,h=y1-y0+1;
-  const last=moves.at(-1),pending=state.pending;
-  const line=(x1,y1,x2,y2,extra='')=>`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#806437" stroke-width=".022" ${extra}/>`;
-  let svg=Array.from({length:w},(_,x)=>line(x+.6,.6,x+.6,h-.4)).join('')+Array.from({length:h},(_,y)=>line(.6,y+.6,w-.4,y+.6)).join('');
-  // Dashed margins mean a cropped view, not an edge of the real 19×19 board.
-  if(x0>0)svg+=line(.1,.1,.1,h+.1,'stroke-dasharray=".12 .1"');
-  if(x1<n-1)svg+=line(w+.1,.1,w+.1,h+.1,'stroke-dasharray=".12 .1"');
-  if(y0>0)svg+=line(.1,.1,w+.1,.1,'stroke-dasharray=".12 .1"');
-  if(y1<n-1)svg+=line(.1,h+.1,w+.1,h+.1,'stroke-dasharray=".12 .1"');
-  let buttons='';
-  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){
-    const i=y*n+x,cx=x-x0+.6,cy=y-y0+.6,stone=node.board[i],selected=i===pending||i===last;
-    if(stone!=='.')svg+=`<circle data-go-stone="${i}" cx="${cx}" cy="${cy}" r=".43" fill="${stone==='B'?'#222':'#fff'}" stroke="#303030" stroke-width=".025"/>`;
-    if(selected)svg+=`<circle cx="${cx}" cy="${cy}" r=".23" fill="none" stroke="#efb93b" stroke-width=".09"/>`;
-    if(i===state.hintMove&&!locked)svg+=`<circle cx="${cx}" cy="${cy}" r=".36" fill="none" stroke="#926000" stroke-width=".08" stroke-dasharray=".12 .08"/><text x="${cx}" y="${cy+.16}" text-anchor="middle" font-size=".5" fill="#684300">?</text>`;
-    buttons+=`<button type="button" class="go-point" data-challenge-action="go" data-value="${i}" data-go-coordinate-value="${coordinate(i)}" ${locked?'disabled':''} aria-label="${coordinate(i)}, ${stone==='.'?'empty':stone==='B'?'black':'white'}${i===pending?', proposed move':i===last?', last move':''}" aria-pressed="${selected}" style="left:${(cx-.48)/(w+.2)*100}%;top:${(cy-.48)/(h+.2)*100}%;width:${.96/(w+.2)*100}%;height:${.96/(h+.2)*100}%"></button>`;
-  }
+  const moves=state.moves??[],last=moves.at(-1),node=goPosition(part,moves)??goPosition(part,[]),n=part.size,coordinate=i=>goCoordinate(i,n);
   const previous=moves.length?goPosition(part,moves.slice(0,-1)):null;
   const replies=previous?.children.filter(c=>c.colour!==part.player)??[];
   const all=state.replay??moves;
   const replay=locked?`<div class="go-replay"><label>Replay moves <input data-go-replay type="range" min="0" max="${all.length}" value="${moves.length}" step="1"></label><span>${moves.length} / ${all.length}</span></div>`:'';
   const awaiting=state.replyMove!==undefined&&state.replyMove!==null;
   const turn=moves.length%2?(part.player==='b'?'w':'b'):part.player;
-  const status=awaiting?'Recorded reply follows…':node.recorded===false?`No recorded response. You can explore ${turn==='b'?'Black':'White'}’s next move, or Undo.`:pending!==undefined&&pending!==null?`Proposed ${coordinate(pending)}: no recorded response. Check for details, or choose another move.`:node.success&&liveFeedback?'Well done! You’ve completed a correct solution.':node.failure?'End of recorded line. Use Check answer to assess your attempt.':`Your turn: ${part.player==='b'?'Black':'White'}.`;
+  const status=awaiting?'Recorded reply follows…':node.recorded===false?`No recorded response. You can explore ${turn==='b'?'Black':'White'}’s next move, or Undo.`:state.pending!==undefined&&state.pending!==null?`Proposed ${coordinate(state.pending)}: no recorded response. Choose another move or Undo.`:node.success&&liveFeedback?'Well done! You’ve completed a correct solution.':node.failure?'End of a recorded incorrect line. Undo or Reset to try another move.':`Your turn: ${part.player==='b'?'Black':'White'}.`;
   const moveHint=!locked&&assistance?`<button type="button" class="puzzle-link" data-challenge-action="go-hint" data-value="" aria-expanded="${state.hintMove!=null}">${state.hintMove!=null?'Hide next move':'Show next move'}</button>`:'';
   const hint=state.hintMove!=null&&!locked&&assistance?`<p class="puzzle-help">Consider ${coordinate(state.hintMove)}. The move has not been played.</p>`:'';
-  return `<div class="go-guidance"><span class="puzzle-help">Showing ${coordinate(y1*n+x0)}–${coordinate(y0*n+x1)} of a ${n}×${n} board.</span><div class="go-hint-actions">${guidanceActionsHTML}${moveHint}</div></div>
-    <div class="board-scroll go-scroll" tabindex="0" aria-label="Go board, scroll horizontally if needed"><div class="go-board" style="width:${w*44}px;aspect-ratio:${w+.2}/${h+.2}" role="group" aria-label="Go intersections"><svg viewBox="0 0 ${w+.2} ${h+.2}" aria-hidden="true">${svg}</svg>${buttons}</div></div>
+  return `<div class="go-guidance"><span class="puzzle-help">Showing ${coordinate(part.view[3]*n+part.view[0])}–${coordinate(part.view[1]*n+part.view[2])} of a ${n}×${n} board.</span><div class="go-hint-actions">${guidanceActionsHTML}${moveHint}</div></div>
+    <div class="board-scroll go-scroll" tabindex="0" aria-label="Go board, scroll horizontally if needed">${renderGoBoard({size:n,board:node.board,view:part.view,last:moves.at(-1),pending:state.pending,hintMove:state.hintMove,locked})}</div>
     <div class="puzzle-help go-reference"><span class="go-coordinate">Coordinate: <span data-go-coordinate>—</span></span>${referenceHTML}<a href="${rulesLink.url}" target="_blank" rel="noopener noreferrer">${rulesLink.label}</a></div>
     ${guidanceHTML}${hint}
     <p class="go-status ${node.success&&liveFeedback&&!locked?'go-success':''}" role="status">${locked?'Use the replay slider to inspect each move and capture.':status}</p>

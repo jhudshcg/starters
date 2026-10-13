@@ -32,10 +32,12 @@
 
 :where(.puzzle-controls) .candidate-table {
   border-collapse: collapse;
+  width: 100%;
+  table-layout: auto;
 }
 
 :where(.puzzle-controls) .candidate-table th {
-  padding: .4rem;
+  padding: .4rem .125rem;
   max-width: 7rem;
   overflow-wrap: anywhere;
 }
@@ -52,7 +54,8 @@
 }
 
 :where(.puzzle-controls) .candidate-table button {
-  width: 2.7rem;
+  width: 100%;
+  min-width: 1.5rem;
   height: 2.7rem;
   padding: 0;
   border: 0;
@@ -72,16 +75,19 @@
 
 :where(.puzzle-controls) .digit-grid {
   display: grid;
-  grid-template-columns: repeat(var(--cells), var(--puzzle-cell-width, 2.9rem));
-  width: max-content;
+  grid-template-columns: repeat(var(--cells), minmax(0, 1fr));
+  width: min(100%, calc(var(--cells) * var(--puzzle-cell-width, 2.9rem) + 4px));
   border-width: 2px;
   border-style: solid;
 }
 
 :where(.puzzle-controls) .digit-cell {
   position: relative;
-  width: var(--puzzle-cell-width, 2.9rem);
-  height: var(--puzzle-cell-height, 3.2rem);
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: var(--puzzle-cell-height, auto);
+  aspect-ratio: 2.9 / 3.2;
   padding: .4rem .1rem 0;
   border-width: 1px;
   border-style: solid;
@@ -200,7 +206,7 @@
   overflow-wrap: anywhere;
 }
 
-:where(.puzzle-controls) .go-status {
+:where(.puzzle-controls) .go-status.go-success {
   padding: .65rem;
   border-radius: 6px;
 }
@@ -263,3 +269,31 @@
   font-variant-numeric: tabular-nums;
 }
 :where(.puzzle-controls) [data-go-coordinate] { display: inline-block; inline-size: 4ch; }
+
+/* Board gestures own their touch stream; surrounding page content remains scrollable. */
+:where(.puzzle-controls) .go-board {
+  touch-action: none;
+  user-select: none;
+}
+
+/* Candidate cells keep a useful natural width before fitting a smaller panel. */
+:where(.puzzle-controls) .candidate-scroll {
+  width: min(100%, calc(var(--candidate-count) * 3.5rem + var(--candidate-name-width, 2.75rem) + 1.5rem));
+}
+:where(.puzzle-controls) .candidate-axis-column { width: 1.5rem; }
+:where(.puzzle-controls) .candidate-name-column { width: var(--candidate-name-width, 2.75rem); }
+:where(.puzzle-controls) .candidate-table .candidate-axis { font-size: 1rem; text-align: center; }
+:where(.puzzle-controls) .candidate-axis-vertical span { writing-mode: vertical-rl; }
+:where(.puzzle-controls) .candidate-table .candidate-spacer { border: 0; }
+:where(.puzzle-controls) .go-board { max-width: calc(100% - .8rem); }
+:where(.puzzle-controls) :is(.go-point, .path-dot) { min-height: 0; }
+:where(.puzzle-controls) .go-replay { flex-wrap: wrap; }
+/* A second finger belongs to browser zoom; pointercancel must never place a stone. */
+:where(.puzzle-controls) .go-board-zoom,
+:where(.puzzle-controls) .go-board-zoom .go-point { touch-action: pinch-zoom; }
+
+/* Equation row names are single letters; give the saved space to dense value columns. */
+.puzzle-controls[data-kind="equation-grid"] { --candidate-name-width: 2rem; }
+
+/* Value headings share their cell width: avoid splitting short words/times for padding. */
+:where(.puzzle-controls) .candidate-table :is(th[scope="col"], th[scope="row"]) { padding-inline: 0; }

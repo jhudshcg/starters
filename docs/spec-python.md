@@ -182,4 +182,12 @@ Evidence: imported the current `banks[2]` and `focuses(2)` from `js/bank.js`; gr
 
 ### Gap against the new six-question target
 
-The counts above remain the current baseline. Selection already meets six; the other 19 primary focuses each need three additional distinct templates. Total addition: **57 templates**, each with at least five variations (**at least 285 additional variations**). Meeting the target with the existing 20 focuses would produce at least **120 templates / 600 variations**. New questions must assess different tasks or reasoning, not merely rename scenarios or split existing permutations into separate slots. The backlog task includes the matching validation change; this documentation update does not add content or change runtime selection.
+The table above records the 7 October baseline. Following the 13 October expansion, selection, algorithms and sorting meet six, and lists has seven. The other 16 focuses each need three templates: **48 templates / at least 240 additional variations**, producing at least **121 templates / 605 variations** with the existing 20 focuses. New questions must assess different tasks or reasoning, not merely rename scenarios or split existing permutations into separate slots. The backlog task includes the matching validation change; this documentation update does not add content or change runtime selection.
+
+## Coding topic guides and sequence expansion — 13 October 2026
+
+The current bank has 73 templates / 365 variations. [The review](reviews/2026-10-13-python-sequences.md) records ten new search/sort/list tasks, 55 refined hints, source calibration, verification and remaining gaps. These are Coding practice additions only; the Core exam and ESP banks are unchanged.
+
+Each Python focus has a concise optional introduction with two or three short Python examples. Guides use native disclosures, initially closed, and appear only for the current questions. Search/sort share one guide with two diagrams. Opening before submission records matching questions as assisted; closing does not remove assistance. Disclosure state survives reload; reading after submission does not change the recorded attempt. These supplementary guides are outside question fingerprints.
+
+Coding practice activities also offer a separate collapsed section with ten independent project briefs, ordered broadly by challenge. Each includes a core task, relevant topics and an optional stretch feature; developed versions may be roughly 100–500 readable lines. These multi-session projects run in the student's Python editor, are not automatically assessed, and do not alter question assistance or progress.

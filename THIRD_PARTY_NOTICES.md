@@ -1,0 +1,15 @@
+# Third-party notices
+
+## GNU Go 3.8
+
+Copyright Free Software Foundation, Inc. and the GNU Go contributors. GNU Go and our browser bridge/worker are distributed under **GNU GPL version 3 or later**, separately from the repository's original-code licence. Preserve the [GNU licence](engines/gnugo/COPYING) and these notices when redistributing this component.
+
+- [Unmodified corresponding GNU Go source](engines/gnugo/gnugo-3.8.tar.gz), obtained from the [official GNU archive](https://ftp.gnu.org/gnu/gnugo/gnugo-3.8.tar.gz).
+- Local additions: [bridge.c](engines/gnugo/bridge.c), [worker.js](engines/gnugo/worker.js) and [build.sh](engines/gnugo/build.sh), copyright Joe Hudson 2026, GPL-3.0-or-later.
+- The build script records the complete source modifications: modern compiler global declarations and consistent 32-bit pattern hash words. It compiles native pattern generators, then the browser engine using Emscripten **4.0.22**. Run `sh engines/gnugo/build.sh /absolute/empty/build-dir` after activating that SDK. Native C compiler, make and Python 3 are required. The script emits `gnugo.js` and `gnugo.wasm` beside its source.
+
+The Go page downloads the worker and engine only when counting with estimation enabled. The About page links the source, build instructions and licences; ordinary visitors do not download the source archive automatically. GNU Go predicts territory and score; it does not determine an agreed final result. See the [Go integration notes](docs/go-integration.md) for integration and verification.
+
+## Emscripten runtime
+
+The generated JavaScript/WASM includes Emscripten runtime support, copyright Emscripten authors, under its MIT / University of Illinois NCSA terms. The complete [Emscripten licence](engines/gnugo/EMSCRIPTEN_LICENSE) is retained. Toolchain: [Emscripten SDK 4.0.22](https://github.com/emscripten-core/emsdk/releases/tag/4.0.22). The SDK is a build dependency, not an app dependency.

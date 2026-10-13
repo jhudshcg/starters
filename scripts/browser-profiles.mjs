@@ -38,7 +38,7 @@ try{
  assert.ok(await evaluate('document.querySelectorAll(".priority-red").length>0'));
  await evaluate(`window.__createURL=URL.createObjectURL;URL.createObjectURL=blob=>{window.__backup=blob.text();return window.__createURL(blob);}`);
  await evaluate(`window.__anchorClick=HTMLAnchorElement.prototype.click;HTMLAnchorElement.prototype.click=function(){window.__downloadName=this.download;return window.__anchorClick.call(this);}`);
- await click('#export-backup');assert.match(await evaluate('window.__downloadName'),/^tlevel-practice-Joe Hudson-\d{4}-\d{2}-\d{2}-\d{6}\.json$/);const backup=JSON.parse(await evaluate('window.__backup'));
+ await click('#export-backup');assert.match(await evaluate('window.__downloadName'),/^practice_progress_joe_hudson_[a-z0-9]{12}\.json$/);const backup=JSON.parse(await evaluate('window.__backup'));
  assert.equal(backup.username,'Joe Hudson');assert.equal(backup.history.length,3);assert.ok(backup.history.every(r=>r.finished&&r.partScores.length&&Number.isInteger(r.engagedSeconds)&&Number.isFinite(r.practiceMeasuredFrom)));
  await evaluate(`{const input=document.querySelector('#backup-file'),transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(backup))}],'backup.json',{type:'application/json'}));input.files=transfer.files;input.dispatchEvent(new Event('change'));}`);
  await until('document.querySelector("#toast").textContent.includes("3 duplicates skipped")');
@@ -48,14 +48,14 @@ try{
  await click('#switch-profile');await name('Alex');await until('!document.querySelector("dialog")');
  assert.equal(await evaluate('document.querySelector(".last-tracked").textContent'),'No tracked practice yet');
  await evaluate('location.hash="#progress"');await until('Boolean(document.querySelector("#backup-file"))');
- const invalid=structuredClone(backup);invalid.username='Invalid Import';invalid.history[0].earned=-1;
+ const invalid=structuredClone(backup);invalid.username='Invalid Import';delete invalid.profileId;invalid.history[0].earned=-1;
  await restore(invalid);await until('document.querySelector("#toast").textContent.includes("invalid result")');
  assert.match(await evaluate('document.querySelector("#profile-welcome").textContent'),/Alex/);
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-profiles-v1")).names.includes("Invalid Import")'),false);
  await restore(backup);await until('document.querySelector(".restore-notice")?.textContent.includes("Switched to Joe Hudson")');
  assert.match(await evaluate('document.querySelector(".last-tracked").textContent'),/Last tracked:/);
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Alex")).history.length'),0);
- const other={...backup,username:'New Backup Profile'};await restore(other);await until('document.querySelector(".restore-notice")?.textContent.includes("Switched to New Backup Profile")');
+ const other={...backup,username:'New Backup Profile'};delete other.profileId;await restore(other);await until('document.querySelector(".restore-notice")?.textContent.includes("Switched to New Backup Profile")');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:New%20Backup%20Profile")).history.length'),3);
  await restore(backup);await until('document.querySelector(".restore-notice")?.textContent.includes("Switched to Joe Hudson")');
  await send('Page.reload');await until('Boolean(document.querySelector("#weekly-progress"))');

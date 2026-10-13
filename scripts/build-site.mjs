@@ -46,6 +46,8 @@ for(const [file,meta] of Object.entries(result.metafile.outputs)){
 if(html.includes('src="js/')||html.includes('href="css/'))throw Error('Unbundled entry in production HTML');
 await writeFile(join(output,'index.html'),html);
 await writeFile(join(output,'.nojekyll'),'');
+await cp(join(root,'engines'),join(output,'engines'),{recursive:true});
+await cp(join(root,'THIRD_PARTY_NOTICES.md'),join(output,'THIRD_PARTY_NOTICES.md'));
 await cp(join(root,'node_modules/fflate/LICENSE'),join(output,'fflate-LICENSE.txt'));
 // The metafile remains local and is deliberately not deployed.
 await writeFile(join(root,'.build-meta.json'),JSON.stringify(result.metafile,null,2));

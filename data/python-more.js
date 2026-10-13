@@ -16,7 +16,7 @@ export default [
     const initial=[4,7,10,12,15][i], increment=i+2;
     return {prompt:'Trace the calls carefully. The parameter inside the function is a local name; assigning it does not reassign the outer variable.',
       code:`def advance(value):\n    value += ${increment}\n    return value\n\nvalue = ${initial}\nfirst = advance(value)\nsecond = advance(first)\nprint(value, first, second)`,
-      hint:'Keep a separate record for each local value and for the outer value.',
+      hint:"A local variable belongs to its function call. Keep separate notes for values inside the function and outside it; a returned value changes an outer variable only if it is assigned there.",
       parts:[n('First printed number',initial),n('Second printed number',initial+increment),n('Third printed number',initial+2*increment),
         n(`Return value of advance(advance(${initial+1}))`,initial+1+2*increment),
         c('Which assignment would update the outer value?','value = advance(value)',['advance(value)','value = advance(value)','print(advance(value))']),
@@ -25,7 +25,7 @@ export default [
   q(8, 'functions', 'Validate a bounded value', 'Complete the code', ['functions','validation','boundary testing'], i => {
     const low=[1,3,5,10,20][i], high=low+10+i;
     return {prompt:`Complete the function so it accepts integer values from ${low} to ${high}, inclusive. All inputs in this question are integers.`,
-      code:`def in_range(value):\n    return ___`,hint:'Use two comparisons joined by and, or a chained comparison.',
+      code:`def in_range(value):\n    return ___`,hint:"An inclusive range accepts both boundary values. Test the lower and upper limits separately, then require both tests to succeed.",
       parts:[code('Expression for the gap',`${low} <= value <= ${high}`,{marks:2,accepted:[`value >= ${low} and value <= ${high}`,`${low} <= value and value <= ${high}`],explanation:'Both inclusive bounds must hold.'}),
         c(`in_range(${low-1})`,'False',['True','False']),c(`in_range(${low})`,'True',['True','False']),
         c(`in_range(${high})`,'True',['True','False']),c(`in_range(${high+1})`,'False',['True','False'])]};
@@ -33,7 +33,7 @@ export default [
   q(9, 'algorithms', 'Trace a binary search', 'Trace the code', ['algorithms','searching','program tracing'], i => {
     const a=Array.from({length:7},(_,j)=>(j+1)*(i+2)),target=a[5];
     return {prompt:'Trace this search of a sorted list. Indices start at zero. Record the midpoint indices as well as the result.',
-      code:`def locate(items, target):\n    low = 0\n    high = len(items) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1`,hint:'Track low and high after comparing the middle value with the target.',
+      code:`def locate(items, target):\n    low = 0\n    high = len(items) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if items[mid] == target:\n            return mid\n        if items[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1`,hint:"Binary search needs an ascending sorted list here. low and high are the first and last candidate indices; mid is the midpoint index. After each comparison, update the bounds before calculating the next midpoint.",
       parts:[n(`For items = [${a.join(', ')}], target = ${target}: first mid`,3),n('Second mid',5),n('Returned index',5),
         n(`Returned value if target is ${a.at(-1)+1}`,-1),
         c('Required property of items','Sorted in ascending order',['Sorted in ascending order','All values are strings','An odd number of items']),
@@ -42,14 +42,14 @@ export default [
   q(10, 'algorithms', 'Finish a sorting pass', 'Complete the code', ['algorithms','sorting','iteration'], i => {
     const a=[6+i,2+i,5+i,1+i],after=[a[1],a[2],a[3],a[0]];
     return {prompt:'Complete one left-to-right bubble-sort pass that moves larger values towards the end. This is one pass, not the complete sort.',
-      code:`values = [${a.join(', ')}]\nfor index in range(len(values) - 1):\n    if values[index] ___ values[index + 1]:\n        temporary = values[index]\n        values[index] = values[index + 1]\n        values[index + 1] = temporary`,hint:'Swap a neighbouring pair when its left value is larger.',
+      code:`values = [${a.join(', ')}]\nfor index in range(len(values) - 1):\n    if values[index] ___ values[index + 1]:\n        temporary = values[index]\n        values[index] = values[index + 1]\n        values[index + 1] = temporary`,hint:"Bubble sort compares adjacent (neighbouring) items. When the left value is larger, exchange the pair; then use the changed list for the next comparison.",
       parts:[code('Comparison operator','>'),...after.map((v,j)=>n(`Value at index ${j} after the pass`,v)),
         c('What is guaranteed after this pass?','The largest value is at the end',['The largest value is at the end','The entire list is sorted','The smallest value is at the start'])]};
   }),
   q(11, 'algorithms', 'Repair the early return', 'Fix the code', ['algorithms','searching','logic'], i => {
     const a=[10+i,20+i,30+i,40+i];
     return {prompt:`The function should return the first matching index, or -1 if absent. Diagnose the bug using items = [${a.join(', ')}]. Answer the output questions for the repaired function.`,
-      code:'def find(items, target):\n    for index in range(len(items)):\n        if items[index] == target:\n            return index\n        return -1',hint:'When can the function conclude that none of the items matches?',
+      code:'def find(items, target):\n    for index in range(len(items)):\n        if items[index] == target:\n            return index\n        return -1',hint:"return ends the whole function, not just the current loop iteration. A non-match with one item does not prove that the target is absent from all later items.",
       parts:[c('Where should return -1 be?','After the loop, inside the function',['After the loop, inside the function','Inside the if block','Before the loop']),
         c('Why is the current location wrong?','It stops after the first non-match',['It stops after the first non-match','It skips index zero','It changes the list']),
         n(`find(items, ${a[0]})`,0),n(`find(items, ${a[2]})`,2),n(`find(items, ${a[3]+1})`,-1),n('find([], 99)',-1)]};

@@ -35,7 +35,7 @@ Set properties on the puzzle root, after the imports. The default theme defines 
 
 Other public tokens are `--puzzle-surface-hover`, `--puzzle-main` (hover border), `--puzzle-accent` (focus), `--puzzle-warning-bg/text`, `--puzzle-correct-bg/border/text`, `--puzzle-path-board/focus` and `--puzzle-go-board/border/focus/hover`. Change foreground/background combinations together and check contrast. Defaults are light; the app owns dark-theme selection. The T-Level adapter in `css/challenges.css` maps its existing theme tokens to these properties.
 
-Layout includes local scrolling, fixed grid-cell dimensions, transparent hit targets, wrapping toolbars and basic control sizing. It does not shrink a two-dimensional grid to fit a phone. Transparent Go/path hit targets remain transparent in every state so they cannot hide the drawing beneath them. Their background/border rules deliberately use `!important`.
+Layout includes responsive grid dimensions, transparent hit targets, wrapping toolbars and basic control sizing. Candidate columns retain natural label widths and digit grids fit their containers. Hosts must leave enough available width for readable answers; the T-Level adapter verifies dense examples without horizontal scrolling at 320px. Transparent Go/path hit targets remain transparent in every state so they cannot hide the drawing beneath them. Their background/border rules deliberately use `!important`.
 
 ## Markup and state contract
 
@@ -70,6 +70,6 @@ const [artwork, caption] = puzzleTypeArt['go'];
 
 The package does not select themes or know their names. Map your semantic tokens onto `--puzzle-*` on each control root; changes to parent variables propagate without remounting or losing answer state. The current app does this in `css/challenges.css`. Keep outer question-card layout in the parent.
 
-Sizing hooks include `--puzzle-width`, `--puzzle-cell-width`, `--puzzle-cell-height`, `--puzzle-control-gap`, `--puzzle-path-width` and `--puzzle-tangram-width`. Defaults preserve current board geometry. Keep digit width consistent across cells/grid columns and retain local scrolling. Normal selectors such as `.my-app .puzzle-controls .digit-cell` can override element styling. Most rules use a zero-specificity scope; transparent spatial hit targets are the documented exception. For complete control import layout alone or omit both stylesheets.
+Sizing hooks include `--puzzle-width`, `--puzzle-cell-width`, `--puzzle-cell-height`, `--puzzle-control-gap`, `--puzzle-path-width` and `--puzzle-tangram-width`. Digit columns shrink proportionally to fit their container; an explicit cell-height token remains supported. Candidate tables use useful preferred widths bounded by the container. Normal selectors such as `.my-app .puzzle-controls .digit-cell` can override element styling. Most rules use a zero-specificity scope; transparent spatial hit targets are the documented exception. For complete control import layout alone or omit both stylesheets.
 
 Go guidance uses `.go-guidance`, `.go-hint-actions` and `.puzzle-link` for wrapping hint actions next to the board range. `.go-reference` lays out the compact coordinate/source/rules row below the board; `.go-coordinate` styles its readout. These selectors are parent-overridable; the coordinate display never changes answer state.

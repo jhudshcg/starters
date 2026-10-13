@@ -41,7 +41,7 @@ Callbacks do not access storage or record progress. `onChange` supplies an answe
 
 The parent may evaluate locked answers during submission/review. It may also restore state while locked; locking controls student edits, not parent authority. There is no automatic submit, timer, result history or attempt policy.
 
-Go controls preview a stone on pointer down or Enter/Space down, then commit on release. Moving off the pressed intersection, cancellation, focus loss or disposal removes the preview without changing answer state. Click activation remains available for assistive tools.
+Go controls preview a stone on pointer down or Enter/Space down, then commit on release. Dragging aims at the nearest intersection. Leaving the board, a second pointer, cancellation, focus loss or disposal removes the preview without changing answer state. Click activation remains available for assistive tools.
 
 Go controls pause 200 ms between the player's move and a recorded reply so captures remain understandable. Intermediate answer state includes `replyMove` and `replyDue`; save/restore it with the rest of the answer. Bindings cancel pending callbacks on disposal, locking or replacement and resume an outstanding reply when restored editable. Undo returns to the state before the player's turn. This is playback timing, separate from a parent-owned activity timer. Headless `playGo` remains synchronous by default; `{deferReply: true}` and `completeGoReply` expose the staged behaviour.
 
@@ -76,3 +76,10 @@ Use [optional CSS and graphics](styles/README.md), map semantic theme tokens and
 ## Verification
 
 From the repository root, `node --test packages/puzzles/tests/*.test.js` checks content, all answer kinds and headless rendering. With the dedicated Chrome profile on port 9227, `node scripts/browser-puzzle-player.mjs` builds a temporary package-only fixture and checks all nine types, isolation, state, explicit marking, lock/restore/reset, disposal, hints, Go completion/replay and continuous path dragging. It does not require the parent app or a running development server.
+
+
+## Human Go companions
+
+`./go-board` exports `renderGoBoard` for shared puzzle/human geometry; opt into `coordinates` and `zoom` for four-sided axes and native pinch zoom. `./go-press` accepts optional `validate` and `getColour` callbacks so human games can reuse pointer/keyboard handling. Defaults preserve puzzle play.
+
+`./rules/go-game` provides transient human games, pass, positional superko, undo/redo, dead-group marking and area counting. `./rules/go-clock` provides main time and Japanese byo-yomi with caller timestamps. Neither owns app progress or routing. `./gnugo-client` exports `createGnuGoEstimator(workerURL)`, creating a worker only on `estimate(position, signal)`; abort or dispose cancels it. Hosts supply/distribute the engine and its complete source/licences. See [host integration](../../docs/go-integration.md).

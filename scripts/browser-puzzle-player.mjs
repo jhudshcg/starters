@@ -20,6 +20,7 @@ ws.onmessage=event=>{const value=JSON.parse(event.data);if(value.id){const task=
 const send=(method,params={})=>new Promise((resolve,reject)=>{pending.set(++next,{resolve,reject});ws.send(JSON.stringify({id:next,method,params}));});
 const evaluate=async expression=>{const value=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(value.exceptionDetails)throw Error(JSON.stringify(value.exceptionDetails));return value.result.value;};
 try{
+ await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
  await send('Page.enable');await send('Runtime.enable');await send('Page.navigate',{url:pathToFileURL(join(directory,'index.html')).href});
  for(let i=0;i<100&&!await evaluate('Boolean(window.library)');i++)await new Promise(resolve=>setTimeout(resolve,50));
  assert.ok(await evaluate('Boolean(window.library)'));

@@ -1,10 +1,17 @@
+import {pythonProjectsHTML} from './python-projects.js';
+import {pythonGuidesHTML,pythonGuideKey} from './python-guides.js';
+import {mathsPracticeURL,discoverableFocuses,discoverableQuestion} from './activity-discovery.js';
+import {mountGoPractice} from './go-practice.js';
+import {createOneDrive} from './onedrive.js';
+import {backupJSON,prepareBackup} from './progress-transfer.js';
+import {progressFilename} from './progress-identity.js';
 import {showModal} from './dialog.js';
 import {searchGroups,searchPlan,chooseSearchEntries,searchSetMatches,cleanSearchQuery} from './search.js';
-import {initialisePractice,settlePractice,engagePractice,notePracticeInteraction,pollPractice,INTERACTION_POLL_MS,pausePractice,practiceSeconds,validPracticeTime,backupFilename} from './practice-time.js';
+import {initialisePractice,settlePractice,engagePractice,notePracticeInteraction,pollPractice,INTERACTION_POLL_MS,pausePractice,practiceSeconds} from './practice-time.js';
 import {lastTracked,weeklyProgress,averageSetPercentage} from './weekly-progress.js';
 import {profiles,loadProfile,saveProfile,selectProfile,activateProfile,nameMatch,normaliseName} from './profiles.js';
 import {revisionPriorities,updateRecommendations} from './revision.js';
-import {bankRelease,CODE_FORMAT} from './bank-release.js';
+import {bankRelease} from './bank-release.js';
 import {generationLabel,sameGeneration} from './progress-generation.js';
 import {examSections,isExamBank} from './exam-sections.js';
 import {pageStatus,developmentNotice} from './page-status.js';
@@ -15,13 +22,13 @@ import {revealPart} from './packed-data.js';
 import {formatCoverage} from './coverage.js';
 import {puzzlePartHTML,puzzleSolutionHTML} from './puzzle-view.js';
 import {bindChallenges as bindPuzzles,disposeChallenges as disposePuzzles} from './challenge-controls.js';
-import {banks, types, focuses, focusNames, espRecipeNames, resolve, choose, marks, historicalSet, recordedSet, contentChanged, ensureBank, loadSet, challengeLevels, challengeLabel, availableChallenges, puzzlePool, examSubtopics, nextExamSubtopic, matchesSubtopic, hasAlternativeExamSet} from './bank.js';
+import {banks, types, focuses, focusNames, espRecipeNames, resolve, choose, marks, historicalSet, contentChanged, ensureBank, loadSet, challengeLevels, challengeLabel, availableChallenges, puzzlePool, examSubtopics, nextExamSubtopic, matchesSubtopic, hasAlternativeExamSet} from './bank.js';
 import {hasUnsubmittedAnswers} from './unsent-answers.js';
 import {codeDiagnostics} from './code-diagnostics.js';
 import {openIssueReport} from './issue-report.js';
 import {encode, questionCode, BANK_VERSION} from './codes.js';
 import {markQuestion} from './marking.js';
-import {loadStorage, migrateStoredCodes, deadlineState, exportCSV, attemptEligibility, recordPractice, REATTEMPT_HOURS, partScores, validatePartScores} from './progress.js';
+import {loadStorage, deadlineState, exportCSV, attemptEligibility, recordPractice, REATTEMPT_HOURS, partScores} from './progress.js';
 
 const $=s=>document.querySelector(s);
 const main=$('#main');
@@ -37,7 +44,7 @@ function showCodeError(element,input,error){
     const replacement=document.createElement('button');replacement.type='button';replacement.textContent='Choose a replacement set';
     replacement.onclick=async()=>{try{
       const {type,focus}=error.replacement;await ensureBank(type);
-      await start(choose(type,focuses(type).includes(focus)?focus:focuses(type)[0]));
+      await start(choose(type,discoverableFocuses(focuses(type),type).includes(focus)?focus:discoverableFocuses(focuses(type),type)[0]));
     }catch(e){toast(e.message);}};
     element.append(' ',replacement);
   }
@@ -55,12 +62,23 @@ $('#report-issue').onclick=()=>{
 let data={schema:1,active:null,history:[]};
 let storageOK=true;
 let toastTimer;
+const oneDrive=createOneDrive({current:()=>data,saveLocal:profile=>{try{saveProfile(profile);}catch(error){storageError();throw error;}},restore:restoreProgress,notify:toast,download:()=>download(backupJSON(data),progressFilename(data),'application/json')});
+async function restoreProgress(raw,review=false){
+ const {merged,added,duplicate,switching}=await prepareBackup(raw,data);
+ if(review&&!confirm(`Open progress for ${merged.username}? Merge ${added} results; skip ${duplicate} duplicates. Existing browser results are retained.`))return false;
+ data=activateProfile(merged);
+ filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
+ profileHeader();
+ const message=`${switching?`Switched to ${data.username}, the profile named in this backup. `:''}${added} results restored; ${duplicate} duplicates skipped.`;
+ if(location.hash==='#progress'){progress();const notice=document.createElement('p');notice.className='restore-notice';notice.setAttribute('role','status');notice.textContent=message;main.querySelector('.page-top').after(notice);}
+ toast(message);return true;
+}
 const canReview=()=>hasRecentSubmission(data.active);
 let priorityLevel='topic';
 let filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
 function storageError(){storageOK=false;$('#storage-warning').hidden=false;$('#storage-warning').textContent='Progress could not be saved on this browser. You can keep practising. Export a backup from My progress to keep your results.';}
-try{data=profiles().current?loadProfile(profiles().current):loadStorage();if(data.active?.migratedCodeFrom){if(location.hash===`#set=${encodeURIComponent(data.active.migratedCodeFrom)}`)history.replaceState(null,'',`#set=${encodeURIComponent(data.active.code)}`);delete data.active.migratedCodeFrom;}if(data.active){try{historicalSet(data.active.code);}catch{data.active=null;saveProfile(data);}}}catch{storageError();}
-function persist(){if(data.active&&!data.active.finished)settlePractice(data.active);try{saveProfile(data);}catch{storageError();}if(data.username)profileHeader();}
+try{data=profiles().current?loadProfile(profiles().current):loadStorage();if(data.username&&!data.profileId)data=activateProfile(data);if(data.active?.migratedCodeFrom){if(location.hash===`#set=${encodeURIComponent(data.active.migratedCodeFrom)}`)history.replaceState(null,'',`#set=${encodeURIComponent(data.active.code)}`);delete data.active.migratedCodeFrom;}if(data.active){try{historicalSet(data.active.code);}catch{data.active=null;saveProfile(data);}}}catch{storageError();}
+function persist(){if(data.active&&!data.active.finished)settlePractice(data.active);try{saveProfile(data);oneDrive.changed(data);}catch{storageError();}if(data.username)profileHeader();}
 function profileHeader(){
   let el=$('#profile-welcome');
   if(!el){el=document.createElement('div');el.id='profile-welcome';$('.site-header').append(el);}
@@ -72,17 +90,19 @@ function chooseProfile(switching=false){
   if(data.active&&!data.active.finished){pausePractice(data.active);persist();}
   return new Promise(resolve=>{
     const dialog=document.createElement('dialog');dialog.setAttribute('aria-labelledby','profile-title');
-    dialog.innerHTML=`<h2 id="profile-title">Your progress profile</h2><p>Enter your name to keep your progress on this computer. Export regularly to your student OneDrive.</p><form><label for="profile-name">Your name</label><input id="profile-name" name="username" maxlength="80" required autocomplete="name"><p id="profile-message" role="status"></p><div class="actions"><button class="primary" type="submit">Continue</button>${switching?'<button type="button" id="profile-cancel">Cancel</button>':''}</div></form>`;
+    dialog.innerHTML=`<h2 id="profile-title">Your progress profile</h2><p>Enter your name to keep your progress on this computer. Use your synced OneDrive folder to keep progress between computers.</p><button type="button" id="profile-open">Open progress file</button><input type="file" id="profile-backup" accept=".json,.txt" hidden><form><label for="profile-name">Your name</label><input id="profile-name" name="username" maxlength="80" required autocomplete="name"><p id="profile-message" role="status"></p><div class="actions"><button class="primary" type="submit">Continue</button>${switching?'<button type="button" id="profile-cancel">Cancel</button>':''}</div></form>`;
     document.body.append(dialog);showModal(dialog);
     dialog.oncancel=e=>{if(!switching)e.preventDefault();};dialog.onclose=()=>{dialog.remove();if(practiceVisible())engagePractice(data.active);resolve();};
     dialog.querySelector('#profile-cancel')?.addEventListener('click',()=>dialog.close());
+    dialog.querySelector('#profile-open').onclick=()=>dialog.querySelector('#profile-backup').click();
+    dialog.querySelector('#profile-backup').onchange=async event=>{try{const file=event.target.files[0];if(!file)return;if(file.size>5000000)throw Error('Backup is too large (maximum 5 MB).');if(await restoreProgress(await file.text(),true)){dialog.close();render();}}catch(error){dialog.querySelector('#profile-message').textContent=error.message;}};
     const finish=name=>{
-      try{persist();data=selectProfile(name);}catch{storageError();data={schema:1,active:null,history:[],username:name};}
+      try{persist();void oneDrive.flush(data);data=selectProfile(name);}catch{storageError();data={schema:1,active:null,history:[],username:name};}
       filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};profileHeader();dialog.close();
       if(switching){history.replaceState(null,'','#home');main.innerHTML='';render();}
     };
     dialog.querySelector('form').onsubmit=e=>{
-      e.preventDefault();const name=normaliseName(dialog.querySelector('input').value);if(!name)return;
+      e.preventDefault();const name=normaliseName(dialog.querySelector('#profile-name').value);if(!name)return;
       let names=[];try{names=profiles().names;}catch{storageError();}
       const match=nameMatch(name,names);
       if(match.suggestion){
@@ -140,7 +160,7 @@ async function openCodeOrSearch(e,errorSelector){
 function about(){
   $('.global-code-entry').hidden=true;
   main.innerHTML=`<article class="about-page"><nav class="breadcrumbs eyebrow" aria-label="Breadcrumb"><a href="#home">All activities</a><span aria-hidden="true">/</span><a href="#about" aria-current="page">About</a></nav>
-  <h1>A small start.<br>A stronger understanding.</h1>
+  <p><a href="THIRD_PARTY_NOTICES.md">Third-party software, GNU Go source and licences</a></p><h1>A small start.<br>A stronger understanding.</h1>
   <section aria-labelledby="about-purpose"><h2 id="about-purpose">Why this site?</h2><p>Short, regular practice helps students recall what they know, spot gaps and build confidence. This site brings together puzzles, Core exam practice, Python challenges and Employer Set Project activities for Digital Software Development T Level students.</p><p>Designed for 5–15 minute starters, the activities offer variety, immediate feedback/auto marking and repeat practice with different values and scenarios. Progress tracking, with revision priority identification and revision set generation helps students optimize revision time.</p></section>
   <section aria-labelledby="about-roadmap"><h2 id="about-roadmap">What’s next?</h2><ul><li>Work through questions sets matching search term results.</li><li>Enter missing Python answers directly in the code.</li><li>Extend Core coverage beyond CA1 and CA2, and add more ESP activities, including flowcharts.</li><li>Develop Year 2 Occupational Specialism practice.</li></ul><p>These are planned developments. Classroom feedback will help shape the content, accessibility and order of work.</p></section>
   <section aria-labelledby="about-author"><h2 id="about-author">Author and development</h2><p>Created by <strong>Joe Hudson</strong>. Agentic development—using AI agents to carry out development tasks—has been used extensively to build the site, in combination with expert human input to guide its educational purpose, content, design and UX.</p></section></article>`;
@@ -150,12 +170,13 @@ function home(){
   $('.global-code-entry').hidden=true;
   const completed=data.history.length;
   main.innerHTML=`<section class="hero"><div><div class="eyebrow">A little practice goes a long way</div><h1>Start small.<br><em>Think bigger.</em></h1><p>Get your brain into gear with a quick puzzle, a little Core revision, a Python challenge or ESP practice.</p><div class="meta-row"><span>5–15 minutes</span><span>Instant feedback</span><span>Your own pace</span></div></div><aside class="code-entry"><div class="eyebrow">Have a code or a topic in mind?</div><h2>Jump straight in.</h2><p>Open a question set or find practice by key term.</p><form id="code-form"><input name="code" aria-label="Question set code or key term" placeholder="Enter code or key term" autocomplete="off" autocapitalize="off" spellcheck="false" required><button type="submit">Open <span aria-hidden="true">↗</span></button></form><p class="error" id="code-error" role="alert"></p><small>9 characters · capitals matter · optional timer character<br>or enter key term to search for</small></aside></section>
-  <div class="section-heading"><h2>What will you try today?</h2><span>Pick an activity to get started</span></div>
+  <div class="section-heading"><h2>What will you try today?</h2><a href="#go">Go practice board</a><a href="${mathsPracticeURL}" target="_blank" rel="noopener">Maths practice ↗</a><span>Pick an activity to get started</span></div>
   <section class="activity-grid" aria-label="Activity types">${types.slice(0,3).map((t,i)=>`<article class="type-card type-${i}"><div class="card-art" aria-hidden="true">${i===0?'<div class="mini-grid"><span>2</span><span>5</span><span>7</span><span>3</span><span>?</span><span>9</span><span>5</span><span>11</span><span>16</span></div>':i===1?'<div class="art-lines"><span>○ &nbsp; identify</span><span>● &nbsp; understand</span><span>○ &nbsp; explain</span></div>':i===3?'<div class="art-lines"><span>▦ &nbsp; plan</span><span>✓ &nbsp; test</span><span>≡ &nbsp; explain</span></div>':'<div class="art-code">for idea in ideas:<br>&nbsp; &nbsp; give_it_a_go()</div>'}</div><div class="card-body"><div class="eyebrow">0${i+1} / ${t.label}</div><h3>${t.name}</h3><p>${i===1?'Core exam questions and ESP tasks. Practise knowledge and apply your skills.':t.description}</p><div class="card-bottom"><small>${i===1?'Core papers and ESP':i===2?'2 challenges · 12 marks':i===3?'3 questions · up to 5 minutes each':'3 puzzles · choose your pace'}</small><button data-start="${i}" aria-label="Start ${t.name}">Let’s go <span aria-hidden="true">↗</span></button>${i!==1?`<a class="topic-search-link" href="#search=all">Find practice by key term</a>`:''}</div></div></article>`).join('')}</section>
   <section class="lower-panel"><div class="note-panel"><span class="note-icon" aria-hidden="true">↗</span><div><h3>${completed?`${completed} ${completed===1?'activity':'activities'} completed. Keep building.`:'Small steps add up.'}</h3><p>See your results and find out what to practise next.</p></div><a href="#progress">My progress →</a></div><div class="note-panel"><span class="note-icon" aria-hidden="true">◷</span><div><h3>No rush. Unless you want one.</h3><p>Practise at your pace, or add a timer for a challenge.</p></div></div></section>
   ${data.active&&!data.active.finished?`<p class="muted" style="margin-top:1.5rem">You have an unfinished activity. <a href="#set=${encodeURIComponent(data.active.code)}">Continue ${esc(data.active.code)}</a></p>`:''}`;
+  const reminder=document.createElement('div');main.append(reminder);oneDrive.mount(reminder,{compact:true});
   $('#code-form').onsubmit=e=>openCodeOrSearch(e,'#code-error');
-  main.querySelectorAll('[data-start]').forEach(b=>b.onclick=async()=>{try{if(b.dataset.start==='1'){navigate('#exam');return;}await ensureBank(Number(b.dataset.start));await start(choose(Number(b.dataset.start),focuses(Number(b.dataset.start))[0]),{challengeLevel:'all'});}catch(e){toast(e.message);}});
+  main.querySelectorAll('[data-start]').forEach(b=>b.onclick=async()=>{try{if(b.dataset.start==='1'){navigate('#exam');return;}await ensureBank(Number(b.dataset.start));await start(choose(Number(b.dataset.start),discoverableFocuses(focuses(Number(b.dataset.start)),Number(b.dataset.start))[0]),{challengeLevel:'all'});}catch(e){toast(e.message);}});
 }
 function examHome(){
   $('.global-code-entry').hidden=false;
@@ -180,7 +201,7 @@ function searchPage(type,query=''){
   const show=()=>{
     const value=cleanSearchQuery($('#topic-search').value);
     history.replaceState(null,'',`#search=${type}${value?'&q='+encodeURIComponent(value):''}`);
-    const groups=selectedTypes.flatMap(bankType=>searchGroups(banks[bankType],bankType,value,{focusNames,recipeNames:espRecipeNames})).sort((a,b)=>b.rank-a.rank||b.matches.size-a.matches.size);
+    const groups=selectedTypes.flatMap(bankType=>searchGroups(banks[bankType].filter(q=>discoverableQuestion(q,bankType)),bankType,value,{focusNames,recipeNames:espRecipeNames})).sort((a,b)=>b.rank-a.rank||b.matches.size-a.matches.size);
     $('#search-status').textContent=!value?'Enter a key term to see matching topics and question counts.':groups.length?`${groups.reduce((total,g)=>total+g.matches.size,0)} matching questions across ${groups.length} ${groups.length===1?'topic':'topics'}.`:'No matching topics in this section. Try a broader term or a specification reference.';
     $('#search-results').innerHTML=groups.map((group,index)=>{
       const plan=searchPlan(group),titles=group.questions.filter(q=>group.matches.has(q.slot)).slice(0,3).map(q=>q.title);
@@ -224,7 +245,7 @@ function questionHTML(q,index,set){
     const outcomeAttribute=outcome?` data-result="${outcome}"`:'';
     const codeBlock=p.code?`<pre class="code-panel part-code" tabindex="0" aria-label="Python code for part ${j+1}"><code>${esc(p.code)}</code></pre>`:'';
     const label=`${subtopic!=='all'&&matchesSubtopic(p,subtopic)?`<span class="subtopic-match">Selected subtopic · ${esc(subtopic)}</span> `:''}<span class="part-label">${String.fromCharCode(97+j)})</span> ${esc(p.prompt)} <span class="part-marks">(${p.marks})</span>`;
-    if(set.type===0)return puzzlePartHTML(p,answer,{instanceId:q.slot,index:j,locked,result,labelHTML:label,guidanceActionsHTML:goHint?hintButton:'',guidanceHTML:goHint?hintPanel:'',referenceHTML:goHint&&q.source?`<a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a>`:''});
+    if(set.type===0)return puzzlePartHTML(p,answer,{instanceId:q.slot,index:j,locked,result,labelHTML:label,guidanceActionsHTML:goHint?hintButton+' <a class="puzzle-link" href="#go">Practice board</a>':'',guidanceHTML:goHint?hintPanel:'',referenceHTML:goHint&&q.source?`<a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a>`:''});
     const input=p.options?`<fieldset class="part"${outcomeAttribute} ${locked?'disabled':''}><legend>${label}</legend>${codeBlock}<div class="options">${p.options.map(option=>`<label class="option"><input type="radio" name="${id}" value="${esc(option)}" data-slot="${q.slot}" data-part="${p.id}" ${answer===option?'checked':''}>${esc(option)}</label>`).join('')}</div>`:`<div class="part"${outcomeAttribute}><label for="${id}">${label}</label>${codeBlock}<input id="${id}" data-slot="${q.slot}" data-part="${p.id}" value="${esc(answer)}" ${locked?'disabled':''} ${p.kind==='number'?'inputmode="decimal"':''} autocomplete="off" autocapitalize="off" spellcheck="false" ${result?`aria-describedby="feedback-${q.slot}-${j}"`:''}>`;
     return input+(p.coverage?.length?`<details class="part-coverage"><summary>Spec reference</summary><small>${esc(formatCoverage(p.coverage))}${p.coverageMode==='practice'?' · Supporting practice':''}</small></details>`:'')+(result?`<p id="feedback-${q.slot}-${j}" class="feedback ${outcome}">${result.earned}/${result.max} · ${esc(result.message)}</p>`:'')+(p.options?'</fieldset>':'</div>');
   }).join('')}</div></div>${espReviewHTML(q,a)}<div class="question-actions">${goHint?'':hintButton}${canReview()?`<button data-check="${q.slot}">Check answer</button><button class="subtle" data-reveal="${q.slot}" ${a.reveals[q.slot]?'disabled':''}>${a.reveals[q.slot]?'Answer shown':'Show answer'}</button>`:''}${a.hints[q.slot]||a.reveals[q.slot]?'<small>Assisted practice</small>':''}</div>${goHint?'':hintPanel}${canReview()&&a.reveals[q.slot]?`<div class="solution"><h3>Answers and explanations</h3><ol class="solution-list" role="list">${q.parts.map((publicPart,j)=>set.type===0?puzzleSolutionHTML(publicPart,j,q.slot):((p)=>`<li class="solution-part"><p class="solution-answer"><span class="part-label">${String.fromCharCode(97+j)})</span> <strong>${esc(p.solutionText??p.answer)}</strong></p><p class="solution-explanation">${esc(p.explanation)}</p></li>`)(revealPart(publicPart))).join('')}</ol></div>`:''}</article>`;
@@ -258,7 +279,16 @@ function activity(){
   ${record?`<section class="result-banner" aria-label="Activity result"><span class="result-score">${record.percentage}%</span><div><h2>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</h2><p>${record.earned}/${record.max} marks · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}${untracked?' · Practice only — progress not updated':''}. ${canReview()?'Review your feedback below.':'Submit your saved answers to unlock review for another four hours.'}</p></div><button id="retry">Try this set again</button></section>`:''}
   <section class="set-toolbar" aria-label="Set code and timing"><div class="code-block"><div><div class="code-label">YOUR ${set.questions.length===1?'ACTIVITY':'SET'} CODE</div><div class="set-code" id="display-code">${esc(a.code)}</div></div><div class="code-actions"><button id="copy-code">Copy code</button><button id="copy-link">Copy link</button></div></div><p class="set-summary muted">${set.questions.length} ${set.questions.length===1?'question':'questions'} · ${set.total} ${set.type===0?'points':'marks'} · ${set.type===3?'Up to':'About'} ${set.questions.length===1?(set.questions[0].estimatedMinutes??types[set.type].minutes):types[set.type].minutes} minutes</p><div class="timer-controls"><span class="timer-display" id="timer">${a.deadline?'':'Untimed'}</span><label for="minutes">Timer</label><select id="minutes" ${a.finished?'disabled':''}>${Array.from({length:11},(_,i)=>i+5).map(m=>`<option value="${m}" ${m===(set.minutes??types[set.type].minutes)?'selected':''}>${m} min</option>`).join('')}</select><button id="timer-toggle" ${a.finished?'disabled':''}>${a.deadline?'Stop timer':'Start timer'}</button></div></section>
   <div class="random-controls"><button id="new-type" ${set.search?'':inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':''}>${set.search?'Other matching topics':inSequence?'Next question set':'Get new question set ↗'}</button><button id="new-focus" ${set.search?(!searchAlternatives?'disabled title="No other set keeps these search matches."':''):inSequence&&!nextSubtopic?'disabled title="End of available subtopics."':!inSequence&&!sameFocusAlternatives?'disabled title="No other question combination matches this selection. Use Get new permutation."':''}>${inSequence?'Next set in sequence':subtopic==='all'?'New set in this focus':'New set with this subtopic'}</button><button id="permutation" ${set.search?!searchPermutation?'disabled title="No other permutation keeps these search matches."':'':set.questions.some(q=>q.variations.length<2)?'disabled title="This set includes a fixed problem. Choose a new set for different puzzles."':''}>Get new permutation ↻</button></div>
-  <section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>`;
+  ${set.type===2?pythonProjectsHTML()+pythonGuidesHTML(set.questions,a.pythonGuidesOpen):''}<section class="questions" aria-label="Questions">${set.questions.map((q,i)=>questionHTML(q,i,set)).join('')}</section><div class="submit-bar">${record?`<div class="submit-result" id="submit-result" tabindex="-1" role="status"><strong>${record.percentage}%</strong><span>${record.earned}/${record.max} ${set.type===0?'points':'marks'} · ${record.engagedSeconds===undefined?'elapsed time':'estimated practice time'}: ${duration(practiceSeconds(record))}${record.assisted?' · Assisted practice':''}<br>${record.outcome==='expired'?'Time’s up. Answers submitted.':'Activity complete.'}</span></div>`:'<p>Try all questions, then submit your best try.</p>'}<button class="primary" id="submit" ${a.finished&&canReview()?'disabled':''}>${a.finished?(canReview()?'Submitted ✓':'Submit saved answers →'):'Submit set answers →'}</button></div>`;
+  const saveControls=document.createElement('div');main.append(saveControls);oneDrive.mount(saveControls,{compact:true});
+  main.querySelectorAll('[data-python-guide]').forEach(guide=>guide.addEventListener('toggle',event=>{
+    const key=guide.dataset.pythonGuide;
+    a.pythonGuidesOpen??={};a.pythonGuidesOpen[key]=event.target.open;
+    if(event.target.open&&!a.finished)for(const question of set.questions.filter(question=>pythonGuideKey(question)===key)){
+      a.hiddenHints??={};if(!a.hints[question.slot])a.hiddenHints[question.slot]=true;a.hints[question.slot]=true;
+    }
+    persist();
+  }));
   bindPuzzles(main,set,a,(slot,id,value,selector)=>{
     a.answers[slot]??={};a.answers[slot][id]=value;a.saved=Date.now();
     // New puzzle moves invalidate visible feedback but retain first-response evidence.
@@ -340,7 +370,7 @@ async function replaceSet(set,mode){
       await start(choose(1,next.focus,set,'sequence','all',next.reference),{inSequence:true});
       return;
     }
-    const alternatives=focuses(set.type).filter(f=>f!==set.focus&&(set.type!==0||availableChallenges(f).includes(level)));
+    const alternatives=discoverableFocuses(focuses(set.type),set.type).filter(f=>f!==set.focus&&(set.type!==0||availableChallenges(f).includes(level)));
     const focus=mode==='type'?alternatives[Math.floor(Math.random()*alternatives.length)]:set.focus;
     const subtopic=mode==='type'?'all':set.type===1?(data.active.examSubtopic??'all'):set.type===0&&set.focus==='classic maths'?(data.active.mathsTopic??'all'):'all';
     await start(choose(set.type,focus,set,mode==='permutation'?'permutation':'new',level,subtopic),{challengeLevel:level,inSequence});
@@ -415,7 +445,7 @@ function progress(){
   if(updateRecommendations(data,revisionAreas('subtopic'),area=>choose(1,area.parent,null,'new','all',area.focus)))persist();
   const evidenceMarks=value=>Number(value.toFixed(2)).toString();
   const select=(key,options)=>`<select id="filter-${key}">${options.map(([v,l])=>`<option value="${v}" ${filters[key]===v?'selected':''}>${esc(l)}</option>`).join('')}</select>`;
-  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><div class="eyebrow">A little better, every time</div><h1>My progress</h1><p class="muted">Tracked attempts, saved on this browser. Leave at least four hours after completing a set before starting another tracked attempt at it. Export regularly to your student OneDrive. Practice time pauses after two minutes without interaction and while the activity is hidden. Older records retain elapsed time.</p></div><div class="progress-transfers"><div class="progress-transfer-actions"><button class="primary" id="export-backup">Save backup</button><button class="primary" id="import-backup">Restore backup</button><details class="spreadsheet-options"><summary>Spreadsheet options</summary><p>CSV is for viewing results in a spreadsheet. Use a backup to restore your progress.</p><button id="export-csv">Export CSV</button></details></div><p class="muted">Save a backup to keep your progress or move it to another computer.</p><input type="file" id="backup-file" accept="text/plain,application/json,.txt,.json" hidden></div></div>
+  main.innerHTML=`<a href="#home" class="back">← All activities</a><div class="page-top"><div><div class="eyebrow">A little better, every time</div><h1>My progress</h1><p class="muted">Tracked attempts, saved on this browser. Leave at least four hours after completing a set before starting another tracked attempt at it. Link your synced OneDrive file below to save progress between computers. Practice time pauses after two minutes without interaction and while the activity is hidden. Older records retain elapsed time.</p></div><div class="progress-transfers"><div class="progress-transfer-actions"><button class="primary" id="export-backup">Download backup</button><button class="primary" id="import-backup">Restore backup</button><details class="spreadsheet-options"><summary>Spreadsheet options</summary><p>CSV is for viewing results in a spreadsheet. Use a backup to restore your progress.</p><button id="export-csv">Export CSV</button></details></div><p class="muted">Save a backup to keep your progress or move it to another computer.</p><input type="file" id="backup-file" accept="text/plain,application/json,.txt,.json" hidden></div></div>
   <div class="filters"><label>Type${select('type',[['all','All types'],...types.map((t,i)=>[String(i),t.name])])}</label><label>Focus${select('focus',[['all','All focuses'],...Object.entries(focusNames)])}</label><label>From<input type="date" id="filter-from" value="${filters.from}"></label><label>To<input type="date" id="filter-to" value="${filters.to}"></label><label>Sort${select('sort',[['newest','Newest first'],['oldest','Oldest first'],['score','Highest score']])}</label></div>
   <section class="progress-summary" style="margin-top:1.5rem"><div class="stat"><strong>${rows.length}</strong><span>Completed activities</span></div><div class="stat"><strong>${rows.length?average+'%':'—'}</strong><span>Average final percentage</span></div><div class="stat"><strong>${Math.round(rows.reduce((s,r)=>s+practiceSeconds(r),0)/60)}</strong><span>Minutes of practice</span></div></section>
   ${weeklyHTML(rows)}
@@ -426,57 +456,25 @@ function progress(){
   ${priority.map(p=>`<div class="priority-row priority-${p.status}"><span>${esc(focusNames[p.focus]??p.focus)}</span><strong>${p.score===null?'No score':Math.floor(p.score)+'%'}</strong><small>${p.status==='missing'?'missing data, please practice this area to assess revision priority':p.status==='stale'?'stale data, revise this area soon to check if you still have the skills!':p.status==='red'?'High revision priority':p.status==='amber'?'Developing skills':'Secure skills'}${p.last?` · Last practised ${esc(new Date(p.last).toLocaleDateString('en-GB'))} · ${p.count} attempts · ${evidenceMarks(p.max)} marks assessed`:''}</small></div>`).join('')}</section>
 
   ${rows.length?`<section class="progress-panel"><h2>Score over time</h2><div class="chart" role="img" aria-label="Final scores for up to 12 recent activities, oldest to newest. Exact scores and dates are in the table below.">${[...rows].sort((a,b)=>a.finished-b.finished).slice(-12).map(r=>`<div class="chart-column"><span>${r.percentage}%</span><div class="chart-bar" style="height:${Math.max(2,r.percentage)}%"></div></div>`).join('')}</div><div class="history-wrap"><table class="history"><caption>Activity history · final scores include retries within an activity</caption><thead><tr><th>Date</th><th>Activity / focus</th><th>Code</th><th>Score</th><th>Time</th><th>Checks</th><th>Practice</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(new Date(r.finished).toLocaleString('en-GB',{dateStyle:'short',timeStyle:'short'}))}</td><td>${types[r.type]?.name??'Bank '+r.type}<br><span class="muted">${esc(focusNames[r.focus]??r.focus)}</span>${r.partScores?.length?`<details><summary>Topic / subtopic results</summary>${revisionPriorities([r],[...new Set(r.partScores.flatMap(p=>p.refs))].map(focus=>({type:r.type,focus})),r.finished).map(p=>`<div>${esc(p.focus)}: ${p.score===null?'Assisted — no independent score':Math.round(p.score)+'% first response'}</div>`).join('')}</details>`:''}</td><td>${sameGeneration(r)?`<button class="subtle history-code" data-code="${esc(r.code)}">`: '<span>'}<code>${esc(r.code)}</code>${sameGeneration(r)?'</button>':'</span>'}${generationLabel(r)?`<br><small>${esc(generationLabel(r))}</small>`:''}</td><td><strong>${r.percentage}%</strong><br>${r.earned}/${r.max}</td><td>${duration(practiceSeconds(r))}<br><small>${r.engagedSeconds===undefined?'Elapsed (older record)':'Estimated active time'}</small></td><td>${r.attemptChecks}</td><td>${r.assisted?'Assisted':'Independent'}${r.outcome==='expired'?'<br>Timer expired':''}</td></tr>`).join('')}</tbody></table></div></section>`:'<div class="empty-state"><h2>No results here yet.</h2><p class="muted">Try an activity, or adjust your filters.</p><a href="#home">Find an activity →</a></div>'}
-  <p class="muted" style="font-size:.8rem">${bankRelease.latestRolloverAt?`Latest bank rollover: ${esc(new Date(bankRelease.latestRolloverAt).toLocaleDateString('en-GB'))}. Codes issued before that date may open different questions. `:''}CSV is for viewing in a spreadsheet. Use Save backup / Restore backup to move your complete history between browsers. CSV import is planned for a later release.</p>`;
+  <p class="muted" style="font-size:.8rem">${bankRelease.latestRolloverAt?`Latest bank rollover: ${esc(new Date(bankRelease.latestRolloverAt).toLocaleDateString('en-GB'))}. Codes issued before that date may open different questions. `:''}CSV is for viewing in a spreadsheet. Use Download backup / Restore backup to move your complete history between browsers. CSV import is planned for a later release.</p>`;
   for(const key of Object.keys(filters))$(`#filter-${key}`).onchange=e=>{filters[key]=e.target.value;progress();$(`#filter-${key}`).focus();};
   $('#priority-level').onchange=e=>{priorityLevel=e.target.value;progress();$('#priority-level').focus();};
   $('#export-csv').onclick=()=>download(exportCSV(data.history),'starter-progress.csv','text/csv;charset=utf-8');
   if(rows.some(r=>r.espReview)){
     main.insertAdjacentHTML('beforeend',`<section class="esp-review"><h2>Saved ESP written reasoning</h2><p>Automatic percentages exclude these responses. Review status records a review, not a grade. Backups and CSV exports include the text.</p>${rows.filter(r=>r.espReview).map(r=>`<details><summary>${esc(r.code)} · ${esc(new Date(r.finished).toLocaleDateString())}</summary>${Object.entries(r.espReview).map(([slot,v])=>`<h3>Question slot ${esc(slot)} · ${esc(v.status)}</h3><p>${esc(v.text||'No written response entered.')}</p>`).join('')}</details>`).join('')}</section>`);
   }
-  $('#export-backup').onclick=()=>download(JSON.stringify({schema:1,codeFormat:CODE_FORMAT,lastSeenRelease:{...bankRelease},username:data.username,history:data.history,recentAttempts:data.recentAttempts??{},recentAttemptsGeneration:data.recentAttemptsGeneration??bankRelease.generation,archivedActive:data.archivedActive??[],archivedRecentAttempts:data.archivedRecentAttempts??[]},null,2),backupFilename(data.username),'application/json');
+  const fileControls=document.createElement('div');main.querySelector('.page-top').after(fileControls);oneDrive.mount(fileControls);
+  $('#export-backup').onclick=()=>download(backupJSON(data),progressFilename(data),'application/json');
   $('#import-backup').onclick=()=>$('#backup-file').click();
   $('#backup-file').onchange=async e=>{
     try{
       const file=e.target.files[0];if(!file)return;if(file.size>5000000)throw Error('Backup is too large (maximum 5 MB).');
-      const imported=JSON.parse(await file.text());
-      if(imported.schema!==1||!Array.isArray(imported.history)||imported.history.length>10000)throw Error('Unsupported backup format.');
-      if(imported.username!==undefined&&(typeof imported.username!=='string'||!normaliseName(imported.username)||normaliseName(imported.username).length>80))throw Error('Backup contains an invalid username. Nothing was imported.');
-      const requested=imported.username===undefined?data.username:normaliseName(imported.username);
-      const username=nameMatch(requested,profiles().names).exact??requested;
-      const switching=username!==data.username;
-      const target=switching?loadProfile(username):data;
-      migrateStoredCodes(imported);
-      let added=0,duplicate=0;let next=[...target.history];
-      for(const r of imported.history){
-        const set=recordedSet(r);
-        if(typeof r.id!=='string'||r.id.length>100||r.type!==set.type||r.focus!==set.focus||r.max!==set.total||!Number.isFinite(r.finished)||!Number.isFinite(new Date(r.finished).getTime())||!Number.isFinite(r.seconds)||r.seconds<0||!Number.isInteger(r.earned)||r.earned<0||r.earned>r.max||r.percentage!==Math.round(r.earned/r.max*100)||!Number.isInteger(r.firstMax)||r.firstMax<0||r.firstMax>r.max||!Number.isInteger(r.firstEarned)||r.firstEarned<0||r.firstEarned>r.firstMax||!Number.isInteger(r.attemptChecks)||r.attemptChecks<0||typeof r.assisted!=='boolean'||!['submitted','expired'].includes(r.outcome))throw Error('Backup contains an invalid result. Nothing was imported.');
-        if(!validPracticeTime(r))throw Error('Backup contains invalid practice time. Nothing was imported.');
-        if(!validatePartScores(r,set))throw Error('Backup contains invalid part scores. Nothing was imported.');
-        if(r.espReview!==undefined&&(!r.espReview||typeof r.espReview!=='object'||Array.isArray(r.espReview)||Object.entries(r.espReview).some(([slot,v])=>!set.entries.some(e=>String(e.slot)===slot)||!v||typeof v.text!=='string'||v.text.length>1200||!['Needs review','Self-reviewed','Teacher-reviewed'].includes(v.status))))throw Error('Backup contains invalid written reviews.');
-        const old=next.find(a=>a.id===r.id);
-        if(old){if(JSON.stringify(old)!==JSON.stringify(r))throw Error('A result conflicts with this browser’s history. Nothing was imported.');duplicate++;}else{next.push(r);added++;}
-      }
-      const recent={...target.recentAttempts};
-      if(imported.recentAttempts!==undefined&&imported.recentAttemptsGeneration===bankRelease.generation){
-        if(!imported.recentAttempts||typeof imported.recentAttempts!=='object'||Array.isArray(imported.recentAttempts)||Object.keys(imported.recentAttempts).length>10000)throw Error('Backup contains invalid practice dates.');
-        for(const [code,at] of Object.entries(imported.recentAttempts)){
-          const key=attemptEligibility({history:[]},historicalSet(code).code).key;
-          if(!Number.isFinite(at)||at<0||!Number.isFinite(new Date(at).getTime()))throw Error('Backup contains an invalid practice date.');
-          recent[key]=Math.max(recent[key]??0,at);
-        }
-      }
-      const merged={...target,history:next,recentAttempts:recent,recentAttemptsGeneration:bankRelease.generation};
-      for(const key of ['archivedActive','archivedRecentAttempts'])if(Array.isArray(imported[key]))merged[key]=[...target[key]??[],...imported[key]];
-      // Validation above is read-only: a bad backup must never select another profile.
-      try{data=activateProfile(merged);}catch{storageError();throw Error('Could not save the restored profile. Your selected profile has not changed.');}
-      if(switching)filters={type:'all',focus:'all',from:'',to:'',sort:'newest'};
-      profileHeader();progress();
-      const message=`${switching?`Switched to ${data.username}, the profile named in this backup. `:''}${added} results restored; ${duplicate} duplicates skipped.`;
-      const notice=document.createElement('p');notice.className='restore-notice';notice.setAttribute('role','status');notice.textContent=message;main.querySelector('.page-top').after(notice);toast(message);
+      await restoreProgress(await file.text());
     }catch(error){toast(error.message);}
   };
   main.querySelectorAll('.history-code').forEach(b=>b.onclick=async()=>{try{await start(await loadSet(b.dataset.code));}catch(e){toast(e.message);}});
 }
+let disposeGoPractice=null,goReturn='#home';
 let renderId=0;
 async function render(){
   const requestId=++renderId;
@@ -486,10 +484,13 @@ async function render(){
     if(requestId!==renderId)return;
   }
   if(data.active&&!data.active.finished&&route!==`#set=${encodeURIComponent(data.active.code)}`){pausePractice(data.active);persist();}
+  void oneDrive.flush(data);
+  disposeGoPractice?.();disposeGoPractice=null;
   disposePuzzles(main);
   $('#nav-home').setAttribute('aria-current',route==='#progress'||route==='#about'?'false':'page');
   $('#nav-progress').setAttribute('aria-current',route==='#progress'?'page':'false');
   if(route==='#progress'){await Promise.all([ensureBank(1),ensureBank(2)]);if(requestId===renderId)progress();return;}
+  if(route==='#go'){$('.global-code-entry').hidden=true;disposeGoPractice=mountGoPractice(main,goReturn);return;}
   if(route==='#about'){about();return;}
   if(route==='#exam'){examHome();return;}
   if(route.startsWith('#search=')){
@@ -525,6 +526,7 @@ try{
 $('#global-code-form').onsubmit=e=>openCodeOrSearch(e,'#global-code-error');
 document.addEventListener('click',async event=>{
   const link=event.target.closest('a[href]');
+  if(link?.getAttribute('href')==='#go')goReturn=location.hash||'#home';
   if(!link||event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.hasAttribute('download')||(link.target&&link.target!=='_self'))return;
   if(link.getAttribute('href')==='#main'){event.preventDefault();main.focus();return;}
   const url=new URL(link.href,location.href);
@@ -533,9 +535,9 @@ document.addEventListener('click',async event=>{
   event.preventDefault();if(await askLeave())location.href=url.href;
 });
 window.addEventListener('hashchange',()=>{render();main.focus();});
-window.addEventListener('pagehide',()=>{if(data.active&&!data.active.finished){pausePractice(data.active);data.active.saved=Date.now();persist();}});
+window.addEventListener('pagehide',()=>{void oneDrive.flush(data);if(data.active&&!data.active.finished){pausePractice(data.active);data.active.saved=Date.now();persist();}});
 document.addEventListener('visibilitychange',()=>{
-  if(document.hidden){if(data.active&&!data.active.finished){pausePractice(data.active);persist();}}
+  if(document.hidden){void oneDrive.flush(data);if(data.active&&!data.active.finished){pausePractice(data.active);persist();}}
   else {tick();if(practiceVisible())engagePractice(data.active);}
 });
 window.addEventListener('pageshow',()=>{if(practiceVisible())engagePractice(data.active);});

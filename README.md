@@ -33,13 +33,13 @@ Vite previews source files and updates CSS on save. `npm start` retains the prod
 | New CA2 exam practice | [Loop state and stopping conditions](http://127.0.0.1:5173/#set=CpEkHQDx) |
 | Python | [Iteration](http://127.0.0.1:5173/#set=BQAAAR_4) |
 
-The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. The current bank revision is **19**. New set codes use nine characters, plus an optional tenth timer character; legacy eight-character untimed codes remain readable and open a canonical current code. Older codes open current versions of their questions with a discreet update notice when needed. Removed questions offer an explicit replacement-set action. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; unsupported or historical unfinished work is never interpreted as different current questions.
+The Focus selector chooses other subtypes/topics. Copy controls share the exact questions and variations. Codes are case-sensitive Base64url. The current bank revision is **23**. New set codes use nine characters, plus an optional tenth timer character; legacy eight-character untimed codes remain readable and open a canonical current code. Older codes open current versions of their questions with a discreet update notice when needed. Removed questions offer an explicit replacement-set action. The original revision-1 demo bank remains unsupported, as previously agreed. Existing history is preserved; unsupported or historical unfinished work is never interpreted as different current questions.
 
 ## Current content
 
 - **Puzzles:** 1,120 templates across nine subtypes; three puzzles per set. Every subtype has at least 25 templates at each challenge level. Individual codes open one. Some sets exceed the starter timer.
 - **Core exam practice:** 121 multipart templates, each in two variations, across all 15 CA1–CA2 subsections. Three questions per set, 15–22 marks; short terms, values, constrained code and linked reasons.
-- **Python:** 63 templates, five variations each; two challenges testing different aspects, 12 marks per set.
+- **Python:** 73 templates, five variations each; two challenges testing different aspects, 12 marks per set.
 - **ESP practice:** 36 templates, five variations each, covering Task 1 planning/Excel formula practice and Task 2 testing/repair. Task 3–4 activities are designed but not implemented.
 
 Teacher review and mixed-ability timing trials remain pending. The [generated coverage report](docs/coverage-ca1-ca2.md) distinguishes direct assessment, supporting practice and reviewed coverage. Every CA1–CA2 inventory element has a linked activity: 289 of 369 have at least two distinct direct questions, 52 have one and 28 broader practical skills have supporting practice only. None is yet teacher-approved complete.
@@ -52,7 +52,7 @@ Logic/equation candidate cells cycle unknown → excluded → selected. Sudoku a
 
 Undo, Reset and hints are available during an attempt. Checking and solution reveal unlock after submitting the set (including timer expiry), and remain available for four hours across refreshes. Completed saved answers can be submitted again to unlock review without duplicating the progress record. A code-entry form is available on every page. Selected cells are yellow; correctness appears only after explicit checking or submission. The score appears beside Submit and at the top. Answers, notes and timing survive refresh. Timer expiry submits once. Puzzles are excluded from revision priorities.
 
-Progress stays in browser-local storage. CSV export and JSON backup/restore are available. Named local profiles separate progress on a shared computer; these are not secure accounts. OneDrive integration and CSV import are not implemented. Python code answers are compared as constrained tokens, never executed. Text marking uses explicit accepted answers and, for opted-in concepts, one authored term with up to one linked qualifier. Unrestricted sentence understanding is not implemented.
+Progress stays in browser-local storage. CSV export and JSON backup/restore are available. Named local profiles separate progress on a shared computer; these are not secure accounts. Linked files in synced OneDrive folders are supported; provider sign-in and CSV import are not implemented. Python code answers are compared as constrained tokens, never executed. Text marking uses explicit accepted answers and, for opted-in concepts, one authored term with up to one linked qualifier. Unrestricted sentence understanding is not implemented.
 
 ## Maintaining content
 
@@ -111,7 +111,7 @@ Go also has a separately encoded playing tree, decoded as needed for board rende
 
 This discourages casual source inspection, not determined runtime inspection. Readable source remains available to anyone who can access this repository, as requested. Build hashes do not change question-set codes. Current codes use the 54-bit, six-version-bit/three-bank-bit layout documented in [bank rollover and progress](docs/code-rollover.md); generation-zero revisions 0–18 retain their published legacy layout. Content revisions preserve codes for surviving question identities within a generation. The rotation applies only to bank payloads, never to share codes.
 
-Checks: `npm test`, `npm run validate`, `npm run build`. Run `scripts/browser-smoke.mjs` against a server serving `live`; `STARTERS_PREVIEW_URL` can include a repository path. The smoke runner reads authoring fixtures locally, never via the production page.
+Select checks using [local development](docs/local-development.md#select-checks-from-the-change). Shared changes may warrant `npm test`; content changes use `npm run validate` and `npm run build` with focused checks. Current profile/puzzle/guide browser scripts use an isolated Chrome profile against `live`; the older broad smoke script assumes legacy profile storage. `STARTERS_PREVIEW_URL` can include a repository path.
 
 ## Maintaining shared codes
 
@@ -125,7 +125,7 @@ The replacement for `BIAkAiAg`, `BoAkAiAg` and `CIAkAiAg` is **`CoAkAiAg`**. Hin
 
 ### Named profiles and revision recommendations
 
-The first visit asks for a name; the first profile inherits existing unnamed progress. “Not you?” switches profiles, preserving each profile’s active activity, history and recommendations. Similar spellings require confirmation. JSON backups embed the username; a validated restore automatically switches to that profile and reports the switch. The header shows its last tracked date. Unnamed older backups restore into the selected profile. Export regularly to your student OneDrive.
+The first visit asks for a name; the first profile inherits existing unnamed progress. “Not you?” switches profiles, preserving each profile’s active activity, history and recommendations. Similar spellings require confirmation. JSON backups embed the username and a persistent profile UUID; a validated restore automatically switches to that profile and reports the switch. The header shows its last tracked date. Unnamed older backups restore into the selected profile. Link your synced OneDrive folder, or download regular backups.
 
 Dated attempt records retain topic and part-level subtopic scores, including initial and final marks. Expand an activity’s topic/subtopic results in the history table. Earlier aggregate-only records remain visible but cannot supply subtopic evidence. Priorities use the latest five eligible independent first-response results for each area: below 45% red, 45–under 65% amber, and 65% or higher green. No evidence is grey; evidence older than 15 days has an icy pattern and reminder. Puzzles and assisted first responses are excluded.
 
@@ -133,6 +133,13 @@ Three recommended exam sets persist per profile until all are completed. Selecti
 
 Weekly progress shows sets completed, average final percentage, practice days and minutes practised this week and last week, with an eight-week trend chart and equivalent table. Set percentages are calculated from earned/available marks before averaging equally and rounding the display. See the [progress specification](docs/spec-progress.md) for exact calculations, profile/restore rules, priority thresholds, recommendation ordering and current limitations.
 
-Practice duration now estimates engagement: a lightweight interaction flag is consumed every five seconds to renew a two-minute inactivity expiry; recording pauses on expiry and when the activity is hidden, without pausing the visible countdown. Older elapsed-time records remain intact. Save backup downloads JSON content as `tlevel-practice-[username]-[YYYY-MM-DD-HHMMSS].json`; Restore backup accepts `.json` and JSON-formatted `.txt` files. Save backup and Restore backup are primary actions; CSV export is secondary, under Spreadsheet options.
+Practice duration now estimates engagement: a lightweight interaction flag is consumed every five seconds to renew a two-minute inactivity expiry; recording pauses on expiry and when the activity is hidden, without pausing the visible countdown. Older elapsed-time records remain intact. Download backup uses `practice_progress_<safe name>_<UUID hash>.json`; Restore backup accepts `.json` and JSON-formatted `.txt` files. Save to OneDrive, Download backup and Restore backup are primary actions; CSV export is secondary, under Spreadsheet options.
 
 Key-term search: enter a term in the shared code/search field or use **Find practice by key term**. Every entry point searches Puzzles, Programming, Core and ESP, including relevant programming CA tags. Results show matching topic counts and disclose any related questions needed for a complete set. Search matches authored curriculum/skill metadata and titles, not answers. The requested queue of three matching questions at a time, with a smaller final batch, is not yet implemented. [Search decisions, rationale and remaining work](docs/spec-common.md#key-term-search-6-october-2026).
+
+
+Progress can now save to a linked JSON file in a locally synced OneDrive folder. Choose the OneDrive root; the app reuses `T-Level` / `DSD T-Level` or creates `T-Level`. Filenames include a short hash of the persistent profile UUID. See [progress requirements](docs/spec-progress.md) for verified writes, reviewed restore, conflict handling and browser support.
+
+The Go practice board is available from Activities and Go puzzles, with optional clocks, area counting and on-demand GNU Go estimates. See [integration notes](docs/go-integration.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
+
+Coding practice has optional, collapsed guides for all 20 Python focuses, with short examples and two search/sort diagrams. Opening a relevant guide before submission counts as assisted practice. Ten new search/sort/list tasks and the remaining six-per-focus gaps are recorded in the [Python review](docs/reviews/2026-10-13-python-sequences.md). Classic maths puzzles are hidden from discovery; the site links to [GCSE Maths practice](https://joe312213.github.io/practice-gcse-maths/), while existing puzzle codes still work.

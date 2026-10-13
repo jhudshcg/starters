@@ -14,8 +14,11 @@
     "./evaluation": "./evaluation.js",
     "./player": "./player.js",
     "./render": "./ui/render.js",
+    "./go-board": "./ui/go-board.js",
+    "./go-press": "./ui/go-press.js",
     "./boards": "./ui/boards.js",
-    "./state": "./state.js"
+    "./state": "./state.js",
+    "./gnugo-client": "./ui/gnugo-client.js"
   },
   "scripts": {
     "test": "node --test tests/*.test.js"

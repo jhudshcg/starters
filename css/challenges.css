@@ -24,3 +24,9 @@
 .question .question-layout:has(.challenge) { grid-template-columns:1fr; }
 .question:has(.challenge) .parts { min-width:0; }
 .solution .challenge { margin-top:1rem; }
+
+/* Keep dense answers readable on phones by giving puzzle cards more of the viewport. */
+@media (max-width: 440px) {
+  main:has(.questions .puzzle-controls) { padding-inline: .5rem; }
+  .question:has(.puzzle-controls) { padding-inline: .5rem; }
+}

@@ -19,6 +19,8 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Cover Paths challenge correction](reviews/2026-10-08-cover-paths-challenge.md) | Review of all 30 Stretch boards, revised obstacles and independent route checks |
 | [Content authoring](content-authoring.md) | Shared sources, wording, marking and hints |
 | [Content refinement](content-refinement.md) | Update checklist, evidence and definitions of done |
+| [Go integration](go-integration.md) | Reconciled Maths Go controls, human board, clocks and GNU Go provenance |
+| [Third-party notices](../THIRD_PARTY_NOTICES.md) | GNU Go source, reproducible build and licences |
 | [Progress specification](spec-progress.md) | Named profiles, dated evidence, RAG/stale priorities, recommended sets, weekly trends and backup restore |
 | [Common specification](spec-common.md) | Data, codes, navigation, marking lifecycle, timing and progress |
 | [Puzzle package boundary](../packages/puzzles/ARCHITECTURE.md) | Adopted ownership, rationale and integration checks; player and headless API |
@@ -29,6 +31,7 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Exam term review](exam-term-review.md) | Context clarifications, synonyms, linked qualifiers and marking checks |
 | [Exam specification](spec-exam.md) | Curriculum coverage, marking and examples |
 | [Scaffolded extended-response plan](extended-response-plan.md) | Proposed discuss/evaluate answer builder, bounded marking, scenario links and pilot gates |
+| [Python sequence and guide review](reviews/2026-10-13-python-sequences.md) | New search/sort/list tasks, beginner guides, source calibration and current focus counts |
 | [Python specification](spec-python.md) | Challenge formats, variations and examples |
 | [Style guide](style-guide.md) | Shared visual and interaction rules |
 | [Implementation plan](implementation-plan.md) | Decisions, delivery stages and acceptance checks |

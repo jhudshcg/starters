@@ -1,6 +1,6 @@
 # Progress tracking, profiles and revision display
 
-Adopted requirements and implementation, updated **5 October 2026**. This specification records the teacher’s progress/profile requests and the concrete calculation and display rules used by the app. It supersedes the older common-specification parent-window priority rules and the earlier requirement to switch profiles manually before restoring a named backup. The [repeat-attempt policy](spec-common.md#implemented-repeat-attempt-policy-15-september-2026) remains in force.
+Adopted requirements and implementation, updated **13 October 2026**. This specification records the teacher’s progress/profile requests and the concrete calculation and display rules used by the app. It supersedes the older common-specification parent-window priority rules and the earlier requirement to switch profiles manually before restoring a named backup. The [repeat-attempt policy](spec-common.md#implemented-repeat-attempt-policy-15-september-2026) remains in force.
 
 ## Original tracking requirements and current delivery
 
@@ -14,11 +14,11 @@ Students should be encouraged to save their data to their student account OneDri
 
 Puzzle questions do not contribute to revision priority calculations.
 
-The adopted repeat-attempt policy below qualifies which completions enter tracked history and counts; do not treat early untracked repeats as extra tracked results. The dated records, filters, weekly displays and priority calculations below implement the original tracking intent. CSV export is implemented, full restoration uses JSON, and CSV import remains a deferred requirement rather than an implemented feature or deleted goal. Students can back up to OneDrive manually; no account integration is implied.
+The adopted repeat-attempt policy below qualifies which completions enter tracked history and counts; do not treat early untracked repeats as extra tracked results. The dated records, filters, weekly displays and priority calculations below implement the original tracking intent. CSV export is implemented, full restoration uses JSON, and CSV import remains a deferred requirement rather than an implemented feature or deleted goal. Students can link a file in their locally synced OneDrive folder as described below; no provider account integration is implied.
 
 ## Local named profiles
 
-Profiles are a low-complexity way to share a computer, not a secure login system. There is no password, identity verification, server account or automatic OneDrive sync.
+Profiles are a low-complexity way to share a computer, not a secure login system. There is no password, identity verification, server account or provider sign-in. Linked local files can save automatically; the OneDrive desktop app owns cloud syncing.
 
 - If no current username is stored, show a modal requesting a name before practice. Accept 1–80 characters after trimming and collapsing whitespace.
 - Reuse an existing name when case and normalised spacing match. For a close spelling, ask “Did you mean …?” and let the student choose the suggested profile or the name they entered. Do not silently merge similar names. The current matcher suggests the nearest name within a bounded edit distance of at most two characters; short names have a stricter limit.
@@ -27,7 +27,7 @@ Profiles are a low-complexity way to share a computer, not a secure login system
 - Keep each profile’s active activity, tracked history, repeat-attempt dates and recommendation batch separate. Switching saves the outgoing profile and selects the other profile without erasing either history.
 - The first named profile inherits the existing unnamed local save. Preserve the original legacy save; subsequent new profiles start empty.
 
-The student is responsible for regularly exporting progress to their student OneDrive. Display that reminder in the profile modal and on My progress.
+Recommend linking the synced OneDrive folder, with JSON download/restore available as a fallback.
 
 ## Dated records and attribution
 
@@ -106,11 +106,11 @@ When both the current and previous week contain records, report the rounded perc
 
 ## JSON restore, export and validation
 
-**Save backup** and **Restore backup** are the prominent primary controls. Explain that backups keep progress safe and move it between computers. Keep **Export CSV** hidden initially inside a smaller, keyboard-accessible “Spreadsheet options” disclosure beside the backup controls. Its explanation states that CSV is for viewing results in a spreadsheet and backups are for restoring progress. The disclosure does not require a prior backup download.
+**Download backup** and **Restore backup** are the prominent primary controls. Explain that backups keep progress safe and move it between computers. Keep **Export CSV** hidden initially inside a smaller, keyboard-accessible “Spreadsheet options” disclosure beside the backup controls. Its explanation states that CSV is for viewing results in a spreadsheet and backups are for restoring progress. The disclosure does not require a prior backup download.
 
-The main tracking backup downloads as **`tlevel-practice-[username]-[YYYY-MM-DD-HHMMSS].json`**. Use the local export date/time; replace filename-reserved characters in the username with hyphens, retaining the original username inside the file. Its contents remain UTF-8 JSON so restoration retains structured records. The file picker accepts `.json` backups and JSON-formatted `.txt` backups; changing the extension does not change validation or profile selection. CSV remains a separate spreadsheet export with a `.csv` extension.
+The main backup filename is **`practice_progress_<safe name>_<12-character UUID hash>.json`**, matching the Maths convention. A random profile UUID is kept in local storage and JSON; FNV-1a 64-bit hashing produces a lowercase base-36 filename tag. The tag is a compact identifier, not encryption or authentication. Existing profiles gain an ID without changing their name keys or results. Older backups without IDs remain valid. The file picker accepts `.json` and JSON-formatted `.txt` backups; both receive the same validation.
 
-JSON backups embed the selected **username** and retain recorded history, `partScores`, code-format/release metadata, recent-practice dates and archived metadata. They do not export the whole local profile registry, current active work or recommendation batch. CSV is for spreadsheet viewing and includes a quoted JSON `partScores` column; full restoration uses JSON.
+JSON backups embed the selected **username** and **profileId** and retain recorded history, `partScores`, code-format/release metadata, recent-practice dates and archived metadata. They do not export the whole local profile registry, current active work or recommendation batch. CSV is for spreadsheet viewing and includes a quoted JSON `partScores` column; full restoration uses JSON.
 
 A named backup automatically selects its named profile after validation, creating the profile if necessary. Case/spacing-equivalent names reuse the existing canonical name; do not silently fuzzy-match a backup into a differently spelled profile. Merge against the target profile’s history, not the previously selected profile. Preserve both profiles’ other local data. An older backup without a username restores into the currently selected profile.
 
@@ -120,4 +120,19 @@ After a successful differently named restore, update the remembered profile, hea
 
 ## Remaining limitations
 
-Profiles are local and visible to anyone using this browser. JSON backup/restore and CSV export are implemented; CSV import, direct OneDrive sync, a last-export-date display and a confirmed local-history reset are not implemented. These remain separate backlog requirements, not implied features of this specification update. Existing unrestricted theme adjustments can affect contrast; this update does not add a contrast-correction system.
+Profiles are local and visible to anyone using this browser. JSON backup/restore and CSV export are implemented; CSV import, provider account integration, a last-export-date display and a confirmed local-history reset are not implemented. These remain separate backlog requirements, not implied features of this specification update. Existing unrestricted theme adjustments can affect contrast; this update does not add a contrast-correction system.
+
+
+## Linked OneDrive progress files — adopted 13 October 2026
+
+Choose a locally synced OneDrive root in the browser folder picker. Reuse `T-Level` or `DSD T-Level` if present; prefer `T-Level` when both exist. If neither exists, create `T-Level`. Selecting either subject folder itself does not nest another folder. Other files remain untouched. A static site cannot discover a user's OneDrive root without their folder selection.
+
+Save links as native handles in IndexedDB, keyed by full profile UUID. Background saves follow browser persistence with a short debounce and also run on navigation, profile change, tab hiding and page-exit opportunities. Skip identical files. Serialize same-origin writes using Web Locks when available. Request permissions only through explicit file actions. On entry, check linked files before writing; changed bytes pause automatic saving and offer Open linked file or explicit Keep browser progress. Reviewed opening uses the existing validated history merge, retains browser results and rejects conflicting records/identities. Existing nonempty files are reviewed rather than silently replaced during setup. A name already holding another nonempty identity is rejected; one UUID cannot silently bind two local names.
+
+Before overwriting, compare SHA-256 of the current bytes with the last observed file. Success requires writable close and exact read-back. Permission refusal, external changes, oversized files, failed writes and failed verification leave browser progress available and show a persistent status on the file controls. Forget file link removes only the browser link. Linked filenames remain unchanged until a new file is explicitly chosen.
+
+Downloads/restore remain available where folder access is unsupported. The profile dialog can open a backup before creating a local name. Embedded browser permission errors recommend downloading before moving to an external Chrome/Edge window, whose browser storage is separate. No automatic merge, provider login, cross-device lock or confirmed cloud-upload claim. Abrupt tab/process closure can interrupt asynchronous saves; keep the tab open until saved.
+
+### Local-first failure behaviour
+
+Every progress update saves in browser-local storage before scheduling a linked file save. Manual file saves also commit browser data first. A denied permission, interrupted/failed write or external-file conflict leaves the local result intact and reports that file saving needs attention; retry writes the latest local progress after access is restored. No file error clears the browser history. If browser storage itself fails, show its warning, stop that file-save attempt and offer Download backup from the in-memory profile. This is an explicit failure, not a claim of successful persistence. A verified file write confirms local file contents; only the OneDrive desktop client controls cloud upload.

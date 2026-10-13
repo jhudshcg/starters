@@ -14,7 +14,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 3 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 3, -7 // 3,\n    -7 % 3,\n)",
-        "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
+        "hint": "For these positive whole numbers, // counts complete groups and % gives the remainder left over. Check that groups × group size + remainder gives the original amount.",
         "parts": [
           {
             "kind": "text",
@@ -75,7 +75,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 4 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 4, -7 // 3,\n    -7 % 3,\n)",
-        "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
+        "hint": "For these positive whole numbers, // counts complete groups and % gives the remainder left over. Check that groups × group size + remainder gives the original amount.",
         "parts": [
           {
             "kind": "text",
@@ -136,7 +136,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 5 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 5, -7 // 3,\n    -7 % 3,\n)",
-        "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
+        "hint": "For these positive whole numbers, // counts complete groups and % gives the remainder left over. Check that groups × group size + remainder gives the original amount.",
         "parts": [
           {
             "kind": "text",
@@ -197,7 +197,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 6 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 6, -7 // 3,\n    -7 % 3,\n)",
-        "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
+        "hint": "For these positive whole numbers, // counts complete groups and % gives the remainder left over. Check that groups × group size + remainder gives the original amount.",
         "parts": [
           {
             "kind": "text",
@@ -258,7 +258,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 7 * 4 + 3\nsize = 4\nprint(\n    count // size, count % size, count / size, 2 ** 7, -7 // 3,\n    -7 % 3,\n)",
-        "hint": "Floor division rounds down; remainder and quotient reconstruct the dividend.",
+        "hint": "For these positive whole numbers, // counts complete groups and % gives the remainder left over. Check that groups × group size + remainder gives the original amount.",
         "parts": [
           {
             "kind": "text",
@@ -333,7 +333,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = 3\nb = 3\nprint(___, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
-        "hint": "Apply parentheses, powers, multiplication/division, then addition/subtraction.",
+        "hint": "Evaluate brackets first, then powers (**), then multiplication, division, // and %, then addition and subtraction. Work left to right among these operators at the same level.",
         "parts": [
           {
             "kind": "code",
@@ -393,7 +393,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = 4\nb = 3\nprint(___, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
-        "hint": "Apply parentheses, powers, multiplication/division, then addition/subtraction.",
+        "hint": "Evaluate brackets first, then powers (**), then multiplication, division, // and %, then addition and subtraction. Work left to right among these operators at the same level.",
         "parts": [
           {
             "kind": "code",
@@ -453,7 +453,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = 5\nb = 3\nprint(___, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
-        "hint": "Apply parentheses, powers, multiplication/division, then addition/subtraction.",
+        "hint": "Evaluate brackets first, then powers (**), then multiplication, division, // and %, then addition and subtraction. Work left to right among these operators at the same level.",
         "parts": [
           {
             "kind": "code",
@@ -513,7 +513,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = 6\nb = 3\nprint(___, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
-        "hint": "Apply parentheses, powers, multiplication/division, then addition/subtraction.",
+        "hint": "Evaluate brackets first, then powers (**), then multiplication, division, // and %, then addition and subtraction. Work left to right among these operators at the same level.",
         "parts": [
           {
             "kind": "code",
@@ -573,7 +573,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = 7\nb = 3\nprint(___, (a + b) * 2, a ** 2 + b, a - b - 1, a * b % 4)",
-        "hint": "Apply parentheses, powers, multiplication/division, then addition/subtraction.",
+        "hint": "Evaluate brackets first, then powers (**), then multiplication, division, // and %, then addition and subtraction. Work left to right among these operators at the same level.",
         "parts": [
           {
             "kind": "code",
@@ -646,7 +646,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 3\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue /= 2\nprint(first, second, value, value == second, value != first)",
-        "hint": "Each augmented assignment uses the current value.",
+        "hint": "An augmented assignment combines an operation with assignment: for example, x += 2 means x = x + 2. Use the updated value on the next line.",
         "parts": [
           {
             "kind": "code",
@@ -706,7 +706,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 4\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue /= 2\nprint(first, second, value, value == second, value != first)",
-        "hint": "Each augmented assignment uses the current value.",
+        "hint": "An augmented assignment combines an operation with assignment: for example, x += 2 means x = x + 2. Use the updated value on the next line.",
         "parts": [
           {
             "kind": "code",
@@ -766,7 +766,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 5\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue /= 2\nprint(first, second, value, value == second, value != first)",
-        "hint": "Each augmented assignment uses the current value.",
+        "hint": "An augmented assignment combines an operation with assignment: for example, x += 2 means x = x + 2. Use the updated value on the next line.",
         "parts": [
           {
             "kind": "code",
@@ -826,7 +826,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 6\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue /= 2\nprint(first, second, value, value == second, value != first)",
-        "hint": "Each augmented assignment uses the current value.",
+        "hint": "An augmented assignment combines an operation with assignment: for example, x += 2 means x = x + 2. Use the updated value on the next line.",
         "parts": [
           {
             "kind": "code",
@@ -886,7 +886,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 7\nvalue += 5\nfirst = value\nvalue *= 3\nsecond = value\nvalue /= 2\nprint(first, second, value, value == second, value != first)",
-        "hint": "Each augmented assignment uses the current value.",
+        "hint": "An augmented assignment combines an operation with assignment: for example, x += 2 means x = x + 2. Use the updated value on the next line.",
         "parts": [
           {
             "kind": "code",
@@ -959,7 +959,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "raw = \"3\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
-        "hint": "input-style text must be converted before numeric arithmetic.",
+        "hint": "Input text is a string, even if it contains digits. Convert it to a numeric type before doing arithmetic; choose the conversion that matches the required number.",
         "parts": [
           {
             "kind": "text",
@@ -1020,7 +1020,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "raw = \"4\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
-        "hint": "input-style text must be converted before numeric arithmetic.",
+        "hint": "Input text is a string, even if it contains digits. Convert it to a numeric type before doing arithmetic; choose the conversion that matches the required number.",
         "parts": [
           {
             "kind": "text",
@@ -1081,7 +1081,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "raw = \"5\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
-        "hint": "input-style text must be converted before numeric arithmetic.",
+        "hint": "Input text is a string, even if it contains digits. Convert it to a numeric type before doing arithmetic; choose the conversion that matches the required number.",
         "parts": [
           {
             "kind": "text",
@@ -1142,7 +1142,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "raw = \"6\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
-        "hint": "input-style text must be converted before numeric arithmetic.",
+        "hint": "Input text is a string, even if it contains digits. Convert it to a numeric type before doing arithmetic; choose the conversion that matches the required number.",
         "parts": [
           {
             "kind": "text",
@@ -1203,7 +1203,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "raw = \"7\"\namount = int(raw)\nprice = float(raw)\nprint(\n    amount + 2, raw + \"2\", price + 0.5, str(amount) == raw,\n    bool(0), bool(raw),\n)",
-        "hint": "input-style text must be converted before numeric arithmetic.",
+        "hint": "Input text is a string, even if it contains digits. Convert it to a numeric type before doing arithmetic; choose the conversion that matches the required number.",
         "parts": [
           {
             "kind": "text",
@@ -1651,7 +1651,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 3 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 3),\n)",
-        "hint": "int truncates towards zero; round selects the nearest integer here.",
+        "hint": "Truncation removes the fractional part towards zero: int does this for numeric values. Rounding chooses the nearest integer in these examples. Trace each conversion separately.",
         "parts": [
           {
             "kind": "code",
@@ -1711,7 +1711,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 4 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 4),\n)",
-        "hint": "int truncates towards zero; round selects the nearest integer here.",
+        "hint": "Truncation removes the fractional part towards zero: int does this for numeric values. Rounding chooses the nearest integer in these examples. Trace each conversion separately.",
         "parts": [
           {
             "kind": "code",
@@ -1771,7 +1771,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 5 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 5),\n)",
-        "hint": "int truncates towards zero; round selects the nearest integer here.",
+        "hint": "Truncation removes the fractional part towards zero: int does this for numeric values. Rounding chooses the nearest integer in these examples. Trace each conversion separately.",
         "parts": [
           {
             "kind": "code",
@@ -1831,7 +1831,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 6 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 6),\n)",
-        "hint": "int truncates towards zero; round selects the nearest integer here.",
+        "hint": "Truncation removes the fractional part towards zero: int does this for numeric values. Rounding chooses the nearest integer in these examples. Trace each conversion separately.",
         "parts": [
           {
             "kind": "code",
@@ -1891,7 +1891,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "value = 7 + 0.75\nprint(\n    int(value), round(value), round(-value), abs(-value),\n    min(value, 7),\n)",
-        "hint": "int truncates towards zero; round selects the nearest integer here.",
+        "hint": "Truncation removes the fractional part towards zero: int does this for numeric values. Rounding chooses the nearest integer in these examples. Trace each conversion separately.",
         "parts": [
           {
             "kind": "code",
@@ -1964,7 +1964,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "label = \"AB3xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
-        "hint": "Slices exclude the stop; a negative step walks backwards.",
+        "hint": "A slice uses start:stop:step. The start is included, the stop is excluded, and a negative step moves backwards. Indices count from 0; negative indices count back from the end.",
         "parts": [
           {
             "kind": "text",
@@ -2025,7 +2025,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "label = \"AB4xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
-        "hint": "Slices exclude the stop; a negative step walks backwards.",
+        "hint": "A slice uses start:stop:step. The start is included, the stop is excluded, and a negative step moves backwards. Indices count from 0; negative indices count back from the end.",
         "parts": [
           {
             "kind": "text",
@@ -2086,7 +2086,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "label = \"AB5xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
-        "hint": "Slices exclude the stop; a negative step walks backwards.",
+        "hint": "A slice uses start:stop:step. The start is included, the stop is excluded, and a negative step moves backwards. Indices count from 0; negative indices count back from the end.",
         "parts": [
           {
             "kind": "text",
@@ -2147,7 +2147,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "label = \"AB6xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
-        "hint": "Slices exclude the stop; a negative step walks backwards.",
+        "hint": "A slice uses start:stop:step. The start is included, the stop is excluded, and a negative step moves backwards. Indices count from 0; negative indices count back from the end.",
         "parts": [
           {
             "kind": "text",
@@ -2208,7 +2208,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "label = \"AB7xyz\"\nprint(\n    label[0], label[-1], label[2], label[3:5], label[::-1],\n    len(label),\n)",
-        "hint": "Slices exclude the stop; a negative step walks backwards.",
+        "hint": "A slice uses start:stop:step. The start is included, the stop is excluded, and a negative step moves backwards. Indices count from 0; negative indices count back from the end.",
         "parts": [
           {
             "kind": "text",
@@ -2282,7 +2282,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "name = \"  Team3  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
-        "hint": "strip returns a new string with whitespace removed at both ends.",
+        "hint": "Whitespace includes spaces and newline characters. strip creates a new string without whitespace at either end; it does not change the original string.",
         "parts": [
           {
             "kind": "code",
@@ -2342,7 +2342,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "name = \"  Team4  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
-        "hint": "strip returns a new string with whitespace removed at both ends.",
+        "hint": "Whitespace includes spaces and newline characters. strip creates a new string without whitespace at either end; it does not change the original string.",
         "parts": [
           {
             "kind": "code",
@@ -2402,7 +2402,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "name = \"  Team5  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
-        "hint": "strip returns a new string with whitespace removed at both ends.",
+        "hint": "Whitespace includes spaces and newline characters. strip creates a new string without whitespace at either end; it does not change the original string.",
         "parts": [
           {
             "kind": "code",
@@ -2462,7 +2462,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "name = \"  Team6  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
-        "hint": "strip returns a new string with whitespace removed at both ends.",
+        "hint": "Whitespace includes spaces and newline characters. strip creates a new string without whitespace at either end; it does not change the original string.",
         "parts": [
           {
             "kind": "code",
@@ -2522,7 +2522,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "name = \"  Team7  \"\nclean = ___\nprint(\n    len(name), clean, clean.lower(), clean.upper(),\n    clean.startswith(\"Team\"),\n)",
-        "hint": "strip returns a new string with whitespace removed at both ends.",
+        "hint": "Whitespace includes spaces and newline characters. strip creates a new string without whitespace at either end; it does not change the original string.",
         "parts": [
           {
             "kind": "code",
@@ -2595,7 +2595,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "row = \"a,3,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
-        "hint": "split produces a list; join inserts its separator between items.",
+        "hint": "split breaks a string into a list at its separator. join builds a string from the list, placing its separator between consecutive items.",
         "parts": [
           {
             "kind": "code",
@@ -2655,7 +2655,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "row = \"a,4,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
-        "hint": "split produces a list; join inserts its separator between items.",
+        "hint": "split breaks a string into a list at its separator. join builds a string from the list, placing its separator between consecutive items.",
         "parts": [
           {
             "kind": "code",
@@ -2715,7 +2715,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "row = \"a,5,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
-        "hint": "split produces a list; join inserts its separator between items.",
+        "hint": "split breaks a string into a list at its separator. join builds a string from the list, placing its separator between consecutive items.",
         "parts": [
           {
             "kind": "code",
@@ -2775,7 +2775,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "row = \"a,6,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
-        "hint": "split produces a list; join inserts its separator between items.",
+        "hint": "split breaks a string into a list at its separator. join builds a string from the list, placing its separator between consecutive items.",
         "parts": [
           {
             "kind": "code",
@@ -2835,7 +2835,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "row = \"a,7,b\"\nfields = row.split(\":\")\nprint(\n    len(fields), fields[1], \"-\".join(fields),\n    row.replace(\",\", \":\"), row.count(\",\"),\n)",
-        "hint": "split produces a list; join inserts its separator between items.",
+        "hint": "split breaks a string into a list at its separator. join builds a string from the list, placing its separator between consecutive items.",
         "parts": [
           {
             "kind": "code",
@@ -2908,7 +2908,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "queue = [3, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
-        "hint": "pop removes and returns an item; remaining indices shift.",
+        "hint": "append adds one item at the end. pop(0) removes and returns the first item, so later items move down one index. Index -1 selects the final item.",
         "parts": [
           {
             "kind": "text",
@@ -2969,7 +2969,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "queue = [4, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
-        "hint": "pop removes and returns an item; remaining indices shift.",
+        "hint": "append adds one item at the end. pop(0) removes and returns the first item, so later items move down one index. Index -1 selects the final item.",
         "parts": [
           {
             "kind": "text",
@@ -3030,7 +3030,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "queue = [5, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
-        "hint": "pop removes and returns an item; remaining indices shift.",
+        "hint": "append adds one item at the end. pop(0) removes and returns the first item, so later items move down one index. Index -1 selects the final item.",
         "parts": [
           {
             "kind": "text",
@@ -3091,7 +3091,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "queue = [6, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
-        "hint": "pop removes and returns an item; remaining indices shift.",
+        "hint": "append adds one item at the end. pop(0) removes and returns the first item, so later items move down one index. Index -1 selects the final item.",
         "parts": [
           {
             "kind": "text",
@@ -3152,7 +3152,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "queue = [7, 8, 9]\nqueue.append(10)\nfirst = queue.pop(0)\nprint(\n    first, queue[0], queue[-1], len(queue), sum(queue),\n    10 in queue,\n)",
-        "hint": "pop removes and returns an item; remaining indices shift.",
+        "hint": "append adds one item at the end. pop(0) removes and returns the first item, so later items move down one index. Index -1 selects the final item.",
         "parts": [
           {
             "kind": "text",
@@ -3226,7 +3226,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "items = [3, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
-        "hint": "An alias refers to the same list; slicing creates a shallow copy.",
+        "hint": "An alias is another name for the same list. A shallow copy is a separate outer list containing the same items; changing one of these integer entries does not change the other list. Track which names share a list.",
         "parts": [
           {
             "kind": "code",
@@ -3286,7 +3286,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "items = [4, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
-        "hint": "An alias refers to the same list; slicing creates a shallow copy.",
+        "hint": "An alias is another name for the same list. A shallow copy is a separate outer list containing the same items; changing one of these integer entries does not change the other list. Track which names share a list.",
         "parts": [
           {
             "kind": "code",
@@ -3346,7 +3346,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "items = [5, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
-        "hint": "An alias refers to the same list; slicing creates a shallow copy.",
+        "hint": "An alias is another name for the same list. A shallow copy is a separate outer list containing the same items; changing one of these integer entries does not change the other list. Track which names share a list.",
         "parts": [
           {
             "kind": "code",
@@ -3406,7 +3406,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "items = [6, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
-        "hint": "An alias refers to the same list; slicing creates a shallow copy.",
+        "hint": "An alias is another name for the same list. A shallow copy is a separate outer list containing the same items; changing one of these integer entries does not change the other list. Track which names share a list.",
         "parts": [
           {
             "kind": "code",
@@ -3466,7 +3466,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "items = [7, 7]\nalias = items\ncopy = ___\nalias[0] += 2\nprint(\n    items[0], alias[0], copy[0], items is alias, items is copy,\n)",
-        "hint": "An alias refers to the same list; slicing creates a shallow copy.",
+        "hint": "An alias is another name for the same list. A shallow copy is a separate outer list containing the same items; changing one of these integer entries does not change the other list. Track which names share a list.",
         "parts": [
           {
             "kind": "code",
@@ -3539,7 +3539,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "grid = [[3, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
-        "hint": "The first index selects a row and the second a column.",
+        "hint": "In grid[row][column], both indices start at 0. Select the row first, then the item within it. Update only that item before tracing the output.",
         "parts": [
           {
             "kind": "code",
@@ -3599,7 +3599,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "grid = [[4, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
-        "hint": "The first index selects a row and the second a column.",
+        "hint": "In grid[row][column], both indices start at 0. Select the row first, then the item within it. Update only that item before tracing the output.",
         "parts": [
           {
             "kind": "code",
@@ -3659,7 +3659,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "grid = [[5, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
-        "hint": "The first index selects a row and the second a column.",
+        "hint": "In grid[row][column], both indices start at 0. Select the row first, then the item within it. Update only that item before tracing the output.",
         "parts": [
           {
             "kind": "code",
@@ -3719,7 +3719,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "grid = [[6, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
-        "hint": "The first index selects a row and the second a column.",
+        "hint": "In grid[row][column], both indices start at 0. Select the row first, then the item within it. Update only that item before tracing the output.",
         "parts": [
           {
             "kind": "code",
@@ -3779,7 +3779,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "grid = [[7, 2, 3], [4, 5, 6]]\ngrid[0][1] += grid[0][0]\nprint(\n    grid[0][0], grid[1][0], grid[1][2], len(grid),\n    len(grid[0]),\n)",
-        "hint": "The first index selects a row and the second a column.",
+        "hint": "In grid[row][column], both indices start at 0. Select the row first, then the item within it. Update only that item before tracing the output.",
         "parts": [
           {
             "kind": "code",
@@ -3852,7 +3852,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "stock = {\"pen\": 3, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
-        "hint": "Dictionary membership checks keys; get can supply a default.",
+        "hint": "A dictionary stores key–value pairs. Membership with in checks keys, not values. get reads a key and can return a default when the key is missing.",
         "parts": [
           {
             "kind": "text",
@@ -3913,7 +3913,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "stock = {\"pen\": 4, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
-        "hint": "Dictionary membership checks keys; get can supply a default.",
+        "hint": "A dictionary stores key–value pairs. Membership with in checks keys, not values. get reads a key and can return a default when the key is missing.",
         "parts": [
           {
             "kind": "text",
@@ -3974,7 +3974,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "stock = {\"pen\": 5, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
-        "hint": "Dictionary membership checks keys; get can supply a default.",
+        "hint": "A dictionary stores key–value pairs. Membership with in checks keys, not values. get reads a key and can return a default when the key is missing.",
         "parts": [
           {
             "kind": "text",
@@ -4035,7 +4035,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "stock = {\"pen\": 6, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
-        "hint": "Dictionary membership checks keys; get can supply a default.",
+        "hint": "A dictionary stores key–value pairs. Membership with in checks keys, not values. get reads a key and can return a default when the key is missing.",
         "parts": [
           {
             "kind": "text",
@@ -4096,7 +4096,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "stock = {\"pen\": 7, \"pad\": 8}\nstock[\"pen\"] += 3\nprint(\n    stock[\"pen\"], stock[\"pad\"], stock.get(\"bag\", 0),\n    len(stock), \"pen\" in stock, \"bag\" in stock,\n)",
-        "hint": "Dictionary membership checks keys; get can supply a default.",
+        "hint": "A dictionary stores key–value pairs. Membership with in checks keys, not values. get reads a key and can return a default when the key is missing.",
         "parts": [
           {
             "kind": "text",
@@ -4170,7 +4170,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
-        "hint": "In this example each new event starts at the stated baseline, not zero.",
+        "hint": "A baseline is the starting count. Here each newly seen event starts at the stated baseline, then its count increases. Repeated events keep their previous count.",
         "parts": [
           {
             "kind": "code",
@@ -4230,7 +4230,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
-        "hint": "In this example each new event starts at the stated baseline, not zero.",
+        "hint": "A baseline is the starting count. Here each newly seen event starts at the stated baseline, then its count increases. Repeated events keep their previous count.",
         "parts": [
           {
             "kind": "code",
@@ -4290,7 +4290,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
-        "hint": "In this example each new event starts at the stated baseline, not zero.",
+        "hint": "A baseline is the starting count. Here each newly seen event starts at the stated baseline, then its count increases. Repeated events keep their previous count.",
         "parts": [
           {
             "kind": "code",
@@ -4350,7 +4350,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
-        "hint": "In this example each new event starts at the stated baseline, not zero.",
+        "hint": "A baseline is the starting count. Here each newly seen event starts at the stated baseline, then its count increases. Repeated events keep their previous count.",
         "parts": [
           {
             "kind": "code",
@@ -4410,7 +4410,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "counts = {}\nfor event in [\"ok\", \"bad\", \"ok\", \"ok\", \"bad\"]:\n    counts[event] = ___ + 1\nprint(\n    counts[\"ok\"], counts[\"bad\"], len(counts),\n    sum(counts.values()), counts.get(\"new\", 0),\n)",
-        "hint": "In this example each new event starts at the stated baseline, not zero.",
+        "hint": "A baseline is the starting count. Here each newly seen event starts at the stated baseline, then its count increases. Repeated events keep their previous count.",
         "parts": [
           {
             "kind": "code",
@@ -4483,7 +4483,7 @@ export default [
       {
         "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
         "code": "record = (\"item3\", 3, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
-        "hint": "Unpacking assigns tuple items in order.",
+        "hint": "Tuple unpacking assigns each item to the matching name in order. Check which item represents the name, count and active flag before assigning them.",
         "parts": [
           {
             "kind": "code",
@@ -4543,7 +4543,7 @@ export default [
       {
         "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
         "code": "record = (\"item4\", 4, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
-        "hint": "Unpacking assigns tuple items in order.",
+        "hint": "Tuple unpacking assigns each item to the matching name in order. Check which item represents the name, count and active flag before assigning them.",
         "parts": [
           {
             "kind": "code",
@@ -4603,7 +4603,7 @@ export default [
       {
         "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
         "code": "record = (\"item5\", 5, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
-        "hint": "Unpacking assigns tuple items in order.",
+        "hint": "Tuple unpacking assigns each item to the matching name in order. Check which item represents the name, count and active flag before assigning them.",
         "parts": [
           {
             "kind": "code",
@@ -4663,7 +4663,7 @@ export default [
       {
         "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
         "code": "record = (\"item6\", 6, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
-        "hint": "Unpacking assigns tuple items in order.",
+        "hint": "Tuple unpacking assigns each item to the matching name in order. Check which item represents the name, count and active flag before assigning them.",
         "parts": [
           {
             "kind": "code",
@@ -4723,7 +4723,7 @@ export default [
       {
         "prompt": "Repair the unpacking line, predict the four printed values, then name the data structure used for record.",
         "code": "record = (\"item7\", 7, True)\ncount, name, active = record\nprint(name, count, active, len(record))",
-        "hint": "Unpacking assigns tuple items in order.",
+        "hint": "Tuple unpacking assigns each item to the matching name in order. Check which item represents the name, count and active flag before assigning them.",
         "parts": [
           {
             "kind": "code",
@@ -4797,7 +4797,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "age = 3\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
-        "hint": "Evaluate comparisons first, then not, and, or.",
+        "hint": "Evaluate comparisons such as >= first. Among Boolean operators, not has priority over and, and has priority over or. Brackets can change that order.",
         "parts": [
           {
             "kind": "text",
@@ -4858,7 +4858,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "age = 4\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
-        "hint": "Evaluate comparisons first, then not, and, or.",
+        "hint": "Evaluate comparisons such as >= first. Among Boolean operators, not has priority over and, and has priority over or. Brackets can change that order.",
         "parts": [
           {
             "kind": "text",
@@ -4919,7 +4919,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "age = 5\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
-        "hint": "Evaluate comparisons first, then not, and, or.",
+        "hint": "Evaluate comparisons such as >= first. Among Boolean operators, not has priority over and, and has priority over or. Brackets can change that order.",
         "parts": [
           {
             "kind": "text",
@@ -4980,7 +4980,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "age = 6\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
-        "hint": "Evaluate comparisons first, then not, and, or.",
+        "hint": "Evaluate comparisons such as >= first. Among Boolean operators, not has priority over and, and has priority over or. Brackets can change that order.",
         "parts": [
           {
             "kind": "text",
@@ -5041,7 +5041,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "age = 7\nmember = True\nblocked = False\nprint(\n    member and not blocked, age >= 5 and member,\n    age < 5 or blocked, not (member or blocked),\n    member != blocked, age == 5,\n)",
-        "hint": "Evaluate comparisons first, then not, and, or.",
+        "hint": "Evaluate comparisons such as >= first. Among Boolean operators, not has priority over and, and has priority over or. Brackets can change that order.",
         "parts": [
           {
             "kind": "text",
@@ -5115,7 +5115,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def safe(value):\n    return ___\nx = 3\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
-        "hint": "and skips its right operand when the left operand is false.",
+        "hint": "Short-circuit evaluation means and skips its right-hand test when the left-hand test is False. Put a safety test before an expression that could divide by zero.",
         "parts": [
           {
             "kind": "code",
@@ -5175,7 +5175,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def safe(value):\n    return ___\nx = 4\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
-        "hint": "and skips its right operand when the left operand is false.",
+        "hint": "Short-circuit evaluation means and skips its right-hand test when the left-hand test is False. Put a safety test before an expression that could divide by zero.",
         "parts": [
           {
             "kind": "code",
@@ -5235,7 +5235,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def safe(value):\n    return ___\nx = 5\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
-        "hint": "and skips its right operand when the left operand is false.",
+        "hint": "Short-circuit evaluation means and skips its right-hand test when the left-hand test is False. Put a safety test before an expression that could divide by zero.",
         "parts": [
           {
             "kind": "code",
@@ -5295,7 +5295,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def safe(value):\n    return ___\nx = 6\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
-        "hint": "and skips its right operand when the left operand is false.",
+        "hint": "Short-circuit evaluation means and skips its right-hand test when the left-hand test is False. Put a safety test before an expression that could divide by zero.",
         "parts": [
           {
             "kind": "code",
@@ -5355,7 +5355,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def safe(value):\n    return ___\nx = 7\nprint(safe(0), safe(x), safe(2), safe(6), safe(-1))",
-        "hint": "and skips its right operand when the left operand is false.",
+        "hint": "Short-circuit evaluation means and skips its right-hand test when the left-hand test is False. Put a safety test before an expression that could divide by zero.",
         "parts": [
           {
             "kind": "code",
@@ -5428,7 +5428,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = [3]\nb = [3]\nc = a\nprint(a == b, a == b, a is c, 3 in a, 0 not in a)",
-        "hint": "Equality compares values; identity compares object references.",
+        "hint": "Equality (==) asks whether values are equal. Identity (is) asks whether two names refer to the very same object. Membership (in) asks whether a value occurs in a collection.",
         "parts": [
           {
             "kind": "code",
@@ -5488,7 +5488,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = [4]\nb = [4]\nc = a\nprint(a == b, a == b, a is c, 4 in a, 0 not in a)",
-        "hint": "Equality compares values; identity compares object references.",
+        "hint": "Equality (==) asks whether values are equal. Identity (is) asks whether two names refer to the very same object. Membership (in) asks whether a value occurs in a collection.",
         "parts": [
           {
             "kind": "code",
@@ -5548,7 +5548,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = [5]\nb = [5]\nc = a\nprint(a == b, a == b, a is c, 5 in a, 0 not in a)",
-        "hint": "Equality compares values; identity compares object references.",
+        "hint": "Equality (==) asks whether values are equal. Identity (is) asks whether two names refer to the very same object. Membership (in) asks whether a value occurs in a collection.",
         "parts": [
           {
             "kind": "code",
@@ -5608,7 +5608,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = [6]\nb = [6]\nc = a\nprint(a == b, a == b, a is c, 6 in a, 0 not in a)",
-        "hint": "Equality compares values; identity compares object references.",
+        "hint": "Equality (==) asks whether values are equal. Identity (is) asks whether two names refer to the very same object. Membership (in) asks whether a value occurs in a collection.",
         "parts": [
           {
             "kind": "code",
@@ -5668,7 +5668,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "a = [7]\nb = [7]\nc = a\nprint(a == b, a == b, a is c, 7 in a, 0 not in a)",
-        "hint": "Equality compares values; identity compares object references.",
+        "hint": "Equality (==) asks whether values are equal. Identity (is) asks whether two names refer to the very same object. Membership (in) asks whether a value occurs in a collection.",
         "parts": [
           {
             "kind": "code",
@@ -5741,7 +5741,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 0\nfor row in range(3):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
-        "hint": "The inner loop completes for every outer-loop iteration.",
+        "hint": "A nested loop is a loop inside another loop. For every outer-loop iteration, run the complete inner loop before continuing the outer loop.",
         "parts": [
           {
             "kind": "text",
@@ -5802,7 +5802,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 0\nfor row in range(4):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
-        "hint": "The inner loop completes for every outer-loop iteration.",
+        "hint": "A nested loop is a loop inside another loop. For every outer-loop iteration, run the complete inner loop before continuing the outer loop.",
         "parts": [
           {
             "kind": "text",
@@ -5863,7 +5863,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 0\nfor row in range(5):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
-        "hint": "The inner loop completes for every outer-loop iteration.",
+        "hint": "A nested loop is a loop inside another loop. For every outer-loop iteration, run the complete inner loop before continuing the outer loop.",
         "parts": [
           {
             "kind": "text",
@@ -5924,7 +5924,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 0\nfor row in range(6):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
-        "hint": "The inner loop completes for every outer-loop iteration.",
+        "hint": "A nested loop is a loop inside another loop. For every outer-loop iteration, run the complete inner loop before continuing the outer loop.",
         "parts": [
           {
             "kind": "text",
@@ -5985,7 +5985,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 0\nfor row in range(7):\n    for col in range(3):\n        count += 1\nprint(count, row, col, count // 3, count % 3, row + col)",
-        "hint": "The inner loop completes for every outer-loop iteration.",
+        "hint": "A nested loop is a loop inside another loop. For every outer-loop iteration, run the complete inner loop before continuing the outer loop.",
         "parts": [
           {
             "kind": "text",
@@ -6059,7 +6059,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "total = 0\nfor value in range(3, 3 + 6):\n    if value == 3 + 1:\n        ___\n    if value == 3 + 4:\n        break\n    total += value\nprint(total, value, value == 3 + 4, total > 0, total % 2)",
-        "hint": "continue skips this iteration; break exits the loop.",
+        "hint": "continue skips the rest of the current iteration and starts the next one. break exits the loop. Check whether the update is reached before changing the total.",
         "parts": [
           {
             "kind": "code",
@@ -6119,7 +6119,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "total = 0\nfor value in range(4, 4 + 6):\n    if value == 4 + 1:\n        ___\n    if value == 4 + 4:\n        break\n    total += value\nprint(total, value, value == 4 + 4, total > 0, total % 2)",
-        "hint": "continue skips this iteration; break exits the loop.",
+        "hint": "continue skips the rest of the current iteration and starts the next one. break exits the loop. Check whether the update is reached before changing the total.",
         "parts": [
           {
             "kind": "code",
@@ -6179,7 +6179,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "total = 0\nfor value in range(5, 5 + 6):\n    if value == 5 + 1:\n        ___\n    if value == 5 + 4:\n        break\n    total += value\nprint(total, value, value == 5 + 4, total > 0, total % 2)",
-        "hint": "continue skips this iteration; break exits the loop.",
+        "hint": "continue skips the rest of the current iteration and starts the next one. break exits the loop. Check whether the update is reached before changing the total.",
         "parts": [
           {
             "kind": "code",
@@ -6239,7 +6239,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "total = 0\nfor value in range(6, 6 + 6):\n    if value == 6 + 1:\n        ___\n    if value == 6 + 4:\n        break\n    total += value\nprint(total, value, value == 6 + 4, total > 0, total % 2)",
-        "hint": "continue skips this iteration; break exits the loop.",
+        "hint": "continue skips the rest of the current iteration and starts the next one. break exits the loop. Check whether the update is reached before changing the total.",
         "parts": [
           {
             "kind": "code",
@@ -6299,7 +6299,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "total = 0\nfor value in range(7, 7 + 6):\n    if value == 7 + 1:\n        ___\n    if value == 7 + 4:\n        break\n    total += value\nprint(total, value, value == 7 + 4, total > 0, total % 2)",
-        "hint": "continue skips this iteration; break exits the loop.",
+        "hint": "continue skips the rest of the current iteration and starts the next one. break exits the loop. Check whether the update is reached before changing the total.",
         "parts": [
           {
             "kind": "code",
@@ -6372,7 +6372,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [3, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] == -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
-        "hint": "The sentinel is tested before it can be added.",
+        "hint": "A sentinel is a special value used to stop input or repetition. Check for that stopping value before including an item in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -6432,7 +6432,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [4, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] == -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
-        "hint": "The sentinel is tested before it can be added.",
+        "hint": "A sentinel is a special value used to stop input or repetition. Check for that stopping value before including an item in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -6492,7 +6492,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [5, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] == -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
-        "hint": "The sentinel is tested before it can be added.",
+        "hint": "A sentinel is a special value used to stop input or repetition. Check for that stopping value before including an item in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -6552,7 +6552,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [6, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] == -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
-        "hint": "The sentinel is tested before it can be added.",
+        "hint": "A sentinel is a special value used to stop input or repetition. Check for that stopping value before including an item in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -6612,7 +6612,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [7, 3, -1, 9]\nindex = 0\ntotal = 0\nwhile values[index] == -1:\n    total += values[index]\n    index += 1\nprint(total, index, values[index], values[-1], len(values))",
-        "hint": "The sentinel is tested before it can be added.",
+        "hint": "A sentinel is a special value used to stop input or repetition. Check for that stopping value before including an item in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -6685,7 +6685,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 3\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
-        "hint": "A format specifier controls display, without changing the original number.",
+        "hint": "A format specifier controls how a value is displayed, such as its decimal places. Formatting does not change the original numeric value stored in the variable.",
         "parts": [
           {
             "kind": "text",
@@ -6746,7 +6746,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 4\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
-        "hint": "A format specifier controls display, without changing the original number.",
+        "hint": "A format specifier controls how a value is displayed, such as its decimal places. Formatting does not change the original numeric value stored in the variable.",
         "parts": [
           {
             "kind": "text",
@@ -6807,7 +6807,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 5\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
-        "hint": "A format specifier controls display, without changing the original number.",
+        "hint": "A format specifier controls how a value is displayed, such as its decimal places. Formatting does not change the original numeric value stored in the variable.",
         "parts": [
           {
             "kind": "text",
@@ -6868,7 +6868,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 6\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
-        "hint": "A format specifier controls display, without changing the original number.",
+        "hint": "A format specifier controls how a value is displayed, such as its decimal places. Formatting does not change the original numeric value stored in the variable.",
         "parts": [
           {
             "kind": "text",
@@ -6929,7 +6929,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "count = 7\nprice = 2\ntotal = count * price\nprint(\n    f\"Q{count}\", f\"{total:.2f}\", str(total), len(str(total)),\n    total, count,\n)",
-        "hint": "A format specifier controls display, without changing the original number.",
+        "hint": "A format specifier controls how a value is displayed, such as its decimal places. Formatting does not change the original numeric value stored in the variable.",
         "parts": [
           {
             "kind": "text",
@@ -7003,7 +7003,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"3\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
-        "hint": "Catch the error raised by int for non-integer text.",
+        "hint": "An exception is an error raised while the program runs. Converting non-integer text with int raises one; the matching except block handles it.",
         "parts": [
           {
             "kind": "text",
@@ -7064,7 +7064,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"4\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
-        "hint": "Catch the error raised by int for non-integer text.",
+        "hint": "An exception is an error raised while the program runs. Converting non-integer text with int raises one; the matching except block handles it.",
         "parts": [
           {
             "kind": "text",
@@ -7125,7 +7125,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"5\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
-        "hint": "Catch the error raised by int for non-integer text.",
+        "hint": "An exception is an error raised while the program runs. Converting non-integer text with int raises one; the matching except block handles it.",
         "parts": [
           {
             "kind": "text",
@@ -7186,7 +7186,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"6\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
-        "hint": "Catch the error raised by int for non-integer text.",
+        "hint": "An exception is an error raised while the program runs. Converting non-integer text with int raises one; the matching except block handles it.",
         "parts": [
           {
             "kind": "text",
@@ -7247,7 +7247,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def parse(text):\n    try:\n        return int(text)\n    except ValueError:\n        return -1\nprint(\n    parse(\"7\"), parse(\"bad\"), parse(\"2.5\"), parse(\"-3\"),\n    parse(\" 7 \"), parse(\"\"),\n)",
-        "hint": "Catch the error raised by int for non-integer text.",
+        "hint": "An exception is an error raised while the program runs. Converting non-integer text with int raises one; the matching except block handles it.",
         "parts": [
           {
             "kind": "text",
@@ -7321,7 +7321,7 @@ export default [
       {
         "prompt": "Complete the function to accept integer values from 3 to 7, inclusive. Then predict the five printed values.",
         "code": "def valid(value):\n    return ___\nprint(\n    valid(3 - 1), valid(3), valid(3 + 4), valid(3 + 5),\n    valid(0),\n)",
-        "hint": "Test just below, on, and just above each inclusive boundary.",
+        "hint": "An inclusive boundary is accepted, not excluded. Test a value just below the lower limit, exactly at each limit, and just above the upper limit.",
         "parts": [
           {
             "kind": "code",
@@ -7381,7 +7381,7 @@ export default [
       {
         "prompt": "Complete the function to accept integer values from 4 to 8, inclusive. Then predict the five printed values.",
         "code": "def valid(value):\n    return ___\nprint(\n    valid(4 - 1), valid(4), valid(4 + 4), valid(4 + 5),\n    valid(0),\n)",
-        "hint": "Test just below, on, and just above each inclusive boundary.",
+        "hint": "An inclusive boundary is accepted, not excluded. Test a value just below the lower limit, exactly at each limit, and just above the upper limit.",
         "parts": [
           {
             "kind": "code",
@@ -7441,7 +7441,7 @@ export default [
       {
         "prompt": "Complete the function to accept integer values from 5 to 9, inclusive. Then predict the five printed values.",
         "code": "def valid(value):\n    return ___\nprint(\n    valid(5 - 1), valid(5), valid(5 + 4), valid(5 + 5),\n    valid(0),\n)",
-        "hint": "Test just below, on, and just above each inclusive boundary.",
+        "hint": "An inclusive boundary is accepted, not excluded. Test a value just below the lower limit, exactly at each limit, and just above the upper limit.",
         "parts": [
           {
             "kind": "code",
@@ -7501,7 +7501,7 @@ export default [
       {
         "prompt": "Complete the function to accept integer values from 6 to 10, inclusive. Then predict the five printed values.",
         "code": "def valid(value):\n    return ___\nprint(\n    valid(6 - 1), valid(6), valid(6 + 4), valid(6 + 5),\n    valid(0),\n)",
-        "hint": "Test just below, on, and just above each inclusive boundary.",
+        "hint": "An inclusive boundary is accepted, not excluded. Test a value just below the lower limit, exactly at each limit, and just above the upper limit.",
         "parts": [
           {
             "kind": "code",
@@ -7561,7 +7561,7 @@ export default [
       {
         "prompt": "Complete the function to accept integer values from 7 to 11, inclusive. Then predict the five printed values.",
         "code": "def valid(value):\n    return ___\nprint(\n    valid(7 - 1), valid(7), valid(7 + 4), valid(7 + 5),\n    valid(0),\n)",
-        "hint": "Test just below, on, and just above each inclusive boundary.",
+        "hint": "An inclusive boundary is accepted, not excluded. Test a value just below the lower limit, exactly at each limit, and just above the upper limit.",
         "parts": [
           {
             "kind": "code",
@@ -7635,7 +7635,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"323\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
-        "hint": "Length and character checks must both succeed.",
+        "hint": "Check each rule separately: the number of characters, the required character type and any fixed prefix. Every required rule must pass.",
         "parts": [
           {
             "kind": "code",
@@ -7695,7 +7695,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"423\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
-        "hint": "Length and character checks must both succeed.",
+        "hint": "Check each rule separately: the number of characters, the required character type and any fixed prefix. Every required rule must pass.",
         "parts": [
           {
             "kind": "code",
@@ -7755,7 +7755,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"523\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
-        "hint": "Length and character checks must both succeed.",
+        "hint": "Check each rule separately: the number of characters, the required character type and any fixed prefix. Every required rule must pass.",
         "parts": [
           {
             "kind": "code",
@@ -7815,7 +7815,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"623\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
-        "hint": "Length and character checks must both succeed.",
+        "hint": "Check each rule separately: the number of characters, the required character type and any fixed prefix. Every required rule must pass.",
         "parts": [
           {
             "kind": "code",
@@ -7875,7 +7875,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def valid(text):\n    return len(text) == 3 or text.isdigit()\ncode = \"723\"\nprint(\n    valid(code), valid(\"12\"), valid(\"abc\"), valid(\"1234\"),\n    valid(\"007\"),\n)",
-        "hint": "Length and character checks must both succeed.",
+        "hint": "Check each rule separately: the number of characters, the required character type and any fixed prefix. Every required rule must pass.",
         "parts": [
           {
             "kind": "code",
@@ -7948,7 +7948,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def admitted(age):\n    return age > 3\n# Requirement: accept ages at least 3.\nprint(\n    admitted(3 - 1), admitted(3), admitted(3 + 1), admitted(0),\n    admitted(3 + 2), admitted(3) == True,\n)",
-        "hint": "Trace the actual implementation, including its boundary error.",
+        "hint": "An off-by-one error includes or excludes one value too many. Trace what the code actually does at the boundary, rather than what the task intended.",
         "parts": [
           {
             "kind": "text",
@@ -8009,7 +8009,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def admitted(age):\n    return age > 4\n# Requirement: accept ages at least 4.\nprint(\n    admitted(4 - 1), admitted(4), admitted(4 + 1), admitted(0),\n    admitted(4 + 2), admitted(4) == True,\n)",
-        "hint": "Trace the actual implementation, including its boundary error.",
+        "hint": "An off-by-one error includes or excludes one value too many. Trace what the code actually does at the boundary, rather than what the task intended.",
         "parts": [
           {
             "kind": "text",
@@ -8070,7 +8070,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def admitted(age):\n    return age > 5\n# Requirement: accept ages at least 5.\nprint(\n    admitted(5 - 1), admitted(5), admitted(5 + 1), admitted(0),\n    admitted(5 + 2), admitted(5) == True,\n)",
-        "hint": "Trace the actual implementation, including its boundary error.",
+        "hint": "An off-by-one error includes or excludes one value too many. Trace what the code actually does at the boundary, rather than what the task intended.",
         "parts": [
           {
             "kind": "text",
@@ -8131,7 +8131,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def admitted(age):\n    return age > 6\n# Requirement: accept ages at least 6.\nprint(\n    admitted(6 - 1), admitted(6), admitted(6 + 1), admitted(0),\n    admitted(6 + 2), admitted(6) == True,\n)",
-        "hint": "Trace the actual implementation, including its boundary error.",
+        "hint": "An off-by-one error includes or excludes one value too many. Trace what the code actually does at the boundary, rather than what the task intended.",
         "parts": [
           {
             "kind": "text",
@@ -8192,7 +8192,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def admitted(age):\n    return age > 7\n# Requirement: accept ages at least 7.\nprint(\n    admitted(7 - 1), admitted(7), admitted(7 + 1), admitted(0),\n    admitted(7 + 2), admitted(7) == True,\n)",
-        "hint": "Trace the actual implementation, including its boundary error.",
+        "hint": "An off-by-one error includes or excludes one value too many. Trace what the code actually does at the boundary, rather than what the task intended.",
         "parts": [
           {
             "kind": "text",
@@ -8580,7 +8580,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([3]), mean([3, 3 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
-        "hint": "The empty case returns before division by the list length.",
+        "hint": "An empty list has length 0. Check whether the function returns early before reaching a division by that length.",
         "parts": [
           {
             "kind": "code",
@@ -8640,7 +8640,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([4]), mean([4, 4 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
-        "hint": "The empty case returns before division by the list length.",
+        "hint": "An empty list has length 0. Check whether the function returns early before reaching a division by that length.",
         "parts": [
           {
             "kind": "code",
@@ -8700,7 +8700,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([5]), mean([5, 5 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
-        "hint": "The empty case returns before division by the list length.",
+        "hint": "An empty list has length 0. Check whether the function returns early before reaching a division by that length.",
         "parts": [
           {
             "kind": "code",
@@ -8760,7 +8760,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([6]), mean([6, 6 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
-        "hint": "The empty case returns before division by the list length.",
+        "hint": "An empty list has length 0. Check whether the function returns early before reaching a division by that length.",
         "parts": [
           {
             "kind": "code",
@@ -8820,7 +8820,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def mean(values):\n    if values:\n        return None\n    return sum(values) / len(values)\nprint(\n    mean([]) is None, mean([7]), mean([7, 7 + 2]), mean([0]),\n    mean([-2, 2]),\n)",
-        "hint": "The empty case returns before division by the list length.",
+        "hint": "An empty list has length 0. Check whether the function returns early before reaching a division by that length.",
         "parts": [
           {
             "kind": "code",
@@ -8893,7 +8893,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [2, 5, 3 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
-        "hint": "Shift larger items right, then insert the key into the gap.",
+        "hint": "The sorted prefix is the ordered section at the start of the list. key stores the value being inserted. Shift larger items one place right, then put key in the gap.",
         "parts": [
           {
             "kind": "text",
@@ -8954,7 +8954,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [2, 5, 4 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
-        "hint": "Shift larger items right, then insert the key into the gap.",
+        "hint": "The sorted prefix is the ordered section at the start of the list. key stores the value being inserted. Shift larger items one place right, then put key in the gap.",
         "parts": [
           {
             "kind": "text",
@@ -9015,7 +9015,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [2, 5, 5 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
-        "hint": "Shift larger items right, then insert the key into the gap.",
+        "hint": "The sorted prefix is the ordered section at the start of the list. key stores the value being inserted. Shift larger items one place right, then put key in the gap.",
         "parts": [
           {
             "kind": "text",
@@ -9076,7 +9076,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [2, 5, 6 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
-        "hint": "Shift larger items right, then insert the key into the gap.",
+        "hint": "The sorted prefix is the ordered section at the start of the list. key stores the value being inserted. Shift larger items one place right, then put key in the gap.",
         "parts": [
           {
             "kind": "text",
@@ -9137,7 +9137,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [2, 5, 7 + 6, 1]\nkey = values[3]\nindex = 2\nwhile index >= 0 and values[index] > key:\n    values[index + 1] = values[index]\n    index -= 1\nvalues[index + 1] = key\nprint(values[0], values[1], values[2], values[3], index, key)",
-        "hint": "Shift larger items right, then insert the key into the gap.",
+        "hint": "The sorted prefix is the ordered section at the start of the list. key stores the value being inserted. Shift larger items one place right, then put key in the gap.",
         "parts": [
           {
             "kind": "text",
@@ -9211,7 +9211,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "left = [3, 3 + 4]\nright = [3 + 1, 3 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
-        "hint": "Always take the smaller first item; append the remaining tail.",
+        "hint": "The leading item is the item at index 0. Compare the two leading values and take the smaller one into the result. When one list is empty, concatenate the remaining items in their existing order.",
         "parts": [
           {
             "kind": "code",
@@ -9271,7 +9271,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "left = [4, 4 + 4]\nright = [4 + 1, 4 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
-        "hint": "Always take the smaller first item; append the remaining tail.",
+        "hint": "The leading item is the item at index 0. Compare the two leading values and take the smaller one into the result. When one list is empty, concatenate the remaining items in their existing order.",
         "parts": [
           {
             "kind": "code",
@@ -9331,7 +9331,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "left = [5, 5 + 4]\nright = [5 + 1, 5 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
-        "hint": "Always take the smaller first item; append the remaining tail.",
+        "hint": "The leading item is the item at index 0. Compare the two leading values and take the smaller one into the result. When one list is empty, concatenate the remaining items in their existing order.",
         "parts": [
           {
             "kind": "code",
@@ -9391,7 +9391,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "left = [6, 6 + 4]\nright = [6 + 1, 6 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
-        "hint": "Always take the smaller first item; append the remaining tail.",
+        "hint": "The leading item is the item at index 0. Compare the two leading values and take the smaller one into the result. When one list is empty, concatenate the remaining items in their existing order.",
         "parts": [
           {
             "kind": "code",
@@ -9451,7 +9451,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "left = [7, 7 + 4]\nright = [7 + 1, 7 + 3]\nmerged = []\nwhile len(left) > 0 and len(right) > 0:\n    if ___:\n        merged.append(left.pop(0))\n    else:\n        merged.append(right.pop(0))\nmerged = merged + left + right\nprint(merged[0], merged[1], merged[2], merged[3], len(left))",
-        "hint": "Always take the smaller first item; append the remaining tail.",
+        "hint": "The leading item is the item at index 0. Compare the two leading values and take the smaller one into the result. When one list is empty, concatenate the remaining items in their existing order.",
         "parts": [
           {
             "kind": "code",
@@ -9525,7 +9525,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [3 + 2, 3, 3 + 1]\ncopy = values.sort()\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
-        "hint": "sorted creates a new list; list.sort changes the list and returns None.",
+        "hint": "sorted returns a new sorted list. list.sort works in place: it changes the existing list and returns None, rather than returning that list.",
         "parts": [
           {
             "kind": "code",
@@ -9585,7 +9585,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [4 + 2, 4, 4 + 1]\ncopy = values.sort()\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
-        "hint": "sorted creates a new list; list.sort changes the list and returns None.",
+        "hint": "sorted returns a new sorted list. list.sort works in place: it changes the existing list and returns None, rather than returning that list.",
         "parts": [
           {
             "kind": "code",
@@ -9645,7 +9645,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [5 + 2, 5, 5 + 1]\ncopy = values.sort()\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
-        "hint": "sorted creates a new list; list.sort changes the list and returns None.",
+        "hint": "sorted returns a new sorted list. list.sort works in place: it changes the existing list and returns None, rather than returning that list.",
         "parts": [
           {
             "kind": "code",
@@ -9705,7 +9705,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [6 + 2, 6, 6 + 1]\ncopy = values.sort()\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
-        "hint": "sorted creates a new list; list.sort changes the list and returns None.",
+        "hint": "sorted returns a new sorted list. list.sort works in place: it changes the existing list and returns None, rather than returning that list.",
         "parts": [
           {
             "kind": "code",
@@ -9765,7 +9765,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [7 + 2, 7, 7 + 1]\ncopy = values.sort()\nresult = values.sort(reverse=True)\nprint(copy[0], copy[-1], values[0], values[-1], result is None)",
-        "hint": "sorted creates a new list; list.sort changes the list and returns None.",
+        "hint": "sorted returns a new sorted list. list.sort works in place: it changes the existing list and returns None, rather than returning that list.",
         "parts": [
           {
             "kind": "code",
@@ -9838,7 +9838,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(3, 3), cost(3, 3), area(0, 3), cost(1, 3), area(3, 3),\n    cost(2, 2),\n)",
-        "hint": "Use each function as a small named step; pass the returned value onwards.",
+        "hint": "A function call produces a returned value. Work through the inner call first, then pass its result as the argument (input value) to the next function.",
         "parts": [
           {
             "kind": "text",
@@ -9899,7 +9899,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(4, 3), cost(4, 3), area(0, 4), cost(1, 4), area(4, 4),\n    cost(2, 2),\n)",
-        "hint": "Use each function as a small named step; pass the returned value onwards.",
+        "hint": "A function call produces a returned value. Work through the inner call first, then pass its result as the argument (input value) to the next function.",
         "parts": [
           {
             "kind": "text",
@@ -9960,7 +9960,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(5, 3), cost(5, 3), area(0, 5), cost(1, 5), area(5, 5),\n    cost(2, 2),\n)",
-        "hint": "Use each function as a small named step; pass the returned value onwards.",
+        "hint": "A function call produces a returned value. Work through the inner call first, then pass its result as the argument (input value) to the next function.",
         "parts": [
           {
             "kind": "text",
@@ -10021,7 +10021,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(6, 3), cost(6, 3), area(0, 6), cost(1, 6), area(6, 6),\n    cost(2, 2),\n)",
-        "hint": "Use each function as a small named step; pass the returned value onwards.",
+        "hint": "A function call produces a returned value. Work through the inner call first, then pass its result as the argument (input value) to the next function.",
         "parts": [
           {
             "kind": "text",
@@ -10082,7 +10082,7 @@ export default [
       {
         "prompt": "Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def area(width, height):\n    return width * height\ndef cost(width, height):\n    return area(width, height) * 2\nprint(\n    area(7, 3), cost(7, 3), area(0, 7), cost(1, 7), area(7, 7),\n    cost(2, 2),\n)",
-        "hint": "Use each function as a small named step; pass the returned value onwards.",
+        "hint": "A function call produces a returned value. Work through the inner call first, then pass its result as the argument (input value) to the next function.",
         "parts": [
           {
             "kind": "text",
@@ -10156,7 +10156,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "RATE = 3\ndef charge(hours):\n    return ___\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
-        "hint": "Uppercase signals a constant by convention; this program never reassigns it.",
+        "hint": "A constant is a value intended to stay unchanged. UPPER_CASE names signal this intention by convention; Python does not stop you assigning a new value to them.",
         "parts": [
           {
             "kind": "code",
@@ -10216,7 +10216,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "RATE = 4\ndef charge(hours):\n    return ___\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
-        "hint": "Uppercase signals a constant by convention; this program never reassigns it.",
+        "hint": "A constant is a value intended to stay unchanged. UPPER_CASE names signal this intention by convention; Python does not stop you assigning a new value to them.",
         "parts": [
           {
             "kind": "code",
@@ -10276,7 +10276,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "RATE = 5\ndef charge(hours):\n    return ___\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
-        "hint": "Uppercase signals a constant by convention; this program never reassigns it.",
+        "hint": "A constant is a value intended to stay unchanged. UPPER_CASE names signal this intention by convention; Python does not stop you assigning a new value to them.",
         "parts": [
           {
             "kind": "code",
@@ -10336,7 +10336,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "RATE = 6\ndef charge(hours):\n    return ___\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
-        "hint": "Uppercase signals a constant by convention; this program never reassigns it.",
+        "hint": "A constant is a value intended to stay unchanged. UPPER_CASE names signal this intention by convention; Python does not stop you assigning a new value to them.",
         "parts": [
           {
             "kind": "code",
@@ -10396,7 +10396,7 @@ export default [
       {
         "prompt": "Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "RATE = 7\ndef charge(hours):\n    return ___\nfirst = charge(2)\nprint(RATE, first, charge(3), charge(0), charge(1))",
-        "hint": "Uppercase signals a constant by convention; this program never reassigns it.",
+        "hint": "A constant is a value intended to stay unchanged. UPPER_CASE names signal this intention by convention; Python does not stop you assigning a new value to them.",
         "parts": [
           {
             "kind": "code",
@@ -10469,7 +10469,7 @@ export default [
       {
         "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(3), steps(0), steps(1), steps(2), steps(3))",
-        "hint": "Each call reduces value by two until the base case returns zero.",
+        "hint": "Recursion means a function calls itself. The base case stops further calls. Here each call reduces value by two; follow the calls down to the base case, then work back through their returns.",
         "parts": [
           {
             "kind": "code",
@@ -10529,7 +10529,7 @@ export default [
       {
         "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(4), steps(0), steps(1), steps(2), steps(3))",
-        "hint": "Each call reduces value by two until the base case returns zero.",
+        "hint": "Recursion means a function calls itself. The base case stops further calls. Here each call reduces value by two; follow the calls down to the base case, then work back through their returns.",
         "parts": [
           {
             "kind": "code",
@@ -10589,7 +10589,7 @@ export default [
       {
         "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(5), steps(0), steps(1), steps(2), steps(3))",
-        "hint": "Each call reduces value by two until the base case returns zero.",
+        "hint": "Recursion means a function calls itself. The base case stops further calls. Here each call reduces value by two; follow the calls down to the base case, then work back through their returns.",
         "parts": [
           {
             "kind": "code",
@@ -10649,7 +10649,7 @@ export default [
       {
         "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(6), steps(0), steps(1), steps(2), steps(3))",
-        "hint": "Each call reduces value by two until the base case returns zero.",
+        "hint": "Recursion means a function calls itself. The base case stops further calls. Here each call reduces value by two; follow the calls down to the base case, then work back through their returns.",
         "parts": [
           {
             "kind": "code",
@@ -10709,7 +10709,7 @@ export default [
       {
         "prompt": "Extension: this question practises recursion, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "def steps(value):\n    if value <= 0:\n        return 0\n    return 1 + steps(value + 2)\nprint(steps(7), steps(0), steps(1), steps(2), steps(3))",
-        "hint": "Each call reduces value by two until the base case returns zero.",
+        "hint": "Recursion means a function calls itself. The base case stops further calls. Here each call reduces value by two; follow the calls down to the base case, then work back through their returns.",
         "parts": [
           {
             "kind": "code",
@@ -10782,7 +10782,7 @@ export default [
       {
         "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [3, 3, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 3 in unique,\n    0 in unique, len(set()),\n)",
-        "hint": "Sets contain distinct values and have no positional order.",
+        "hint": "A set keeps distinct values, so adding a repeated value does not add another item. Sets have no positional indices or guaranteed iteration order.",
         "parts": [
           {
             "kind": "text",
@@ -10843,7 +10843,7 @@ export default [
       {
         "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [4, 4, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 4 in unique,\n    0 in unique, len(set()),\n)",
-        "hint": "Sets contain distinct values and have no positional order.",
+        "hint": "A set keeps distinct values, so adding a repeated value does not add another item. Sets have no positional indices or guaranteed iteration order.",
         "parts": [
           {
             "kind": "text",
@@ -10904,7 +10904,7 @@ export default [
       {
         "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [5, 5, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 5 in unique,\n    0 in unique, len(set()),\n)",
-        "hint": "Sets contain distinct values and have no positional order.",
+        "hint": "A set keeps distinct values, so adding a repeated value does not add another item. Sets have no positional indices or guaranteed iteration order.",
         "parts": [
           {
             "kind": "text",
@@ -10965,7 +10965,7 @@ export default [
       {
         "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [6, 6, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 6 in unique,\n    0 in unique, len(set()),\n)",
-        "hint": "Sets contain distinct values and have no positional order.",
+        "hint": "A set keeps distinct values, so adding a repeated value does not add another item. Sets have no positional indices or guaranteed iteration order.",
         "parts": [
           {
             "kind": "text",
@@ -11026,7 +11026,7 @@ export default [
       {
         "prompt": "Extension: this question practises sets, beyond the named Core Python constructs. Predict the six printed values. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [7, 7, 8, 8, 9]\nunique = set(values)\nprint(\n    len(values), len(unique), sum(unique), 7 in unique,\n    0 in unique, len(set()),\n)",
-        "hint": "Sets contain distinct values and have no positional order.",
+        "hint": "A set keeps distinct values, so adding a repeated value does not add another item. Sets have no positional indices or guaranteed iteration order.",
         "parts": [
           {
             "kind": "text",
@@ -11100,7 +11100,7 @@ export default [
       {
         "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [value * 2 for value in range(3) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
-        "hint": "Apply the filter to the original loop value before multiplying.",
+        "hint": "A list comprehension builds a list from a loop expression. Test the if filter against the original value first; only accepted values are then multiplied.",
         "parts": [
           {
             "kind": "code",
@@ -11160,7 +11160,7 @@ export default [
       {
         "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [value * 2 for value in range(4) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
-        "hint": "Apply the filter to the original loop value before multiplying.",
+        "hint": "A list comprehension builds a list from a loop expression. Test the if filter against the original value first; only accepted values are then multiplied.",
         "parts": [
           {
             "kind": "code",
@@ -11220,7 +11220,7 @@ export default [
       {
         "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [value * 2 for value in range(5) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
-        "hint": "Apply the filter to the original loop value before multiplying.",
+        "hint": "A list comprehension builds a list from a loop expression. Test the if filter against the original value first; only accepted values are then multiplied.",
         "parts": [
           {
             "kind": "code",
@@ -11280,7 +11280,7 @@ export default [
       {
         "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [value * 2 for value in range(6) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
-        "hint": "Apply the filter to the original loop value before multiplying.",
+        "hint": "A list comprehension builds a list from a loop expression. Test the if filter against the original value first; only accepted values are then multiplied.",
         "parts": [
           {
             "kind": "code",
@@ -11340,7 +11340,7 @@ export default [
       {
         "prompt": "Extension: this question practises list comprehensions, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [value * 2 for value in range(7) if ___]\nprint(\n    len(values), values[0], values[-1], sum(values),\n    2 in values,\n)",
-        "hint": "Apply the filter to the original loop value before multiplying.",
+        "hint": "A list comprehension builds a list from a loop expression. Test the if filter against the original value first; only accepted values are then multiplied.",
         "parts": [
           {
             "kind": "code",
@@ -11413,7 +11413,7 @@ export default [
       {
         "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [3, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
-        "hint": "enumerate pairs each item with a counter; start changes that counter.",
+        "hint": "enumerate supplies a counter alongside each item. Its start argument changes that counter, not the values stored in the original list.",
         "parts": [
           {
             "kind": "code",
@@ -11473,7 +11473,7 @@ export default [
       {
         "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [4, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
-        "hint": "enumerate pairs each item with a counter; start changes that counter.",
+        "hint": "enumerate supplies a counter alongside each item. Its start argument changes that counter, not the values stored in the original list.",
         "parts": [
           {
             "kind": "code",
@@ -11533,7 +11533,7 @@ export default [
       {
         "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [5, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
-        "hint": "enumerate pairs each item with a counter; start changes that counter.",
+        "hint": "enumerate supplies a counter alongside each item. Its start argument changes that counter, not the values stored in the original list.",
         "parts": [
           {
             "kind": "code",
@@ -11593,7 +11593,7 @@ export default [
       {
         "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [6, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
-        "hint": "enumerate pairs each item with a counter; start changes that counter.",
+        "hint": "enumerate supplies a counter alongside each item. Its start argument changes that counter, not the values stored in the original list.",
         "parts": [
           {
             "kind": "code",
@@ -11653,7 +11653,7 @@ export default [
       {
         "prompt": "Extension: this question practises enumerate, beyond the named Core Python constructs. Complete or repair the code as requested, then predict the five printed values of the corrected code. Read each value separately; Boolean spelling is case-sensitive.",
         "code": "values = [7, 8, 9]\npairs = list(enumerate(values, start=0))\nprint(\n    pairs[0][0], pairs[0][1], pairs[2][0], pairs[2][1],\n    len(pairs),\n)",
-        "hint": "enumerate pairs each item with a counter; start changes that counter.",
+        "hint": "enumerate supplies a counter alongside each item. Its start argument changes that counter, not the values stored in the original list.",
         "parts": [
           {
             "kind": "code",
@@ -11726,7 +11726,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "unit_price = 3\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
-        "hint": "Descriptive snake_case names make each quantity clear.",
+        "hint": "snake_case uses lowercase words separated by underscores. Choose a name that explains what the value represents, rather than only its type or calculation.",
         "parts": [
           {
             "kind": "text",
@@ -11799,7 +11799,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "unit_price = 4\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
-        "hint": "Descriptive snake_case names make each quantity clear.",
+        "hint": "snake_case uses lowercase words separated by underscores. Choose a name that explains what the value represents, rather than only its type or calculation.",
         "parts": [
           {
             "kind": "text",
@@ -11872,7 +11872,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "unit_price = 5\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
-        "hint": "Descriptive snake_case names make each quantity clear.",
+        "hint": "snake_case uses lowercase words separated by underscores. Choose a name that explains what the value represents, rather than only its type or calculation.",
         "parts": [
           {
             "kind": "text",
@@ -11945,7 +11945,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "unit_price = 6\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
-        "hint": "Descriptive snake_case names make each quantity clear.",
+        "hint": "snake_case uses lowercase words separated by underscores. Choose a name that explains what the value represents, rather than only its type or calculation.",
         "parts": [
           {
             "kind": "text",
@@ -12018,7 +12018,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "unit_price = 7\nitem_count = 3\ntotal_price = unit_price * item_count\nprint(unit_price, item_count, total_price)",
-        "hint": "Descriptive snake_case names make each quantity clear.",
+        "hint": "snake_case uses lowercase words separated by underscores. Choose a name that explains what the value represents, rather than only its type or calculation.",
         "parts": [
           {
             "kind": "text",
@@ -12105,7 +12105,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 3\nprint(square(number), square(0))",
-        "hint": "A docstring describes the function; return supplies its result.",
+        "hint": "A docstring is a string placed first in a function body to describe its purpose. It is documentation; the return statement supplies the result to the caller.",
         "parts": [
           {
             "kind": "code",
@@ -12177,7 +12177,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 4\nprint(square(number), square(0))",
-        "hint": "A docstring describes the function; return supplies its result.",
+        "hint": "A docstring is a string placed first in a function body to describe its purpose. It is documentation; the return statement supplies the result to the caller.",
         "parts": [
           {
             "kind": "code",
@@ -12249,7 +12249,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 5\nprint(square(number), square(0))",
-        "hint": "A docstring describes the function; return supplies its result.",
+        "hint": "A docstring is a string placed first in a function body to describe its purpose. It is documentation; the return statement supplies the result to the caller.",
         "parts": [
           {
             "kind": "code",
@@ -12321,7 +12321,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 6\nprint(square(number), square(0))",
-        "hint": "A docstring describes the function; return supplies its result.",
+        "hint": "A docstring is a string placed first in a function body to describe its purpose. It is documentation; the return statement supplies the result to the caller.",
         "parts": [
           {
             "kind": "code",
@@ -12393,7 +12393,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "def square(value):\n    \"\"\"Return value multiplied by itself.\"\"\"\n    ___\nnumber = 7\nprint(square(number), square(0))",
-        "hint": "A docstring describes the function; return supplies its result.",
+        "hint": "A docstring is a string placed first in a function body to describe its purpose. It is documentation; the return statement supplies the result to the caller.",
         "parts": [
           {
             "kind": "code",
@@ -12479,7 +12479,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "SECONDS_PER_MINUTE = 60\nminutes = 3\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
-        "hint": "Name fixed conversion factors so their purpose is visible.",
+        "hint": "A magic number is a fixed value whose purpose is unexplained in the code. Give the conversion factor a descriptive constant name and use it in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -12551,7 +12551,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "SECONDS_PER_MINUTE = 60\nminutes = 4\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
-        "hint": "Name fixed conversion factors so their purpose is visible.",
+        "hint": "A magic number is a fixed value whose purpose is unexplained in the code. Give the conversion factor a descriptive constant name and use it in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -12623,7 +12623,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "SECONDS_PER_MINUTE = 60\nminutes = 5\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
-        "hint": "Name fixed conversion factors so their purpose is visible.",
+        "hint": "A magic number is a fixed value whose purpose is unexplained in the code. Give the conversion factor a descriptive constant name and use it in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -12695,7 +12695,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "SECONDS_PER_MINUTE = 60\nminutes = 6\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
-        "hint": "Name fixed conversion factors so their purpose is visible.",
+        "hint": "A magic number is a fixed value whose purpose is unexplained in the code. Give the conversion factor a descriptive constant name and use it in the calculation.",
         "parts": [
           {
             "kind": "code",
@@ -12767,7 +12767,7 @@ export default [
       {
         "prompt": "Trace the requested values, then identify readable Python naming and layout choices.",
         "code": "SECONDS_PER_MINUTE = 60\nminutes = 7\nseconds = minutes + SECONDS_PER_MINUTE\nprint(seconds, SECONDS_PER_MINUTE)",
-        "hint": "Name fixed conversion factors so their purpose is visible.",
+        "hint": "A magic number is a fixed value whose purpose is unexplained in the code. Give the conversion factor a descriptive constant name and use it in the calculation.",
         "parts": [
           {
             "kind": "code",

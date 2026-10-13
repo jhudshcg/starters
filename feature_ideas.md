@@ -27,3 +27,13 @@ reasonable to have an optional, basic, upto ~1 dan amateur computer player built
 ## integration with personal individual learner cloud storage for syncing progress tracking
 
 ## teacher page to colate and visualize shared tracking data
+
+## Small enhancements seen in GCSE Maths — 13 October 2026
+
+Candidates for later adoption, not new implementation commitments:
+
+- Profile rename preserving UUID/history, plus explicitly confirmed local reset/delete that unlinks but never deletes an external progress file.
+- Last-backup date and a gentle reminder when a backup is overdue.
+- Per-check input-hash caching and a conservative change-to-check map for verification; retain successful unchanged evidence and rerun failures only after fixes. See [local development](docs/local-development.md#select-checks-from-the-change).
+
+The requested OneDrive linked-file saving, Go practice board, responsive puzzle sizing and optional Python topic guides are now implemented. A Go computer opponent remains a separate idea; the imported GNU Go engine supplies estimates only.

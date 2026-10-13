@@ -28,7 +28,7 @@ Home: title and short instruction, three type cards, focus selector, prominent c
 
 Use shared components for buttons, labels, inputs, choice groups, question cards, part marks, hints, feedback, code panels, grid controls and progress tables. Primary action is visually stronger than randomisation and answer reveal. Use the exact navigation labels in the common specification.
 
-Small screens and high zoom use one column. Do not set fixed card heights or force question controls into narrow sidebars. Code uses authored line breaks and responsive wrapping. Genuinely two-dimensional grids may scroll locally; the whole page must not require horizontal scrolling. Keep essential controls outside local scroll regions.
+Small screens and high zoom use one column. Do not set fixed card heights or force question controls into narrow sidebars. Code uses authored line breaks and responsive wrapping. Puzzle boards and answer grids must fit without horizontal scrolling, including at 320 CSS pixels. Preserve readable labels and useful answer-cell widths; do not satisfy page width by squashing answer columns. Other genuinely two-dimensional content may scroll locally; the whole page must not require horizontal scrolling.
 
 ## Interaction and accessibility checks
 

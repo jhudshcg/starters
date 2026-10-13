@@ -58,3 +58,24 @@ Search metadata: `js/search.js` provides matching and constrained candidate sele
 The [puzzle library](../packages/puzzles/README.md) is currently ordinary source under `packages/puzzles/`, not a submodule. Normal checkout and dependency installation are unchanged; it has no separate hosting. `npm test` includes its portable checks. For extraction changes, run the library tests plus puzzle, packed-bank, algebra and code-compatibility tests, followed by the production-build test. Keep `npm run codes:check` passing without a revision update when content is unchanged. The library README records the required staged-build-hook change before future submodule adoption.
 
 Puzzle control integration: `node scripts/browser-puzzle-player.mjs` builds a package-only fixture in a temporary directory and uses isolated Chrome on port 9227. `node scripts/browser-puzzle-integration.mjs` checks the production app on port 8765, including named-profile persistence, parent submission and reveal, and desktop/640px/320px reflow. It clears storage only in that dedicated test browser. The older broad smoke/expansion scripts assume legacy profile storage and are not evidence of a passing current integration run.
+
+
+## OneDrive and human Go verification
+
+`node --test tests/progress-file.test.js packages/puzzles/tests/*.test.js` covers file safety, folder choice, profile identity and portable Go rules/engine. `node scripts/browser-onedrive-go.mjs` uses isolated Chrome on 9227 and production on 8765. It clears **only that test browser's** local storage, uses real origin-private handles with stubbed native pickers, and checks file saves/reload/conflicts and Go controls/engine/touch/reflow. It does not exercise the OneDrive desktop client. Never run it against a personal browser. Temporary screenshots go to `/private/tmp`. The production build ships the engine, corresponding source and licence assets; estimation loads only on demand.
+
+## Select checks from the change
+
+Reviewed the Maths repository's `maths-efficient-development` skill and cached verifier documentation on 13 October. Apply its change-selected approach here: reuse completed checks for unchanged inputs, run focused checks after a coherent batch, and read full logs only for failures. Do not repeat all tests because the same uncommitted diff still exists. This repository does **not** yet have Maths's automatic content-hash cache or `verify:changed` command; importing its Svelte-specific dependency map would give misleading coverage.
+
+| Change | Relevant checks |
+| --- | --- |
+| Python sequence tasks/hints | `node --test tests/python-sequences.test.js tests/python-readability.test.js`; compare unchanged assessment data for hint-only edits, then content coverage/codes/validation/build |
+| Python topic guides | `node --test tests/discovery-guide.test.js`; build, then `node scripts/browser-python-guides.mjs` |
+| Puzzle sizing only | Build, then `node scripts/browser-puzzle-layout.mjs`; during CSS iteration `--source-styles` injects only the changed sizing styles over the existing build |
+| OneDrive save/failure changes | `node --test tests/progress-file.test.js tests/profiles-revision.test.js`; build, then `node scripts/browser-onedrive-go.mjs --files-only` |
+| Shared Go changes | Relevant package rule/clock/engine tests, then package and production Go integration; full `browser-onedrive-go.mjs` covers the human board |
+| Bank metadata/compatibility | Relevant search, packed-bank and code-compatibility tests; content validation/build |
+| Documentation only | Check changed local links and whitespace; no rebuild or browser suite |
+
+Browser scripts use the dedicated debugging profile on 9227 and a production server on 8765, and clear its test storage. Run them serially. Do not overlap a browser run with production-build tests, which replace `live/`. Keep temporary logs/screenshots outside the repo. A future cached runner should hash each job's relevant sources, tests, configuration and runtime identity, include additions/deletions, and cache only successes. Maintain an explicit conservative dependency map and an opt-in force mode; no watcher is started implicitly.

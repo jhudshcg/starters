@@ -1,4 +1,9 @@
-// Profiles are local conveniences, not authentication. Keep the legacy save intact.
+/**
+ * Purpose: Keep local named profiles and portable UUIDs without changing legacy saves.
+ * Main contents: name matching, selection, loading and activation.
+ * Used by: app and progress transfer. Uses: progress storage and identity validation. Libs: none.
+ */
+import {validLearnerId} from './progress-identity.js';
 import {loadStorage,saveStorage,STORAGE_KEY} from './progress.js';
 export const PROFILE_KEY='dsd-starters-profiles-v1';
 export const normaliseName=name=>name.trim().replace(/\s+/g,' ');
@@ -14,6 +19,7 @@ export function profiles(storage=globalThis.localStorage){return JSON.parse(stor
 function scoped(name,storage){return {getItem:()=>storage.getItem(`${STORAGE_KEY}:profile:${encodeURIComponent(name)}`),setItem:(_,value)=>storage.setItem(`${STORAGE_KEY}:profile:${encodeURIComponent(name)}`,value)};}
 export function loadProfile(name,storage=globalThis.localStorage){
   const data={...loadStorage(scoped(name,storage)),username:name};
+  if(data.profileId!==undefined&&!validLearnerId(data.profileId))throw Error('Saved profile ID is invalid. Progress has not been overwritten.');
   if(data.active?.practiceClock){data.active.practiceClock.running=false;data.active.practiceClock.interacted=false;}
   return data;
 }
@@ -28,6 +34,7 @@ export function selectProfile(name,storage=globalThis.localStorage){
 // Call only after all imported records have been validated and merged in memory.
 export function activateProfile(data,storage=globalThis.localStorage){
   const index=profiles(storage);
+  data.profileId??=crypto.randomUUID();
   saveProfile(data,storage);
   storage.setItem(PROFILE_KEY,JSON.stringify({current:data.username,names:[...new Set([...index.names,data.username])]}));
   return data;

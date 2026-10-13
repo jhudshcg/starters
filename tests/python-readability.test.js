@@ -93,8 +93,8 @@ test('current examples need no array module, StringIO or type introspection; ref
     assert.doesNotMatch(v.code ?? '', /from array|import array|StringIO|__name__/);
     assert.ok(v.code.split('\n').filter(line => line.trim() && !line.trim().startsWith('#')).length <= 12,q.title);
   }
-  assert.equal(new Set(python.map(q => q.slot)).size,63);
-  assert.equal(python.length,63);
+  assert.equal(new Set(python.map(q => q.slot)).size,python.length);
+  for(let slot=0;slot<63;slot++)assert.ok(python.some(q=>q.slot===slot),`Original slot ${slot} retained`);
   for (const slot of [34,35,54]) assert.ok(!python.find(q => q.slot===slot).retired);
   for (const slot of [34,35,54]) assert.equal(python.find(q => q.slot===slot).variations.length,5);
 });
