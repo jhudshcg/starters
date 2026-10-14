@@ -115,7 +115,8 @@
   min-height: 44px;
 }
 
-@media (max-width: 440px) {
+/* Preserve the inclusive mobile gutter boundary shared with question cards. */
+@variant max-viewport-small-inclusive {
   .human-go-controls {
     margin-inline: -.5rem;
   }

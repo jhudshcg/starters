@@ -13,7 +13,10 @@
     "hints:audit": "node scripts/audit-hints.mjs",
     "codes:update": "node scripts/question-codes.mjs --update",
     "codes:check": "node scripts/question-codes.mjs --check",
-    "dev": "vite"
+    "dev": "vite",
+    "predev": "node scripts/prepare-site.mjs",
+    "check": "svelte-kit sync && svelte-check --fail-on-warnings",
+    "format": "prettier --write src vite.config.js jsconfig.json"
   },
   "dependencies": {
     "@maxgraph/core": "0.24.0",
@@ -21,7 +24,23 @@
     "mathjs": "15.2.0"
   },
   "devDependencies": {
+    "@sveltejs/adapter-static": "4.0.0",
+    "@sveltejs/kit": "3.0.0",
+    "@sveltejs/vite-plugin-svelte": "7.3.1",
+    "@tailwindcss/vite": "4.3.3",
+    "bits-ui": "2.19.4",
+    "daisyui": "5.7.47",
     "esbuild": "0.28.2",
-    "vite": "8.3.1"
+    "prettier": "3.9.9",
+    "prettier-plugin-svelte": "4.1.1",
+    "svelte": "5.57.1",
+    "svelte-check": "4.7.6",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3",
+    "vite": "8.3.2"
+  },
+  "imports": {
+    "#domain/*": "./js/*",
+    "#lib/*": "./src/lib/*"
   }
 }

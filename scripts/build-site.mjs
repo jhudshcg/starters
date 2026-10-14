@@ -1,54 +1,24 @@
-// Ship only a bundled production application. Authoring banks stay in the repo.
-import {mkdir, readFile, rm, writeFile, cp} from 'node:fs/promises';
-import {fileURLToPath} from 'node:url';
-import {join, relative} from 'node:path';
-import {build} from 'esbuild';
-import './question-codes.mjs';
-import {banks, validateBank} from '../js/bank.js';
-import {auditHints} from './audit-hints.mjs';
-import {createHash} from 'node:crypto';
-import {pack, packBank} from './pack-bank.mjs';
+/**
+ * Purpose: Validate and pack content before compiling the static SvelteKit site.
+ * Main contents: ordered preparation and production build.
+ * Used by: npm build, production tests and staged-source commit hook.
+ * Uses: prepare-site.mjs, vite.config.js. Libs: Vite.
+ */
+import './prepare-site.mjs';
+import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+// The CLI runs Kit's server/client environment builder, not only Vite's client build API.
+execFileSync(
+  process.execPath,
+  [fileURLToPath(new URL('../node_modules/vite/bin/vite.js', import.meta.url)), 'build'],
+  { stdio: 'inherit' },
+);
 
-// Check the compact curriculum search metadata without publishing the full inventory.
-const {execFileSync}=await import('node:child_process');
-execFileSync(process.execPath,[fileURLToPath(new URL('search-index.mjs',import.meta.url)),'--check']);
-
-const root=fileURLToPath(new URL('../',import.meta.url));
-const output=join(root,'live');
-const errors=[...validateBank(),...auditHints(banks).errors];
-if(errors.length)throw Error(errors.join('\n'));
-await rm(output,{recursive:true,force:true});
-await mkdir(output);
-await mkdir(join(output,'banks'));
-const bankPaths=[];
-for(const [i,name] of ['puzzles','exam','python','esp'].entries()){
-  const payload=pack(packBank(banks[i]));
-  const hash=createHash('sha256').update(payload).digest('hex').slice(0,16);
-  const path=`banks/${name}-${hash}.txt`;
-  await writeFile(join(output,path),payload);
-  bankPaths.push('../'+path);
+// Remove whitespace-only bootstrap lines; leave rendered text and inline code intact.
+const { readdir, readFile, writeFile } = await import('node:fs/promises');
+for (const path of await readdir('live', { recursive: true })) {
+  if (!path.endsWith('.html')) continue;
+  const file = `live/${path}`;
+  const html = await readFile(file, 'utf8');
+  await writeFile(file, html.replace(/^[\t ]+$/gm, ''));
 }
-const result=await build({
-  absWorkingDir:root,entryPoints:['js/app.js','css/styles.css','css/puzzles.css','css/challenges.css'],
-  outdir:output,entryNames:'assets/[name]-[hash]',bundle:true,format:'esm',platform:'browser',
-  preserveSymlinks:true,target:['es2022'],minify:true,sourcemap:false,metafile:true,legalComments:'eof',
-  plugins:[{name:'encoded-question-banks',setup(builder){
-    builder.onLoad({filter:/[/\\]js[/\\]bank-data\.js$/},()=>({
-      contents:`import {createBankLoader} from './js/bank-loader.js';const loader=createBankLoader(${JSON.stringify(bankPaths)}.map(path=>new URL(path,import.meta.url)));export const banks=loader.banks;export const ensureBank=loader.ensureBank;`,
-      resolveDir:root,loader:'js'
-    }));
-  }}]
-});
-let html=await readFile(join(root,'index.html'),'utf8');
-for(const [file,meta] of Object.entries(result.metafile.outputs)){
-  if(meta.entryPoint)html=html.replaceAll(meta.entryPoint,relative(output,join(root,file)));
-}
-if(html.includes('src="js/')||html.includes('href="css/'))throw Error('Unbundled entry in production HTML');
-await writeFile(join(output,'index.html'),html);
-await writeFile(join(output,'.nojekyll'),'');
-await cp(join(root,'engines'),join(output,'engines'),{recursive:true});
-await cp(join(root,'THIRD_PARTY_NOTICES.md'),join(output,'THIRD_PARTY_NOTICES.md'));
-await cp(join(root,'node_modules/fflate/LICENSE'),join(output,'fflate-LICENSE.txt'));
-// The metafile remains local and is deliberately not deployed.
-await writeFile(join(root,'.build-meta.json'),JSON.stringify(result.metafile,null,2));
-console.log(`Built live with ${banks.flat().length} templates. Plaintext banks and source maps are excluded.`);

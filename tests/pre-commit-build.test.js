@@ -9,7 +9,7 @@ test('commit builder uses staged source, stages generated files and preserves un
  const root=mkdtempSync(join(tmpdir(),'starters-hook-test-'));
  const git=(...args)=>execFileSync('git',args,{cwd:root,encoding:'utf8'});
  try{
-  git('init','-q');mkdirSync(join(root,'scripts'));mkdirSync(join(root,'node_modules/esbuild'),{recursive:true});
+  git('init','-q');mkdirSync(join(root,'scripts'));mkdirSync(join(root,'node_modules/@sveltejs/kit'),{recursive:true});
   writeFileSync(join(root,'package-lock.json'),'{}');writeFileSync(join(root,'source.txt'),'staged');
   writeFileSync(join(root,'scripts/build-site.mjs'),`import {mkdirSync,writeFileSync,readFileSync} from 'node:fs';mkdirSync('live',{recursive:true});writeFileSync('live/index.html',readFileSync('source.txt'));`);
   git('add','scripts','source.txt','package-lock.json');writeFileSync(join(root,'source.txt'),'unfinished');

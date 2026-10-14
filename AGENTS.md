@@ -22,7 +22,7 @@ For code changes, follow [code style](docs/CODE_STYLE.md) and the [code comments
 
 Run [project-refactor-checks](.agents/skills/project-refactor-checks/SKILL.md) at least once per development session. Follow its ordered review stages and discussion gates; a review does not authorise unagreed refactoring.
 
-For the framework migration, read the [refactoring brief](T_LEVEL_REFACTOR_AGENT_GUIDE.md), [application ownership](docs/application-architecture.md) and [repository readiness review](docs/reviews/2026-10-07-refactor-readiness.md). The review is an assessment, not approval to start the migration.
+For framework work, read the [refactoring brief](T_LEVEL_REFACTOR_AGENT_GUIDE.md), [application ownership](docs/application-architecture.md) and [repository readiness review](docs/reviews/2026-10-07-refactor-readiness.md). Full migration was authorised on 14 October 2026. The ownership map describes the implemented architecture; the readiness review remains historical evidence.
 
 ## Working efficiently and preserving handovers
 

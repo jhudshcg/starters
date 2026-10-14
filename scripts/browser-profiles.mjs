@@ -10,23 +10,26 @@ const send=(method,params={})=>new Promise(r=>{pending.set(++id,r);ws.send(JSON.
 const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
 const until=async expression=>{for(let i=0;i<200;i++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Timed out: '+expression);};
 const click=s=>evaluate(`document.querySelector(${JSON.stringify(s)}).click()`);
-const restore=backup=>evaluate(`{const input=document.querySelector('#backup-file'),transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(backup))}],'backup.json',{type:'application/json'}));input.files=transfer.files;input.dispatchEvent(new Event('change'));}`);
-const name=async value=>{await evaluate(`document.querySelector('#profile-name').value=${JSON.stringify(value)};document.querySelector('dialog form').requestSubmit()`);};
+const restore=backup=>evaluate(`{const input=document.querySelector('#backup-file'),transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(backup))}],'backup.json',{type:'application/json'}));input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
+const name=async value=>{await evaluate(`document.querySelector('#profile-name').value=${JSON.stringify(value)};document.querySelector('[role=dialog] form').requestSubmit()`);};
+// Wait for the new document, rather than accidentally accepting controls from before reload.
+const reload=async()=>{const origin=await evaluate('performance.timeOrigin');await send('Page.reload');await until(`performance.timeOrigin!==${origin}`);};
+
 try{
  await send('Runtime.enable');await send('Page.enable');await send('Browser.setDownloadBehavior',{behavior:'deny'});await send('Page.navigate',{url:base});await until('Boolean(document.querySelector("#main"))');
- await evaluate('localStorage.clear()');await send('Page.reload');await until('Boolean(document.querySelector("#profile-name"))');
- await name('Joe Hudson');await until('!document.querySelector("dialog")');
+ await evaluate('localStorage.clear()');await reload();await until('Boolean(document.querySelector("#profile-name"))');
+ await name('Joe Hudson');await until('!document.querySelector("[role=dialog]")');
  assert.match(await evaluate('document.querySelector("#profile-welcome").textContent'),/Joe Hudson/);
  await evaluate('location.hash="#progress"');await until('document.querySelectorAll(".recommended-sets button").length===3');
  assert.ok(await evaluate('document.querySelectorAll(".priority-missing").length>20'));
  const codes=await evaluate('[...document.querySelectorAll(".recommended-sets code")].map(e=>e.textContent)');
- await send('Page.reload');await until('document.querySelectorAll(".recommended-sets button").length===3');
+ await reload();await until('document.querySelectorAll(".recommended-sets button").length===3');
  assert.deepEqual(await evaluate('[...document.querySelectorAll(".recommended-sets code")].map(e=>e.textContent)'),codes);
- await click('#switch-profile');await name('Joe Hudosn');await until('Boolean(document.querySelector("#use-match"))');await click('#use-match');await until('!document.querySelector("dialog")');
- await click('#switch-profile');await name('Alex');await until('!document.querySelector("dialog")');assert.match(await evaluate('document.querySelector("#profile-welcome").textContent'),/Alex/);
+ await click('#switch-profile');await name('Joe Hudosn');await until('Boolean(document.querySelector("#use-match"))');await click('#use-match');await until('!document.querySelector("[role=dialog]")');
+ await click('#switch-profile');await name('Alex');await until('!document.querySelector("[role=dialog]")');assert.match(await evaluate('document.querySelector("#profile-welcome").textContent'),/Alex/);
  await evaluate('location.hash="#progress"');await until('document.querySelectorAll(".recommended-sets button").length===3');
  await click('.recommended-sets button');await until('Boolean(document.querySelector("#display-code"))');
- await click('#switch-profile');await name('Joe Hudson');await until('!document.querySelector("dialog")');await evaluate('location.hash="#progress"');await until('document.querySelectorAll(".recommended-sets button").length===3');
+ await click('#switch-profile');await name('Joe Hudson');await until('!document.querySelector("[role=dialog]")');await evaluate('location.hash="#progress"');await until('document.querySelectorAll(".recommended-sets button").length===3');
  assert.deepEqual(await evaluate('[...document.querySelectorAll(".recommended-sets code")].map(e=>e.textContent)'),codes);
  // Complete the genuine generated sets; blank answers still create dated zero-score records.
  for(let i=0;i<3;i++){
@@ -40,12 +43,12 @@ try{
  await evaluate(`window.__anchorClick=HTMLAnchorElement.prototype.click;HTMLAnchorElement.prototype.click=function(){window.__downloadName=this.download;return window.__anchorClick.call(this);}`);
  await click('#export-backup');assert.match(await evaluate('window.__downloadName'),/^practice_progress_joe_hudson_[a-z0-9]{12}\.json$/);const backup=JSON.parse(await evaluate('window.__backup'));
  assert.equal(backup.username,'Joe Hudson');assert.equal(backup.history.length,3);assert.ok(backup.history.every(r=>r.finished&&r.partScores.length&&Number.isInteger(r.engagedSeconds)&&Number.isFinite(r.practiceMeasuredFrom)));
- await evaluate(`{const input=document.querySelector('#backup-file'),transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(backup))}],'backup.json',{type:'application/json'}));input.files=transfer.files;input.dispatchEvent(new Event('change'));}`);
+ await evaluate(`{const input=document.querySelector('#backup-file'),transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(backup))}],'backup.json',{type:'application/json'}));input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));}`);
  await until('document.querySelector("#toast").textContent.includes("3 duplicates skipped")');
  assert.match(await evaluate('document.querySelector(".last-tracked").textContent'),/Last tracked:/);
  assert.match(await evaluate('document.querySelector("#weekly-progress").textContent'),/3.*Sets completed so far/s);
  assert.equal(await evaluate('document.querySelectorAll(".weekly-column").length'),8);
- await click('#switch-profile');await name('Alex');await until('!document.querySelector("dialog")');
+ await click('#switch-profile');await name('Alex');await until('!document.querySelector("[role=dialog]")');
  assert.equal(await evaluate('document.querySelector(".last-tracked").textContent'),'No tracked practice yet');
  await evaluate('location.hash="#progress"');await until('Boolean(document.querySelector("#backup-file"))');
  const invalid=structuredClone(backup);invalid.username='Invalid Import';delete invalid.profileId;invalid.history[0].earned=-1;
@@ -58,11 +61,11 @@ try{
  const other={...backup,username:'New Backup Profile'};delete other.profileId;await restore(other);await until('document.querySelector(".restore-notice")?.textContent.includes("Switched to New Backup Profile")');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:New%20Backup%20Profile")).history.length'),3);
  await restore(backup);await until('document.querySelector(".restore-notice")?.textContent.includes("Switched to Joe Hudson")');
- await send('Page.reload');await until('Boolean(document.querySelector("#weekly-progress"))');
+ await reload();await until('Boolean(document.querySelector("#weekly-progress"))');
  assert.match(await evaluate('document.querySelector("#profile-welcome").textContent'),/Joe Hudson.*Last tracked:/s);
- await evaluate(`document.querySelector('#filter-type').value='0';document.querySelector('#filter-type').dispatchEvent(new Event('change'))`);
+ await evaluate(`document.querySelector('#filter-type').value='0';document.querySelector('#filter-type').dispatchEvent(new Event('change',{bubbles:true}))`);
  assert.match(await evaluate('document.querySelector("#weekly-progress").textContent'),/0.*Sets completed so far/s);
- await evaluate(`document.querySelector('#filter-type').value='all';document.querySelector('#filter-type').dispatchEvent(new Event('change'))`);
+ await evaluate(`document.querySelector('#filter-type').value='all';document.querySelector('#filter-type').dispatchEvent(new Event('change',{bubbles:true}))`);
  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:1000,deviceScaleFactor:1,mobile:false});
  await evaluate('document.querySelector("#weekly-progress").scrollIntoView()');
  const weeklyShot=await send('Page.captureScreenshot',{format:'png'});await writeFile('/private/tmp/starters-weekly-desktop.png',Buffer.from(weeklyShot.data,'base64'));
@@ -70,10 +73,12 @@ try{
  await evaluate('document.querySelector("#weekly-progress").scrollIntoView()');
  assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'));
  const weeklyMobile=await send('Page.captureScreenshot',{format:'png'});await writeFile('/private/tmp/starters-weekly-mobile.png',Buffer.from(weeklyMobile.data,'base64'));
- await evaluate(`document.querySelector('#priority-level').value='subtopic';document.querySelector('#priority-level').dispatchEvent(new Event('change'))`);
+ await evaluate(`document.querySelector('#priority-level').value='subtopic';document.querySelector('#priority-level').dispatchEvent(new Event('change',{bubbles:true}))`);
  assert.ok(await evaluate('document.querySelectorAll(".priority-red").length>0'));
  // Advance the display clock: reload/pagehide deliberately saves the live profile over storage edits.
- await evaluate(`window.__staleNow=Date.now;Date.now=()=>window.__staleNow()+16*86400000;document.querySelector('#nav-progress').click()`);
+ await evaluate(`window.__staleNow=Date.now;Date.now=()=>window.__staleNow()+16*86400000;document.querySelector('#nav-toggle').click()`);
+ await until('Boolean(document.querySelector("#nav-progress"))');
+ await evaluate('document.querySelector("#nav-progress").click()');
  await until('Boolean(document.querySelector(".priority-stale"))');
  await evaluate('document.querySelector(".priority-stale").scrollIntoView()');
  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:false});
@@ -82,7 +87,7 @@ try{
  const shot=await send('Page.captureScreenshot',{format:'png'});await writeFile('/private/tmp/starters-progress-profiles.png',Buffer.from(shot.data,'base64'));
  await evaluate('Date.now=window.__staleNow');
  // Advance the app clock, not real time, to exercise idle/active/background intervals.
- await click('#switch-profile');await name('Timing Test');await until('!document.querySelector("dialog")');
+ await click('#switch-profile');await name('Timing Test');await until('!document.querySelector("[role=dialog]")');
  await evaluate('location.hash="#progress"');await until('document.querySelectorAll(".recommended-sets button").length===3');
  await click('.recommended-sets button');await until('Boolean(document.querySelector("#timer-toggle"))');
  await evaluate(`document.querySelector('#minutes').value='5'`);await click('#timer-toggle');
@@ -97,7 +102,7 @@ try{
  const paused=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Timing%20Test")).active');
  assert.ok(Math.abs(paused.practiceClock.milliseconds-165000)<2000);assert.equal(paused.practiceClock.running,false);
  const injected=await send('Page.addScriptToEvaluateOnNewDocument',{source:`window.__realNow=Date.now;window.__now=${origin+270000};Date.now=()=>window.__now;`});
- await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');
+ await reload();await until('Boolean(document.querySelector("#submit"))');
  await evaluate(`window.__now=${origin+280000}`);await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
  const result=await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Timing%20Test")).history[0]');
  assert.ok(Math.abs(result.engagedSeconds-175)<=2);assert.ok(result.totalSeconds>=278);assert.match(await evaluate('document.querySelector("#submit-result").textContent'),/estimated practice time/);

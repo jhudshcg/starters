@@ -1,0 +1,11 @@
+/* Shared viewport register; consumers and rationale: docs/style-guide.md#responsive-breakpoints.
+   Named variants mean >=; max- variants mean <. The explicit inclusive variant means <=.
+   Keep portable package/source styles independent of Tailwind. */
+@theme static {
+  --breakpoint-viewport-small: 440px;
+  --breakpoint-viewport-medium: 768px;
+  --breakpoint-viewport-large: 1024px;
+}
+
+/* Question-card edges and Go gutters explicitly include the mobile endpoint. */
+@custom-variant max-viewport-small-inclusive (@media (width <= 440px));

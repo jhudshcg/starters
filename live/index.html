@@ -1,60 +1,83 @@
 <!doctype html>
 <html lang="en-GB">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#173e35">
-  <title>Start here · Digital Software Development</title>
-  <link rel="stylesheet" href="assets/styles-LYPZIBPP.css">
-  <link rel="stylesheet" href="assets/puzzles-TBE3LICG.css">
-  <link rel="stylesheet" href="assets/challenges-CGSGTR7C.css">
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="Start here home">
-      <span class="brand-icon" aria-hidden="true">s.</span>
-      <span class="brand-copy">start here</span>
-      <span class="brand-sub">Digital Software Development T-Level</span>
-    </a>
-    <div class="theme-controls">
-      <button type="button" id="theme-picker" popovertarget="theme-menu" aria-label="Choose colour theme" title="Choose colour theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/></svg></button>
-      <div id="theme-menu" popover>
-        <h2>Colour theme</h2>
-        <div id="theme-previews"></div>
-        <div class="theme-adjustments">
-          <label for="theme-saturation">Saturation <output id="theme-saturation-value" for="theme-saturation">50%</output></label>
-          <input id="theme-saturation" type="range" min="0" max="100" step="5" value="50">
-          <label for="theme-lightness">Background lightness <output id="theme-lightness-value" for="theme-lightness">90%</output></label>
-          <input id="theme-lightness" type="range" min="55" max="96" step="1" value="90">
-          <button type="button" id="theme-reset" class="subtle">Reset adjustments</button>
-        </div>
-      </div>
-      <button type="button" id="theme-toggle" aria-label="Dark theme" title="Switch to dark theme" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"/></svg></button>
-      <button type="button" id="nav-toggle" popovertarget="nav-menu" aria-label="Open navigation menu" title="Navigation menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <nav id="nav-menu" popover aria-label="Main navigation">
-        <a href="#home" id="nav-home">Activities</a>
-        <a href="#progress" id="nav-progress">My progress</a>
-        <a href="#projects">Python project ideas</a>
-        <a href="#go">Go practice board</a>
-        <a href="https://joe312213.github.io/practice-gcse-maths/" target="_blank" rel="noopener">Maths practice ↗</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-    </div>
-  </header>
-  <section class="global-code-entry" hidden aria-label="Find practice or open a question set">
-    <form id="global-code-form">
-      <label for="global-code">Code or key term</label>
-      <input id="global-code" name="code" placeholder="Enter code or key term" aria-describedby="global-code-help global-code-error" autocomplete="off" autocapitalize="off" spellcheck="false" required>
-      <button type="submit">Open <span aria-hidden="true">↗</span></button>
-    </form>
-    <small id="global-code-help">Search all questions</small>
-    <p id="global-code-error" class="error" role="alert"></p>
-  </section>
-  <div id="storage-warning" role="alert" hidden></div>
-  <main id="main" tabindex="-1"><p role="status">Loading activities…</p><p>If activities do not appear, <a href="">reload this page</a> to get the current build.</p></main>
-  <div id="toast" role="status" aria-live="polite"></div>
-  <footer><span>A small start. A stronger understanding.<br>designed by Joe Hudson</span><div class="footer-links"><a href="#about">About</a><a href="#faq">FAQ</a><button type="button" id="report-issue" class="subtle">Report an issue</button></div><span>T Level · Core 1.1 <span aria-hidden="true">/</span> Saved on this browser<br><small id="build-info"></small></span></footer>
-  <script type="module" src="assets/app-NDKG7D5V.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173e35" />
+    <script>try { (function restoreTheme(root, storage, palettes) {
+	let dark = false, palette = "sage", tweaks = {};
+	try {
+		dark = storage.getItem("dsd-starters-theme") === "dark";
+		const saved = storage.getItem("dsd-starters-palette");
+		if (palettes.some((p) => p.id === saved)) palette = saved;
+		const values = JSON.parse(storage.getItem("dsd-starters-theme-adjustments"));
+		for (const p of palettes) for (const mode of ["light", "dark"]) {
+			const key = `${mode}:${p.id}`, value = values?.[key];
+			if (Number.isFinite(value?.saturation) && Number.isFinite(value?.lightness)) tweaks[key] = {
+				saturation: Math.max(0, Math.min(100, value.saturation)),
+				lightness: Math.max(mode === "light" ? 55 : 5, Math.min(mode === "light" ? 96 : 45, value.lightness))
+			};
+		}
+	} catch {}
+	const mode = dark ? "dark" : "light";
+	root.dataset.theme = mode;
+	root.dataset.palette = palette;
+	const active = tweaks[`${mode}:${palette}`];
+	if (active) {
+		root.style.setProperty("--theme-saturation", active.saturation / 100);
+		root.style.setProperty("--theme-bg-lightness", active.lightness / 100);
+	} else {
+		root.style.removeProperty("--theme-saturation");
+		root.style.removeProperty("--theme-bg-lightness");
+	}
+	return {
+		dark,
+		palette,
+		tweaks
+	};
+})(document.documentElement, localStorage, [{"id":"sage","light":"Sage","dark":"Forest"},{"id":"blue","light":"Blue sky","dark":"Midnight blue"},{"id":"rose","light":"Rose","dark":"Berry"},{"id":"apricot","light":"Apricot","dark":"Ember"}]); } catch {}</script>
+    <link href="./_app/immutable/entry/start.ClR-hvMx.js" rel="modulepreload">
+		<link href="./_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/BaNbYf_w.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/CvEM8T0Y.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/BcoZZ8UI.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/Dt1PO7V6.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/-IGBxMLq.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/DvjDEcbM.js" rel="modulepreload">
+		<link href="./_app/immutable/entry/app.SRMPUeFh.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/0.D57wisVG.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/DKcBzXat.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/CV12yyYr.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/2.DZ6IgkKY.js" rel="modulepreload">
+		<!--whg6dh--><!----><title>Start here · Digital Software Development</title>
+		<link href="./_app/immutable/assets/0.CGy7zLxH.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><a class="skip" href="#main">Skip to content</a> <header class="site-header"><a class="brand" href="./" aria-label="Start here home"><span class="brand-icon" aria-hidden="true">s.</span><span class="brand-copy">start here</span><span class="brand-sub">Digital Software Development T-Level</span></a> <div class="theme-controls"><!--[--><!--[--><!--$s1--><!--[-1--><button class="icon-button" aria-label="Choose colour theme" title="Choose colour theme" id="theme-picker" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-popover-trigger="" disabled="" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3"></circle><circle cx="17" cy="7" r="3"></circle><circle cx="7" cy="17" r="3"></circle><circle cx="17" cy="17" r="3"></circle></svg><!----></button><!--]--><!----><!--]--> <!--[--><!--[-1--><!--]--><!--]--><!----><!----><!--]--> <button type="button" id="theme-toggle" class="icon-button" aria-label="Dark theme" title="Switch to paired dark theme" aria-pressed="false" disabled=""><svg viewBox="0 0 24 24" aria-hidden="true"><!--[-1--><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"></path><!--]--></svg></button><!----> <!--[--><!--[--><!--$s2--><!--[-1--><button class="icon-button" aria-label="Open navigation menu" title="Navigation menu" id="nav-toggle" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-popover-trigger="" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><!----></button><!--]--><!----><!--]--> <!--[--><!--[-1--><!--]--><!--]--><!----><!----><!--]--> <a class="header-progress-link" href="./progress/">My progress</a></div> <!--[-1--><!--]--></header><!----> <section class="global-code-entry" hidden="" aria-label="Find practice or open a question set"><form id="global-code-form"><!--[0--><label for="global-code">Code or key term</label><!--]--> <input class="text-field" id="global-code" name="code" aria-label="Question set code or key term" placeholder="Enter code or key term" autocomplete="off" autocapitalize="off" spellcheck="false" required="" value=""/> <button class="action-button" type="submit">Open <span aria-hidden="true">↗</span></button></form> <!--[0--><small id="global-code-help">Search all questions</small><!--]--> <p class="error" id="global-code-error" role="alert"><!--[-1--><!--]--></p><!----></section> <div id="storage-warning" role="alert" hidden="">Progress could not be saved on this browser. You can keep practising. Export a backup from My
+  progress to keep your results.</div> <main id="main" tabindex="-1"><!--[-1--><p role="status">Loading activities…</p> <p>Reload this page if activities do not appear.</p><!--]--></main> <div id="toast" role="status" aria-live="polite"></div> <footer><span>A small start. A stronger understanding.<br/>designed by Joe Hudson</span> <div class="footer-links"><a href="./about/">About</a><a href="./faq/">FAQ</a><button type="button" id="report-issue" class="action-button subtle">Report an issue</button></div> <span>T Level · Core 1.1 <span aria-hidden="true">/</span> Saved on this browser<br/><small id="build-info"></small></span></footer> <!--[-1--><!--]--><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+
+			<script>
+				{
+					__sveltekit_14wf0y9 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						version: "14f5404e8f903751",
+						assets: "/starters"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("./_app/immutable/entry/start.ClR-hvMx.js").then(async (kit) => {
+						kit.init(__sveltekit_14wf0y9);
+						const app = await import("./_app/immutable/entry/app.SRMPUeFh.js");
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
 </html>

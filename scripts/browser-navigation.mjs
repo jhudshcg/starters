@@ -11,8 +11,9 @@ const pages=await(await fetch('http://127.0.0.1:9227/json/list')).json();
 const ws=new WebSocket(pages.find(p=>p.type==='page').webSocketDebuggerUrl);await new Promise(r=>ws.onopen=r);
 let id=0;const pending=new Map();ws.onmessage=e=>{const m=JSON.parse(e.data);if(m.id){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(m.error.message)):p.resolve(m.result);}};
 const send=(method,params={})=>new Promise((resolve,reject)=>{pending.set(++id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));});
-const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
-const until=async expression=>{for(let n=0;n<100;n++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,50));}throw Error('Timed out '+expression+' '+JSON.stringify(await evaluate('({hash:location.hash,heading:document.querySelector("h1")?.textContent,state:history.state})')));};
+const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true,userGesture:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};
+const until=async expression=>{for(let n=0;n<100;n++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,50));}throw Error('Timed out '+expression+' '+JSON.stringify(await evaluate('({hash:location.pathname+location.search,heading:document.querySelector("h1")?.textContent,state:history.state})')));};
+const reload=async()=>{const before=await evaluate('performance.timeOrigin');await send('Page.reload');await until(`performance.timeOrigin!==${before}`);};
 const profile='JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Layout%20Test"))';
 const click=selector=>evaluate(`document.querySelector(${JSON.stringify(selector)}).click()`);
 const change=(selector,value)=>evaluate(`{const node=document.querySelector(${JSON.stringify(selector)});node.value=${JSON.stringify(value)};node.dispatchEvent(new Event('change',{bubbles:true}));}`);
@@ -23,8 +24,8 @@ const oldMessage=ws.onmessage;ws.onmessage=event=>{const msg=JSON.parse(event.da
 try{
  await send('Runtime.enable');await send('Page.enable');await send('Emulation.setFocusEmulationEnabled',{enabled:true});
  await send('Page.navigate',{url:base});await until('Boolean(document.querySelector("#main"))');
- await evaluate('localStorage.clear()');await send('Page.reload');await until('Boolean(document.querySelector("#profile-name"))');
- await evaluate('document.querySelector("#profile-name").value="Layout Test";document.querySelector("dialog form").requestSubmit()');await until('Boolean(document.querySelector("#code-form"))');
+ await evaluate('localStorage.clear()');await reload();await until('Boolean(document.querySelector("#profile-name"))');
+ await evaluate('document.querySelector("#profile-name").value="Layout Test";document.querySelector("[role=dialog] form").requestSubmit()');await until('Boolean(document.querySelector("#code-form"))');
  for(const width of [360,390,440,640,768,1024,1280]){
   await send('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:false});
   const layout=await evaluate(`(()=>{const rect=sel=>document.querySelector(sel).getBoundingClientRect();const icons=['#theme-picker','#theme-toggle','#nav-toggle'].map(rect);const cards=[...document.querySelectorAll('.type-card')].map(n=>n.getBoundingClientRect());const notes=[...document.querySelectorAll('.lower-panel .note-panel')].map(n=>n.getBoundingClientRect());return {overflow:document.documentElement.scrollWidth>innerWidth,icons:icons.map(r=>({top:r.top,left:r.left,right:r.right})),brand:Math.max(rect('.brand-icon').right,rect('.brand-copy').right),subtitle:(()=>{const n=document.querySelector('.brand-sub'),range=document.createRange();range.selectNodeContents(n);return {lines:range.getClientRects().length,top:n.getBoundingClientRect().top,left:n.getBoundingClientRect().left,right:n.getBoundingClientRect().right,logoBottom:rect('.brand-icon').bottom,logoLeft:rect('.brand-icon').left};})(),cards:cards.map(r=>({top:r.top,left:r.left})),notes:notes.map(r=>r.top),links:document.querySelectorAll('.activity-grid .topic-search-link').length};})()`);
@@ -41,15 +42,15 @@ try{
   if(width===360||width===1280){const shot=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/tlevel-home-${width}.png`,Buffer.from(shot.data,'base64'));}
  }
  assert.deepEqual(await evaluate('[...document.querySelectorAll("[data-start]")].map(b=>b.dataset.start)'),['1','2','0']);
- assert.equal(await evaluate('getComputedStyle(document.querySelector("#nav-menu")).display'),'none','Menu stays hidden until requested');
- await click('#nav-toggle');await until('document.querySelector("#nav-menu").matches(":popover-open")');
+ assert.equal(await evaluate('document.querySelector("#nav-menu")'),null,'Menu stays hidden until requested');
+ await click('#nav-toggle');await until('Boolean(document.querySelector("#nav-menu"))');
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
- await until('!document.querySelector("#nav-menu").matches(":popover-open")');
+ await until('!Boolean(document.querySelector("#nav-menu"))');
  await send('Emulation.setDeviceMetricsOverride',{width:360,height:1100,deviceScaleFactor:1,mobile:false});
- await click('#theme-picker');await until('document.querySelector("#theme-menu").matches(":popover-open")');
+ await click('#theme-picker');await until('Boolean(document.querySelector("#theme-menu"))');
  assert.ok(await evaluate('(()=>{const r=document.querySelector("#theme-menu").getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;})()'),'Theme picker fits');
- await evaluate('document.querySelector("#theme-menu").hidePopover()');
+ await evaluate('document.querySelector("#theme-picker").click()');
  const mode=await evaluate('document.documentElement.dataset.theme');await click('#theme-toggle');assert.notEqual(await evaluate('document.documentElement.dataset.theme'),mode);await click('#theme-toggle');
  await click('[data-start="2"]');await until('document.querySelector("#focus")?.value===""');
  assert.equal(await evaluate('document.querySelector("#focus option").textContent'),'--');
@@ -90,15 +91,15 @@ try{
  const topic=await evaluate('document.querySelector("#focus option:nth-child(2)").value');await change('#focus',topic);await until('Boolean(document.querySelector("#subtopic"))');
  const subtopic=await evaluate('document.querySelector("#subtopic option:nth-child(2)").value');await change('#subtopic',subtopic);await until(`document.querySelector('#subtopic')?.value===${JSON.stringify(subtopic)}`);
  await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="1"]');await until(`document.querySelector('#subtopic')?.value===${JSON.stringify(subtopic)}`);
- const coreCode=await evaluate('location.hash');
- await send('Page.reload');await until(`location.hash===${JSON.stringify(coreCode)} && document.querySelector('#subtopic')?.value===${JSON.stringify(subtopic)}`);
+ const coreCode=await evaluate('location.pathname+location.search');
+ await reload();await until(`location.pathname+location.search===${JSON.stringify(coreCode)} && document.querySelector('#subtopic')?.value===${JSON.stringify(subtopic)}`);
  // Keep working cancels Back without replacing the earlier visible page.
  const input=await evaluate('document.querySelector(".question input:not([type=radio])")?.id');
  if(input){
   await evaluate(`{const n=document.getElementById(${JSON.stringify(input)});n.value='draft';n.dispatchEvent(new Event('input',{bubbles:true}));}`);
-  const route=await evaluate('location.hash');await evaluate('history.back()');await until('Boolean(document.querySelector("dialog button[value=stay]"))');await click('dialog button[value=stay]');await until(`location.hash===${JSON.stringify(route)} && !document.querySelector('dialog')`);
+  const route=await evaluate('location.pathname+location.search');await evaluate('history.back()');await until('Boolean(document.querySelector("[role=dialog] button[value=stay]"))');await click('[role=dialog] button[value=stay]');await until(`location.pathname+location.search===${JSON.stringify(route)} && !document.querySelector('[role=dialog]')`);
   assert.equal(await evaluate(`document.getElementById(${JSON.stringify(input)}).value`),'draft');
-  await evaluate('history.back()');await until('Boolean(document.querySelector("dialog button[value=leave]"))');await click('dialog button[value=leave]');await until('Boolean(document.querySelector("[data-exam-start]"))');
+  await evaluate('history.back()');await until('Boolean(document.querySelector("[role=dialog] button[value=leave]"))');await click('[role=dialog] button[value=leave]');await until('Boolean(document.querySelector("[data-exam-start]"))');
  }
  await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until('document.querySelector("#focus")?.value===""');
  await change('#focus','task2');await until('Boolean(document.querySelector("#esp-recipe"))');
@@ -106,9 +107,9 @@ try{
  await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until(`document.querySelector('#esp-recipe')?.value===${JSON.stringify(recipe)}`);
  await home();
  await evaluate('document.querySelector("#code-form input").value="loop";document.querySelector("#code-form").requestSubmit()');await until('Boolean(document.querySelector("#topic-search"))');
- await evaluate('document.querySelector("#topic-search").value="string";document.querySelector("#topic-search-form").requestSubmit()');await until('location.hash.includes("q=string")');
+ await evaluate('document.querySelector("#topic-search").value="string";document.querySelector("#topic-search-form").requestSubmit()');await until('location.search.includes("q=string")');
  await back('document.querySelector("#topic-search")?.value==="loop"');
- await click('.footer-links a[href="#faq"]');await until('document.querySelector("h1")?.textContent==="A little help."');
+ await click('.footer-links a[href$="/faq/"]');await until('document.querySelector("h1")?.textContent==="A little help."');
  assert.equal(await evaluate('document.querySelectorAll("main details").length'),9);
  assert.deepEqual(errors,[]);
  console.log('Responsive navigation passed: 360–1280px, menu, empty/remembered/expired focus, subsection recall, Back/Forward and cancellation, puzzle picker/breadcrumbs, projects and FAQ.');

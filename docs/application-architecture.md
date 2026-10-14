@@ -1,51 +1,57 @@
 # Application ownership
 
-Current plain-JavaScript structure, adopted **14 October 2026**. The teacher approved separation of concerns before the framework migration, superseding the earlier deferral. This is an implementation map, not approval to introduce Svelte/Tailwind or replace the production build.
+Full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI adoption was authorised and implemented on **14 October 2026**. The [Maths reuse review](reviews/2026-10-14-maths-framework-reuse.md) records the reference implementation; this document describes the resulting T-Level architecture.
 
 ## Responsibilities
 
 | Owner | Responsibility |
 | --- | --- |
-| `js/app.js` | Mount the application once. Export its disposer and mount function for an explicit handover. |
-| `js/application.js` | Compose services/controllers, load route banks, reject stale render requests, connect history and dispose the application. |
-| `js/profile-session.js` | Own the current profile object. Load, select and restore profiles; save through the existing profile and OneDrive modules. Restore history snapshots only for the same profile and generation. |
-| `js/practice-controller.js` | Start/resume attempts, recall entry choices, bind answer controls, submit, manage hints/review and update deadlines. Use existing marking/progress rules. |
-| `js/activity-view.js`, `js/question-view.js` | Produce markup from explicit set/attempt/profile inputs. They do not save data, install listeners or own an attempt. |
-| `js/entry-pages.js` | Home cards, exam entry, search results and information pages. Home card artwork, order and short text are edited in `home()`. |
-| `js/progress-page.js` | Progress presentation, temporary filters and transfer controls. Delegate restoration to the profile session. |
-| `js/navigation.js` | History indices, guarded transitions and snapshots. Two-hour fresh-entry recall remains separate in `practice-selection.js`. |
-| `js/app-lifecycle.js` | Global link handling, visibility/page events and the two practice polling intervals. Return their cleanup. |
-| `js/theme.js`, `js/app-feedback.js` | Header theme controls and transient feedback respectively, with explicit cleanup. |
-| `js/practice-heading.js`, `js/search-sets.js`, `js/view-utils.js` | Shared breadcrumbs, constrained search-set selection, escaping and duration display. |
+| `src/routes/+layout.svelte`, `src/lib/components/AppShell.svelte` | One application lifetime, shared header/footer, dialogs and SvelteKit navigation hooks. |
+| `src/routes/[[view]]/` | Finite prerendered entry paths. Query parameters identify a set, activity type or search; components render the application snapshot. |
+| `src/lib/application/session.js` | Compose services, load route banks, reject stale requests, publish snapshots and dispose listeners/polling. |
+| `src/lib/application/profile.js` | Current profile, selection, validated restoration, browser/file persistence and same-profile attempt snapshots. |
+| `src/lib/application/practice.js` | Attempt commands, answers, submission, assistance, two-hour entry recall and timer deadlines. No DOM bindings. |
+| `src/lib/components/pages/` | Home, exam, search, progress, projects/FAQ, About and human Go pages. Edit home card artwork, order and short text in `Home.svelte`. |
+| `src/lib/components/practice/` | Entry selectors, question cards, answers, feedback, guides and puzzle hosts. Components call commands rather than owning another persisted attempt. |
+| `src/lib/components/ui/` | Shared semantic controls and Bits UI dialog/popover interactions. |
+| `src/lib/theme/preferences.js`, `js/theme.js` | Observable persisted preferences and palette labels respectively. |
+| `src/lib/application/routes.js` | Pure conversion between legacy hash links and static route URLs, including deployment base paths. |
+| `js/` domain modules | Existing codes, bank loading, marking, progress, profiles, file safety, search, recommendations and practice-time rules. |
+| `packages/puzzles/` | Portable puzzle content/rules/controls, Go board and engine. |
 
-Controllers receive the services/actions they need. They read `session.data` at an action boundary instead of retaining a second profile object; profile selection or restoration can replace that object. The practice controller mutates the current attempt and calls session persistence. Progress-page filters remain local display state. There is no new global store, event bus or framework dependency.
+Services read `profile.data` at command boundaries; switching/restoring a profile can replace it. Svelte receives snapshots and owns page/control DOM. Progress filters are component-local. The portable puzzle/Go wrapper owns only its assigned subtree and disposes its controls when removed. Trusted authored FAQ/project/algorithm content may use static HTML; it does not install a competing application renderer.
 
-## Lifetimes
+## Navigation and lifetimes
 
-`mountApplication({scriptURL})` resolves to an async disposer after profile setup and initial rendering. The script URL is supplied by the entry module so diagnostics identify the actual build after bundling. Await disposal before mounting a replacement.
+SvelteKit is the sole browser-history owner. `AppShell` uses `goto`, `beforeNavigate`, `afterNavigate` and Kit’s `snapshot` lifecycle API for leave guards and attempt snapshots. Legacy `#set=…`, `#practice=…` and other bookmarks translate through the same path, including hash-only changes. Do not add another `popstate` listener or a second DOM router.
 
-Application disposal removes global subscriptions, stops polling, invalidates pending route renders, removes theme controls, disposes mounted puzzle/Go controls and closes owned dialogs. It pauses and saves the current attempt, cancels the OneDrive debounce and waits for queued file saves before a replacement takes ownership. Native file operations already underway are allowed to finish; this is not a general cancellation API for every pending user action.
+Browser-history snapshots preserve the visible attempt for the same profile and bank generation. Per-profile two-hour focus recall is separate in `js/practice-selection.js`. Explicit breadcrumb picker navigation requests a blank selector. Persisted deadlines remain absolute: hiding/reloading the page does not pause a running countdown or duplicate its result.
 
-Page changes dispose the outgoing puzzle/Go controls but retain the application services. Ordinary `pagehide` pauses/saves practice; it does **not** destroy the application because browser Back may restore the page from its cache. Browser-history attempt snapshots and per-profile two-hour selection recall retain their separate purposes.
+The root creates one application session on mount. Page transitions retain it, but remove outgoing puzzle/Go controls. Disposal aborts owned global listeners, clears polling/toasts, rejects pending prompts, invalidates route requests, pauses/saves practice and drains serial file writes. Ordinary `pagehide` saves without disposing, because browser Back may restore the document. A replacement service instance must await disposal before taking ownership.
 
-## Migration boundaries
+Bits UI owns focus trapping, Escape/outside dismissal and portal lifetimes. Required initial profile entry is nondismissible; switching and leave prompts remain cancellable. Theme tokens live on the document root so portal content inherits the selected palette.
 
-Replace a page's renderer and event bindings together; legacy code and a framework component must not both control the same DOM. Keep session persistence, code identities, marking, first-response assistance, repeat eligibility, timer deadlines and serial OneDrive writes outside component-local defaults. Reuse the portable puzzle player and its disposal contract.
+## Styles and build
 
-The templates remain plain JavaScript pending migration. This extraction does not settle framework state APIs, component granularity, the replacement production build, or the remaining specialised CSS breakpoints. Preserve the current eight-theme tokens, opaque gradient borders, narrow layout rules and adopted header subtitle contract.
+`src/lib/styles/app.css` composes Tailwind, selected daisyUI foundations and existing application styles. Semantic classes use `@apply`; markup does not repeat utility lists. `theme-mapping.css` bridges the existing eight palettes to daisyUI, with its default themes disabled. `breakpoints.css` owns the shared viewport scale; see the [style guide](style-guide.md#responsive-breakpoints) for retained intrinsic constraints.
 
-The production builder still validates identities/search/hints, packs and lazy-loads banks, hashes assets, uses relative paths and ships engine/source/licence files. Vite remains the source preview. The staged-build hook and Pages deployment retain their existing roles. The [migration brief](../T_LEVEL_REFACTOR_AGENT_GUIDE.md) records the confirmed full-stack target; the [Maths reuse review](reviews/2026-10-14-maths-framework-reuse.md) supplies implementation evidence and proposed adaptations. The earlier [readiness review](reviews/2026-10-07-refactor-readiness.md) remains historical evidence; current requirements take precedence.
+`prepare-site.mjs` validates identities/search/hints, packs four lazy banks and prepares engines/source/licences. SvelteKit's static adapter builds `live/`. Vite supplies on-demand readable bank imports in development (`js/bank-data.dev.js`) and encoded asset fetches in production (`js/bank-loader.js`). Node tools keep the eager `js/bank-data.js` authoring interface. Version identity comes from build inputs, so repeated builds are deterministic. `BASE_PATH` sets a repository deployment prefix; the commit builder uses `/starters`. See [local development](local-development.md) for root/subpath previews.
+
+The pre-commit hook still builds an isolated staged-source snapshot, checks the lockfile and stages only generated `live/`. GitHub Pages uploads that committed output; it does not rebuild. No deployment is implied by a local build.
 
 ## Verification
 
-For shared orchestration changes, run `npm test` (including the production-build test), then the affected browser scripts serially against the isolated Chrome profile. Do not rebuild `live/` during a browser run. See [local development](local-development.md) for setup.
+Run `npm run check` for framework diagnostics and select tests from the change. Shared service/build changes warrant `npm test`, including deterministic packing/static output and lifecycle cleanup. Browser scripts run serially against the dedicated Chrome profile; do not rebuild during a browser run.
 
-- `browser-navigation.mjs`: header/home layout, entry/recall, history/cancellation, search, projects and FAQ.
-- `browser-app-lifecycle.mjs`: repeated disposal/remount, listener/interval counts, retained answers, Back cancellation and theme controls.
-- `browser-profiles.mjs`: profile switching, backup validation/merge, progress and practice time.
-- `browser-python-guides.mjs`: guide disclosure, persistence and independent progress.
-- `browser-puzzle-integration.mjs`: parent-owned puzzle answers, submission/reveal and reflow.
-- `browser-onedrive-go.mjs`: linked-file handling and the human Go board.
-- `browser-theme.mjs`: palettes, adjustments, persistence and marked states.
+- `browser-assessment.mjs`: ESP formula/written review, mobile card edges and timer expiry after reload. `--layout-only` selects toolbar spacing, selector sizing, mobile edges and submission.
+- `browser-home-cards.mjs`: real pointer hits across each card, pressed-state hit geometry, keyboard activation and Back at mobile/desktop widths.
+- `browser-migration.mjs`: representative routes, eight themes, mobile shell, recall, guarded edits, submission, old links and Go.
+- `browser-navigation.mjs`: detailed Back/Forward, picker/expiry/subsection recall, projects, FAQ and search history.
+- `browser-profiles.mjs`: profile switching, validated backups, recommendations and practice time.
+- `browser-python-guides.mjs`: keyboard disclosure, saved state and independent evidence across every focus.
+- `browser-puzzle-integration.mjs`: answers, persistence, marks/reveal and reflow for portable puzzle controls.
+- `browser-onedrive-go.mjs`: real local file handles, save/conflict failures, human Go/engine/clocks/touch.
+- `browser-theme-startup.mjs`: saved colours before app scripts load, invalid/unavailable storage and unchanged colours after mount.
+- `browser-theme.mjs`: palettes, adjustments, contrast, persistence and marked states.
 
-The focused navigation lifecycle unit checks cover removed listeners and a leave decision resolving after disposal. Browser scripts clear only the dedicated test profile. These checks are an acceptance starting point, not proof that every future migration slice or browser is covered.
+`tests/application-lifecycle.test.js` verifies repeated service disposal/remount, listener and interval cleanup, prompt cancellation and retained answers. Browser tests cover the Svelte host separately. These checks do not establish physical-device Safari or assistive-technology coverage.

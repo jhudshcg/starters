@@ -10,13 +10,16 @@ const send=(method,params={})=>new Promise((resolve,reject)=>{pending.set(++id,{
 const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});if(r.exceptionDetails)throw Error(expression+"\n"+JSON.stringify(r.exceptionDetails));return r.result.value;};
 const until=async expression=>{for(let i=0;i<150;i++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Timed out: '+expression+'\n'+await evaluate('document.body.innerText')+'\n'+JSON.stringify(errors));};
 const click=s=>evaluate(`document.querySelector(${JSON.stringify(s)}).click()`);
+// Wait for the new document, rather than accidentally accepting controls from before reload.
+const reload=async()=>{const origin=await evaluate('performance.timeOrigin');await send('Page.reload');await until(`performance.timeOrigin!==${origin}`);};
+
 try{
  await send('Runtime.enable');await send('Page.enable');await send('Network.enable');await send('Emulation.setFocusEmulationEnabled',{enabled:true});
  if(process.argv.includes('--inspect')){console.log(await evaluate('document.body.innerText'));console.log(errors);process.exit(0);}
  await send('Page.navigate',{url:base});await until('Boolean(document.querySelector("#main"))');
- await evaluate('localStorage.clear()');await send('Page.reload');await until('Boolean(document.querySelector("#profile-name"))');
- await evaluate('document.querySelector("#profile-name").value="File Browser Test";document.querySelector("dialog form").requestSubmit()');
- await until('!document.querySelector("dialog")');await until('Boolean(document.querySelector("#code-form"))');
+ await evaluate('localStorage.clear()');await reload();await until('Boolean(document.querySelector("#profile-name"))');
+ await evaluate('document.querySelector("#profile-name").value="File Browser Test";document.querySelector("[role=dialog] form").requestSubmit()');
+ await until('!document.querySelector("[role=dialog]")');await until('Boolean(document.querySelector("#code-form"))');
  await evaluate('location.hash="#progress"');await until('Boolean(document.querySelector("[data-file-action=save]"))');
  // Real origin-private handles exercise writes and IndexedDB; only the native chooser is replaced.
  await evaluate(`(async()=>{window.__root=await navigator.storage.getDirectory();try{await __root.removeEntry('T-Level',{recursive:true});}catch{}try{await __root.removeEntry('DSD T-Level',{recursive:true});}catch{}window.showDirectoryPicker=async()=>__root;const keep=await __root.getFileHandle('unrelated.txt',{create:true});const w=await keep.createWritable();await w.write('keep');await w.close();})()`);
@@ -27,11 +30,11 @@ try{
  assert.equal(await evaluate('(async()=>await (await (await __root.getFileHandle("unrelated.txt")).getFile()).text())()'),'keep');
  await click('.recommended-sets button');await until('Boolean(document.querySelector("#submit"))');await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
  await until('(async()=>JSON.parse(await (await __file.getFile()).text()).history.length===1)()');
- await send('Page.reload');await until('Boolean(document.querySelector("#submit-result"))');await evaluate('location.hash="#progress"');await until('Boolean(document.querySelector("[data-file-status]"))');
+ await reload();await until('Boolean(document.querySelector("#submit-result"))');await evaluate('location.hash="#progress"');await until('Boolean(document.querySelector("[data-file-status]"))');
  await evaluate(`(async()=>{window.__root=await navigator.storage.getDirectory();window.__file=await (await __root.getDirectoryHandle('T-Level')).getFileHandle(${JSON.stringify(name)});window.__originalWrite=FileSystemFileHandle.prototype.createWritable;FileSystemFileHandle.prototype.createWritable=async function(){throw Error('Simulated disk failure');};})()`);
  await click('.recommended-sets button');await until('Boolean(document.querySelector("#submit"))');await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
  // File controls now live on My progress, rather than below question sets.
- await click('#nav-progress');await until('Boolean(document.querySelector("[data-file-status]"))');
+ await click('#nav-toggle');await until('Boolean(document.querySelector("#nav-progress"))');await click('#nav-progress');await until('Boolean(document.querySelector("[data-file-status]"))');
  await until('document.querySelector("[data-file-status]").textContent.includes("Simulated disk failure")');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:File%20Browser%20Test")).history.length'),2);
  assert.equal(JSON.parse(await evaluate('(async()=>await (await __file.getFile()).text())()')).history.length,1);
@@ -53,11 +56,11 @@ try{
  await evaluate('location.hash="#go"');await until('Boolean(document.querySelector("#go-size"))');
  assert.equal(requests.some(url=>url.includes('/engines/')),false);
  for(const size of [5,9,13,19]){
-  await evaluate(`document.querySelector('#go-size').value='${size}';document.querySelector('#go-size').dispatchEvent(new Event('change'))`);
+  await evaluate(`document.querySelector('#go-size').value='${size}';document.querySelector('#go-size').dispatchEvent(new Event('change',{bubbles:true}))`);
   assert.equal(await evaluate('document.querySelectorAll("#go-practice-board .go-point").length'),size*size);
   assert.equal(await evaluate('getComputedStyle(document.querySelector(".go-board")).touchAction'),'pinch-zoom');
  }
- await evaluate('document.querySelector("#go-size").value="9";document.querySelector("#go-size").dispatchEvent(new Event("change"))');
+ await evaluate('document.querySelector("#go-size").value="9";document.querySelector("#go-size").dispatchEvent(new Event("change",{bubbles:true}))');
  await click('[data-value="13"]');await click('[data-value="46"]');await click('[data-value="24"]');await click('[data-value="56"]');await click('[data-value="34"]');await click('[data-value="67"]');
  assert.equal(await evaluate('document.querySelectorAll("[data-go-stone]").length'),6);
  await click('[data-action=undo]');assert.equal(await evaluate('document.querySelectorAll("[data-go-stone]").length'),5);

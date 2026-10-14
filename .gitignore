@@ -5,3 +5,5 @@ __pycache__/
 
 node_modules/
 .build-meta.json
+.svelte-kit/
+.generated/

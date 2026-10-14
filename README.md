@@ -14,7 +14,7 @@ A static, self-marking starter page for year 1 Digital Software Development T-Le
 
 | Content | Edit |
 | --- | --- |
-| Card order, graphics, short metadata and button wording | `home()` in [`js/entry-pages.js`](js/entry-pages.js) |
+| Card order, graphics, short metadata and button wording | [`Home.svelte`](src/lib/components/pages/Home.svelte) |
 | Card names and uppercase labels | `types` in [`js/bank.js`](js/bank.js); keep bank IDs/order unchanged |
 | Card spacing, artwork size and responsive layout | Home-card rules in [`css/styles.css`](css/styles.css) |
 | Theme colours, fills and border gradients | [`css/tokens.css`](css/tokens.css), following [theme editing](docs/theming.md) |
@@ -30,7 +30,7 @@ npm ci
 npm run dev
 ```
 
-Vite previews source files and updates CSS on save. `npm start` retains the production build/preview at port 8765. See [local development and removal instructions](docs/local-development.md) and [theme editing](docs/theming.md). Use these servers rather than opening HTML directly. Students need only a browser.
+SvelteKit/Vite previews the component source and updates CSS on save. `npm start` retains the production build/preview at port 8765. See [local development](docs/local-development.md) and [theme editing](docs/theming.md). Use these servers rather than opening HTML directly. Students need only a browser.
 
 | Activity | Direct preview |
 | --- | --- |
@@ -75,9 +75,9 @@ Use [content authoring](docs/content-authoring.md) and the [refinement checklist
 
 `scripts/build-puzzles.py` reproducibly generates the six grid/geometry family files, checking uniqueness or a valid solution witness. It overwrites those generated files; edit generator inputs or keep additional authored templates in separate modules. Sequence and classic-maths banks are authored separately. `scripts/validate-puzzles.py` independently checks the served grid instances.
 
-`scripts/browser-smoke.mjs` uses an isolated Chrome debugging session on port 9227 and the preview on 8765. It clears test-profile storage; do not point it at a student profile. VS Code’s browser is preferred for manual testing; this session could not automate it.
+Current browser checks use an isolated Chrome debugging session on port 9227 and the production preview on 8765. They clear test-profile storage; never point them at a personal or student profile. Start with the affected suites in [local development](docs/local-development.md). The older broad smoke and ESP fixtures retain legacy assumptions and need adaptation before use with the migrated host.
 
-Browser checks are deliberately proportionate. Focused scripts such as `scripts/browser-comparisons.mjs`, `scripts/browser-esp.mjs` and `scripts/browser-puzzle-expansion.mjs` cover only the changed surface and are run directly when relevant; they are not bundled into a standard all-purpose script. Bank-only or minor visual changes do not require the full suite or whole-app smoke. Run `npm test` and the shared browser smoke when shared application behavior, storage, codecs, schemas, markers, selection or build tooling changes, or when a focused failure suggests wider risk. See the [refinement checklist](docs/content-refinement.md#proportionate-checks).
+Verification is proportionate. Run `npm run check`, relevant unit tests and affected browser flows after a coherent UI change. Shared application, storage, marking, code or build changes warrant `npm test` and the relevant integration suites. Bank-only and minor visual edits do not require every browser suite; see [content refinement](docs/content-refinement.md#proportionate-checks).
 
 The [puzzle specification](docs/spec-puzzles.md) gives each subtype’s format, interaction, difficulty and marking requirements. [DEV_LOG.md](DEV_LOG.md) records completed decisions and source findings; [checkpoint.md](checkpoint.md) records the current handover. The live site is https://jhudshcg.github.io/starters/.
 
@@ -112,9 +112,9 @@ Identity uses slots and exact variations, ignoring order/timer; another permutat
 
 ## Production bank packaging
 
-`npm run build` uses pinned **esbuild** and **fflate** dependencies. It validates the source bank, compresses JSON using zlib, wraps it in Base64 with a fixed 17-position alphabet rotation, and emits minified content-hashed JavaScript/CSS. All assets use relative paths for repository Pages hosting. Install local dependencies with `npm ci`.
+`npm run build` uses **SvelteKit/Vite**, Tailwind/daisyUI and **fflate**. It validates the source bank, compresses JSON using zlib, wraps it in Base64 with a fixed 17-position alphabet rotation, and emits minified content-hashed JavaScript/CSS. SvelteKit resolves links and assets against `BASE_PATH`; the staged commit build defaults to `/starters`. Install local dependencies with `npm ci`.
 
-Readable `data/*.js` stays in Git; bundling replaces its imports with an on-demand loader. `live` excludes authoring banks, drafts, coverage reports, build metadata and source maps. Separate encoded assets are `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt`, `banks/python-<hash>.txt` and `banks/esp-<hash>.txt`, addressed relative to the app bundle for repository Pages hosting. Only the selected/restored activity's bank downloads; progress also loads exam and programming banks to list missing areas and generate recommendations. Loaded display data is reused for the visit; failed downloads can be retried.
+Readable `data/*.js` stays in Git; bundling replaces its imports with an on-demand loader. `live` excludes authoring banks, drafts, coverage reports, build metadata and source maps. Separate encoded assets are `banks/puzzles-<hash>.txt`, `banks/exam-<hash>.txt`, `banks/python-<hash>.txt` and `banks/esp-<hash>.txt`, addressed through SvelteKit’s base-aware asset helper for repository Pages hosting. Only the selected/restored activity's bank downloads; progress also loads exam and programming banks to list missing areas and generate recommendations. Loaded display data is reused for the visit; failed downloads can be retried.
 
 Parts retain separate encoded marking and reveal payloads. Marking decodes accepted answers as needed; explicit reveal decodes model answers/explanations. Neither decoded payload is cached on the bank or stored locally. Generic checking feedback does not decode explanations.
 

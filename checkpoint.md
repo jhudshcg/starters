@@ -1,21 +1,32 @@
-# Current work — 14 October 2026
+# Current handover — 14 October 2026
 
-## Objective
-Carefully study the related Maths app at `/Users/joehudson/Dev/Maths/practice-gcse-maths`: its SvelteKit, Tailwind, daisyUI and Bits UI implementation and docs. Identify reusable approaches and adaptations for the T-Level app. The teacher has confirmed full adoption, semantic classes, token mapping and Bits UI controls as the target. This review does not start the migration.
+## Latest completed work
+- Development refresh investigation: browser cache is reused; no application cache reset was found. On-demand readable banks now replace eager development imports through js/bank-data.dev.js and vite.config.js. Node tools stay eager; production keeps encoded lazy banks. Explicit development serving paths cover data and packages/puzzles. Home loads no bank and each practice page loads its own bank only.
+- Header spacing: greeting and Last tracked form a compact stack beside Not you?, preserving the 44px target. Smaller header row gap/mobile bottom padding. My progress stays visible below the hamburger and in its menu; icons and subtitle remain correctly aligned.
+- Toolbar gap: explicit row direction on set-toolbar/result-banner prevents daisyUI's card column default from turning the summary's horizontal flex basis into a large vertical gap. Timer selector sizes to its content.
+- docs/style-guide.md, docs/local-development.md and docs/application-architecture.md reflect these changes and focused checks. Durable details are appended to DEV_LOG.md.
 
-## Plan
-- [x] Read Maths guidance, framework/configuration and migration documentation.
-- [x] Trace actual routing/build, state/lifecycle, styling/theme and UI primitive implementations; distinguish current code from plans.
-- [x] Review relevant verification and compare the patterns against current T-Level ownership and packaging contracts.
-- [x] Record an evidence-linked assessment and concise reuse recommendations; update the development log and handover.
+## Latest verification and limits
+- Svelte diagnostics: zero errors/warnings. Four bank-loader/production-build/staged-build tests pass, including deterministic output and lazy packed banks. Production rebuilt after the toolbar CSS correction; whitespace checks pass.
+- Development home/four practice routes verify on-demand bank imports. Node checks verify repeated/concurrent data reuse and unchanged eager authoring imports.
+- Normal warm Python refreshes before the change: development 171–328ms, built preview 56–61ms. Afterward, development 137–382ms and 195 resource requests versus 227 previously. The multi-second user-observed pause was not reproduced; do not claim a guaranteed speed improvement or that all startup costs are solved. Development still loads larger modules/source maps than production.
+- Compact header: long profile name, direct/menu progress links and layout pass on home/programming/progress at 360/440/768/1280px. Profile switch remains 44px; subtitle position and icon row preserved.
+- browser-assessment.mjs --layout-only passes toolbar spacing, intrinsic selector sizing, mobile borders and submission at 360/440/441/768/1024px. A 360px Python screenshot was visually checked: no stretched summary gap.
+- The full assessment run stalled during clock mocking. Stopped the process and replaced only the dedicated test tab to remove the mock; focused checks passed afterwards. Cause remains unconfirmed; no new timer implementation changes and no full-assessment pass claimed. This needs separate investigation if timer/clock tests are revisited.
 
-## Existing work
-The prior application separation is complete and uncommitted; preserve it. Its 199 passing tests and browser evidence are recorded in DEV_LOG.md and docs/application-architecture.md. No repeat build/tests are needed for this review. The prior skill presentation findings and broader test-quality gate remain separate.
+## Existing completed work
+Full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI migration; real-pointer home-card fix; responsive scale consolidation (440/768/1024, explicit inclusive mobile variant, intrinsic home gutters); pre-paint saved-theme restoration through shared logic. Earlier migration/136 responsive comparison/eight-theme/54 pointer-case evidence is retained in DEV_LOG.md. Those unchanged suites were not all repeated.
 
-## Outcome and handover
-See `docs/reviews/2026-10-14-maths-framework-reuse.md` for source evidence and proposed migration slices. The brief now records the confirmed full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI target; linked from the documentation index and current ownership map. Durable review history is in DEV_LOG.md. Maths was read-only and clean at commit `6ac4e021f51b13edcf55ff8c6f59fd656733d00c`; no runtime, dependency, build or deployment changes in this review.
+## Workspace and evidence
+Uncommitted and undeployed. Preserve pre-migration baseline 67c927a and unrelated work. Source preview is on 5173, built preview on 8765, dedicated test Chrome on 9227; check availability before use. live/ is a root preview build; the commit hook builds staged source with /starters.
 
-Verification passed: all 89 local documentation/source link targets exist; `git diff --check` passed. No app suites were rerun for documentation-only edits.
+Latest disposable evidence: /private/tmp/tlevel-refresh-timing*.log, tlevel-dev-bank-check.log, tlevel-startup-build-tests.log, tlevel-startup-spacing-check.log, tlevel-toolbar-{build,layout,assessment}.log, tlevel-compact-header-final.log and tlevel-toolbar-fixed.png. Temporary measurement/layout harnesses are also in /private/tmp.
+
+## Separate pending work
+Physical Safari, screen readers and OneDrive syncing remain untested. Large client chunk remains. Earlier heading-focus/small-code findings, broad test-quality review and legacy fixture assumptions remain separate; the stalled clock test above is newly recorded evidence.
+
+## daisyUI guidance
+Use supported variants where appropriate, shared semantic classes and explicit component layouts. Avoid accumulating overrides that fight component defaults. The recent fixes use ordinary CSS, but repeated inherited-style conflicts exposed integration-check gaps; a complete daisyUI audit has not been performed or newly authorised.
 
 ## Next action
-Discuss route compatibility, static build/bank integration and application-session lifetime using the review's proposed sequence before implementing the migration. The prior heading-focus/small-code findings and broader refactor-checks test-quality gate remain pending. Do not repeat the completed app suites solely for these documentation edits.
+Session closed at the teacher's request; no pending requested code changes. Await feedback on compact header/toolbar and development refresh behaviour. If the loading pause persists, measure the user's browser/device with these changes; local timings did not reproduce multiple seconds. Commit/publish only when requested.

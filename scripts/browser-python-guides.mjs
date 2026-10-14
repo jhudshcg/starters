@@ -17,11 +17,16 @@ const open=async entries=>{
  const set=resolve({version:BANK_VERSION,type:2,entries,minutes:null});
  await evaluate(`location.hash='#set=${set.code}'`);await until(`document.querySelector('#display-code')?.textContent==='${set.code}'`);return set;
 };
+// Wait for the new document, rather than accidentally accepting controls from before reload.
+const reload=async()=>{const origin=await evaluate('performance.timeOrigin');await send('Page.reload');await until(`performance.timeOrigin!==${origin}`);};
+
 try{
  await send('Page.enable');await send('Emulation.setFocusEmulationEnabled',{enabled:true});await send('Page.navigate',{url:base});await until('Boolean(document.querySelector("#main"))');
- await evaluate('localStorage.clear()');await send('Page.reload');await until('Boolean(document.querySelector("#profile-name"))');
- await evaluate('document.querySelector("#profile-name").value="Guide Test";document.querySelector("dialog form").requestSubmit()');await until('!document.querySelector("dialog")');
+ await evaluate('localStorage.clear()');await reload();await until('Boolean(document.querySelector("#profile-name"))');
+ await evaluate('document.querySelector("#profile-name").value="Guide Test";document.querySelector("[role=dialog] form").requestSubmit()');await until('!document.querySelector("[role=dialog]")');
+ await evaluate('document.querySelector("#nav-toggle").click()');await until('Boolean(document.querySelector("#nav-menu"))');
  assert.ok(await evaluate('Boolean(document.querySelector(\'a[href="https://joe312213.github.io/practice-gcse-maths/"]\'))'));
+ await evaluate('document.querySelector("#nav-toggle").click()');
  assert.ok(await evaluate('!document.querySelector("[data-puzzle-focus=\'classic maths\']")'));
  await open([{slot:63,variation:0},{slot:64,variation:0}]);
  assert.equal(await evaluate('document.querySelectorAll("[data-python-guide]").length'),1);
@@ -32,7 +37,7 @@ try{
  await until(`${profile}.active.pythonGuidesOpen?.lists===true`);
  assert.equal(Boolean(await evaluate(`${profile}.active.hints[63]`)),false);
  assert.equal(Boolean(await evaluate(`${profile}.active.hints[64]`)),false);
- await send('Page.reload');await until('Boolean(document.querySelector("[data-python-guide=lists][open]"))');
+ await reload();await until('Boolean(document.querySelector("[data-python-guide=lists][open]"))');
  await evaluate('document.querySelector("[data-python-guide=lists] summary").click()');await until(`${profile}.active.pythonGuidesOpen.lists===false`);
  assert.equal(Boolean(await evaluate(`${profile}.active.hints[63]`)),false,'Guides must not add question assistance');
  await evaluate('document.querySelector("#submit").click()');await until('Boolean(document.querySelector("#submit-result"))');

@@ -22,10 +22,13 @@ async function fresh(code){
  const init=await send('Page.addScriptToEvaluateOnNewDocument',{source:'localStorage.clear()'});
  await send('Page.navigate',{url:base+'/#set='+code});
  await until(`document.querySelector('#profile-name') || document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
- if(await evaluate('Boolean(document.querySelector("#profile-name"))'))await evaluate('document.querySelector("#profile-name").value="Puzzle integration";document.querySelector("dialog form").requestSubmit()');
+ if(await evaluate('Boolean(document.querySelector("#profile-name"))'))await evaluate('document.querySelector("#profile-name").value="Puzzle integration";document.querySelector("[role=dialog] form").requestSubmit()');
  await until(`document.querySelector('#display-code')?.textContent===${JSON.stringify(code)}`);
  await send('Page.removeScriptToEvaluateOnNewDocument',{identifier:init.identifier});
 }
+// Wait for the new document, rather than accidentally accepting controls from before reload.
+const reload=async()=>{const origin=await evaluate('performance.timeOrigin');await send('Page.reload');await until(`performance.timeOrigin!==${origin}`);};
+
 try{
  await send('Runtime.enable');await send('Page.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});
  for(const slot of [1024,1049,1074,1099,1124,1149,1174,1189,1199,1202,1215,1223,1229,170]){
@@ -43,7 +46,7 @@ try{
    await click('[data-hint]');assert.ok(await evaluate('Boolean(document.querySelector(".hint-text"))'));
    await click('[data-hint]');assert.equal(await evaluate('Boolean(document.querySelector(".hint-text"))'),false);
    assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Puzzle%20integration")).active.hints[170]'),true);
-   await send('Page.reload');await until('Boolean(document.querySelector("[data-hint]"))');
+   await reload();await until('Boolean(document.querySelector("[data-hint]"))');
    assert.equal(await evaluate('Boolean(document.querySelector(".hint-text"))'),false);
    await click('[data-challenge-action="go-hint"]');
    assert.equal(await evaluate('document.querySelector("[data-challenge-action=go-hint]").getAttribute("aria-expanded")'),'true');
@@ -59,23 +62,24 @@ try{
   if(p.kind==='tiling')assert.equal(await evaluate('document.querySelectorAll("[data-tiling-board] [stroke-dasharray]").length'),4);
   await evaluate(`(async()=>{
    const q=${JSON.stringify(q)},p=q.parts[0];
-   const button=(action,value)=>document.querySelector('[data-challenge-action="'+action+'"]'+(value===undefined?'':'[data-value="'+value+'"]')).click();
-   if(['logic-grid','equation-grid'].includes(p.kind))JSON.parse(p.answer).forEach((row,c)=>row.forEach((v,r)=>{button('candidate',c+','+r+','+v);button('candidate',c+','+r+','+v);}));
-   else if(['sudoku','cage-grid'].includes(p.kind))JSON.parse(p.answer).forEach((v,i)=>{if(!p.givens[i]){button('cell',i);button('digit',v);}});
-   else if(p.kind==='cover-path')JSON.parse(p.answer).forEach(v=>button('path',v));
-   else if(p.kind==='tiling')JSON.parse(p.answer).forEach((place,i)=>{
-    button('piece',i);button('place');
-    for(let n=0;n<((place.rotation%360)+360)%360/45;n++)button('rotate',45);
-    if(place.flipped)button('flip');
-    for(let n=0;n<Math.abs(place.x-4)*2;n++)button('move',place.x<4?'-0.5,0':'0.5,0');
-    for(let n=0;n<Math.abs(place.y-4)*2;n++)button('move',place.y<4?'0,-0.5':'0,0.5');
-   });
-   else if(p.kind==='go'){const moves=JSON.parse(p.answer).moves;for(let i=0;i<moves.length;i++){const index=JSON.parse(document.querySelector('[data-go-moves]').dataset.goMoves).length;if(index>=moves.length)break;button('go',moves[index]);await new Promise(resolve=>setTimeout(resolve,750));}}
+   // Svelte flushes rendering between real input events; yield between scripted moves too.
+   const button=async(action,value)=>{document.querySelector('[data-challenge-action="'+action+'"]'+(value===undefined?'':'[data-value="'+value+'"]')).click();await new Promise(resolve=>setTimeout(resolve,0));};
+   if(['logic-grid','equation-grid'].includes(p.kind)){for(const [c,row] of JSON.parse(p.answer).entries())for(const [r,v] of row.entries()){await button('candidate',c+','+r+','+v);await button('candidate',c+','+r+','+v);}}
+   else if(['sudoku','cage-grid'].includes(p.kind)){for(const [i,v] of JSON.parse(p.answer).entries())if(!p.givens[i]){await button('cell',i);await button('digit',v);}}
+   else if(p.kind==='cover-path'){for(const v of JSON.parse(p.answer))await button('path',v);}
+   else if(p.kind==='tiling'){for(const [i,place] of JSON.parse(p.answer).entries()){
+    await button('piece',i);await button('place');
+    for(let n=0;n<((place.rotation%360)+360)%360/45;n++)await button('rotate',45);
+    if(place.flipped)await button('flip');
+    for(let n=0;n<Math.abs(place.x-4)*2;n++)await button('move',place.x<4?'-0.5,0':'0.5,0');
+    for(let n=0;n<Math.abs(place.y-4)*2;n++)await button('move',place.y<4?'0,-0.5':'0,0.5');
+   }}
+   else if(p.kind==='go'){const moves=JSON.parse(p.answer).moves;for(let i=0;i<moves.length;i++){const index=JSON.parse(document.querySelector('[data-go-moves]').dataset.goMoves).length;if(index>=moves.length)break;await button('go',moves[index]);await new Promise(resolve=>setTimeout(resolve,750));}}
    else for(const part of q.parts){const inputs=[...document.querySelectorAll('[data-part="'+part.id+'"]')],input=part.options?inputs.find(input=>input.value===part.answer):inputs[0];input.value=part.answer;if(part.options)input.checked=true;input.dispatchEvent(new Event(part.options?'change':'input',{bubbles:true}));}
   })()`);
   // Real answer entry must persist unchanged and score through the production marker.
   const answers=await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Puzzle%20integration")).active.answers)');
-  await send('Page.reload');await until('Boolean(document.querySelector("#submit"))');
+  await reload();await until('Boolean(document.querySelector("#submit"))');
   assert.equal(await evaluate('JSON.stringify(JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Puzzle%20integration")).active.answers)'),answers);
   await click('#submit');await until('Boolean(document.querySelector("#submit-result"))');
   assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-v1:profile:Puzzle%20integration")).active.result.percentage'),100,`${slot}: ${q.title}`);

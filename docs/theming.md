@@ -9,6 +9,8 @@ The small palette button beside the sun/moon control opens eight selectable abst
 | Rose | Berry | Pink/plum gradients and gradient borders |
 | Apricot | Ember | Solid warm orange |
 
+Saved mode, palette and adjustments are restored by a synchronous script in the document head, before the page paints. `src/hooks.server.js` generates it from `restoreTheme` in `js/theme.js`; the mounted controller uses the same function. Keep restoration independent of the application bundle so slow loading does not flash the default palette. Missing or invalid preferences and unavailable storage fall back safely.
+
 Edit `css/tokens.css`: the shared base and dark blocks define Sage/Forest; `data-palette` blocks define the other colours. Paired names live in `js/theme.js`. Use `npm run dev` for immediate CSS preview.
 
 | Role | Tokens | Used for |
@@ -65,3 +67,9 @@ Check all eight themes, selected/hover/keyboard-focus and marked states, and a n
 Puzzle board geometry and default appearance now live in `packages/puzzles/styles/`. `css/challenges.css` imports them and maps the app's current colours to `--puzzle-*` properties, keeping all eight app themes. Type-card art and tangram piece colours come from `packages/puzzles/graphics.js`. Edit shared presentation there; keep question-card layout and navigation styles in this app. See the [library markup and styling contract](../packages/puzzles/styles/README.md) for consumer overrides and SVG limitations.
 
 Question-page cards at widths ≤440px use `--card-mobile-border-image` for their top/bottom borders: `none` for solid palettes, a 90-degree main-to-accent gradient for Rose/Berry. The ordinary 135-degree border remains at wider widths. Home’s lower note panels use `--line` and a solid `--surface` fill to remain quieter than activity choices.
+
+## Framework integration
+
+`src/lib/styles/app.css` imports Tailwind and selected daisyUI component foundations without Preflight or default daisyUI themes. `controls.css` composes semantic classes with `@apply`; `theme-mapping.css` is the single bridge from existing tokens to daisyUI roles. Continue editing palette values in `css/tokens.css`.
+
+`src/lib/theme/preferences.js` owns stored preferences and adjustments; `ThemeControls.svelte` renders them through a Bits UI popover and native range inputs. `js/theme.js` retains palette names only. Tokens stay on the root so dialogs/popovers in portals inherit the active palette. Do not reintroduce a second theme initializer or per-component colour literals.

@@ -1,20 +1,17 @@
 /**
  * Purpose: Connect each local profile to a verified JSON file in its synced OneDrive folder.
- * Main contents: controls, reviewed imports, serial automatic saves and permission recovery.
- * Used by: profile-session.js. Uses: progress-file, progress-transfer and profile identity. Libs: none.
+ * Main contents: status, reviewed imports, serial automatic saves and permission recovery.
+ * Used by: application/profile.js. Uses: progress-file, progress-transfer and profile identity. Libs: none.
  */
 import {backupJSON} from './progress-transfer.js';
 import {chooseProgressFile,learnerFileLink,readProgressFile,saveProgressFile,withProgressFileLock} from './progress-file.js';
 
 /** Bind host-owned storage/import callbacks; background work never requests file permission. */
-export function createOneDrive({current,saveLocal,restore,download,notify}) {
+export function createOneDrive({current,saveLocal,restore,download,notify,onStatus,confirm:confirmAction=async(title,message)=>confirm(`${title} ${message}`)}) {
   const states=new Map(), queues=new Map(), baselines=new Map();
   let timer;
   const supported=()=>Boolean(window.showDirectoryPicker);
-  function report(profile,message){states.set(profile.profileId,message);paint();}
-  function paint(){
-    for(const node of document.querySelectorAll('[data-file-status]'))node.textContent=states.get(current().profileId)??(supported()?'Choose your OneDrive folder. Progress saves automatically to T-Level or DSD T-Level.':'Use Download backup and Restore backup in this browser. Folder access is available in Chrome or Edge.');
-  }
+  function report(profile,message){states.set(profile.profileId,message);onStatus?.();}
   async function flush(profile=current(),interactive=false){
     if(!profile.profileId)return;
     const id=profile.profileId;
@@ -75,7 +72,7 @@ export function createOneDrive({current,saveLocal,restore,download,notify}) {
       if(kind==='review'){await review(link.handle);return;}
       if(kind==='forget'){baselines.delete(profile.profileId);await withProgressFileLock(profile,()=>learnerFileLink(profile,null));report(profile,'File link forgotten. The file and browser progress are unchanged.');return;}
       if(kind==='keep'){
-        if(!confirm('Replace the linked file with this browser’s progress? Results that exist only in that file will not be included. Open linked file to merge them instead.'))return;
+        if(!await confirmAction('Replace the linked file with this browser’s progress?', 'Results that exist only in that file will not be included. Open linked file to merge them instead.', 'Keep browser progress'))return;
         if(link.handle.requestPermission && await link.handle.requestPermission({mode:'readwrite'})!=='granted')throw Error('File access was not granted.');
         await withProgressFileLock(profile,async()=>{
           const file=await readProgressFile(link.handle);
@@ -86,6 +83,9 @@ export function createOneDrive({current,saveLocal,restore,download,notify}) {
     }catch(error){const message=`${error.message || 'File access was interrupted.'} Your browser progress is retained. Download a backup before moving from an embedded preview to Chrome or Edge.`;report(profile,message);notify(message);}
   }
   return {
+    action,
+    supported,
+    status:()=>states.get(current().profileId)??(supported()?'Choose your OneDrive folder. Progress saves automatically to T-Level or DSD T-Level.':'Use Download backup and Restore backup in this browser. Folder access is available in Chrome or Edge.'),
     flush,
     // Finish queued writes before another application instance owns this profile.
     async dispose(){
@@ -97,10 +97,6 @@ export function createOneDrive({current,saveLocal,restore,download,notify}) {
       clearTimeout(timer);
       // Keep the outgoing profile object in the callback when the user switches profiles.
       timer=setTimeout(()=>void flush(profile),1000);
-    },
-    mount(root,{compact=false}={}){
-      root.innerHTML=`<section class="onedrive-controls" aria-label="OneDrive progress file"><p data-file-status role="status"></p><div class="actions">${supported()?'<button data-file-action="save" class="primary">Save to OneDrive</button><button data-file-action="open">Open progress file</button>':''}<button data-file-action="download">Download backup</button><a href="#progress">Manage progress files</a></div>${compact?'':`<details><summary>File options</summary><div class="actions">${supported()?'<button data-file-action="folder">Choose OneDrive folder</button><button data-file-action="review">Open linked file</button><button data-file-action="keep">Keep browser progress</button>':''}<button data-file-action="forget">Forget file link</button></div><p>Choose the locally synced OneDrive root, or its T-Level / DSD T-Level folder. Saves are checked after writing. Keep the tab open until saved; closing the browser can interrupt a save. This does not confirm cloud upload.</p></details>`}</section>`;
-      root.querySelectorAll('[data-file-action]').forEach(button=>button.onclick=()=>action(button.dataset.fileAction));paint();
     }
   };
 }

@@ -1,0 +1,21 @@
+/* One bridge from the existing palette and outcome tokens to daisyUI. */
+:root {
+  --color-base-100: var(--surface);
+  --color-base-200: var(--surface-hover);
+  --color-base-300: var(--line);
+  --color-base-content: var(--text);
+  --color-primary: var(--main);
+  --color-primary-content: var(--main-text);
+  --color-secondary: var(--accent);
+  --color-secondary-content: var(--text);
+  --color-success: var(--correct-bg);
+  --color-success-content: var(--correct-text);
+  --color-error: var(--incorrect-bg);
+  --color-error-content: var(--incorrect-text);
+  --radius-selector: 9px;
+  --radius-field: 9px;
+  --radius-box: var(--card-radius);
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}

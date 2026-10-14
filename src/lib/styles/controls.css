@@ -1,0 +1,59 @@
+/* Shared semantic control foundations, with accepted dimensions and native typography. */
+.action-button,
+.icon-button,
+.theme-preview {
+  @apply btn;
+  height: auto;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--control-border);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 650;
+  box-shadow: none;
+  text-shadow: none;
+  transform: none;
+  transition: none;
+}
+.text-field {
+  @apply input;
+}
+.working-field {
+  @apply textarea;
+}
+.choice-field {
+  @apply select;
+  background-image: none;
+}
+.text-field,
+.working-field,
+.choice-field {
+  height: auto;
+  min-height: 46px;
+  padding: 0.7rem 0.85rem;
+  max-width: 100%;
+  border: 1px solid var(--control-border);
+  border-radius: 9px;
+  background-color: var(--surface);
+  color: var(--text);
+  font: inherit;
+  box-shadow: none;
+}
+.working-field {
+  width: 100%;
+}
+.surface-card,
+.dialog-panel,
+.popover-panel {
+  @apply card;
+  display: block;
+}
+.progress-meter {
+  @apply progress;
+}
+.actions {
+  @apply flex flex-wrap items-center;
+  gap: 0.5rem;
+}

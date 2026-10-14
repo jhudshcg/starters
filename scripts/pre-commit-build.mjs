@@ -7,13 +7,13 @@ const git=(...args)=>execFileSync('git',args,{encoding:'utf8'});
 const root=git('rev-parse','--show-toplevel').trim();
 const temporary=mkdtempSync(join(tmpdir(),'starters-commit-'));
 try {
-  if(!existsSync(join(root,'node_modules/esbuild')))throw Error('Run npm ci before committing.');
+  if(!existsSync(join(root,'node_modules/@sveltejs/kit')))throw Error('Run npm ci before committing.');
   git('checkout-index','--all',`--prefix=${temporary}/`);
   // Installed dependencies must correspond to the staged lockfile.
   if(readFileSync(join(root,'package-lock.json'),'utf8')!==readFileSync(join(temporary,'package-lock.json'),'utf8'))throw Error('Stage the intended package-lock.json and run npm ci before committing.');
   symlinkSync(join(root,'node_modules'),join(temporary,'node_modules'),'dir');
   console.log('Building staged source into live/…');
-  execFileSync(process.execPath,['scripts/build-site.mjs'],{cwd:temporary,stdio:'inherit'});
+  execFileSync(process.execPath,['scripts/build-site.mjs'],{cwd:temporary,stdio:'inherit',env:{...process.env,BASE_PATH:process.env.BASE_PATH??'/starters'}});
   const built=join(temporary,'live');
   if(!existsSync(join(built,'index.html')))throw Error('Build did not produce live/index.html.');
   rmSync(join(root,'live'),{recursive:true,force:true});

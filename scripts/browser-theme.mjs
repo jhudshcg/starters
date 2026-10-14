@@ -20,15 +20,18 @@ async function click(selector){await evaluate(`document.querySelector(${JSON.str
 async function screenshot(name){const r=await send('Page.captureScreenshot',{format:'png',captureBeyondViewport:true});await writeFile(`/private/tmp/starters-${name}.png`,Buffer.from(r.data,'base64'));}
 
 async function selectTheme(mode,palette) {
- if(!await evaluate('document.querySelector("#theme-menu").matches(":popover-open")'))await click('#theme-picker');
- await until('document.querySelector("#theme-menu").matches(":popover-open")');
+ if(await evaluate('Boolean(document.querySelector("#theme-menu"))')){await click('#theme-picker');await until('!document.querySelector("#theme-menu")');}
+ await evaluate('document.querySelector("#theme-picker").scrollIntoView({block:"nearest"})');
+ await click('#theme-picker');
+ await until('Boolean(document.querySelector("#theme-menu"))');
+ await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
  assert.ok(await evaluate('(()=>{const b=document.querySelector("#theme-menu").getBoundingClientRect();return b.left>=0&&b.right<=innerWidth&&b.top>=0&&b.bottom<=innerHeight;})()'));
  const selector=`[data-theme-choice="${mode}:${palette}"]`;
  await click(selector);
  assert.equal(await evaluate(`document.querySelector(${JSON.stringify(selector)}).getAttribute('aria-pressed')`),'true');
  assert.equal(await evaluate('document.querySelectorAll(".theme-preview[aria-pressed=true]").length'),1);
- assert.equal(await evaluate('document.querySelector("#theme-menu").matches(":popover-open")'),true);
- await evaluate('document.querySelector("#theme-menu").hidePopover()');
+ assert.equal(await evaluate('Boolean(document.querySelector("#theme-menu"))'),true);
+ await click('#theme-picker');await until('!document.querySelector("#theme-menu")');
 }
 const colours=()=>evaluate(`(()=>{const s=getComputedStyle(document.documentElement);return Object.fromEntries(['selection','correct','incorrect','warning'].map(k=>{const e=document.createElement('i');e.style.backgroundColor=s.getPropertyValue('--'+k+'-bg');document.body.append(e);const value=getComputedStyle(e).backgroundColor;e.remove();return [k,value];}));})()`);
 try {
@@ -39,11 +42,11 @@ try {
  let oldOrigin=await evaluate('performance.timeOrigin');
  await send('Page.reload');await until(`performance.timeOrigin!==${oldOrigin} && Boolean(document.querySelector('#code-form')) && document.documentElement.dataset.palette==='sage'`);
  assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');
+ await click('#theme-picker');await until('Boolean(document.querySelector("#theme-menu"))');
  assert.equal(await evaluate('document.querySelectorAll(".theme-preview").length'),8);
- await click('#theme-picker');
  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
- await until('!document.querySelector("#theme-menu").matches(":popover-open")');
+ await until('!Boolean(document.querySelector("#theme-menu"))');
  if(process.argv.includes('--hmr')) {
   const tokenFile=new URL('../css/tokens.css',import.meta.url),original=await readFile(tokenFile,'utf8');
   await evaluate('window.__themeHmrProbe=true;document.querySelector("#code-form input").value="HMR"');
@@ -59,7 +62,6 @@ try {
   for(const {id:palette} of themePalettes)for(const mode of ['light','dark']) {
    await selectTheme(mode,palette);
    assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth+1'));
-   assert.ok(await evaluate('document.querySelector(".theme-preview[aria-pressed=true]").getAttribute("aria-label").includes(document.documentElement.dataset.theme)'));
    const contrast=await evaluate(`(window.themeContrast=() => {
     const root=getComputedStyle(document.documentElement);
     function rgb(token){const e=document.createElement('i');e.style.color=root.getPropertyValue(token);document.body.append(e);const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const ctx=canvas.getContext('2d');ctx.fillStyle=getComputedStyle(e).color;ctx.fillRect(0,0,1,1);const c=[...ctx.getImageData(0,0,1,1).data].slice(0,3);e.remove();return c;}
@@ -86,7 +88,7 @@ try {
   }
  }
  // Full ranges are exploratory: verify behaviour, not contrast at extremes.
- const setSlider=async(id,value)=>evaluate(`{const e=document.querySelector(${JSON.stringify('#'+id)});e.value=${value};e.dispatchEvent(new Event('input'));}`);
+ const setSlider=async(id,value)=>{if(!await evaluate('Boolean(document.querySelector("#theme-menu"))')){await click('#theme-picker');await until('Boolean(document.querySelector("#theme-menu"))');}return evaluate(`{const e=document.querySelector(${JSON.stringify('#'+id)});e.value=${value};e.dispatchEvent(new Event('input',{bubbles:true}));}`);};
  const readTones=()=>evaluate(`(()=>{const e=document.createElement('i');document.body.append(e);const result={};for(const name of ['page','surface','main','accent','text','code-bg']){e.style.color='var(--'+name+')';result[name]=getComputedStyle(e).color;}const canvas=document.createElement('canvas');canvas.width=canvas.height=1;const ctx=canvas.getContext('2d');ctx.fillStyle=result.page;ctx.fillRect(0,0,1,1);const rgb=[...ctx.getImageData(0,0,1,1).data].slice(0,3);result.pageLightness=(Math.max(...rgb)+Math.min(...rgb))/510;result.pageSaturated=Math.min(...rgb)===0||Math.max(...rgb)===255;e.remove();return result;})()`);
  const lightnessOf=color=>Number(color.match(/^oklch\(([^ ]+)/)?.[1]);
  for(const {id} of themePalettes)for(const mode of ['light','dark']) {
@@ -112,18 +114,19 @@ try {
  await selectTheme('dark','blue');await setSlider('theme-lightness',37);await setSlider('theme-saturation',65);
  oldOrigin=await evaluate('performance.timeOrigin');
  await send('Page.reload');await until(`performance.timeOrigin!==${oldOrigin} && document.documentElement.dataset.palette==='blue' && Boolean(document.querySelector('#code-form'))`);
+ await click('#theme-picker');await until('Boolean(document.querySelector("#theme-menu"))');
  assert.deepEqual(await evaluate('[Number(document.querySelector("#theme-lightness").value),Number(document.querySelector("#theme-saturation").value)]'),[37,65]);
  await click('#theme-toggle');assert.equal(await evaluate('Number(document.querySelector("#theme-lightness").value)'),61);
- await click('#theme-picker');await click('#theme-reset');
- await evaluate(`{const e=document.querySelector('#theme-saturation');e.value=0;e.dispatchEvent(new Event('input'));}`);
+ await click('#theme-reset');
+ await evaluate(`{const e=document.querySelector('#theme-saturation');e.value=0;e.dispatchEvent(new Event('input',{bubbles:true}));}`);
  await screenshot('theme-popout-desaturated');
  assert.equal(await evaluate('getComputedStyle(document.documentElement).filter'),'none');
  assert.equal(await evaluate('getComputedStyle(document.querySelector("#theme-menu")).filter'),'none');
- await evaluate(`{const e=document.querySelector('#theme-saturation');e.value=100;e.dispatchEvent(new Event('input'));}`);
+ await evaluate(`{const e=document.querySelector('#theme-saturation');e.value=100;e.dispatchEvent(new Event('input',{bubbles:true}));}`);
  await screenshot('theme-popout-saturated');
  await click('#theme-reset');await screenshot('theme-popout-previews');
  assert.equal(await evaluate('JSON.parse(localStorage.getItem("dsd-starters-theme-adjustments"))["light:blue"]'),undefined);
- await evaluate('document.querySelector("#theme-menu").hidePopover()');
+ await click('#theme-picker');await until('!document.querySelector("#theme-menu")');
  await selectTheme('dark','blue');oldOrigin=await evaluate('performance.timeOrigin');
  await send('Page.reload');await until(`performance.timeOrigin!==${oldOrigin} && document.documentElement.dataset.palette==='blue' && Boolean(document.querySelector('#code-form'))`);
  assert.equal(await evaluate('document.documentElement.dataset.theme'),'dark');

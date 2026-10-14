@@ -1,0 +1,75 @@
+/* Semantic framework foundations preserve the existing geometry and palette tokens. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@source '../../';
+@source '../../../../js';
+@plugin 'daisyui' {
+  themes: false;
+  include: button, input, textarea, select, checkbox, card, progress;
+  logs: false;
+}
+@import './breakpoints.css';
+@import './theme-mapping.css';
+@import './controls.css';
+@import '../../../css/styles.css';
+@import '../../../css/puzzles.css';
+@import '../../../css/challenges.css';
+
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: #142a2570;
+  z-index: 50;
+}
+.dialog-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 51;
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 480px;
+  width: calc(100% - 2rem);
+  color: var(--text);
+}
+.dialog-panel p {
+  color: var(--muted);
+}
+.dialog-panel .actions {
+  @apply flex flex-wrap justify-end;
+  gap: 0.5rem;
+}
+.popover-panel {
+  z-index: 45;
+}
+#theme-menu,
+#nav-menu {
+  position: relative;
+  inset: auto;
+}
+#theme-menu {
+  max-height: min(calc(100dvh - 2rem), var(--bits-popover-content-available-height));
+}
+#nav-menu nav {
+  @apply flex flex-col;
+  gap: 0;
+}
+#nav-menu[data-state='open'] {
+  display: block;
+}
+#issue-report {
+  max-width: 680px;
+}
+
+.unfinished-notice {
+  margin-top: 1.5rem;
+}
+.progress-summary {
+  margin-top: 1.5rem;
+}

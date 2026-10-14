@@ -1,8 +1,8 @@
 # T-Level starter: framework refactoring brief
 
-The starter currently uses plain HTML, CSS and JavaScript. Refactor it using **SvelteKit/Svelte, Tailwind CSS, daisyUI and Bits UI**, drawing on the Maths project's experience while making decisions from this repository's needs.
+The starter has migrated from plain HTML, CSS and JavaScript to **SvelteKit/Svelte, Tailwind CSS, daisyUI and Bits UI**, drawing on the Maths project’s experience and this repository’s needs.
 
-**Target confirmed 14 October 2026:** full adoption, including semantic classes, theme-token mapping and Bits UI controls. See the [Maths implementation review](docs/reviews/2026-10-14-maths-framework-reuse.md) for reusable patterns and necessary adaptations. This confirms the target stack; the review's proposed migration sequence still needs architectural discussion before implementation.
+**Target confirmed 14 October 2026:** full adoption, including semantic classes, theme-token mapping and Bits UI controls. See the [Maths implementation review](docs/reviews/2026-10-14-maths-framework-reuse.md) for reusable patterns and necessary adaptations. The teacher subsequently authorised implementation (“ok, proceed”). See [application ownership](docs/application-architecture.md) for the implemented boundaries and build, and the development log for verification. The requirements below remain the maintenance contract.
 
 The live production site will remain static with no server for dynamic content or saving state, for the time being. The motivation for this move is to standardise tooling across different related apps and allow components/modules developed in one to be repurposed or reused in another. There will also come a point where serverside features are added, so this is prep for that too.  
 

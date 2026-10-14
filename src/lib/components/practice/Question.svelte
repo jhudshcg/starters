@@ -1,0 +1,225 @@
+<!-- Explicit answer events preserve marking, hints, first-response evidence and review gating. -->
+<script>
+  import { tick } from 'svelte';
+  import Stimulus from './Stimulus.svelte';
+  import PuzzleParts from './PuzzleParts.svelte';
+  import { hasRecentSubmission } from '#domain/review.js';
+  import { markQuestion } from '#domain/marking.js';
+  import { marks, challengeLabel, matchesSubtopic } from '#domain/bank.js';
+  import { questionCode } from '#domain/codes.js';
+  import { revealPart } from '#domain/packed-data.js';
+  import { formatCoverage } from '#domain/coverage.js';
+  import { puzzleSolutionHTML } from '#domain/puzzle-view.js';
+  let { q, index, set, a, app, href } = $props();
+  const review = $derived(hasRecentSubmission(a));
+  const answers = $derived(a.answers[q.slot] ?? {});
+  const results = $derived(
+    review && a.checks[q.slot] && (!a.feedbackHidden?.[q.slot] || a.finished)
+      ? markQuestion(q, answers)
+      : null,
+  );
+  const hintVisible = $derived(Boolean(a.hints[q.slot] && !a.hiddenHints?.[q.slot]));
+  const subtopic = $derived(set.type === 1 ? (a.examSubtopic ?? 'all') : 'all');
+  const matchCount = $derived(
+    subtopic === 'all' ? 0 : q.parts.filter((p) => matchesSubtopic(p, subtopic)).length,
+  );
+  function outcome(result) {
+    return !result
+      ? undefined
+      : result.needsReview
+        ? 'review'
+        : result.earned === result.max
+          ? 'correct'
+          : result.earned > 0
+            ? 'partial'
+            : 'incorrect';
+  }
+  async function hint() {
+    app.practice.hint(q.slot);
+    await tick();
+    const panel = document.querySelector(`[data-question="${q.slot}"] .hint-text`);
+    if (panel) {
+      panel.focus({ preventScroll: true });
+      app.toast('Hint shown. This question is marked as assisted practice.');
+    }
+  }
+  async function reveal() {
+    app.practice.reveal(q.slot);
+    await tick();
+    document.querySelector(`[data-question="${q.slot}"] .solution`)?.focus();
+  }
+</script>
+
+<article class={`surface-card question type-${set.type}`} data-question={q.slot}>
+  <div class="question-top">
+    <span class="question-number">{String(index + 1).padStart(2, '0')}</span>
+    <div>
+      <h2>{q.title}</h2>
+      <div class="muted">
+        {q.format}{set.type === 0 ? ` · ${challengeLabel(q.challengeLevel, q.focus)}` : ''} ·
+        <span title="Individual question code"
+          >{questionCode(set.type, q.slot, q.variation, set.version)}</span
+        >{q.tags.filter((t) => t.startsWith('CA')).length
+          ? ' · ' + q.tags.filter((t) => t.startsWith('CA')).join(', ')
+          : ''}
+      </div>
+    </div>
+    <span class="marks-badge">{marks(q)} {set.type === 0 ? 'points' : 'marks'}</span>
+  </div>
+  <p class="question-prompt">{q.prompt}</p>
+  {#if subtopic !== 'all'}<p class="subtopic-context">
+      {matchCount
+        ? `Includes ${subtopic} · ${matchCount} matching ${matchCount === 1 ? 'part' : 'parts'}`
+        : `Related practice from ${set.focus}`}
+    </p>{/if}
+  {#if q.source && q.focus !== 'go'}<p class="muted">
+      <a href={q.source.url} target="_blank" rel="noopener noreferrer">Puzzle source</a>
+      · {q.source.note}
+    </p>{/if}
+  <div class="question-layout" class:no-stimulus={!q.code && !q.grid && !q.sheet && !q.clues}>
+    <Stimulus {q} />
+    {#if set.type === 0}<PuzzleParts {q} {set} attempt={a} {results} {app} {href} />{:else}
+      <div class="parts">
+        {#each q.parts as part, j (part.id)}
+          {@const id = `answer-${q.slot}-${part.id}`}
+          {@const result = results?.[j]}
+          {#snippet label()}{#if subtopic !== 'all' && matchesSubtopic(part, subtopic)}<span
+                class="subtopic-match">Selected subtopic · {subtopic}</span
+              >
+            {/if}<span class="part-label">{String.fromCharCode(97 + j)})</span>
+            {part.prompt}
+            <span class="part-marks">({part.marks})</span>{/snippet}
+          {#snippet code()}{#if part.code}<!-- svelte-ignore a11y_no_noninteractive_tabindex (Code panels remain keyboard-scrollable at high zoom.) -->
+              <pre
+                class="code-panel part-code"
+                tabindex="0"
+                role="region"
+                aria-label={`Python code for part ${j + 1}`}><code>{part.code}</code
+                ></pre>{/if}{/snippet}
+          {#snippet feedback()}
+            {#if part.coverage?.length}<details class="part-coverage">
+                <summary>Spec reference</summary><small
+                  >{formatCoverage(part.coverage)}{part.coverageMode === 'practice'
+                    ? ' · Supporting practice'
+                    : ''}</small
+                >
+              </details>{/if}
+            {#if result}<p id={`feedback-${q.slot}-${j}`} class={`feedback ${outcome(result)}`}>
+                {result.earned}/{result.max} · {result.message}
+              </p>{/if}
+          {/snippet}
+          {#if part.options}
+            <fieldset class="part" data-result={outcome(result)} disabled={Boolean(a.finished)}>
+              <legend>{@render label()}</legend>{@render code()}
+              <div class="options">
+                {#each part.options as option}<label class="option"
+                    ><input
+                      type="radio"
+                      name={id}
+                      value={option}
+                      data-slot={q.slot}
+                      data-part={part.id}
+                      checked={answers[part.id] === option}
+                      onchange={() => app.practice.answer(q.slot, part.id, option)}
+                    />{option}</label
+                  >{/each}
+              </div>
+              {@render feedback()}
+            </fieldset>
+          {:else}
+            <div class="part" data-result={outcome(result)}>
+              <label for={id}>{@render label()}</label>{@render code()}<input
+                class="text-field"
+                {id}
+                data-slot={q.slot}
+                data-part={part.id}
+                value={answers[part.id] ?? ''}
+                disabled={Boolean(a.finished)}
+                inputmode={part.kind === 'number' ? 'decimal' : undefined}
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-describedby={result ? `feedback-${q.slot}-${j}` : undefined}
+                oninput={(e) => app.practice.answer(q.slot, part.id, e.currentTarget.value)}
+              />{@render feedback()}
+            </div>
+          {/if}
+        {/each}
+      </div>
+    {/if}
+  </div>
+  {#if q.review}<section class="esp-review">
+      <h3>Written reasoning · separate review</h3>
+      <label for={`review-${q.slot}`}>{q.review.prompt}</label><textarea
+        class="working-field"
+        id={`review-${q.slot}`}
+        data-slot={q.slot}
+        data-part="reflection"
+        maxlength="1200"
+        rows="3"
+        disabled={Boolean(a.finished)}
+        value={answers.reflection ?? ''}
+        oninput={(e) => app.practice.answer(q.slot, 'reflection', e.currentTarget.value)}
+      ></textarea>
+      <p class="muted">
+        This response is not automatically marked. Automatic marks do not assess your written
+        reasoning.
+      </p>
+      {#if a.finished}<details>
+          <summary>Review criteria and example</summary>
+          <ul>
+            {#each q.review.criteria as criterion}<li>{criterion}</li>{/each}
+          </ul>
+          <p>{q.review.example}</p>
+        </details>
+        <label
+          >Review status <select
+            class="choice-field"
+            data-review-status={q.slot}
+            value={a.espReview?.[q.slot]?.status ?? 'Needs review'}
+            onchange={(e) => app.practice.review(q.slot, e.currentTarget.value)}
+            >{#each ['Needs review', 'Self-reviewed', 'Teacher-reviewed'] as status}<option
+                >{status}</option
+              >{/each}</select
+          ></label
+        ><small>A recorded review status is not a grade or verified teacher approval.</small>{/if}
+    </section>{/if}
+  <div class="question-actions">
+    {#if q.focus !== 'go'}<button
+        class="action-button subtle"
+        data-hint={q.slot}
+        aria-expanded={hintVisible}
+        onclick={hint}>{hintVisible ? 'Hide hint' : 'Show hint'}</button
+      >{/if}{#if review}<button
+        class="action-button"
+        data-check={q.slot}
+        onclick={() => app.practice.check(q.slot)}>Check answer</button
+      ><button
+        class="action-button subtle"
+        data-reveal={q.slot}
+        disabled={Boolean(a.reveals[q.slot])}
+        onclick={reveal}>{a.reveals[q.slot] ? 'Answer shown' : 'Show answer'}</button
+      >{/if}{#if a.hints[q.slot] || a.reveals[q.slot]}<small>Assisted practice</small>{/if}
+  </div>
+  {#if q.focus !== 'go' && hintVisible}<p class="hint-text" tabindex="-1">
+      <strong>Hint:</strong>
+      {q.hint}
+    </p>{/if}
+  {#if review && a.reveals[q.slot]}<div class="solution" tabindex="-1">
+      <h3>Answers and explanations</h3>
+      <ol class="solution-list" role="list">
+        {#each q.parts as publicPart, j}{#if set.type === 0}{@html puzzleSolutionHTML(
+              publicPart,
+              j,
+              q.slot,
+            )}{:else}{@const part = revealPart(publicPart)}
+            <li class="solution-part">
+              <p class="solution-answer">
+                <span class="part-label">{String.fromCharCode(97 + j)})</span>
+                <strong>{part.solutionText ?? part.answer}</strong>
+              </p>
+              <p class="solution-explanation">{part.explanation}</p>
+            </li>{/if}{/each}
+      </ol>
+    </div>{/if}
+</article>

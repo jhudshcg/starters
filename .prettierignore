@@ -1,0 +1,6 @@
+node_modules/
+live/
+.generated/
+.svelte-kit/
+data/
+engines/

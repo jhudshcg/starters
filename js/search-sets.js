@@ -3,7 +3,7 @@
  *
  * Main contents: matchingSearchGroup and makeSearchSet
  *
- * Used by: entry-pages and practice-controller.
+ * Used by: Search.svelte and application/practice.js.
  * Uses: bank and search selection.
  * Libs: none.
  */

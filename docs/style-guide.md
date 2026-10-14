@@ -64,7 +64,7 @@ Show hints on request, then answer reveal as a separate action. Do not imply tha
 
 ## Files
 
-Proposed shared files: `css/tokens.css`, `css/base.css`, `css/components.css`, `css/activities.css`, with type-specific rules limited to actual interaction differences. Use shared JS renderers and utilities from the implementation plan. No duplicated page shells or per-question embedded styles.
+The framework implementation uses `src/lib/styles/` for semantic foundations, token mapping and breakpoints, with existing `css/` files for palette and application/puzzle rules. Shared Svelte components own the shell, controls and question presentation. Keep type-specific rules limited to actual interaction differences. No duplicated page shells or per-question embedded styles.
 
 ## Adopted interaction refinements
 
@@ -78,11 +78,13 @@ Use warm yellow (#FFE6A0 with #9B7122 borders) for puzzle selections. Yellow ind
 
 The s. icon and “start here” wordmark share an aligned first row. Keep the icon tall enough to contain the wordmark’s visual height. “Digital Software Development T-Level” sits below both, starting at the icon’s left edge. From 360px it stays on one line at that same vertical position and may extend beneath the top-row controls; the brand anchor’s column must not force wrapping. Keep the icon/wordmark and the three controls separate in the top row.
 
-The header has one top row: logo/tagline on the left and colour-theme, light/dark and hamburger controls on the right, in that order. The controls stay together without overlap or row wrapping from 360px. The profile occupies a separate row and may wrap. The hamburger contains Activities, My progress, Python projects, Go practice, Maths practice and FAQ. Go and Maths links no longer appear in the home content.
+The header has one top row: logo/tagline on the left and colour-theme, light/dark and hamburger controls on the right, in that order. The controls stay together without overlap or row wrapping from 360px. The profile occupies a separate row and may wrap. Keep the greeting and Last tracked line closely stacked, with Not you? beside them and a 44px target; avoid extra vertical gaps between this group and the branding. The hamburger contains Activities, My progress, Python projects, Go practice, Maths practice and FAQ. Go and Maths links no longer appear in the home content.
+
+Keep a direct My progress link visible beneath the hamburger, right-aligned with the controls, on every page. Retain its hamburger-menu entry. Give the direct link a 44px minimum target height and current-page semantics; adding it must not move or wrap the brand subtitle or split the top-row icons.
 
 ## Modal dismissal
 
-Dialogs with a Close/Cancel action also dismiss when the user clicks the visible backdrop. This follows the Escape/cancel path: dismissing a leave-warning means Keep working, never Leave activity. Clicks inside the dialog (including its padding), and drags starting inside and ending outside, must not dismiss it. Retain visible buttons and keyboard dismissal. The required initial profile prompt has no Close/Cancel action and retains its existing requirement to enter a name; switching profiles remains cancellable. Use the shared `showModal` helper in `js/dialog.js` for native dialogs.
+Dialogs with a Close/Cancel action also dismiss when the user clicks the visible backdrop. This follows the Escape/cancel path: dismissing a leave-warning means Keep working, never Leave activity. Clicks inside the dialog (including its padding), and drags starting inside and ending outside, must not dismiss it. Retain visible buttons and keyboard dismissal. The required initial profile prompt has no Close/Cancel action and retains its existing requirement to enter a name; switching profiles remains cancellable. Use the shared Bits UI `Modal.svelte` component; its dismissal path must preserve these behaviours.
 
 ## Home
 
@@ -100,7 +102,24 @@ Centre footer links and include a concise FAQ.
 
 ## Responsive breakpoints
 
-The new header/home layouts use the Maths viewport scale: 440, 768 and 1024px, with narrow rules below each threshold. Site-wide consolidation is deferred to framework migration; existing puzzle/question constraints are not mechanically replaced. Maths also has specialised 678/1150px viewport and 650/780px container thresholds, which should only be adopted where the corresponding layout needs them.
+Use the shared Maths viewport scale in [breakpoints.css](../src/lib/styles/breakpoints.css). Authored app CSS uses named Tailwind `@variant` rules. An unprefixed variant means **>=** its threshold; `max-` means **<**. Keep responsive rules grouped by owning component in `css/styles.css`; Go rules stay with their component in `css/puzzles.css`.
+
+| Variant suffix | Width | Consumers and purpose |
+| --- | --- | --- |
+| `viewport-small` | 440px | Compact header, home cards, page gutters and weekly chart. |
+| `viewport-medium` | 768px | Stack the home hero, question controls, search/exam selection and progress transfers; use two home-card columns and compact typography. |
+| `viewport-large` | 1024px | Question columns, hero proportions, outer spacing and footer layout. |
+| `max-viewport-small-inclusive` | <=440px | Question-card edges and Go gutters explicitly include the endpoint required by the teacher. |
+
+The <=440px rule in `css/challenges.css` deliberately stays plain CSS for package/source-style consumers that do not run Tailwind. Other app width queries belong in the register. Native hover, reduced-motion and forced-colour queries remain plain CSS.
+
+Home gutters shrink intrinsically to preserve the 295px code-entry floor, defined once as `--home-entry-min-width`; this needs no extra viewport breakpoint. Maths's specialised progress/reference/container thresholds are not adopted without a matching layout need. Prefer an existing threshold; record the content-fit reason before adding an exception. Viewport and container widths are distinct measurements.
+
+When changing responsive rules, check below, at and above the affected thresholds, the 320px home entry-card floor, and the header/home layout from 360px. Preserve the inclusive question and Go boundary at 440px. Check affected layouts with long content and enlarged text.
+
+## Set toolbar and results
+
+The set toolbar and result banner use a horizontal layout that wraps to fit. Keep the code, summary and timer controls close together; summary text must not reserve vertical space. The timer selector sizes to its options. Set the flex direction explicitly when combining these layouts with daisyUI's column-based card foundation.
 
 ## Narrow question pages
 

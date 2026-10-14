@@ -1,6 +1,6 @@
-/* Application layout, controls and page components. Theme values live in tokens.css; puzzle host styles live in puzzles.css. */
+/* Application layout and page components compiled with Tailwind. Shared breakpoints and control foundations live in src/lib/styles; palette values remain in tokens.css. */
 
-@import url('./tokens.css');
+@import './tokens.css';
 
 * {
   box-sizing: border-box;
@@ -158,7 +158,7 @@ main:focus {
   align-items: center;
   gap: 3rem;
   margin: 1rem 0 2.7rem;
-  grid-template-columns: minmax(0,1.4fr) minmax(295px,1fr);
+  grid-template-columns: minmax(0,1.4fr) minmax(var(--home-entry-min-width),1fr);
 }
 
 .hero h1 em {
@@ -319,6 +319,8 @@ main:focus {
   border-radius: 14px;
   padding: 1rem 1.25rem;
   display: flex;
+  /* The summary's flex basis is horizontal, unlike daisyUI's default card column. */
+  flex-direction: row;
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
@@ -366,6 +368,7 @@ main:focus {
 }
 
 .timer-controls select {
+  width: auto;
   padding: .3rem;
 }
 
@@ -625,6 +628,7 @@ main:focus {
   padding: 1.4rem 1.6rem;
   margin-bottom: 1.4rem;
   display: flex;
+  flex-direction: row;
   gap: 1.5rem;
   align-items: center;
   flex-wrap: wrap;
@@ -900,156 +904,6 @@ dialog p {
   display: none !important;
 }
 
-@media (min-width:1000px) {
-  .question-layout.no-stimulus .parts {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 1.25rem 2rem;
-  }
-}
-
-@media (max-width:850px) {
-  .hero {
-    gap: 1.5rem;
-  }
-
-  .question-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .code-panel {
-    width: 100%;
-  }
-
-  .question {
-    padding: 1.3rem;
-  }
-
-  main {
-    padding: 2rem 1.3rem;
-  }
-}
-
-@media (max-width:600px) {
-  nav {
-    gap: 1.2rem;
-  }
-
-  nav a {
-    font-size: .8rem;
-  }
-
-  .hero {
-    margin-top: .3rem;
-    gap: 1rem;
-  }
-
-  .hero h1 {
-    font-size: 2.7rem;
-  }
-
-  .hero p {
-    font-size: .95rem;
-  }
-
-  .code-entry {
-    padding: 1.4rem;
-  }
-
-  .section-heading span {
-    display: none;
-  }
-
-  .note-panel {
-    padding: 1rem;
-  }
-
-  .note-panel a {
-    white-space: normal;
-  }
-
-  .page-top {
-    flex-direction: column;
-  }
-
-  .page-top h1 {
-    font-size: 2rem;
-  }
-
-  .set-toolbar {
-    padding: 1rem;
-  }
-
-  .set-code {
-    font-size: 1.25rem;
-  }
-
-  .question-top {
-    gap: .6rem;
-  }
-
-  .question-top h2 {
-    font-size: 1.15rem;
-  }
-
-  .question {
-    padding: 1rem;
-  }
-
-  .submit-bar {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .progress-summary {
-    gap: .5rem;
-  }
-
-  .stat {
-    padding: 1rem .6rem;
-  }
-
-  .stat strong {
-    font-size: 1.55rem;
-  }
-
-  .priority-row {
-    flex-wrap: wrap;
-  }
-
-  .priority-row span:first-child {
-    min-width: 0;
-  }
-
-  .priority-row small {
-    min-width: 0;
-  }
-
-  .filters label {
-    flex: 1;
-  }
-
-  .filters input {
-    width: 100%;
-  }
-
-  .result-score {
-    font-size: 1.8rem;
-  }
-
-  footer {
-    padding: 1.2rem;
-  }
-
-  .code-entry form {
-    flex-wrap: wrap;
-  }
-
-  .code-entry input {
-    flex: 1;
-    min-width: 130px;
-  }
-}
-
 @media (prefers-reduced-motion:reduce) {
   * {
     scroll-behavior: auto !important;
@@ -1110,34 +964,6 @@ dialog p {
   display: none;
 }
 
-@media (max-width:850px) {
-  .global-code-entry {
-    padding: .75rem 1.5rem;
-  }
-}
-
-@media (max-width:600px) {
-  .global-code-entry {
-    padding: .75rem 1.3rem;
-  }
-
-  .global-code-entry form {
-    justify-content: flex-start;
-  }
-
-  .global-code-entry label {
-    flex-basis: 100%;
-  }
-
-  .global-code-entry input {
-    flex: 1;
-  }
-
-  .global-code-entry .error {
-    text-align: left;
-  }
-}
-
 .tracking-notice {
   color: var(--warning-text);
   padding: 1rem;
@@ -1155,6 +981,11 @@ dialog p {
 
 .part-label {
   font-weight: 750;
+}
+
+/* A translated link would contain its own overlay and shrink the card's hit area on press. */
+.type-card .card-bottom [data-start]:active {
+  translate: none;
 }
 
 .type-card [data-start]::after {
@@ -1537,14 +1368,8 @@ textarea:focus-visible {
   gap: 1rem;
 }
 
-.exam-options button {
+.exam-options :is(button,.action-button) {
   margin-top: 1rem;
-}
-
-@media (max-width:600px) {
-  .exam-options {
-    grid-template-columns: 1fr;
-  }
 }
 
 textarea {
@@ -1840,6 +1665,11 @@ textarea {
 #profile-welcome button {
   font-size: .8rem;
   text-decoration: underline;
+  grid-column: 2;
+  grid-row: 1/3;
+  align-self: start;
+  align-items: flex-start;
+  padding-block: 0;
 }
 
 #profile-name {
@@ -1853,14 +1683,9 @@ textarea {
 }
 
 .profile-greeting {
-  display: flex;
-  align-items: center;
-  gap: .25rem;
+  grid-column: 1;
+  grid-row: 1;
   max-width: 100%;
-}
-
-.profile-greeting button {
-  flex: none;
 }
 
 .last-tracked {
@@ -1907,16 +1732,6 @@ textarea {
   border-radius: 4px 4px 0 0;
 }
 
-@media (max-width:500px) {
-  .weekly-chart {
-    gap: .3rem;
-  }
-
-  .weekly-column {
-    font-size: .7rem;
-  }
-}
-
 #weekly-progress .progress-summary {
   grid-template-columns: repeat(auto-fit,minmax(min(100%,9rem),1fr));
 }
@@ -1955,19 +1770,6 @@ textarea {
 
 .spreadsheet-options button {
   font-size: .8rem;
-}
-
-@media (max-width:600px) {
-  .progress-transfers {
-    flex: auto;
-    width: 100%;
-  }
-}
-
-@media (max-width:600px) {
-  .code-panel {
-    padding: .65rem .5rem;
-  }
 }
 
 /* Compact activity navigation and metadata share the existing toolbar row. */
@@ -2085,17 +1887,6 @@ textarea {
   font-size: .75rem;
 }
 
-@media (max-width:600px) {
-  #global-code-form {
-    margin-left: 0;
-    flex: 1 1 100%;
-  }
-
-  #global-code-help {
-    text-align: left;
-  }
-}
-
 .about-page {
   max-width: 72ch;
   margin: 0 auto;
@@ -2119,29 +1910,17 @@ textarea {
   min-height: 44px;
 }
 
-/* Stack before the entry card becomes narrower than a usable single column. */
+/* The home entry card retains its usable minimum width as the hero stacks. */
 
 .hero>div {
   min-width: 0;
 }
 
 .hero>.code-entry {
-  min-width: 295px;
+  min-width: var(--home-entry-min-width);
 }
 
-@media (max-width:850px) {
-  .hero {
-    grid-template-columns: minmax(0,1fr) minmax(295px,1fr);
-  }
-}
-
-@media (max-width:650px) {
-  .hero {
-    grid-template-columns: minmax(0,1fr);
-  }
-}
-
-.card-bottom button {
+.card-bottom :is(button,.action-button) {
   font-size: .8rem;
   padding: .4rem .8rem;
   flex: 0 0 auto;
@@ -2149,19 +1928,8 @@ textarea {
 }
 
 main:has(>.hero) {
+  --home-entry-min-width: 295px;
   padding-top: calc(3rem - 20px);
-}
-
-@media (max-width:850px) {
-  main:has(>.hero) {
-    padding-top: calc(2rem - 20px);
-  }
-}
-
-@media (max-width:336px) {
-  main:has(>.hero) {
-    padding-inline: .75rem;
-  }
 }
 
 /* Header controls stay together; profile details have their own row. */
@@ -2175,7 +1943,7 @@ main:has(>.hero) {
   border-bottom: 1px solid var(--line);
   display: grid;
   grid-template-columns: minmax(0,1fr) auto;
-  gap: .5rem 1rem;
+  gap: .25rem 1rem;
 }
 
 .site-header .brand {
@@ -2183,6 +1951,7 @@ main:has(>.hero) {
   font-weight: 750;
   letter-spacing: -.05em;
   align-items: center;
+  align-self: start;
   line-height: 1.1;
   display: grid;
   grid-template-columns: auto minmax(0,1fr);
@@ -2227,7 +1996,8 @@ main:has(>.hero) {
 }
 
 .theme-controls {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3,auto);
   align-items: center;
   flex-shrink: 0;
   grid-column: 2;
@@ -2236,12 +2006,23 @@ main:has(>.hero) {
   gap: 0;
 }
 
-#profile-welcome {
-  display: flex;
-  flex-wrap: wrap;
+.header-progress-link {
+  grid-column: 1/-1;
+  justify-self: end;
+  display: inline-flex;
   align-items: center;
-  gap: .2rem 1rem;
-  flex: 1 1 16rem;
+  min-height: 44px;
+  font-size: .8rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+#profile-welcome {
+  display: grid;
+  grid-template-columns: minmax(0,max-content) auto;
+  justify-content: start;
+  align-items: start;
+  column-gap: .25rem;
   min-width: 0;
   overflow-wrap: anywhere;
   grid-column: 1/-1;
@@ -2249,6 +2030,8 @@ main:has(>.hero) {
 }
 
 #profile-welcome .last-tracked {
+  grid-column: 1;
+  grid-row: 2;
   font-size: .72rem;
 }
 
@@ -2275,11 +2058,7 @@ main:has(>.hero) {
   box-shadow: 0 8px 28px rgb(0 0 0 / 18%);
 }
 
-#nav-menu:not(:popover-open) {
-  display: none;
-}
-
-#nav-menu:popover-open {
+#nav-menu nav {
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -2517,145 +2296,6 @@ footer>span:last-child {
   margin-block: 1rem 2rem;
 }
 
-@media (width < 1024px) {
-  .site-header {
-    padding: 1rem 1.3rem;
-  }
-
-  footer {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  footer>span:last-child {
-    text-align: center;
-  }
-}
-
-@media (width < 768px) {
-  .activity-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: .75rem;
-  }
-
-  .type-card {
-    padding: 1rem;
-  }
-
-  .type-card h3 {
-    font-size: 1.15rem;
-  }
-
-  .type-card .card-bottom {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .card-bottom button {
-    justify-self: start;
-  }
-
-  .type-card .art-code {
-    font-size: .65rem;
-  }
-
-  .lower-panel {
-    gap: .75rem;
-  }
-
-  .lower-panel .note-panel {
-    padding: .9rem;
-    gap: .5rem;
-  }
-
-  .lower-panel .note-icon {
-    font-size: 1.3rem;
-  }
-}
-
-@media (width < 440px) {
-  .site-header {
-    padding: .8rem .75rem;
-    column-gap: .25rem;
-  }
-
-  .site-header .brand {
-    font-size: 1.65rem;
-    gap: .35rem .45rem;
-  }
-
-  .brand-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 11px;
-    font-size: 2.2rem;
-  }
-
-  .site-header .brand-sub {
-    font-size: .62rem;
-  }
-
-  main {
-    padding-inline: 1rem;
-  }
-
-  .type-card {
-    padding: .75rem;
-  }
-
-  .type-card>.eyebrow {
-    font-size: .6rem;
-  }
-
-  .type-card .card-art {
-    height: 100px;
-  }
-
-  .type-card .art-code {
-    font-size: .59rem;
-  }
-
-  .type-card h3 {
-    font-size: 1.03rem;
-  }
-
-  .card-bottom small {
-    font-size: .7rem;
-  }
-
-  .lower-panel .note-panel {
-    padding: .75rem;
-  }
-
-  .lower-panel h3 {
-    font-size: .85rem;
-  }
-
-  .lower-panel p,.lower-panel a {
-    font-size: .75rem;
-  }
-}
-
-/* On question pages, single-column surface cards meet the viewport edges. */
-
-@media (width <= 440px) {
-  main:has(>.questions) {
-    padding-inline: 0;
-  }
-
-  main:has(>.questions)>:not(.questions,.set-toolbar,.result-banner) {
-    margin-inline: 1rem;
-  }
-
-  main:has(>.questions)>:is(.set-toolbar,.result-banner),
-  .questions>.question {
-    width: 100%;
-    border-inline: 0;
-    border-radius: 0;
-    --card-border-image: var(--card-mobile-border-image);
-  }
-}
-
 /* Submission summary shared by every question type. */
 
 .submit-result {
@@ -2678,12 +2318,6 @@ footer>span:last-child {
   outline: 2px solid var(--main);
   outline-offset: 8px;
   border-radius: 4px;
-}
-
-@media (max-width:600px) {
-  .submit-result {
-    gap: .6rem;
-  }
 }
 
 /* Progress-file controls belong to the app, not the puzzle package. */
@@ -2778,4 +2412,382 @@ footer>span:last-child {
 
 .algorithm-merge .algorithm-row {
   flex: 1;
+}
+
+/* Responsive: shell and navigation. */
+
+@variant max-viewport-large {
+  main {
+    padding: 2rem 1.3rem;
+  }
+
+  .global-code-entry {
+    padding: .75rem 1.5rem;
+  }
+
+  .site-header {
+    padding: 1rem 1.3rem;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  footer>span:last-child {
+    text-align: center;
+  }
+}
+
+@variant max-viewport-medium {
+  nav {
+    gap: 1.2rem;
+  }
+
+  nav a {
+    font-size: .8rem;
+  }
+
+  footer {
+    padding: 1.2rem;
+  }
+
+  .global-code-entry {
+    padding: .75rem 1.3rem;
+  }
+
+  .global-code-entry form {
+    justify-content: flex-start;
+  }
+
+  .global-code-entry label {
+    flex-basis: 100%;
+  }
+
+  .global-code-entry input {
+    flex: 1;
+  }
+
+  .global-code-entry .error {
+    text-align: left;
+  }
+
+  #global-code-form {
+    margin-left: 0;
+    flex: 1 1 100%;
+  }
+
+  #global-code-help {
+    text-align: left;
+  }
+}
+
+@variant max-viewport-small {
+  .site-header {
+    padding: .8rem .75rem .6rem;
+    column-gap: .25rem;
+  }
+
+  .site-header .brand {
+    font-size: 1.65rem;
+    gap: .35rem .45rem;
+  }
+
+  .brand-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    font-size: 2.2rem;
+  }
+
+  .site-header .brand-sub {
+    font-size: .62rem;
+  }
+
+  main {
+    padding-inline: 1rem;
+  }
+}
+
+/* Responsive: home introduction and activity cards. */
+
+@variant max-viewport-large {
+  .hero {
+    gap: 1.5rem;
+    grid-template-columns: minmax(0,1fr) minmax(var(--home-entry-min-width),1fr);
+  }
+
+  main:has(>.hero) {
+    padding-top: calc(2rem - 20px);
+  }
+}
+
+@variant max-viewport-medium {
+  .hero {
+    margin-top: .3rem;
+    gap: 1rem;
+    grid-template-columns: minmax(0,1fr);
+  }
+
+  .hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .hero p {
+    font-size: .95rem;
+  }
+
+  .code-entry {
+    padding: 1.4rem;
+  }
+
+  .section-heading span {
+    display: none;
+  }
+
+  .note-panel {
+    padding: 1rem;
+  }
+
+  .note-panel a {
+    white-space: normal;
+  }
+
+  .code-entry form {
+    flex-wrap: wrap;
+  }
+
+  .code-entry input {
+    flex: 1;
+    min-width: 130px;
+  }
+
+  .activity-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: .75rem;
+  }
+
+  .type-card {
+    padding: 1rem;
+  }
+
+  .type-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .type-card .card-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .card-bottom :is(button,.action-button) {
+    justify-self: start;
+  }
+
+  .type-card .art-code {
+    font-size: .65rem;
+  }
+
+  .lower-panel {
+    gap: .75rem;
+  }
+
+  .lower-panel .note-panel {
+    padding: .9rem;
+    gap: .5rem;
+  }
+
+  .lower-panel .note-icon {
+    font-size: 1.3rem;
+  }
+}
+
+@variant max-viewport-small {
+  /* Shrink gutters only when needed to retain the entry card's usable width. */
+  main:has(>.hero) {
+    padding-inline: clamp(0px,calc((100% - var(--home-entry-min-width)) / 2),1rem);
+  }
+
+  .type-card {
+    padding: .75rem;
+  }
+
+  .type-card>.eyebrow {
+    font-size: .6rem;
+  }
+
+  .type-card .card-art {
+    height: 100px;
+  }
+
+  .type-card .art-code {
+    font-size: .59rem;
+  }
+
+  .type-card h3 {
+    font-size: 1.03rem;
+  }
+
+  .card-bottom small {
+    font-size: .7rem;
+  }
+
+  .lower-panel .note-panel {
+    padding: .75rem;
+  }
+
+  .lower-panel h3 {
+    font-size: .85rem;
+  }
+
+  .lower-panel p,.lower-panel a {
+    font-size: .75rem;
+  }
+}
+
+/* Responsive: question layout and submission. */
+
+@variant viewport-large {
+  .question-layout.no-stimulus .parts {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 1.25rem 2rem;
+  }
+}
+
+@variant max-viewport-large {
+  .question-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .code-panel {
+    width: 100%;
+  }
+
+  .question {
+    padding: 1.3rem;
+  }
+}
+
+@variant max-viewport-medium {
+  .page-top {
+    flex-direction: column;
+  }
+
+  .page-top h1 {
+    font-size: 2rem;
+  }
+
+  .set-toolbar {
+    padding: 1rem;
+  }
+
+  .set-code {
+    font-size: 1.25rem;
+  }
+
+  .question-top {
+    gap: .6rem;
+  }
+
+  .question-top h2 {
+    font-size: 1.15rem;
+  }
+
+  .question {
+    padding: 1rem;
+  }
+
+  .submit-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .result-score {
+    font-size: 1.8rem;
+  }
+
+  .code-panel {
+    padding: .65rem .5rem;
+  }
+
+  .submit-result {
+    gap: .6rem;
+  }
+}
+
+@variant max-viewport-small-inclusive {
+  main:has(>.questions) {
+    padding-inline: 0;
+  }
+
+  main:has(>.questions)>:not(.questions,.set-toolbar,.result-banner) {
+    margin-inline: 1rem;
+  }
+
+  main:has(>.questions)>:is(.set-toolbar,.result-banner),
+  .questions>.question {
+    width: 100%;
+    border-inline: 0;
+    border-radius: 0;
+    --card-border-image: var(--card-mobile-border-image);
+  }
+}
+
+/* Responsive: progress and transfers. */
+
+@variant max-viewport-medium {
+  .progress-summary {
+    gap: .5rem;
+  }
+
+  .stat {
+    padding: 1rem .6rem;
+  }
+
+  .stat strong {
+    font-size: 1.55rem;
+  }
+
+  .priority-row {
+    flex-wrap: wrap;
+  }
+
+  .priority-row span:first-child {
+    min-width: 0;
+  }
+
+  .priority-row small {
+    min-width: 0;
+  }
+
+  .progress-transfers {
+    flex: auto;
+    width: 100%;
+  }
+}
+
+@variant max-viewport-small {
+  .weekly-chart {
+    gap: .3rem;
+  }
+
+  .weekly-column {
+    font-size: .7rem;
+  }
+}
+
+/* Responsive: search and exam selection. */
+
+@variant max-viewport-medium {
+  .filters label {
+    flex: 1;
+  }
+
+  .filters input {
+    width: 100%;
+  }
+
+  .exam-options {
+    grid-template-columns: 1fr;
+  }
 }
