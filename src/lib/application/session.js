@@ -82,6 +82,7 @@ export function createApplication({ navigation, focus, scriptURL }) {
           }
         : { history: [] },
       storageOK: profile?.storageOK ?? true,
+      profileBlocked: profile?.blocked ?? '',
       fileStatus: profile?.oneDrive.status() ?? '',
     };
   }
@@ -167,6 +168,7 @@ export function createApplication({ navigation, focus, scriptURL }) {
     };
   }
   function leaving() {
+    if (!ready) return;
     if (practiceVisible() && profile.data.active) {
       rememberSelection(profile.data, practice.activeSet());
       if (!profile.data.active.finished) pausePractice(profile.data.active);
@@ -309,7 +311,7 @@ export function createApplication({ navigation, focus, scriptURL }) {
     publish();
   }
   async function chooseName(name, confirmed = false) {
-    const result = profile.chooseName(name, confirmed);
+    const result = await profile.chooseName(name, confirmed);
     if (result.profile) {
       restoreNotice = '';
       closeProfile();
@@ -343,9 +345,17 @@ export function createApplication({ navigation, focus, scriptURL }) {
     publish();
   }
   const events = new AbortController();
-  let clockTimer, interactionTimer;
-  async function start() {
-    profile.load();
+  let clockTimer, interactionTimer, starting;
+  function start() {
+    if (ready || disposed) return Promise.resolve();
+    // Repeated retry clicks share one ownership request and one set of listeners.
+    starting ??= initialise().finally(() => {
+      starting = null;
+    });
+    return starting;
+  }
+  async function initialise() {
+    if (!(await profile.load())) return;
     if (!profile.data.username) await chooseProfile(false);
     if (disposed) return;
     await practice.resume();
@@ -444,7 +454,7 @@ export function createApplication({ navigation, focus, scriptURL }) {
       decide(false);
       closeProfile();
       listeners.clear();
-      await profile.oneDrive.dispose();
+      await profile.dispose();
     },
   };
 }

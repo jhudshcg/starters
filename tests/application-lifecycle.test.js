@@ -62,7 +62,7 @@ test('session disposal clears polling, listeners and prompts; remount retains sa
     for (let cycle = 0; cycle < 3; cycle++) {
       app = createApplication({ navigation, focus() {}, scriptURL: 'https://example.test/app.js' });
       app.subscribe(() => publications++);
-      await app.start();
+      await Promise.all([app.start(), app.start()]);
       assert.equal(intervals.size, 2);
       assert.equal(events.filter((event) => !event.signal.aborted).length, 13);
       if (!cycle) {

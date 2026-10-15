@@ -10,6 +10,7 @@ Full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI adoption was authorised and
 | `src/routes/[[view]]/` | Finite prerendered entry paths. Query parameters identify a set, activity type or search; components render the application snapshot. |
 | `src/lib/application/session.js` | Compose services, load route banks, reject stale requests, publish snapshots and dispose listeners/polling. |
 | `src/lib/application/profile.js` | Current profile, selection, validated restoration, browser/file persistence and same-profile attempt snapshots. |
+| `src/lib/application/profile-lock.js` | Exclusive editing ownership of each named profile across tabs, held through pending saves and released on switch/disposal. |
 | `src/lib/application/practice.js` | Attempt commands, answers, submission, assistance, two-hour entry recall and timer deadlines. No DOM bindings. |
 | `src/lib/components/pages/` | Home, exam, search, progress, projects/FAQ, About and human Go pages. Edit home card artwork, order and short text in `Home.svelte`. |
 | `src/lib/components/practice/` | Entry selectors, question cards, answers, feedback, guides and puzzle hosts. Components call commands rather than owning another persisted attempt. |
@@ -20,6 +21,10 @@ Full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI adoption was authorised and
 | `packages/puzzles/` | Portable puzzle content/rules/controls, Go board and engine. |
 
 Services read `profile.data` at command boundaries; switching/restoring a profile can replace it. Svelte receives snapshots and owns page/control DOM. Progress filters are component-local. The portable puzzle/Go wrapper owns only its assigned subtree and disposes its controls when removed. Trusted authored FAQ/project/algorithm content may use static HTML; it does not install a competing application renderer.
+
+Puzzle gesture callbacks read current service answers, not a captured rendered snapshot: one pointer event can accept several moves before Svelte renders. Ordinary puzzle inputs retain their DOM nodes while answer values update, preserving focus/caret. Board redraws keep the portable control's pointer lifecycle; click/keyboard updates supply a focus selector.
+
+The profile service obtains a [Web Lock](https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API) before loading/editing a profile. Another tab stays blocked, without timers or saves, and can retry the same name. Selection/restoration obtains the destination lock and drains outgoing file writes before releasing the old lock. Repeated startup/retry calls share one initialisation. Storage keys and result formats are unchanged.
 
 ## Navigation and lifetimes
 
@@ -41,13 +46,15 @@ The pre-commit hook still builds an isolated staged-source snapshot, checks the 
 
 ## Verification
 
-Run `npm run check` for framework diagnostics and select tests from the change. Shared service/build changes warrant `npm test`, including deterministic packing/static output and lifecycle cleanup. Browser scripts run serially against the dedicated Chrome profile; do not rebuild during a browser run.
+Run `npm run check` for framework diagnostics and select tests from the change. Use focused lifecycle/profile tests for service changes and build/staged-build tests for packaging changes. Reserve `npm test` for changes whose wider impact is not covered by those selections; it includes deterministic packing/static output and lifecycle cleanup. Browser scripts run serially against the dedicated Chrome profile; do not rebuild during a browser run.
 
 - `browser-assessment.mjs`: ESP formula/written review, mobile card edges and timer expiry after reload. `--layout-only` selects toolbar spacing, selector sizing, mobile edges and submission.
 - `browser-home-cards.mjs`: real pointer hits across each card, pressed-state hit geometry, keyboard activation and Back at mobile/desktop widths.
 - `browser-migration.mjs`: representative routes, eight themes, mobile shell, recall, guarded edits, submission, old links and Go.
 - `browser-navigation.mjs`: detailed Back/Forward, picker/expiry/subsection recall, projects, FAQ and search history.
 - `browser-profiles.mjs`: profile switching, validated backups, recommendations and practice time.
+- `browser-interaction-regressions.mjs --profiles`: exclusive editing across two tabs, assisted history, retry, switching and release on close; run for profile ownership or persistence changes.
+- `browser-interaction-regressions.mjs --puzzles`: real drag/backtrack, fast movement, keyboard focus and character-by-character typing; run for puzzle host/control changes.
 - `browser-python-guides.mjs`: keyboard disclosure, saved state and independent evidence across every focus.
 - `browser-puzzle-integration.mjs`: answers, persistence, marks/reveal and reflow for portable puzzle controls.
 - `browser-onedrive-go.mjs`: real local file handles, save/conflict failures, human Go/engine/clocks/touch.

@@ -146,7 +146,19 @@
   progress to keep your results.
 </div>
 <main id="main" tabindex="-1">
-  {#if view.ready}{@render children()}{:else}<p role="status">Loading activities…</p>
+  {#if view.profileBlocked}
+    <section id="profile-blocked" class="surface-card" role="alert">
+      <h1>Profile unavailable in this tab</h1>
+      <p>{view.profileBlocked}</p>
+      <button
+        class="action-button primary"
+        onclick={async () => {
+          await app.start();
+          await showRoute('enter');
+        }}>Try again</button
+      >
+    </section>
+  {:else if view.ready}{@render children()}{:else}<p role="status">Loading activities…</p>
     <p>Reload this page if activities do not appear.</p>{/if}
 </main>
 <div id="toast" role="status" aria-live="polite">{view.message ?? ''}</div>

@@ -40,15 +40,19 @@ Reuse completed checks for unchanged inputs. Run focused checks after a coherent
 | Theme preference parsing or document startup | Build, then `browser-theme-startup.mjs`; it blocks application scripts to verify pre-paint restoration and checks hydration preserves colours |
 | Set toolbar or result-card layout | Build, then `browser-assessment.mjs --layout-only` for spacing, selector sizing, mobile edges and submission |
 | Framework components, semantic CSS | `npm run check`; build and affected browser flows/widths/themes |
-| Shared application/session/routing | Framework session/lifecycle and relevant profile/progress tests; `browser-migration.mjs`, `browser-navigation.mjs`; broaden to affected integrations |
+| Shared application/session/routing | Affected framework session/lifecycle and profile/progress tests; select `browser-migration.mjs` or `browser-navigation.mjs` for route/navigation changes; broaden only to affected integrations |
 | Build, packing or hosting | Production-build and pre-commit tests; subpath preview including direct routes, banks and engine assets |
 | Python tasks/hints | Python sequence/readability checks, then content coverage/codes/validation/build |
 | Python topic guides | `tests/discovery-guide.test.js`; build, then `browser-python-guides.mjs` |
-| Portable puzzle controls | Package tests, packed-bank/algebra/code compatibility, package fixture and `browser-puzzle-integration.mjs` |
+| Portable puzzle rules/content or API | Affected package tests; package browser fixture for standalone controls; packed-bank/algebra/code checks when answer/data contracts change; production integration for shared rendering/bindings |
+| Puzzle host rendering, gestures or input focus | Build once; `node scripts/browser-interaction-regressions.mjs --puzzles`; use `browser-puzzle-integration.mjs` when shared bindings/rendering affect other puzzle kinds |
+| Profile ownership or persistence lifecycle | `node --test tests/profile-lock.test.js tests/application-lifecycle.test.js tests/framework-session.test.js`; build once, then `node scripts/browser-interaction-regressions.mjs --profiles`; add backup/file checks only when their paths change |
 | OneDrive save/failure changes | Progress-file/profile tests; build and `browser-onedrive-go.mjs --files-only` |
 | Shared Go changes | Package rule/clock/engine tests, then package/production integration |
 | Bank metadata/compatibility | Search, packed-bank and code-compatibility tests; content validation/build |
 | Documentation only | Changed local links and whitespace; no app rebuild |
+
+The interaction regression script accepts `--puzzles` and `--profiles` independently; omitting both runs both. It uses real browser input and closes the dedicated test tabs. These checks are not added to every development command or unrelated content/theme work. Reuse passing results while their source/build inputs are unchanged. Neither the focused checks nor a documentation edit calls for a full test-suite rerun.
 
 The [puzzle library](../packages/puzzles/README.md) is ordinary source, not a submodule. `npm test` includes its portable checks. `browser-puzzle-player.mjs` builds a package-only temporary fixture; the production integration checks parent-owned answers/submission. Preserve the library's extraction and disposal contracts.
 

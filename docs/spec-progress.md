@@ -1,6 +1,6 @@
 # Progress tracking, profiles and revision display
 
-Adopted requirements and implementation, updated **13 October 2026**. This specification records the teacher’s progress/profile requests and the concrete calculation and display rules used by the app. It supersedes the older common-specification parent-window priority rules and the earlier requirement to switch profiles manually before restoring a named backup. The [repeat-attempt policy](spec-common.md#implemented-repeat-attempt-policy-15-september-2026) remains in force.
+Adopted requirements and implementation, updated **15 October 2026**. This specification records the teacher’s progress/profile requests and the concrete calculation and display rules used by the app. It supersedes the older common-specification parent-window priority rules and the earlier requirement to switch profiles manually before restoring a named backup. The [repeat-attempt policy](spec-common.md#implemented-repeat-attempt-policy-15-september-2026) remains in force.
 
 ## Original tracking requirements and current delivery
 
@@ -26,6 +26,10 @@ Profiles are a low-complexity way to share a computer, not a secure login system
 - Show **Last tracked: [local date and time]** in the header, using the latest completion timestamp in that profile’s tracked history. If none exists, show “No tracked practice yet”. This is a clue for recognising the intended profile, not a login date or the date of an untracked repeat. Refresh it after a tracked submission, profile switch or successful restore.
 - Keep each profile’s active activity, tracked history, repeat-attempt dates and recommendation batch separate. Switching saves the outgoing profile and selects the other profile without erasing either history.
 - The first named profile inherits the existing unnamed local save. Preserve the original legacy save; subsequent new profiles start empty.
+
+**One editable tab per profile (15 October 2026).** A second tab must not load an editable copy or write that profile. Show that it is already open elsewhere and offer Try again after the owner closes or switches profile. Retry loads the latest saved data for the originally requested name. Different profiles may be edited in different tabs. Profile switches and named backup restores must acquire ownership before writing the destination; finish outgoing saves before releasing the previous profile. This is the adopted simple protection against stale tabs replacing completed results, not a multi-tab merge feature.
+
+The app uses browser Web Locks on HTTPS or localhost. If ownership cannot be established, show the reason and keep editing unavailable. The browser releases ownership when the document closes; ordinary hiding/navigation within the app retains it. Close older-version tabs after updating, because code already running before this protection was added cannot participate in it.
 
 Recommend linking the synced OneDrive folder, with JSON download/restore available as a fallback.
 

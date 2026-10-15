@@ -77,7 +77,7 @@ export function bindChallenges(root,{getPart,getAnswer,isLocked=()=>false,onChan
   s.history=[...history,snapshot].slice(-100);
   onChange(slot,id,JSON.stringify(s),selector);
  };
- const extend=(slot,id,part,cell)=>{
+ const extend=(slot,id,part,cell,focusSelector)=>{
   if(isLocked())return;
   const old=read(slot,id,part),path=old.path??[];
   if(!Number.isInteger(cell)||cell<0||cell>=part.size*(part.rows??part.size)||part.blocked.includes(cell))return;
@@ -87,7 +87,7 @@ export function bindChallenges(root,{getPart,getAnswer,isLocked=()=>false,onChan
   else if(near(path.at(-1),cell,part.size))next=[...path,cell];
   else return;
   if(next.length===path.length)return;
-  update(slot,id,{...old,path:next},old);
+  update(slot,id,{...old,path:next},old,focusSelector);
  };
  root.querySelectorAll('.challenge:not([data-locked])').forEach(container=>{
   const {slot,id,part}=find(container);if(!part)return;
@@ -115,7 +115,7 @@ export function bindChallenges(root,{getPart,getAnswer,isLocked=()=>false,onChan
    listen(button,'click',()=>{
     if(isLocked()||button.disabled)return;
     const action=button.dataset.challengeAction,value=button.dataset.value,old=read(slot,id,part),s=structuredClone(old);
-    if(action==='path'){extend(slot,id,part,Number(value));return;}
+    if(action==='path'){extend(slot,id,part,Number(value),selector(action,value));return;}
     if(action==='go'){
      const board=goPosition(part,old.moves??[])?.board;
      if(board?.[Number(value)]&&board[Number(value)]!=='.')return;

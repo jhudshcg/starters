@@ -20,10 +20,21 @@ import { settlePractice, pausePractice } from '#domain/practice-time.js';
 import { historicalSet } from '#domain/bank.js';
 import { bankRelease } from '#domain/bank-release.js';
 import { loadStorage } from '#domain/progress.js';
+import { acquireProfileLock } from './profile-lock.js';
 
 export function createProfile({ changed, remember, notify, download, confirm, onRestore }) {
   let data = { schema: 1, active: null, history: [] },
-    storageOK = true;
+    storageOK = true,
+    blocked = '',
+    lease = null,
+    disposed = false,
+    changing = false,
+    requestedName;
+  function saveLocal(profile) {
+    if (!lease || lease.name !== (profile.username ?? null))
+      throw Error('This tab does not own the profile. Reload before continuing.');
+    saveProfile(profile);
+  }
   function storageError() {
     storageOK = false;
     changed();
@@ -32,7 +43,7 @@ export function createProfile({ changed, remember, notify, download, confirm, on
     current: () => data,
     saveLocal: (profile) => {
       try {
-        saveProfile(profile);
+        saveLocal(profile);
       } catch (error) {
         storageError();
         throw error;
@@ -44,27 +55,41 @@ export function createProfile({ changed, remember, notify, download, confirm, on
     onStatus: changed,
     download: () => download(backupJSON(data), progressFilename(data), 'application/json'),
   });
-  function load() {
+  async function load() {
     try {
-      const registry = profiles();
-      data = registry.current ? loadProfile(registry.current) : loadStorage();
+      // Retry the profile this tab requested, even if another tab has since switched names.
+      if (requestedName === undefined) requestedName = profiles().current ?? null;
+      lease = await acquireProfileLock(requestedName);
+      if (disposed) {
+        await lease.release();
+        lease = null;
+        return false;
+      }
+      data = requestedName ? loadProfile(requestedName) : loadStorage();
       if (data.username && !data.profileId) data = activateProfile(data);
       if (data.active) {
         try {
           historicalSet(data.active.code);
         } catch {
           data.active = null;
-          saveProfile(data);
+          saveLocal(data);
         }
       }
-    } catch {
-      storageError();
+      blocked = '';
+      return true;
+    } catch (error) {
+      await lease?.release();
+      lease = null;
+      blocked = error.message;
+      changed();
+      return false;
     }
   }
   function persist() {
+    if (!lease || disposed) return;
     if (data.active && !data.active.finished) settlePractice(data.active);
     try {
-      saveProfile(data);
+      saveLocal(data);
       oneDrive.changed(data);
     } catch {
       storageError();
@@ -73,7 +98,7 @@ export function createProfile({ changed, remember, notify, download, confirm, on
     changed();
   }
   /** Return a suggestion without switching; explicit confirmation retains canonical name rules. */
-  function chooseName(raw, confirmed = false) {
+  async function chooseName(raw, confirmed = false) {
     const name = normaliseName(raw);
     if (!name) throw Error('Enter your name to continue.');
     let names = [];
@@ -86,18 +111,13 @@ export function createProfile({ changed, remember, notify, download, confirm, on
     if (match.suggestion && !confirmed) return { suggestion: match.suggestion, entered: name };
     if (data.active && !data.active.finished) pausePractice(data.active);
     persist();
-    void oneDrive.flush(data);
-    try {
-      data = selectProfile(match.exact ?? name);
-    } catch {
-      storageError();
-      data = { schema: 1, active: null, history: [], username: name };
-    }
+    await changeProfile(match.exact ?? name, () => selectProfile(match.exact ?? name));
     changed();
     return { profile: data };
   }
   async function restore(raw, review = false) {
-    const { merged, added, duplicate, switching } = await prepareBackup(raw, data);
+    let prepared = await prepareBackup(raw, data);
+    const { merged, added, duplicate } = prepared;
     if (
       review &&
       !(await confirm(
@@ -107,12 +127,39 @@ export function createProfile({ changed, remember, notify, download, confirm, on
       ))
     )
       return false;
-    data = activateProfile(merged);
-    const message = `${switching ? `Switched to ${data.username}, the profile named in this backup. ` : ''}${added} results restored; ${duplicate} duplicates skipped.`;
+    await changeProfile(merged.username, async () => {
+      // A target profile may have changed while its backup was being reviewed.
+      prepared = await prepareBackup(raw, data);
+      if (disposed) throw Error('This profile session has closed.');
+      return activateProfile(prepared.merged);
+    });
+    const message = `${prepared.switching ? `Switched to ${data.username}, the profile named in this backup. ` : ''}${prepared.added} results restored; ${prepared.duplicate} duplicates skipped.`;
     onRestore(message);
     changed();
     notify(message);
     return true;
+  }
+  /** Acquire the destination before switching; drain outgoing file saves before releasing it. */
+  async function changeProfile(name, read) {
+    if (changing || disposed)
+      throw Error('A profile change is already in progress. Try again shortly.');
+    changing = true;
+    let next;
+    try {
+      next = lease?.name === name ? lease : await acquireProfileLock(name);
+      await oneDrive.dispose();
+      if (disposed) throw Error('This profile session has closed.');
+      const selected = await read();
+      if (disposed) throw Error('This profile session has closed.');
+      if (lease !== next) await lease?.release();
+      lease = next;
+      data = selected;
+    } catch (error) {
+      if (next !== lease) await next?.release();
+      throw error;
+    } finally {
+      changing = false;
+    }
   }
   function restoreAttempt(state) {
     const saved = state?.profileId === data.profileId ? state.attempt : null;
@@ -132,11 +179,20 @@ export function createProfile({ changed, remember, notify, download, confirm, on
     get storageOK() {
       return storageOK;
     },
+    get blocked() {
+      return blocked;
+    },
     oneDrive,
     load,
     persist,
     chooseName,
     restore,
     restoreAttempt,
+    async dispose() {
+      disposed = true;
+      if (lease) await oneDrive.dispose();
+      await lease?.release();
+      lease = null;
+    },
   };
 }

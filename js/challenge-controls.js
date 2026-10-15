@@ -8,11 +8,12 @@ import {playTree} from './packed-data.js';
 const readable=part=>part.playData?{...part,tree:playTree(part)}:part;
 const bindings=new WeakMap();
 export const renderChallenge=(part,...args)=>render(readable(part),...args);
-export function bindChallenges(root,set,attempt,onChange,notify,onAssist){
+export function bindChallenges(root,set,getAttempt,onChange,notify,onAssist){
  bindings.get(root)?.({preserveDrag:true});
  const dispose=bind(root,{
   getPart:(slot,id)=>{const part=set.questions.find(q=>q.slot===Number(String(slot).replace(/-solution$/,'')))?.parts.find(p=>p.id===id);return part?readable(part):null;},
-  getAnswer:(slot,id)=>attempt.answers[slot]?.[id],isLocked:()=>Boolean(attempt.finished),
+  // A preserved drag outlives rendered snapshots and must read each accepted move immediately.
+  getAnswer:(slot,id)=>getAttempt()?.answers[slot]?.[id],isLocked:()=>!getAttempt()||Boolean(getAttempt().finished),
   onChange:(slot,...args)=>onChange(Number(slot),...args),notify,
   onAssist:slot=>onAssist?.(Number(slot))
  });

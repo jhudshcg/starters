@@ -1,32 +1,30 @@
-# Current handover — 14 October 2026
+# Current handover — 15 October 2026
 
-## Latest completed work
-- Development refresh investigation: browser cache is reused; no application cache reset was found. On-demand readable banks now replace eager development imports through js/bank-data.dev.js and vite.config.js. Node tools stay eager; production keeps encoded lazy banks. Explicit development serving paths cover data and packages/puzzles. Home loads no bank and each practice page loads its own bank only.
-- Header spacing: greeting and Last tracked form a compact stack beside Not you?, preserving the 44px target. Smaller header row gap/mobile bottom padding. My progress stays visible below the hamburger and in its menu; icons and subtitle remain correctly aligned.
-- Toolbar gap: explicit row direction on set-toolbar/result-banner prevents daisyUI's card column default from turning the summary's horizontal flex basis into a large vertical gap. Timer selector sizes to its content.
-- docs/style-guide.md, docs/local-development.md and docs/application-architecture.md reflect these changes and focused checks. Durable details are appended to DEV_LOG.md.
+## Completed objective
+Investigated and fixed the reported dot-path dragging regression and related puzzle input faults. Investigated missing completed-set data and implemented the teacher-selected one-editable-tab-per-profile protection. Durable evidence, review stages and decisions are in the latest DEV_LOG.md entry.
 
-## Latest verification and limits
-- Svelte diagnostics: zero errors/warnings. Four bank-loader/production-build/staged-build tests pass, including deterministic output and lazy packed banks. Production rebuilt after the toolbar CSS correction; whitespace checks pass.
-- Development home/four practice routes verify on-demand bank imports. Node checks verify repeated/concurrent data reuse and unchanged eager authoring imports.
-- Normal warm Python refreshes before the change: development 171–328ms, built preview 56–61ms. Afterward, development 137–382ms and 195 resource requests versus 227 previously. The multi-second user-observed pause was not reproduced; do not claim a guaranteed speed improvement or that all startup costs are solved. Development still loads larger modules/source maps than production.
-- Compact header: long profile name, direct/menu progress links and layout pass on home/programming/progress at 360/440/768/1280px. Profile switch remains 44px; subtitle position and icon row preserved.
-- browser-assessment.mjs --layout-only passes toolbar spacing, intrinsic selector sizing, mobile borders and submission at 360/440/441/768/1024px. A 360px Python screenshot was visually checked: no stretched summary gap.
-- The full assessment run stalled during clock mocking. Stopped the process and replaced only the dedicated test tab to remove the mock; focused checks passed afterwards. Cause remains unconfirmed; no new timer implementation changes and no full-assessment pass claimed. This needs separate investigation if timer/clock tests are revisited.
+## Completed plan
+- [x] Read requirements and complete the ordered project-refactor-checks stages with teacher agreement at each gate.
+- [x] Reproduce real dragging and related text/keyboard input issues; repair live state reads and focus preservation.
+- [x] Trace hints/repeats/storage; reproduce stale-tab history overwrite and distinguish it from revision eligibility.
+- [x] Implement exclusive profile editing, guarded switching/restoration, safe disposal and retry of the original requested name.
+- [x] Add independently selectable regression checks, run affected verification, update docs/log and handover.
 
-## Existing completed work
-Full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI migration; real-pointer home-card fix; responsive scale consolidation (440/768/1024, explicit inclusive mobile variant, intrinsic home gutters); pre-paint saved-theme restoration through shared logic. Earlier migration/136 responsive comparison/eight-theme/54 pointer-case evidence is retained in DEV_LOG.md. Those unchanged suites were not all repeated.
+## Findings and current behaviour
+- Dot gestures now read current service answers, including multiple interpolated moves within one event. Ordinary puzzle inputs remain mounted during typing. Space/arrow continuation retains focus on path dots.
+- The history overwrite predates migration: a stale tab could save its whole older profile over newer results. The new app permits one editable tab per profile; a competing tab shows the reason and Try again. Switching/restoring names respects ownership and drains outgoing file saves. Different profiles can use different tabs.
+- Hints still record eligible completed sets in history. Assisted questions do not supply independent revision evidence. The four-hour rule still excludes early repeats. The particular students' data-loss cause remains unconfirmed; no lost data was recovered.
 
-## Workspace and evidence
-Uncommitted and undeployed. Preserve pre-migration baseline 67c927a and unrelated work. Source preview is on 5173, built preview on 8765, dedicated test Chrome on 9227; check availability before use. live/ is a root preview build; the commit hook builds staged source with /starters.
+## Verification
+- Zero Svelte diagnostics; production build and whitespace checks pass.
+- Focused profile-lock, lifecycle/startup, framework and linked-file unit checks pass. Initial unchanged progress/repeat/subtopic checks also passed; full npm test was not repeated.
+- browser-interaction-regressions.mjs --puzzles and --profiles pass independently. The new checks are selected by changed code, not run for unrelated content/theme edits.
+- All 14 existing puzzle integration cases, the existing profile/backup browser suite, and browser-onedrive-go.mjs --files-only pass.
+- Temporary logs: /private/tmp/tlevel-regression-{build,tests}.log, tlevel-puzzle-integration.log, tlevel-profile-browser.log, tlevel-profile-files.log. Initial reproduction scripts are in /private/tmp/tlevel-reproduce-{drag,progress}.mjs.
 
-Latest disposable evidence: /private/tmp/tlevel-refresh-timing*.log, tlevel-dev-bank-check.log, tlevel-startup-build-tests.log, tlevel-startup-spacing-check.log, tlevel-toolbar-{build,layout,assessment}.log, tlevel-compact-header-final.log and tlevel-toolbar-fixed.png. Temporary measurement/layout harnesses are also in /private/tmp.
-
-## Separate pending work
-Physical Safari, screen readers and OneDrive syncing remain untested. Large client chunk remains. Earlier heading-focus/small-code findings, broad test-quality review and legacy fixture assumptions remain separate; the stalled clock test above is newly recorded evidence.
-
-## daisyUI guidance
-Use supported variants where appropriate, shared semantic classes and explicit component layouts. Avoid accumulating overrides that fight component defaults. The recent fixes use ordinary CSS, but repeated inherited-style conflicts exposed integration-check gaps; a complete daisyUI audit has not been performed or newly authorised.
+## Workspace and limits
+Changes are uncommitted and undeployed. live/ is now a root preview build; the commit hook builds staged output under /starters. Last used: production preview on 8765 and isolated Chrome on 9227 (/private/tmp/tlevel-regression-chrome); check availability next session. An earlier temporary 8766 mount was used only for the committed /starters baseline. Do not use a student/personal browser for these scripts: they clear test storage, and the focused regression harness closes test tabs.
+Web Locks requires HTTPS/localhost and a supporting browser. Unavailable ownership/unreadable storage blocks startup rather than allowing a destructive fallback. Close old-version tabs after an update; they cannot follow the new lock. No physical Safari, screen-reader or OneDrive desktop sync verification. Existing large-chunk warning remains. Prior unreproduced startup delay and stalled clock-mocking assessment fixture remain separate historical limitations; no new claim about either.
 
 ## Next action
-Session closed at the teacher's request; no pending requested code changes. Await feedback on compact header/toolbar and development refresh behaviour. If the loading pause persists, measure the user's browser/device with these changes; local timings did not reproduce multiple seconds. Commit/publish only when requested.
+Session closed at the teacher’s request. Requested work and documentation are complete; await review or new feedback. Commit/deploy only when requested. Source changes and generated hashed-asset additions/removals in live/ remain uncommitted. For further puzzle-host/control edits run --puzzles; for profile ownership/persistence edits run --profiles and the focused unit checks in docs/local-development.md. Reuse passing results when inputs are unchanged.

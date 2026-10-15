@@ -3,6 +3,7 @@
   import { onMount, tick, untrack } from 'svelte';
   import { puzzlePartHTML } from '#domain/puzzle-view.js';
   import { bindChallenges, disposeChallenges } from '#domain/challenge-controls.js';
+  import { challengeKinds } from '#domain/challenge-rules.js';
   import { esc } from '#domain/view-utils.js';
   let { q, set, attempt, results, app, href } = $props();
   let root;
@@ -12,24 +13,28 @@
       hintVisible = a.hints[q.slot] && !a.hiddenHints?.[q.slot];
     return q.parts
       .map((part, index) =>
-        puzzlePartHTML(part, a.answers[q.slot]?.[part.id] ?? '', {
-          instanceId: q.slot,
-          index,
-          locked: Boolean(a.finished),
-          result: results?.[index],
-          labelHTML: `<span class="part-label">${String.fromCharCode(97 + index)})</span> ${esc(part.prompt)} <span class="part-marks">(${part.marks})</span>`,
-          guidanceActionsHTML: go
-            ? `<button class="puzzle-link" data-hint="${q.slot}" aria-expanded="${Boolean(hintVisible)}">${hintVisible ? 'Hide hint' : 'Show hint'}</button> <a class="puzzle-link" href="${href('#go')}">Practice board</a>`
-            : '',
-          guidanceHTML:
-            go && hintVisible
-              ? `<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`
+        puzzlePartHTML(
+          part,
+          challengeKinds.includes(part.kind) ? (a.answers[q.slot]?.[part.id] ?? '') : '',
+          {
+            instanceId: q.slot,
+            index,
+            locked: Boolean(a.finished),
+            result: results?.[index],
+            labelHTML: `<span class="part-label">${String.fromCharCode(97 + index)})</span> ${esc(part.prompt)} <span class="part-marks">(${part.marks})</span>`,
+            guidanceActionsHTML: go
+              ? `<button class="puzzle-link" data-hint="${q.slot}" aria-expanded="${Boolean(hintVisible)}">${hintVisible ? 'Hide hint' : 'Show hint'}</button> <a class="puzzle-link" href="${href('#go')}">Practice board</a>`
               : '',
-          referenceHTML:
-            go && q.source
-              ? `<a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a>`
-              : '',
-        }),
+            guidanceHTML:
+              go && hintVisible
+                ? `<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`
+                : '',
+            referenceHTML:
+              go && q.source
+                ? `<a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a>`
+                : '',
+          },
+        ),
       )
       .join('');
   });
@@ -40,7 +45,7 @@
       bindChallenges(
         root,
         set,
-        attempt,
+        () => app.profile.data.active,
         async (slot, id, value, selector) => {
           app.practice.answer(slot, id, value);
           await tick();
@@ -53,6 +58,16 @@
         (slot) => app.practice.hint(slot, true),
       ),
     );
+  });
+  $effect(() => {
+    // Keep ordinary inputs mounted while typing; only board answers require new markup.
+    if (!html) return;
+    const answers = attempt.answers[q.slot] ?? {};
+    for (const input of root.querySelectorAll('[data-part]')) {
+      const value = answers[input.dataset.part] ?? '';
+      if (input.type === 'radio') input.checked = input.value === value;
+      else if (input.value !== value) input.value = value;
+    }
   });
   onMount(() => {
     const input = (event) => {
