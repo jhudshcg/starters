@@ -83,8 +83,13 @@
     >
   </p>{/if}
 {#if set.type === 3}<p class="esp-notice">
-    Each question is independent and designed for no more than 5 minutes. Scores cover automatic
-    checks only; written reasoning needs separate review. These are practice marks, not ESP grades.
+    Each question is independent and designed for no more than 5 minutes.
+    {#if set.questions.some((q) => q.review)}
+      Scores cover automatic checks only; written reasoning needs separate review.
+    {:else}
+      All answers in this activity are automatically marked.
+    {/if}
+    These are practice marks, not ESP grades.
   </p>{/if}
 {#if model.subtopic !== 'all'}<details class="subtopic-notice">
     <summary>In sequence questions info</summary>

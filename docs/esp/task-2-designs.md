@@ -1,5 +1,52 @@
 # Task 2 — testing and debugging starter designs
 
+## Agreed draft revision — 19 October 2026
+
+The teacher approved the direction in the [improvement brief](task_improvements.md) and the refinements below. This section governs the revised draft; the earlier recipes and first-release controls below remain reference material where compatible. The draft is implemented in `data/esp-task2.js`; classroom timing and teacher subject review remain pending.
+
+Each revised question centres on concise requirements and a short, readable Python function or block. State the input types, allowed values, return types and any calculation or rounding rules. Students connect test data, expected results, code behaviour, fault cause and correction within the same independent question.
+
+**19 October teacher refinement after reviewing the draft:** the initial tiny functions were too far from the supplied Task 2 code. Use representative function-sized extracts, retaining input prompts, validation flags, nested branches, conversion handlers, retry messages and return paths. Calculation examples should retain meaningful accumulation, intermediate values, conditional rates or summaries. This supersedes the earlier 12-line cap; the revised examples have 13–21 lines. Validation allows up to 30 non-blank, non-comment lines for these Task 2 investigations; ordinary Python challenges retain their existing limit. Do not pad a small expression with unrelated code. Keep one investigation focused on a few supplied tests, and keep the agreed automatic marking and runtime-only faults.
+
+The refinement was checked against the actual Python sources and matched task requirements, reusing the existing assessment/exemplar review. These are original teaching examples, not copies of whole assessment programs:
+
+| Revised examples | Supplied-code calibration |
+| --- | --- |
+| 36/0, 36/3, 38/1, 38/4 | Glenstar `get_target_weght`, `get_start_weight`, `calc_weightloss_rate_needed`; RBSX `get_check_investment_amount`: conversion inside an input loop, exception paths, bounds, stored/returned types |
+| 36/1, 36/4, 38/0, 38/3, 38/5 | RetailX `loyalty_card_check`; RBSX `get_check_client_ID`: validation flags, nested length/character checks, messages and termination |
+| 36/2, 38/2 | Glenstar `get_name`: input collection, validation, retry and returned name; whitespace/length rules are original requirements |
+| 36/5 | RetailX `get_platform`: displayed menu, string/integer comparisons, branches and returned selection |
+| 37/0–4 | RetailX `get_items`, `calculate_points`, `main`; Glenstar calculation functions: accumulated values, per-item conversion, rates, summaries, variable use and scope |
+| 37/5 | RBSX `savings_plan`: repeated calculation, loop limits and summary; the original hire-day rule avoids the source's monthly/annual ambiguity |
+
+Sources: the three Task 2 `.py` files under the RBSX SAM, RetailX AdSAM and summer 2026 Glenstar folders in the [resource map](../exam-resource-map.md). Matched requirements: RBSX booklet p4, RetailX pp4–5 and Glenstar p4. The scale, prices and contexts used here are instructional choices. Source syntax faults are excluded under the teacher's runtime-only requirement. Prompts, answer choices, repairs, hints and follow-up tests were revised with each function; supplied entry sequences now assess recovery and early termination as well as returned values.
+
+- Normally use two tests per function, described as `function_name: valid inputs` and `function_name: invalid inputs`. Each test contains an input suite, not one row per prediction example. Test-data columns contain values/sequences and category labels without repeating the function name. Cover normal valid values and valid boundaries; invalid suites may be longer, covering invalid boundaries, other invalid values of the correct type and incorrect types/formats. Use 3–5 inputs per group where the domain permits; do not duplicate values to fill a group with fewer valid possibilities.
+- Students select a bounded, labelled input suite for each test. Supplied prediction cases sit within the corresponding test and have separately marked expected/predicted results. The summary displays the student's selected suite, including incorrect selections; it identifies which results cover supplied cases and leaves other inputs pending testing. Calculation functions whose callers guarantee valid arguments have a valid-input test only; state that caller contract rather than inventing validation requirements.
+- Automatically mark substantive answers wherever possible, including diagnosis and correction. Prefer bounded choices and clearly specified numeric inputs; do not require teacher assessment of free prose to complete the task.
+- Use supplied inputs for code-prediction parts when tracking student-chosen data would complicate reliable automatic marking. Show the exact call or entry sequence. These supplied cases are separate from the student's test-data choices.
+- Expected-result dropdowns include a precise result and type/behaviour, plausible incorrect results and vague descriptions. Prediction dropdowns require students to trace the supplied Python, including exceptions or retry behaviour where relevant. Include at least as many incorrect options as correct ones.
+- Label a traced answer **Predicted result**. Explain that the exam test log's **Actual outcome** records what happened when the code ran. Do not present a student's prediction as an observed run.
+- Ask for the cause and suitable correction separately. Retain confirmation/regression practice and some passing cases. No in-browser Python execution is required for this draft.
+- Use neutral question titles and test-linked diagnosis headings such as “Test 1: cause and correction”. Prompts must not name the faulty line, check, variable or error type. Ask what explains the code's behaviour and which correction or next action is appropriate; do not imply every supplied test fails. This applies to all variations, including working code.
+- Cover range, length, presence, type and format checks, including natural combinations. Functions may have faults in either or both validation checks and elsewhere in the function. All new snippets must be syntactically valid: faults appear during execution as exceptions, incorrect results or incorrect behaviour. Include variable-name typos and scope errors; use separate tests where an earlier failure masks a later fault.
+- Keep requirements and code together, with clearly ordered answer sections and a compact summary using the five test-log columns. Give the code more width on desktop; preserve Python lines and indentation with keyboard-scrollable overflow on narrow screens. Stack requirements, code and labelled summary fields on narrow screens. The summary must preserve the distinction between a prediction and an actual observation.
+- Visually separate test-plan stages into labelled, bordered panels: Test data, Expected outcome, Predicted outcome, and Comments and actions. Give predicted outcomes a distinct theme-aware header tint. Keep each test's cause/correction pair together and preserve the original answer order; labels and borders must convey the structure without relying on colour alone.
+
+The first complete draft is recipe **T2.6 — Read Python and build a test plan**, with three independent questions and six coordinated variations each:
+
+| Slot | Coverage |
+| --- | --- |
+| 36 | Combined type/range, length/format, presence, conversion/return type, booking-code format, text/integer menu comparison |
+| 37 | Name typo, local scope, two incorrect calculation branches, numeric conversion, working code, incorrect iteration count |
+| 38 | Retry variable update, combined conversion/range faults, name typo after validation, local counter scope, combined bounds, initial flag skipping the loop |
+
+The teacher authorised retirement of slots 15–29 after transferring useful menu-comparison, iteration-count and skipped-loop cases. Retired questions retain their code access; new practice and search use the replacement. With one live recipe, New set selects a different coordinated variation. A recalled retired recipe falls back to current practice; an already active historical question remains accessible.
+
+Each independent question targets at most five minutes; larger test-data exercises may occupy a longer starter. The grouped draft has 6–11 bounded answer parts per question and needs classroom timing review. New substantive questions use unused slots rather than changing historical meanings. All draft answers are automatically marked; input choices are bounded, prediction cases supplied, and the optional test-plan summary displays student selections without claiming an observed run or successful repair. Subject approval and student timing remain separate from technical verification.
+
+## Earlier design and first release
+
 **27 September implementation update:** authorised first release implemented with native bounded controls and separately reviewed prose. The [activity evidence map](activity-evidence.md) records exact slots, coverage, refinements and verification limits; it supersedes earlier optional UI proposals.
 
 
@@ -148,6 +195,8 @@ The brief requires 4 per whole pound up to 500 and 2 thereafter. Test prices 499
 **Hint:** “Which test takes each branch, and what should that branch calculate?” **Feedback:** name the still-failing case, not the next token to enter. **Reveal:** requirements-to-tests table, corrected snippet and a concise evidence-based conclusion. **Transfer:** a larger independent debugging task using the real test-log template; students choose their own testing sequence and capture actual outputs.
 
 ## Reference verification and implementation limits
+
+The revised draft has permanent checks in `tests/esp-task2.test.js` and `tests/fixtures/esp-task2.py`: independently specified Python executions check the faulty and repaired snippets against the authored result choices. They also cover packed marking and historical-code access. `scripts/browser-esp-task2.mjs` checks the 18 variations through the shared UI; see [local development](../local-development.md) for commands and interaction limits. These checks do not establish classroom timing or subject approval.
 
 The worked numeric/code examples are checked by [validate-esp-designs.py](../../scripts/validate-esp-designs.py). It runs only our bounded reference snippets, never supplied interactive source or student text. Checks include exact boundary cases, leading-zero IDs, plausible harmful repairs, tier calculations, observation differences and valid schedule examples from Task1.
 

@@ -30,7 +30,27 @@
   }
 </script>
 
-{#if q.sheet}
+{#snippet python()}
+  <!-- svelte-ignore a11y_no_noninteractive_tabindex (Code panels remain keyboard-scrollable at high zoom.) -->
+  <pre class="code-panel" tabindex="0" role="region" aria-label="Python code"><code>{q.code}</code
+    ></pre>
+{/snippet}
+
+{#if q.requirements}
+  <div class="investigation-stimulus">
+    <section class="requirements">
+      <h3>Requirements</h3>
+      <ul>
+        {#each q.requirements as requirement}<li>{requirement}</li>{/each}
+      </ul>
+      <p class="muted">
+        Predict the supplied tests by reading the code. Each test starts a fresh call; no Python is
+        run here.
+      </p>
+    </section>
+    {@render python()}
+  </div>
+{:else if q.sheet}
   <div class="grid-wrap">
     <table class="puzzle-grid spreadsheet">
       <caption>{q.title} · spreadsheet extract</caption><thead
@@ -52,9 +72,7 @@
       review and receive no automatic credit.
     </p>
   </div>
-{:else if q.code}<!-- svelte-ignore a11y_no_noninteractive_tabindex (Code panels remain keyboard-scrollable at high zoom.) -->
-  <pre class="code-panel" tabindex="0" role="region" aria-label="Python code"><code>{q.code}</code
-    ></pre>
+{:else if q.code}{@render python()}
 {:else if q.grid}
   <div class="grid-wrap">
     <table class="puzzle-grid">

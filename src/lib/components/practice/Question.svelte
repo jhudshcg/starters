@@ -2,6 +2,7 @@
 <script>
   import { tick } from 'svelte';
   import Stimulus from './Stimulus.svelte';
+  import TestPlan from './TestPlan.svelte';
   import PuzzleParts from './PuzzleParts.svelte';
   import { hasRecentSubmission } from '#domain/review.js';
   import { markQuestion } from '#domain/marking.js';
@@ -23,6 +24,37 @@
   const matchCount = $derived(
     subtopic === 'all' ? 0 : q.parts.filter((p) => matchesSubtopic(p, subtopic)).length,
   );
+  const indexedParts = $derived(q.parts.map((part, j) => ({ part, j })));
+  const columnLabels = {
+    data: 'Test data',
+    expected: 'Expected outcome',
+    predicted: 'Predicted outcome',
+    actions: 'Comments and actions',
+  };
+  // Group only presentation; original part indexes still own labels and marking.
+  const investigationGroups = $derived.by(() => {
+    if (!q.testPlan) return [];
+    const columns = new Map();
+    for (const row of q.testPlan) {
+      columns.set(row.dataPart, 'data');
+      for (const supplied of row.cases) {
+        columns.set(supplied.expectedPart, 'expected');
+        columns.set(supplied.predictedPart, 'predicted');
+      }
+      for (const id of row.actionParts) columns.set(id, 'actions');
+    }
+    const groups = [];
+    for (const item of indexedParts) {
+      const column = columns.get(item.part.id) ?? 'data';
+      const previous = groups.at(-1);
+      if (previous?.column === column && previous.section === item.part.section) {
+        previous.items.push(item);
+      } else {
+        groups.push({ key: item.part.id, column, section: item.part.section, items: [item] });
+      }
+    }
+    return groups;
+  });
   function outcome(result) {
     return !result
       ? undefined
@@ -76,13 +108,21 @@
       <a href={q.source.url} target="_blank" rel="noopener noreferrer">Puzzle source</a>
       · {q.source.note}
     </p>{/if}
-  <div class="question-layout" class:no-stimulus={!q.code && !q.grid && !q.sheet && !q.clues}>
+  <div
+    class="question-layout"
+    class:investigation={Boolean(q.testPlan)}
+    class:no-stimulus={!q.code && !q.grid && !q.sheet && !q.clues}
+  >
     <Stimulus {q} />
     {#if set.type === 0}<PuzzleParts {q} {set} attempt={a} {results} {app} {href} />{:else}
-      <div class="parts">
-        {#each q.parts as part, j (part.id)}
+      {#snippet renderParts(items)}
+        {#each items as { part, j } (part.id)}
           {@const id = `answer-${q.slot}-${part.id}`}
           {@const result = results?.[j]}
+          {@const showSelectedText = (answers[part.id]?.length ?? 0) > 30}
+          {#if !q.testPlan && part.section && part.section !== q.parts[j - 1]?.section}
+            <h3 class="answer-section">{part.section}</h3>
+          {/if}
           {#snippet label()}{#if subtopic !== 'all' && matchesSubtopic(part, subtopic)}<span
                 class="subtopic-match">Selected subtopic · {subtopic}</span
               >
@@ -108,7 +148,33 @@
                 {result.earned}/{result.max} · {result.message}
               </p>{/if}
           {/snippet}
-          {#if part.options}
+          {#if part.control === 'select' && part.options}
+            <div class="part" data-result={outcome(result)}>
+              <label for={id}>{@render label()}</label>{@render code()}
+              <select
+                class="choice-field answer-select"
+                {id}
+                data-slot={q.slot}
+                data-part={part.id}
+                value={answers[part.id] ?? ''}
+                disabled={Boolean(a.finished)}
+                aria-describedby={[
+                  showSelectedText ? `${id}-selected` : '',
+                  result ? `feedback-${q.slot}-${j}` : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ') || undefined}
+                onchange={(e) => app.practice.answer(q.slot, part.id, e.currentTarget.value)}
+              >
+                <option value="">Choose an answer</option>
+                {#each part.options as option}<option value={option}>{option}</option>{/each}
+              </select>
+              {#if showSelectedText}
+                <p class="selected-answer" id={`${id}-selected`}>{answers[part.id]}</p>
+              {/if}
+              {@render feedback()}
+            </div>
+          {:else if part.options}
             <fieldset class="part" data-result={outcome(result)} disabled={Boolean(a.finished)}>
               <legend>{@render label()}</legend>{@render code()}
               <div class="options">
@@ -145,9 +211,29 @@
             </div>
           {/if}
         {/each}
+      {/snippet}
+      <div class="parts" class:investigation-parts={Boolean(q.testPlan)}>
+        {#if q.testPlan}
+          {#each investigationGroups as group (group.key)}
+            <section
+              class="investigation-group"
+              data-column={group.column}
+              aria-labelledby={`group-${q.slot}-${group.key}`}
+            >
+              <header>
+                <p class="test-plan-column">{columnLabels[group.column]}</p>
+                <h3 id={`group-${q.slot}-${group.key}`}>{group.section}</h3>
+              </header>
+              <div class="investigation-group-parts">{@render renderParts(group.items)}</div>
+            </section>
+          {/each}
+        {:else}
+          {@render renderParts(indexedParts)}
+        {/if}
       </div>
     {/if}
   </div>
+  {#if q.testPlan}<TestPlan rows={q.testPlan} {answers} />{/if}
   {#if q.review}<section class="esp-review">
       <h3>Written reasoning · separate review</h3>
       <label for={`review-${q.slot}`}>{q.review.prompt}</label><textarea

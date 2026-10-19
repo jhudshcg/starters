@@ -49,6 +49,7 @@ The pre-commit hook still builds an isolated staged-source snapshot, checks the 
 Run `npm run check` for framework diagnostics and select tests from the change. Use focused lifecycle/profile tests for service changes and build/staged-build tests for packaging changes. Reserve `npm test` for changes whose wider impact is not covered by those selections; it includes deterministic packing/static output and lifecycle cleanup. Browser scripts run serially against the dedicated Chrome profile; do not rebuild during a browser run.
 
 - `browser-assessment.mjs`: ESP formula/written review, mobile card edges and timer expiry after reload. `--layout-only` selects toolbar spacing, selector sizing, mobile edges and submission.
+- `browser-esp-task2.mjs`: all 18 revised investigations, native select change events, response-derived summaries, marking/reveal, submitted reload, narrow layouts and retired-code navigation.
 - `browser-home-cards.mjs`: real pointer hits across each card, pressed-state hit geometry, keyboard activation and Back at mobile/desktop widths.
 - `browser-migration.mjs`: representative routes, eight themes, mobile shell, recall, guarded edits, submission, old links and Go.
 - `browser-navigation.mjs`: detailed Back/Forward, picker/expiry/subsection recall, projects, FAQ and search history.

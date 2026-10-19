@@ -3,6 +3,7 @@
     focuses,
     focusNames,
     espRecipeNames,
+    espRecipes,
     examSubtopics,
     availableChallenges,
     challengeLevels,
@@ -28,8 +29,13 @@
         id="esp-recipe"
         value={set.questions[0].recipe}
         onchange={(e) => practice.select(3, e.currentTarget.value, 'recipe')}
-        >{#each Object.entries(espRecipeNames).filter( ([key]) => key.startsWith(set.focus === 'task1' ? 'T1.' : 'T2.') ) as [key, label]}<option
-            value={key}>{label}</option
+        >{#if !espRecipes(set.focus).includes(set.questions[0].recipe)}
+          <option value={set.questions[0].recipe} disabled
+            >{espRecipeNames[set.questions[0].recipe]} (retired)</option
+          >
+        {/if}
+        {#each espRecipes(set.focus) as recipe}<option value={recipe}
+            >{espRecipeNames[recipe]}</option
           >{/each}</select
       ></span
     >{/if}

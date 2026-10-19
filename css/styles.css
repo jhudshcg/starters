@@ -453,6 +453,133 @@ main:focus {
   grid-template-columns: 1fr;
 }
 
+/* Task 2 investigations retain one answer sequence and a response-only log draft. */
+.question-layout.investigation {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.investigation-stimulus {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 1.5rem;
+}
+
+.investigation-stimulus .code-panel {
+  min-width: 0;
+  white-space: pre;
+  overflow-wrap: normal;
+}
+
+.requirements h3, .answer-section, .test-plan-row h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.requirements ul {
+  padding-left: 1.3rem;
+}
+
+.requirements li + li {
+  margin-top: .5rem;
+}
+
+.answer-section {
+  border-top: 1px solid var(--control-border);
+  padding-top: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.parts.investigation-parts {
+  gap: 1.5rem;
+}
+
+.investigation-group {
+  min-width: 0;
+  border: 1px solid var(--control-border);
+  border-radius: 12px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.investigation-group > header {
+  padding: 1rem;
+  background: var(--surface-soft);
+  border-bottom: 1px solid var(--control-border);
+}
+
+.investigation-group[data-column=predicted] > header {
+  background: var(--accent-bg);
+  color: var(--accent-text);
+}
+
+.test-plan-column {
+  margin: 0 0 .4rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+}
+
+.investigation-group h3 {
+  margin: 0;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.investigation-group-parts {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1rem;
+}
+
+.answer-select {
+  width: 100%;
+  max-width: 42rem;
+  min-width: 0;
+  min-height: 44px;
+}
+
+.selected-answer {
+  margin: .35rem 0 0;
+  overflow-wrap: anywhere;
+  font-size: .9rem;
+}
+
+.test-plan {
+  margin-top: 1.5rem;
+}
+
+.test-plan summary {
+  cursor: pointer;
+  padding: .65rem 0;
+  min-height: 44px;
+  font-weight: 600;
+}
+
+.test-plan-row {
+  border-top: 1px solid var(--control-border);
+  padding-top: 1rem;
+}
+
+.test-plan-row dl {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.test-plan-row dt {
+  font-weight: 600;
+}
+
+.test-plan-row dd {
+  margin: .4rem 0 0;
+}
+
+.test-plan-row ul {
+  padding-left: 1rem;
+}
+
 .code-panel {
   background: var(--code-bg);
   color: var(--code-text);
@@ -2655,6 +2782,14 @@ footer>span:last-child {
 }
 
 @variant max-viewport-large {
+  .test-plan-row dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .investigation-stimulus {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .question-layout {
     grid-template-columns: 1fr;
   }

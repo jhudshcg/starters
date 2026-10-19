@@ -24,10 +24,13 @@ Object.assign(focusNames, {"CA1.1": "CA1.1 · Computational thinking", "CA1.2": 
 Object.assign(focusNames, {"logic grids": "Logic grids", "logic equations": "Logic equations", "tangrams": "Tangram silhouettes", "cover paths": "Cover every dot", "sudoku": "Sudoku", "number constraints": "Arithmetic cages", "sequences": "Sequences", "classic maths": "Classic maths"});
 export const espRecipeNames={'T1.1':'Build a feasible schedule','T1.2':'Calculate costs and forecasts','T1.2F':'Excel · Costs and copied formulas','T1.3':'Adapt to constraints','T1.4':'Justify planning decisions','T1.5':'Reconcile the plan','T1.5F':'Excel · Forecasts and reconciliation','T2.1':'Choose tests that expose faults','T2.2':'Derive expected results','T2.3':'Repair and retest','T2.4':'Complete the test log','T2.5':'Investigate independently'};
 export const challengeLevels = {all:'Mixed challenge',beginner:'Beginner',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
+espRecipeNames['T2.6'] = 'Read Python and build a test plan';
 export const challengeLabel = (level,focus) => focus==='go'?({all:'Mixed challenge',beginner:'Beginner · 25k+',foundation:'Foundation · 18–24k',standard:'Standard · 12–17k',stretch:'Stretch · 11k and stronger'}[level]??challengeLevels[level]):challengeLevels[level];
 export const puzzlePool = (focus, level='all', topic='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level)&&(topic==='all'||q.tags.includes(`maths:${topic}`)));
 export const availableChallenges = (focus,topic='all') => Object.keys(challengeLevels).filter(level=>puzzlePool(focus,level,topic).length>=3);
 export const focuses = type => [...new Set(banks[type].filter(q=>!q.retired).map(q => q.focus))];
+/** Live recipe IDs for selectors; historical names remain available for old codes. */
+export const espRecipes = focus => [...new Set(banks[3].filter(q=>q.focus===focus&&!q.retired).map(q=>q.recipe))];
 export const examSubtopics = focus => subtopicOptions(banks[1],focus);
 // Sequence only through selectable references, so every step has bank coverage.
 export function nextExamSubtopic(focus, reference='all') {
@@ -115,15 +118,22 @@ export function hasAlternativeExamSet(set,subtopic='all') {
 }
 export function choose(type, focus, previous = null, mode = 'new', challengeLevel = 'all', subtopic = 'all') {
   if(type===3){
-    const pool=banks[3].filter(q=>q.focus===focus&&!q.retired&&(subtopic==='all'||q.recipe===subtopic));
+    // A recalled retired recipe falls back to current practice; its code still resolves.
+    const retiredRecipe = subtopic !== 'all' && !espRecipes(focus).includes(subtopic) &&
+      banks[3].some(q=>q.focus===focus&&q.recipe===subtopic&&q.retired);
+    const pool=banks[3].filter(q=>q.focus===focus&&!q.retired&&(subtopic==='all'||retiredRecipe||q.recipe===subtopic));
     let group;
     if(mode==='permutation'&&previous)group=previous.entries.map(e=>banks[3].find(q=>q.slot===e.slot));
     else {
-      const recipes=[...new Set(pool.map(q=>q.recipe))].filter(r=>!previous||r!==previous.questions?.[0]?.recipe);
+      const available=[...new Set(pool.map(q=>q.recipe))];
+      const alternatives=available.filter(r=>!previous||r!==previous.questions?.[0]?.recipe);
+      const recipes=alternatives.length?alternatives:available;
       if(!recipes.length)throw Error('Choose another recipe or a new permutation.');
       const recipe=pick(recipes);group=pool.filter(q=>q.recipe===recipe);
     }
-    const variations=group[0].variations.map((_,i)=>i).filter(i=>mode!=='permutation'||i!==previous.entries[0].variation);
+    const sameRecipe=previous?.questions?.[0]?.recipe===group[0].recipe;
+    const variations=group[0].variations.map((_,i)=>i).filter(i=>!sameRecipe||i!==previous.entries[0].variation);
+    if(!variations.length)throw Error('No other variation is available. Choose another activity.');
     const variation=pick(variations);
     return resolve({version:BANK_VERSION,type,entries:group.map(q=>({slot:q.slot,variation})),minutes:previous?.minutes??null});
   }
@@ -171,7 +181,9 @@ export function validateBank() {
       if(q.variations.length<(q.fixed?1:type===1?2:5) || q.variations.length>8) errors.push(`${q.title}: variation count`);
       for(const [i,v] of q.variations.entries()) {
         if(!v.prompt || !v.hint) errors.push(`${q.title}: missing prompt or hint`);
-        if(v.code && v.code.split('\n').filter(l=>l.trim()&&!l.trim().startsWith('#')).length>12) errors.push(`${q.title}: too many lines`);
+        // Task 2 investigations retain the surrounding input/calculation workflow.
+        const codeLimit=type===3&&q.focus==='task2'&&v.testPlan?30:12;
+        if(v.code && v.code.split('\n').filter(l=>l.trim()&&!l.trim().startsWith('#')).length>codeLimit) errors.push(`${q.title}: too many lines`);
         v.parts.forEach((p,j)=>{
           if(!Number.isInteger(p.marks)||p.marks<1||p.marks>3) errors.push(`${q.title}: invalid marks`);
           if(p.kind==='algebra' && (!Array.isArray(p.variables)||!p.variables.length||p.variables.some(v=>!/^[a-z]$/.test(v))||!['equivalent','simplified','expanded','factorised','rearranged'].includes(p.algebraForm)||!Number.isInteger(p.equivalentMarks)||p.equivalentMarks<0||p.equivalentMarks>=p.marks)) errors.push(`${q.title}: invalid algebra marking policy`);

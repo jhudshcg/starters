@@ -1,5 +1,11 @@
 # Task 1/2 activity evidence and implementation
 
+The [agreed 19 October Task 2 revision](task-2-designs.md#agreed-draft-revision--19-october-2026) is implemented in slots 36–38, with six variations each. It uses the requirement-led testing, precise data/results and repair/retest evidence mapped below, including the A/E comparisons of boundary coverage and variable/type faults. It adds code tracing, combined checks, name/scope faults and fully marked diagnosis/correction choices. Slots 15–29 are retired from selection with code access retained. The first-release implementation and checks below are historical evidence, not verification of the revision. Its automatic-marking requirements supersede reliance on separately reviewed prose for substantive Task 2 answers; current verification is recorded in the 19 October development log.
+
+The teacher's subsequent 19 October refinement replaces the tiny draft functions with 13–21-line examples calibrated against the actual supplied RBSX, RetailX and Glenstar code. Input loops, nested checks, messages, intermediate calculations and summaries remain visible. The [current design](task-2-designs.md#agreed-draft-revision--19-october-2026) maps these structures to the source functions and matched requirements.
+
+The corrected test-plan structure groups input suites by function and validity, normally two tests, with supplied prediction cases inside each group. Invalid suites can exceed valid suites in length. Descriptions name the function; test data contains values/sequences and labels. All input suites are checked against independently repaired Python, alongside expectation/prediction and marking checks. See the current design for caller-validated calculation exceptions and the development log for results.
+
 27 September 2026. Authorised scope: five recipes per task, three independent multipart questions per recipe, five variations per question (30 templates / 150 variations). Source paths are in the [register](conversion-register.md); [distillation](assessment-distilled.md) preserves the teaching conclusions and source conflicts. This is original practice, not copied assessment material or a grade predictor.
 
 ## Family-to-evidence map

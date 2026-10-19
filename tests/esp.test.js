@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import esp from '../data/esp.js';
-import {choose,resolve} from '../js/bank.js';
+import {choose,resolve,espRecipes} from '../js/bank.js';
 import {encode,decode,questionCode,parseQuestionCode,BANK_VERSION} from '../js/codes.js';
 import {markQuestion} from '../js/marking.js';
 import {packBank} from '../scripts/pack-bank.mjs';
@@ -14,7 +14,8 @@ test('ESP codes, recipe selection and coordinated permutations preserve complete
  for(const focus of ['task1','task2'])for(let i=0;i<30;i++){
   const a=choose(3,focus),b=choose(3,focus,a),c=choose(3,focus,a,'permutation');
   assert.equal(a.questions.length,3);assert.equal(new Set(a.questions.map(q=>q.recipe)).size,1);
-  assert.notEqual(a.questions[0].recipe,b.questions[0].recipe);
+  if(espRecipes(focus).length>1)assert.notEqual(a.questions[0].recipe,b.questions[0].recipe);
+  else assert.notEqual(a.entries[0].variation,b.entries[0].variation);
   assert.deepEqual(a.entries.map(e=>e.slot),c.entries.map(e=>e.slot));
   assert.equal(new Set(c.entries.map(e=>e.variation)).size,1);
   assert.notEqual(a.entries[0].variation,c.entries[0].variation);
@@ -29,7 +30,7 @@ test('ESP codes, recipe selection and coordinated permutations preserve complete
 test('all ESP choices reject alternatives, models survive packing, prose never contributes automatic marks',()=>{
  const packed=packBank(esp);
  for(const [i,q] of esp.entries())for(const [j,v] of q.variations.entries()){
-  assert.ok(q.estimatedMinutes<=5);assert.equal(q.variations.length,5);
+  assert.ok(q.estimatedMinutes<=5);assert.ok(q.variations.length>=5&&q.variations.length<=8);
   const answers=Object.fromEntries(v.parts.map(p=>[p.id,p.answer]));
   assert.ok(markQuestion(packed[i].variations[j],answers).every(r=>r.earned===r.max));
   for(const p of v.parts){
@@ -44,7 +45,8 @@ test('all ESP choices reject alternatives, models survive packing, prose never c
 });
 
 test('original Python faults and repairs are checked with the Python interpreter, including boundaries and retries',()=>{
- const snippets=esp.slice(15).flatMap(q=>q.variations.filter(v=>v.code).map(v=>v.code));
+ // This dispatcher validates the historical examples; the revised draft has an independent fixture.
+ const snippets=esp.filter(q=>q.slot>=15&&q.slot<=29).flatMap(q=>q.variations.filter(v=>v.code).map(v=>v.code));
  const code=String.raw`
 import json,sys,math
 sources=json.load(sys.stdin)

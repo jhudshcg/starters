@@ -40,10 +40,19 @@ export function activityModel(set, a, data) {
   const sameFocusAlternatives =
     set.type === 1
       ? hasAlternativeExamSet(set, subtopic)
-      : (set.type === 0
-          ? puzzlePool(set.focus, level, mathsTopic)
-          : banks[set.type].filter((q) => q.focus === set.focus && !q.retired)
-        ).length > set.questions.length;
+      : set.type === 3
+        ? banks[3].some(
+            (q) =>
+              q.focus === set.focus &&
+              !q.retired &&
+              (q.recipe !== set.questions[0]?.recipe ||
+                q.variations.length > 1 ||
+                set.questions.length === 1),
+          )
+        : (set.type === 0
+            ? puzzlePool(set.focus, level, mathsTopic)
+            : banks[set.type].filter((q) => q.focus === set.focus && !q.retired)
+          ).length > set.questions.length;
 
   return {
     level,

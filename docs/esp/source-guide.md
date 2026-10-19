@@ -2,6 +2,8 @@
 
 Updated 13 October 2026. Task 1/2 practice, including six Excel-formula questions, is implemented. Teacher subject review and classroom timing remain pending. See the [implementation record](../../DEV_LOG.md#2026-09-28--reconcile-readme-and-current-status) for completed verification and [planned work](../planned-work.md) for remaining tasks. Read the [distilled assessment conclusions](assessment-distilled.md), [close-reading ledger](close-reading-ledger.md) and [activity evidence map](activity-evidence.md) before reopening full sources.
 
+19 October Task 2 update: the [revised draft](task-2-designs.md#agreed-draft-revision--19-october-2026) replaces normal selection of the old Task 2 questions with 18 Python investigations in slots 36–38. Old codes remain available. Current verification and remaining review work are recorded in checkpoint.md and DEV_LOG.md.
+
 | Work | Read first | Open next only as needed |
 | --- | --- | --- |
 | Resume the programme | [Current checkpoint](../../checkpoint.md), with [ESP development history](../../DEV_LOG.md#2026-09-28--reconcile-readme-and-current-status) | Outstanding step and its named files |
@@ -9,7 +11,7 @@ Updated 13 October 2026. Task 1/2 practice, including six Excel-formula question
 | Review assessment expectations | [Repeatable review process](review-process.md) | [Saved evidence review](evidence-review.md), then specific source pages |
 | Discuss starter coverage and marking | [Activity designs](activity-designs.md) | Relevant task detail below |
 | Design Task 1 practice | [Task 1 designs](task-1-designs.md), [formula-set outline](task-1-formula-outline.md) | Planning/rationale evidence and relevant workbook cells |
-| Design Task 2 practice | [Task 2 designs](task-2-designs.md) | Requirements, test-log template and bounded source code |
+| Design Task 2 practice | [Task 2 designs and agreed 19 October revision](task-2-designs.md), [teacher improvement brief](task_improvements.md) | Requirements, test-log template and bounded source code |
 | Design Tasks 3–4b practice | [Updated design review](tasks-3-4-design-review.md), [editor comparison](flowchart-editor-comparison.md), [activity designs](activity-designs.md) | Their sections in the evidence review |
 
 There are 36 PDF/DOCX conversions and five workbook exports. Markdown is the normal entry point; inspect linked table/figure images when layout, diagrams or visual evidence matter. Workbook guides link exact formulas, cached values, cell data, styled HTML and retained XML. Cached results are not freshly recalculated. See the register for fidelity limits and checks; do not repeat unchanged conversions.

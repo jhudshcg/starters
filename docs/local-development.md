@@ -44,6 +44,7 @@ Reuse completed checks for unchanged inputs. Run focused checks after a coherent
 | Build, packing or hosting | Production-build and pre-commit tests; subpath preview including direct routes, banks and engine assets |
 | Python tasks/hints | Python sequence/readability checks, then content coverage/codes/validation/build |
 | Python topic guides | `tests/discovery-guide.test.js`; build, then `browser-python-guides.mjs` |
+| ESP Task 2 content, dropdowns or retirement | `node --test tests/esp.test.js tests/esp-task2.test.js tests/search.test.js tests/code-compatibility.test.js tests/packed-bank.test.js`; update code metadata before compatibility checks; build, then `node scripts/browser-esp-task2.mjs` |
 | Portable puzzle rules/content or API | Affected package tests; package browser fixture for standalone controls; packed-bank/algebra/code checks when answer/data contracts change; production integration for shared rendering/bindings |
 | Puzzle host rendering, gestures or input focus | Build once; `node scripts/browser-interaction-regressions.mjs --puzzles`; use `browser-puzzle-integration.mjs` when shared bindings/rendering affect other puzzle kinds |
 | Profile ownership or persistence lifecycle | `node --test tests/profile-lock.test.js tests/application-lifecycle.test.js tests/framework-session.test.js`; build once, then `node scripts/browser-interaction-regressions.mjs --profiles`; add backup/file checks only when their paths change |
@@ -53,6 +54,8 @@ Reuse completed checks for unchanged inputs. Run focused checks after a coherent
 | Documentation only | Changed local links and whitespace; no app rebuild |
 
 The interaction regression script accepts `--puzzles` and `--profiles` independently; omitting both runs both. It uses real browser input and closes the dedicated test tabs. These checks are not added to every development command or unrelated content/theme work. Reuse passing results while their source/build inputs are unchanged. Neither the focused checks nor a documentation edit calls for a full test-suite rerun.
+
+The Task 2 tests execute independent faulty/corrected Python cases using Python 3, checking input sequences, exceptions, returned values, printed summaries and the validity of every input in the selectable answer suites. The browser check covers all 18 variations, valid/invalid test groups, selected-data summaries (including wrong choices), values-only test data, stage grouping, header contrast in all eight default themes, saved submitted answers, marking/reveal, preserved Python lines, keyboard code scrolling, narrow layouts and retired-code navigation. It dispatches native select change events; it does not verify keyboard operation of the operating system's popup. `--screenshots` saves desktop/mobile examples in `/private/tmp`.
 
 The [puzzle library](../packages/puzzles/README.md) is ordinary source, not a submodule. `npm test` includes its portable checks. `browser-puzzle-player.mjs` builds a package-only temporary fixture; the production integration checks parent-owned answers/submission. Preserve the library's extraction and disposal contracts.
 
