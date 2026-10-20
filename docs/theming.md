@@ -72,4 +72,8 @@ Question-page cards at widths ≤440px use `--card-mobile-border-image` for thei
 
 `src/lib/styles/app.css` imports Tailwind and selected daisyUI component foundations without Preflight or default daisyUI themes. `controls.css` composes semantic classes with `@apply`; `theme-mapping.css` is the single bridge from existing tokens to daisyUI roles. Continue editing palette values in `css/tokens.css`.
 
-`src/lib/theme/preferences.js` owns stored preferences and adjustments; `ThemeControls.svelte` renders them through a Bits UI popover and native range inputs. `js/theme.js` retains palette names only. Tokens stay on the root so dialogs/popovers in portals inherit the active palette. Do not reintroduce a second theme initializer or per-component colour literals.
+`src/lib/theme/preferences.js` owns stored preferences and adjustments; `ThemeControls.svelte` renders them through a Bits UI popover and native range inputs. `js/theme.js` supplies palette names and the shared restoration function. Tokens stay on the root so dialogs/popovers in portals inherit the active palette. Do not reintroduce a second theme initializer or per-component colour literals.
+
+## Python editor preview
+
+The [PyScript trial](../prototypes/pyscript/README.md#theme-integration) imports these tokens and the existing preference controller. Editor backgrounds, gutters and plain code use `--code-*`. Shared `--code-keyword`, `--code-string`, `--code-number` and `--code-function` tokens retain distinct syntax hues with a 12% code-text tint and the shared saturation adjustment. Region fills derive from code and accent colours; active regions use the shared selection pair. Its Theme selector previews all eight presets without defining a separate palette. The adapter removes PyScript's secondary hover play button; Run code and its keyboard shortcut remain available. The new syntax tokens currently serve the standalone preview; production question components are unchanged.

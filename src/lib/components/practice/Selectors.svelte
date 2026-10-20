@@ -73,6 +73,17 @@
           value={key}>{label}</option
         >{/each}</select
     >{/if}
+  {#if set.type === 2 && set.questions.some((q) => q.livePython)}<label for="python-challenge"
+      >Challenge</label
+    ><select
+      class="choice-field"
+      id="python-challenge"
+      value={a.pythonLevel ?? 'foundation'}
+      disabled={Boolean(a.finished || a.pythonSubmission)}
+      onchange={(e) => practice.pythonLevel(e.currentTarget.value)}
+      >{#each Object.entries(challengeLevels) as [value, label]}<option {value}>{label}</option
+        >{/each}</select
+    >{/if}
   {#if set.type === 0}<label for="challenge-level">Challenge</label><select
       class="choice-field"
       id="challenge-level"

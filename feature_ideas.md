@@ -37,3 +37,5 @@ Candidates for later adoption, not new implementation commitments:
 - Per-check input-hash caching and a conservative change-to-check map for verification; retain successful unchanged evidence and rerun failures only after fixes. See [local development](docs/local-development.md#select-checks-from-the-change).
 
 The requested OneDrive linked-file saving, Go practice board, responsive puzzle sizing and optional Python topic guides are now implemented. A Go computer opponent remains a separate idea; the imported GNU Go engine supplies estimates only.
+
+20 October teacher ideas: reuse the existing practice challenge levels to choose suitable live-Python editing defaults and replacement-choice availability; showing a question hint can offer replacement choices, then hiding it restores the question's default mode. Keep edits and assistance records. See [Python requirements](docs/spec-python.md#live-coding-pilot--adopted-direction-20-october-2026) for the adopted direction and unresolved switching details. The requested revealable Getting started guidance and Easy/Medium/Harder ratings for independent projects are now implemented.

@@ -74,6 +74,11 @@
   --code-bg-raw: #182f2b;
   --code-text-raw: #edf5e7;
   --code-muted-raw: #d3dfd8;
+  /* Distinct syntax roles retain their hues across page palettes. */
+  --code-keyword-raw: #dfb4ff;
+  --code-string-raw: #a8dfad;
+  --code-number-raw: #ffd18c;
+  --code-function-raw: #9bd7ff;
   --on-code-error-raw: #ffdad6;
   --art-shadow-raw: rgb(255 255 255 / 50%);
 
@@ -302,6 +307,14 @@
   --code-bg: var(--code-bg-raw);
   --code-text: var(--code-text-raw);
   --code-muted: var(--code-muted-raw);
+  --code-keyword-base: var(--code-keyword-raw);
+  --code-string-base: var(--code-string-raw);
+  --code-number-base: var(--code-number-raw);
+  --code-function-base: var(--code-function-raw);
+  --code-keyword: var(--code-keyword-base);
+  --code-string: var(--code-string-base);
+  --code-number: var(--code-number-base);
+  --code-function: var(--code-function-base);
   --on-code-error: var(--on-code-error-raw);
   --art-shadow: var(--art-shadow-raw);
   --page-glow-base: var(--page-glow-base-raw);
@@ -311,6 +324,11 @@
    Amber gets the smallest contribution so it never suggests correctness. */
 @supports (color: color-mix(in oklab, red, blue)) {
   :where(:root,.theme-swatch) {
+    /* A small code-text tint preserves distinct syntax hues. */
+    --code-keyword: color-mix(in oklab, var(--code-keyword-base) 88%, var(--code-text));
+    --code-string: color-mix(in oklab, var(--code-string-base) 88%, var(--code-text));
+    --code-number: color-mix(in oklab, var(--code-number-base) 88%, var(--code-text));
+    --code-function: color-mix(in oklab, var(--code-function-base) 88%, var(--code-text));
     --priority-red-bg: color-mix(in oklab, var(--incorrect-base) 90%, var(--main));
     --priority-red-border: color-mix(in oklab, var(--incorrect-border-base) 90%, var(--main));
     --priority-amber-bg: color-mix(in oklab, var(--selection-base) 90%, var(--main));
@@ -365,6 +383,10 @@
     --warning-bg: hsl(from var(--warning-bg-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --warning-border: hsl(from var(--warning-border-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --warning-text: hsl(from var(--warning-text-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --code-keyword-base: hsl(from var(--code-keyword-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --code-string-base: hsl(from var(--code-string-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --code-number-base: hsl(from var(--code-number-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --code-function-base: hsl(from var(--code-function-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --code-bg: hsl(from var(--code-bg-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --code-text: hsl(from var(--code-text-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --code-muted: hsl(from var(--code-muted-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);

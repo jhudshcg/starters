@@ -4,6 +4,7 @@
   import { beforeNavigate, afterNavigate, goto, snapshot } from '$app/navigation';
   import { page } from '$app/state';
   import { resolve } from '$app/paths';
+  import { loadPython } from '#domain/live-python.js';
   import { createApplication } from '#lib/application/session.js';
   import { routeURL, routeHash } from '#lib/application/routes.js';
   import Header from './ui/Header.svelte';
@@ -118,7 +119,12 @@
       });
   });
   onMount(() => {
-    app = createApplication({ navigation, focus, scriptURL: import.meta.url });
+    app = createApplication({
+      navigation,
+      focus,
+      scriptURL: import.meta.url,
+      pythonLoader: () => loadPython(`${base}/python/`),
+    });
     const unsubscribe = app.subscribe((value) => {
       view = value;
     });

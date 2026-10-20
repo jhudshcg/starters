@@ -4,11 +4,13 @@
  * Used by: submission, review and validation. Uses: package evaluator and app decoders.
  * Libs: none directly.
  */
+import {pythonResults} from './live-python.js';
 import {markExcel} from './excel-answer.js';
 import {markingPart,playTree} from './packed-data.js';
 import {sameCode} from './code-answer.js';
 import {markPart} from '../packages/puzzles/evaluation.js';
-export function markQuestion(question, answers={}) {
+export function markQuestion(question, answers={}, execution) {
+ if(question.livePython)return pythonResults(question,answers,execution);
  const results=[];
  for(const publicPart of question.parts){
   const p=markingPart(publicPart),raw=answers[p.id]??'',value=String(raw).trim().replace(/\s+/g,' ');

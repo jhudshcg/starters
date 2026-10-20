@@ -312757,6 +312757,206 @@
       "focus": "sorting",
       "marks": 6
     },
+    "2:73:0": {
+      "fingerprint": "4160e96fb34ec2857acf5f2adf181cc4d405b6dbb87b991196dd41c0e866d103",
+      "focus": "iteration",
+      "marks": 6
+    },
+    "2:73:1": {
+      "fingerprint": "93e50df5d5da146c89d1b54fedd8272081e6e9dc154fdf2329fd3952fa5b58eb",
+      "focus": "iteration",
+      "marks": 6
+    },
+    "2:73:2": {
+      "fingerprint": "90075680383160aa14780a80ce786fdd65025b89aa6c4f9b490281a75fcf8c42",
+      "focus": "iteration",
+      "marks": 6
+    },
+    "2:73:3": {
+      "fingerprint": "9886bed881fc608d5af8b21773325ce06ec687c1e7ab328ae7592ea14bf7fb8f",
+      "focus": "iteration",
+      "marks": 6
+    },
+    "2:73:4": {
+      "fingerprint": "5dcca49aa566255cfe991eb1b69cb57ecf7a7963df659bcf4531f909cb67906e",
+      "focus": "iteration",
+      "marks": 6
+    },
+    "2:74:0": {
+      "fingerprint": "09c79ed8b30535c278a1d9781ce7d5cebc886107162a37c8ebd8d8a95c0929f5",
+      "focus": "selection",
+      "marks": 6
+    },
+    "2:74:1": {
+      "fingerprint": "1264f2e6c31ceeafeef8db22213ce448e7bb13f92f39f503357e9cf989e4e296",
+      "focus": "selection",
+      "marks": 6
+    },
+    "2:74:2": {
+      "fingerprint": "602071ef026333ba74bc445245fe9ea9c6acf3f88bba7234d5903730c7828e94",
+      "focus": "selection",
+      "marks": 6
+    },
+    "2:74:3": {
+      "fingerprint": "abdd812ca0145bc057d0ee1d3839273c0ce0c24bff1ae42c136d6db139398915",
+      "focus": "selection",
+      "marks": 6
+    },
+    "2:74:4": {
+      "fingerprint": "90d555ff6196d44ef6c02fc3c30bfff911eb58ce5aa5c2d3173d96d7de14dd11",
+      "focus": "selection",
+      "marks": 6
+    },
+    "2:75:0": {
+      "fingerprint": "5e2202d5ac7405e67ad8e93c6df5156f5f1b626c4917881b27a3a45ceea39eaf",
+      "focus": "functions",
+      "marks": 6
+    },
+    "2:75:1": {
+      "fingerprint": "16ef8e7c0835694c90857186a277da6378070293b588ae97f1a4c5f111cf2118",
+      "focus": "functions",
+      "marks": 6
+    },
+    "2:75:2": {
+      "fingerprint": "79801f29ac9266424265505fcba57befff22a33fe59001cb0830ec4fd4061f1d",
+      "focus": "functions",
+      "marks": 6
+    },
+    "2:75:3": {
+      "fingerprint": "e4ca64eee3e03427cc58d9069a53f685ca621f080aa60216130e9b9da9ebd738",
+      "focus": "functions",
+      "marks": 6
+    },
+    "2:75:4": {
+      "fingerprint": "378a44ec18a9103f6e8434a79b4d1a2d7b475dd088a4e877afa3c5b6cf779065",
+      "focus": "functions",
+      "marks": 6
+    },
+    "2:76:0": {
+      "fingerprint": "3bff2d277fdacae1e6469c27a22a4fcf3606fbbfdfedf332475aaefc5a2439a6",
+      "focus": "strings",
+      "marks": 6
+    },
+    "2:76:1": {
+      "fingerprint": "12d7652ad9d357f34d07a6a11142fa94b680b81de3833c10b2604320c394eef9",
+      "focus": "strings",
+      "marks": 6
+    },
+    "2:76:2": {
+      "fingerprint": "fd57edc7157b98ea94def0ae973bca28b135ebaf828473bea71f809400ef5332",
+      "focus": "strings",
+      "marks": 6
+    },
+    "2:76:3": {
+      "fingerprint": "d8b6cf5618145ec7502a95f2cee2166cccaf20c76aae7362374c4dd3635eb4da",
+      "focus": "strings",
+      "marks": 6
+    },
+    "2:76:4": {
+      "fingerprint": "389a924cf36976e6e19ba231ff744d7c2d3a05391d38296198a570d13163a866",
+      "focus": "strings",
+      "marks": 6
+    },
+    "2:77:0": {
+      "fingerprint": "ca973d2cb20ebc8898ec1268f6f32e79d387ca2eab10441612aa6c88bfd0274e",
+      "focus": "lists",
+      "marks": 6
+    },
+    "2:77:1": {
+      "fingerprint": "bbf6e9f1ae867f7a7b711d238ac2f9c5cc943fef7011befa23b6a0b84fba9bd7",
+      "focus": "lists",
+      "marks": 6
+    },
+    "2:77:2": {
+      "fingerprint": "63c9b28cad146d8d0ad95258b3dc5720bf6658f6a813e6d547cbf01b27be8137",
+      "focus": "lists",
+      "marks": 6
+    },
+    "2:77:3": {
+      "fingerprint": "5fa723ca01cf0ac7e140830d78bdb822c8568505b45d381a72e1fb894302e6cf",
+      "focus": "lists",
+      "marks": 6
+    },
+    "2:77:4": {
+      "fingerprint": "754a036b9c6b4d230882c7aef6f21beaf997cfc333b021890f83639836ef081f",
+      "focus": "lists",
+      "marks": 6
+    },
+    "2:78:0": {
+      "fingerprint": "e6178f6f5b7d559c2120c6bbbfcc0123c867f1db657f6c2217f4305c4972553c",
+      "focus": "records",
+      "marks": 6
+    },
+    "2:78:1": {
+      "fingerprint": "f96782a7a844bf9ec51b4b6748ef1260a0edec1e9b872b83ff30765ac2c051d6",
+      "focus": "records",
+      "marks": 6
+    },
+    "2:78:2": {
+      "fingerprint": "33bc557245f275557ad002d7a4ff97099dcfe665a47f610928290c65b8b738da",
+      "focus": "records",
+      "marks": 6
+    },
+    "2:78:3": {
+      "fingerprint": "2d70b990dca02b6f42c559dda26225d79f8629cc50f3de103446aec20e50a806",
+      "focus": "records",
+      "marks": 6
+    },
+    "2:78:4": {
+      "fingerprint": "d1c245dfbbdea214c4a667633780e612f959703f23c09bed1d2e3e143d2cea32",
+      "focus": "records",
+      "marks": 6
+    },
+    "2:79:0": {
+      "fingerprint": "3661b92e0f6035e69eb4f8d8f5ca0aed8e6207e22db1eb1038c78e1965670054",
+      "focus": "validation",
+      "marks": 6
+    },
+    "2:79:1": {
+      "fingerprint": "b776de00347e51a5f84705d14b465c4aee5c886d85ec40a8c20f024a093add27",
+      "focus": "validation",
+      "marks": 6
+    },
+    "2:79:2": {
+      "fingerprint": "110453e745f370d5b80ef07eb1f8c34bf91140e50dd93a36cc0826f76128a987",
+      "focus": "validation",
+      "marks": 6
+    },
+    "2:79:3": {
+      "fingerprint": "9da31f3dc0d86e5cbb4e16d469f3ce2607e2f29d30a7d2d10ef9fdc34254e8ff",
+      "focus": "validation",
+      "marks": 6
+    },
+    "2:79:4": {
+      "fingerprint": "025052959e55e0e74998491afdbe112f0d7eedafe3cc0096a6649ff256482682",
+      "focus": "validation",
+      "marks": 6
+    },
+    "2:80:0": {
+      "fingerprint": "a386a7f3a3af059b8f7b1d8e79f317a6b1ef48730e74f3db650c800530e83bbe",
+      "focus": "algorithms",
+      "marks": 6
+    },
+    "2:80:1": {
+      "fingerprint": "487460eaff51df2d17873433fbfb4aab089e2f00891bc068ccbdb032a82123ce",
+      "focus": "algorithms",
+      "marks": 6
+    },
+    "2:80:2": {
+      "fingerprint": "e797332427e869354eb319eb4f70c2eee5a7abcf08c20b3596eda0734fb0e8b8",
+      "focus": "algorithms",
+      "marks": 6
+    },
+    "2:80:3": {
+      "fingerprint": "14d63b4b365e9cbc72b0a0925b2fefa0f33d3bfc88b9bc27d1bf33e1d5b2577d",
+      "focus": "algorithms",
+      "marks": 6
+    },
+    "2:80:4": {
+      "fingerprint": "473480d9a6c4b28fa78ed50f7bebbb89d770890d1775494515b01a0ef0ebf3f0",
+      "focus": "algorithms",
+      "marks": 6
+    },
     "3:0:0": {
       "fingerprint": "4f72b31b9c5f1c7f171b7783d82cbd51d9162490d5ebae58f9082555912e4c6f",
       "focus": "task1",

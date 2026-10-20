@@ -32,7 +32,7 @@ import {
   INTERACTION_POLL_MS,
 } from '#domain/practice-time.js';
 
-export function createApplication({ navigation, focus, scriptURL }) {
+export function createApplication({ navigation, focus, scriptURL, pythonLoader }) {
   const listeners = new Set();
   let route = '#home',
     ready = false,
@@ -147,6 +147,7 @@ export function createApplication({ navigation, focus, scriptURL }) {
     },
   });
   const practice = createPractice({
+    pythonLoader,
     session: profile,
     navigation,
     render: refresh,
@@ -168,6 +169,7 @@ export function createApplication({ navigation, focus, scriptURL }) {
     };
   }
   function leaving() {
+    practice.python.cancel();
     if (!ready) return;
     if (practiceVisible() && profile.data.active) {
       rememberSelection(profile.data, practice.activeSet());
@@ -266,15 +268,24 @@ export function createApplication({ navigation, focus, scriptURL }) {
     input = String(input).trim();
     error = null;
     publish();
+    // A recognised code stays a code even if loading its bank or starting it fails.
+    let knownCode = false;
+    try {
+      historicalSet(input);
+      knownCode = true;
+    } catch {
+      // Unknown codes and ordinary search terms use the fallback below.
+    }
     try {
       const set = await loadSet(input);
       await practice.start(set);
       return profile.data.active?.code === set.code;
     } catch (problem) {
       const codeLike =
+        knownCode ||
         /^(PZ|EX|PY|ESP|OS|B5|B6|B7)-/i.test(input) ||
         (/^[A-Za-z0-9_-]{8,10}$/.test(input) &&
-          (/[0-9_-]/.test(input) || input === input.toUpperCase()));
+          (/[0-9_-]/.test(input) || /[a-z][A-Z]/.test(input) || input === input.toUpperCase()));
       if (!codeLike)
         await navigation.go('#search=all&q=' + encodeURIComponent(cleanSearchQuery(input)));
       else showError(input, problem);
@@ -292,6 +303,7 @@ export function createApplication({ navigation, focus, scriptURL }) {
     }
   }
   function chooseProfile(change = true) {
+    practice.python.cancel();
     if (profile.data.active && !profile.data.active.finished) {
       pausePractice(profile.data.active);
       profile.persist();

@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { browser } from './browser-support.mjs';
 import { resolve } from '../js/bank.js';
-import { BANK_VERSION } from '../js/codes.js';
+import { BANK_VERSION, encode } from '../js/codes.js';
 import draft from '../data/esp-task2.js';
 import { themePalettes } from '../js/theme.js';
 
@@ -34,6 +34,56 @@ try {
   await b.change('#profile-name', 'ESP Draft Test', 'input');
   await b.evaluate('document.querySelector("[role=dialog] form").requestSubmit()');
   await b.until('Boolean(document.querySelector("#code-form"))');
+
+  // A failed download must leave a code error, including for letters-only codes.
+  const sharedEntries = [36, 37, 38].map((slot) => ({ slot, variation: 0 }));
+  const sharedCode = encode({ type: 3, entries: sharedEntries });
+  await b.send('Network.enable');
+  await b.send('Network.setBlockedURLs', { urls: ['*banks/esp-*'] });
+  await b.change('#global-code', sharedCode, 'input');
+  await b.evaluate('document.querySelector("#global-code-form").requestSubmit()');
+  await b.until('Boolean(document.querySelector("#global-code-error .code-diagnostics"))');
+  assert.ok(!(await b.evaluate('location.pathname')).includes('/search/'));
+  await b.send('Network.setBlockedURLs', { urls: [] });
+
+  // Open all coordinated sets through the shared field and exercise Copy code.
+  await b.evaluate(
+    'navigator.clipboard.writeText = async value => { window.copiedSetCode = value; }',
+  );
+  for (let variation = 0; variation < 6; variation++) {
+    const code = encode({ type: 3, entries: sharedEntries.map((e) => ({ ...e, variation })) });
+    await b.change('#global-code', code, 'input');
+    await b.evaluate('document.querySelector("#global-code-form").requestSubmit()');
+    await b.until(
+      `document.querySelector('#display-code')?.textContent === ${JSON.stringify(code)}`,
+    );
+    assert.equal(await b.evaluate('document.querySelectorAll(".question").length'), 3);
+    await b.click('#copy-code');
+    assert.equal(await b.evaluate('window.copiedSetCode'), code);
+  }
+  const futureCode = encode({ version: BANK_VERSION + 1, type: 3, entries: sharedEntries });
+  await b.change('#global-code', futureCode, 'input');
+  await b.evaluate('document.querySelector("#global-code-form").requestSubmit()');
+  await b.until(
+    'document.querySelector("#global-code-error")?.textContent.includes("Unsupported question-bank version")',
+  );
+
+  // Reopen a copied code after clearing this dedicated test profile's storage.
+  const copiedCode = await b.evaluate('window.copiedSetCode');
+  await b.send('Page.navigate', { url: base });
+  await b.until('Boolean(document.querySelector("#code-form"))');
+  await b.evaluate('localStorage.clear()');
+  await b.reload();
+  await b.until('Boolean(document.querySelector("#profile-name"))');
+  await b.change('#profile-name', 'ESP Code Recipient', 'input');
+  await b.evaluate('document.querySelector("[role=dialog] form").requestSubmit()');
+  await b.until('Boolean(document.querySelector("#code-form"))');
+  await b.change('#code-form [name=code]', copiedCode, 'input');
+  await b.evaluate('document.querySelector("#code-form").requestSubmit()');
+  await b.until(
+    `document.querySelector('#display-code')?.textContent === ${JSON.stringify(copiedCode)}`,
+  );
+  assert.equal(await b.evaluate('document.querySelectorAll(".question").length'), 3);
 
   for (const template of draft)
     for (let variation = 0; variation < template.variations.length; variation++) {
@@ -263,9 +313,10 @@ try {
   );
   assert.deepEqual(b.errors, []);
   console.log(
-    '18 Task 2 variations pass: selection, summaries, marking, submitted reload, reveal, preserved Python lines, keyboard code scrolling, 320/768/1280px reflow and retired-code navigation.',
+    'Six Task 2 shared sets pass code entry/copy and fresh-profile reopening; failed downloads and unsupported versions retain diagnostics. All 18 variations pass selection, summaries, marking, submitted reload, reveal, preserved Python lines, keyboard code scrolling, 320/768/1280px reflow and retired-code navigation.',
   );
   console.log('Preview: ' + base + '/set/?code=' + set.code);
 } finally {
+  await b.send('Network.setBlockedURLs', { urls: [] });
   b.close();
 }

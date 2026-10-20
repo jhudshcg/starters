@@ -4,6 +4,7 @@ import {auditHints} from './audit-hints.mjs';
 const errors=[...validateBank(),...auditHints(banks).errors];
 for(const [type,bank] of banks.entries()) {
   for(const q of bank)for(const v of q.variations){
+    if(v.livePython)continue; // Behavioural models are executed by the focused live-Python tests.
     const result=markQuestion(v,Object.fromEntries(v.parts.map(p=>[p.id,p.answer])));
     if(result.some(r=>r.earned!==r.max))errors.push(`${q.title}: model answers did not earn full marks`);
   }
@@ -12,4 +13,4 @@ for(const [type,bank] of banks.entries()) {
   }
 }
 if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}
-else console.log(`Validated ${banks.flat().length} templates, ${banks.flat().reduce((s,q)=>s+q.variations.length,0)} variations and ${banks.reduce((s,_,type)=>s+focuses(type).length,0)} focuses. All model answers receive full marks.`);
+else console.log(`Validated ${banks.flat().length} templates, ${banks.flat().reduce((s,q)=>s+q.variations.length,0)} variations and ${banks.reduce((s,_,type)=>s+focuses(type).length,0)} focuses. All bounded model answers receive full marks; live Python uses independent execution tests.`);

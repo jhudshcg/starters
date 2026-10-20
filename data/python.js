@@ -1,3 +1,4 @@
+import livePython from './python-live.js';
 import {question as q, part, number as n, choice as c} from './helpers.js';
 import more from './python-more.js';
 import expanded from './python-expanded.js';
@@ -32,5 +33,5 @@ export default [
     const limit=[2,3,4,5,6][i];
     return {prompt:'Complete the keywords, then predict how this support desk routes tickets.', code:`def route(priority):\n    ___ priority > ${limit}:\n        return "urgent"\n    ___ priority == ${limit}:\n        return "review"\n    ___:\n        return "normal"`, hint:"Selection checks conditions in order. Once a condition is True, that branch runs; the final fallback handles values not matched earlier.", parts:[part('First keyword','if',{caseSensitive:true}),part('Second keyword','elif',{caseSensitive:true}),part('Third keyword','else',{caseSensitive:true}),part(`route(${limit+1}) — without quotes`,'urgent',{caseSensitive:true}),part(`route(${limit}) — without quotes`,'review',{caseSensitive:true}),part(`route(${limit-1}) — without quotes`,'normal',{caseSensitive:true})]};
   }),
-  ...more, ...expanded, ...coreMore, ...validation, ...readable, ...sequences
+  ...more, ...expanded, ...coreMore, ...validation, ...readable, ...sequences, ...livePython
 ];

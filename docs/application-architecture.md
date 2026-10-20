@@ -22,6 +22,12 @@ Full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI adoption was authorised and
 
 Services read `profile.data` at command boundaries; switching/restoring a profile can replace it. Svelte receives snapshots and owns page/control DOM. Progress filters are component-local. The portable puzzle/Go wrapper owns only its assigned subtree and disposes its controls when removed. Trusted authored FAQ/project/algorithm content may use static HTML; it does not install a competing application renderer.
 
+### Agreed Python integration boundary — pending implementation, 20 October 2026
+
+The live-coding pilot will share one editor/runtime between the standalone preview and a Svelte question component. The editor owns only its mounted code subtree, region/history interactions and edit callbacks; the worker owns execution, observations and cancellation. The existing practice service owns saved source/region snapshots, effective question/set permissions and marking evidence. Do not introduce a second application draft store or duplicate the trial implementation.
+
+For executable questions, submission locks and persists the exact source before asynchronous testing, then records completion once. Results must match the profile, attempt, question, source and authored test revision. Startup/infrastructure failure leaves checking pending; it is not a wrong answer. Editing invalidates exploratory results, and navigation/profile/disposal cancels stale work. Non-executable questions retain their existing synchronous marking flow. Commands enforce permissions as well as the UI. Exact pilot content, feedback/progress rules and verification remain subject to the requirements and test-quality gates.
+
 Puzzle gesture callbacks read current service answers, not a captured rendered snapshot: one pointer event can accept several moves before Svelte renders. Ordinary puzzle inputs retain their DOM nodes while answer values update, preserving focus/caret. Board redraws keep the portable control's pointer lifecycle; click/keyboard updates supply a focus selector.
 
 The profile service obtains a [Web Lock](https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API) before loading/editing a profile. Another tab stays blocked, without timers or saves, and can retry the same name. Selection/restoration obtains the destination lock and drains outgoing file writes before releasing the old lock. Repeated startup/retry calls share one initialisation. Storage keys and result formats are unchanged.

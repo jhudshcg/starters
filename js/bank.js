@@ -110,7 +110,8 @@ function candidateSets(type,focus,challengeLevel='all',subtopic='all') {
     for(let i=start;i<pool.length;i++)build(i+1,[...entries,pool[i]]);
   }
   build(0,[]);
-  return type===1?preferSubtopic(combinations,subtopic):combinations;
+  const practical=type===2?combinations.filter(qs=>qs.some(q=>q.liveCoding)):[];
+  return type===1?preferSubtopic(combinations,subtopic):practical.length?practical:combinations;
 }
 const slotsKey = entries => entries.map(e=>e.slot).sort((a,b)=>a-b).join(',');
 export function hasAlternativeExamSet(set,subtopic='all') {

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Python question trial</title>
+    <link rel="stylesheet" href="./vendor/core.css" />
+    <link rel="stylesheet" href="../../css/tokens.css?v=20261020-syntax" />
+    <link rel="stylesheet" href="./trial.css" />
+    <script type="importmap">
+      { "imports": { "#domain/theme.js": "../../js/theme.js" } }
+    </script>
+    <script type="module" src="./trial.js"></script>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Local prototype · Python practice</p>
+      <h1>Edit, run and investigate</h1>
+      <p>
+        Explore how runnable Python fits a question. Edits are saved in this trial browser; results
+        do not enter your practice record.
+      </p>
+      <p>
+        <a href="./pilot.html?config=mixed&amp;variation=1"
+          >Review the proposed programming question pair</a
+        >
+      </p>
+      <label for="theme">Theme</label>
+      <select id="theme"></select>
+      <label for="question">Question</label>
+      <select id="question"></select>
+      <h2 id="title"></h2>
+      <ul id="requirements"></ul>
+      <div class="workspace">
+        <section aria-labelledby="code-title">
+          <h2 id="code-title">Python code</h2>
+          <label for="mode">Editing mode</label>
+          <select id="mode">
+            <option value="choices">Choose replacements</option>
+            <option value="regions">Edit marked regions</option>
+            <option value="free">Edit all code</option>
+          </select>
+          <p id="mode-help" class="help"></p>
+          <label class="check-label"
+            ><input id="region-fill" type="checkbox" /> Shade outlined regions</label
+          >
+          <p class="help">
+            Ctrl/Cmd + Enter runs code. Press Escape, then Tab to leave the editor. Tab reaches
+            replacement controls.
+          </p>
+          <p id="editor-notice" role="status" aria-live="polite"></p>
+          <div id="editor"></div>
+          <div class="toolbar">
+            <button id="run" type="button">Run code</button>
+            <button id="check" type="button">Run question tests</button>
+            <button id="stop" type="button" disabled>Stop</button>
+            <button id="reset" type="button">Reset code</button>
+          </div>
+        </section>
+        <aside aria-label="Question interactions">
+          <h2>Run settings</h2>
+          <p id="selection" role="status">No code selected.</p>
+          <label for="inputs">Inputs, one per line</label>
+          <textarea id="inputs" rows="4" spellcheck="false"></textarea>
+          <p class="help">
+            Each line is one response to input(). These values are used by Run code; question tests
+            supply their own values.
+          </p>
+          <label for="expression">Function call</label>
+          <input id="expression" spellcheck="false" />
+        </aside>
+      </div>
+      <section aria-labelledby="result-title">
+        <h2 id="result-title">Results</h2>
+        <p id="status" role="status" aria-live="polite">Preparing editor…</p>
+        <div id="results"></div>
+      </section>
+      <details>
+        <summary>About this trial</summary>
+        <p>
+          PyScript 2026.7.3 uses Pyodide 314.0.3 in a background worker. Python downloads on first
+          run; the data example also downloads pandas and matplotlib. The trial uses supplied input
+          sequences and static chart images.
+        </p>
+        <p>
+          Checks compare behaviour, returned types and input consumption. They do not establish code
+          style or correctness for every possible input. This prototype still needs testing on
+          college Edge/Windows.
+        </p>
+      </details>
+    </main>
+  </body>
+</html>

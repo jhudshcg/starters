@@ -158,17 +158,19 @@
       class="timer-display"
       class:warning={!a.finished && state.remaining !== null && state.remaining <= 60}
       id="timer"
-      >{a.finished
-        ? a.deadline
-          ? 'Finished'
-          : 'Untimed'
-        : state.remaining === null
-          ? 'Untimed'
-          : duration(state.remaining)}</span
+      >{a.pythonSubmission && !a.finished
+        ? 'Checking submission'
+        : a.finished
+          ? a.deadline
+            ? 'Finished'
+            : 'Untimed'
+          : state.remaining === null
+            ? 'Untimed'
+            : duration(state.remaining)}</span
     ><label for="minutes">Timer</label><select
       class="choice-field"
       id="minutes"
-      disabled={Boolean(a.finished)}
+      disabled={Boolean(a.finished || a.pythonSubmission)}
       bind:value={minutes}
       >{#each Array.from({ length: 11 }, (_, i) => i + 5) as value}<option {value}
           >{value} min</option
@@ -176,7 +178,7 @@
     ><button
       class="action-button"
       id="timer-toggle"
-      disabled={Boolean(a.finished)}
+      disabled={Boolean(a.finished || a.pythonSubmission)}
       onclick={() => app.practice.timer(minutes)}
       >{a.deadline ? 'Stop timer' : 'Start timer'}</button
     >
@@ -229,6 +231,16 @@
       {href}
     />{/each}
 </section>
+{#if set.questions.some((q) => q.livePython)}
+  <p role="status">{a.pythonStatus ?? ''}</p>
+  {#if a.pythonBusy}<button class="action-button" onclick={() => app.practice.python.cancel()}
+      >Stop Python</button
+    >{/if}
+  {#if a.pythonSubmission && !a.finished}<p>
+      Your submitted code is saved and locked. Checking is pending; retry if Python was stopped or
+      could not load.
+    </p>{/if}
+{/if}
 <div class="submit-bar">
   {#if record}<div class="submit-result" id="submit-result" tabindex="-1" role="status">
       <strong>{record.percentage}%</strong><span
@@ -244,13 +256,15 @@
     </div>{:else}<p>Try all questions, then submit your best try.</p>{/if}<button
     class="action-button primary"
     id="submit"
-    disabled={Boolean(a.finished && review)}
+    disabled={Boolean(a.pythonBusy || (a.finished && review))}
     onclick={() => app.practice.submit('submitted')}
-    >{a.finished
-      ? review
-        ? 'Submitted ✓'
-        : 'Submit saved answers →'
-      : 'Submit set answers →'}</button
+    >{a.pythonSubmission && !a.finished
+      ? 'Retry submitted checks'
+      : a.finished
+        ? review
+          ? 'Submitted ✓'
+          : 'Submit saved answers →'
+        : 'Submit set answers →'}</button
   >
 </div>
 {#if set.type === 2}<p class="project-link">

@@ -65,3 +65,9 @@ for (const dependency of ['tailwindcss', 'daisyui'])
     join(root, 'node_modules', dependency, 'LICENSE'),
     join(output, 'licenses', `${dependency}.txt`),
   );
+
+// Preview and production use the same pinned editor/runtime sources.
+await mkdir(join(output, "python"), {recursive:true});
+for (const name of ["adapter.js", "regions.js", "editor-theme.js", "runner.py", "vendor"]) {
+  await cp(join(root, "prototypes/pyscript", name), join(output, "python", name), {recursive:true});
+}

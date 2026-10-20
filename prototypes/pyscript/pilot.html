@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live programming question draft</title>
+    <link rel="stylesheet" href="./vendor/core.css" />
+    <link rel="stylesheet" href="../../css/tokens.css?v=20261020-syntax" />
+    <link rel="stylesheet" href="./trial.css" />
+    <link rel="stylesheet" href="./pilot.css" />
+    <script type="importmap">
+      { "imports": { "#domain/theme.js": "../../js/theme.js" } }
+    </script>
+    <script type="module" src="./pilot.js"></script>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Programming · Draft for review</p>
+      <h1>Repair, then write Python</h1>
+      <p>
+        Two questions · 12 marks. This preview keeps your drafts here; scores do not enter student
+        progress.
+      </p>
+      <details open>
+        <summary>Preview settings</summary>
+        <div class="preview-settings">
+          <label>Set configuration<select id="configuration"></select></label>
+          <label>Variation<select id="variation"></select></label>
+          <label>Theme<select id="theme"></select></label>
+        </div>
+        <p class="help">
+          Each configuration and variation keeps a separate draft. These settings are for reviewing
+          the question set.
+        </p>
+      </details>
+      <p id="policy"></p>
+      <p id="status" role="status" aria-live="polite">Preparing questions…</p>
+      <div id="questions"></div>
+      <section aria-labelledby="submission-title">
+        <h2 id="submission-title">Submit this set</h2>
+        <p>
+          Submission locks both answers and checks the submitted code. Start a new attempt to make
+          further changes.
+        </p>
+        <div class="toolbar">
+          <button id="submit" type="button">Submit answers</button>
+          <button id="stop" type="button" disabled hidden>Stop</button>
+          <button id="new-attempt" type="button">New attempt</button>
+        </div>
+        <p id="summary" role="status"></p>
+      </section>
+      <p class="help"><a href="./">Open the original editor and library trial</a></p>
+    </main>
+    <template id="question-template">
+      <section class="question-card">
+        <header>
+          <p class="question-meta"></p>
+          <h2></h2>
+        </header>
+        <p class="prompt"></p>
+        <ul class="requirements"></ul>
+        <p class="assumptions help"></p>
+        <p class="access"></p>
+        <label class="mode-label">Editing mode<select class="editing-mode"></select></label>
+        <p class="mode-help help"></p>
+        <p class="notice" role="status"></p>
+        <div class="python-editor"></div>
+        <div class="run-settings">
+          <label
+            >Try a function call<input
+              class="expression"
+              spellcheck="false"
+              placeholder="Enter your function call"
+          /></label>
+        </div>
+        <div class="toolbar">
+          <button class="run" type="button">Run code</button>
+          <button class="check" type="button">Check code</button>
+          <button class="reset" type="button">Reset code</button>
+          <button class="reveal" type="button" hidden>Show example solution</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+        <div class="solution" hidden>
+          <h3>Example solution</h3>
+          <pre></pre>
+          <p></p>
+        </div>
+      </section>
+    </template>
+  </body>
+</html>

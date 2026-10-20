@@ -4,6 +4,8 @@
  * Used by: application session and Svelte practice components.
  * Uses: bank selection, progress and profile persistence. Libs: none.
  */
+import { createPythonPractice } from './python-practice.js';
+import { loadPython } from '#domain/live-python.js';
 import { rememberSelection, recalledSelection } from '#domain/practice-selection.js';
 import { discoverableFocuses } from '#domain/activity-discovery.js';
 import { matchingSearchGroup, makeSearchSet } from '#domain/search-sets.js';
@@ -44,6 +46,7 @@ export function createPractice({
   focus,
   clock = () => Date.now(),
   uuid = () => crypto.randomUUID(),
+  pythonLoader = () => loadPython(),
 }) {
   let disposed = false,
     leaveDecision = null,
@@ -60,6 +63,42 @@ export function createPractice({
           search: a.search ?? null,
         }
       : null;
+  }
+  const python = createPythonPractice({
+    session,
+    activeSet,
+    persist,
+    render,
+    load: pythonLoader,
+    clock,
+  });
+  function pythonLevel(value) {
+    const a = session.data.active;
+    if (
+      !a ||
+      a.finished ||
+      a.pythonSubmission ||
+      !['all', 'beginner', 'foundation', 'standard', 'stretch'].includes(value)
+    )
+      return;
+    a.pythonLevel = value;
+    session.data.pythonChallenge = value;
+    persist();
+    render();
+  }
+  async function submitPython(outcome) {
+    const data = session.data,
+      a = data.active;
+    if (a.pythonBusy) python.cancel();
+    a.pythonSubmission ??= { at: clock(), outcome };
+    if (a.practiceClock) pausePractice(a, a.pythonSubmission.at);
+    persist();
+    render();
+    for (const q of activeSet().questions.filter((q) => q.livePython)) {
+      if (!(await python.execute(q.slot, 'check', true))) return;
+      if (session.data !== data || data.active !== a) return;
+    }
+    submit(a.pythonSubmission.outcome, true);
   }
   const setHash = (code) =>
     navigation.go(`#set=${encodeURIComponent(code)}`, {
@@ -94,6 +133,7 @@ export function createPractice({
       pausePractice(data.active);
       persist();
     }
+    python.cancel();
     navigation.remember();
     if (set.type === 0) {
       const levels = new Set(set.questions.map((q) => q.challengeLevel));
@@ -111,6 +151,7 @@ export function createPractice({
       mathsTopic: set.mathsTopic ?? 'all',
       examSubtopic: set.type === 1 ? (set.examSubtopic ?? 'all') : 'all',
       inSequence: set.type === 1 && inSequence,
+      pythonLevel: data.pythonChallenge ?? 'foundation',
       answers: {},
       checks: {},
       first: {},
@@ -173,7 +214,7 @@ export function createPractice({
   /** Save an edit without replacing the input or losing its caret. */
   function answer(slot, id, value) {
     const a = session.data.active;
-    if (!a || a.finished) return;
+    if (!a || a.finished || a.pythonSubmission) return;
     a.answers[slot] ??= {};
     a.answers[slot][id] = value;
     a.feedbackHidden ??= {};
@@ -246,7 +287,7 @@ export function createPractice({
   }
   async function timer(minutes) {
     const a = session.data.active;
-    if (a.finished) return;
+    if (a.finished || a.pythonSubmission) return;
     const at = clock(),
       stop = a.deadline !== null;
     const duration = stop ? null : Number(minutes);
@@ -330,21 +371,23 @@ export function createPractice({
       q = activeSet().questions.find((q) => q.slot === slot);
     a.feedbackHidden ??= {};
     a.feedbackHidden[slot] = false;
-    const result = markQuestion(q, a.answers[slot]);
+    const result = markQuestion(q, a.answers[slot], a.python?.[slot]?.result);
     if (!a.first[slot])
       a.first[slot] = {
         results: result,
-        assisted: Boolean(a.hints[slot] || a.reveals[slot]),
+        assisted: Boolean(a.hints[slot] || a.reveals[slot] || q.livePython?.access === 'practice'),
       };
     if (!a.finished) a.checks[slot] = (a.checks[slot] ?? 0) + 1;
     if (announce)
       toast(`${q.title}: ${result.reduce((s, r) => s + r.earned, 0)} of ${marks(q)} marks.`);
     return result;
   }
-  function submit(outcome) {
+  function submit(outcome, pythonReady = false) {
     const data = session.data;
     const a = data.active;
     if (!a) return;
+    if (!a.finished && !pythonReady && activeSet().questions.some((q) => q.livePython))
+      return submitPython(outcome);
     a.reviewSubmittedAt = clock();
     // A restored completed attempt unlocks review without recording it twice.
     if (a.finished) {
@@ -354,7 +397,7 @@ export function createPractice({
       return;
     }
     const set = activeSet(),
-      now = clock();
+      now = a.pythonSubmission?.at ?? clock();
     let earned = 0,
       firstEarned = 0,
       firstMax = 0;
@@ -362,7 +405,7 @@ export function createPractice({
     for (const q of set.questions) {
       if (!a.first[q.slot]) check(q.slot, false);
       else a.checks[q.slot] ??= 1;
-      finalResults[q.slot] = markQuestion(q, a.answers[q.slot]);
+      finalResults[q.slot] = markQuestion(q, a.answers[q.slot], a.python?.[q.slot]?.result);
       earned += finalResults[q.slot].reduce((s, r) => s + r.earned, 0);
       const first = a.first[q.slot];
       if (!first.assisted)
@@ -390,7 +433,7 @@ export function createPractice({
       seconds: Math.max(0, Math.round((stop - a.origin) / 1000)),
       totalSeconds: Math.max(0, Math.round((stop - a.started) / 1000)),
       attemptChecks: Object.values(a.checks).reduce((s, n) => s + n, 0),
-      assisted: Object.keys(a.hints).length > 0 || Object.keys(a.reveals).length > 0,
+      assisted: Object.values(a.first).some((first) => first.assisted),
       outcome,
       firstEarned,
       firstMax,
@@ -448,7 +491,7 @@ export function createPractice({
       }
     }
     const state = deadlineState(a);
-    if (!a.finished && state.expired) {
+    if (!a.finished && !a.pythonSubmission && state.expired) {
       submit('expired');
       return;
     }
@@ -463,6 +506,7 @@ export function createPractice({
     const data = session.data;
     try {
       if (data.active) {
+        data.active.pythonBusy = false;
         if (data.active.practiceClock) data.active.practiceClock.running = false;
         const restored = await loadSet(data.active.code);
         if (contentChanged(restored, data.active.contentVersion ?? restored.version)) {
@@ -472,9 +516,14 @@ export function createPractice({
             'These questions have been updated. Start a fresh attempt; your saved results are unchanged.',
           );
         }
-        if (data.active && !data.active.finished && deadlineState(data.active).expired)
+        if (
+          data.active &&
+          !data.active.finished &&
+          !data.active.pythonSubmission &&
+          deadlineState(data.active).expired
+        )
           submit('expired');
-        else if (data.active && !data.active.finished && clock() - data.active.saved > 45 * 60000) {
+        else if (data.active && !data.active.finished && !data.active.pythonSubmission && clock() - data.active.saved > 45 * 60000) {
           data.active = null;
           persist();
           toast(
@@ -488,6 +537,8 @@ export function createPractice({
   }
 
   return {
+    python,
+    pythonLevel,
     start,
     entry,
     activeSet,
@@ -513,6 +564,7 @@ export function createPractice({
     tick,
     resume,
     dispose() {
+      python.dispose();
       disposed = true;
     },
   };

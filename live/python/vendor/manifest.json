@@ -1,0 +1,113 @@
+{
+  "release": "2026.7.3",
+  "files": {
+    "core.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/core.js",
+      "sha256": "9a8ed9c4af77fb19c706840a333f18e8ff3149d39813c43df328918fdad6f8a6"
+    },
+    "core.css": {
+      "url": "https://pyscript.net/releases/2026.7.3/core.css",
+      "sha256": "4a3d70ab34376a646ccfc1216cd79b9c31e80bc3816e2496d2d4d0136e811165"
+    },
+    "core-7nKZylPm.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/core-7nKZylPm.js",
+      "sha256": "7bb1561bb740ef233e7045394ff9d3cb72a4a94f5a1a46a0fb8c6c8bcd50482f"
+    },
+    "toml-V4Savzlc.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/toml-V4Savzlc.js",
+      "sha256": "b8ddc7914a2d7b2e502ca841a5b92fdb9fc9a565bbd762cd3e0f32c60629178e"
+    },
+    "zip-DQom9hVx.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/zip-DQom9hVx.js",
+      "sha256": "1c66afa9c78e7001eb5a429ff672652df8f0b7eed3c1d76bfd0cc1cf6adff209"
+    },
+    "pyodide_graph-Ci-wK1d9.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/pyodide_graph-Ci-wK1d9.js",
+      "sha256": "8a4b93ea9881d1e308596f8ae1717e190d79c37473048eb2e1cfe9e0ae793a0d"
+    },
+    "deprecations-manager-UP6tbwFz.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/deprecations-manager-UP6tbwFz.js",
+      "sha256": "d7ce34ecf05cfa3c1e8159172f4466eccc6f47bc2cbe7b216dcda19628007658"
+    },
+    "donkey-e7O5G-23.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/donkey-e7O5G-23.js",
+      "sha256": "6684b97aa9eb8dbcbcf1b69820be44d3a43d16cd716f6b937d33d01bbed08236"
+    },
+    "error-rn9rvhrW.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/error-rn9rvhrW.js",
+      "sha256": "343dec67fe0aea9e750a69c6be9d3edeb1c2f13bcb20e04b644156464b874552"
+    },
+    "py-editor-CkR6M58-.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/py-editor-CkR6M58-.js",
+      "sha256": "fc24c29ec51c9b392161ee872e4dac974c73baf2b25b8c81a44a0528b9d48996"
+    },
+    "py-game-Db5sMM1q.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/py-game-Db5sMM1q.js",
+      "sha256": "8963c2ee83840de2e2e8336da612223847d66fc240783ff9e477465a8e3d1d5c"
+    },
+    "py-terminal-DywECqks.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/py-terminal-DywECqks.js",
+      "sha256": "300357ced7ca6dfeabf68a6c243a2e3a864c6d9a35758345b1e265aaaf9ec3f1"
+    },
+    "codemirror-DEwTncU0.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/codemirror-DEwTncU0.js",
+      "sha256": "a5c8c15190535e58bc9b385e7d82f844ed439d28e9d152e55dd2e7d2c8222521"
+    },
+    "codemirror_state-bz5DyDhY.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/codemirror_state-bz5DyDhY.js",
+      "sha256": "4f0a379a7e508fb4209b233cf8c6c88eb019b3da106a7033cbbab7676babe71e"
+    },
+    "codemirror_lang-python-0Uzjxlfw.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/codemirror_lang-python-0Uzjxlfw.js",
+      "sha256": "2d5c6975c8f5b5dcec10ce36607fdd895d352181e472cfba7866c48071c5993e"
+    },
+    "codemirror_language-hp5FIdgW.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/codemirror_language-hp5FIdgW.js",
+      "sha256": "773e4f72ac79ac80620529251dc02e3f8767165dda1d3271da4096c50d792070"
+    },
+    "codemirror_view-B9awT57h.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/codemirror_view-B9awT57h.js",
+      "sha256": "53822e203369582cab3bbf4d32771250e2570713c989004a23e1dcdcc91455b0"
+    },
+    "codemirror_commands-7WzQPAvy.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/codemirror_commands-7WzQPAvy.js",
+      "sha256": "1f7072baf2a2266fcc85efe990f33536ef89bdf138f90b731a9ae669a7b1ece3"
+    },
+    "toml-Blg7Izee.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/toml-Blg7Izee.js",
+      "sha256": "6b8f6e0f3e142c82eaa322c2a90fec1b6ee4e2002ab4354f4e30d13128a6b950"
+    },
+    "xterm.css": {
+      "url": "https://pyscript.net/releases/2026.7.3/xterm.css",
+      "sha256": "ccb44f3d091228247bfa4e82547eb60cd8e2186eaf85ae5a77031f4e826c8ba2"
+    },
+    "mpy-BC-zLHrK.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/mpy-BC-zLHrK.js",
+      "sha256": "3475038aa475f4b635903a23de7c52be61fc76104e723f885c3e521fe5c6acc1"
+    },
+    "py-BEbxXN1X.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/py-BEbxXN1X.js",
+      "sha256": "49f7ebddc9e1b4c7a8be730127c2ab64a0b6113ed204213bd07b6fa858699cd2"
+    },
+    "index-Cy6nW9Aw.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/index-Cy6nW9Aw.js",
+      "sha256": "017a8b199ae5455c1d09e25b63f882c100134ae9d48f24dcfe39fb85a48531a3"
+    },
+    "xterm-Bdboj2r8.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/xterm-Bdboj2r8.js",
+      "sha256": "ff7b2d62466aa5b8f4d359f9ce73319554832a93b0591e94542fdb8fcb9e70aa"
+    },
+    "xterm_addon-fit-43qXDVCl.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/xterm_addon-fit-43qXDVCl.js",
+      "sha256": "95629434adf6e1f7e78b271a85c8f4c46f48a2a0f12ef8bd1e0813e4fc5b687e"
+    },
+    "xterm_addon-web-links-DVH-i-UR.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/xterm_addon-web-links-DVH-i-UR.js",
+      "sha256": "8e49fe91f873fd921a020f94067998f3dc83c32c7d440209a51bf9190c1cc634"
+    },
+    "xterm-readline-BeF1Cf97.js": {
+      "url": "https://pyscript.net/releases/2026.7.3/xterm-readline-BeF1Cf97.js",
+      "sha256": "3d2d162e67e49173032e38bbeda95926250832a63d5023565fec33adb17c469f"
+    }
+  }
+}
