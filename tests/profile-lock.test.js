@@ -5,7 +5,8 @@ import { acquireProfileLock } from '../src/lib/application/profile-lock.js';
 import { createProfile } from '../src/lib/application/profile.js';
 import { createPractice } from '../src/lib/application/practice.js';
 import { selectProfile, loadProfile } from '../js/profiles.js';
-import { choose } from '../js/bank.js';
+import { BANK_VERSION } from '../js/codes.js';
+import { resolve } from '../js/bank.js';
 import { backupJSON } from '../js/progress-transfer.js';
 
 function fixture(t) {
@@ -74,7 +75,7 @@ test('blocked session cannot erase an assisted submission; reopening loads the l
     visible: () => true,
     focus() {},
   });
-  const set = choose(2, 'records');
+  const set = resolve({version: BANK_VERSION, type: 2, entries: [{slot: 24, variation: 0}], minutes: null});
   await practice.start(set);
   practice.hint(set.questions[0].slot);
   practice.submit('submitted');

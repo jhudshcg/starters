@@ -16,57 +16,70 @@ const canonical = (value) =>
 export function pythonRequest(q, source, expression = null) {
   return {
     source,
-    expression: expression ?? `${q.livePython.function}(*__import__("json").loads(input()))`,
+    expression:
+      expression ??
+      (q.livePython.function
+        ? `${q.livePython.function}(*__import__("json").loads(input()))`
+        : 'None'),
     cases:
       expression === null
-        ? q.parts.flatMap((p) =>
-            markingPart(p).pythonTests.map((test) => ({
-              label: p.id,
-              inputs: [JSON.stringify(test.args)],
-            })),
-          )
+        ? q.parts
+            .filter((p) => p.kind === 'python')
+            .flatMap((p) =>
+              markingPart(p).pythonTests.map((test) => ({
+                label: p.id,
+                inputs: test.inputs ?? [JSON.stringify(test.args)],
+                ...(test.expression ? { expression: test.expression } : {}),
+              })),
+            )
         : [{ label: 'Your run', inputs: [] }],
   };
 }
 
 export function assessPython(q, observations) {
   let index = 0;
-  return q.parts.map((part) => {
-    const tests = markingPart(part).pythonTests;
-    const actual = observations.slice(index, index + tests.length);
-    index += tests.length;
-    const correct =
-      actual.length === tests.length &&
-      tests.every(
-        (test, i) =>
-          !actual[i].error &&
-          actual[i].type === test.type &&
-          canonical(actual[i].value) === canonical(test.value),
-      );
-    const error = actual.find((r) => r.error)?.error;
-    return {
-      id: part.id,
-      earned: correct ? part.marks : 0,
-      max: part.marks,
-      message: correct
-        ? 'Requirement passed.'
-        : error
-          ? `${error.type}${error.line ? ` on line ${error.line}` : ''}: ${error.message}`
-          : 'This requirement did not pass. Try another input and trace your code.',
-    };
-  });
+  return q.parts
+    .filter((p) => p.kind === 'python')
+    .map((part) => {
+      const tests = markingPart(part).pythonTests;
+      const actual = observations.slice(index, index + tests.length);
+      index += tests.length;
+      const correct =
+        actual.length === tests.length &&
+        tests.every(
+          (test, i) =>
+            !actual[i].error &&
+            actual[i].type === test.type &&
+            (test.consumed === undefined || actual[i].consumed === test.consumed) &&
+            (test.stdoutIncludes ?? []).every((line) => actual[i].stdout.includes(line)) &&
+            canonical(actual[i].value) === canonical(test.value),
+        );
+      const error = actual.find((r) => r.error)?.error;
+      return {
+        id: part.id,
+        earned: correct ? part.marks : 0,
+        max: part.marks,
+        message: correct
+          ? 'Requirement passed.'
+          : error
+            ? `${error.type}${error.line ? ` on line ${error.line}` : ''}: ${error.type === 'EOFError' ? 'This check ran out of input. Check whether a valid entry ends the loop.' : error.message}`
+            : 'This requirement did not pass. Try another input and trace your code.',
+      };
+    });
 }
 
 export function pythonResults(q, answers = {}, result) {
   return result?.source === (answers.code ?? q.code) && result.revision === q.livePython.revision
-    ? result.parts
-    : q.parts.map((p) => ({
-        id: p.id,
-        earned: 0,
-        max: p.marks,
-        pending: true,
-        message: 'Code has not been checked.',
-      }));
+    ? (result.parts ?? [])
+    : q.parts
+        .filter((p) => p.kind === 'python')
+        .map((p) => ({
+          id: p.id,
+          earned: 0,
+          max: p.marks,
+          pending: true,
+          message: 'Code has not been checked.',
+        }));
 }
 
 export function pythonModes(q, level = 'foundation', hint = false) {

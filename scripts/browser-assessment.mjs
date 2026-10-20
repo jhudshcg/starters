@@ -36,7 +36,7 @@ try {
       if (p.options) await b.click(selector + `[value=${JSON.stringify(p.answer)}]`);
       else await b.change(selector, p.answer, 'input');
     }
-  for (const width of [360, 440, 441, 768, 1024]) {
+  for (const width of [360, 767, 768, 1024]) {
     await b.send('Emulation.setDeviceMetricsOverride', {
       width,
       height: 1000,
@@ -47,7 +47,7 @@ try {
       `(()=>{const e=document.querySelector('.question'),s=getComputedStyle(e),r=e.getBoundingClientRect();return {overflow:document.documentElement.scrollWidth>innerWidth,viewport:document.documentElement.clientWidth,left:r.left,right:r.right,border:s.borderLeftWidth,image:s.backgroundImage}})()`,
     );
     assert.equal(layout.overflow, false, `Question page fits ${width}`);
-    if (width <= 440) {
+    if (width < 768) {
       assert.equal(layout.left, 0);
       assert.equal(layout.right, layout.viewport);
       assert.equal(layout.border, '0px');
@@ -79,7 +79,9 @@ try {
   await b.until('Boolean(document.querySelector("#submit-result"))');
   assert.equal(await b.evaluate('document.querySelector(".result-score").textContent'), '100%');
   if (process.argv.includes('--layout-only')) {
-    console.log('Toolbar spacing, compact timer selector, mobile question edges and submission pass.');
+    console.log(
+      'Toolbar spacing, compact timer selector, mobile question edges and submission pass.',
+    );
     b.close();
     process.exit(0);
   }

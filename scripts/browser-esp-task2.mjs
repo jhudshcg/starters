@@ -10,10 +10,11 @@ import { browser } from './browser-support.mjs';
 import { resolve } from '../js/bank.js';
 import { BANK_VERSION, encode } from '../js/codes.js';
 import draft from '../data/esp-task2.js';
+import { enterTestInputs } from './browser-task2-inputs.mjs';
 import { themePalettes } from '../js/theme.js';
 
 const base = process.env.STARTERS_PREVIEW_URL ?? 'http://127.0.0.1:8765';
-const b = await browser();
+const b = await browser({ acceptBeforeUnload: true });
 
 /** Open a known set and wait for its code, rather than a stale question from navigation. */
 async function open(entries) {
@@ -91,22 +92,19 @@ try {
         q = set.questions[0];
       assert.equal(
         await b.evaluate('document.querySelectorAll("select[data-part]").length'),
-        q.parts.length,
-      );
-      assert.equal(
-        await b.evaluate('document.querySelector(".code-panel code").textContent'),
-        q.code,
+        q.parts.filter((p) => p.control === 'select').length,
       );
       const columns = await b.evaluate(
-        'Object.fromEntries([...document.querySelectorAll("select[data-part]")].map(e=>[e.dataset.part,e.closest(".investigation-group")?.dataset.column]))',
+        'Object.fromEntries([...document.querySelectorAll("select[data-part], [data-test-response]")].map(e=>[e.dataset.part ?? e.dataset.testResponse,e.closest(".investigation-group")?.dataset.column]))',
       );
       for (const row of q.testPlan) {
         assert.equal(columns[row.dataPart], 'data');
         for (const supplied of row.cases) {
           assert.equal(columns[supplied.expectedPart], 'expected');
-          assert.equal(columns[supplied.predictedPart], 'predicted');
+          assert.equal(columns[supplied.actualPart], 'predicted');
         }
-        for (const id of row.actionParts) assert.equal(columns[id], 'actions');
+        for (const id of row.actionParts.filter((id) => !id.endsWith('-repair')))
+          assert.equal(columns[id], 'actions');
       }
       assert.ok(
         await b.evaluate(
@@ -174,39 +172,22 @@ try {
       await b.click('.test-plan summary');
       assert.match(
         await b.evaluate('document.querySelector(".test-plan").textContent'),
-        /Not run. Your predictions:/,
+        /Not recorded/,
       );
       assert.equal(
         await b.evaluate('document.querySelectorAll(".test-plan-row").length'),
         q.testPlan.length,
       );
-      for (const [index, row] of q.testPlan.entries()) {
-        const values = await b.evaluate(`(() => {
-          const fields=document.querySelectorAll('.test-plan-row')[${index}].querySelectorAll('dd');
-          return {description:fields[0].textContent.trim(), data:fields[1].textContent};
-        })()`);
-        assert.equal(values.description, row.description);
-        assert.ok(!values.data.includes(row.description.split(':')[0]));
-      }
+      await enterTestInputs(b, q.slot, q);
+      assert.ok((await b.evaluate('document.querySelector(".test-plan").innerText')).includes(q.livePython.testInputs.function));
       // Dispatch the native change event through the real component; popup key selection
       // is deliberately separate from this harness after a macOS headless popup stall.
-      for (const p of q.parts)
+      for (const p of q.parts.filter((p) => p.control === 'select'))
         await b.change(`[data-slot="${q.slot}"][data-part="${p.id}"]`, p.answer);
       assert.doesNotMatch(
         await b.evaluate('document.querySelector(".test-plan").textContent'),
         /Not selected/,
       );
-      for (const row of q.testPlan) {
-        const dataPart = q.parts.find((part) => part.id === row.dataPart);
-        const wrong = dataPart.options.find((option) => option !== dataPart.answer);
-        await b.change(`[data-slot="${q.slot}"][data-part="${dataPart.id}"]`, wrong);
-        assert.ok(
-          (await b.evaluate('document.querySelector(".test-plan").textContent')).includes(
-            wrong.split('; ')[0],
-          ),
-        );
-        await b.change(`[data-slot="${q.slot}"][data-part="${dataPart.id}"]`, dataPart.answer);
-      }
       for (const width of [320, 768, 1280]) {
         await b.send('Emulation.setDeviceMetricsOverride', {
           width,
@@ -224,28 +205,6 @@ try {
             '[...document.querySelectorAll("select[data-part]")].every(e=>e.getBoundingClientRect().height>=44)',
           ),
         );
-        assert.equal(
-          await b.evaluate('getComputedStyle(document.querySelector(".code-panel")).whiteSpace'),
-          'pre',
-          'Python lines and indentation stay intact',
-        );
-        if (q.slot === 36 && variation === 0 && width === 320) {
-          await b.evaluate('document.querySelector(".code-panel").focus()');
-          await b.send('Input.dispatchKeyEvent', {
-            type: 'keyDown',
-            key: 'ArrowRight',
-            code: 'ArrowRight',
-            windowsVirtualKeyCode: 39,
-          });
-          await b.send('Input.dispatchKeyEvent', {
-            type: 'keyUp',
-            key: 'ArrowRight',
-            code: 'ArrowRight',
-            windowsVirtualKeyCode: 39,
-          });
-          await b.until('document.querySelector(".code-panel").scrollLeft > 0');
-          await b.evaluate('document.querySelector(".code-panel").scrollLeft = 0');
-        }
       }
       if (process.argv.includes('--screenshots') && q.slot === 36 && variation === 0) {
         for (const width of [320, 1280]) {
@@ -262,38 +221,16 @@ try {
           await writeFile(`/private/tmp/esp-task2-${width}.png`, Buffer.from(shot.data, 'base64'));
         }
       }
-      await b.click('#submit');
-      await b.until('Boolean(document.querySelector("#submit-result"))');
-      assert.equal(await b.evaluate('document.querySelector(".result-score").textContent'), '100%');
-      assert.ok(
-        await b.evaluate(
-          '[...document.querySelectorAll("select[data-part]")].every(e=>e.disabled)',
-        ),
-      );
-      if (q.slot === 36 && variation === 0) {
-        await b.reload();
-        await b.until('Boolean(document.querySelector("#submit-result"))');
-        for (const p of q.parts)
-          assert.equal(
-            await b.evaluate(`document.querySelector('[data-part="${p.id}"]').value`),
-            p.answer,
-          );
-        assert.equal(
-          await b.evaluate('document.querySelector(".result-score").textContent'),
-          '100%',
-        );
-      }
-      await b.click('[data-reveal]');
-      await b.until('Boolean(document.querySelector(".solution"))');
-      assert.equal(
-        await b.evaluate('document.querySelectorAll(".solution-part").length'),
-        q.parts.length,
-      );
+      // Real execution, submission and source restoration are checked by browser-editor-workflow.mjs.
     }
 
   const set = await open([36, 37, 38].map((slot) => ({ slot, variation: 0 })));
   assert.equal(await b.evaluate('document.querySelectorAll(".question").length'), 3);
   await b.click('#new-focus');
+  if (await b.evaluate('Boolean(document.querySelector("[role=alertdialog]"))'))
+    await b.evaluate(
+      '[...document.querySelectorAll("[role=alertdialog] button")].find(b=>b.textContent.includes("Leave"))?.click()',
+    );
   await b.until(
     `document.querySelector('#display-code')?.textContent !== ${JSON.stringify(set.code)}`,
   );
@@ -313,7 +250,7 @@ try {
   );
   assert.deepEqual(b.errors, []);
   console.log(
-    'Six Task 2 shared sets pass code entry/copy and fresh-profile reopening; failed downloads and unsupported versions retain diagnostics. All 18 variations pass selection, summaries, marking, submitted reload, reveal, preserved Python lines, keyboard code scrolling, 320/768/1280px reflow and retired-code navigation.',
+    'Six Task 2 shared sets pass code entry/copy and fresh-profile reopening; failed downloads and unsupported versions retain diagnostics. All 18 variations pass selection, summaries, theme contrast, 320/768/1280px reflow and retired-code navigation. Execution and editor checks run separately in browser-editor-workflow.mjs.',
   );
   console.log('Preview: ' + base + '/set/?code=' + set.code);
 } finally {

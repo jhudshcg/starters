@@ -3,7 +3,7 @@
  * Main contents: CDP requests, evaluation, conditions and input helpers.
  * Used by: migration browser checks. Uses: isolated debugging port 9227. Libs: Node APIs.
  */
-export async function browser() {
+export async function browser({ acceptBeforeUnload = false } = {}) {
   const pages = await (await fetch('http://127.0.0.1:9227/json/list')).json();
   const ws = new WebSocket(pages.find((page) => page.type === 'page').webSocketDebuggerUrl);
   await new Promise((resolve) => {
@@ -14,6 +14,12 @@ export async function browser() {
     errors = [];
   ws.onmessage = (event) => {
     const message = JSON.parse(event.data);
+    if (
+      acceptBeforeUnload &&
+      message.method === 'Page.javascriptDialogOpening' &&
+      message.params.type === 'beforeunload'
+    )
+      void send('Page.handleJavaScriptDialog', { accept: true });
     if (message.method === 'Runtime.exceptionThrown') errors.push(message.params.exceptionDetails);
     if (message.id) {
       const task = pending.get(message.id);
@@ -51,6 +57,8 @@ export async function browser() {
     evaluate(
       `(()=>{const input=document.querySelector(${JSON.stringify(selector)});input.value=${JSON.stringify(value)};input.dispatchEvent(new Event(${JSON.stringify(event)},{bubbles:true}));})()`,
     );
+  if (acceptBeforeUnload)
+    await send('Page.handleJavaScriptDialog', { accept: true }).catch(() => {});
   await send('Runtime.enable');
   await send('Page.enable');
   await send('Emulation.setFocusEmulationEnabled', { enabled: true });

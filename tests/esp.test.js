@@ -32,7 +32,9 @@ test('all ESP choices reject alternatives, models survive packing, prose never c
  for(const [i,q] of esp.entries())for(const [j,v] of q.variations.entries()){
   assert.ok(q.estimatedMinutes<=5);assert.ok(q.variations.length>=5&&q.variations.length<=8);
   const answers=Object.fromEntries(v.parts.map(p=>[p.id,p.answer]));
-  assert.ok(markQuestion(packed[i].variations[j],answers).every(r=>r.earned===r.max));
+  const evidence = {evidence:(v.livePython?.cases??[]).map(c=>({caseId:c.id,document:'original',source:v.code}))};
+  // Executed repair models are covered by esp-task2.test.js, not by supplied answer strings.
+  assert.ok(markQuestion(packed[i].variations[j],answers,evidence).filter(r=>v.parts.find(p=>p.id===r.id).kind!=='python'&&!v.parts.find(p=>p.id===r.id).testRole).every(r=>r.earned===r.max));
   for(const p of v.parts){
    for(const wrong of (p.options??[]).filter(o=>o!==p.answer))assert.equal(markQuestion(v,{[p.id]:wrong}).find(r=>r.id===p.id).earned,0);
    assert.equal(markQuestion(v,{[p.id]:'not '+p.answer}).find(r=>r.id===p.id).earned,0);

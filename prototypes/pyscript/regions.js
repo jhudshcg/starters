@@ -103,7 +103,7 @@ export function regionExtension({ state, view, commands }, definitions, initial,
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'region-empty';
-        button.textContent = '…';
+        button.textContent = '\u00a0';
         button.setAttribute('aria-label', `Edit ${definition.label}`);
         button.onclick = () => selectRegion(editor, this.id);
         return button;
@@ -113,6 +113,7 @@ export function regionExtension({ state, view, commands }, definitions, initial,
       select.dataset.region = this.id;
       select.setAttribute('aria-label', `Replacement for ${definition.label}`);
       select.title = `Choose a replacement for ${definition.label}`;
+      if (!this.text) select.append(new Option('', ''));
       select.append(...definition.choices.map((text) => new Option(text, text)));
       select.value = this.text;
       // CSS focus-within emphasises the region without rebuilding the focused widget.
@@ -148,7 +149,8 @@ export function regionExtension({ state, view, commands }, definitions, initial,
         ranges.push(
           Decoration.widget({
             widget: new RegionControl(r.id, editorState.sliceDoc(r.from, r.to), mode),
-            side: -1,
+            // Empty gaps sit after the caret; typed text starts at their left edge.
+            side: r.from === r.to && mode !== 'choices' ? 1 : -1,
           }).range(r.to),
         );
     }
@@ -288,6 +290,19 @@ export function regionExtension({ state, view, commands }, definitions, initial,
         borderRadius: '0 2px 2px 0',
       },
       '.region-choice option': { fontSize: '14px' },
+      '.region-empty': {
+        width: '4ch',
+        height: '1.2em',
+        fontSize: 'inherit',
+        lineHeight: 'inherit',
+        padding: '1px',
+        margin: '0',
+        border: '0',
+        outline: '1px solid var(--code-muted)',
+        borderRadius: '3px',
+        boxSizing: 'content-box',
+        backgroundColor: 'var(--editor-region-bg)',
+      },
       '.region-choice:focus-visible, .region-empty:focus-visible': {
         outline: '2px solid var(--selection-border)',
         outlineOffset: '2px',
@@ -335,14 +350,16 @@ export function regionExtension({ state, view, commands }, definitions, initial,
 export function initialRegions(source, definitions) {
   const ids = new Set();
   const regions = definitions
-    .map(({ id, text, choices }) => {
-      const from = source.indexOf(text);
+    .map(({ id, text, choices = [], from: position }) => {
+      const from = position ?? source.indexOf(text);
       if (
-        !text ||
+        typeof text !== 'string' ||
+        !Number.isInteger(from) ||
         from < 0 ||
-        source.indexOf(text, from + 1) !== -1 ||
+        source.slice(from, from + text.length) !== text ||
+        (position === undefined && (!text || source.indexOf(text, from + 1) !== -1)) ||
         ids.has(id) ||
-        !choices.includes(text)
+        (text && choices.length && !choices.includes(text))
       )
         throw Error(`Invalid or ambiguous question region: ${id}`);
       ids.add(id);

@@ -11,6 +11,8 @@ const bootstrap = `<script>try { (${restoreTheme.toString()})(document.documentE
 
 export function handle({ event, resolve }) {
   return resolve(event, {
-    transformPageChunk: ({ html }) => html.replace('<!-- theme-bootstrap -->', bootstrap),
+    // Preserve comments so Kit's hydration check does not flag the authored marker.
+    transformPageChunk: ({ html }) =>
+      html.replace('<!-- theme-bootstrap -->', (marker) => marker + bootstrap),
   });
 }

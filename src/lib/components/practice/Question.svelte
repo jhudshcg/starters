@@ -3,6 +3,7 @@
   import { tick } from 'svelte';
   import LivePython from './LivePython.svelte';
   import Stimulus from './Stimulus.svelte';
+  import Task2Response from './Task2Response.svelte';
   import TestPlan from './TestPlan.svelte';
   import PuzzleParts from './PuzzleParts.svelte';
   import { hasRecentSubmission } from '#domain/review.js';
@@ -29,7 +30,7 @@
   const columnLabels = {
     data: 'Test data',
     expected: 'Expected outcome',
-    predicted: 'Predicted outcome',
+    predicted: 'Recorded actual outcome',
     actions: 'Comments and actions',
   };
   // Group only presentation; original part indexes still own labels and marking.
@@ -40,7 +41,7 @@
       columns.set(row.dataPart, 'data');
       for (const supplied of row.cases) {
         columns.set(supplied.expectedPart, 'expected');
-        columns.set(supplied.predictedPart, 'predicted');
+        columns.set(supplied.actualPart ?? supplied.predictedPart, 'predicted');
       }
       for (const id of row.actionParts) columns.set(id, 'actions');
     }
@@ -111,138 +112,155 @@
     </p>{/if}
   <div
     class="question-layout"
-    class:investigation={Boolean(q.testPlan || q.livePython)}
+    class:investigation={Boolean(q.testPlan)}
+    class:with-editor={Boolean(q.livePython)}
     class:no-stimulus={!q.code && !q.grid && !q.sheet && !q.clues}
   >
     {#if q.livePython}
       <LivePython {q} {a} {app} {hintVisible} {review} />
     {:else}
       <Stimulus {q} />
-      {#if set.type === 0}<PuzzleParts {q} {set} attempt={a} {results} {app} {href} />{:else}
-        {#snippet renderParts(items)}
-          {#each items as { part, j } (part.id)}
-            {@const id = `answer-${q.slot}-${part.id}`}
-            {@const result = results?.[j]}
-            {@const showSelectedText = (answers[part.id]?.length ?? 0) > 30}
-            {#if !q.testPlan && part.section && part.section !== q.parts[j - 1]?.section}
-              <h3 class="answer-section">{part.section}</h3>
-            {/if}
-            {#snippet label()}{#if subtopic !== 'all' && matchesSubtopic(part, subtopic)}<span
-                  class="subtopic-match">Selected subtopic · {subtopic}</span
-                >
-              {/if}<span class="part-label">{String.fromCharCode(97 + j)})</span>
-              {part.prompt}
-              <span class="part-marks">({part.marks})</span>{/snippet}
-            {#snippet code()}{#if part.code}<!-- svelte-ignore a11y_no_noninteractive_tabindex (Code panels remain keyboard-scrollable at high zoom.) -->
-                <pre
-                  class="code-panel part-code"
-                  tabindex="0"
-                  role="region"
-                  aria-label={`Python code for part ${j + 1}`}><code>{part.code}</code
-                  ></pre>{/if}{/snippet}
-            {#snippet feedback()}
-              {#if part.coverage?.length}<details class="part-coverage">
-                  <summary>Spec reference</summary><small
-                    >{formatCoverage(part.coverage)}{part.coverageMode === 'practice'
-                      ? ' · Supporting practice'
-                      : ''}</small
-                  >
-                </details>{/if}
-              {#if result}<p id={`feedback-${q.slot}-${j}`} class={`feedback ${outcome(result)}`}>
-                  {result.earned}/{result.max} · {result.message}
-                </p>{/if}
-            {/snippet}
-            {#if part.control === 'select' && part.options}
-              <div class="part" data-result={outcome(result)}>
-                <label for={id}>{@render label()}</label>{@render code()}
-                <select
-                  class="choice-field answer-select"
-                  {id}
-                  data-slot={q.slot}
-                  data-part={part.id}
-                  value={answers[part.id] ?? ''}
-                  disabled={Boolean(a.finished || a.pythonSubmission)}
-                  aria-describedby={[
-                    showSelectedText ? `${id}-selected` : '',
-                    result ? `feedback-${q.slot}-${j}` : '',
-                  ]
-                    .filter(Boolean)
-                    .join(' ') || undefined}
-                  onchange={(e) => app.practice.answer(q.slot, part.id, e.currentTarget.value)}
-                >
-                  <option value="">Choose an answer</option>
-                  {#each part.options as option}<option value={option}>{option}</option>{/each}
-                </select>
-                {#if showSelectedText}
-                  <p class="selected-answer" id={`${id}-selected`}>{answers[part.id]}</p>
-                {/if}
-                {@render feedback()}
-              </div>
-            {:else if part.options}
-              <fieldset
-                class="part"
-                data-result={outcome(result)}
-                disabled={Boolean(a.finished || a.pythonSubmission)}
-              >
-                <legend>{@render label()}</legend>{@render code()}
-                <div class="options">
-                  {#each part.options as option}<label class="option"
-                      ><input
-                        type="radio"
-                        name={id}
-                        value={option}
-                        data-slot={q.slot}
-                        data-part={part.id}
-                        checked={answers[part.id] === option}
-                        onchange={() => app.practice.answer(q.slot, part.id, option)}
-                      />{option}</label
-                    >{/each}
-                </div>
-                {@render feedback()}
-              </fieldset>
-            {:else}
-              <div class="part" data-result={outcome(result)}>
-                <label for={id}>{@render label()}</label>{@render code()}<input
-                  class="text-field"
-                  {id}
-                  data-slot={q.slot}
-                  data-part={part.id}
-                  value={answers[part.id] ?? ''}
-                  disabled={Boolean(a.finished || a.pythonSubmission)}
-                  inputmode={part.kind === 'number' ? 'decimal' : undefined}
-                  autocomplete="off"
-                  autocapitalize="off"
-                  spellcheck="false"
-                  aria-describedby={result ? `feedback-${q.slot}-${j}` : undefined}
-                  oninput={(e) => app.practice.answer(q.slot, part.id, e.currentTarget.value)}
-                />{@render feedback()}
-              </div>
-            {/if}
-          {/each}
-        {/snippet}
-        <div class="parts" class:investigation-parts={Boolean(q.testPlan)}>
-          {#if q.testPlan}
-            {#each investigationGroups as group (group.key)}
-              <section
-                class="investigation-group"
-                data-column={group.column}
-                aria-labelledby={`group-${q.slot}-${group.key}`}
-              >
-                <header>
-                  <p class="test-plan-column">{columnLabels[group.column]}</p>
-                  <h3 id={`group-${q.slot}-${group.key}`}>{group.section}</h3>
-                </header>
-                <div class="investigation-group-parts">{@render renderParts(group.items)}</div>
-              </section>
-            {/each}
-          {:else}
-            {@render renderParts(indexedParts)}
+    {/if}
+    {#if set.type === 0}<PuzzleParts {q} {set} attempt={a} {results} {app} {href} />{:else}
+      {#snippet renderParts(items)}
+        {#each items as { part, j } (part.id)}
+          {@const id = `answer-${q.slot}-${part.id}`}
+          {@const result = results?.[j]}
+          {@const showSelectedText = (answers[part.id]?.length ?? 0) > 30}
+          {#if !q.testPlan && part.section && part.section !== q.parts[j - 1]?.section}
+            <h3 class="answer-section">{part.section}</h3>
           {/if}
-        </div>
-      {/if}
+          {#snippet label()}{#if subtopic !== 'all' && matchesSubtopic(part, subtopic)}<span
+                class="subtopic-match">Selected subtopic · {subtopic}</span
+              >
+            {/if}<span class="part-label">{String.fromCharCode(97 + j)})</span>
+            {part.prompt}
+            <span class="part-marks">({part.marks})</span>{/snippet}
+          {#snippet code()}{#if part.code}<!-- svelte-ignore a11y_no_noninteractive_tabindex (Code panels remain keyboard-scrollable at high zoom.) -->
+              <pre
+                class="code-panel part-code"
+                tabindex="0"
+                role="region"
+                aria-label={`Python code for part ${j + 1}`}><code>{part.code}</code
+                ></pre>{/if}{/snippet}
+          {#snippet feedback()}
+            {#if part.coverage?.length}<details class="part-coverage">
+                <summary>Spec reference</summary><small
+                  >{formatCoverage(part.coverage)}{part.coverageMode === 'practice'
+                    ? ' · Supporting practice'
+                    : ''}</small
+                >
+              </details>{/if}
+            {#if result}<p id={`feedback-${q.slot}-${j}`} class={`feedback ${outcome(result)}`}>
+                {result.earned}/{result.max} · {result.message}
+              </p>{/if}
+          {/snippet}
+          {#if part.testRole}
+            <div class="part" data-result={outcome(result)}>
+              <p>{@render label()}</p>
+              <Task2Response {q} {part} {answers} {a} {app} />
+              {@render feedback()}
+            </div>
+          {:else if part.editorRegion || part.kind === 'python'}
+            <div class="part" data-result={outcome(result)}>
+              <p>{@render label()}</p>
+              <small>Complete this part in the code editor.</small>{@render feedback()}
+            </div>
+          {:else if part.control === 'select' && part.options}
+            <div class="part" data-result={outcome(result)}>
+              <label for={id}>{@render label()}</label>{@render code()}
+              <select
+                class="choice-field answer-select"
+                {id}
+                data-slot={q.slot}
+                data-part={part.id}
+                value={answers[part.id] ?? ''}
+                disabled={Boolean(a.finished || a.pythonSubmission)}
+                aria-describedby={[
+                  showSelectedText ? `${id}-selected` : '',
+                  result ? `feedback-${q.slot}-${j}` : '',
+                ]
+                  .filter(Boolean)
+                  .join(' ') || undefined}
+                onchange={(e) => app.practice.answer(q.slot, part.id, e.currentTarget.value)}
+              >
+                <option value="">Choose an answer</option>
+                {#each part.options as option}<option value={option}>{option}</option>{/each}
+              </select>
+              {#if showSelectedText}
+                <p class="selected-answer" id={`${id}-selected`}>{answers[part.id]}</p>
+              {/if}
+              {@render feedback()}
+            </div>
+          {:else if part.options}
+            <fieldset
+              class="part"
+              data-result={outcome(result)}
+              disabled={Boolean(a.finished || a.pythonSubmission)}
+            >
+              <legend>{@render label()}</legend>{@render code()}
+              <div class="options">
+                {#each part.options as option}<label class="option"
+                    ><input
+                      type="radio"
+                      name={id}
+                      value={option}
+                      data-slot={q.slot}
+                      data-part={part.id}
+                      checked={answers[part.id] === option}
+                      onchange={() => app.practice.answer(q.slot, part.id, option)}
+                    />{option}</label
+                  >{/each}
+              </div>
+              {@render feedback()}
+            </fieldset>
+          {:else}
+            <div class="part" data-result={outcome(result)}>
+              <label for={id}>{@render label()}</label>{@render code()}<input
+                class="text-field"
+                {id}
+                data-slot={q.slot}
+                data-part={part.id}
+                value={answers[part.id] ?? ''}
+                disabled={Boolean(a.finished || a.pythonSubmission)}
+                inputmode={part.kind === 'number' ? 'decimal' : undefined}
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-describedby={result ? `feedback-${q.slot}-${j}` : undefined}
+                oninput={(e) => app.practice.answer(q.slot, part.id, e.currentTarget.value)}
+              />{@render feedback()}
+            </div>
+          {/if}
+        {/each}
+      {/snippet}
+      <div class="parts" class:investigation-parts={Boolean(q.testPlan)}>
+        {#if q.testPlan}
+          {#each investigationGroups as group (group.key)}
+            <section
+              class="investigation-group"
+              data-column={group.column}
+              aria-labelledby={`group-${q.slot}-${group.key}`}
+            >
+              <header>
+                <p class="test-plan-column">{columnLabels[group.column]}</p>
+                <h3 id={`group-${q.slot}-${group.key}`}>{group.section}</h3>
+              </header>
+              <div class="investigation-group-parts">{@render renderParts(group.items)}</div>
+            </section>
+          {/each}
+        {:else}
+          {@render renderParts(indexedParts)}
+        {/if}
+      </div>
     {/if}
   </div>
-  {#if q.testPlan}<TestPlan rows={q.testPlan} {answers} />{/if}
+  {#if q.testPlan}<TestPlan
+      {q}
+      {answers}
+      evidence={a.python?.[q.slot]?.evidence ?? []}
+      source={answers.code ?? q.code}
+    />{/if}
   {#if q.review}<section class="esp-review">
       <h3>Written reasoning · separate review</h3>
       <label for={`review-${q.slot}`}>{q.review.prompt}</label><textarea
@@ -300,7 +318,7 @@
       <strong>Hint:</strong>
       {q.hint}
     </p>{/if}
-  {#if !q.livePython && review && a.reveals[q.slot]}<div class="solution" tabindex="-1">
+  {#if review && a.reveals[q.slot]}<div class="solution" tabindex="-1">
       <h3>Answers and explanations</h3>
       <ol class="solution-list" role="list">
         {#each q.parts as publicPart, j}{#if set.type === 0}{@html puzzleSolutionHTML(
@@ -311,10 +329,49 @@
             <li class="solution-part">
               <p class="solution-answer">
                 <span class="part-label">{String.fromCharCode(97 + j)})</span>
-                <strong>{part.solutionText ?? part.answer}</strong>
+                <strong
+                  >{part.kind === 'python'
+                    ? 'See the example code.'
+                    : (part.solutionText ?? part.answer)}</strong
+                >
               </p>
               <p class="solution-explanation">{part.explanation}</p>
             </li>{/if}{/each}
       </ol>
     </div>{/if}
 </article>
+
+<style>
+  .question {
+    min-width: 0;
+  }
+  .question-layout.with-editor {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+    grid-template-areas:
+      'guidance answers'
+      'editor answers'
+      'spacer answers'
+      'controls answers';
+    grid-template-rows: max-content max-content max-content minmax(0, 1fr);
+    column-gap: 1.5rem;
+    row-gap: 0;
+  }
+  .with-editor > .parts {
+    grid-area: answers;
+  }
+  .with-editor :global(.coding-controls :is(input, select, textarea, button)) {
+    scroll-margin-top: var(--editor-scroll-offset, 0px);
+  }
+  @media (max-width: 960px) {
+    .question-layout.with-editor {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-areas: 'guidance' 'editor' 'spacer' 'controls' 'answers';
+      grid-template-rows: auto;
+    }
+    .with-editor :global(.parts :is(input, select, textarea, button)) {
+      scroll-margin-top: var(--editor-scroll-offset, 0px);
+    }
+  }
+</style>

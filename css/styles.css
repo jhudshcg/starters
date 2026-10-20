@@ -2850,18 +2850,23 @@ footer>span:last-child {
   }
 }
 
-@variant max-viewport-small-inclusive {
-  main:has(>.questions) {
-    padding-inline: 0;
+/* Main content cards share mobile edges; compact tile grids retain their gutters. */
+@variant max-viewport-medium {
+  main {
+    padding-inline: 1rem;
   }
 
-  main:has(>.questions)>:not(.questions,.set-toolbar,.result-banner) {
-    margin-inline: 1rem;
+  .search-results {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  main:has(>.questions)>:is(.set-toolbar,.result-banner),
-  .questions>.question {
-    width: 100%;
+  main > :is(.surface-card,.note-panel),
+  .questions > .question,
+  .search-results > .search-result,
+  .exam-options > .note-panel {
+    width: calc(100% + 2rem);
+    max-width: none;
+    margin-inline: -1rem;
     border-inline: 0;
     border-radius: 0;
     --card-border-image: var(--card-mobile-border-image);

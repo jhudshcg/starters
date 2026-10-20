@@ -9,6 +9,8 @@ import io
 import json
 import random
 import traceback
+import os
+import tempfile
 
 
 class OutputLimit(Exception):
@@ -22,6 +24,23 @@ class LimitedOutput(io.StringIO):
             super().write(text[:remaining])
             raise OutputLimit("Output limit reached (12,000 characters).")
         return super().write(text)
+
+
+@contextlib.contextmanager
+def isolated_files(fixtures):
+    """Reset declared files per case and leave the directory before removing it in Pyodide."""
+    previous = os.getcwd()
+    with tempfile.TemporaryDirectory() as directory:
+        try:
+            os.chdir(directory)
+            for name, text in fixtures.items():
+                if os.path.basename(name) != name:
+                    raise ValueError("Fixture names must be plain filenames")
+                with open(name, "w", encoding="utf-8") as fixture:
+                    fixture.write(text)
+            yield
+        finally:
+            os.chdir(previous)
 
 
 def run_cases(payload):
@@ -53,9 +72,10 @@ def run_cases(payload):
         if plot:
             plot.close("all")
         try:
-            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+            # Each run gets a fresh filesystem; declared fixtures cannot leak between attempts.
+            with isolated_files(request.get("fixtures", {})), contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
                 exec(compile(request["source"], "student.py", "exec"), namespace)
-                value = eval(compile(request["expression"], "<call>", "eval"), namespace)
+                value = eval(compile(case.get("expression", request["expression"]), "<call>", "eval"), namespace)
                 result["type"] = type(value).__name__
                 try:
                     json.dumps(value, allow_nan=False)

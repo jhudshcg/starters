@@ -2,7 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createPractice } from '../src/lib/application/practice.js';
-import { choose } from '../js/bank.js';
+import { BANK_VERSION } from '../js/codes.js';
+import { choose, resolve } from '../js/bank.js';
 import { routeURL, routeHash } from '../src/lib/application/routes.js';
 
 function fixture() {
@@ -46,7 +47,7 @@ function fixture() {
 }
 test('practice commands preserve guide independence, specific assistance and single recording', async () => {
   const { practice, session, advance } = fixture(),
-    set = choose(2, 'records');
+    set = resolve({ version: BANK_VERSION, type: 2, entries: [{ slot: 24, variation: 0 }], minutes: null });
   await practice.start(set);
   const q = set.questions[0],
     part = q.parts[0];

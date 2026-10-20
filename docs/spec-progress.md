@@ -43,6 +43,19 @@ The history table shows dated set results, type/focus, code, final marks and per
 
 Earlier aggregate-only records remain in history, statistics, charts, exports and repeat-attempt checks. They cannot establish detailed topic/subtopic priority evidence: do not invent historical attribution or silently backfill it. Reopening a completed older record does not convert it into detailed evidence.
 
+## Code attempt review and skill progression — adopted 20 October 2026
+
+Implemented 20 October 2026. Students can review completed ESP Task 2 and free-code editing attempts, including submitted code, predictions, test evidence and assessed-skill summaries. Reviews are tied to the profile and question/version attempted; earlier code is not replaced by a newer question or current draft. The archive begins with attempts completed after this feature was added; older score-only records cannot acquire invented code evidence.
+
+### Review records and retention — agreed 20 October 2026
+
+- Save a read-only review record for each submitted or timed-out code attempt: question requirements and original code, submitted code, answers, per-part marks/feedback, dated run inputs/results and editing/hint/check support. Preserve earlier runs against the source actually tested. Reviewing a record does not restart a timer or change its score; retry creates a new attempt.
+- Preserve completed early repeats for review while retaining their existing exclusion from tracked statistics and revision calculations. Identify them as practice-only; do not create extra tracked completions. Do not record every keystroke as an attempt.
+- Show evidence over time for the skills actually assessed. Task 2 can distinguish test-data selection, requirement-led expectations, accurate observation, diagnosis, repair and retest planning. Free-code questions use their authored requirements/focus; do not infer skills from incidental code or award a general proficiency label from a few passing tests. Show editing mode and assistance so supported practice can be distinguished from less supported work.
+- Show Run, Check, editing-mode, hint and reveal evidence alongside the assessed results. Preserve existing tracked-score and revision calculations in this extension. A change to independent-readiness scoring remains deferred; the review display must not imply that it has been adopted.
+- Keep the six most recent completed detailed attempts per individual question and variation within each profile, bank and code generation. Keep the current draft separately. When a seventh completed attempt is saved, remove only the oldest detailed record in that group; retain older scores and skill summaries. Apply the same limit after merging restored records, with deterministic ordering for matching timestamps. Explain the six-attempt limit in the review interface.
+- Carry review records through the existing named-profile JSON backup/restore and linked-file workflow. Validate and merge by attempt identity before any write. Deduplicate repeated source within a record and retain the existing explicit storage/backup failure behaviour; do not discard further history to hide a storage failure. Older results without saved code remain valid and say that code evidence is unavailable.
+
 ## Estimated engaged practice time
 
 For new practice, accumulate estimated engaged time separately from elapsed wall-clock time. Begin when the first question is displayed on an unfinished activity page in the visible tab. Initialise an interaction flag (IV) as false and a two-minute inactivity expiry timestamp (IT).

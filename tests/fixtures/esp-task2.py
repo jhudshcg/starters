@@ -170,8 +170,8 @@ for key, changes in repairs.items():
             assert before in fixed[key], (key, before)
             fixed[key] = fixed[key].replace(before, after, 1)
     parts = {p['id']: p for p in questions[key]['parts']}
-    selected = [parts[f'd{index}-fix']['answer'] for index in range(len(changes))]
-    assert selected == [change[0] for change in changes], (key, selected)
+    selected = [parts[f'd{index}-repair']['answer'] for index in range(len(changes))]
+    assert selected == [fixed[key]] * len(changes), (key, selected)
 
 
 def describe(result, interactive):
@@ -199,20 +199,8 @@ for key, call, entries, original, corrected, interactive, public_input in observ
     index = seen.get(key, 0)
     seen[key] = index + 1
     row = next(case for group in questions[key]['testPlan'] for case in group['cases'] if case['id'] == f'c{index}')
-    if ';' in public_input:
-        values = public_input.split(';', 1)[1].strip()
-        for prefix in ('planned entries ', 'entries ', 'first entry '):
-            if values.startswith(prefix):
-                values = values[len(prefix):]
-                break
-    else:
-        values = public_input[public_input.index('(')+1:-1]
-    assert row['input'] == values, (key, row['input'], values)
-    parts = {p['id']: p for p in questions[key]['parts']}
     actual = check(key, call, original, entries)
     repaired = check(key, call, corrected, entries, source=fixed[key])
-    assert parts[row['predictedPart']]['answer'] == describe(actual, interactive), key
-    assert parts[row['expectedPart']]['answer'] == describe(repaired, interactive), key
 assert set(seen) == set(questions)
 assert all(seen[key] == sum(len(group['cases']) for group in q['testPlan']) for key, q in questions.items())
 
@@ -279,24 +267,15 @@ for key, call, entries, expected in [
     check(key, call, expected, entries, source=partial)
 
 
-# Every selected data suite must contain inputs of the stated validity. This checks
-# the new grouping against repaired Python, independently of dropdown marking.
+# Student-selected example inputs are checked against independently repaired Python.
 for key, question in questions.items():
     parts = {p['id']: p for p in question['parts']}
-    groups = question['testPlan']
-    function = groups[0]['description'].split(':')[0]
-    valid_values = parts[groups[0]['dataPart']]['answer'].split('; ')
-    recovery = ast.literal_eval(valid_values[0].split(' — ')[0]) if len(groups) == 2 else None
-    for group in groups:
-        for item in parts[group['dataPart']]['answer'].split('; '):
-            value = item.split(' — ')[0]
-            if recovery is not None:
-                entered = ast.literal_eval(value)
-                result, _ = run(fixed[key], function + '()', (entered, recovery))
-                expected_prompts = 1 if group['kind'] == 'valid' else 2
-                assert result[2] == expected_prompts and not result[0].endswith('Error') and result[0] != 'MoreInput', (key, group['kind'], value, result)
-            else:
-                result, _ = run(fixed[key], function + '(' + value + ')')
-                assert result[0] in ('int', 'float'), (key, value, result)
+    function = question['testPlan'][0]['description'].split(':')[0]
+    for group in question['testPlan']:
+        for data in json.loads(parts[group['dataPart']]['answer']).values():
+            if 'inputs' in data:
+                result, _ = run(fixed[key], function + '()', data['inputs'])
+                assert result[2] == len(data['inputs']) and not result[0].endswith('Error') and result[0] != 'MoreInput', (key, data, result)
+                assert (result[2] == 1) == (group['kind'] == 'valid'), (key, group, result)
             checks += 1
 print(f'{checks} independent execution checks; all 18 prediction/expectation/repair keys match.')

@@ -18,7 +18,10 @@ with tempfile.TemporaryDirectory() as directory:
  for q in rows:
   for i, v in enumerate(q['variations']):
    slot = q['slot']; p = v['parts']; code = v['code']; env = {}
-   if slot in (10,16,37,40,43,56,34): code = code.replace('___', p[0]['answer'])
+   if v.get('livePython', {}).get('embedded'):
+    for region in reversed(v['livePython']['regions']):
+     answer = next(part['answer'] for part in p if part.get('editorRegion') == region['id'])
+     start = region['from']; code = code[:start] + answer + code[start + len(region['text']):]
    if slot == 26: code = code.replace('count, name, active = record',p[0]['answer'])
    if slot == 55: code = code.replace('counts[len(counts)]','counts['+p[0]['answer']+']')
    if slot == 34: Path('readings.txt').write_text(str(i+3)+'\n8\n')

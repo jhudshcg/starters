@@ -1,0 +1,1055 @@
+/**
+ * Purpose: Verify production editor/prediction/Task 2/history interactions in isolated Chrome.
+ * Main contents: real typing, run evidence, tabs, height controls and read-only review.
+ * Used by: local verification on port 9227. Uses: browser-support and authored test identities.
+ * Libs: Node assert/fs and Chrome CDP. Clears only the dedicated test profile.
+ */
+import assert from 'node:assert/strict';
+import { writeFile } from 'node:fs/promises';
+import { browser } from './browser-support.mjs';
+import { encode, BANK_VERSION } from '../js/codes.js';
+import esp from '../data/esp-task2.js';
+import { studentCases } from '../js/task2-tests.js';
+import {
+  enterTestInputs,
+  enterExpectations,
+  enterOutcome,
+  testOutcomes,
+} from './browser-task2-inputs.mjs';
+const base = process.env.STARTERS_PREVIEW_URL ?? 'http://127.0.0.1:8765';
+const b = await browser({ acceptBeforeUnload: true });
+if (process.argv.includes('--inspect')) {
+  console.log(
+    await b.evaluate(
+      `({innerWidth, outerWidth, dpr:devicePixelRatio, screen:screen.width, zoom:visualViewport.scale, body:document.body.scrollWidth, main:document.querySelector('main').getBoundingClientRect().width, meta:document.querySelector('meta[name=viewport]')?.content})`,
+    ),
+  );
+  console.log(await b.evaluate('document.body.innerText.slice(0,800)'));
+  console.log(JSON.stringify(b.errors));
+  b.close();
+  process.exit(0);
+}
+const root = (slot, doc = 'edited') =>
+  `document.querySelector('#editor-${slot}-${doc} .py-editor-input > div')?.shadowRoot`;
+const text = (slot, doc = 'edited') =>
+  `[...${root(slot, doc)}.querySelectorAll('.cm-line')].map(line => line.textContent).join('\\n')`;
+const button = (slot, label) =>
+  `[...document.querySelectorAll('[data-question="${slot}"] button')].find(b=>b.textContent.trim()===${JSON.stringify(label)})`;
+async function wait(expression, timeout = 120000) {
+  const end = Date.now() + timeout;
+  while (Date.now() < end) {
+    if (await b.evaluate(`Boolean(${expression})`)) return;
+    await new Promise((r) => setTimeout(r, 200));
+  }
+  throw Error(
+    `Timed out ${expression}: ${await b.evaluate('document.body.innerText.slice(-2500)')}`,
+  );
+}
+async function open(type, slot, variation) {
+  const code = encode({
+    version: BANK_VERSION,
+    type,
+    entries: [{ slot, variation }],
+    minutes: null,
+  });
+  await b.send('Page.navigate', { url: base + '/set/?code=' + code });
+  await wait(
+    `${root(slot)}?.querySelector('.cm-content') && !${button(slot, 'Reset code')}?.disabled`,
+    30000,
+  );
+}
+async function replace(slot, source) {
+  await b.evaluate(`${root(slot)}.querySelector('.cm-content').focus()`);
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'a',
+    code: 'KeyA',
+    windowsVirtualKeyCode: 65,
+    modifiers: 4,
+  });
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyUp',
+    key: 'a',
+    code: 'KeyA',
+    windowsVirtualKeyCode: 65,
+    modifiers: 4,
+  });
+  await b.send('Input.insertText', { text: source });
+}
+async function run(slot) {
+  await b.evaluate(`${button(slot, 'Run code')}.click()`);
+  await wait(
+    `![...document.querySelectorAll('button')].some(b=>b.textContent.trim()==='Stop Python') && document.body.innerText.includes('Run finished on')`,
+  );
+}
+try {
+  await b.send('Page.navigate', { url: base });
+  await b.until('Boolean(document.querySelector("#main"))');
+  await b.evaluate('localStorage.clear()');
+  await b.reload();
+  await b.until('Boolean(document.querySelector("#profile-name"))');
+  await b.change('#profile-name', 'Editor Workflow Test', 'input');
+  await b.evaluate('document.querySelector("[role=dialog] form").requestSubmit()');
+  await b.until('Boolean(document.querySelector("#code-form"))');
+  await b.send('Emulation.setDeviceMetricsOverride', {
+    width: 1280,
+    height: 900,
+    deviceScaleFactor: 1,
+    mobile: false,
+  });
+  if (process.argv.includes('--code-layout-only')) {
+    await open(3, 36, 5);
+    // A long student-authored line must scroll locally even when the surrounding column is wide.
+    const source = 'message = "' + 'abcdefghij'.repeat(24) + '"';
+    await replace(36, source);
+    for (const width of [360, 767, 768, 1280]) {
+      await b.send('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 900,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      for (const doc of ['original', 'edited']) {
+        await b.click(`#tab-36-${doc}`);
+        await b.evaluate(`document.querySelector('.coding-intro').scrollIntoView({block:'start'})`);
+        await wait(
+          `getComputedStyle(${root(36, doc)}.querySelector('.cm-content')).fontSize === '${width < 768 ? 14 : 16}px'`,
+          5000,
+        );
+        const layout = await b.evaluate(`(() => {
+          const root=${root(36, doc)}, content=root.querySelector('.cm-content'), scroller=root.querySelector('.cm-scroller');
+          return {size:getComputedStyle(content).fontSize,space:getComputedStyle(content).whiteSpace,
+            overflow:getComputedStyle(scroller).overflowX,scrolls:scroller.scrollWidth>scroller.clientWidth,
+            gutter:getComputedStyle(root.querySelector('.cm-gutters')).fontSize};
+        })()`);
+        assert.equal(layout.size, width < 768 ? '14px' : '16px');
+        assert.equal(layout.gutter, layout.size);
+        assert.equal(layout.space, 'pre', 'authored lines do not wrap');
+        assert.equal(layout.overflow, 'auto');
+        if (doc === 'edited' || width === 360) {
+          assert.ok(layout.scrolls, `${width} ${doc}: long line scrolls locally`);
+          await b.evaluate(`(${root(36, doc)}).querySelector('.cm-scroller').scrollLeft=100`);
+          assert.ok(
+            await b.evaluate(`${root(36, doc)}.querySelector('.cm-scroller').scrollLeft>0`),
+          );
+          await b.evaluate(`(${root(36, doc)}).querySelector('.cm-scroller').scrollLeft=0`);
+        }
+        assert.ok(
+          await b.evaluate('document.documentElement.scrollWidth<=innerWidth'),
+          'page does not scroll horizontally',
+        );
+      }
+    }
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 360,
+      height: 800,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await b.click('#tab-36-original');
+    await b.evaluate(
+      `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+20)`,
+    );
+    await wait(`document.querySelector('.editor-dock').classList.contains('docked')`);
+    await writeFile(
+      '/private/tmp/editor-code-360.png',
+      Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+    );
+    assert.deepEqual(b.errors, []);
+    console.log(
+      'Both tabs: 14px below 768px and 16px from 768px; unwrapped authored lines, horizontal editor scrolling, matching gutter size and no page overflow pass at 360/767/768/1280px.',
+    );
+    b.close();
+    process.exit(0);
+  }
+  if (process.argv.includes('--dock-layout-only')) {
+    await open(3, 36, 5);
+    await b.evaluate(`${button(36, 'Check test plan and code')}.click()`);
+    await wait(
+      `document.querySelector('.check-results li') && !${button(36, 'Check test plan and code')}.disabled`,
+    );
+    await b.click('#theme-picker');
+    await wait(`Boolean(document.querySelector('[data-theme-choice="dark:rose"]'))`);
+    await b.click('[data-theme-choice="dark:rose"]');
+    await b.click('#theme-picker');
+    for (const width of [1280, 1024, 360]) {
+      await b.send('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 800,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      await b.evaluate('scrollTo(0,0)');
+      await wait(`!document.querySelector('.editor-dock').classList.contains('docked')`);
+      const columns = await b.evaluate(
+        `getComputedStyle(document.querySelector('.with-editor')).gridTemplateColumns.split(' ').map(parseFloat)`,
+      );
+      assert.equal(columns.length, width > 960 ? 2 : 1);
+      if (width > 960) assert.ok(Math.abs(columns[0] / columns[1] - 1.5) < 0.01);
+      await b.evaluate(
+        `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+50)`,
+      );
+      await wait(`document.querySelector('.editor-dock').classList.contains('docked')`);
+      for (const dy of [0, 350, 600]) {
+        await b.evaluate(`scrollBy(0,${dy})`);
+        await b.evaluate(
+          'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',
+        );
+        const pinned = await b.evaluate(`(() => {
+          const d=document.querySelector('.editor-dock'),r=d.getBoundingClientRect(),
+            code=document.querySelector('#editor-36-edited .live-python-editor').getBoundingClientRect(),
+            grip=document.querySelector('.height-handle'),g=grip.getBoundingClientRect(),
+            beside=document.elementFromPoint(r.left+4,r.bottom+g.height/2),
+            onGrip=document.elementFromPoint(g.left+g.width/2,g.top+g.height/2);
+          return {top:r.top,bottom:r.bottom,codeBottom:code.bottom,gripTop:g.top,
+            stripIntercepted:d.contains(beside),gripReachable:grip.contains(onGrip),
+            resultsOpen:document.querySelector('.results-toggle').getAttribute('aria-expanded')};
+        })()`);
+        assert.ok(
+          Math.abs(pinned.top - (width > 960 ? 16 : 0)) < 1,
+          `${width}: code stays visible with expanded results: ${JSON.stringify(pinned)}`,
+        );
+        assert.ok(pinned.bottom < 760, `${width}: code fits the viewport`);
+        assert.equal(pinned.bottom, pinned.codeBottom, 'floating surface stops at code outline');
+        assert.equal(pinned.gripTop, pinned.codeBottom, 'grip attaches to the outline');
+        assert.equal(
+          pinned.stripIntercepted,
+          false,
+          'space beside the grip belongs to scrolling content',
+        );
+        assert.equal(pinned.gripReachable, true, 'grip remains interactive');
+        assert.equal(pinned.resultsOpen, 'true');
+      }
+      if (width === 1280) {
+        await b.click('.results-toggle');
+        await wait(
+          `document.querySelector('.results-toggle').getAttribute('aria-expanded')==='false'`,
+        );
+        assert.ok(
+          await b.evaluate(
+            `Math.abs(document.querySelector('.editor-dock').getBoundingClientRect().top-16)<1`,
+          ),
+          'collapsing results does not move code',
+        );
+        await b.click('.results-toggle');
+      }
+      await writeFile(
+        `/private/tmp/editor-dock-${width}.png`,
+        Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+      );
+    }
+    assert.deepEqual(b.errors, []);
+    console.log(
+      'Expanded/collapsed results preserve the pinned code at 1280/1024px; 360px retains mobile docking. Code-frame/grip alignment, transparent grip surround, pointer access and 60/40 columns pass.',
+    );
+    b.close();
+    process.exit(0);
+  }
+  if (process.argv.includes('--mobile-scroll-only')) {
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 360,
+      height: 800,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await open(3, 36, 5);
+    const originalHeight = await b.evaluate(`${root(36)}.querySelector('.cm-editor').offsetHeight`);
+    await b.evaluate(
+      `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+20)`,
+    );
+    await wait(`document.querySelector('.editor-dock').classList.contains('docked')`);
+    await b.evaluate(`document.querySelector('.parts input').focus()`);
+    await wait(`document.activeElement === document.querySelector('.parts input')`);
+    const focused = await b.evaluate(
+      `({top:document.activeElement.getBoundingClientRect().top,bottom:document.querySelector('.editor-dock').getBoundingClientRect().bottom})`,
+    );
+    assert.ok(
+      focused.top >= focused.bottom,
+      `focused input clears code: ${JSON.stringify(focused)}`,
+    );
+    const before = await b.evaluate(`${root(36)}.querySelector('.cm-editor').offsetHeight`);
+    await b.evaluate(`document.querySelector('.height-handle').focus({preventScroll:true})`);
+    await b.send('Input.dispatchKeyEvent', {
+      type: 'keyDown',
+      key: 'ArrowUp',
+      code: 'ArrowUp',
+      windowsVirtualKeyCode: 38,
+    });
+    await wait(`${root(36)}.querySelector('.cm-editor').offsetHeight===${before - 20}`);
+    assert.ok(
+      await b.evaluate(
+        `getComputedStyle(${root(36)}.querySelector('.cm-scroller')).overflowY==='auto'`,
+      ),
+    );
+    await b.evaluate(`scrollBy(0,300)`);
+    await wait(`Math.abs(document.querySelector('.editor-dock').getBoundingClientRect().top)<1`);
+    await b.evaluate('scrollTo(0,0)');
+    await wait(`!document.querySelector('.editor-dock').classList.contains('docked')`);
+    assert.equal(
+      await b.evaluate(`${root(36)}.querySelector('.cm-editor').offsetHeight`),
+      before - 20,
+      'manual height survives unpinning',
+    );
+    assert.ok(originalHeight > before, 'pinning initially leaves room for questions');
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 768,
+      height: 450,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await open(3, 37, 0);
+    await b.evaluate(
+      `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+20)`,
+    );
+    await wait(`document.querySelector('.editor-dock').classList.contains('docked')`);
+    assert.ok(
+      await b.evaluate(`document.querySelector('.editor-dock').offsetHeight < innerHeight*.7`),
+      'short landscape keeps questions visible',
+    );
+    await b.evaluate(`document.querySelector('.test-plan').scrollIntoView({block:'start'})`);
+    assert.ok(
+      await b.evaluate(
+        `document.querySelector('.editor-dock').getBoundingClientRect().bottom<=document.querySelector('.test-plan').getBoundingClientRect().top`,
+      ),
+      'editor releases before the draft below its questions',
+    );
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 768,
+      height: 1100,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await open(3, 36, 5);
+    await b.evaluate(
+      `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().top-12)`,
+    );
+    await wait(`!document.querySelector('.editor-dock').classList.contains('docked')`);
+    const seams = await b.evaluate(`(() => {
+      const intro=document.querySelector('.coding-intro').getBoundingClientRect(),
+        dock=document.querySelector('.editor-dock'), rect=dock.getBoundingClientRect(),
+        controls=document.querySelector('.coding-controls').getBoundingClientRect(),
+        side=getComputedStyle(dock,'::before');
+      return {topGap:rect.top-intro.bottom,bottomGap:controls.top-rect.bottom,
+        lefts:[intro.left,rect.left,controls.left],rights:[intro.right,rect.right,controls.right],
+        left:side.borderLeftWidth,right:side.borderRightWidth,position:side.position};
+    })()`);
+    assert.equal(seams.topGap, 0);
+    assert.equal(seams.bottomGap, 16);
+    assert.equal(new Set(seams.lefts).size, 1);
+    assert.equal(new Set(seams.rights).size, 1);
+    assert.equal(seams.left, '1px');
+    assert.equal(seams.right, '1px');
+    assert.equal(seams.position, 'absolute');
+    await writeFile(
+      '/private/tmp/task2-continuous-outline.png',
+      Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+    );
+    assert.deepEqual(b.errors, []);
+    console.log(
+      '360px focused fields, manual pinned resizing, editor-only scrolling, restored height, short landscape, release at question end and continuous workspace outline passed.',
+    );
+    b.close();
+    process.exit(0);
+  }
+  if (process.argv.includes('--presentation-only')) {
+    const slot = 36,
+      q = esp[0].variations[5],
+      outcomes = testOutcomes(q);
+    await open(3, slot, 5);
+    await enterTestInputs(b, slot, q);
+    await enterExpectations(b, slot, q, outcomes.expected);
+    const c = studentCases(q)[0];
+    await b.evaluate(
+      `[...document.querySelectorAll('[data-test-response="${c.actualPart}"] button')].find(b=>b.textContent.trim()==='Run Original code').click()`,
+    );
+    await wait(
+      `document.querySelector('[data-test-response="${c.actualPart}"] .run-result') && !${button(slot, 'Check test plan and code')}.disabled`,
+    );
+    await b.evaluate(`${button(slot, 'Check test plan and code')}.click()`);
+    await wait(
+      `document.querySelector('.check-results li') && !${button(slot, 'Check test plan and code')}.disabled`,
+    );
+    const expandedHeight = await b.evaluate(
+      `document.querySelector('.check-results').offsetHeight`,
+    );
+    await b.click('.results-toggle');
+    assert.equal(
+      await b.evaluate(`document.querySelector('.results-toggle').getAttribute('aria-expanded')`),
+      'false',
+    );
+    assert.ok(
+      await b.evaluate(
+        `document.querySelector('.check-results').offsetHeight < ${expandedHeight / 2}`,
+      ),
+    );
+    assert.equal(await b.evaluate(`document.querySelector('#check-results-36').hidden`), true);
+    await b.click('.results-toggle');
+    assert.equal(await b.evaluate(`document.querySelector('#check-results-36').hidden`), false);
+    await b.click('.results-toggle');
+    await b.evaluate(`${button(slot, 'Check test plan and code')}.click()`);
+    await wait(`!${button(slot, 'Check test plan and code')}.disabled`);
+    assert.equal(
+      await b.evaluate(`document.querySelector('.results-toggle').getAttribute('aria-expanded')`),
+      'true',
+      'new checks expand results',
+    );
+    await b.click('.results-toggle');
+    await b.click('.test-plan > summary');
+    assert.deepEqual(
+      await b.evaluate(
+        `[...document.querySelectorAll('.test-log thead th')].map(e=>e.textContent.trim())`,
+      ),
+      [
+        'Description of test',
+        'Test data',
+        'Expected outcome',
+        'Actual outcome',
+        'Comments and intended actions',
+      ],
+    );
+    assert.equal(await b.evaluate(`document.querySelectorAll('.test-log tbody tr').length`), 2);
+    assert.ok(
+      await b.evaluate(`document.querySelector('.test-log').innerText.includes('In-store')`),
+    );
+    assert.ok(await b.evaluate(`document.querySelector('.test-log .run-evidence') !== null`));
+    await b.click('#theme-picker');
+    await wait('Boolean(document.querySelector(\'[data-theme-choice="dark:rose"]\'))');
+    await b.click('[data-theme-choice="dark:rose"]');
+    await b.click('#theme-picker');
+    for (const width of [360, 767, 768, 960, 1280]) {
+      await b.send('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 900,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      await b.evaluate(
+        'new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+      );
+      assert.ok(
+        await b.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'),
+        `${width}: no page overflow`,
+      );
+      await b.evaluate('scrollTo(0,0)');
+      const edges = await b.evaluate(`(() => {
+        const q = document.querySelector('.question'), rect = q.getBoundingClientRect(), css = getComputedStyle(q);
+        return {left:rect.left,right:rect.right,viewport:document.documentElement.clientWidth,border:css.borderLeftWidth,radius:css.borderRadius,image:css.backgroundImage};
+      })()`);
+      if (width < 768) {
+        assert.ok(
+          Math.abs(edges.left) < 1 && Math.abs(edges.right - edges.viewport) < 1,
+          `${width}: full-width question`,
+        );
+        assert.equal(edges.border, '0px');
+        assert.equal(edges.radius, '0px');
+        assert.ok(edges.image.includes('90deg'), `${width}: horizontal border gradient`);
+      } else assert.ok(edges.left > 0 && edges.border !== '0px');
+      assert.ok(
+        await b.evaluate(
+          `getComputedStyle(document.querySelector('.coding-workspace')).maxHeight === 'none'`,
+        ),
+      );
+      assert.equal(
+        await b.evaluate(`document.querySelector('.guidance-toggle').textContent.trim()`),
+        '−',
+      );
+      await b.click('.guidance-toggle');
+      assert.equal(await b.evaluate(`document.querySelector('#code-guidance-36').hidden`), true);
+      assert.equal(
+        await b.evaluate(`document.querySelector('.guidance-toggle').getAttribute('aria-label')`),
+        'Expand code guidance',
+      );
+      await b.click('.guidance-toggle');
+      if (width <= 960) {
+        await b.evaluate(
+          `scrollTo(0, scrollY + document.querySelector('.coding-intro').getBoundingClientRect().bottom + 20)`,
+        );
+        await wait(`document.querySelector('.editor-dock').classList.contains('docked')`);
+        const pinned = await b.evaluate(`(() => {
+          const d = document.querySelector('.editor-dock').getBoundingClientRect();
+          return {top:d.top,height:d.height,viewport:innerHeight,editor:${root(slot)}.querySelector('.cm-editor').offsetHeight};
+        })()`);
+        assert.ok(Math.abs(pinned.top) < 1, `${width}: editor pins at viewport top`);
+        assert.ok(
+          pinned.height < pinned.viewport * 0.6,
+          `${width}: questions have visible space below code`,
+        );
+        await b.evaluate(`scrollBy(0,300)`);
+        await wait(
+          `Math.abs(document.querySelector('.editor-dock').getBoundingClientRect().top) < 1`,
+        );
+        await b.evaluate(
+          `document.querySelector('.parts').scrollIntoView({block:'start'}); scrollBy(0,-document.querySelector('.editor-dock').offsetHeight-12)`,
+        );
+        await writeFile(
+          `/private/tmp/task2-pinned-${width}.png`,
+          Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+        );
+        await b.evaluate('scrollTo(0,0)');
+        await wait(`!document.querySelector('.editor-dock').classList.contains('docked')`);
+      }
+      const layout = await b.evaluate(`(() => {
+        const wrap = document.querySelector('.test-log-scroll'), table = document.querySelector('.test-log');
+        const tabs = [...document.querySelectorAll('.editor-tab')];
+        return {scrolls: wrap.scrollWidth > wrap.clientWidth, font:parseFloat(getComputedStyle(table).fontSize),
+          backgrounds:tabs.map(t=>getComputedStyle(t).backgroundColor), borders:[...table.querySelectorAll('th,td')].every(e=>getComputedStyle(e).borderRightWidth==='1px')};
+      })()`);
+      if (width < 1280) assert.equal(layout.scrolls, true);
+      assert.ok(layout.font < 16);
+      assert.ok(layout.borders);
+      assert.notEqual(...layout.backgrounds);
+      await b.click('#tab-36-original');
+      assert.equal(
+        await b.evaluate(
+          `document.querySelector('#tab-36-original').getAttribute('aria-selected')`,
+        ),
+        'true',
+      );
+      await b.evaluate(`document.querySelector('#tab-36-original').focus()`);
+      await b.send('Input.dispatchKeyEvent', {
+        type: 'keyDown',
+        key: 'End',
+        code: 'End',
+        windowsVirtualKeyCode: 35,
+      });
+      assert.equal(
+        await b.evaluate(`document.querySelector('#tab-36-edited').getAttribute('aria-selected')`),
+        'true',
+      );
+      await b.evaluate(
+        `document.querySelector('.test-log-scroll').scrollIntoView({block:'center'})`,
+      );
+      if (width === 360) {
+        await b.evaluate(`document.querySelector('.test-log-scroll').focus()`);
+        await b.send('Input.dispatchKeyEvent', {
+          type: 'keyDown',
+          key: 'ArrowRight',
+          code: 'ArrowRight',
+          windowsVirtualKeyCode: 39,
+        });
+        await b.send('Input.dispatchKeyEvent', {
+          type: 'keyUp',
+          key: 'ArrowRight',
+          code: 'ArrowRight',
+          windowsVirtualKeyCode: 39,
+        });
+        await wait(`document.querySelector('.test-log-scroll').scrollLeft > 0`, 3000);
+        assert.ok(await b.evaluate(`document.querySelector('.test-log-scroll').scrollLeft > 0`));
+        await b.evaluate(`document.querySelector('.test-log-scroll').scrollLeft = 0`);
+      }
+      if (width !== 768)
+        await writeFile(
+          `/private/tmp/task2-log-${width}.png`,
+          Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+        );
+    }
+    await b.evaluate(`document.querySelector('.editor-tabs').scrollIntoView({block:'start'})`);
+    await writeFile(
+      '/private/tmp/task2-tabs.png',
+      Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+    );
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 360,
+      height: 800,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    for (const [route, selector] of [
+      ['/progress/', '.progress-panel'],
+      ['/exam/', '.exam-options > .note-panel'],
+      ['/search/?q=python', '.search-result'],
+    ]) {
+      await b.send('Page.navigate', { url: base + route });
+      await wait(`document.querySelector(${JSON.stringify(selector)})`, 15000);
+      const cards = await b.evaluate(
+        `[...document.querySelectorAll(${JSON.stringify(selector)})].map(e=>({left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right,viewport:document.documentElement.clientWidth,border:getComputedStyle(e).borderLeftWidth,radius:getComputedStyle(e).borderRadius}))`,
+      );
+      assert.ok(
+        cards.every(
+          (c) =>
+            Math.abs(c.left) < 1 &&
+            Math.abs(c.right - c.viewport) < 1 &&
+            c.border === '0px' &&
+            c.radius === '0px',
+        ),
+        route + ': full-width mobile cards',
+      );
+      assert.ok(
+        await b.evaluate('document.documentElement.scrollWidth <= innerWidth+1'),
+        route + ': no overflow',
+      );
+    }
+    await b.send('Page.navigate', { url: base });
+    await wait(`document.querySelector('.activity-grid')`);
+    assert.ok(
+      await b.evaluate('document.documentElement.scrollWidth <= innerWidth+1'),
+      'home: no overflow',
+    );
+    assert.equal(
+      await b.evaluate(
+        `getComputedStyle(document.querySelector('.activity-grid')).gridTemplateColumns.split(' ').length`,
+      ),
+      2,
+      'compact home tiles retain their grid',
+    );
+    assert.deepEqual(b.errors, []);
+    console.log(
+      'Compact test log, local scrolling, icon-only disclosures, tabs, mobile card edges and pinned editors passed at 360/767/768/960/1280px.',
+    );
+    b.close();
+    process.exit(0);
+  }
+  await open(2, 2, 3);
+  assert.equal(await b.evaluate(`${root(2)}.querySelectorAll('.region-empty').length`), 3);
+  assert.ok(
+    await b.evaluate(
+      `[...${root(2)}.querySelectorAll('.region-empty')].every(b=>!b.textContent.trim())`,
+    ),
+  );
+  assert.equal(await b.evaluate(`${button(2, 'Run and compare')}.disabled`), true);
+  const untouched = await b.evaluate(text(2));
+  await b.evaluate(`${root(2)}.querySelector('.cm-content').focus()`);
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'Home',
+    code: 'Home',
+    windowsVirtualKeyCode: 36,
+    modifiers: 2,
+  });
+  await b.send('Input.insertText', { text: 'x' });
+  assert.equal(await b.evaluate(text(2)), untouched, 'fixed code rejects typing');
+  await wait(
+    'document.querySelector(".editor-guidance").textContent.includes("Edit inside an outlined region")',
+  );
+  assert.equal(
+    await b.evaluate(
+      'document.querySelector(".coding-workspace").innerText.includes("Edit inside the outlined regions")',
+    ),
+    false,
+    'feedback replaces the normal instruction',
+  );
+  for (const [label, value] of [
+    ['START value', '20'],
+    ['STOP value', '24'],
+    ['Function name', 'range'],
+  ]) {
+    await b.evaluate(`${root(2)}.querySelector('[aria-label="Edit ${label}"]').click()`);
+    await b.evaluate(
+      'new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+    );
+    const before = await b.evaluate(`(() => {
+      const root = ${root(2)}, gap = root.querySelector('[aria-label="Edit ${label}"]').getBoundingClientRect();
+      const caret = root.querySelector('.cm-cursor')?.getBoundingClientRect();
+      return { left: gap.left, right: gap.right, caret: caret?.left };
+    })()`);
+    if (before.caret !== undefined)
+      assert.ok(
+        Math.abs(before.caret - before.left) <= 2,
+        `${label}: caret starts inside left edge ${JSON.stringify(before)}`,
+      );
+    await b.send('Input.insertText', { text: value });
+    const id = { 'START value': '1', 'STOP value': '2', 'Function name': '0' }[label];
+    const after = await b.evaluate(
+      `${root(2)}.querySelector('[data-region="${id}"]').getBoundingClientRect().left`,
+    );
+    assert.ok(
+      Math.abs(after - before.left) <= 1,
+      `${label}: outline moved ${after - before.left}px`,
+    );
+  }
+  assert.match(await b.evaluate(text(2)), /START = 20\nSTOP = 24\nfor ticket in range/);
+  assert.match(
+    await b.evaluate('document.querySelector(".editor-guidance").textContent'),
+    /Edit inside the outlined regions/,
+  );
+  assert.equal(
+    await b.evaluate(
+      'getComputedStyle(document.querySelector(".live-python-editor")).borderBottomWidth',
+    ),
+    '1px',
+  );
+  assert.ok(
+    await b.evaluate('document.querySelector(".height-handle").getBoundingClientRect().width < 42'),
+  );
+  assert.equal(
+    await b.evaluate(
+      'getComputedStyle(document.querySelector(".live-python-editor")).borderLeftWidth',
+    ),
+    '1px',
+  );
+  assert.equal(
+    await b.evaluate(
+      'getComputedStyle(document.querySelector(".live-python-editor")).borderRadius',
+    ),
+    '0px',
+  );
+  assert.equal(
+    await b.evaluate(`getComputedStyle(${root(2)}.querySelector('.cm-editor')).borderRadius`),
+    '0px',
+  );
+  assert.ok(
+    await b.evaluate(`(() => {
+    const colour = getComputedStyle(document.querySelector('.coding-intro')).borderLeftColor;
+    return ['.live-python-editor', '.height-handle'].every(selector => getComputedStyle(document.querySelector(selector)).borderBottomColor === colour);
+  })()`),
+    'editor and grip borders match the workspace outline',
+  );
+  assert.equal(await b.evaluate('Boolean(document.querySelector(".coding-intro .muted"))'), true);
+  assert.equal(
+    await b.evaluate('getComputedStyle(document.querySelector(".coding-intro")).padding'),
+    '16px',
+  );
+  assert.equal(
+    await b.evaluate(
+      'getComputedStyle(document.querySelector(".coding-intro")).borderTopLeftRadius',
+    ),
+    '12px',
+  );
+  assert.equal(
+    await b.evaluate('getComputedStyle(document.querySelector(".coding-intro")).borderLeftWidth'),
+    '1px',
+  );
+  assert.equal(
+    await b.evaluate(
+      'getComputedStyle(document.querySelector(".py-editor-box"), "::before").display',
+    ),
+    'none',
+  );
+  await b.evaluate(
+    'document.querySelector(".live-python-editor").scrollIntoView({ block: "center" })',
+  );
+  await writeFile(
+    '/private/tmp/starters-editor-grip.png',
+    Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+  );
+  if (process.argv.includes('--refinements-only')) {
+    for (const width of [360, 768, 960, 1024, 1280]) {
+      await b.send('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 900,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      assert.ok(
+        await b.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'),
+        `${width}: horizontal overflow`,
+      );
+      assert.equal(
+        await b.evaluate('getComputedStyle(document.querySelector(".coding-workspace")).display'),
+        'contents',
+      );
+      const geometry = await b.evaluate(`(() => {
+        const workspace = document.querySelector('.coding-workspace'),
+          editor = workspace.querySelector('.live-python-editor'),
+          columns = getComputedStyle(workspace.parentElement).gridTemplateColumns.split(' ').map(parseFloat);
+        const frame = workspace.querySelector('.editor-dock');
+        return { columns, width: frame.clientWidth, editor: editor.getBoundingClientRect().width,
+          inset: editor.getBoundingClientRect().left - frame.getBoundingClientRect().left,
+          textInset: workspace.querySelector('.muted').getBoundingClientRect().left - frame.getBoundingClientRect().left };
+      })()`);
+      assert.ok(
+        Math.abs(geometry.width - geometry.editor) <= 1,
+        `${width}: editor spans workspace ${JSON.stringify(geometry)}`,
+      );
+      assert.ok(Math.abs(geometry.inset) <= 1, `${width}: no editor inset`);
+      assert.ok(Math.abs(geometry.textInset - 16) <= 1, `${width}: instructions keep padding`);
+      assert.equal(geometry.columns.length, width > 960 ? 2 : 1);
+      if (width > 960)
+        assert.ok(
+          Math.abs(geometry.columns[0] / geometry.columns[1] - 1.5) < 0.01,
+          `${width}: 60/40 split`,
+        );
+    }
+    console.log(
+      '60/40 layout, full-width editor, padded text, workspace outline, temporary edit feedback and responsive sticky layout passed.',
+    );
+    await b.click('#theme-picker');
+    await wait('Boolean(document.querySelector(\'[data-theme-choice="dark:rose"]\'))');
+    await b.click('[data-theme-choice="dark:rose"]');
+    await b.click('#theme-picker');
+    await b.evaluate("document.querySelector('.coding-intro').scrollIntoView({ block: 'center' })");
+    await b.evaluate(
+      'new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+    );
+    await writeFile(
+      '/private/tmp/starters-workspace-width.png',
+      Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+    );
+    b.close();
+    process.exit(0);
+  }
+  await b.change('[data-part="3"]', '22', 'input');
+  await b.change('[data-part="4"]', '4', 'input');
+  assert.equal(await b.evaluate(`${button(2, 'Run and compare')}.disabled`), false);
+  assert.equal(await b.evaluate(`Boolean(${button(2, 'Save predictions')})`), false);
+  await b.evaluate(`${button(2, 'Run and compare')}.click()`);
+  assert.equal(await b.evaluate(`${button(2, 'Run and compare')}.disabled`), false);
+  assert.match(await b.evaluate('document.body.innerText'), /Trace the corrected code/);
+  assert.equal(
+    await b.evaluate('Boolean(document.querySelector(".run-output pre"))'),
+    false,
+    'rethink precedes output',
+  );
+  await b.evaluate(`${root(2)}.querySelector('.cm-content').focus()`);
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+    modifiers: 2,
+  });
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyUp',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+    modifiers: 2,
+  });
+  await wait(`document.body.innerText.includes('Run finished on')`);
+  assert.match(
+    await b.evaluate('document.querySelector(".run-output pre").textContent'),
+    /20\n21\n22\n23/,
+  );
+  await b.change('[data-part="3"]', '23', 'input');
+  await b.evaluate(`${button(2, 'Run and compare')}.click()`);
+  await wait(
+    `document.body.innerText.includes('Run finished on') && ![...document.querySelectorAll('button')].some(b=>b.textContent.trim()==='Stop Python')`,
+  );
+  assert.match(await b.evaluate('document.body.innerText'), /revised after running/);
+  // Submit a complete mixed answer and verify the snapshot survives a real page reload.
+  await b.evaluate(`document.querySelector('[data-part="5"]').click()`);
+  await b.click('#submit');
+  await b.until('Boolean(document.querySelector("#submit-result"))');
+  await b.reload();
+  await wait(`${root(2)}?.querySelector('.cm-content')`);
+  assert.match(await b.evaluate(text(2)), /range\(START, STOP\)/);
+  console.log('Prediction workflow, empty regions, real execution, submission and reload passed.');
+
+  for (const template of esp.filter(
+    (q) =>
+      q.slot >= Number(process.argv.find((arg) => arg.startsWith('--from='))?.split('=')[1] ?? 36),
+  ))
+    for (
+      let variation = Number(
+        process.argv.find((arg) => arg.startsWith('--variation='))?.split('=')[1] ?? 0,
+      );
+      variation < template.variations.length;
+      variation++
+    ) {
+      const slot = template.slot,
+        q = template.variations[variation];
+      await open(3, slot, variation);
+      assert.equal(await b.evaluate('document.querySelectorAll("[role=tab]").length'), 2);
+      const original = await b.evaluate(text(slot, 'original'));
+      const model = q.parts.find((p) => p.kind === 'python').answer;
+      await replace(slot, model);
+      await b.click(`#tab-${slot}-original`);
+      assert.equal(
+        await b.evaluate(
+          `${root(slot, 'original')}.querySelector('.cm-content').getAttribute('contenteditable')`,
+        ),
+        'false',
+      );
+      const outcomes = testOutcomes(q);
+      await enterTestInputs(b, slot, q);
+      await enterExpectations(b, slot, q, outcomes.expected);
+      for (const c of studentCases(q)) {
+        await b.evaluate(
+          `[...document.querySelectorAll('[data-test-response="${c.actualPart}"] button')].find(b=>b.textContent.trim()==='Run Original code').click()`,
+        );
+        await wait(
+          `document.querySelector('[data-test-response="${c.actualPart}"] .run-result') && !document.querySelector('#stop-python') && !${button(slot, 'Check test plan and code')}.disabled`,
+        );
+        await enterOutcome(
+          b,
+          slot,
+          c.actualPart,
+          outcomes.actual.find((r) => r.label === c.id),
+          !q.livePython.testInputs.parameters.length,
+        );
+      }
+      await b.click(`#tab-${slot}-edited`);
+      assert.equal(await b.evaluate(text(slot)), model);
+      assert.equal(await b.evaluate(text(slot, 'original')), original);
+      await b.evaluate(`${button(slot, 'Check test plan and code')}.click()`);
+      await wait(`document.body.innerText.includes('Check finished.')`);
+      assert.ok(
+        await b.evaluate(
+          `[...document.querySelectorAll('[data-question="${slot}"] .check-results li')].every(li=>li.textContent.includes('1/1'))`,
+        ),
+        `${slot}/${variation} repair tests: ${await b.evaluate('document.querySelector(".live-python").innerText')}`,
+      );
+      console.log(
+        `Task 2 ${slot}/${variation}: original runs, editable copy and behavioural checks passed.`,
+      );
+    }
+  const slot = 38;
+  const initial = await b.evaluate(
+    `${root(slot)}.querySelector('.cm-editor').getBoundingClientRect().height`,
+  );
+  assert.ok(initial <= Math.max(1280 * 1.4, 900 * 0.75));
+  await b.evaluate(`document.querySelector('.height-handle').focus()`);
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'ArrowDown',
+    code: 'ArrowDown',
+    windowsVirtualKeyCode: 40,
+  });
+  await wait(
+    `${root(slot)}.querySelector('.cm-editor').getBoundingClientRect().height > ${initial}`,
+    5000,
+  );
+  await b.evaluate('document.querySelector(".height-handle").scrollIntoView({ block: "center" })');
+  await b.evaluate(
+    'new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))',
+  );
+  const grip = await b.evaluate(`(() => {
+    const r = document.querySelector('.height-handle').getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  })()`);
+  const beforeDrag = await b.evaluate(
+    `${root(slot)}.querySelector('.cm-editor').getBoundingClientRect().height`,
+  );
+  assert.ok(
+    await b.evaluate(
+      `Boolean(document.elementFromPoint(${grip.x}, ${grip.y})?.closest('.height-handle'))`,
+    ),
+    `Grip is not visible at ${JSON.stringify(grip)}`,
+  );
+  await b.send('Input.dispatchMouseEvent', { type: 'mouseMoved', ...grip });
+  await b.send('Input.dispatchMouseEvent', {
+    type: 'mousePressed',
+    ...grip,
+    button: 'left',
+    buttons: 1,
+    clickCount: 1,
+  });
+  await b.send('Input.dispatchMouseEvent', {
+    type: 'mouseMoved',
+    x: grip.x,
+    y: grip.y + 60,
+    button: 'left',
+    buttons: 1,
+  });
+  await b.send('Input.dispatchMouseEvent', {
+    type: 'mouseReleased',
+    x: grip.x,
+    y: grip.y + 60,
+    button: 'left',
+    clickCount: 1,
+  });
+  await wait(
+    `${root(slot)}.querySelector('.cm-editor').getBoundingClientRect().height >= ${beforeDrag + 59}`,
+    5000,
+  );
+  await b.evaluate(`document.querySelector('#tab-${slot}-edited').focus()`);
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'Home',
+    code: 'Home',
+    windowsVirtualKeyCode: 36,
+  });
+  assert.equal(
+    await b.evaluate(
+      `document.querySelector('#tab-${slot}-original').getAttribute('aria-selected')`,
+    ),
+    'true',
+  );
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'End',
+    code: 'End',
+    windowsVirtualKeyCode: 35,
+  });
+  assert.equal(
+    await b.evaluate(`document.querySelector('#tab-${slot}-edited').getAttribute('aria-selected')`),
+    'true',
+  );
+  const finalQuestion = esp.at(-1).variations[5];
+  await b.evaluate(
+    `[...document.querySelectorAll('[data-test-response="c0-own-actual"] button')].find(b=>b.textContent.trim()==='Run Your code').click()`,
+  );
+  await wait(
+    `document.querySelector('[data-test-response="c0-own-actual"]').innerText.includes('Booking confirmed') && !${button(slot, 'Check test plan and code')}.disabled`,
+  );
+  for (const part of finalQuestion.parts.filter((p) => p.control === 'select'))
+    await b.change(`[data-part="${part.id}"]`, part.answer);
+  assert.ok(
+    await b.evaluate(
+      `!document.querySelector('.check-results').innerText.includes('Apply any necessary repair')`,
+    ),
+  );
+  assert.equal(
+    await b.evaluate(`getComputedStyle(document.querySelector('.coding-workspace')).overflowY`),
+    'visible',
+  );
+  assert.equal(
+    await b.evaluate(`getComputedStyle(document.querySelector('.coding-workspace')).maxHeight`),
+    'none',
+  );
+  await b.evaluate(
+    `{ const grip = document.querySelector('.height-handle'); for (let i=0;i<60;i++) grip.dispatchEvent(new KeyboardEvent('keydown', { key:'ArrowUp', bubbles:true })); }`,
+  );
+  await wait(`${root(slot)}.querySelector('.cm-editor').getBoundingClientRect().height <= 101`);
+  assert.ok(
+    await b.evaluate(
+      `${root(slot)}.querySelector('.cm-scroller').scrollHeight > ${root(slot)}.querySelector('.cm-scroller').clientHeight`,
+    ),
+    'only the shortened code editor scrolls internally',
+  );
+  await b.reload();
+  await wait(`${root(slot)}?.querySelector('.cm-content')`);
+  assert.equal(
+    await b.evaluate(`document.querySelector('#test-38-invalid-own-inputs-c0-0').value`),
+    'no',
+  );
+  assert.equal(
+    await b.evaluate(`document.querySelector('#test-38-c0-own-actual-value').value`),
+    '',
+  );
+  await b.evaluate(`document.querySelector('.coding-intro').scrollIntoView({block:'start'})`);
+  await writeFile(
+    '/private/tmp/task2-own-workspace.png',
+    Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+  );
+  await b.click('#submit');
+  await wait('Boolean(document.querySelector("#submit-result"))');
+  assert.match(
+    await b.evaluate('document.querySelector("#submit-result").textContent'),
+    /9\s*\/\s*9/,
+  );
+  for (const width of [360, 768, 1280]) {
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width,
+      height: 900,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    assert.ok(
+      await b.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'),
+      `${width}: horizontal overflow`,
+    );
+  }
+  await b.send('Page.navigate', { url: base + '/progress/' });
+  await b.until('document.body.innerText.includes("Code attempts and skill progression")');
+  await b.click('.attempt-review > summary');
+  assert.match(await b.evaluate('document.body.innerText'), /Submitted code · read only/);
+  assert.match(await b.evaluate('document.body.innerText'), /Prediction 1/);
+  const archiveSelect = '.progress-panel select';
+  await b.evaluate(`(() => {
+    const select = [...document.querySelectorAll(${JSON.stringify(archiveSelect)})].find(s => [...s.options].some(o => o.value.endsWith(':3:38:5')));
+    select.value = [...select.options].find(o => o.value.endsWith(':3:38:5')).value;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+  })()`);
+  await b.click('.attempt-review > summary');
+  assert.match(await b.evaluate('document.body.innerText'), /Original code run/);
+  assert.match(await b.evaluate('document.body.innerText'), /Your code run/);
+  assert.equal(b.errors.length, 0, JSON.stringify(b.errors));
+  await writeFile(
+    '/private/tmp/starters-editor-review.png',
+    Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+  );
+  console.log('Responsive editor height and read-only attempt review passed.');
+} finally {
+  b.close();
+}

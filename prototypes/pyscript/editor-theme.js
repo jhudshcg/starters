@@ -10,12 +10,15 @@ export function editorTheme({ EditorView }, { HighlightStyle, syntaxHighlighting
   return [
     EditorView.theme({
       '&': {
+        fontSize: '16px',
         colorScheme: 'dark',
         backgroundColor: 'var(--code-bg)',
         color: 'var(--code-text)',
-        borderRadius: '0.5rem',
+        borderRadius: '0',
         overflow: 'hidden',
       },
+      '@media (width < 768px)': { '.cm-scroller': { fontSize: '14px' } },
+      '.cm-scroller': { overflow: 'auto' },
       '&.cm-focused': { outline: '2px solid var(--accent)', outlineOffset: '3px' },
       '.cm-content': { caretColor: 'var(--code-text)' },
       '.cm-cursor, .cm-dropCursor': { borderLeftColor: 'var(--code-text)' },

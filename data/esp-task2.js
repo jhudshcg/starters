@@ -1,3 +1,4 @@
+import { liveInvestigation } from './esp-task2-live.js';
 /**
  * Purpose: Original Task 2 investigations linking requirements, Python and test evidence.
  * Main contents: validity-grouped input suites, supplied predictions and bounded repairs.
@@ -1925,7 +1926,7 @@ function template(slot, title, cases) {
     estimatedMinutes: 5,
     tags: ['ESP.Task2'],
     reviewStatus: 'pending',
-    variations: cases.map(investigation),
+    variations: cases.map((c, i) => liveInvestigation(slot, i, investigation(c, i))),
   };
 }
 

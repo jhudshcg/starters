@@ -1,8 +1,41 @@
 # Task 2 — testing and debugging starter designs
 
+## Adopted live-editor extension — 20 October 2026
+
+Implemented for all 18 investigations on 20 October 2026. The activities cover parts of an ESP Task 2 test plan: students enter their own test data, establish expected outcomes from requirements, run code, record actual outcomes, explain discrepancies, repair code and retest. This supersedes the earlier draft's no-runtime/prediction-only interaction; its requirements, test coverage and assessment safeguards remain where compatible.
+
+- Put two tabs inside the editor only: **Original code**, read-only, and **Your code**, initially an editable copy. The requirements, questions and test plan stay outside the tabs. Switching tabs must preserve edits.
+- Allow students to run either version before submission. Original code remains immutable; distinguish its results from runs of Your code. Preserve the shared submission and answer-reveal rules.
+- Adapt suitable prediction questions to recorded actual outcomes and explanation. Actual outcome means what an identified run observed, including exceptions, incorrect output or non-termination; it must not be filled from an authored expected answer or an unexecuted prediction. Keep expected outcomes requirement-led. A proposed repair is not a successful retest.
+- Retain reasoning questions with genuine learning value. Reword prompts and options that reveal code-completion or repair answers instead of removing useful reasoning.
+- Keep the editor visible while scrolling through its associated questions. Use the shared [code-editor sizing and resize requirements](../style-guide.md#code-editor-presentation).
+
+Automatic marking follows the adopted run-record, repair and bounded-reasoning contracts below. This extension does not claim that a short starter establishes independent completion of the full ESP task or an official grade.
+
+## Adopted assessment adaptation — 20 October 2026
+
+Apply the editor workflow to all 18 current investigations in slots 36–38. Preserve the explicit function/input contracts, valid/invalid test groups, working-code example and useful diagnosis/retest reasoning. Current totals range from 6–11 marks per question; retain each total while moving credit to the equivalent test-plan work below. The adaptation is implemented and independently reference-checked; classroom subject acceptance remains outstanding.
+
+| Earlier assessed part | Adopted live-editor assessment |
+| --- | --- |
+| Test-data choice | Students enter their own values for the valid/invalid groups. Mark suitability, not a match to supplied examples. Valid input sequences finish on the first entry; invalid sequences contain rejected entries followed by a valid recovery entry. Parameter tests obey the caller contract. |
+| Expected result | Record the return type/value and number of input entries used before running. Check these against the authored corrected Python reference for the student’s exact inputs. A faulty run is not the expected answer. |
+| Predicted result | Replace with an accurately recorded/interpreted actual result from an identified original-code run. Capture raw run evidence automatically, but award the existing mark for the student's accurate outcome response, not for pressing Run. An unrun case cannot earn observation credit. |
+| Cause | Retain automatically checkable reasoning about the original code and requirements; reword any options that give away the repair. |
+| Correction choice | Apply the correction in Your code and assess the relevant requirement with independent tests. Accept valid alternative implementations. Keep passing-code cases: justified no-change and successful checks must be possible. |
+| Next test | Retain meaningful confirmation/regression reasoning and allow the selected follow-up test to be run. Distinguish an intended retest from an observed result. |
+
+Use fresh part identities for changed input/expectation/observation/correction contracts so older dropdown selections cannot silently become recorded observations or implemented repairs. Preserve question identities where the investigation remains the same, update content fingerprints, and explicitly handle old saved drafts and results. Retests identify edited source and exact inputs; earlier original-code evidence remains reviewable. Exhausted supplied inputs, worker timeouts and runtime startup failures need distinct outcomes: an incomplete test or infrastructure failure is not a fabricated successful return.
+
+**Own-test workflow, adopted 20 October:** the marked test plan replaces the fixed supplied-case selector and the separate “Your own test” mode. Input functions use an ordered list of plain-text entries, including empty strings, whitespace and leading zeroes; parameter functions use named fields with typed values. Do not require Python function-call syntax or JSON arrays. Keep labels above full-width fields and group related actions with their test. Each test has explicit Original code and Your code run buttons. Run captures the entered expectation; it does not fill the actual-result answer. Changing inputs invalidates old matching evidence, while older inputs/code and results stay reviewable. Existing mark totals are unchanged. The draft preview uses the five ESP test-log columns with one compact row per existing test group (normally valid and invalid), visible dividers and local horizontal scrolling. Saved run evidence remains expandable in the actual-outcome cells.
+
+Automatic outcome credit covers the recorded return type/value or exception and number of entries consumed. Printed output remains visible evidence, and repair checks still verify required output messages; these compact outcome fields do not assess a full prose test-log explanation. Credit for input suitability is separate from fault diagnosis and repair. Working code may pass a student-chosen test without exposing every defect; the independent repair checks cover authored requirements beyond those chosen tests.
+
+For progression, display Run, hints, replacement choices and pre-submission correctness checks separately. Existing tracked-score and revision calculations remain unchanged; independent-readiness redesign is deferred. See the [code-history and evidence rules](../spec-progress.md#code-attempt-review-and-skill-progression--adopted-20-october-2026). Keep automatic scores bounded to the assessed skills; do not infer an official ESP grade or independent readiness from assisted repair success.
+
 ## Agreed draft revision — 19 October 2026
 
-The teacher approved the direction in the [improvement brief](task_improvements.md) and the refinements below. This section governs the revised draft; the earlier recipes and first-release controls below remain reference material where compatible. The draft is implemented in `data/esp-task2.js`; classroom timing and teacher subject review remain pending.
+The teacher approved the direction in the [improvement brief](task_improvements.md) and the refinements below. This section governs the existing bounded draft, subject to the later live-editor extension above; the earlier recipes and first-release controls below remain reference material where compatible. The draft is implemented in `data/esp-task2.js`; classroom timing and teacher subject review remain pending.
 
 Each revised question centres on concise requirements and a short, readable Python function or block. State the input types, allowed values, return types and any calculation or rounding rules. Students connect test data, expected results, code behaviour, fault cause and correction within the same independent question.
 

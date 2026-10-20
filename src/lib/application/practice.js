@@ -4,6 +4,7 @@
  * Used by: application session and Svelte practice components.
  * Uses: bank selection, progress and profile persistence. Libs: none.
  */
+import { archiveCodeAttempt } from '#domain/code-history.js';
 import { createPythonPractice } from './python-practice.js';
 import { loadPython } from '#domain/live-python.js';
 import { rememberSelection, recalledSelection } from '#domain/practice-selection.js';
@@ -94,7 +95,7 @@ export function createPractice({
     if (a.practiceClock) pausePractice(a, a.pythonSubmission.at);
     persist();
     render();
-    for (const q of activeSet().questions.filter((q) => q.livePython)) {
+    for (const q of activeSet().questions.filter((q) => q.parts.some((p) => p.kind === 'python'))) {
       if (!(await python.execute(q.slot, 'check', true))) return;
       if (session.data !== data || data.active !== a) return;
     }
@@ -216,6 +217,13 @@ export function createPractice({
     const a = session.data.active;
     if (!a || a.finished || a.pythonSubmission) return;
     a.answers[slot] ??= {};
+    if (
+      a.pythonBusy &&
+      activeSet()
+        ?.questions.find((q) => q.slot === slot)
+        ?.parts.some((p) => p.id === id && p.testRole)
+    )
+      python.cancel('Run stopped because the test plan changed.');
     a.answers[slot][id] = value;
     a.feedbackHidden ??= {};
     a.feedbackHidden[slot] = true;
@@ -386,7 +394,11 @@ export function createPractice({
     const data = session.data;
     const a = data.active;
     if (!a) return;
-    if (!a.finished && !pythonReady && activeSet().questions.some((q) => q.livePython))
+    if (
+      !a.finished &&
+      !pythonReady &&
+      activeSet().questions.some((q) => q.parts.some((p) => p.kind === 'python'))
+    )
       return submitPython(outcome);
     a.reviewSubmittedAt = clock();
     // A restored completed attempt unlocks review without recording it twice.
@@ -470,6 +482,7 @@ export function createPractice({
       record.engagedSeconds = Math.floor(a.practiceClock.milliseconds / 1000);
       record.practiceMeasuredFrom = a.practiceClock.measuredFrom;
     }
+    archiveCodeAttempt(data, a, set, finalResults);
     recordPractice(data, record, a.tracking);
     a.result = record;
     persist();
@@ -523,7 +536,12 @@ export function createPractice({
           deadlineState(data.active).expired
         )
           submit('expired');
-        else if (data.active && !data.active.finished && !data.active.pythonSubmission && clock() - data.active.saved > 45 * 60000) {
+        else if (
+          data.active &&
+          !data.active.finished &&
+          !data.active.pythonSubmission &&
+          clock() - data.active.saved > 45 * 60000
+        ) {
           data.active = null;
           persist();
           toast(

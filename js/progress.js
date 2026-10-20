@@ -101,7 +101,7 @@ export function validatePartScores(record, set) {
   if(record.type===0||!Array.isArray(parts)||!parts.length||parts.length>record.max)return false;
   const identities=new Set(),totals={earned:0,max:0,firstEarned:0,firstMax:0};
   for(const p of parts){
-    if(!p||typeof p!=='object'||typeof p.part!=='string'||!/^\d{1,3}$/.test(p.part)||
+    if(!p||typeof p!=='object'||typeof p.part!=='string'||!/^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$/.test(p.part)||
       !set.entries.some(e=>e.slot===p.slot&&e.variation===p.variation)||
       !Array.isArray(p.refs)||!p.refs.length||p.refs.length>20||new Set(p.refs).size!==p.refs.length)return false;
     const id=`${p.slot}:${p.variation}:${p.part}`;

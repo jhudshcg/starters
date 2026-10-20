@@ -29,16 +29,16 @@ const definitions = [
   { id: 'a', label: 'first', text: 'AAA', choices: ['AAA', 'X', 'LONG'] },
   { id: 'b', label: 'second', text: 'BBB', choices: ['BBB', 'Y'] },
 ];
-function setup(mode) {
+function setup(mode, source = original, authored = definitions) {
   const extension = regionExtension(
     modules,
-    definitions,
-    { original, regions: initialRegions(original, definitions), manual: false, mode, fill: false },
+    authored,
+    { original: source, regions: initialRegions(source, authored), manual: false, mode, fill: false },
     () => {},
   );
   const editor = {
     state: modules.state.EditorState.create({
-      doc: original,
+      doc: source,
       extensions: [modules.commands.history(), extension.extensions],
     }),
     focus() {},
@@ -205,4 +205,20 @@ test('original-source reconciliation survives undo/redo and rejects near matches
   assert.equal(t.snap().manual, false);
   t.edit({ from: original.length, insert: ' ' });
   assert.equal(t.extension.setMode(t.editor, 'choices'), false);
+});
+
+test('authored empty regions retain separate identities through typing, deletion and undo', () => {
+  const source = 'START = \nSTOP = \n';
+  const defs = [{ id: 'start', label: 'Start', from: 8, text: '', choices: [] },
+    { id: 'stop', label: 'Stop', from: 16, text: '', choices: [] }];
+  const t = setup('regions', source, defs);
+  t.edit({ from: 8, insert: '20' });
+  assert.equal(t.source(), 'START = 20\nSTOP = \n');
+  assert.deepEqual(t.snap().regions, [{ id: 'start', from: 8, to: 10 }, { id: 'stop', from: 18, to: 18 }]);
+  t.edit({ from: 18, insert: '24' });
+  t.edit({ from: 0, insert: 'forbidden' });
+  assert.equal(t.source(), 'START = 20\nSTOP = 24\n');
+  t.undo(); t.undo();
+  assert.equal(t.source(), source);
+  assert.equal(t.snap().regions.length, 2);
 });

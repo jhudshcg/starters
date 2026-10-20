@@ -67,7 +67,17 @@ for (const dependency of ['tailwindcss', 'daisyui'])
   );
 
 // Preview and production use the same pinned editor/runtime sources.
-await mkdir(join(output, "python"), {recursive:true});
-for (const name of ["adapter.js", "regions.js", "editor-theme.js", "runner.py", "vendor"]) {
-  await cp(join(root, "prototypes/pyscript", name), join(output, "python", name), {recursive:true});
+await mkdir(join(output, 'python'), { recursive: true });
+for (const name of ['adapter.js', 'regions.js', 'editor-theme.js', 'runner.py', 'vendor']) {
+  await cp(join(root, 'prototypes/pyscript', name), join(output, 'python', name), {
+    recursive: true,
+  });
+}
+// Maps are not distributed; remove their directives only from the generated copies.
+const vendor = join(output, 'python/vendor');
+for (const name of await readdir(vendor)) {
+  if (!name.endsWith('.js')) continue;
+  const path = join(vendor, name);
+  const source = await readFile(path, 'utf8');
+  await writeFile(path, source.replace(/^\/\/# sourceMappingURL=.*(?:\r?\n|$)/gm, ''));
 }

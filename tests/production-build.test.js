@@ -41,6 +41,13 @@ test('static routes ship deterministic hashed bundles, packed banks and engine p
   ])
     assert.ok(!bundle.includes(phrase), phrase + ' leaked into client source');
   assert.ok(!bundle.includes('sourceMappingURL'));
+  for (const file of files.filter(
+    (file) => file.startsWith('python/vendor/') && /\.(js|css)$/.test(file),
+  ))
+    assert.ok(
+      !readFileSync(join(root, 'live', file), 'utf8').includes('sourceMappingURL'),
+      file + ' does not request an undistributed source map',
+    );
   const meta = JSON.parse(readFileSync(join(root, '.build-meta.json'), 'utf8'));
   const allowedMetadata = new Set(['data/search-keywords.js', 'data/search-topics.js']);
   assert.ok(

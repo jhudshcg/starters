@@ -39,3 +39,11 @@ Candidates for later adoption, not new implementation commitments:
 The requested OneDrive linked-file saving, Go practice board, responsive puzzle sizing and optional Python topic guides are now implemented. A Go computer opponent remains a separate idea; the imported GNU Go engine supplies estimates only.
 
 20 October teacher ideas: reuse the existing practice challenge levels to choose suitable live-Python editing defaults and replacement-choice availability; showing a question hint can offer replacement choices, then hiding it restores the question's default mode. Keep edits and assistance records. See [Python requirements](docs/spec-python.md#live-coding-pilot--adopted-direction-20-october-2026) for the adopted direction and unresolved switching details. The requested revealable Getting started guidance and Easy/Medium/Harder ratings for independent projects are now implemented.
+
+## Review earlier code attempts — 20 October 2026
+
+Be able to review earlier attempts at ESP Task 2 questions and free-code editing questions, and review skill progression. Retain the code and test evidence so students can see changes in their work, not just past percentages. [Requirements and proposed delivery](docs/spec-progress.md#code-attempt-review-and-skill-progression--adopted-20-october-2026); implementation status belongs in [planned work](docs/planned-work.md).
+
+## ESP Task 2 own test plans — 20 October 2026
+
+Students choose their own input values and expected results, run Original code, record actual results, then repair and retest Your code. Mark those student-authored tests instead of fixed supplied cases. Keep the code editor’s height and internal scrolling independent of its surrounding workspace. Clearly separate scored check feedback from program output. [Adopted requirements](docs/esp/task-2-designs.md#adopted-assessment-adaptation--20-october-2026).

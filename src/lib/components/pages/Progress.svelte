@@ -10,6 +10,7 @@
   import { progressModel } from '#lib/application/progress-model.js';
   import Weekly from '../progress/Weekly.svelte';
   import FileControls from '../progress/FileControls.svelte';
+  import CodeHistory from '../progress/CodeHistory.svelte';
   import History from '../progress/History.svelte';
   let { app, view, href } = $props();
   let filters = $state({
@@ -192,6 +193,7 @@
       >
     </div>{/each}
 </section>
+<CodeHistory records={data.codeAttempts ?? []} summaries={data.codeSummaries ?? []} />
 {#if rows.length}<History {rows} {open} />{:else}<div class="empty-state">
     <h2>No results here yet.</h2>
     <p class="muted">Try an activity, or adjust your filters.</p>

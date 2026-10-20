@@ -7,5 +7,5 @@
   --breakpoint-viewport-large: 1024px;
 }
 
-/* Question-card edges and Go gutters explicitly include the mobile endpoint. */
+/* Go gutters explicitly include the mobile endpoint. */
 @custom-variant max-viewport-small-inclusive (@media (width <= 440px));

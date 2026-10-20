@@ -1,3 +1,4 @@
+import { editorQuestions } from './python-editor.js';
 import livePython from './python-live.js';
 import {question as q, part, number as n, choice as c} from './helpers.js';
 import more from './python-more.js';
@@ -7,7 +8,7 @@ import validation from './python-validation.js';
 import readable from './python-readable.js';
 import sequences from './python-sequences.js';
 const traces = [[0,[2,4,1,3]],[1,[3,2,5,1]],[0,[5,1,2,4]],[2,[1,3,2,5]],[0,[4,2,3,2]]];
-export default [
+export default editorQuestions([
   q(0, 'iteration', 'Follow the readings', 'Trace the code', ['iteration','program tracing','CA2.6.6'], i => {
     const [initial, values] = traces[i]; let total = initial;
     const parts = values.map((value,j) => n(`Total after reading ${j+1}`, total += value, {explanation: 'Add this reading to the previous total, not to the initial total.'}));
@@ -34,4 +35,4 @@ export default [
     return {prompt:'Complete the keywords, then predict how this support desk routes tickets.', code:`def route(priority):\n    ___ priority > ${limit}:\n        return "urgent"\n    ___ priority == ${limit}:\n        return "review"\n    ___:\n        return "normal"`, hint:"Selection checks conditions in order. Once a condition is True, that branch runs; the final fallback handles values not matched earlier.", parts:[part('First keyword','if',{caseSensitive:true}),part('Second keyword','elif',{caseSensitive:true}),part('Third keyword','else',{caseSensitive:true}),part(`route(${limit+1}) — without quotes`,'urgent',{caseSensitive:true}),part(`route(${limit}) — without quotes`,'review',{caseSensitive:true}),part(`route(${limit-1}) — without quotes`,'normal',{caseSensitive:true})]};
   }),
   ...more, ...expanded, ...coreMore, ...validation, ...readable, ...sequences, ...livePython
-];
+]);

@@ -59,7 +59,7 @@ export async function createEditor(
   );
   const script = document.createElement('script');
   script.type = 'py-editor';
-  script.setAttribute('rows', '24');
+  script.setAttribute('rows', String(Math.max(3, source.split('\n').length)));
   script.textContent = source;
   const ready = new Promise((resolve) =>
     script.addEventListener('py-editor', resolve, { once: true }),
@@ -70,6 +70,9 @@ export async function createEditor(
   const root = script.target.querySelector('.py-editor-input > div').shadowRoot;
   const view = EditorView.findFromDOM(root.querySelector('.cm-editor'));
   if (!view) throw Error('The pinned PyScript editor did not expose a CodeMirror view.');
+  // PyScript normalises script whitespace; authored empty regions require exact offsets.
+  if (view.state.doc.toString() !== source)
+    view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: source } });
   const selection = () => {
     const { from, to } = view.state.selection.main;
     return {
@@ -86,10 +89,8 @@ export async function createEditor(
       EditorView.editable.of(!readOnly),
       EditorState.transactionFilter.of((tr) => (readOnly && tr.docChanged ? [] : tr)),
       editorTheme(viewModule, language),
-      EditorView.lineWrapping,
       EditorView.contentAttributes.of({ 'aria-label': 'Python code' }),
       EditorView.theme({
-        '&': { fontSize: '1rem' },
         '.cm-content': { fontFamily: 'ui-monospace, monospace' },
         '.cm-line': { padding: '0 5px' },
       }),
@@ -113,6 +114,12 @@ export async function createEditor(
       view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: value } });
     },
     snapshot: () => ({ ...region.snapshot(view), original }),
+    setHeight(height) {
+      view.dom.style.height = `${height}px`;
+      view.dom.style.maxHeight = 'none';
+      view.scrollDOM.style.overflow = 'auto';
+      view.requestMeasure();
+    },
     setMode: (mode) => region.setMode(view, mode),
     setFill: (fill) => region.setFill(view, fill),
     selectRegion: (id) => region.selectRegion(view, id),
