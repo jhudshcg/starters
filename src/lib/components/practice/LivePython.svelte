@@ -41,7 +41,7 @@
   onMount(() => {
     const measure = () => {
       viewportHeight = window.innerHeight;
-      singleColumn = window.innerWidth <= 960;
+      singleColumn = window.innerWidth < 768;
       docked = intro.getBoundingClientRect().bottom <= (singleColumn ? 0 : 16);
     };
     let frame;
@@ -567,13 +567,13 @@
     border: 1px solid var(--line);
     border-bottom: 0;
     border-radius: 0.5rem 0.5rem 0 0;
-    background: var(--surface-soft);
+    background: var(--surface);
     color: var(--text);
     font: inherit;
     cursor: pointer;
   }
   .editor-tab:hover {
-    background: var(--surface);
+    background: color-mix(in srgb, var(--main) 6%, var(--surface));
   }
   .editor-tab[aria-selected='true'] {
     background: color-mix(in srgb, var(--main) 12%, var(--surface));
@@ -649,12 +649,37 @@
   input {
     font-family: ui-monospace, monospace;
   }
-  @media (max-width: 960px) {
+  @media (width < 768px) {
     .coding-controls {
       margin-bottom: 1.5rem;
     }
     .editor-dock {
       top: 0;
+    }
+    .editor-document {
+      margin-inline: calc(-1rem - var(--question-inline-padding));
+    }
+    .live-python-editor {
+      border-inline: 0;
+    }
+    /* Side rules belong to the inset tabs, not across the wider code surface. */
+    .editor-dock::before {
+      display: none;
+    }
+    .editor-tabs {
+      border-bottom: 0;
+      box-shadow:
+        inset 1px 0 var(--line),
+        inset -1px 0 var(--line);
+    }
+    .editor-document[role='tabpanel'] .live-python-editor {
+      border-top: 1px solid var(--line);
+    }
+    .editor-dock.docked {
+      box-shadow: none;
+    }
+    .editor-dock.docked .editor-document {
+      box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
     }
   }
 </style>

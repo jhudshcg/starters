@@ -97,12 +97,123 @@ try {
     deviceScaleFactor: 1,
     mobile: false,
   });
+  if (process.argv.includes('--editor-theme-only')) {
+    await open(3, 36, 5);
+    const original = await b.evaluate(text(36));
+    await replace(
+      36,
+      'def example(value):\n    # retained draft\n    return value + 2\nprint(example("hello"))',
+    );
+    const draft = await b.evaluate(text(36));
+    await b.evaluate(
+      `window.themeEditorNodes=[${root(36, 'original')}.querySelector('.cm-editor'),${root(36)}.querySelector('.cm-editor')]`,
+    );
+    for (const palette of ['sage', 'blue', 'rose', 'apricot']) {
+      await b.click('#theme-picker');
+      await wait(`document.querySelector('[data-theme-choice="light:${palette}"]')`);
+      await b.click(`[data-theme-choice="light:${palette}"]`);
+      await b.click('#theme-picker');
+      for (const mode of ['light', 'dark']) {
+        if (mode === 'dark') await b.click('#theme-toggle');
+        await wait(`document.documentElement.dataset.theme==='${mode}'`);
+        for (const [index, doc] of ['original', 'edited'].entries()) {
+          await b.click(`#tab-36-${doc}`);
+          await b.evaluate(
+            `document.querySelector('.coding-intro').scrollIntoView({block:'start'})`,
+          );
+          const measured = await b.evaluate(`(() => {
+            const root=${root(36, doc)},editor=root.querySelector('.cm-editor'),style=e=>getComputedStyle(e),
+              canvas=document.createElement('canvas');canvas.width=canvas.height=1;
+            const ctx=canvas.getContext('2d',{willReadFrequently:true});
+            const rgb=c=>{ctx.clearRect(0,0,1,1);ctx.fillStyle=c;ctx.fillRect(0,0,1,1);return [...ctx.getImageData(0,0,1,1).data].slice(0,3)};
+            const lum=c=>rgb(c).map(n=>{n/=255;return n<=.04045?n/12.92:((n+.055)/1.055)**2.4}).reduce((sum,c,i)=>sum+c*[.2126,.7152,.0722][i],0);
+            const ratio=(a,b)=>(Math.max(lum(a),lum(b))+.05)/(Math.min(lum(a),lum(b))+.05);
+            const background=style(editor).backgroundColor, spans=[...root.querySelectorAll('.cm-content .cm-line span')].filter(e=>e.textContent.trim()),
+              activeLine=root.querySelector('.cm-activeLine'), activeBackground=activeLine?style(activeLine).backgroundColor:background;
+            return {scheme:style(editor).colorScheme,light:lum(background),
+              sameNode:editor===window.themeEditorNodes[${index}],text:ratio(style(editor).color,background),
+              syntax:Math.min(...spans.map(e=>ratio(style(e).color,background))),
+              activeSyntax:Math.min(...spans.map(e=>ratio(style(e).color,activeBackground))),
+              gutter:ratio(style(root.querySelector('.cm-gutters')).color,background),
+              size:style(root.querySelector('.cm-content')).fontSize,
+              space:style(root.querySelector('.cm-content')).whiteSpace};
+          })()`);
+          assert.equal(measured.scheme, mode);
+          assert.equal(measured.sameNode, true, 'theme changes preserve mounted documents');
+          assert.ok(
+            mode === 'light' ? measured.light > 0.6 : measured.light < 0.2,
+            JSON.stringify({ mode, palette, doc, ...measured }),
+          );
+          assert.ok(
+            measured.text >= 4.5 &&
+              measured.syntax >= 4.5 &&
+              measured.activeSyntax >= 4.5 &&
+              measured.gutter >= 4.5,
+            JSON.stringify({ mode, palette, doc, ...measured }),
+          );
+          assert.equal(measured.size, '14px');
+          assert.equal(measured.space, 'pre');
+          if (palette === 'rose' && doc === 'edited') {
+            await b.evaluate(
+              `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+30)`,
+            );
+            await writeFile(
+              `/private/tmp/editor-theme-${mode}.png`,
+              Buffer.from(
+                (await b.send('Page.captureScreenshot', { format: 'png' })).data,
+                'base64',
+              ),
+            );
+          }
+        }
+        assert.equal(await b.evaluate(text(36)), draft, 'draft survives theme changes');
+      }
+    }
+    await b.evaluate(`${root(36)}.querySelector('.cm-content').focus()`);
+    await b.send('Input.dispatchKeyEvent', {
+      type: 'keyDown',
+      key: 'z',
+      code: 'KeyZ',
+      windowsVirtualKeyCode: 90,
+      modifiers: 4,
+    });
+    await b.send('Input.dispatchKeyEvent', {
+      type: 'keyUp',
+      key: 'z',
+      code: 'KeyZ',
+      windowsVirtualKeyCode: 90,
+      modifiers: 4,
+    });
+    assert.equal(
+      await b.evaluate(text(36)),
+      original,
+      'undo history survives mode and palette switches',
+    );
+    await open(2, 2, 3);
+    for (const mode of ['light', 'dark']) {
+      if ((await b.evaluate('document.documentElement.dataset.theme')) !== mode)
+        await b.click('#theme-toggle');
+      const colours = await b.evaluate(`(() => {
+        const r=${root(2)},e=r.querySelector('.cm-editor'),gap=r.querySelector('.region-empty');
+        return {scheme:getComputedStyle(e).colorScheme,gap:getComputedStyle(gap).backgroundColor,outline:getComputedStyle(gap).outlineWidth};
+      })()`);
+      assert.equal(colours.scheme, mode);
+      assert.notEqual(colours.gap, 'rgba(0, 0, 0, 0)', 'gap fill follows the editor palette');
+      assert.equal(colours.outline, '1px');
+    }
+    assert.deepEqual(b.errors, []);
+    console.log(
+      'Both editor tabs follow all eight app themes; text, syntax (including active lines) and gutters meet 4.5:1 at defaults. Live switches preserve nodes, drafts, undo, font size and unwrapped lines; completion gap styling follows both modes.',
+    );
+    b.close();
+    process.exit(0);
+  }
   if (process.argv.includes('--code-layout-only')) {
     await open(3, 36, 5);
     // A long student-authored line must scroll locally even when the surrounding column is wide.
     const source = 'message = "' + 'abcdefghij'.repeat(24) + '"';
     await replace(36, source);
-    for (const width of [360, 767, 768, 1280]) {
+    for (const width of [360, 440, 441, 768, 960, 1280]) {
       await b.send('Emulation.setDeviceMetricsOverride', {
         width,
         height: 900,
@@ -113,7 +224,7 @@ try {
         await b.click(`#tab-36-${doc}`);
         await b.evaluate(`document.querySelector('.coding-intro').scrollIntoView({block:'start'})`);
         await wait(
-          `getComputedStyle(${root(36, doc)}.querySelector('.cm-content')).fontSize === '${width < 768 ? 14 : 16}px'`,
+          `getComputedStyle(${root(36, doc)}.querySelector('.cm-content')).fontSize === '${width <= 440 ? 12.5 : 14}px'`,
           5000,
         );
         const layout = await b.evaluate(`(() => {
@@ -122,10 +233,30 @@ try {
             overflow:getComputedStyle(scroller).overflowX,scrolls:scroller.scrollWidth>scroller.clientWidth,
             gutter:getComputedStyle(root.querySelector('.cm-gutters')).fontSize};
         })()`);
-        assert.equal(layout.size, width < 768 ? '14px' : '16px');
+        assert.equal(layout.size, width <= 440 ? '12.5px' : '14px');
         assert.equal(layout.gutter, layout.size);
         assert.equal(layout.space, 'pre', 'authored lines do not wrap');
         assert.equal(layout.overflow, 'auto');
+        const frame = await b.evaluate(`(() => {
+          const dock=document.querySelector('.editor-dock'), question=dock.closest('.question'),
+            code=dock.querySelector('.editor-document:not([hidden]) .live-python-editor').getBoundingClientRect(),
+            card=question.getBoundingClientRect(), style=getComputedStyle(question),
+            intro=document.querySelector('.coding-intro').getBoundingClientRect(),
+            tab=dock.querySelector('.editor-tab').getBoundingClientRect(),
+            grip=dock.querySelector('.height-handle').getBoundingClientRect();
+          return {left:code.left,right:code.right,
+            expectedLeft:innerWidth<=960?card.left+parseFloat(style.borderLeftWidth):intro.left,
+            expectedRight:innerWidth<=960?card.right-parseFloat(style.borderRightWidth):intro.right,
+            tabInset:tab.left-intro.left,gripOffset:(grip.left+grip.right-code.left-code.right)/2};
+        })()`);
+        assert.ok(
+          Math.abs(frame.left - frame.expectedLeft) <= 1,
+          `${width}: code left edge ${JSON.stringify(frame)}`,
+        );
+        assert.ok(Math.abs(frame.right - frame.expectedRight) <= 1, `${width}: code right edge`);
+        assert.ok(Math.abs(frame.tabInset - 16) <= 1, `${width}: tabs retain their inset`);
+        assert.ok(Math.abs(frame.gripOffset) <= 1, `${width}: grip remains centred`);
+
         if (doc === 'edited' || width === 360) {
           assert.ok(layout.scrolls, `${width} ${doc}: long line scrolls locally`);
           await b.evaluate(`(${root(36, doc)}).querySelector('.cm-scroller').scrollLeft=100`);
@@ -157,7 +288,7 @@ try {
     );
     assert.deepEqual(b.errors, []);
     console.log(
-      'Both tabs: 14px below 768px and 16px from 768px; unwrapped authored lines, horizontal editor scrolling, matching gutter size and no page overflow pass at 360/767/768/1280px.',
+      'Both tabs: 12.5px at <=440px and 14px above; unwrapped authored lines, horizontal editor scrolling, matching gutter size and no page overflow pass at 360/440/441/768/960/1280px. Single-column code reaches the card edges; tabs stay inset and the grip centred.',
     );
     b.close();
     process.exit(0);
@@ -331,15 +462,14 @@ try {
         side=getComputedStyle(dock,'::before');
       return {topGap:rect.top-intro.bottom,bottomGap:controls.top-rect.bottom,
         lefts:[intro.left,rect.left,controls.left],rights:[intro.right,rect.right,controls.right],
-        left:side.borderLeftWidth,right:side.borderRightWidth,position:side.position};
+        sideDisplay:side.display,tabSides:getComputedStyle(dock.querySelector('.editor-tabs')).boxShadow};
     })()`);
     assert.equal(seams.topGap, 0);
     assert.equal(seams.bottomGap, 16);
     assert.equal(new Set(seams.lefts).size, 1);
     assert.equal(new Set(seams.rights).size, 1);
-    assert.equal(seams.left, '1px');
-    assert.equal(seams.right, '1px');
-    assert.equal(seams.position, 'absolute');
+    assert.equal(seams.sideDisplay, 'none');
+    assert.ok(seams.tabSides.includes('inset'), 'inset tabs retain their side rules');
     await writeFile(
       '/private/tmp/task2-continuous-outline.png',
       Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
@@ -742,8 +872,9 @@ try {
         const workspace = document.querySelector('.coding-workspace'),
           editor = workspace.querySelector('.live-python-editor'),
           columns = getComputedStyle(workspace.parentElement).gridTemplateColumns.split(' ').map(parseFloat);
-        const frame = workspace.querySelector('.editor-dock');
-        return { columns, width: frame.clientWidth, editor: editor.getBoundingClientRect().width,
+        const frame = workspace.querySelector('.editor-dock'),
+          padding = innerWidth <= 960 ? parseFloat(getComputedStyle(workspace.closest('.question')).paddingLeft) : 0;
+        return { columns, width: frame.clientWidth + 2 * padding, padding, editor: editor.getBoundingClientRect().width,
           inset: editor.getBoundingClientRect().left - frame.getBoundingClientRect().left,
           textInset: workspace.querySelector('.muted').getBoundingClientRect().left - frame.getBoundingClientRect().left };
       })()`);
@@ -751,7 +882,10 @@ try {
         Math.abs(geometry.width - geometry.editor) <= 1,
         `${width}: editor spans workspace ${JSON.stringify(geometry)}`,
       );
-      assert.ok(Math.abs(geometry.inset) <= 1, `${width}: no editor inset`);
+      assert.ok(
+        Math.abs(geometry.inset + geometry.padding) <= 1,
+        `${width}: editor crosses question padding only in one column`,
+      );
       assert.ok(Math.abs(geometry.textInset - 16) <= 1, `${width}: instructions keep padding`);
       assert.equal(geometry.columns.length, width > 960 ? 2 : 1);
       if (width > 960)

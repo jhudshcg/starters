@@ -1,6 +1,7 @@
 /* Edit theme colours and decoration here. See docs/theming.md. */
 :where(:root,.theme-swatch) {
   color-scheme: light;
+  --editor-color-scheme: light;
   --priority-red-bg: var(--incorrect-base);
   --priority-red-border: var(--incorrect-border-base);
   --priority-amber-bg: var(--selection-base);
@@ -70,7 +71,7 @@
   --warning-border-raw: #9b7122;
   --warning-text-raw: #674b05;
 
-  /* Code and the prominent code-entry panel retain a dark fill in either mode. */
+  /* Static code and the prominent code-entry panel retain a dark fill in either mode. */
   --code-bg-raw: #182f2b;
   --code-text-raw: #edf5e7;
   --code-muted-raw: #d3dfd8;
@@ -80,6 +81,11 @@
   --code-number-raw: #ffd18c;
   --code-function-raw: #9bd7ff;
   --on-code-error-raw: #ffdad6;
+  /* Live editors follow the page mode; light surfaces need darker syntax colours. */
+  --editor-keyword-raw: #8000b5;
+  --editor-string-raw: #00752b;
+  --editor-number-raw: #a34400;
+  --editor-function-raw: #005cc5;
   --art-shadow-raw: rgb(255 255 255 / 50%);
 
   /* Decoration: image values accept gradients or none. Solid is the default. */
@@ -97,6 +103,11 @@
 
 :where(:root,.theme-swatch)[data-theme=dark] {
   color-scheme: dark;
+  --editor-color-scheme: dark;
+  --editor-keyword-raw: var(--code-keyword-raw);
+  --editor-string-raw: var(--code-string-raw);
+  --editor-number-raw: var(--code-number-raw);
+  --editor-function-raw: var(--code-function-raw);
 
   --surface-lift: .055;
   --soft-lift: .09;
@@ -316,6 +327,14 @@
   --code-number: var(--code-number-base);
   --code-function: var(--code-function-base);
   --on-code-error: var(--on-code-error-raw);
+  --editor-keyword-base: var(--editor-keyword-raw);
+  --editor-string-base: var(--editor-string-raw);
+  --editor-number-base: var(--editor-number-raw);
+  --editor-function-base: var(--editor-function-raw);
+  --editor-keyword: var(--editor-keyword-base);
+  --editor-string: var(--editor-string-base);
+  --editor-number: var(--editor-number-base);
+  --editor-function: var(--editor-function-base);
   --art-shadow: var(--art-shadow-raw);
   --page-glow-base: var(--page-glow-base-raw);
 }
@@ -324,6 +343,10 @@
    Amber gets the smallest contribution so it never suggests correctness. */
 @supports (color: color-mix(in oklab, red, blue)) {
   :where(:root,.theme-swatch) {
+    --editor-keyword: color-mix(in oklab, var(--editor-keyword-base) 88%, var(--text));
+    --editor-string: color-mix(in oklab, var(--editor-string-base) 88%, var(--text));
+    --editor-number: color-mix(in oklab, var(--editor-number-base) 88%, var(--text));
+    --editor-function: color-mix(in oklab, var(--editor-function-base) 88%, var(--text));
     /* A small code-text tint preserves distinct syntax hues. */
     --code-keyword: color-mix(in oklab, var(--code-keyword-base) 88%, var(--code-text));
     --code-string: color-mix(in oklab, var(--code-string-base) 88%, var(--code-text));
@@ -383,6 +406,10 @@
     --warning-bg: hsl(from var(--warning-bg-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --warning-border: hsl(from var(--warning-border-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --warning-text: hsl(from var(--warning-text-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --editor-keyword-base: hsl(from var(--editor-keyword-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --editor-string-base: hsl(from var(--editor-string-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --editor-number-base: hsl(from var(--editor-number-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
+    --editor-function-base: hsl(from var(--editor-function-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --code-keyword-base: hsl(from var(--code-keyword-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --code-string-base: hsl(from var(--code-string-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);
     --code-number-base: hsl(from var(--code-number-raw) h clamp(0, calc(s * var(--sat-down) + (100 - s) * var(--sat-up)), 100) l / alpha);

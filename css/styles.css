@@ -402,7 +402,8 @@ main:focus {
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: 16px;
-  padding: 1.6rem 1.8rem;
+  --question-inline-padding: 1.8rem;
+  padding: 1.6rem var(--question-inline-padding);
 }
 
 .question-top {
@@ -2799,7 +2800,8 @@ footer>span:last-child {
   }
 
   .question {
-    padding: 1.3rem;
+    --question-inline-padding: 1.3rem;
+    padding: 1.3rem var(--question-inline-padding);
   }
 }
 
@@ -2829,7 +2831,8 @@ footer>span:last-child {
   }
 
   .question {
-    padding: 1rem;
+    --question-inline-padding: 1rem;
+    padding: 1rem var(--question-inline-padding);
   }
 
   .submit-bar {

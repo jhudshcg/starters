@@ -364,7 +364,7 @@
   .with-editor :global(.coding-controls :is(input, select, textarea, button)) {
     scroll-margin-top: var(--editor-scroll-offset, 0px);
   }
-  @media (max-width: 960px) {
+  @media (width < 768px) {
     .question-layout.with-editor {
       grid-template-columns: minmax(0, 1fr);
       grid-template-areas: 'guidance' 'editor' 'spacer' 'controls' 'answers';

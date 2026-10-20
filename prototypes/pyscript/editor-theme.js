@@ -10,14 +10,21 @@ export function editorTheme({ EditorView }, { HighlightStyle, syntaxHighlighting
   return [
     EditorView.theme({
       '&': {
-        fontSize: '16px',
-        colorScheme: 'dark',
+        fontSize: '14px',
+        colorScheme: 'var(--editor-color-scheme)',
+        '--code-bg': 'var(--surface)',
+        '--code-text': 'var(--text)',
+        '--code-muted': 'var(--muted)',
+        '--on-code-error': 'var(--incorrect-text)',
+        '--editor-line-bg': 'color-mix(in oklab, var(--code-bg) 93%, var(--code-text))',
+        '--editor-region-bg': 'color-mix(in oklab, var(--code-bg) 88%, var(--code-text))',
+        '--editor-selection-bg': 'color-mix(in oklab, var(--code-bg) 78%, var(--code-text))',
         backgroundColor: 'var(--code-bg)',
         color: 'var(--code-text)',
         borderRadius: '0',
         overflow: 'hidden',
       },
-      '@media (width < 768px)': { '.cm-scroller': { fontSize: '14px' } },
+      '@media (width <= 440px)': { '.cm-scroller': { fontSize: '12.5px' } },
       '.cm-scroller': { overflow: 'auto' },
       '&.cm-focused': { outline: '2px solid var(--accent)', outlineOffset: '3px' },
       '.cm-content': { caretColor: 'var(--code-text)' },
@@ -51,12 +58,12 @@ export function editorTheme({ EditorView }, { HighlightStyle, syntaxHighlighting
     }),
     syntaxHighlighting(
       HighlightStyle.define([
-        { tag: tags.keyword, color: 'var(--code-keyword)', fontWeight: '600' },
-        { tag: [tags.string, tags.regexp], color: 'var(--code-string)' },
-        { tag: [tags.number, tags.bool, tags.null], color: 'var(--code-number)' },
+        { tag: tags.keyword, color: 'var(--editor-keyword)', fontWeight: '600' },
+        { tag: [tags.string, tags.regexp], color: 'var(--editor-string)' },
+        { tag: [tags.number, tags.bool, tags.null], color: 'var(--editor-number)' },
         {
           tag: [tags.function(tags.variableName), tags.definition(tags.variableName)],
-          color: 'var(--code-function)',
+          color: 'var(--editor-function)',
         },
         { tag: tags.comment, color: 'var(--code-muted)', fontStyle: 'italic' },
         { tag: tags.invalid, color: 'var(--on-code-error)', textDecoration: 'underline' },

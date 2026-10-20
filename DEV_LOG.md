@@ -2688,3 +2688,51 @@ Verification: zero Svelte errors/warnings, /starters build and git diff --check 
 Updated prototypes/pyscript/adapter.js and editor-theme.js, shipped through live/python/, to preserve authored lines instead of enabling CodeMirror soft wrapping. Code and line numbers now use 16px at viewport widths >=768px and 14px below; the former size was 1rem. Long lines scroll horizontally inside each editor. Vertical resizing, original/read-only tabs and marking behaviour are unchanged. Updated docs/style-guide.md, docs/spec-python.md and docs/local-development.md to distinguish live-editor scrolling from static-snippet wrapping.
 
 The first responsive rule used a nested root selector that the pinned style generator did not emit correctly. Applying the mobile font size to the code scroller fixes the rule and keeps code/gutters aligned. A browser-test assignment also needed parentheses around its optional-chain lookup; that fixture syntax issue was corrected before the final run. The final --code-layout-only check passes for both tabs at 360/767/768/1280px: computed font sizes, gutter sizes, unwrapped whitespace, actual horizontal scrolling for long lines and no horizontal page overflow. Visually inspected the 360px editor. JavaScript syntax checks, /starters build and git diff --check pass. Logs: /private/tmp/editor-font-final-{build,browser}.log; screenshot: /private/tmp/editor-code-360.png. Reused unchanged marking and Svelte-component checks; no commit or deployment.
+
+## 20 October 2026 — Live editors follow the app light/dark theme
+
+Updated css/tokens.css with mode-aware editor syntax colours and prototypes/pyscript/editor-theme.js with app surface/text/gutter colours, matching region/selection fills and native colour-scheme handling. Light mode uses darker syntax colours; dark mode retains bright syntax hues. Saturation adjustment and the text tint remain shared. Local editor aliases avoid changing the permanently dark static-code and home code-entry panels. Inherited variables update both mounted code documents immediately without resetting their state.
+
+The first browser check showed that inheriting color-scheme alone produced normal rather than light: PyScript sets all: initial on its shadow host. An explicit --editor-color-scheme token now carries the app mode through that reset, including native scrollbars. Updated docs/theming.md, docs/style-guide.md and docs/local-development.md.
+
+Verification: --editor-theme-only passes for both tabs across all eight default palettes, including light/dark luminance, native mode and at least 4.5:1 sampled plain-text, syntax and gutter contrast. Actual mode/palette controls preserve editor DOM nodes, drafts and undo history; font size and unwrapped lines remain intact. Completion-gap fill/outline checks pass in both modes. Visually inspected Rose and Berry editor screenshots. JavaScript syntax checks, /starters build and git diff --check pass. Logs: /private/tmp/editor-theme-final-{build,browser}.log; screenshots: /private/tmp/editor-theme-{light,dark}.png. No full-suite or physical-device claim, and contrast was not assessed across arbitrary custom adjustment extremes. No commit or deployment.
+
+## 20 October 2026 — Stronger light-mode syntax colours
+
+Strengthened the four light editor syntax bases in css/tokens.css: keywords #8000b5, strings #00752b, numbers/booleans #a34400 and functions #005cc5. Retained the existing 12% theme-text blend and shared saturation adjustment, as agreed. Dark syntax colours are unchanged. Updated docs/theming.md.
+
+The /starters build, script syntax check and git diff --check pass. Reused --editor-theme-only across all eight default palettes, extending its existing contrast check to include the active-line background. Both code tabs pass sampled text/syntax/gutter contrast >=4.5:1, live mode switching and draft/undo preservation. Visually inspected the revised Rose screenshot; perceived colour separation remains subject to visual feedback. Logs: /private/tmp/editor-light-colours-{build,browser}.log; screenshot: /private/tmp/editor-theme-light.png. No commit or deployment.
+
+## 20 October 2026 — Neutral inactive editor tabs
+
+Changed LivePython.svelte so inactive editor tabs use the plain surface rather than surface-soft. In light Rose, surface-soft was more saturated than the selected tab’s subtle tint and incorrectly implied selection. Hover now uses a smaller 6% main-colour tint; selected tabs retain their 12% tint, bold text and top accent. Updated docs/style-guide.md.
+
+Svelte diagnostics report zero errors/warnings; /starters build and git diff --check pass. Reused the existing eight-palette editor-theme check and visually inspected the light Rose tab preview. Logs: /private/tmp/editor-tabs-neutral-{check,build,browser}.log; screenshot: /private/tmp/editor-theme-light.png. No new tests, commit or deployment.
+
+## 20 October 2026 — Full-width code in single-column questions
+
+Extended only the code frame to the question card’s inside edges at widths up to 960px, reaching the viewport edges below 768px. Tabs, guidance and controls retain their inset positions; the grip remains centred. css/styles.css now names the existing responsive question padding, which LivePython.svelte reuses for the extension. Mobile side rules remain beside the tabs rather than crossing the widened code; the pinned shadow follows the code frame. Desktop 60/40 geometry is unchanged. Updated docs/style-guide.md and docs/local-development.md.
+
+Verification: zero Svelte errors/warnings, /starters build and git diff --check pass. Extended the existing --code-layout-only browser check: both tabs pass frame/card alignment, tab inset, grip centring, font sizes, horizontal scrolling and no page overflow at 360/767/768/960/1280px. The existing --mobile-scroll-only check passes focus clearance, resizing, short landscape, release after questions and normal-flow alignment. Updated stale refinement/seam assertions; the full refinement suite was not rerun. Visually inspected 360px pinned and 768px normal-flow screenshots. Logs: /private/tmp/editor-full-width-{check,build,browser,mobile}.log. Unchanged marking checks were reused. No commit or deployment.
+
+## 20 October 2026 — Remove stretched editor side borders
+
+LivePython.svelte now removes the code frame’s inline borders only in single-column layouts (<=960px). Top/bottom edges, tab borders, resize grip and desktop frame remain unchanged. Updated docs/style-guide.md to record the stretched-frame exception.
+
+Verification: Svelte check reports zero errors/warnings; /starters production build and git diff --check pass. This small CSS change was reviewed against the existing breakpoint rules; browser checks were not repeated. Logs: /private/tmp/editor-side-borders-{check,build}.log. No commit or deployment.
+
+## 20 October 2026 — Smaller responsive live-code text
+
+Updated prototypes/pyscript/editor-theme.js (shipped through live/python/) to use 14px code and line numbers by default and 12.5px at viewport widths <=440px. This supersedes the previous 14/16px rule. Updated docs/style-guide.md, docs/spec-python.md and docs/local-development.md, plus existing browser font assertions.
+
+Verification: JavaScript syntax checks, /starters build and git diff --check pass. The existing --code-layout-only check passes both tabs at 360/440/441/768/960/1280px, including the exact new boundary, matching gutters, unwrapped lines, actual horizontal scrolling, card-edge alignment and no page overflow. Logs: /private/tmp/editor-font-small-{build,browser}.log. No new tests, commit or deployment; unchanged component and marking checks were not repeated.
+
+## 20 October 2026 — Trial 768px coding-layout breakpoint
+
+Changed Question.svelte and LivePython.svelte to collapse below 768px instead of at <=960px, including the matching stretched-frame styles and runtime sticky-height detection. Exactly 768px now retains two columns. This is a requested visual trial; no build or tests were run. Permanent guidance and browser expectations still describe the previous breakpoint pending review.
+
+## 20 October 2026 — Proposed wider full-width-card breakpoint
+
+The <768px column switch received visual acceptance. Investigated raising the separate main-card edge-to-edge threshold. Recommend <1024px, reusing the existing viewport-large token: this covers portrait tablet widths near 768–834px while retaining gutters at 1024px and wider. Card changes are still proposed, not implemented. No tests or build were run for this research.
+
+Reference checked 20 October 2026: Apple’s layout specifications (https://developer.apple.com/design/human-interface-guidelines/layout) list logical portrait dimensions 744×1133 for 8.3-inch mini, 768×1024 for 9.7-inch iPads, 810×1080 for 10.2-inch iPads, 820×1180 for 10.9-inch Air, 834×1194 for first–fourth generation 11-inch Pro and 1024×1366 for 12.9-inch Pro. These represent default full-screen sizing; actual browser width varies with windowing, display settings and zoom. The breakpoint recommendation is a layout judgement informed by these dimensions, not device market-share research.

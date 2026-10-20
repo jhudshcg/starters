@@ -1,41 +1,28 @@
 # Current handover — 20 October 2026
 
+## Current trial — collapse below 768px
+Implemented the trial in Question.svelte and LivePython.svelte: question grid, editor CSS and runtime single-column detection now all use <768px. Exactly 768px retains two columns. Await visual review before tests, build or permanent guidance/test-expectation updates; the earlier verification below predates this trial.
+
+## Current research — full-width card breakpoint
+Research complete: recommend full-width main cards below 1024px, independently of the accepted <768px column switch. This card breakpoint is a proposal pending agreement; no layout changes or tests made. Apple device-width evidence and rationale are recorded in DEV_LOG.md. The 768px column trial was visually accepted; permanent guidance/test expectations still need updating with the final layout decisions.
+
 ## Current state and next action
-Completed responsive code text and horizontal scrolling: both tabs use 16px at >=768px and 14px below, preserve authored lines and scroll horizontally when needed. The prior grip clipping and two-column sticky fixes remain. Next action: respond to further UI feedback. No pending implementation, approval, commit or deployment.
+Completed the full-width code frame for single-column questions (<=960px). It reaches the question card’s inside edges, and the viewport edges below 768px. Tabs, guidance and controls remain inset; the grip stays centred. The stretched code frame now has only top/bottom borders; desktop 60/40 layout and its frame are unchanged. Code and line numbers now use 14px by default and 12.5px at <=440px. Next action: respond to visual feedback. No pending implementation, approval, commit or deployment.
 
-## Latest font/scroll verification
-- --code-layout-only passes at 360/767/768/1280px for both tabs: computed code/gutter sizes, unwrapped lines, actual horizontal scrolling and no page overflow. The 360px screenshot was visually inspected.
-- JavaScript syntax checks, /starters build and git diff --check pass. Earlier component/marking checks remain applicable.
-- Logs: /private/tmp/editor-font-final-{build,browser}.log. Screenshot: /private/tmp/editor-code-360.png.
-- Source: prototypes/pyscript/{adapter,editor-theme}.js; prepare-site copies these to live/python/. Media font styling targets .cm-scroller because a nested root selector inside the pinned style generator’s media rule was not emitted correctly.
+## Latest verification
+JavaScript syntax checks, /starters build and git diff --check pass. --code-layout-only passes both tabs at 360/440/441/768/960/1280px: specified code/gutter sizes, horizontal scrolling, no wrapping, card-edge alignment and no page overflow. Logs: /private/tmp/editor-font-small-{build,browser}.log. Source: prototypes/pyscript/editor-theme.js, copied into live/python/ by the build. Svelte/marking checks were not repeated for this theme-only adjustment.
 
-## Earlier docking verification
-- Zero Svelte errors/warnings; /starters build and git diff --check pass.
-- --dock-layout-only passed at 1280/1024/360px: real expanded/collapsed results, code visibility through scrolling, 60/40 columns, frame/grip alignment and hit-testing beside/on the grip.
-- --mobile-scroll-only passed: focus clearance, manual resize, editor-only scrolling, short landscape, release at question end and normal-flow border continuity.
-- Logs: /private/tmp/editor-dock-fix-{check,build,browser,mobile}.log; inspected screenshots /private/tmp/editor-dock-{1280,360}.png.
+## Previous width verification
+- [x] Reuse responsive question padding through --question-inline-padding; extend only the code frame, preserving sticky behaviour and local scrolling.
+- [x] Keep tab side rules and pinned code shadow aligned with their respective surfaces.
+- [x] Svelte check: zero errors/warnings; /starters build and git diff --check pass.
+- [x] --code-layout-only: both tabs at 360/767/768/960/1280px pass code/card alignment, tab inset, grip centring, font sizes, horizontal scrolling and no page overflow.
+- [x] --mobile-scroll-only: focus clearance, manual pinned resizing, short landscape, restored height, release at question end and normal-flow alignment pass.
+- [x] Visually inspected 360px pinned and 768px normal-flow screenshots. Logs: /private/tmp/editor-full-width-{check,build,browser,mobile}.log. Screenshots: /private/tmp/editor-code-360.png and /private/tmp/task2-continuous-outline.png.
+- Updated stale refinement assertions; full refinement suite not rerun. Earlier theme, marking and attempt-history evidence remains in DEV_LOG.md.
 
-## Completed plan
-- [x] Reuse shared card decoration and horizontal mobile gradients below 768px across main question/progress/search/exam cards. Keep compact home/progress tile grids.
-- [x] Pin only tabs/code/grip in single-column layouts; guidance, controls and questions scroll normally. Add accessible icon-only guidance/results disclosures and subtle selected tabs.
-- [x] Keep editor-only sizing/scrolling, manual resize and focused fields visible below the pinned editor.
-- [x] Verify the final outline fix without changing sizing or sticky geometry; update documentation and DEV_LOG.
-
-## Current behaviour
-- Code text is 16px from 768px and 14px below. Live editors scroll horizontally instead of soft wrapping; static snippets retain their wrapping policy.
-- Main cards below 768px extend to the usable viewport edges, with no side borders/corners and horizontal top/bottom gradient borders where applicable.
-- At all widths, the coding-workspace uses display: contents so the editor dock can remain sticky through all associated question parts. Requirements/guidance and controls remain in normal flow. Only the editor scrolls internally.
-- Normal initial editor height still follows code length and max(viewport width × 1.4, viewport height × 0.75). While pinned, automatic height is at most 45% of viewport height in one column or 65% in two columns; reserved flow space avoids a jump. Manual resizing overrides compact height and survives unpinning. A dynamic scroll margin keeps focused answer controls below the code.
-- At >960px, retain the 60/40 split with explicit grid areas and editor-only sticky positioning. The code spans workspace padding; its square 1px frame, grip and workspace use --line.
-- Guidance/results controls show only −/+, with accessible names/expanded state and 44px targets. New checks reopen results. Selected tabs use a subtle tint, top accent and bold text.
-- Six detailed attempts per question/variation, older score/skill summaries, own-test marking and original/edited run evidence remain unchanged. Previous terminal hydration/source-map fixes and Python blank-region/prediction work remain.
-
-## Verification
-- Final Svelte check: zero errors/warnings; /starters build and git diff --check pass.
-- Presentation checks: 360/767/768/960/1280px mobile edges, gradients, no page overflow, local test-log scrolling, disclosures, tabs, sticky editor and progress/search/exam cards. 360px is the routine phone check; do not duplicate sweeps at 320px unless investigating a specific issue.
-- Final focused scrolling check: native focus clearance, manual pinned resize, editor-only overflow, restored height, short landscape, release after questions and continuous outline geometry. Visually inspected final outline and mobile/desktop layouts.
-- Logs: /private/tmp/mobile-editor-browser.log and /private/tmp/mobile-editor-final-{check,build,scroll}.log. Screenshots: /private/tmp/task2-pinned-360.png, /private/tmp/task2-tabs.png, /private/tmp/task2-continuous-outline.png.
-- Prior unchanged-domain evidence: 25 ESP/editor/service/profile tests plus 23 metadata/search/packing/compatibility tests passed; all 18 Task 2 original/repair browser runs passed. Durable history and earlier limits remain in DEV_LOG.md.
+## Preserved behaviour
+Inactive tabs use the plain surface; selection uses a 12% tint, bold text and top accent. Editors follow app light/dark themes with stronger light syntax. Code/gutters use 12.5px at <=440px and 14px above, preserving authored lines with horizontal scrolling. Pin only tabs/code/grip: automatic pinned height is 45% of viewport height in one column, 65% in two; manual resizing overrides it. The default initial cap intentionally uses max(viewport width × 1.4, viewport height × 0.75). Only the grip projects below the frame. Guidance/results and answers scroll normally.
 
 ## Relevant files and commands
 - src/lib/components/practice/{LivePython,Question,TestPlan,Task2Response}.svelte; css/styles.css; src/lib/styles/breakpoints.css.
@@ -44,6 +31,7 @@ Completed responsive code text and horizontal scrolling: both tabs use 16px at >
 - STARTERS_PREVIEW_URL=http://127.0.0.1:8791/starters node scripts/browser-editor-workflow.mjs --mobile-scroll-only
 - STARTERS_PREVIEW_URL=http://127.0.0.1:8791/starters node scripts/browser-editor-workflow.mjs --dock-layout-only
 - STARTERS_PREVIEW_URL=http://127.0.0.1:8791/starters node scripts/browser-editor-workflow.mjs --code-layout-only
+- STARTERS_PREVIEW_URL=http://127.0.0.1:8791/starters node scripts/browser-editor-workflow.mjs --editor-theme-only
 - npm run check; BASE_PATH=/starters npm run build
 - Domain checks when relevant: node --test tests/esp-task2.test.js tests/esp.test.js tests/editor-workflow.test.js tests/framework-session.test.js tests/profile-lock.test.js
 
