@@ -784,6 +784,7 @@ main:focus {
 .focus-row {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: .6rem;
   flex-wrap: wrap;
   font-size: .85rem;
@@ -2567,7 +2568,7 @@ footer>span:last-child {
   }
 }
 
-@variant max-viewport-medium {
+@variant max-viewport-compact-inclusive {
   nav {
     gap: 1.2rem;
   }
@@ -2584,30 +2585,6 @@ footer>span:last-child {
     padding: .75rem 1.3rem;
   }
 
-  .global-code-entry form {
-    justify-content: flex-start;
-  }
-
-  .global-code-entry label {
-    flex-basis: 100%;
-  }
-
-  .global-code-entry input {
-    flex: 1;
-  }
-
-  .global-code-entry .error {
-    text-align: left;
-  }
-
-  #global-code-form {
-    margin-left: 0;
-    flex: 1 1 100%;
-  }
-
-  #global-code-help {
-    text-align: left;
-  }
 }
 
 @variant max-viewport-small {
@@ -2650,11 +2627,10 @@ footer>span:last-child {
   }
 }
 
-@variant max-viewport-medium {
+@variant max-viewport-compact-inclusive {
   .hero {
     margin-top: .3rem;
     gap: 1rem;
-    grid-template-columns: minmax(0,1fr);
   }
 
   .hero h1 {
@@ -2681,17 +2657,12 @@ footer>span:last-child {
     white-space: normal;
   }
 
-  .code-entry form {
-    flex-wrap: wrap;
-  }
-
   .code-entry input {
     flex: 1;
     min-width: 130px;
   }
 
   .activity-grid {
-    grid-template-columns: repeat(2,minmax(0,1fr));
     gap: .75rem;
   }
 
@@ -2701,15 +2672,6 @@ footer>span:last-child {
 
   .type-card h3 {
     font-size: 1.15rem;
-  }
-
-  .type-card .card-bottom {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .card-bottom :is(button,.action-button) {
-    justify-self: start;
   }
 
   .type-card .art-code {
@@ -2805,10 +2767,7 @@ footer>span:last-child {
   }
 }
 
-@variant max-viewport-medium {
-  .page-top {
-    flex-direction: column;
-  }
+@variant max-viewport-compact-inclusive {
 
   .page-top h1 {
     font-size: 2rem;
@@ -2835,11 +2794,6 @@ footer>span:last-child {
     padding: 1rem var(--question-inline-padding);
   }
 
-  .submit-bar {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
   .result-score {
     font-size: 1.8rem;
   }
@@ -2854,7 +2808,7 @@ footer>span:last-child {
 }
 
 /* Main content cards share mobile edges; compact tile grids retain their gutters. */
-@variant max-viewport-medium {
+@variant max-viewport-compact-inclusive {
   main {
     padding-inline: 1rem;
   }
@@ -2878,7 +2832,7 @@ footer>span:last-child {
 
 /* Responsive: progress and transfers. */
 
-@variant max-viewport-medium {
+@variant max-viewport-compact-inclusive {
   .progress-summary {
     gap: .5rem;
   }
@@ -2891,10 +2845,6 @@ footer>span:last-child {
     font-size: 1.55rem;
   }
 
-  .priority-row {
-    flex-wrap: wrap;
-  }
-
   .priority-row span:first-child {
     min-width: 0;
   }
@@ -2903,10 +2853,6 @@ footer>span:last-child {
     min-width: 0;
   }
 
-  .progress-transfers {
-    flex: auto;
-    width: 100%;
-  }
 }
 
 @variant max-viewport-small {
@@ -2921,7 +2867,7 @@ footer>span:last-child {
 
 /* Responsive: search and exam selection. */
 
-@variant max-viewport-medium {
+@variant max-viewport-compact-inclusive {
   .filters label {
     flex: 1;
   }
@@ -2932,5 +2878,72 @@ footer>span:last-child {
 
   .exam-options {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Delay stacking to conserve vertical space; compact spacing starts earlier. */
+@variant max-viewport-editor {
+  .global-code-entry form {
+    justify-content: flex-start;
+  }
+
+  .global-code-entry label {
+    flex-basis: 100%;
+  }
+
+  .global-code-entry input {
+    flex: 1;
+  }
+
+  .global-code-entry .error {
+    text-align: left;
+  }
+
+  #global-code-form {
+    margin-left: 0;
+    flex: 1 1 100%;
+  }
+
+  #global-code-help {
+    text-align: left;
+  }
+
+  .code-entry form {
+    flex-wrap: wrap;
+  }
+
+  .type-card .card-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .card-bottom :is(button,.action-button) {
+    justify-self: start;
+  }
+
+  .page-top {
+    flex-direction: column;
+  }
+
+  .submit-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .priority-row {
+    flex-wrap: wrap;
+  }
+
+  .progress-transfers {
+    flex: auto;
+    width: 100%;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0,1fr);
+  }
+
+  .activity-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
   }
 }

@@ -10,6 +10,10 @@ import {
   studentTest,
   testReferenceRequest,
   recordedOutcome,
+  testInputIds,
+  testOutcome,
+  withTestOutcome,
+  describeTestResponse,
 } from '../js/task2-tests.js';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
@@ -105,10 +109,15 @@ function completedPlan(question, answers) {
     document: 'original',
     observation: actual[i],
   }));
-  for (const c of studentCases(question)) {
+  for (const c of studentCases(question, answers)) {
     const index = reference.cases.findIndex((r) => r.label === c.id);
-    answers[c.expectedPart] = JSON.stringify(recordedOutcome(expected[index]));
-    answers[c.actualPart] = JSON.stringify(recordedOutcome(actual[index]));
+    if (index < 0) continue;
+    answers[c.expectedPart] = JSON.stringify(
+      withTestOutcome(answers[c.expectedPart], c, recordedOutcome(expected[index])),
+    );
+    answers[c.actualPart] = JSON.stringify(
+      withTestOutcome(answers[c.actualPart], c, recordedOutcome(actual[index])),
+    );
   }
   return { testReferences, evidence };
 }
@@ -209,6 +218,99 @@ test('named argument fields build safe calls and assess novel calculations', () 
     c0: { args: { prices: '__import__("os")', delivery: 'False' } },
   });
   assert.throws(() => studentTest(q, answers, 'c0'), /comma-separated/);
+});
+
+test('valid values run independently and every chosen value needs its own outcomes and evidence', () => {
+  const q = draft[0].variations[5];
+  const answers = {
+    'valid-own-inputs': JSON.stringify({ c0: { inputs: ['1', '2'] } }),
+    'invalid-own-inputs': JSON.stringify({ c1: { inputs: ['02', '1'] } }),
+  };
+  const request = testReferenceRequest(q, answers);
+  assert.deepEqual(
+    request.cases.map((c) => c.inputs),
+    [['1'], ['2'], ['02', '1']],
+  );
+  const execution = completedPlan(q, answers);
+  assert.deepEqual(
+    execution.testReferences.map((r) => [r.observation.value, r.observation.consumed]),
+    [
+      ['Online', 1],
+      ['In-store', 1],
+      ['Online', 2],
+    ],
+  );
+  assert.equal(execution.evidence[0].observation.value, 'Online');
+  assert.equal(execution.evidence[1].observation.error.type, 'EOFError');
+  const marks = (plan = execution) => markQuestion(q, answers, plan);
+  assert.ok(
+    marks()
+      .filter((r) => q.parts.find((p) => p.id === r.id).testRole)
+      .every((r) => r.earned === r.max),
+  );
+  const expected = answers['c0-own-expected'];
+  answers['c0-own-expected'] = JSON.stringify({ type: 'str', value: 'Online', consumed: '1' });
+  assert.equal(
+    marks().find((r) => r.id === 'c0-own-expected').earned,
+    0,
+    'the old flat answer must not satisfy both inputs',
+  );
+  answers['c0-own-expected'] = expected;
+  assert.equal(
+    marks({
+      ...execution,
+      evidence: execution.evidence.filter((r) => r.caseId !== 'c0-input-2'),
+    }).find((r) => r.id === 'c0-own-actual').earned,
+    0,
+  );
+  assert.match(describeTestResponse(expected), /Test 1 · Input 2:.*In-store/);
+
+  answers['valid-own-inputs'] = JSON.stringify({ c0: { inputs: ['1', '1'] } });
+  const duplicates = completedPlan(q, answers);
+  assert.equal(marks(duplicates).find((r) => r.id === 'valid-own-inputs').earned, 0);
+});
+
+test('removing a valid input preserves the remaining identity, while edits reject stale evidence', () => {
+  const q = draft[0].variations[5];
+  const data = { inputs: ['1', '2'] };
+  data.inputIds = testInputIds('c0', data);
+  const answers = { 'valid-own-inputs': JSON.stringify({ c0: data }) };
+  const execution = completedPlan(q, answers);
+  const second = studentCases(q, answers)[1];
+  const previousOutcome = testOutcome(answers[second.expectedPart], second);
+  answers['valid-own-inputs'] = JSON.stringify({
+    c0: {
+      inputs: ['2'],
+      inputIds: [data.inputIds[1]],
+    },
+  });
+  const remaining = studentCases(q, answers)[0];
+  assert.equal(remaining.id, second.id);
+  assert.deepEqual(testOutcome(answers[remaining.expectedPart], remaining), previousOutcome);
+  const actualMark = () =>
+    markQuestion(q, answers, execution).find((r) => r.id === 'c0-own-actual').earned;
+  assert.equal(actualMark(), 1);
+  answers['valid-own-inputs'] = JSON.stringify({ c0: { inputs: ['1'], inputIds: [second.id] } });
+  assert.equal(actualMark(), 0);
+  answers['valid-own-inputs'] = JSON.stringify({ c0: { inputs: [], inputIds: [] } });
+  assert.equal(actualMark(), 0);
+  answers['valid-own-inputs'] = JSON.stringify({ c0: { inputs: Array(21).fill('1') } });
+  assert.throws(() => studentTest(q, answers, 'c0'), /between 1 and 20/);
+});
+
+test('single-input legacy outcomes remain markable but old queued multi-input runs do not', () => {
+  const q = draft[0].variations[5];
+  const answers = { 'valid-own-inputs': JSON.stringify({ c0: { inputs: ['1'] } }) };
+  const execution = completedPlan(q, answers);
+  answers['c0-own-expected'] = JSON.stringify(
+    recordedOutcome(execution.testReferences[0].observation),
+  );
+  answers['c0-own-actual'] = JSON.stringify(recordedOutcome(execution.evidence[0].observation));
+  const mark = () =>
+    markQuestion(q, answers, execution).find((r) => r.id === 'c0-own-actual').earned;
+  assert.equal(mark(), 1);
+  execution.evidence[0].inputs = ['1', '2'];
+  assert.equal(mark(), 0);
 });
 
 test('retired Task 2 questions keep their codes while selection, recall and search use the draft', () => {

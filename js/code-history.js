@@ -160,6 +160,7 @@ function validDetail(r) {
         ['original', 'edited'].includes(run.document) &&
         (run.document !== 'original' || run.source === r.original) &&
         (run.caseId === null || partId(run.caseId)) &&
+        (run.caseName === undefined || text(run.caseName, 200)) &&
         text(run.expression) &&
         (run.expected === undefined || text(run.expected, 10000)) &&
         Array.isArray(run.inputs) &&
@@ -168,8 +169,16 @@ function validDetail(r) {
         run.observation &&
         text(run.observation.stdout, 12000) &&
         text(run.observation.stderr, 12000) &&
-        integer(run.observation.consumed) &&
-        run.observation.consumed <= run.inputs.length &&
+        (run.observation.timedOut === true
+          ? run.observation.consumed === null &&
+            run.observation.type === null &&
+            run.observation.value === null &&
+            run.observation.error === null &&
+            run.observation.stdout === '' &&
+            run.observation.stderr === ''
+          : run.observation.timedOut === undefined &&
+            integer(run.observation.consumed) &&
+            run.observation.consumed <= run.inputs.length) &&
         (run.observation.type === null || text(run.observation.type, 100)) &&
         (run.observation.error === null ||
           (text(run.observation.error?.type, 100) && text(run.observation.error?.message, 1500))),

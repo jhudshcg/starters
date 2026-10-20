@@ -18,37 +18,34 @@
     <h2 id="about-purpose">Why this site?</h2>
     <p>
       Short, regular practice helps students recall what they know, spot gaps and build confidence.
-      This site brings together puzzles, Core exam practice, Python challenges and Employer Set
-      Project activities for Digital Software Development T Level students.
+      This site brings together Core exam practice, Python challenges, Employer Set
+      Project activities and puzzles, for Digital Software Development T Level students.
     </p>
     <p>
-      Designed for 5–15 minute starters, the activities offer variety, immediate feedback/auto
-      marking and repeat practice with different values and scenarios. Progress tracking, with
+      Designed initially for 5–15 minute starters, it can be used for longer revision and assessment activities. The activities offer variety, immediate feedback/auto
+      marking and similar question practice with different values and scenarios. Progress tracking, with
       revision priority identification and revision set generation helps students optimize revision
-      time.
+      time. The app also in-browser Python execution, so allow basic Python programs to be written and tested, all directly on the webpage.
     </p>
   </section>
   <section aria-labelledby="about-roadmap">
     <h2 id="about-roadmap">What’s next?</h2>
     <ul>
-      <li>Work through questions sets matching search term results.</li>
-      <li>Enter missing Python answers directly in the code.</li>
+      <li>Collaborative and real-time gamification features</li>
       <li>
         Extend Core coverage beyond CA1 and CA2, and add more ESP activities, including flowcharts.
       </li>
       <li>Develop Year 2 Occupational Specialism practice.</li>
     </ul>
     <p>
-      These are planned developments. Classroom feedback will help shape the content, accessibility
-      and order of work.
+      These are planned developments. Classroom feedback will help shape the content. The app is in active development and feedback is welcome!
     </p>
   </section>
   <section aria-labelledby="about-author">
     <h2 id="about-author">Author and development</h2>
     <p>
-      Created by <strong>Joe Hudson</strong>. Agentic development—using AI agents to carry out
-      development tasks—has been used extensively to build the site, in combination with expert
-      human input to guide its educational purpose, content, design and UX.
+      Created by <strong>Joe Hudson</strong>. Human-in-the-loop agentic development was used in the creation of this web app.
+      Concept planning, app requirements and initial topic specifications, question styles, educational value assessment, sample content development and review, UI design, UX flows, technical and architectural code reviews, framework choices and harness development were made by me. AI was used to take care of most of the implementation and config and also to explore and critique ideas with. There's no way I could have made this app without using a Frontier model.
     </p>
   </section>
 </article>

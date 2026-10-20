@@ -8,7 +8,9 @@ import {
   studentTest,
   studentCases,
   completeOutcome,
+  testOutcome,
   testReferenceRequest,
+  testRunOutput,
 } from '#domain/task2-tests.js';
 import { markQuestion } from '#domain/marking.js';
 
@@ -123,16 +125,29 @@ export function createPythonPractice({ session, activeSet, persist, render, load
         return false;
       }
     }
-    let ownTest;
+    let ownTests;
     if (action === 'run' && q.livePython.testInputs) {
       try {
-        const id = options.caseId ?? saved.testCase ?? studentCases(q)[0].id;
-        ownTest = studentTest(q, a.answers[slot] ?? {}, id);
-        const c = studentCases(q).find((c) => c.id === id);
-        if (!completeOutcome(a.answers[slot]?.[c.expectedPart]))
-          throw Error('Record the expected type, value and inputs used before running this test.');
+        const answers = a.answers[slot] ?? {};
+        const cases = studentCases(q, answers);
+        const id =
+          options.caseId ??
+          (cases.some((c) => c.id === saved.testCase) ? saved.testCase : cases[0].id);
+        const selected = cases.find((c) => c.id === id);
+        if (!selected) throw Error('Choose a test in the test plan.');
+        const group = selected.independent
+          ? cases.filter((c) => c.baseId === selected.baseId)
+          : [selected];
+        ownTests = group.map((c) => {
+          const test = studentTest(q, answers, c.id);
+          const expected = testOutcome(answers[c.expectedPart], c);
+          if (!completeOutcome(expected))
+            throw Error(
+              `${c.name}: record the expected type, value and inputs used before running this test.`,
+            );
+          return { ...test, expected: JSON.stringify(expected) };
+        });
         saved.testCase = id;
-        ownTest.expected = a.answers[slot][c.expectedPart];
       } catch (error) {
         a.pythonStatus = error.message;
         render();
@@ -140,7 +155,7 @@ export function createPythonPractice({ session, activeSet, persist, render, load
       }
     }
     const expression = saved.expression ?? q.livePython.expression ?? '';
-    const supplied = ownTest ?? q.livePython.cases?.find((c) => c.id === options.caseId);
+    const supplied = ownTests?.[0] ?? q.livePython.cases?.find((c) => c.id === options.caseId);
     let customInputs = [];
     if (action === 'run' && !supplied) {
       try {
@@ -196,53 +211,80 @@ export function createPythonPractice({ session, activeSet, persist, render, load
           saved.result = { ...saved.result, testReferences };
         }
       }
-      const request =
-        action === 'run'
-          ? {
-              source,
-              expression: supplied?.expression ?? expression,
-              fixtures: q.livePython.fixtures,
-              cases: [
-                { label: supplied?.id ?? 'Your run', inputs: supplied?.inputs ?? customInputs },
-              ],
-            }
-          : pythonRequest(q, source);
-      const observations = await runner.run(request);
-      if (!current() || (document === 'edited' && source !== (a.answers[slot]?.code ?? q.code)))
-        return false;
-      if (action === 'check')
-        saved.result = {
-          source,
-          revision: q.livePython.revision,
-          parts: assessPython(q, observations),
-          testReferences,
-          evidence: saved.evidence ?? [],
-        };
-      else {
-        const r = observations[0];
-        (saved.evidence ??= []).push({
-          at: clock(),
-          document,
-          source,
-          caseId: supplied?.id ?? null,
-          expression: request.expression,
-          ...(ownTest ? { expected: ownTest.expected } : {}),
-          inputs: request.cases[0].inputs,
-          observation: r,
-        });
-        saved.result = { ...saved.result, evidence: saved.evidence };
-        saved.output =
-          r.stdout +
-          r.stderr +
-          (r.error
-            ? `${r.error.type}: ${r.error.message}`
-            : `Returned ${JSON.stringify(r.value)} (${r.type})`) +
-          `\nInputs used: ${r.consumed}`;
+      const requests = ownTests
+        ? ownTests.map((test) => ({
+            source,
+            expression: test.expression,
+            fixtures: q.livePython.fixtures,
+            cases: [{ label: test.id, inputs: test.inputs }],
+          }))
+        : [
+            action === 'run'
+              ? {
+                  source,
+                  expression: supplied?.expression ?? expression,
+                  fixtures: q.livePython.fixtures,
+                  cases: [
+                    { label: supplied?.id ?? 'Your run', inputs: supplied?.inputs ?? customInputs },
+                  ],
+                }
+              : pythonRequest(q, source),
+          ];
+      for (const [index, request] of requests.entries()) {
+        if (!current()) return false;
+        let observations;
+        try {
+          // Separate requests give every chosen input a fresh execution and its own time limit.
+          observations = await runner.run(request);
+        } catch (error) {
+          if (!current() || !ownTests || !error.message.startsWith('Stopped after 5 seconds'))
+            throw error;
+          // The terminated worker cannot report output or an input count; do not invent either.
+          observations = [
+            {
+              timedOut: true,
+              stdout: '',
+              stderr: '',
+              value: null,
+              type: null,
+              error: null,
+              consumed: null,
+            },
+          ];
+        }
+        if (!current() || (document === 'edited' && source !== (a.answers[slot]?.code ?? q.code)))
+          return false;
+        if (action === 'check')
+          saved.result = {
+            source,
+            revision: q.livePython.revision,
+            parts: assessPython(q, observations),
+            testReferences,
+            evidence: saved.evidence ?? [],
+          };
+        else {
+          const r = observations[0];
+          const test = ownTests?.[index];
+          (saved.evidence ??= []).push({
+            at: clock(),
+            document,
+            source,
+            caseId: test?.id ?? supplied?.id ?? null,
+            expression: request.expression,
+            ...(test ? { expected: test.expected, caseName: test.name } : {}),
+            inputs: request.cases[0].inputs,
+            observation: r,
+          });
+          saved.result = { ...saved.result, evidence: saved.evidence };
+          saved.output = testRunOutput(r);
+          persist();
+          render();
+        }
       }
       a.pythonStatus =
         action === 'check'
           ? 'Check finished.'
-          : `${ownTest?.name ?? 'Run'} finished on ${document === 'original' ? 'Original code' : 'Your code'}.`;
+          : `${ownTests?.length > 1 ? `All ${ownTests.length} inputs` : (ownTests?.[0].name ?? 'Run')} finished on ${document === 'original' ? 'Original code' : 'Your code'}.`;
       return true;
     } catch (error) {
       if (current() && error.message.startsWith('Stopped after 5 seconds') && action === 'check') {

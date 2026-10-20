@@ -1,6 +1,6 @@
 <!-- Completed snapshots are read-only and do not open practice or change its timer. -->
 <script>
-  import { describeTestResponse } from '#domain/task2-tests.js';
+  import { describeTestResponse, testRunOutput } from '#domain/task2-tests.js';
   let { records = [], summaries = [] } = $props();
   let selected = $state('');
   const identity = (r) => `${r.generation}:${r.type}:${r.slot}:${r.variation}`;
@@ -82,7 +82,7 @@
               <summary
                 >{run.document === 'original' ? 'Original code run' : 'Your code run'} · {date(
                   run.at,
-                )} · {run.caseId ?? 'Custom call'}</summary
+                )} · {run.caseName ?? run.caseId ?? 'Custom call'}</summary
               >
               <p>
                 Call: <code>{run.expression}</code> · Inputs:
@@ -91,10 +91,7 @@
               {#if run.expected}<p>
                   Expected before this run: {describeTestResponse(run.expected)}
                 </p>{/if}
-              <pre class="code-panel">{run.observation.stdout}{run.observation.stderr}{run
-                  .observation.error
-                  ? `${run.observation.error.type}: ${run.observation.error.message}`
-                  : `Returned ${JSON.stringify(run.observation.value)} (${run.observation.type})`}{`\nInputs used: ${run.observation.consumed}`}</pre>
+              <pre class="code-panel">{testRunOutput(run.observation)}</pre>
               <details>
                 <summary>Exact code run</summary>
                 <pre class="code-panel"><code>{record.sources[run.source]}</code></pre>

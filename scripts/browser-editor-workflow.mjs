@@ -10,6 +10,7 @@ import { browser } from './browser-support.mjs';
 import { encode, BANK_VERSION } from '../js/codes.js';
 import esp from '../data/esp-task2.js';
 import { studentCases } from '../js/task2-tests.js';
+import { independentInputs } from './browser-task2-independent.mjs';
 import {
   enterTestInputs,
   enterExpectations,
@@ -97,6 +98,172 @@ try {
     deviceScaleFactor: 1,
     mobile: false,
   });
+  if (process.argv.includes('--independent-inputs-only')) {
+    await independentInputs({ b, open, replace, wait, base });
+    process.exitCode = 0;
+    b.close();
+    process.exit();
+  }
+  if (process.argv.includes('--width-overlay-only')) {
+    await open(3, 36, 5);
+    const draft = 'message = "' + 'abcdefghij'.repeat(24) + '"';
+    await replace(36, draft);
+    const geometry = () =>
+      b.evaluate(`(() => {
+      const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {left:r.left,top:r.top,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
+      return {code:rect('.editor-document:not([hidden]) .live-python-editor'),dock:rect('.editor-dock'),
+        header:rect('.editor-header'),parts:rect('.parts'),controls:rect('.coding-controls'),
+        question:rect('.question'),layout:rect('.question-layout'),
+        tabs:[...document.querySelectorAll('.editor-tab')].map(e=>e.getBoundingClientRect().width),
+        pageHeight:document.documentElement.scrollHeight,scrollY};
+    })()`);
+    for (const width of [744, 834, 1280]) {
+      await b.send('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 1000,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      for (const doc of ['original', 'edited']) {
+        await b.click(`#tab-36-${doc}`);
+        await b.evaluate(`document.querySelector('.coding-intro').scrollIntoView({block:'start'})`);
+        await wait(`!document.querySelector('.editor-dock').classList.contains('docked')`);
+        await b.evaluate(
+          `window.retainedEditor=${root(36, doc)}.querySelector('.cm-editor'); (${root(36, doc)}).querySelector('.cm-scroller').scrollLeft=100`,
+        );
+        const oldScroll = await b.evaluate(
+          `${root(36, doc)}.querySelector('.cm-scroller').scrollLeft`,
+        );
+        const before = await geometry();
+        await b.evaluate(`document.querySelector('.width-toggle').focus({preventScroll:true})`);
+        await b.send('Input.dispatchKeyEvent', {
+          type: 'keyDown',
+          key: 'Enter',
+          code: 'Enter',
+          windowsVirtualKeyCode: 13,
+          text: '\r',
+        });
+        await b.send('Input.dispatchKeyEvent', {
+          type: 'keyUp',
+          key: 'Enter',
+          code: 'Enter',
+          windowsVirtualKeyCode: 13,
+        });
+        await wait(
+          `document.querySelector('.width-toggle').getAttribute('aria-expanded')==='true'`,
+          5000,
+        );
+        const after = await geometry();
+        for (const key of [
+          'dock',
+          'header',
+          'parts',
+          'controls',
+          'question',
+          'tabs',
+          'pageHeight',
+          'scrollY',
+        ])
+          assert.deepEqual(after[key], before[key], `${width}/${doc}: ${key} does not reflow`);
+        assert.equal(after.code.height, before.code.height, 'code height stays fixed');
+        assert.equal(after.code.top, before.code.top);
+        assert.equal(after.code.left, before.code.left);
+        assert.ok(after.code.width > before.code.width);
+        assert.ok(
+          Math.abs(after.code.right - after.layout.right) < 1,
+          'overlay stops at question content edge',
+        );
+        assert.ok(
+          await b.evaluate(`(() => {
+          const code=document.querySelector('.editor-document:not([hidden])'),r=code.getBoundingClientRect(),
+            x=document.querySelector('.parts').getBoundingClientRect().left+10;
+          return code.contains(document.elementFromPoint(x,Math.max(r.top+20,20)));
+        })()`),
+          'code paints and receives input above the answer column',
+        );
+        assert.ok(
+          await b.evaluate(`${root(36, doc)}.querySelector('.cm-editor')===window.retainedEditor`),
+          'same editor instance',
+        );
+        assert.equal(await b.evaluate(text(36)), draft, 'student draft survives');
+        assert.ok(
+          await b.evaluate('document.documentElement.scrollWidth<=innerWidth'),
+          'no page overflow',
+        );
+        await b.click('.width-toggle');
+        await wait(
+          `document.querySelector('.width-toggle').getAttribute('aria-expanded')==='false'`,
+        );
+        assert.deepEqual((await geometry()).code, before.code, 'collapse restores frame');
+        assert.equal(
+          await b.evaluate(`${root(36, doc)}.querySelector('.cm-scroller').scrollLeft`),
+          oldScroll,
+          'horizontal position restored',
+        );
+      }
+      await b.evaluate(
+        `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+20)`,
+      );
+      await wait(`document.querySelector('.editor-dock').classList.contains('docked')`);
+      const pinned = await geometry();
+      await b.click('.width-toggle');
+      assert.equal(
+        (await geometry()).code.height,
+        pinned.code.height,
+        'pinned expansion preserves height',
+      );
+      assert.equal((await geometry()).dock.top, 16, 'expanded code remains pinned');
+      if (width === 744 || width === 1280)
+        await writeFile(
+          `/private/tmp/editor-overlay-${width}.png`,
+          Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
+        );
+      await b.click('.width-toggle');
+    }
+    await b.click('.width-toggle');
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 820,
+      height: 1000,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await wait(
+      `Math.abs(document.querySelector('.editor-document:not([hidden])').getBoundingClientRect().right-document.querySelector('.question-layout').getBoundingClientRect().right)<1`,
+    );
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 743,
+      height: 1000,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await wait(`!document.querySelector('.editor-dock').classList.contains('expanded')`);
+    assert.equal(
+      await b.evaluate(`getComputedStyle(document.querySelector('.width-toggle')).display`),
+      'none',
+    );
+    assert.ok(await b.evaluate('document.documentElement.scrollWidth<=innerWidth'));
+    // The same control also works for coding questions without document tabs.
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 834,
+      height: 1000,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await open(2, 2, 3);
+    await b.evaluate(`document.querySelector('.coding-intro').scrollIntoView({block:'start'})`);
+    const before = await geometry();
+    await b.click('.width-toggle');
+    const after = await geometry();
+    assert.deepEqual(after.parts, before.parts);
+    assert.equal(after.code.height, before.code.height);
+    assert.ok(after.code.width > before.code.width);
+    assert.deepEqual(b.errors, []);
+    console.log(
+      'Overlay expansion passes at 744/834/1280px: unchanged layout/height, overlay hit-testing, keyboard toggle, retained editors/drafts/scroll, pinned operation, resize to 820px and collapse/hide at 743px; tabless coding questions also pass.',
+    );
+    b.close();
+    process.exit(0);
+  }
   if (process.argv.includes('--editor-theme-only')) {
     await open(3, 36, 5);
     const original = await b.evaluate(text(36));
@@ -213,7 +380,7 @@ try {
     // A long student-authored line must scroll locally even when the surrounding column is wide.
     const source = 'message = "' + 'abcdefghij'.repeat(24) + '"';
     await replace(36, source);
-    for (const width of [360, 440, 441, 768, 960, 1280]) {
+    for (const width of [360, 440, 441, 743, 744, 820, 821, 834, 1280]) {
       await b.send('Emulation.setDeviceMetricsOverride', {
         width,
         height: 900,
@@ -245,8 +412,9 @@ try {
             tab=dock.querySelector('.editor-tab').getBoundingClientRect(),
             grip=dock.querySelector('.height-handle').getBoundingClientRect();
           return {left:code.left,right:code.right,
-            expectedLeft:innerWidth<=960?card.left+parseFloat(style.borderLeftWidth):intro.left,
-            expectedRight:innerWidth<=960?card.right-parseFloat(style.borderRightWidth):intro.right,
+            expectedLeft:innerWidth<744?card.left+parseFloat(style.borderLeftWidth):intro.left,
+            expectedRight:innerWidth<744?card.right-parseFloat(style.borderRightWidth):intro.right,
+            columns:getComputedStyle(dock.closest('.question-layout')).gridTemplateColumns.split(' ').map(parseFloat),
             tabInset:tab.left-intro.left,gripOffset:(grip.left+grip.right-code.left-code.right)/2};
         })()`);
         assert.ok(
@@ -256,6 +424,8 @@ try {
         assert.ok(Math.abs(frame.right - frame.expectedRight) <= 1, `${width}: code right edge`);
         assert.ok(Math.abs(frame.tabInset - 16) <= 1, `${width}: tabs retain their inset`);
         assert.ok(Math.abs(frame.gripOffset) <= 1, `${width}: grip remains centred`);
+        assert.equal(frame.columns.length, width < 744 ? 1 : 2, `${width}: coding column count`);
+        if (width >= 744) assert.ok(Math.abs(frame.columns[0] / frame.columns[1] - 1.5) < 0.01);
 
         if (doc === 'edited' || width === 360) {
           assert.ok(layout.scrolls, `${width} ${doc}: long line scrolls locally`);
@@ -288,7 +458,7 @@ try {
     );
     assert.deepEqual(b.errors, []);
     console.log(
-      'Both tabs: 12.5px at <=440px and 14px above; unwrapped authored lines, horizontal editor scrolling, matching gutter size and no page overflow pass at 360/440/441/768/960/1280px. Single-column code reaches the card edges; tabs stay inset and the grip centred.',
+      'Both tabs: 12.5px at <=440px and 14px above; unwrapped authored lines, horizontal editor scrolling, matching gutter size and no page overflow pass at 360/440/441/743/744/820/821/834/1280px. Single-column code reaches the card edges; tabs stay inset and the grip centred.',
     );
     b.close();
     process.exit(0);
@@ -315,8 +485,8 @@ try {
       const columns = await b.evaluate(
         `getComputedStyle(document.querySelector('.with-editor')).gridTemplateColumns.split(' ').map(parseFloat)`,
       );
-      assert.equal(columns.length, width > 960 ? 2 : 1);
-      if (width > 960) assert.ok(Math.abs(columns[0] / columns[1] - 1.5) < 0.01);
+      assert.equal(columns.length, width >= 744 ? 2 : 1);
+      if (width >= 744) assert.ok(Math.abs(columns[0] / columns[1] - 1.5) < 0.01);
       await b.evaluate(
         `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+50)`,
       );
@@ -337,7 +507,7 @@ try {
             resultsOpen:document.querySelector('.results-toggle').getAttribute('aria-expanded')};
         })()`);
         assert.ok(
-          Math.abs(pinned.top - (width > 960 ? 16 : 0)) < 1,
+          Math.abs(pinned.top - (width >= 744 ? 16 : 0)) < 1,
           `${width}: code stays visible with expanded results: ${JSON.stringify(pinned)}`,
         );
         assert.ok(pinned.bottom < 760, `${width}: code fits the viewport`);
@@ -423,7 +593,7 @@ try {
     );
     assert.ok(originalHeight > before, 'pinning initially leaves room for questions');
     await b.send('Emulation.setDeviceMetricsOverride', {
-      width: 768,
+      width: 743,
       height: 450,
       deviceScaleFactor: 1,
       mobile: false,
@@ -445,7 +615,7 @@ try {
       'editor releases before the draft below its questions',
     );
     await b.send('Emulation.setDeviceMetricsOverride', {
-      width: 768,
+      width: 743,
       height: 1100,
       deviceScaleFactor: 1,
       mobile: false,
@@ -462,7 +632,7 @@ try {
         side=getComputedStyle(dock,'::before');
       return {topGap:rect.top-intro.bottom,bottomGap:controls.top-rect.bottom,
         lefts:[intro.left,rect.left,controls.left],rights:[intro.right,rect.right,controls.right],
-        sideDisplay:side.display,tabSides:getComputedStyle(dock.querySelector('.editor-tabs')).boxShadow};
+        sideDisplay:side.display,tabSides:getComputedStyle(dock.querySelector('.editor-header')).boxShadow};
     })()`);
     assert.equal(seams.topGap, 0);
     assert.equal(seams.bottomGap, 16);
@@ -546,7 +716,7 @@ try {
     await wait('Boolean(document.querySelector(\'[data-theme-choice="dark:rose"]\'))');
     await b.click('[data-theme-choice="dark:rose"]');
     await b.click('#theme-picker');
-    for (const width of [360, 767, 768, 960, 1280]) {
+    for (const width of [360, 743, 744, 820, 821, 834, 1280]) {
       await b.send('Emulation.setDeviceMetricsOverride', {
         width,
         height: 900,
@@ -565,7 +735,7 @@ try {
         const q = document.querySelector('.question'), rect = q.getBoundingClientRect(), css = getComputedStyle(q);
         return {left:rect.left,right:rect.right,viewport:document.documentElement.clientWidth,border:css.borderLeftWidth,radius:css.borderRadius,image:css.backgroundImage};
       })()`);
-      if (width < 768) {
+      if (width <= 820) {
         assert.ok(
           Math.abs(edges.left) < 1 && Math.abs(edges.right - edges.viewport) < 1,
           `${width}: full-width question`,
@@ -590,7 +760,7 @@ try {
         'Expand code guidance',
       );
       await b.click('.guidance-toggle');
-      if (width <= 960) {
+      if (width < 744) {
         await b.evaluate(
           `scrollTo(0, scrollY + document.querySelector('.coding-intro').getBoundingClientRect().bottom + 20)`,
         );
@@ -667,7 +837,7 @@ try {
         assert.ok(await b.evaluate(`document.querySelector('.test-log-scroll').scrollLeft > 0`));
         await b.evaluate(`document.querySelector('.test-log-scroll').scrollLeft = 0`);
       }
-      if (width !== 768)
+      if ([360, 744, 834].includes(width))
         await writeFile(
           `/private/tmp/task2-log-${width}.png`,
           Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
@@ -691,40 +861,56 @@ try {
     ]) {
       await b.send('Page.navigate', { url: base + route });
       await wait(`document.querySelector(${JSON.stringify(selector)})`, 15000);
-      const cards = await b.evaluate(
-        `[...document.querySelectorAll(${JSON.stringify(selector)})].map(e=>({left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right,viewport:document.documentElement.clientWidth,border:getComputedStyle(e).borderLeftWidth,radius:getComputedStyle(e).borderRadius}))`,
-      );
-      assert.ok(
-        cards.every(
-          (c) =>
-            Math.abs(c.left) < 1 &&
-            Math.abs(c.right - c.viewport) < 1 &&
-            c.border === '0px' &&
-            c.radius === '0px',
-        ),
-        route + ': full-width mobile cards',
-      );
-      assert.ok(
-        await b.evaluate('document.documentElement.scrollWidth <= innerWidth+1'),
-        route + ': no overflow',
-      );
+      for (const width of [360, 744, 820, 821]) {
+        await b.send('Emulation.setDeviceMetricsOverride', {
+          width,
+          height: 900,
+          deviceScaleFactor: 1,
+          mobile: false,
+        });
+        const cards = await b.evaluate(
+          `[...document.querySelectorAll(${JSON.stringify(selector)})].map(e=>({left:e.getBoundingClientRect().left,right:e.getBoundingClientRect().right,viewport:document.documentElement.clientWidth,border:getComputedStyle(e).borderLeftWidth,radius:getComputedStyle(e).borderRadius}))`,
+        );
+        assert.ok(
+          cards.every((c) =>
+            width <= 820
+              ? Math.abs(c.left) < 1 &&
+                Math.abs(c.right - c.viewport) < 1 &&
+                c.border === '0px' &&
+                c.radius === '0px'
+              : c.left > 0 && c.border !== '0px',
+          ),
+          `${route} ${width}: card edges`,
+        );
+        assert.ok(
+          await b.evaluate('document.documentElement.scrollWidth <= innerWidth+1'),
+          `${route} ${width}: no overflow`,
+        );
+      }
     }
     await b.send('Page.navigate', { url: base });
     await wait(`document.querySelector('.activity-grid')`);
-    assert.ok(
-      await b.evaluate('document.documentElement.scrollWidth <= innerWidth+1'),
-      'home: no overflow',
-    );
-    assert.equal(
-      await b.evaluate(
-        `getComputedStyle(document.querySelector('.activity-grid')).gridTemplateColumns.split(' ').length`,
-      ),
-      2,
-      'compact home tiles retain their grid',
-    );
+    for (const width of [360, 743, 744, 820, 821, 834]) {
+      await b.send('Emulation.setDeviceMetricsOverride', {
+        width,
+        height: 900,
+        deviceScaleFactor: 1,
+        mobile: false,
+      });
+      const home = await b.evaluate(`(() => {
+        const cols=s=>getComputedStyle(document.querySelector(s)).gridTemplateColumns.split(' ').length;
+        const rect=s=>document.querySelector(s).getBoundingClientRect();
+        return {cards:cols('.activity-grid'),hero:cols('.hero'),overflow:document.documentElement.scrollWidth>innerWidth+1,
+          brandRight:Math.max(rect('.brand-icon').right,rect('.brand-copy').right),controlsLeft:rect('#theme-picker').left};
+      })()`);
+      assert.equal(home.cards, width < 744 ? 2 : 3, `${width}: home columns conserve height`);
+      assert.equal(home.hero, width < 744 ? 1 : 2, `${width}: hero columns conserve height`);
+      assert.equal(home.overflow, false, `${width}: home fits`);
+      assert.ok(home.brandRight <= home.controlsLeft, `${width}: header controls fit`);
+    }
     assert.deepEqual(b.errors, []);
     console.log(
-      'Compact test log, local scrolling, icon-only disclosures, tabs, mobile card edges and pinned editors passed at 360/767/768/960/1280px.',
+      'Compact test log, local scrolling, icon-only disclosures, tabs, mobile card edges and pinned editors passed at 360/743/744/820/821/834/1280px.',
     );
     b.close();
     process.exit(0);
@@ -853,7 +1039,7 @@ try {
     Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
   );
   if (process.argv.includes('--refinements-only')) {
-    for (const width of [360, 768, 960, 1024, 1280]) {
+    for (const width of [360, 743, 744, 820, 821, 1280]) {
       await b.send('Emulation.setDeviceMetricsOverride', {
         width,
         height: 900,
@@ -873,7 +1059,7 @@ try {
           editor = workspace.querySelector('.live-python-editor'),
           columns = getComputedStyle(workspace.parentElement).gridTemplateColumns.split(' ').map(parseFloat);
         const frame = workspace.querySelector('.editor-dock'),
-          padding = innerWidth <= 960 ? parseFloat(getComputedStyle(workspace.closest('.question')).paddingLeft) : 0;
+          padding = innerWidth < 744 ? parseFloat(getComputedStyle(workspace.closest('.question')).paddingLeft) : 0;
         return { columns, width: frame.clientWidth + 2 * padding, padding, editor: editor.getBoundingClientRect().width,
           inset: editor.getBoundingClientRect().left - frame.getBoundingClientRect().left,
           textInset: workspace.querySelector('.muted').getBoundingClientRect().left - frame.getBoundingClientRect().left };
@@ -887,8 +1073,8 @@ try {
         `${width}: editor crosses question padding only in one column`,
       );
       assert.ok(Math.abs(geometry.textInset - 16) <= 1, `${width}: instructions keep padding`);
-      assert.equal(geometry.columns.length, width > 960 ? 2 : 1);
-      if (width > 960)
+      assert.equal(geometry.columns.length, width >= 744 ? 2 : 1);
+      if (width >= 744)
         assert.ok(
           Math.abs(geometry.columns[0] / geometry.columns[1] - 1.5) < 0.01,
           `${width}: 60/40 split`,

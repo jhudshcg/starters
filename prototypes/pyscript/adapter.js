@@ -114,6 +114,12 @@ export async function createEditor(
       view.dispatch({ changes: { from: 0, to: view.state.doc.length, insert: value } });
     },
     snapshot: () => ({ ...region.snapshot(view), original }),
+    get scrollLeft() {
+      return view.scrollDOM.scrollLeft;
+    },
+    set scrollLeft(value) {
+      view.scrollDOM.scrollLeft = value;
+    },
     setHeight(height) {
       view.dom.style.height = `${height}px`;
       view.dom.style.maxHeight = 'none';

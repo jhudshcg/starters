@@ -66,7 +66,7 @@ Check all eight themes, selected/hover/keyboard-focus and marked states, and a n
 
 Puzzle board geometry and default appearance now live in `packages/puzzles/styles/`. `css/challenges.css` imports them and maps the app's current colours to `--puzzle-*` properties, keeping all eight app themes. Type-card art and tangram piece colours come from `packages/puzzles/graphics.js`. Edit shared presentation there; keep question-card layout and navigation styles in this app. See the [library markup and styling contract](../packages/puzzles/styles/README.md) for consumer overrides and SVG limitations.
 
-Main single-column cards across the app at widths <768px use `--card-mobile-border-image` for their top/bottom borders: `none` for solid palettes, a 90-degree main-to-accent gradient for Rose/Berry. The ordinary 135-degree border remains at wider widths. Home’s lower note panels use `--line` and a solid `--surface` fill to remain quieter than activity choices.
+Main content cards across the app at widths <=820px use `--card-mobile-border-image` for their top/bottom borders: `none` for solid palettes, a 90-degree main-to-accent gradient for Rose/Berry. The ordinary 135-degree border remains at wider widths. Home’s lower note panels use `--line` and a solid `--surface` fill to remain quieter than activity choices.
 
 ## Framework integration
 

@@ -8,27 +8,81 @@ import { markingPart } from './packed-data.js';
 
 export function testResponse(raw, fallback = {}) {
   try {
-    const value = JSON.parse(raw);
+    const value = typeof raw === 'string' ? JSON.parse(raw) : raw;
     return value && typeof value === 'object' && !Array.isArray(value) ? value : fallback;
   } catch {
     return fallback;
   }
 }
 
-export const studentCases = (q) =>
+/** Stable input identities preserve results when another valid input is removed. */
+export function testInputIds(baseId, data = {}) {
+  const inputs = Array.isArray(data.inputs) ? data.inputs : [];
+  const ids = data.inputIds;
+  if (
+    Array.isArray(ids) &&
+    ids.length === inputs.length &&
+    new Set(ids).size === ids.length &&
+    ids.every(
+      (id) =>
+        typeof id === 'string' &&
+        /^[A-Za-z0-9][A-Za-z0-9_-]{0,79}$/.test(id) &&
+        (id === baseId || id.startsWith(`${baseId}-input-`)),
+    )
+  )
+    return ids;
+  return inputs.map((_, i) => (i === 0 ? baseId : `${baseId}-input-${i + 1}`));
+}
+
+/** With answers, expand valid text values into independent runs; other cases stay intact. */
+export const studentCases = (q, answers) =>
   q.testPlan.flatMap((row, i) =>
-    row.cases.map((c) => ({
-      ...c,
-      row,
-      name: `Test ${i + 1}${row.cases.length > 1 ? ` · ${c.label}` : ''}`,
-    })),
+    row.cases.flatMap((c) => {
+      const base = {
+        ...c,
+        baseId: c.id,
+        row,
+        name: `Test ${i + 1}${row.cases.length > 1 ? ` · ${c.label}` : ''}`,
+      };
+      if (!answers || q.livePython.testInputs.parameters.length || row.kind !== 'valid')
+        return [base];
+      const data = testResponse(answers[row.dataPart])[c.id] ?? {};
+      const ids = testInputIds(c.id, data);
+      // Keep one incomplete case so an empty plan cannot earn marks by skipping the loop.
+      return (ids.length ? ids : [c.id]).map((id, inputIndex) => ({
+        ...base,
+        id,
+        independent: true,
+        inputIndex,
+        input: data.inputs?.[inputIndex],
+        label: `Input ${inputIndex + 1}`,
+        name: `${base.name} · Input ${inputIndex + 1}`,
+      }));
+    }),
   );
+
+/** Old single-case outcomes apply only to their original case, never to added inputs. */
+export function testOutcome(raw, c) {
+  const value = testResponse(raw);
+  return value.outcomes ? testResponse(value.outcomes[c.id]) : c.id === c.baseId ? value : {};
+}
+
+export function withTestOutcome(raw, c, next) {
+  if (!c.independent) return next;
+  const value = testResponse(raw);
+  return {
+    outcomes: {
+      ...(value.outcomes ?? (value.type ? { [c.baseId]: value } : {})),
+      [c.id]: { ...next, name: c.name },
+    },
+  };
+}
 
 /** Build executable literals from named fields; student text never becomes Python syntax. */
 export function studentTest(q, answers, id) {
-  const c = studentCases(q).find((c) => c.id === id);
+  const c = studentCases(q, answers).find((c) => c.id === id);
   if (!c) throw Error('Choose a test in the test plan.');
-  const data = testResponse(answers[c.row.dataPart])[id];
+  const data = testResponse(answers[c.row.dataPart])[c.baseId];
   const spec = q.livePython.testInputs;
   if (!data) throw Error(`Enter your inputs for ${c.name}.`);
   let inputs = [],
@@ -42,6 +96,7 @@ export function studentTest(q, answers, id) {
       inputs.some((v) => typeof v !== 'string' || v.length > 1000)
     )
       throw Error('Add between 1 and 20 input entries. An empty entry is allowed.');
+    if (c.independent) inputs = [inputs[c.inputIndex]];
   } else {
     args = spec.parameters.map((p) => {
       const raw = data.args?.[p.name];
@@ -88,6 +143,20 @@ export function recordedOutcome(observation) {
   };
 }
 
+/** Render runtime evidence consistently in the test plan and saved attempt review. */
+export function testRunOutput(observation) {
+  if (observation.timedOut)
+    return 'Execution stopped after 5 seconds. Output and the number of inputs used are unavailable.';
+  return (
+    observation.stdout +
+    observation.stderr +
+    (observation.error
+      ? `${observation.error.type}: ${observation.error.message}`
+      : `Returned ${JSON.stringify(observation.value)} (${observation.type})`) +
+    `\nInputs used: ${observation.consumed}`
+  );
+}
+
 export function completeOutcome(raw) {
   const value = testResponse(raw);
   return (
@@ -112,7 +181,7 @@ function matchesOutcome(raw, observation) {
 export function testReferenceRequest(q, answers) {
   if (!q.livePython.testInputs) return null;
   const source = markingPart(q.parts.find((p) => p.kind === 'python')).answer;
-  const tests = studentCases(q).flatMap((c) => {
+  const tests = studentCases(q, answers).flatMap((c) => {
     try {
       return [studentTest(q, answers, c.id)];
     } catch {
@@ -133,8 +202,8 @@ export function testReferenceRequest(q, answers) {
 /** Assessment is independent of fixed examples and rejects evidence for changed inputs. */
 export function markTestPart(q, p, answers, execution) {
   const result = { id: p.id, earned: 0, max: p.marks };
-  const cases = studentCases(q).filter((c) =>
-    p.testRole === 'data' ? c.row.dataPart === p.id : c.id === p.testCase,
+  const cases = studentCases(q, answers).filter((c) =>
+    p.testRole === 'data' ? c.row.dataPart === p.id : c.baseId === p.testCase,
   );
   try {
     for (const c of cases) {
@@ -146,13 +215,17 @@ export function markTestPart(q, p, answers, execution) {
         if (!run)
           return {
             ...result,
-            message: 'Run these inputs on Original code before recording the actual result.',
+            message: `Run ${c.name} on Original code before recording its actual result.`,
           };
-        if (!matchesOutcome(answers[p.id], run.observation))
+        if (run.observation.timedOut)
           return {
             ...result,
-            message:
-              'Compare your recorded type, value or exception, and inputs used with the original run.',
+            message: `${c.name}: the run exceeded the time limit. Review the code and rerun before recording an actual result.`,
+          };
+        if (!matchesOutcome(testOutcome(answers[p.id], c), run.observation))
+          return {
+            ...result,
+            message: `${c.name}: compare your recorded type, value or exception, and inputs used with the original run.`,
           };
       } else {
         const reference = execution?.testReferences?.find((r) => sameTest(r, t));
@@ -175,13 +248,12 @@ export function markTestPart(q, p, answers, execution) {
             message:
               c.row.kind === 'invalid'
                 ? 'Start with one or more invalid entries, then end with one valid entry so the intended function can finish.'
-                : 'Choose valid inputs that the requirements accept without a retry.',
+                : `${c.name}: enter a valid value that meets the requirements.`,
           };
-        if (p.testRole === 'expected' && !matchesOutcome(answers[p.id], r))
+        if (p.testRole === 'expected' && !matchesOutcome(testOutcome(answers[p.id], c), r))
           return {
             ...result,
-            message:
-              'Trace the requirements for your inputs. Check the return type, value and number of inputs used.',
+            message: `${c.name}: check the expected return type, value and number of inputs used against the requirements.`,
           };
       }
     }
@@ -209,6 +281,10 @@ export function markTestPart(q, p, answers, execution) {
 /** Keep archived structured answers readable without requiring today's question bank. */
 export function describeTestResponse(raw) {
   const value = testResponse(raw);
+  if (value.outcomes)
+    return Object.entries(value.outcomes)
+      .map(([id, outcome]) => `${outcome.name ?? id}: ${describeTestResponse(outcome)}`)
+      .join('\n');
   if (value.type)
     return `${value.type}: ${JSON.stringify(value.value ?? '')} · inputs used: ${value.consumed ?? 'not recorded'}`;
   if (Object.values(value).some((v) => v?.inputs || v?.args))

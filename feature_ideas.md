@@ -47,3 +47,7 @@ Be able to review earlier attempts at ESP Task 2 questions and free-code editing
 ## ESP Task 2 own test plans — 20 October 2026
 
 Students choose their own input values and expected results, run Original code, record actual results, then repair and retest Your code. Mark those student-authored tests instead of fixed supplied cases. Keep the code editor’s height and internal scrolling independent of its surrounding workspace. Clearly separate scored check feedback from program output. [Adopted requirements](docs/esp/task-2-designs.md#adopted-assessment-adaptation--20-october-2026).
+
+## Temporary wider code view — 20 October 2026
+
+Proposed: mouse-down or press-and-hold reveals long code lines by temporarily widening the editor up to the available full width, without changing layout or height. Suggested interaction: a dedicated expand control overlays neighbouring content while held, restoring width on release, with click/tap toggle and keyboard support as alternatives. Avoid taking ordinary presses away from code selection or touch gestures. Preserve caret and scroll position, and retain horizontal scrolling for lines beyond the width cap. The hold gesture was superseded by the adopted right/left triangle toggle on two-column layouts. The toggle now overlays the neighbouring questions without changing layout or height; single-column layouts hide it. See [editor presentation](docs/style-guide.md#code-editor-presentation).

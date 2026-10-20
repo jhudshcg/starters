@@ -3,9 +3,13 @@
    Keep portable package/source styles independent of Tailwind. */
 @theme static {
   --breakpoint-viewport-small: 440px;
-  --breakpoint-viewport-medium: 768px;
+  --breakpoint-viewport-editor: 744px;
+  --breakpoint-viewport-compact: 820px;
   --breakpoint-viewport-large: 1024px;
 }
 
 /* Go gutters explicitly include the mobile endpoint. */
 @custom-variant max-viewport-small-inclusive (@media (width <= 440px));
+
+/* Cards and compact controls include the tablet endpoint. */
+@custom-variant max-viewport-compact-inclusive (@media (width <= 820px));

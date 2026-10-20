@@ -1,6 +1,6 @@
 <!-- Question-bound editor. The attempt service owns source, permissions and execution. -->
 <script>
-  import { onMount, untrack } from 'svelte';
+  import { onMount, tick, untrack } from 'svelte';
   import { resolve } from '$app/paths';
   import { pythonModes } from '#domain/live-python.js';
   import { markQuestion } from '#domain/marking.js';
@@ -18,6 +18,19 @@
   let height = $state(180);
   let resultsMinimised = $state(false);
   let guidanceMinimised = $state(false);
+  let expanded = $state(false);
+  let overlayWidth = $state(0);
+  let collapsedScroll = [];
+  async function toggleWidth(value = !expanded) {
+    if (value) collapsedScroll = [originalEditor?.scrollLeft, editor?.scrollLeft];
+    expanded = value;
+    await tick();
+    if (!expanded) {
+      if (originalEditor && collapsedScroll[0] !== undefined)
+        originalEditor.scrollLeft = collapsedScroll[0];
+      if (editor && collapsedScroll[1] !== undefined) editor.scrollLeft = collapsedScroll[1];
+    }
+  }
   let intro,
     docked = $state(false),
     viewportHeight = $state(900),
@@ -41,7 +54,11 @@
   onMount(() => {
     const measure = () => {
       viewportHeight = window.innerHeight;
-      singleColumn = window.innerWidth < 768;
+      singleColumn = window.innerWidth < 744;
+      if (singleColumn && expanded) void toggleWidth(false);
+      // Measure the available overlay, without changing either grid column's allocation.
+      overlayWidth =
+        workspace.parentElement.getBoundingClientRect().right - intro.getBoundingClientRect().left;
       docked = intro.getBoundingClientRect().bottom <= (singleColumn ? 0 : 16);
     };
     let frame;
@@ -51,6 +68,7 @@
     };
     const observer = new ResizeObserver(schedule);
     observer.observe(intro);
+    observer.observe(workspace.parentElement);
     window.addEventListener('resize', schedule);
     window.addEventListener('scroll', schedule, { passive: true });
     measure();
@@ -95,7 +113,7 @@
     // Focused answer fields must clear the pinned code, including after manual resizing.
     workspace?.parentElement.style.setProperty(
       '--editor-scroll-offset',
-      `${docked ? visibleHeight + (q.livePython.tabs ? 100 : 40) : 0}px`,
+      `${docked ? visibleHeight + (q.livePython.tabs || !singleColumn ? 100 : 40) : 0}px`,
     );
   });
   const locked = $derived(Boolean(a.finished || a.pythonSubmission));
@@ -252,35 +270,54 @@
     </div>
     {#if guidanceMinimised && notice}<p role="status">{notice}</p>{/if}
   </div>
-  <div class="editor-dock" class:docked>
-    {#if q.livePython.tabs}
-      <div class="editor-tabs" role="tablist" aria-label="Code version">
-        {#each ['original', 'edited'] as value, i}
-          <button
-            role="tab"
-            id={`tab-${q.slot}-${value}`}
-            aria-controls={`editor-${q.slot}-${value}`}
-            aria-selected={tab === value}
-            tabindex={tab === value ? 0 : -1}
-            class="editor-tab"
-            onclick={() => (tab = value)}
-            onkeydown={(e) => {
-              if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
-                e.preventDefault();
-                tab =
-                  e.key === 'Home'
-                    ? 'original'
-                    : e.key === 'End'
-                      ? 'edited'
-                      : value === 'original'
+  <div
+    class="editor-dock"
+    class:docked
+    class:expanded
+    style:--editor-overlay-width={`${overlayWidth}px`}
+  >
+    <div class="editor-header" class:has-tabs={Boolean(q.livePython.tabs)}>
+      {#if q.livePython.tabs}
+        <div class="editor-tabs" role="tablist" aria-label="Code version">
+          {#each ['original', 'edited'] as value, i}
+            {@const label = i === 0 ? 'Original code' : 'Your code'}
+            <button
+              role="tab"
+              id={`tab-${q.slot}-${value}`}
+              aria-controls={`editor-${q.slot}-${value}`}
+              aria-selected={tab === value}
+              tabindex={tab === value ? 0 : -1}
+              class="editor-tab"
+              onclick={() => (tab = value)}
+              onkeydown={(e) => {
+                if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+                  e.preventDefault();
+                  tab =
+                    e.key === 'Home'
+                      ? 'original'
+                      : e.key === 'End'
                         ? 'edited'
-                        : 'original';
-                document.getElementById(`tab-${q.slot}-${tab}`)?.focus();
-              }
-            }}>{i === 0 ? 'Original code' : 'Your code'}</button
-          >
-        {/each}
-      </div>
+                        : value === 'original'
+                          ? 'edited'
+                          : 'original';
+                  document.getElementById(`tab-${q.slot}-${tab}`)?.focus();
+                }
+              }}
+              ><span>{label}</span><span class="tab-width" aria-hidden="true">{label}</span></button
+            >
+          {/each}
+        </div>
+      {/if}
+      <button
+        class="width-toggle"
+        aria-label={expanded ? 'Restore editor width' : 'Expand editor width'}
+        title={expanded ? 'Restore editor width' : 'Expand editor width'}
+        aria-expanded={expanded}
+        aria-controls={`editor-${q.slot}-edited${q.livePython.tabs ? ` editor-${q.slot}-original` : ''}`}
+        onclick={() => toggleWidth()}><span aria-hidden="true">{expanded ? '◀' : '▶'}</span></button
+      >
+    </div>
+    {#if q.livePython.tabs}
       <div
         class="editor-document"
         id={`editor-${q.slot}-original`}
@@ -483,6 +520,24 @@
   .editor-dock.docked {
     box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
   }
+  .editor-dock.expanded .editor-document,
+  .editor-dock.expanded .editor-height {
+    width: var(--editor-overlay-width);
+  }
+  .editor-dock.expanded .editor-document {
+    position: relative;
+    background: var(--surface);
+    box-shadow: 0 3px 8px rgb(0 0 0 / 15%);
+  }
+  /* Continue the top rule beyond the fixed-width tab row without adding height. */
+  .editor-dock.expanded .editor-document::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    border-top: 1px solid var(--line);
+    pointer-events: none;
+    z-index: 1;
+  }
   .editor-space {
     grid-area: spacer;
     background: var(--surface);
@@ -550,7 +605,7 @@
     width: 100%;
     min-width: 0;
   }
-  .editor-tabs {
+  .editor-header {
     display: flex;
     align-items: stretch;
     gap: 0.25rem;
@@ -558,10 +613,34 @@
     padding: 0 1rem;
     border-bottom: 1px solid var(--line);
   }
-  .editor-tab {
-    flex: 0 1 auto;
+  .editor-tabs {
+    display: flex;
+    align-items: stretch;
+    gap: 0.25rem;
     min-width: 0;
-    max-width: 50%;
+    overflow-x: auto;
+  }
+  .width-toggle {
+    flex: 0 0 2.75rem;
+    min-height: 2.75rem;
+    margin-left: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 0.75rem;
+  }
+  .width-toggle:hover {
+    background: color-mix(in srgb, var(--main) 6%, var(--surface));
+  }
+  .editor-tab {
+    display: inline-grid;
+    place-items: center;
+    text-align: center;
+    flex: 0 0 auto;
+    min-width: 0;
+    white-space: nowrap;
     min-height: 2.75rem;
     padding: 0.65rem 1rem;
     border: 1px solid var(--line);
@@ -572,6 +651,14 @@
     font: inherit;
     cursor: pointer;
   }
+  .editor-tab > span {
+    grid-area: 1 / 1;
+  }
+  /* Reserve the bold label width in both states without duplicating its accessible name. */
+  .tab-width {
+    visibility: hidden;
+    font-weight: 700;
+  }
   .editor-tab:hover {
     background: color-mix(in srgb, var(--main) 6%, var(--surface));
   }
@@ -581,7 +668,8 @@
     box-shadow: inset 0 3px var(--main);
     font-weight: 700;
   }
-  .editor-tab:focus-visible {
+  .editor-tab:focus-visible,
+  .width-toggle:focus-visible {
     outline: 2px solid var(--selection-border);
     outline-offset: 2px;
   }
@@ -649,7 +737,11 @@
   input {
     font-family: ui-monospace, monospace;
   }
-  @media (width < 768px) {
+  @media (width < 744px) {
+    .width-toggle,
+    .editor-header:not(.has-tabs) {
+      display: none;
+    }
     .coding-controls {
       margin-bottom: 1.5rem;
     }
@@ -666,7 +758,7 @@
     .editor-dock::before {
       display: none;
     }
-    .editor-tabs {
+    .editor-header {
       border-bottom: 0;
       box-shadow:
         inset 1px 0 var(--line),

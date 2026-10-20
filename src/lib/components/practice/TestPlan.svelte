@@ -1,6 +1,12 @@
 <!-- Review student-entered tests and source-bound execution evidence. -->
 <script>
-  import { studentTest, sameTest, testResponse } from '#domain/task2-tests.js';
+  import {
+    studentTest,
+    studentCases,
+    sameTest,
+    testOutcome,
+    testRunOutput,
+  } from '#domain/task2-tests.js';
   let { q, answers, evidence = [], source = '' } = $props();
   function test(id) {
     try {
@@ -9,8 +15,9 @@
       return null;
     }
   }
-  function outcome(id) {
-    const v = testResponse(answers[id]);
+  const cases = $derived(studentCases(q, answers));
+  function outcome(id, c) {
+    const v = testOutcome(answers[id], c);
     return v.type
       ? `${v.type === 'error' ? 'Exception' : v.type}: ${JSON.stringify(v.value ?? '')} · inputs used: ${v.consumed ?? 'not recorded'}`
       : 'Not recorded';
@@ -38,16 +45,23 @@
       >
       <tbody>
         {#each q.testPlan as row, index}
+          {@const rowCases = cases.filter((c) => c.row === row)}
+          {@const removedRuns = evidence.filter(
+            (run) =>
+              row.cases.some(
+                (c) => run.caseId === c.id || run.caseId?.startsWith(`${c.id}-input-`),
+              ) && !rowCases.some((c) => run.caseId === c.id),
+          )}
           <tr class="test-plan-row" data-input-kind={row.kind}>
             <th scope="row"
               ><strong>Test {index + 1}</strong>
               <p>{row.description}</p></th
             >
             <td>
-              {#each row.cases as c}
+              {#each rowCases as c}
                 {@const current = test(c.id)}
                 <div class="log-case">
-                  {#if row.cases.length > 1}<strong>{c.label}</strong>{/if}
+                  {#if c.independent || rowCases.length > 1}<strong>{c.label}</strong>{/if}
                   {#if current}<code>{current.expression}</code>
                     {#each current.inputs as input, i}<p>
                         Input {i + 1}: <code>{JSON.stringify(input)}</code>
@@ -57,17 +71,17 @@
               {/each}
             </td>
             <td>
-              {#each row.cases as c}<div class="log-case">
-                  {#if row.cases.length > 1}<strong>{c.label}</strong>{/if}
-                  <p>{outcome(c.expectedPart)}</p>
+              {#each rowCases as c}<div class="log-case">
+                  {#if c.independent || rowCases.length > 1}<strong>{c.label}</strong>{/if}
+                  <p>{outcome(c.expectedPart, c)}</p>
                 </div>{/each}
             </td>
             <td>
-              {#each row.cases as c}
+              {#each rowCases as c}
                 {@const current = test(c.id)}
                 <div class="log-case">
-                  {#if row.cases.length > 1}<strong>{c.label}</strong>{/if}
-                  <p>{outcome(c.actualPart)}</p>
+                  {#if c.independent || rowCases.length > 1}<strong>{c.label}</strong>{/if}
+                  <p>{outcome(c.actualPart, c)}</p>
                   {#if evidence.some((run) => run.caseId === c.id)}
                     <details class="run-evidence">
                       <summary>Run evidence</summary>
@@ -86,16 +100,26 @@
                           {#each run.inputs as input, i}<p>
                               Input {i + 1}: <code>{JSON.stringify(input)}</code>
                             </p>{/each}
-                          <pre class="code-panel">{run.observation.stdout}{run.observation
-                              .stderr}{run.observation.error
-                              ? `${run.observation.error.type}: ${run.observation.error.message}`
-                              : `Returned ${JSON.stringify(run.observation.value)} (${run.observation.type})`}{`\nInputs used: ${run.observation.consumed}`}</pre>
+                          <pre class="code-panel">{testRunOutput(run.observation)}</pre>
                         </details>
                       {/each}
                     </details>
                   {/if}
                 </div>
               {/each}
+              {#if removedRuns.length}
+                <details class="run-evidence">
+                  <summary>Earlier removed inputs</summary>
+                  {#each removedRuns as run}
+                    <p>
+                      {run.caseName ?? 'Earlier input'} · {run.document === 'original'
+                        ? 'Original code'
+                        : 'Your code'} · {JSON.stringify(run.inputs)}
+                    </p>
+                    <pre class="code-panel">{testRunOutput(run.observation)}</pre>
+                  {/each}
+                </details>
+              {/if}
             </td>
             <td
               ><ul>

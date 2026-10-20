@@ -3,6 +3,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import bank from '../data/python.js';
+import esp from '../data/esp-task2.js';
+import { studentCases, withTestOutcome } from '../js/task2-tests.js';
 import { markQuestion } from '../js/marking.js';
 import { initialRegions } from '../prototypes/pyscript/regions.js';
 import { createPythonPractice } from '../src/lib/application/python-practice.js';
@@ -26,6 +28,7 @@ function completed(q) {
 function harness(q = question(2)) {
   let now = 1000,
     pending,
+    rejectPending,
     requests = [];
   const session = {
     data: { active: { id: 'attempt', answers: {}, python: {}, hints: {}, reveals: {} } },
@@ -41,7 +44,10 @@ function harness(q = question(2)) {
         stop() {},
         run: (request) => {
           requests.push(request);
-          return new Promise((r) => (pending = r));
+          return new Promise((resolve, reject) => {
+            pending = resolve;
+            rejectPending = reject;
+          });
         },
       }),
     }),
@@ -50,9 +56,10 @@ function harness(q = question(2)) {
     session,
     python,
     requests,
-    finish: () =>
+    fail: (message) => rejectPending(Error(message)),
+    finish: (observation) =>
       pending([
-        {
+        observation ?? {
           label: 'Your run',
           stdout: '1\n2\n3\n4\n',
           stderr: '',
@@ -182,6 +189,137 @@ test('profile changes cannot receive a previous runtime completion', async () =>
   h.finish();
   assert.equal(await run, false);
   assert.equal(h.session.data.active.python, undefined);
+});
+
+test('Task 2 gates the whole group and archives each independent input with its own expected result', async () => {
+  const q = { ...esp[0], ...esp[0].variations[5], variation: 5 };
+  const h = harness(q),
+    a = h.session.data.active;
+  const answers = (a.answers[q.slot] = {
+    'valid-own-inputs': JSON.stringify({ c0: { inputs: ['1', '2'] } }),
+  });
+  const cases = studentCases(q, answers).filter((c) => c.independent);
+  answers['c0-own-expected'] = JSON.stringify(
+    withTestOutcome(undefined, cases[0], {
+      type: 'str',
+      value: 'Online',
+      consumed: '1',
+    }),
+  );
+  assert.equal(await h.python.execute(q.slot, 'run', false, { caseId: cases[0].id }), false);
+  assert.equal(h.requests.length, 0);
+  answers['c0-own-expected'] = JSON.stringify(
+    withTestOutcome(answers['c0-own-expected'], cases[1], {
+      type: 'str',
+      value: 'In-store',
+      consumed: '1',
+    }),
+  );
+  const run = h.python.execute(q.slot, 'run', false, { caseId: cases[1].id, document: 'original' });
+  await new Promise(setImmediate);
+  assert.deepEqual(h.requests[0].cases[0].inputs, ['1']);
+  assert.equal(h.requests[0].source, q.code);
+  h.finish();
+  await new Promise(setImmediate);
+  assert.deepEqual(h.requests[1].cases[0].inputs, ['2']);
+  h.finish();
+  assert.equal(await run, true);
+  const evidence = a.python[q.slot].evidence[1];
+  assert.equal(evidence.caseId, cases[1].id);
+  assert.equal(evidence.caseName, 'Test 1 · Input 2');
+  assert.equal(JSON.parse(evidence.expected).value, 'In-store');
+  assert.equal(JSON.parse(evidence.expected).outcomes, undefined);
+
+  a.finished = 2000;
+  a.tracking = { eligible: false };
+  archiveCodeAttempt(
+    h.session.data,
+    a,
+    { type: 3, questions: [q] },
+    {
+      [q.slot]: markQuestion(q, answers),
+    },
+  );
+  const restored = mergeCodeHistory({}, JSON.parse(JSON.stringify(h.session.data)));
+  assert.deepEqual(restored.codeAttempts[0].runs[0], h.session.data.codeAttempts[0].runs[0]);
+  assert.equal(
+    restored.codeAttempts[0].parts.find((p) => p.id === 'c0-own-expected').answer,
+    answers['c0-own-expected'],
+  );
+});
+
+test('Task 2 continues after returns, exceptions and timeouts, but Stop cancels remaining inputs', async () => {
+  const q = { ...esp[0], ...esp[0].variations[5], variation: 5 };
+  const h = harness(q),
+    a = h.session.data.active;
+  const answers = (a.answers[q.slot] = {
+    'valid-own-inputs': JSON.stringify({ c0: { inputs: ['1', '2', '3', '4'] } }),
+  });
+  for (const c of studentCases(q, answers).filter((c) => c.independent))
+    answers[c.expectedPart] = JSON.stringify(
+      withTestOutcome(answers[c.expectedPart], c, {
+        type: 'str',
+        value: 'Online',
+        consumed: '1',
+      }),
+    );
+  const run = h.python.execute(q.slot, 'run', false, { caseId: 'c0', document: 'original' });
+  await new Promise(setImmediate);
+  h.finish();
+  await new Promise(setImmediate);
+  h.finish({
+    stdout: '',
+    stderr: '',
+    error: { type: 'ValueError', message: 'Bad value' },
+    type: null,
+    value: null,
+    consumed: 1,
+  });
+  await new Promise(setImmediate);
+  h.fail('Stopped after 5 seconds. Check for a loop that cannot finish.');
+  await new Promise(setImmediate);
+  h.finish();
+  assert.equal(await run, true);
+  assert.deepEqual(
+    h.requests.map((r) => r.cases[0].inputs),
+    [['1'], ['2'], ['3'], ['4']],
+  );
+  assert.equal(a.python[q.slot].evidence.length, 4);
+  assert.equal(a.python[q.slot].evidence[1].observation.error.type, 'ValueError');
+  assert.equal(a.python[q.slot].evidence[2].observation.timedOut, true);
+  assert.equal(a.python[q.slot].evidence[2].observation.consumed, null);
+  assert.equal(
+    markQuestion(q, answers, { evidence: a.python[q.slot].evidence }).find(
+      (r) => r.id === 'c0-own-actual',
+    ).earned,
+    0,
+  );
+  a.finished = 2000;
+  a.tracking = { eligible: false };
+  archiveCodeAttempt(
+    h.session.data,
+    a,
+    { type: 3, questions: [q] },
+    {
+      [q.slot]: markQuestion(q, answers),
+    },
+  );
+  assert.equal(
+    mergeCodeHistory({}, structuredClone(h.session.data)).codeAttempts[0].runs[2].observation
+      .consumed,
+    null,
+    'an unknown input count survives archive validation',
+  );
+  delete a.finished;
+  const cancelled = h.python.execute(q.slot, 'run');
+  await new Promise(setImmediate);
+  h.finish();
+  await new Promise(setImmediate);
+  h.python.cancel();
+  h.finish();
+  assert.equal(await cancelled, false);
+  assert.equal(h.requests.length, 6, 'Stop prevents the third and fourth inputs running');
+  assert.equal(a.python[q.slot].evidence.length, 5, 'completed evidence is retained');
 });
 
 test('six detailed attempts per variation retain all summaries, current draft and backup integrity', () => {
