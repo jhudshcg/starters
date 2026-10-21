@@ -11,7 +11,7 @@ Full SvelteKit/Svelte, Tailwind, daisyUI and Bits UI adoption was authorised and
 | `src/lib/application/session.js` | Compose services, load route banks, reject stale requests, publish snapshots and dispose listeners/polling. |
 | `src/lib/application/profile.js` | Current profile, selection, validated restoration, browser/file persistence and same-profile attempt snapshots. |
 | `src/lib/application/profile-lock.js` | Exclusive editing ownership of each named profile across tabs, held through pending saves and released on switch/disposal. |
-| `src/lib/application/practice.js` | Attempt commands, answers, submission, assistance, two-hour entry recall and timer deadlines. No DOM bindings. |
+| `src/lib/application/practice.js` | Attempt commands, answers, submission, assistance, per-profile entry recall and timer deadlines. No DOM bindings. |
 | `src/lib/components/pages/` | Home, exam, search, progress, projects/FAQ, About and human Go pages. Edit home card artwork, order and short text in `Home.svelte`. |
 | `src/lib/components/practice/` | Entry selectors, question cards, answers, feedback, guides and puzzle hosts. Components call commands rather than owning another persisted attempt. |
 | `src/lib/components/ui/` | Shared semantic controls and Bits UI dialog/popover interactions. |
@@ -38,7 +38,7 @@ The profile service obtains a [Web Lock](https://developer.mozilla.org/en-US/doc
 
 SvelteKit is the sole browser-history owner. `AppShell` uses `goto`, `beforeNavigate`, `afterNavigate` and Kit’s `snapshot` lifecycle API for leave guards and attempt snapshots. Legacy `#set=…`, `#practice=…` and other bookmarks translate through the same path, including hash-only changes. Do not add another `popstate` listener or a second DOM router.
 
-Browser-history snapshots preserve the visible attempt for the same profile and bank generation. Per-profile two-hour focus recall is separate in `js/practice-selection.js`. Explicit breadcrumb picker navigation requests a blank selector. Persisted deadlines remain absolute: hiding/reloading the page does not pause a running countdown or duplicate its result.
+Browser-history snapshots preserve the visible attempt for the same profile and bank generation. Per-profile last-focus recall is separate in `js/practice-selection.js` and persists across visits. Practice entries and breadcrumbs open the remembered selection or a default set. Persisted deadlines remain absolute: hiding/reloading the page does not pause a running countdown or duplicate its result.
 
 The root creates one application session on mount. Page transitions retain it, but remove outgoing puzzle/Go controls. Disposal aborts owned global listeners, clears polling/toasts, rejects pending prompts, invalidates route requests, pauses/saves practice and drains serial file writes. Ordinary `pagehide` saves without disposing, because browser Back may restore the document. A replacement service instance must await disposal before taking ownership.
 

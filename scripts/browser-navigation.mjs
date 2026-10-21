@@ -52,9 +52,9 @@ try{
  assert.ok(await evaluate('(()=>{const r=document.querySelector("#theme-menu").getBoundingClientRect();return r.left>=0&&r.right<=innerWidth;})()'),'Theme picker fits');
  await evaluate('document.querySelector("#theme-picker").click()');
  const mode=await evaluate('document.documentElement.dataset.theme');await click('#theme-toggle');assert.notEqual(await evaluate('document.documentElement.dataset.theme'),mode);await click('#theme-toggle');
- await click('[data-start="2"]');await until('document.querySelector("#focus")?.value===""');
- assert.equal(await evaluate('document.querySelector("#focus option").textContent'),'--');
- assert.equal(await evaluate('document.querySelectorAll(".question").length'),0);
+ await click('[data-start="2"]');await until('Boolean(document.querySelector("#display-code"))');
+ const defaultFocus=await evaluate('document.querySelector("#focus").value');
+ assert.ok(await evaluate('document.querySelectorAll(".question").length>0'));
  await change('#focus','records');await until('document.querySelector("h1")?.textContent==="Dictionaries"');
  const first=await evaluate(`${profile}.active`);
  assert.ok(await evaluate('document.querySelector(".project-link").compareDocumentPosition(document.querySelector(".submit-bar")) & Node.DOCUMENT_POSITION_PRECEDING'));
@@ -66,16 +66,16 @@ try{
  await click('#new-type');await until(`document.querySelector('#focus')?.value!=='records' && Boolean(document.querySelector('#display-code'))`);
  await back('document.querySelector("#focus")?.value==="records"');
  assert.equal(await evaluate(`${profile}.active.id`),first.id,'Back restores previous set');
- await back('document.querySelector("#focus")?.value===""');
- assert.equal(await evaluate('document.querySelectorAll(".question").length'),0,'Back returns to blank selector');
+ await back(`document.querySelector("#focus")?.value===${JSON.stringify(defaultFocus)}`);
+ assert.ok(await evaluate('document.querySelectorAll(".question").length>0'),'Back restores the default set');
  await evaluate('history.forward()');await until('document.querySelector("#focus")?.value==="records"');
  await home();await click('[data-start="2"]');await until('document.querySelector("#focus")?.value==="records"');
  await home();
  await evaluate('window.realNow=Date.now;Date.now=()=>window.realNow()+7200001');
- await click('[data-start="2"]');await until('document.querySelector("#focus")?.value===""');
+ await click('[data-start="2"]');await until('Boolean(document.querySelector("#display-code"))');
  await evaluate('Date.now=window.realNow');
  await home();await click('[data-start="0"]');await until('Boolean(document.querySelector(".puzzle-cards"))');
- assert.equal(await evaluate('document.querySelectorAll(".question").length'),0);
+ assert.ok(await evaluate('document.querySelectorAll(".question").length>0'));
  assert.match(await evaluate('document.querySelector(".breadcrumbs").textContent'),/Home.*Puzzles/);
  const focus=await evaluate('document.querySelector("[data-puzzle-focus]").dataset.puzzleFocus');
  await click('[data-puzzle-focus]');await until('Boolean(document.querySelector("#display-code"))');
@@ -83,11 +83,11 @@ try{
  assert.ok(await evaluate('document.querySelector(".puzzle-picker").getBoundingClientRect().bottom<=document.querySelector("h1").getBoundingClientRect().top'));
  assert.match(await evaluate('document.querySelector(".breadcrumbs").textContent'),/Home.*Puzzles.*\//);
  await click('.puzzle-picker summary');assert.equal(await evaluate('document.querySelector(".puzzle-picker").open'),true);
- await click('.breadcrumbs [data-practice-picker]');await until('!document.querySelector("#display-code") && Boolean(document.querySelector(".puzzle-cards"))');
+ await click('.breadcrumbs [data-practice-picker]');await until('Boolean(document.querySelector("#display-code"))');
  await home();await click('[data-start="0"]');await until('Boolean(document.querySelector("#display-code"))');
  assert.equal(await evaluate(`${profile}.practiceSelections[0].focus`),focus);
  await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');
- await click('[data-exam-start="1"]');await until('document.querySelector("#focus")?.value===""');
+ await click('[data-exam-start="1"]');await until('Boolean(document.querySelector("#display-code"))');
  const topic=await evaluate('document.querySelector("#focus option:nth-child(2)").value');await change('#focus',topic);await until('Boolean(document.querySelector("#subtopic"))');
  const subtopic=await evaluate('document.querySelector("#subtopic option:nth-child(2)").value');await change('#subtopic',subtopic);await until(`document.querySelector('#subtopic')?.value===${JSON.stringify(subtopic)}`);
  await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="1"]');await until(`document.querySelector('#subtopic')?.value===${JSON.stringify(subtopic)}`);
@@ -101,7 +101,7 @@ try{
   assert.equal(await evaluate(`document.getElementById(${JSON.stringify(input)}).value`),'draft');
   await evaluate('history.back()');await until('Boolean(document.querySelector("[role=dialog] button[value=leave]"))');await click('[role=dialog] button[value=leave]');await until('Boolean(document.querySelector("[data-exam-start]"))');
  }
- await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until('document.querySelector("#focus")?.value===""');
+ await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until('Boolean(document.querySelector("#display-code"))');
  await change('#focus','task2');await until('Boolean(document.querySelector("#esp-recipe"))');
  const recipe=await evaluate('document.querySelector("#esp-recipe option:last-child").value');await change('#esp-recipe',recipe);await until(`document.querySelector('#esp-recipe')?.value===${JSON.stringify(recipe)}`);
  await home();await click('[data-start="1"]');await until('Boolean(document.querySelector("[data-exam-start]"))');await click('[data-exam-start="3"]');await until(`document.querySelector('#esp-recipe')?.value===${JSON.stringify(recipe)}`);
@@ -112,5 +112,5 @@ try{
  await click('.footer-links a[href$="/faq/"]');await until('document.querySelector("h1")?.textContent==="A little help."');
  assert.equal(await evaluate('document.querySelectorAll("main details").length'),9);
  assert.deepEqual(errors,[]);
- console.log('Responsive navigation passed: 360–1280px, menu, empty/remembered/expired focus, subsection recall, Back/Forward and cancellation, puzzle picker/breadcrumbs, projects and FAQ.');
+ console.log('Responsive navigation passed: 360–1280px, menu, default/remembered focus, subsection recall, Back/Forward and cancellation, puzzle picker/breadcrumbs, projects and FAQ.');
 }finally{ws.close();}

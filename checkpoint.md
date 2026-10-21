@@ -2,16 +2,20 @@
 
 ## Current state and next action
 
-Grouped valid Task 2 execution is implemented and verified. One Run action tests all chosen valid inputs independently in order, after all expected results are entered. Returns, exceptions and per-input timeouts continue to later inputs; Stop and edits cancel the group. Timeout evidence has unknown output/input count, remains reviewable and does not earn recorded-outcome credit. Each valid text input has its own expected result, original/edited runs and actual result. Stable identities preserve the remaining results when another input is removed; edits reject stale evidence. Invalid tests remain ordered sequences and parameter tests are unchanged. Old single-input outcomes remain compatible; queued multi-input evidence needs independent reruns. Existing group marks/totals and completed historical scores are unchanged. Draft logs keep two logical rows and saved attempts retain named per-input evidence.
+Practice-area entry now opens a question set immediately for Puzzles, Coding practice, Core and ESP. The profile's last available focus/subsection/challenge persists across visits without expiry; an active matching set resumes. New profiles use the first discoverable focus, and stale choices fall back to available sets. Breadcrumbs follow the same behaviour. Leave guards and direct codes remain unchanged.
 
-No pending implementation, commit or deployment. Next action: respond to feedback. Completed work and earlier breakpoint/editor decisions are recorded chronologically in DEV_LOG.md.
+No pending implementation, commit or deployment. Next action: respond to feedback. Completed work and earlier decisions are recorded chronologically in DEV_LOG.md.
 
 ## Latest verification
 
-- [x] Focused domain/service/archive tests: 19/19 pass across tests/esp-task2.test.js and tests/editor-workflow.test.js, including all 18 Task 2 investigations and new grouped-run, timeout, cancellation and archive regressions.
-- [x] Svelte check: zero errors/warnings; /starters build passes.
-- [x] --independent-inputs-only: real grouped valid runs continuing after exceptions and timeouts, ordered invalid sequence, whole-group gating, original/edited results, identity-preserving removal/edit/reload, 9/9 submission, 360px fitting and saved review pass.
-- Logs: /private/tmp/task2-group-{tests,check,build,browser}.log. Svelte check, build and git diff --check pass. No full-suite or broad visual sweep was rerun.
+- [x] Six focused selection/session tests pass: defaults across all banks, active-set resume, profile isolation, lasting recall, stale selection fallback and cancelled replacement.
+- [x] Svelte check: zero errors/warnings; /starters build and git diff --check pass.
+- [x] browser-migration.mjs --entry-only: all four entry links, breadcrumb recall, 30-day recall and reload pass.
+- Logs: /private/tmp/practice-entry-{tests,check,build,browser}.log. Initial test-fixture assumptions and a navigation wait race were corrected. Broader navigation/home-card assertions were updated but those full suites were not rerun.
+
+## Preserved Task 2 behaviour
+
+One Run action tests all chosen valid inputs independently in order after all expectations are complete. Returns, exceptions and per-input timeouts continue to later inputs; Stop/edits cancel the group. Each input retains its own outcomes and stable evidence identity. Invalid sequences and parameter tests are unchanged. Old single-input responses remain compatible; queued multi-input runs need rerunning. Timeout output/input count are unknown and cannot earn recorded-outcome credit. The previous 19-test and real-runtime browser verification is recorded in DEV_LOG.md and /private/tmp/task2-group-{tests,check,build,browser}.log.
 
 ## Preserved layout
 
@@ -20,6 +24,10 @@ Coding questions use 60/40 columns from 744px and one column below. Main cards a
 Only tabs/code/grip pin: automatic pinned height is 45% of viewport height below 744px and 65% above; manual resizing overrides it. The initial default cap uses max(viewport width × 1.4, viewport height × 0.75). Only the grip projects below the frame. Guidance/results and answers scroll normally. The triangle control at >=744px expands code over the answer column without reflow or height changes; it hides/collapses below 744px. Tabs remain fixed and single-line; original/edited documents retain drafts and scroll position. Earlier layout checks and visual acceptance are in DEV_LOG.md.
 
 ## Relevant files and commands
+
+- Current entry change: js/practice-selection.js; src/lib/application/practice.js; src/lib/components/practice/Breadcrumbs.svelte.
+- node --test tests/practice-selection.test.js tests/framework-session.test.js
+- STARTERS_PREVIEW_URL=http://127.0.0.1:8791/starters node scripts/browser-migration.mjs --entry-only
 
 - js/task2-tests.js; js/code-history.js; src/lib/application/python-practice.js.
 - src/lib/components/practice/{Task2Response,TestPlan,LivePython,Question}.svelte; src/lib/components/progress/CodeHistory.svelte.

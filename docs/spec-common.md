@@ -97,7 +97,7 @@ For viewing a new question (sets) a simple rule such as: random (with selected t
 
 The selection table below elaborates these original requirements; it does not replace their constraints.
 
-Home provides three type choices, code entry and progress access. Type choices open question-type entry pages, where students select a focus or puzzle type; see [practice entry and recall](#adopted-practice-entry-and-browser-navigation--13-october-2026). A shared question-set code form is also available on every page, including activities and progress. Invalid codes are reported beside that form; opening a different set preserves the existing unfinished-work confirmation. An activity shows its type, focus, code, total marks, estimated duration and timer control. Its breadcrumb segments are links; no separate back link duplicates that navigation. Question count, marks/points and estimated duration share the set-code toolbar row with copy and timer controls. The toolbar wraps on narrow screens without horizontal page scrolling.
+Home provides three type choices, code entry and progress access. Type choices open a default or remembered question set, with controls to change focus or puzzle type; see [practice entry and recall](#adopted-practice-entry-and-browser-navigation--13-october-2026). A shared question-set code form is also available on every page, including activities and progress. Invalid codes are reported beside that form; opening a different set preserves the existing unfinished-work confirmation. An activity shows its type, focus, code, total marks, estimated duration and timer control. Its breadcrumb segments are links; no separate back link duplicates that navigation. Question count, marks/points and estimated duration share the set-code toolbar row with copy and timer controls. The toolbar wraps on narrow screens without horizontal page scrolling.
 
 **Proposal: three distinct actions.**
 
@@ -113,11 +113,11 @@ Before replacing an unfinished activity, offer to keep working or leave it. **Pr
 
 ### Adopted practice entry and browser navigation — 13 October 2026
 
-Home cards open the question-type entry page, not a generated set. Core and ESP remain separate choices under Exam practice. A fresh programming/Core/ESP page shows Focus with `--`; the fresh puzzle page shows its graphical type cards. No questions or attempt start until a focus is chosen. Direct question/set codes still open their exact content.
+**Updated 21 October 2026:** opening Puzzles, Coding practice, Core or ESP immediately shows a question set. Use the profile's last available focus and selection settings, or the first discoverable focus when none is saved. Core and ESP remain separate choices under Exam practice. Direct question/set codes still open their exact content.
 
-Remember focus and any Core subtopic, ESP activity, sequence choice or puzzle challenge per local profile and bank for two hours after leaving the activity. A fresh visit recalls that choice, resuming the active set when available or selecting within the saved focus/subsection. At two hours the entry state is blank again. Browser Back restores the actual previous visible page, including a blank selector, earlier search or the earlier attempt and its answers; it does not apply fresh-entry recall. Keep working cancels navigation without replacing the previous history entry. Timer URL changes stay within the current entry.
+Remember focus and any Core subtopic, ESP activity, sequence choice or puzzle challenge per local profile and bank across visits, without the former two-hour expiry. Resume the active set when available; otherwise select within the saved focus/subsection. Retired or unavailable choices fall back to an available selection. Browser Back restores the actual previous visible page or attempt and its answers. Keep working cancels navigation without replacing the previous history entry. Timer URL changes stay within the current entry.
 
-Puzzle breadcrumbs read Home / Puzzles, with / [Puzzle type] on an activity. The graphical picker is above the selected title and collapses into a Puzzle type disclosure after selection. The Puzzles breadcrumb opens the picker; the home card can recall the recent selection.
+Puzzle breadcrumbs read Home / Puzzles, with / [Puzzle type] on an activity. The graphical picker is above the selected title and collapses into a Puzzle type disclosure after selection. Practice breadcrumbs use the same default/remembered selection as home cards; they no longer request a blank picker.
 
 ## Marking and attempts
 

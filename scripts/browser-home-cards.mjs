@@ -44,7 +44,7 @@ async function destination(type) {
       ? 'Boolean(document.querySelector("[data-exam-start]"))'
       : type === 0
         ? 'Boolean(document.querySelector(".puzzle-cards"))'
-        : 'document.querySelector("#focus")?.value === ""',
+        : 'Boolean(document.querySelector("#display-code"))',
   );
   assert.equal(
     await b.evaluate('location.pathname'),

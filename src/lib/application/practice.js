@@ -182,34 +182,39 @@ export function createPractice({
 
   async function entry(type) {
     const data = session.data;
-    const choice = !navigation.state().practiceEntry && recalledSelection(data, type);
-    navigation.remember({ practiceEntry: true });
-    if (choice && discoverableFocuses(focuses(type), type).includes(choice.focus)) {
-      if (data.active?.code === choice.code) {
-        await setHash(choice.code);
-        await render();
-        return;
-      }
+    const available = discoverableFocuses(focuses(type), type);
+    const remembered = recalledSelection(data, type);
+    const choice = available.includes(remembered?.focus) ? remembered : { focus: available[0] };
+    if (choice.code && data.active?.code === choice.code) {
+      await setHash(choice.code);
+      await render();
+      return;
+    }
+    try {
+      let set,
+        challengeLevel = choice.challenge;
       try {
-        await start(
-          choose(
-            type,
-            choice.focus,
-            null,
-            'new',
-            choice.challenge,
-            type === 1 ? choice.subtopic : type === 3 ? choice.recipe : 'all',
-          ),
-          {
-            force: true,
-            replace: true,
-            challengeLevel: choice.challenge,
-            inSequence: choice.inSequence,
-          },
+        set = choose(
+          type,
+          choice.focus,
+          null,
+          'new',
+          choice.challenge ?? 'all',
+          (type === 1 ? choice.subtopic : type === 3 ? choice.recipe : 'all') ?? 'all',
         );
-      } catch (error) {
-        toast(error.message);
+      } catch {
+        // Retired subsections or challenge filters must not leave a blank entry page.
+        set = choose(type, choice.focus);
+        challengeLevel = null;
       }
+      await start(set, {
+        force: true,
+        replace: true,
+        inSequence: choice.inSequence,
+        challengeLevel,
+      });
+    } catch (error) {
+      toast(error.message);
     }
   }
   /** Save an edit without replacing the input or losing its caret. */

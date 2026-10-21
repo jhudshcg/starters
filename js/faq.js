@@ -4,7 +4,7 @@
  */
 export function faqHTML(){
   const questions=[
-    ['Where do I start?','Choose Exam practice, Programming or Puzzles. Pick a Focus or puzzle type when you are ready. Your last choice is remembered on this browser for two hours after you leave.'],
+    ['Where do I start?','Choose Exam practice, Coding practice or Puzzles to open a question set. Change the focus or puzzle type using the controls. Your last choice is remembered for your profile on this browser.'],
     ['How long should I spend?','Most starters take about 5–15 minutes. Work at your own pace, or switch on a timer. When it runs out, your saved answers are submitted automatically.'],
     ['Can I get some help?','Yes. Python introductions explain the topic and do not reduce your progress credit. A question’s Show hint button counts that question as assisted practice. Submit your answers to see feedback and unlock the answers.'],
     ['When does practice count towards progress?','Submit a set to record your result. Leave at least four hours after completing the same set before starting another tracked attempt. You can still practise sooner. Hinted answers appear in final results, but do not count as independent evidence for revision priorities.'],

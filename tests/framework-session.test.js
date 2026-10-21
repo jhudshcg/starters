@@ -47,7 +47,12 @@ function fixture() {
 }
 test('practice commands preserve guide independence, specific assistance and single recording', async () => {
   const { practice, session, advance } = fixture(),
-    set = resolve({ version: BANK_VERSION, type: 2, entries: [{ slot: 24, variation: 0 }], minutes: null });
+    set = resolve({
+      version: BANK_VERSION,
+      type: 2,
+      entries: [{ slot: 24, variation: 0 }],
+      minutes: null,
+    });
   await practice.start(set);
   const q = set.questions[0],
     part = q.parts[0];
@@ -98,4 +103,42 @@ test('legacy links round-trip through static pages under a project subpath', () 
     routeHash(new URL('https://example.test/starters/#set=Ab_c-DE12x'), '/starters'),
     '#set=Ab_c-DE12x',
   );
+});
+
+test('every practice area opens a default set and recalls its profile-specific choice', async () => {
+  const { practice, session, advance } = fixture();
+  for (const type of [0, 1, 2, 3]) {
+    await practice.entry(type);
+    assert.equal(practice.activeSet().type, type);
+    assert.ok(practice.activeSet().questions.length);
+  }
+  await practice.start(choose(2, 'records'));
+  const original = session.data.active;
+  await practice.entry(2);
+  assert.equal(session.data.active, original, 'entry resumes the active set');
+  await practice.entry(1);
+  advance(30 * 24 * 60 * 60 * 1000);
+  await practice.entry(2);
+  assert.equal(practice.activeSet().focus, 'records');
+  const firstProfile = session.data;
+  session.data = { schema: 1, history: [], active: null };
+  await practice.entry(2);
+  assert.notEqual(practice.activeSet().focus, 'records', 'another profile gets its own default');
+  session.data = firstProfile;
+  await practice.entry(2);
+  assert.equal(practice.activeSet().focus, 'records');
+});
+
+test('stale remembered focus or filters fall back to an available question set', async () => {
+  const { practice, session } = fixture();
+  session.data.practiceSelections = {
+    1: { focus: 'CA1.1', subtopic: 'removed-topic', code: 'old', at: 1 },
+    2: { focus: 'removed-focus', code: 'old', at: 1 },
+  };
+  await practice.entry(1);
+  assert.equal(practice.activeSet().type, 1);
+  assert.equal(practice.activeSet().focus, 'CA1.1');
+  await practice.entry(2);
+  assert.equal(practice.activeSet().type, 2);
+  assert.ok(practice.activeSet().questions.length);
 });

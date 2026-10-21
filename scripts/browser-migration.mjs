@@ -17,6 +17,47 @@ try {
   await b.change('#profile-name', 'Migration Test', 'input');
   await b.evaluate('document.querySelector("[role=dialog] form").requestSubmit()');
   await b.until('Boolean(document.querySelector("#code-form"))');
+  if (process.argv.includes('--entry-only')) {
+    for (const type of [0, 2, 1, 3]) {
+      await b.click('.brand');
+      await b.until('Boolean(document.querySelector("[data-start]"))');
+      await b.click(`[data-start="${type === 3 ? 1 : type}"]`);
+      if (type === 1 || type === 3) {
+        await b.until('Boolean(document.querySelector("[data-exam-start]"))');
+        await b.click(`[data-exam-start="${type}"]`);
+      }
+      await b.until('Boolean(document.querySelector("#display-code"))');
+      assert.ok(await b.evaluate('document.querySelectorAll(".question").length > 0'));
+      if (type === 2) {
+        await b.change('#focus', 'records');
+        await b.until('document.querySelector("#focus")?.value === "records"');
+      }
+      const code = await b.evaluate('document.querySelector("#display-code").textContent');
+      await b.evaluate('window.previousCodeNode = document.querySelector("#display-code")');
+      await b.click('.breadcrumbs [data-practice-picker]');
+      await b.until(
+        'Boolean(document.querySelector("#display-code")) && document.querySelector("#display-code") !== window.previousCodeNode',
+      );
+      assert.equal(await b.evaluate('document.querySelector("#display-code").textContent'), code);
+    }
+    await b.click('.brand');
+    await b.until('Boolean(document.querySelector("[data-start]"))');
+    await b.evaluate(
+      'window.realNow = Date.now; Date.now = () => window.realNow() + 30 * 86400000',
+    );
+    await b.click('[data-start="2"]');
+    await b.until('document.querySelector("#focus")?.value === "records"');
+    await b.evaluate('Date.now = window.realNow');
+    await b.reload();
+    await b.until('document.querySelector("#focus")?.value === "records"');
+    assert.ok(await b.evaluate('document.querySelectorAll(".question").length > 0'));
+    assert.equal(b.errors.length, 0, JSON.stringify(b.errors));
+    console.log(
+      'All four practice areas open question sets; breadcrumbs, 30-day profile recall and reload pass.',
+    );
+    b.close();
+    process.exit(0);
+  }
   for (const width of [360, 390, 440, 441, 768, 1024, 1280]) {
     await b.send('Emulation.setDeviceMetricsOverride', {
       width,
@@ -76,8 +117,8 @@ try {
   await b.click('#nav-home');
   await b.until('!document.querySelector("#nav-menu")');
   await b.click('[data-start="2"]');
-  await b.until('document.querySelector("#focus")?.value === ""');
-  assert.equal(await b.evaluate('document.querySelectorAll(".question").length'), 0);
+  await b.until('Boolean(document.querySelector("#display-code"))');
+  assert.ok(await b.evaluate('document.querySelectorAll(".question").length > 0'));
   await b.change('#focus', 'records');
   await b.until('Boolean(document.querySelector("#display-code"))');
   assert.equal(await b.evaluate('document.querySelector("h1").textContent'), 'Dictionaries');
@@ -105,7 +146,7 @@ try {
   assert.equal(
     await b.evaluate('document.querySelector("#display-code").textContent'),
     code,
-    'Two-hour recall retains the attempt',
+    'Recall retains the attempt',
   );
   assert.equal(
     await b.evaluate('document.querySelector("input[data-part]").value'),
@@ -143,7 +184,7 @@ try {
   await b.until('Boolean(document.querySelector("#code-form"))');
   await b.click('[data-start="0"]');
   await b.until('Boolean(document.querySelector(".puzzle-cards"))');
-  assert.equal(await b.evaluate('document.querySelectorAll(".question").length'), 0);
+  assert.ok(await b.evaluate('document.querySelectorAll(".question").length > 0'));
   await b.click('[data-puzzle-focus="sudoku"]');
   await b.until('Boolean(document.querySelector("#display-code"))');
   assert.equal(await b.evaluate('document.querySelector(".puzzle-picker").open'), false);
