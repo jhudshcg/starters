@@ -21,6 +21,8 @@
   const record = $derived(a.result ?? view.data.history.find((r) => r.id === a.id));
   const review = $derived(hasRecentSubmission(a));
   const state = $derived(deadlineState(a));
+  // Temporarily hide revision notices; compatibility/history metadata remains active.
+  const showSetUpdateNotice = false;
   let minutes = $state(10);
   let timerKey;
   $effect(() => {
@@ -58,7 +60,7 @@
   </div>
   <Selectors {set} {a} {model} practice={app.practice} />
 </div>
-{#if set.updated}<p class="set-update-notice">
+{#if showSetUpdateNotice && set.updated}<p class="set-update-notice">
     This set has been updated since this code was created.
   </p>{/if}
 {#if !a.tracking.eligible}<p class="tracking-notice" role="status">

@@ -248,6 +248,50 @@ test('Task 2 gates the whole group and archives each independent input with its 
   );
 });
 
+test('Task 2 runs all configured tests on the requested document after every expectation is complete', async () => {
+  const q = { ...esp[0], ...esp[0].variations[5], variation: 5 };
+  const h = harness(q),
+    a = h.session.data.active;
+  const answers = (a.answers[q.slot] = {
+    code: q.code + '\n# student draft',
+    'valid-own-inputs': JSON.stringify({ c0: { inputs: ['1', '2'] } }),
+    'invalid-own-inputs': JSON.stringify({ c1: { inputs: ['x', '1'] } }),
+  });
+  const cases = studentCases(q, answers);
+  for (const c of cases.filter((c) => c.independent))
+    answers[c.expectedPart] = JSON.stringify(
+      withTestOutcome(answers[c.expectedPart], c, { type: 'str', value: 'Online', consumed: '1' }),
+    );
+  assert.equal(await h.python.execute(q.slot, 'run', false, { allTests: true }), false);
+  assert.equal(h.requests.length, 0, 'missing expectation in the later group blocks the whole run');
+  const invalid = cases.find((c) => !c.independent);
+  answers[invalid.expectedPart] = JSON.stringify({ type: 'str', value: 'Online', consumed: '2' });
+  for (const document of ['original', 'edited']) {
+    const offset = h.requests.length;
+    const run = h.python.execute(q.slot, 'run', false, { allTests: true, document });
+    for (let i = 0; i < cases.length; i++) {
+      await new Promise(setImmediate);
+      assert.equal(h.requests[offset + i].source, document === 'original' ? q.code : answers.code);
+      h.finish();
+    }
+    assert.equal(await run, true);
+    assert.deepEqual(
+      h.requests.slice(offset).map((r) => r.cases[0].inputs),
+      [['1'], ['2'], ['x', '1']],
+    );
+    assert.deepEqual(
+      a.python[q.slot].evidence.slice(offset).map((r) => r.caseId),
+      cases.map((c) => c.id),
+    );
+    assert.match(a.pythonStatus, /All 3 tests finished/);
+  }
+  assert.equal(
+    a.python[q.slot].checks,
+    0,
+    'running configured values does not perform repair marking',
+  );
+});
+
 test('Task 2 continues after returns, exceptions and timeouts, but Stop cancels remaining inputs', async () => {
   const q = { ...esp[0], ...esp[0].variations[5], variation: 5 };
   const h = harness(q),

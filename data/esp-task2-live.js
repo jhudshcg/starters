@@ -2039,7 +2039,7 @@ function ownTests(q, key, tests) {
     q.parts.find((p) => p.id === 'd0-cause').prompt = 'For whole-pound amounts up to £10, which statement explains Original code?';
     q.parts.find((p) => p.id === 'd1-cause').prompt = 'For whole-pound amounts above £10, which statement explains Original code?';
   }
-  q.prompt = 'Choose your own inputs and record requirement-led expected results before running. Run each test on Original code and record its actual result. Apply any repairs in Your code, then rerun your tests to compare.';
+  q.prompt = 'Choose your own inputs and record requirement-led expected results before running. Run each test on Original code and record its actual result. Edit and apply any repairs in Your code, then rerun your tests to compare. When the code behaves as required and all tests pass, move to the next question.';
   q.hint = q.hint.replaceAll('supplied test', 'test').replaceAll('supplied number', 'chosen number');
   return q;
 }

@@ -1,45 +1,49 @@
-# Current handover — 21 October 2026
+# Current handover — 22 October 2026
 
 ## Current state and next action
 
-Practice-area entry now opens a question set immediately for Puzzles, Coding practice, Core and ESP. The profile's last available focus/subsection/challenge persists across visits without expiry; an active matching set resumes. New profiles use the first discoverable focus, and stale choices fall back to available sets. Breadcrumbs follow the same behaviour. Leave guards and direct codes remain unchanged.
+The compact floating-editor changes, confirmed execution change and latest icon/notice/spacing refinements are implemented and verified locally. Run & test/Reset stay on the same row as the tabs. Tabs overlap under space pressure with the selected tab above its neighbour; exposed inactive ends support pointer selection, Home/End retain keyboard selection, and narrow labels have full title tooltips. Tab padding is 2px smaller on each side. Actual overlap adds a subtle shadow towards the inactive tab. Below 440px, Run & test/Reset use matching play/question-mark and cross/loop-arrow icons with accessible names, tooltips and 44px targets; exactly 440px retains text.
 
-No pending implementation, commit or deployment. Next action: respond to feedback. Completed work and earlier decisions are recorded chronologically in DEV_LOG.md.
+The width toggle sits inside the bottom-left code area above its scrollbar, with no extra row. Ordinary/expanded code surfaces have rounded bottom corners. Explicit content conditions prevent an empty feedback surface. The normal-flow grip spacer reserves at least 4px before the following content. The earlier requested prompt and notice removals remain. Removed the redundant test-plan run instruction. Activity.svelte temporarily hides the set-update notice via showSetUpdateNotice=false, preserving compatibility metadata.
+
+Run & test and Ctrl/Cmd + Enter run all configured student tests on the current tab after every expected result is complete. Individual test-plan buttons still run their own group. Authored repair checks and marking run on submission. The tooltip uses the exact requested wording. Original code now has keyboard focus through the shared adapter, enabling its shortcut while remaining read-only.
+
+No pending implementation, commit or deployment. Next action: review the local presentation against user feedback, particularly the custom icons and overlap shadows at phone widths. DEV_LOG.md contains the completed history and initial failures. The scoped project-refactor-checks documentation review remains recorded there; later broad review stages/discussion gates were not run.
+
+## Current work plan — complete
+
+- [x] Hide the set-update notice and remove redundant run guidance.
+- [x] Add grip clearance, overlap shadows and icons below 440px.
+- [x] Verify diagnostics/build, breakpoint fitting, pointer/keyboard access and scrolling; inspect screenshots.
+- [x] Update guidance, development history and this handover.
 
 ## Latest verification
 
-- [x] Six focused selection/session tests pass: defaults across all banks, active-set resume, profile isolation, lasting recall, stale selection fallback and cancelled replacement.
-- [x] Svelte check: zero errors/warnings; /starters build and git diff --check pass.
-- [x] browser-migration.mjs --entry-only: all four entry links, breadcrumb recall, 30-day recall and reload pass.
-- Logs: /private/tmp/practice-entry-{tests,check,build,browser}.log. Initial test-fixture assumptions and a navigation wait race were corrected. Broader navigation/home-card assertions were updated but those full suites were not rerun.
+22 October tooltip fix: decorative action SVGs ignore pointer events so hover reaches the native-title button. Svelte/build/diff and docking checks pass, including direct button targeting/title availability at 360px. Native tooltip popup appearance was not captured. Logs: /private/tmp/editor-tooltip-{check,build,browser}.log. No pending implementation.
 
-## Preserved Task 2 behaviour
+Latest icon polish: both outlines inset 3px inside 44px targets; Reset uses a smooth arc and clear arrowhead. Svelte/build/diff checks and --dock-layout-only pass; inspected 360px screenshot. Logs: /private/tmp/editor-icon-polish-{check,build,browser}.log. No pending work; awaiting visual feedback.
 
-One Run action tests all chosen valid inputs independently in order after all expectations are complete. Returns, exceptions and per-input timeouts continue to later inputs; Stop/edits cancel the group. Each input retains its own outcomes and stable evidence identity. Invalid sequences and parameter tests are unchanged. Old single-input responses remain compatible; queued multi-input runs need rerunning. Timeout output/input count are unknown and cannot earn recorded-outcome credit. The previous 19-test and real-runtime browser verification is recorded in DEV_LOG.md and /private/tmp/task2-group-{tests,check,build,browser}.log.
+- Svelte: zero errors/warnings; final /starters build, browser-script syntax and git diff --check pass.
+- --code-layout-only passes at 360/439/440/441/743/744/820/821/834/1280px: icon threshold/labels/targets, shadow presence/direction, grip clearance, overlapping tab pointer/Home/End selection and no page overflow.
+- An older revision-31 code opens current content with no update notice; compatibility comparison still reports changed content.
+- --dock-layout-only and --mobile-scroll-only pass pinned controls, focus clearance, resizing and release. Inspected /private/tmp/editor-dock-360.png and /private/tmp/task2-continuous-outline.png.
+- Logs: /private/tmp/editor-icons-{check,build,layout,dock,mobile}.log.
+- Reused preceding execution verification: 20 focused service/domain tests and real-runtime button/Cmd/Ctrl runs on both tabs, exceptions/timeouts, evidence/reload and 9/9 submission. Latest refinements do not change execution.
+- Legacy smoke notice expectation was updated but not run. Broader presentation/full workflow and full suite were not rerun; no physical-device, enlarged-text, screen-reader or classroom acceptance claim.
 
-## Preserved layout
+## Relevant files and running preview
 
-Coding questions use 60/40 columns from 744px and one column below. Main cards are full width through 820px inclusive, with outer gutters above. Shared controls favour the 744px stacking boundary to conserve vertical space; compact spacing uses <=820px. Code fonts use 14px by default and 12.5px at <=440px, without line wrapping.
-
-Only tabs/code/grip pin: automatic pinned height is 45% of viewport height below 744px and 65% above; manual resizing overrides it. The initial default cap uses max(viewport width × 1.4, viewport height × 0.75). Only the grip projects below the frame. Guidance/results and answers scroll normally. The triangle control at >=744px expands code over the answer column without reflow or height changes; it hides/collapses below 744px. Tabs remain fixed and single-line; original/edited documents retain drafts and scroll position. Earlier layout checks and visual acceptance are in DEV_LOG.md.
-
-## Relevant files and commands
-
-- Current entry change: js/practice-selection.js; src/lib/application/practice.js; src/lib/components/practice/Breadcrumbs.svelte.
-- node --test tests/practice-selection.test.js tests/framework-session.test.js
-- STARTERS_PREVIEW_URL=http://127.0.0.1:8791/starters node scripts/browser-migration.mjs --entry-only
-
-- js/task2-tests.js; js/code-history.js; src/lib/application/python-practice.js.
-- src/lib/components/practice/{Task2Response,TestPlan,LivePython,Question}.svelte; src/lib/components/progress/CodeHistory.svelte.
-- tests/{esp-task2,editor-workflow}.test.js; scripts/browser-task2-independent.mjs; scripts/browser-editor-workflow.mjs.
-- docs/esp/task-2-designs.md; docs/local-development.md.
-- node --test tests/esp-task2.test.js tests/editor-workflow.test.js
+- src/lib/components/practice/Activity.svelte; src/lib/components/practice/LivePython.svelte; src/lib/application/python-practice.js; prototypes/pyscript/adapter.js.
+- tests/editor-workflow.test.js; scripts/browser-editor-workflow.mjs; scripts/browser-task2-independent.mjs.
+- docs/style-guide.md; docs/esp/task-2-designs.md; docs/local-development.md; docs/spec-common.md; docs/decisions/2026-09-student-experience-and-shared-codes.md.
+- Preserve the preceding task's data/esp-task2-live.js, data/code-history.json and js/code-compatibility.js changes (revision 32); live/ includes both tasks. No new bank revision was needed for this follow-on.
+- Preview: http://127.0.0.1:8791/starters, serving /private/tmp/starters-controls-preview (symlink to live/).
+- Dedicated Chrome: /private/tmp/starters-controls-browser, CDP9227. Scripts clear only this isolated profile. Server/browser are running.
 - STARTERS_PREVIEW_URL=http://127.0.0.1:8791/starters node scripts/browser-editor-workflow.mjs --independent-inputs-only
-- Other targeted browser modes: --presentation-only, --width-overlay-only, --code-layout-only, --editor-theme-only, --dock-layout-only, --mobile-scroll-only.
 - npm run check; BASE_PATH=/starters npm run build
 
-## Runtime and limits
+## Preserved behaviour
 
-Generated live/ uses BASE_PATH=/starters. Preview remains at http://127.0.0.1:8791/starters, serving /private/tmp/starters-editor-final-preview. Dedicated Chrome uses /private/tmp/starters-editor-browser and CDP9227; browser suites clear only this isolated profile. Port 8766 is unrelated.
+Practice entry immediately opens/resumes all four banks and remembers available choices indefinitely. Grouped input execution keeps separate evidence, continues after exceptions/timeouts, and cancels on Stop/edits. Prior verification remains in DEV_LOG.md.
 
-Preserve the substantial existing working tree, vendor cache/licences and prior feature changes. No physical-device/high-zoom, screen-reader, college Edge/Windows or classroom timing claim. No commit or deployment. Completed session review gates remain in the development history; no new broad refactoring is authorised.
+Coding questions use 60/40 columns from 744px and one column below; main cards reach viewport edges through 820px. Code fonts remain 14px, or 12.5px at <=440px, without soft wrapping. Automatic pinned code height remains 45% of viewport height below 744px and 65% above; manual resizing overrides it. Width expansion overlays the answer column without reflow and hides/collapses below 744px.

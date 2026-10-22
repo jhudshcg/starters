@@ -135,9 +135,11 @@ export function createPythonPractice({ session, activeSet, persist, render, load
           (cases.some((c) => c.id === saved.testCase) ? saved.testCase : cases[0].id);
         const selected = cases.find((c) => c.id === id);
         if (!selected) throw Error('Choose a test in the test plan.');
-        const group = selected.independent
-          ? cases.filter((c) => c.baseId === selected.baseId)
-          : [selected];
+        const group = options.allTests
+          ? cases
+          : selected.independent
+            ? cases.filter((c) => c.baseId === selected.baseId)
+            : [selected];
         ownTests = group.map((c) => {
           const test = studentTest(q, answers, c.id);
           const expected = testOutcome(answers[c.expectedPart], c);
@@ -284,7 +286,7 @@ export function createPythonPractice({ session, activeSet, persist, render, load
       a.pythonStatus =
         action === 'check'
           ? 'Check finished.'
-          : `${ownTests?.length > 1 ? `All ${ownTests.length} inputs` : (ownTests?.[0].name ?? 'Run')} finished on ${document === 'original' ? 'Original code' : 'Your code'}.`;
+          : `${options.allTests ? `All ${ownTests.length} tests` : ownTests?.length > 1 ? `All ${ownTests.length} inputs` : (ownTests?.[0].name ?? 'Run')} finished on ${document === 'original' ? 'Original code' : 'Your code'}.`;
       return true;
     } catch (error) {
       if (current() && error.message.startsWith('Stopped after 5 seconds') && action === 'check') {

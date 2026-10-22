@@ -153,7 +153,7 @@ try{
  assert.ok(await evaluate('Boolean(document.querySelector("#submit"))'));
  await evaluate('document.querySelector("#global-code").value="BIAkAiAg";document.querySelector("#global-code-form").requestSubmit()');
  await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(legacyExamDisplay)}`);
- assert.equal(await evaluate('document.querySelector(".set-update-notice").textContent'),'This set has been updated since this code was created.');
+ assert.equal(await evaluate('document.querySelector(".set-update-notice")'), null);
  await send('Page.reload');await until(`document.querySelector("#display-code")?.textContent===${JSON.stringify(legacyExamDisplay)}`);
  assert.ok(await evaluate('Boolean(document.querySelector(".set-update-notice"))'));
  assert.equal(await evaluate('Boolean(document.querySelector("dialog"))'),false);

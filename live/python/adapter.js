@@ -89,7 +89,8 @@ export async function createEditor(
       EditorView.editable.of(!readOnly),
       EditorState.transactionFilter.of((tr) => (readOnly && tr.docChanged ? [] : tr)),
       editorTheme(viewModule, language),
-      EditorView.contentAttributes.of({ 'aria-label': 'Python code' }),
+      // Read-only documents still need keyboard focus for selection and run shortcuts.
+      EditorView.contentAttributes.of({ 'aria-label': 'Python code', tabindex: '0' }),
       EditorView.theme({
         '.cm-content': { fontFamily: 'ui-monospace, monospace' },
         '.cm-line': { padding: '0 5px' },

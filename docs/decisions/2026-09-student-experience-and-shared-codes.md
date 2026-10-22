@@ -30,7 +30,7 @@ Teachers put codes in lesson materials; students share and revisit them. A hint 
 
 Adopted rules:
 
-- Corrections/refinements keep permanent question and variation IDs. Old codes open current content and show the discreet notice: “This set has been updated since this code was created.”
+- Corrections/refinements keep permanent question and variation IDs. Old codes open current content and show the discreet notice: “This set has been updated since this code was created.” **21 October 2026 update:** temporarily hide this notice; retain compatibility detection and historical metadata.
 - Substantive changes to the task, assessed concept or required solution create a new question ID. Do not repurpose an existing identity simply to avoid adding a question.
 - Prefer retirement for superseded content: exclude it from new random selections while preserving deliberate access by code.
 - Removal is for content that should no longer be accessible. Affected sets explain the unavailable item and offer an explicit replacement-set action. Never silently substitute questions.

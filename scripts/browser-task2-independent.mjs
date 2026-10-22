@@ -53,6 +53,18 @@ export async function independentInputs({ b, open, replace, wait, base }) {
   await outcome(scope('c1-own-expected', 'c1'), 'str', 'Online', 2);
   await run(scope('c1-own-actual', 'c1'), 'Original code', 'Inputs used: 2');
   await outcome(scope('c1-own-actual', 'c1'), 'str', 'Online', 2);
+  await b.click('#tab-36-original');
+  const runAll = `[...document.querySelectorAll('.editor-actions button')].find(b=>b.textContent.trim()==='Run & test')`;
+  assert.equal(
+    await b.evaluate(`${runAll}.title`),
+    'Runs the configured test values on the code in the current tab. Ctrl/Cmd + Enter does the same.',
+  );
+  await b.evaluate(`${runAll}.click()`);
+  await wait(
+    `document.body.innerText.includes('All 3 tests finished on Original code.') && !${runAll}.disabled`,
+  );
+  await b.click('#tab-36-edited');
+
   await replace(
     36,
     'def read_platform():\n    selection = input()\n    if selection == "2":\n        while True:\n            pass\n    return "Online"',
@@ -63,7 +75,73 @@ export async function independentInputs({ b, open, replace, wait, base }) {
     /Execution stopped after 5 seconds/,
   );
   await replace(36, q.parts.find((p) => p.kind === 'python').answer);
-  await run(actual(ids[0]), 'Your code', 'Returned "In-store"');
+  await b.evaluate(`${runAll}.click()`);
+  await wait(
+    `document.body.innerText.includes('All 3 tests finished on Your code.') && !${runAll}.disabled`,
+  );
+  assert.match(
+    await b.evaluate(`document.querySelector(${JSON.stringify(actual(ids[0]))}).innerText`),
+    /Returned "In-store"/,
+  );
+  await b.click('#tab-36-original');
+  await b.evaluate(
+    `document.querySelector('#editor-36-original .py-editor-input > div').shadowRoot.querySelector('.cm-content').focus()`,
+  );
+  assert.ok(
+    await b.evaluate(
+      `(() => {const root=document.querySelector('.editor-document:not([hidden]) .py-editor-input > div').shadowRoot;return root.activeElement===root.querySelector('.cm-content');})()`,
+    ),
+    'visible code receives keyboard focus',
+  );
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+    modifiers: 4,
+  });
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyUp',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+    modifiers: 4,
+  });
+  await wait(
+    `document.body.innerText.includes('All 3 tests finished on Original code.') && !${runAll}.disabled`,
+  );
+  assert.match(
+    await b.evaluate(`document.querySelector(${JSON.stringify(actual(ids[0]))}).innerText`),
+    /EOFError/,
+  );
+  await b.click('#tab-36-edited');
+  await b.evaluate(
+    `document.querySelector('#editor-36-edited .py-editor-input > div').shadowRoot.querySelector('.cm-content').focus()`,
+  );
+  assert.ok(
+    await b.evaluate(
+      `(() => {const root=document.querySelector('.editor-document:not([hidden]) .py-editor-input > div').shadowRoot;return root.activeElement===root.querySelector('.cm-content');})()`,
+    ),
+    'visible code receives keyboard focus',
+  );
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyDown',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+    modifiers: 2,
+  });
+  await b.send('Input.dispatchKeyEvent', {
+    type: 'keyUp',
+    key: 'Enter',
+    code: 'Enter',
+    windowsVirtualKeyCode: 13,
+    modifiers: 2,
+  });
+  await wait(
+    `document.body.innerText.includes('All 3 tests finished on Your code.') && !${runAll}.disabled`,
+  );
+
   for (const p of q.parts.filter((p) => p.control === 'select'))
     await b.change(`[data-part="${p.id}"]`, p.answer);
   await b.evaluate(`document.querySelector('.test-plan').open=true`);
@@ -122,6 +200,6 @@ export async function independentInputs({ b, open, replace, wait, base }) {
   assert.match(await b.evaluate('document.body.innerText'), /In-store/);
   assert.equal(b.errors.length, 0, JSON.stringify(b.errors));
   console.log(
-    'Grouped valid runs continue after exceptions/timeouts; ordered invalid sequence, stable removal/edit/reload evidence, 9/9 marking, mobile fit and saved review passed.',
+    'Header/button and Cmd/Ctrl shortcuts run all configured tests on the current tab; grouped valid runs continue after exceptions/timeouts; ordered invalid sequence, stable removal/edit/reload evidence, 9/9 marking, mobile fit and saved review passed.',
   );
 }

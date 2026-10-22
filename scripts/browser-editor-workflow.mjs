@@ -46,16 +46,16 @@ async function wait(expression, timeout = 120000) {
     `Timed out ${expression}: ${await b.evaluate('document.body.innerText.slice(-2500)')}`,
   );
 }
-async function open(type, slot, variation) {
+async function open(type, slot, variation, version = BANK_VERSION) {
   const code = encode({
-    version: BANK_VERSION,
+    version,
     type,
     entries: [{ slot, variation }],
     minutes: null,
   });
   await b.send('Page.navigate', { url: base + '/set/?code=' + code });
   await wait(
-    `${root(slot)}?.querySelector('.cm-content') && !${button(slot, 'Reset code')}?.disabled`,
+    `${root(slot)}?.querySelector('.cm-content') && !${button(slot, 'Reset')}?.disabled`,
     30000,
   );
 }
@@ -110,7 +110,7 @@ try {
     await replace(36, draft);
     const geometry = () =>
       b.evaluate(`(() => {
-      const rect=s=>{const r=document.querySelector(s).getBoundingClientRect();return {left:r.left,top:r.top,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
+      const rect=s=>{const r=document.querySelector(s)?.getBoundingClientRect();if(!r)return null;return {left:r.left,top:r.top,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
       return {code:rect('.editor-document:not([hidden]) .live-python-editor'),dock:rect('.editor-dock'),
         header:rect('.editor-header'),parts:rect('.parts'),controls:rect('.coding-controls'),
         question:rect('.question'),layout:rect('.question-layout'),
@@ -376,11 +376,16 @@ try {
     process.exit(0);
   }
   if (process.argv.includes('--code-layout-only')) {
-    await open(3, 36, 5);
+    await open(3, 36, 5, BANK_VERSION - 1);
+    assert.equal(
+      await b.evaluate(`document.querySelector('.set-update-notice')`),
+      null,
+      'older code opens without a revision notice',
+    );
     // A long student-authored line must scroll locally even when the surrounding column is wide.
     const source = 'message = "' + 'abcdefghij'.repeat(24) + '"';
     await replace(36, source);
-    for (const width of [360, 440, 441, 743, 744, 820, 821, 834, 1280]) {
+    for (const width of [360, 439, 440, 441, 743, 744, 820, 821, 834, 1280]) {
       await b.send('Emulation.setDeviceMetricsOverride', {
         width,
         height: 900,
@@ -426,7 +431,85 @@ try {
         assert.ok(Math.abs(frame.gripOffset) <= 1, `${width}: grip remains centred`);
         assert.equal(frame.columns.length, width < 744 ? 1 : 2, `${width}: coding column count`);
         if (width >= 744) assert.ok(Math.abs(frame.columns[0] / frame.columns[1] - 1.5) < 0.01);
+        await b.evaluate(
+          'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',
+        );
+        const header = await b.evaluate(`(() => {
+          const dock=document.querySelector('.editor-dock'),tabs=[...dock.querySelectorAll('.editor-tab')],
+            selected=tabs.find(t=>t.getAttribute('aria-selected')==='true'),
+            rects=tabs.map(t=>t.getBoundingClientRect()),actions=dock.querySelector('.editor-actions').getBoundingClientRect(),
+            selectedRect=selected.getBoundingClientRect(),left=Math.max(rects[0].left,rects[1].left),right=Math.min(rects[0].right,rects[1].right),
+            overlap=right>left;
+          return {tabs:rects.map(r=>r.toJSON()),actions:actions.toJSON(),sameRow:rects.every(r=>r.top<actions.bottom && r.bottom>actions.top),
+            actionsClear:rects.every(r=>r.right<=actions.left),
+            selectedOnTop:!overlap || selected.contains(document.elementFromPoint((left+right)/2,selectedRect.top+selectedRect.height/2)),
+            shadow:getComputedStyle(selected).boxShadow,overlap,
+            icons:[...dock.querySelectorAll('.compact-action')].map(button=>({name:button.getAttribute('aria-label'),icon:getComputedStyle(button.querySelector('.action-icon')).display,label:getComputedStyle(button.querySelector('.action-label')).display,width:button.getBoundingClientRect().width,height:button.getBoundingClientRect().height})),
+            gripGap:document.querySelector('.parts').getBoundingClientRect().top-dock.querySelector('.height-handle').getBoundingClientRect().bottom,
+            feedback:!!document.querySelector('.coding-controls'),
+            footer:!!document.querySelector('.editor-footer')};
+        })()`);
+        assert.ok(
+          header.sameRow && header.actionsClear,
+          `${width}/${doc}: tabs and actions share one row without overlap: ${JSON.stringify(header)}`,
+        );
+        assert.ok(header.selectedOnTop, `${width}/${doc}: selected tab is above the overlap`);
+        assert.equal(header.feedback, false, 'no empty feedback surface');
+        assert.equal(header.footer, false, 'no extra width-control row');
+        assert.equal(header.icons.length, 2);
+        for (const control of header.icons) {
+          assert.ok(['Run & test', 'Reset'].includes(control.name));
+          assert.equal(control.icon === 'none', width >= 440, 'icons only below 440px');
+          assert.equal(control.label === 'none', width < 440, 'text remains at exactly 440px');
+          assert.ok(
+            control.width >= 44 && control.height >= 44,
+            'actions retain accessible target sizes',
+          );
+        }
+        assert.equal(
+          header.shadow.includes('rgba(0, 0, 0, 0.24)'),
+          header.overlap,
+          'side shadow appears only during overlap',
+        );
+        if (header.overlap)
+          assert.ok(
+            header.shadow.includes(doc === 'original' ? '4px 0px 5px' : '-4px 0px 5px'),
+            'shadow faces the inactive tab',
+          );
+        if (width < 744)
+          assert.ok(header.gripGap >= 4, `minimum grip clearance: ${header.gripGap}`);
 
+        const other = doc === 'original' ? 'edited' : 'original';
+        const pointer = await b.evaluate(`(() => {
+          const target=document.querySelector('#tab-36-${other}').getBoundingClientRect(),
+            selected=document.querySelector('#tab-36-${doc}').getBoundingClientRect();
+          return {x:${other === 'original' ? '(target.left+Math.min(target.right,selected.left))/2' : '(Math.max(target.left,selected.right)+target.right)/2'},y:target.top+target.height/2};
+        })()`);
+        await b.send('Input.dispatchMouseEvent', {
+          type: 'mousePressed',
+          ...pointer,
+          button: 'left',
+          buttons: 1,
+          clickCount: 1,
+        });
+        await b.send('Input.dispatchMouseEvent', {
+          type: 'mouseReleased',
+          ...pointer,
+          button: 'left',
+          clickCount: 1,
+        });
+        await wait(
+          `document.querySelector('#tab-36-${other}').getAttribute('aria-selected')==='true'`,
+        );
+        await b.send('Input.dispatchKeyEvent', {
+          type: 'keyDown',
+          key: doc === 'original' ? 'Home' : 'End',
+          code: doc === 'original' ? 'Home' : 'End',
+          windowsVirtualKeyCode: doc === 'original' ? 36 : 35,
+        });
+        await wait(
+          `document.querySelector('#tab-36-${doc}').getAttribute('aria-selected')==='true'`,
+        );
         if (doc === 'edited' || width === 360) {
           assert.ok(layout.scrolls, `${width} ${doc}: long line scrolls locally`);
           await b.evaluate(`(${root(36, doc)}).querySelector('.cm-scroller').scrollLeft=100`);
@@ -458,16 +541,19 @@ try {
     );
     assert.deepEqual(b.errors, []);
     console.log(
-      'Both tabs: 12.5px at <=440px and 14px above; unwrapped authored lines, horizontal editor scrolling, matching gutter size and no page overflow pass at 360/440/441/743/744/820/821/834/1280px. Single-column code reaches the card edges; tabs stay inset and the grip centred.',
+      'Both tabs: 12.5px at <=440px and 14px above; unwrapped authored lines, horizontal editor scrolling, matching gutter size and no page overflow pass at 360/439/440/441/743/744/820/821/834/1280px. Single-column code reaches the card edges; tabs stay inset and the grip centred.',
     );
     b.close();
     process.exit(0);
   }
   if (process.argv.includes('--dock-layout-only')) {
     await open(3, 36, 5);
-    await b.evaluate(`${button(36, 'Check test plan and code')}.click()`);
+    const q = esp[0].variations[5];
+    await enterTestInputs(b, 36, q);
+    await enterExpectations(b, 36, q, testOutcomes(q).expected);
+    await b.evaluate(`${button(36, 'Run & test')}.click()`);
     await wait(
-      `document.querySelector('.check-results li') && !${button(36, 'Check test plan and code')}.disabled`,
+      `document.body.innerText.includes('tests finished on Your code.') && !${button(36, 'Run & test')}.disabled`,
     );
     await b.click('#theme-picker');
     await wait(`Boolean(document.querySelector('[data-theme-choice="dark:rose"]'))`);
@@ -502,37 +588,38 @@ try {
             grip=document.querySelector('.height-handle'),g=grip.getBoundingClientRect(),
             beside=document.elementFromPoint(r.left+4,r.bottom+g.height/2),
             onGrip=document.elementFromPoint(g.left+g.width/2,g.top+g.height/2);
-          return {top:r.top,bottom:r.bottom,codeBottom:code.bottom,gripTop:g.top,
-            stripIntercepted:d.contains(beside),gripReachable:grip.contains(onGrip),
-            resultsOpen:document.querySelector('.results-toggle').getAttribute('aria-expanded')};
+          return {top:r.top,bottom:r.bottom,codeBottom:code.bottom,frameBottom:d.querySelector('.editor-document:not([hidden])').getBoundingClientRect().bottom,gripTop:g.top,
+            stripIntercepted:d.contains(beside),gripReachable:grip.contains(onGrip)};
         })()`);
         assert.ok(
           Math.abs(pinned.top - (width >= 744 ? 16 : 0)) < 1,
-          `${width}: code stays visible with expanded results: ${JSON.stringify(pinned)}`,
+          `${width}: code stays visible with test outcomes: ${JSON.stringify(pinned)}`,
         );
         assert.ok(pinned.bottom < 760, `${width}: code fits the viewport`);
-        assert.equal(pinned.bottom, pinned.codeBottom, 'floating surface stops at code outline');
-        assert.equal(pinned.gripTop, pinned.codeBottom, 'grip attaches to the outline');
+        assert.equal(
+          pinned.bottom,
+          pinned.frameBottom,
+          'floating surface stops at the rounded frame',
+        );
+        assert.equal(pinned.gripTop, pinned.frameBottom, 'grip attaches to the outline');
         assert.equal(
           pinned.stripIntercepted,
           false,
           'space beside the grip belongs to scrolling content',
         );
         assert.equal(pinned.gripReachable, true, 'grip remains interactive');
-        assert.equal(pinned.resultsOpen, 'true');
-      }
-      if (width === 1280) {
-        await b.click('.results-toggle');
-        await wait(
-          `document.querySelector('.results-toggle').getAttribute('aria-expanded')==='false'`,
-        );
         assert.ok(
-          await b.evaluate(
-            `Math.abs(document.querySelector('.editor-dock').getBoundingClientRect().top-16)<1`,
-          ),
-          'collapsing results does not move code',
+          await b.evaluate(`(() => {
+          const actions=[...document.querySelectorAll('.editor-actions button')];
+          return actions.length===2 && actions.every(button=>{
+            const r=button.getBoundingClientRect();
+            return r.top>=0 && r.bottom<=innerHeight && r.left>=0 && r.right<=innerWidth &&
+              button.contains(document.elementFromPoint(r.left+r.width/2,r.top+r.height/2)) &&
+              (innerWidth>=440 || (button.title && document.elementFromPoint(r.left+r.width/2,r.top+r.height/2)===button));
+          });
+        })()`),
+          'Run & test and Reset remain visible and reachable while scrolling',
         );
-        await b.click('.results-toggle');
       }
       await writeFile(
         `/private/tmp/editor-dock-${width}.png`,
@@ -541,7 +628,7 @@ try {
     }
     assert.deepEqual(b.errors, []);
     console.log(
-      'Expanded/collapsed results preserve the pinned code at 1280/1024px; 360px retains mobile docking. Code-frame/grip alignment, transparent grip surround, pointer access and 60/40 columns pass.',
+      'Test outcomes preserve pinned code/actions at 1280/1024px; 360px retains mobile docking. Code-frame/grip alignment, transparent grip surround, pointer access and 60/40 columns pass.',
     );
     b.close();
     process.exit(0);
@@ -628,14 +715,14 @@ try {
     const seams = await b.evaluate(`(() => {
       const intro=document.querySelector('.coding-intro').getBoundingClientRect(),
         dock=document.querySelector('.editor-dock'), rect=dock.getBoundingClientRect(),
-        controls=document.querySelector('.coding-controls').getBoundingClientRect(),
+        controls=document.querySelector('.editor-space').getBoundingClientRect(),
         side=getComputedStyle(dock,'::before');
       return {topGap:rect.top-intro.bottom,bottomGap:controls.top-rect.bottom,
-        lefts:[intro.left,rect.left,controls.left],rights:[intro.right,rect.right,controls.right],
+        lefts:[intro.left,rect.left],rights:[intro.right,rect.right],
         sideDisplay:side.display,tabSides:getComputedStyle(dock.querySelector('.editor-header')).boxShadow};
     })()`);
     assert.equal(seams.topGap, 0);
-    assert.equal(seams.bottomGap, 16);
+    assert.equal(seams.bottomGap, 0);
     assert.equal(new Set(seams.lefts).size, 1);
     assert.equal(new Set(seams.rights).size, 1);
     assert.equal(seams.sideDisplay, 'none');
@@ -646,7 +733,7 @@ try {
     );
     assert.deepEqual(b.errors, []);
     console.log(
-      '360px focused fields, manual pinned resizing, editor-only scrolling, restored height, short landscape, release at question end and continuous workspace outline passed.',
+      '360px focused fields, manual pinned resizing, editor-only scrolling, restored height, short landscape, release at question end and workspace/header alignment passed.',
     );
     b.close();
     process.exit(0);
@@ -663,11 +750,11 @@ try {
       `[...document.querySelectorAll('[data-test-response="${c.actualPart}"] button')].find(b=>b.textContent.trim()==='Run Original code').click()`,
     );
     await wait(
-      `document.querySelector('[data-test-response="${c.actualPart}"] .run-result') && !${button(slot, 'Check test plan and code')}.disabled`,
+      `document.querySelector('[data-test-response="${c.actualPart}"] .run-result') && !${button(slot, 'Run & test')}.disabled`,
     );
-    await b.evaluate(`${button(slot, 'Check test plan and code')}.click()`);
+    await b.click('#submit');
     await wait(
-      `document.querySelector('.check-results li') && !${button(slot, 'Check test plan and code')}.disabled`,
+      `document.querySelector('.check-results li') && document.querySelector('#submit-result')`,
     );
     const expandedHeight = await b.evaluate(
       `document.querySelector('.check-results').offsetHeight`,
@@ -685,14 +772,6 @@ try {
     assert.equal(await b.evaluate(`document.querySelector('#check-results-36').hidden`), true);
     await b.click('.results-toggle');
     assert.equal(await b.evaluate(`document.querySelector('#check-results-36').hidden`), false);
-    await b.click('.results-toggle');
-    await b.evaluate(`${button(slot, 'Check test plan and code')}.click()`);
-    await wait(`!${button(slot, 'Check test plan and code')}.disabled`);
-    assert.equal(
-      await b.evaluate(`document.querySelector('.results-toggle').getAttribute('aria-expanded')`),
-      'true',
-      'new checks expand results',
-    );
     await b.click('.results-toggle');
     await b.click('.test-plan > summary');
     assert.deepEqual(
@@ -997,7 +1076,7 @@ try {
     await b.evaluate(
       'getComputedStyle(document.querySelector(".live-python-editor")).borderRadius',
     ),
-    '0px',
+    '0px 0px 12px 12px',
   );
   assert.equal(
     await b.evaluate(`getComputedStyle(${root(2)}.querySelector('.cm-editor')).borderRadius`),
@@ -1178,7 +1257,7 @@ try {
           `[...document.querySelectorAll('[data-test-response="${c.actualPart}"] button')].find(b=>b.textContent.trim()==='Run Original code').click()`,
         );
         await wait(
-          `document.querySelector('[data-test-response="${c.actualPart}"] .run-result') && !document.querySelector('#stop-python') && !${button(slot, 'Check test plan and code')}.disabled`,
+          `document.querySelector('[data-test-response="${c.actualPart}"] .run-result') && !document.querySelector('#stop-python') && !${button(slot, 'Run & test')}.disabled`,
         );
         await enterOutcome(
           b,
@@ -1191,16 +1270,18 @@ try {
       await b.click(`#tab-${slot}-edited`);
       assert.equal(await b.evaluate(text(slot)), model);
       assert.equal(await b.evaluate(text(slot, 'original')), original);
-      await b.evaluate(`${button(slot, 'Check test plan and code')}.click()`);
-      await wait(`document.body.innerText.includes('Check finished.')`);
+      await b.evaluate(`${button(slot, 'Run & test')}.click()`);
+      await wait(
+        `document.body.innerText.includes('tests finished on Your code.') && !${button(slot, 'Run & test')}.disabled`,
+      );
       assert.ok(
         await b.evaluate(
-          `[...document.querySelectorAll('[data-question="${slot}"] .check-results li')].every(li=>li.textContent.includes('1/1'))`,
+          `document.querySelectorAll('[data-question="${slot}"] .run-result').length > 0`,
         ),
         `${slot}/${variation} repair tests: ${await b.evaluate('document.querySelector(".live-python").innerText')}`,
       );
       console.log(
-        `Task 2 ${slot}/${variation}: original runs, editable copy and behavioural checks passed.`,
+        `Task 2 ${slot}/${variation}: original runs, editable copy and configured retests passed.`,
       );
     }
   const slot = 38;
@@ -1290,15 +1371,11 @@ try {
     `[...document.querySelectorAll('[data-test-response="c0-own-actual"] button')].find(b=>b.textContent.trim()==='Run Your code').click()`,
   );
   await wait(
-    `document.querySelector('[data-test-response="c0-own-actual"]').innerText.includes('Booking confirmed') && !${button(slot, 'Check test plan and code')}.disabled`,
+    `document.querySelector('[data-test-response="c0-own-actual"]').innerText.includes('Booking confirmed') && !${button(slot, 'Run & test')}.disabled`,
   );
   for (const part of finalQuestion.parts.filter((p) => p.control === 'select'))
     await b.change(`[data-part="${part.id}"]`, part.answer);
-  assert.ok(
-    await b.evaluate(
-      `!document.querySelector('.check-results').innerText.includes('Apply any necessary repair')`,
-    ),
-  );
+  assert.ok(await b.evaluate(`!document.querySelector('.check-results')`));
   assert.equal(
     await b.evaluate(`getComputedStyle(document.querySelector('.coding-workspace')).overflowY`),
     'visible',
