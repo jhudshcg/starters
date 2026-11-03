@@ -8,6 +8,7 @@ import test from 'node:test';
 import {
   studentCases,
   studentTest,
+  studentRunPlan,
   testReferenceRequest,
   recordedOutcome,
   testInputIds,
@@ -121,6 +122,39 @@ function completedPlan(question, answers) {
   }
   return { testReferences, evidence };
 }
+
+test('all 18 default run plans survive packing and execute without student answers', () => {
+  const packed = packBank(draft);
+  for (const [i, q] of draft.entries())
+    for (const [v, question] of q.variations.entries()) {
+      const plan = studentRunPlan(packed[i].variations[v], {}, { allTests: true });
+      assert.equal(plan.defaults, true);
+      assert.equal(plan.skipped.length, 0);
+      assert.equal(plan.tests.length, question.livePython.cases.length);
+      const results = execute({
+        source: question.code,
+        expression: 'None',
+        cases: plan.tests.map((t) => ({ label: t.id, expression: t.expression, inputs: t.inputs })),
+      });
+      assert.equal(results.length, plan.tests.length);
+      assert.ok(results.every((r) => typeof r.stdout === 'string'));
+    }
+});
+
+test('a partial named-argument plan executes complete cases without substituting defaults', () => {
+  const q = draft[1].variations[2];
+  const answers = {
+    'valid-own-inputs': JSON.stringify({
+      c0: { args: { prices: '5' } },
+      c1: { args: { prices: '' } },
+    }),
+  };
+  const plan = studentRunPlan(q, answers, { allTests: true });
+  assert.equal(plan.defaults, false);
+  assert.equal(plan.tests.length, 1);
+  assert.equal(plan.skipped.length, 1);
+  assert.match(plan.tests[0].expression, /\[5\]/);
+});
 
 test('all 18 student test plans survive packing and require exact original run evidence', () => {
   const packed = packBank(draft);
@@ -383,18 +417,20 @@ test('practice checks requirement expectations independently of broken student c
   });
   assert.equal(
     await service.execute(38, 'run', false, { document: 'original', caseId: 'c0' }),
-    false,
+    true,
   );
-  assert.equal(requests.length, 0);
+  assert.equal(requests.length, 1);
+  assert.equal(a.python[38].evidence[0].expected, '{}');
   a.answers[38]['c0-own-expected'] = JSON.stringify({ type: 'str', value: 'yes', consumed: '2' });
   assert.equal(
     await service.execute(38, 'run', false, { document: 'original', caseId: 'c0' }),
     true,
   );
+  assert.equal(requests.length, 1, 'changed expectations reuse the original observation');
   const run = a.python[38].evidence[0];
   assert.deepEqual(run.inputs, ['perhaps', 'yes']);
   assert.equal(run.source, q.code);
-  assert.equal(run.expected, a.answers[38]['c0-own-expected']);
+  assert.equal(run.expected, '{}', 'reuse does not rewrite pre-run expectations');
   a.answers[38]['c0-own-actual'] = JSON.stringify({ type: 'str', value: '', consumed: '0' });
   assert.equal(await service.execute(38, 'check'), true);
   assert.notEqual(

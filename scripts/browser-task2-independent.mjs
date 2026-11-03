@@ -2,11 +2,56 @@
  * Used by browser-editor-workflow in its isolated profile; reuses its navigation/editor helpers.
  */
 import assert from 'node:assert/strict';
+import { writeFile } from 'node:fs/promises';
 import esp from '../data/esp-task2.js';
 import { enterTestInputs } from './browser-task2-inputs.mjs';
 
 export async function independentInputs({ b, open, replace, wait, base }) {
+  const runAll = `[...document.querySelectorAll('.editor-actions button')].find(b=>b.textContent.trim()==='Run & test')`;
+  // Partly entered arguments must show useful feedback instead of falling back to defaults.
+  await open(3, 37, 0);
+  await b.change('#test-37-valid-own-inputs-c0-prices', '3, 5', 'input');
+  await b.evaluate(`${runAll}.click()`);
+  await wait(
+    `document.querySelector('.run-output')?.innerText.includes('No runnable test inputs')`,
+  );
+  assert.match(await b.evaluate(`document.querySelector('.run-output').innerText`), /delivery/);
+  assert.equal(await b.evaluate(`document.querySelectorAll('.run-record').length`), 0);
   await open(3, 36, 5);
+  await b.evaluate(`${runAll}.click()`);
+  await wait(
+    `document.querySelector('.run-output')?.innerText.includes('All 2 tests finished on Your code.') && !${runAll}.disabled`,
+  );
+  assert.match(
+    await b.evaluate(`document.querySelector('.run-output').innerText`),
+    /default test values/,
+  );
+  assert.equal(await b.evaluate(`document.querySelectorAll('.run-record').length`), 4);
+  assert.equal(
+    await b.evaluate(`document.querySelectorAll('.input-entry').length`),
+    0,
+    'defaults do not fill the input cards',
+  );
+
+  // A single entered value runs before any expectations or the other group are filled.
+  await b.evaluate(
+    `[...document.querySelectorAll('[data-test-response="valid-own-inputs"] button')].find(b=>b.textContent.trim()==='Add input').click()`,
+  );
+  await b.change('#test-36-valid-own-inputs-c0-0', '1', 'input');
+  await b.evaluate(`${runAll}.click()`);
+  await wait(
+    `document.querySelector('.run-output')?.innerText.includes('finished on Your code.') && !${runAll}.disabled`,
+  );
+  assert.equal(await b.evaluate(`document.querySelectorAll('.run-record').length`), 2);
+  assert.match(
+    await b.evaluate(`document.querySelector('.run-output').innerText`),
+    /Skipped.*Test 2/,
+  );
+  assert.doesNotMatch(
+    await b.evaluate(`document.querySelector('.run-output').innerText`),
+    /default test values/,
+  );
+  await b.click('[aria-label="Remove input 1 from Test 1"]');
   const q = structuredClone(esp[0].variations[5]);
   q.parts.find((p) => p.id === 'valid-own-inputs').answer = JSON.stringify({
     c0: { inputs: ['2', '1'] },
@@ -16,7 +61,7 @@ export async function independentInputs({ b, open, replace, wait, base }) {
     `[...document.querySelectorAll('[data-test-response="c0-own-expected"] [data-test-case]')].map(e=>e.dataset.testCase)`,
   );
   assert.equal(ids.length, 2);
-  assert.equal(ids[0], 'c0');
+  assert.match(ids[0], /^c0-input-/);
   assert.match(ids[1], /^c0-input-/);
   const scope = (part, id) => `[data-test-response="${part}"] [data-test-case="${id}"]`;
   const expected = (id) => scope('c0-own-expected', id);
@@ -40,10 +85,10 @@ export async function independentInputs({ b, open, replace, wait, base }) {
     await b.evaluate(
       `document.querySelector('[data-test-response="c0-own-actual"] button').disabled`,
     ),
-    true,
+    false,
   );
-  await outcome(expected(ids[1]), 'str', 'Online', 1);
   await run(actual(ids[1]), 'Original code', 'Returned "Online"');
+  await outcome(expected(ids[1]), 'str', 'Online', 1);
   assert.match(
     await b.evaluate(`document.querySelector(${JSON.stringify(actual(ids[0]))}).innerText`),
     /EOFError/,
@@ -54,7 +99,6 @@ export async function independentInputs({ b, open, replace, wait, base }) {
   await run(scope('c1-own-actual', 'c1'), 'Original code', 'Inputs used: 2');
   await outcome(scope('c1-own-actual', 'c1'), 'str', 'Online', 2);
   await b.click('#tab-36-original');
-  const runAll = `[...document.querySelectorAll('.editor-actions button')].find(b=>b.textContent.trim()==='Run & test')`;
   assert.equal(
     await b.evaluate(`${runAll}.title`),
     'Runs the configured test values on the code in the current tab. Ctrl/Cmd + Enter does the same.',
@@ -63,6 +107,26 @@ export async function independentInputs({ b, open, replace, wait, base }) {
   await wait(
     `document.body.innerText.includes('All 3 tests finished on Original code.') && !${runAll}.disabled`,
   );
+  async function sharedResults(document) {
+    const displayed = await b.evaluate(`(() => {
+      const main=[...window.document.querySelectorAll('.run-record')].filter(r=>r.querySelector('h4').textContent.includes(${JSON.stringify(document === 'original' ? 'Original code' : 'Your code')}));
+      return main.map(r=>({main:r.querySelector('pre').textContent, card:window.document.querySelector('[data-test-case="'+r.dataset.runCase+'"] ${document === 'original' ? 'details' : 'div'}.run-result pre')?.textContent}));
+    })()`);
+    assert.equal(displayed.length, 3);
+    for (const result of displayed) {
+      assert.match(
+        result.card.split('\n')[1],
+        /^(Returned |\w+Error:|Execution stopped)/,
+        'compact cards show the outcome before printed text',
+      );
+      assert.deepEqual(
+        result.main.split('\n').filter(Boolean).sort(),
+        result.card.split('\n').filter(Boolean).sort(),
+        'main and compact displays share the same inputs and observation',
+      );
+    }
+  }
+  await sharedResults('original');
   await b.click('#tab-36-edited');
 
   await replace(
@@ -83,6 +147,47 @@ export async function independentInputs({ b, open, replace, wait, base }) {
     await b.evaluate(`document.querySelector(${JSON.stringify(actual(ids[0]))}).innerText`),
     /Returned "In-store"/,
   );
+  await sharedResults('edited');
+  await b.evaluate('window.scrollTo(0, 0)');
+  assert.ok(
+    await b.evaluate(
+      `document.querySelector('.run-output').getBoundingClientRect().top > document.querySelector('.editor-dock').getBoundingClientRect().bottom`,
+    ),
+    'full output sits below the editor',
+  );
+  await writeFile(
+    '/private/tmp/task2-output-desktop.png',
+    Buffer.from(
+      (await b.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data,
+      'base64',
+    ),
+  );
+  assert.equal(
+    await b.evaluate(
+      `document.querySelectorAll('[data-test-response="c0-own-actual"] details.run-result').length`,
+    ),
+    2,
+  );
+  assert.equal(
+    await b.evaluate(
+      `document.querySelectorAll('[data-test-response="c0-own-actual"] div.run-result').length`,
+    ),
+    2,
+  );
+  await b.click('[data-test-response="c0-own-actual"] details.run-result summary');
+  assert.equal(
+    await b.evaluate(
+      `document.querySelector('[data-test-response="c0-own-actual"] details.run-result').open`,
+    ),
+    false,
+  );
+  assert.match(
+    await b.evaluate(
+      `document.querySelector('[data-test-response="c0-own-actual"] div.run-result').innerText`,
+    ),
+    /In-store/,
+  );
+  await b.click('[data-test-response="c0-own-actual"] details.run-result summary');
   await b.click('#tab-36-original');
   await b.evaluate(
     `document.querySelector('#editor-36-original .py-editor-input > div').shadowRoot.querySelector('.cm-content').focus()`,
@@ -187,6 +292,14 @@ export async function independentInputs({ b, open, replace, wait, base }) {
     mobile: false,
   });
   assert.ok(await b.evaluate('document.documentElement.scrollWidth <= innerWidth + 1'));
+  await b.evaluate(`document.querySelector('.run-output').scrollIntoView({block:'start'})`);
+  await writeFile(
+    '/private/tmp/task2-output-mobile.png',
+    Buffer.from(
+      (await b.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })).data,
+      'base64',
+    ),
+  );
   await b.click('#submit');
   await wait('Boolean(document.querySelector("#submit-result"))');
   assert.match(

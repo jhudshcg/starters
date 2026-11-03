@@ -127,6 +127,39 @@ export function studentTest(q, answers, id) {
   return { id, name: c.name, expression: `${spec.function}(${args.join(', ')})`, inputs };
 }
 
+/** Plan runnable cases without requiring answers; never supplement a student plan with defaults. */
+export function studentRunPlan(q, answers, { allTests = false, caseId } = {}) {
+  const cases = studentCases(q, answers);
+  const selected = cases.find((c) => c.id === (caseId ?? cases[0]?.id));
+  if (!selected) throw Error('Choose a test in the test plan.');
+  const group = allTests ? cases : cases.filter((c) => c.baseId === selected.baseId);
+  const hasInputs = q.testPlan.some((row) =>
+    Object.values(testResponse(answers[row.dataPart])).some(
+      (data) =>
+        data?.inputs?.length || Object.values(data?.args ?? {}).some((v) => String(v).trim()),
+    ),
+  );
+  const defaults = !hasInputs && Boolean(q.livePython.cases?.length);
+  const tests = [],
+    skipped = [];
+  for (const c of group) {
+    try {
+      const supplied = defaults && q.livePython.cases.find((test) => test.id === c.baseId);
+      const test = supplied
+        ? { id: c.id, name: c.name, expression: supplied.expression, inputs: supplied.inputs }
+        : studentTest(q, answers, c.id);
+      tests.push({ ...test, expected: JSON.stringify(testOutcome(answers[c.expectedPart], c)) });
+    } catch (error) {
+      skipped.push(`${c.name}: ${error.message}`);
+    }
+  }
+  return { tests, skipped, defaults, hasInputs };
+}
+
+/** Identify exact text entries or a named-argument call in both live result displays. */
+export const testRunInputs = (run) =>
+  run.inputs.length ? `Inputs: ${JSON.stringify(run.inputs)}` : `Call: ${run.expression}`;
+
 export function sameTest(run, test) {
   return (
     run?.caseId === test.id &&
@@ -144,17 +177,19 @@ export function recordedOutcome(observation) {
 }
 
 /** Render runtime evidence consistently in the test plan and saved attempt review. */
-export function testRunOutput(observation) {
+export function testRunOutput(observation, outcomeFirst = false) {
   if (observation.timedOut)
     return 'Execution stopped after 5 seconds. Output and the number of inputs used are unavailable.';
-  return (
-    observation.stdout +
-    observation.stderr +
+  const printed = observation.stdout + observation.stderr;
+  const outcome =
     (observation.error
       ? `${observation.error.type}: ${observation.error.message}`
       : `Returned ${JSON.stringify(observation.value)} (${observation.type})`) +
-    `\nInputs used: ${observation.consumed}`
-  );
+    `\nInputs used: ${observation.consumed}`;
+  // Keep the result visible at the top of compact cards, retaining every printed character below.
+  return outcomeFirst
+    ? outcome + (printed ? `\n${printed}` : '')
+    : printed + (printed && !printed.endsWith('\n') ? '\n' : '') + outcome;
 }
 
 export function completeOutcome(raw) {
@@ -281,12 +316,13 @@ export function markTestPart(q, p, answers, execution) {
 /** Keep archived structured answers readable without requiring today's question bank. */
 export function describeTestResponse(raw) {
   const value = testResponse(raw);
+  if (raw === '{}') return 'Not recorded';
   if (value.outcomes)
     return Object.entries(value.outcomes)
       .map(([id, outcome]) => `${outcome.name ?? id}: ${describeTestResponse(outcome)}`)
       .join('\n');
-  if (value.type)
-    return `${value.type}: ${JSON.stringify(value.value ?? '')} · inputs used: ${value.consumed ?? 'not recorded'}`;
+  if (value.type || 'value' in value || 'consumed' in value)
+    return `${value.type || 'Type not recorded'}: ${JSON.stringify(value.value ?? '')} · inputs used: ${value.consumed === '' ? 'not recorded' : (value.consumed ?? 'not recorded')}`;
   if (Object.values(value).some((v) => v?.inputs || v?.args))
     return Object.entries(value)
       .map(

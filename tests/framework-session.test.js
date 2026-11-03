@@ -84,6 +84,26 @@ test('cancelled replacement retains the exact attempt, answers and code', async 
   await practice.start(choose(2, 'iteration'));
   assert.deepEqual(session.data.active, previous);
 });
+test('resuming an interrupted Python run keeps its evidence and replaces the running status', async () => {
+  const { practice, session } = fixture();
+  const set = resolve({
+    version: BANK_VERSION,
+    type: 3,
+    entries: [{ slot: 36, variation: 5 }],
+    minutes: null,
+  });
+  await practice.start(set);
+  session.data.active.pythonBusy = true;
+  const evidence = [{ caseId: 'c0', inputs: ['1'] }];
+  session.data.active.python = {
+    36: { evidence, runFeedback: { running: true, from: 0, to: 1, status: 'Running Python…' } },
+  };
+  await practice.resume();
+  assert.equal(session.data.active.pythonBusy, false);
+  assert.equal(session.data.active.python[36].runFeedback.running, false);
+  assert.match(session.data.active.python[36].runFeedback.status, /Run interrupted/);
+  assert.deepEqual(session.data.active.python[36].evidence, evidence);
+});
 test('legacy links round-trip through static pages under a project subpath', () => {
   for (const hash of [
     '#home',

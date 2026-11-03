@@ -51,3 +51,7 @@ Students choose their own input values and expected results, run Original code, 
 ## Temporary wider code view — 20 October 2026
 
 Proposed: mouse-down or press-and-hold reveals long code lines by temporarily widening the editor up to the available full width, without changing layout or height. Suggested interaction: a dedicated expand control overlays neighbouring content while held, restoring width on release, with click/tap toggle and keyboard support as alternatives. Avoid taking ordinary presses away from code selection or touch gestures. Preserve caret and scroll position, and retain horizontal scrolling for lines beyond the width cap. The hold gesture was superseded by the adopted right/left triangle toggle on two-column layouts. The toggle now overlays the neighbouring questions without changing layout or height; single-column layouts hide it. See [editor presentation](docs/style-guide.md#code-editor-presentation).
+
+## ESP Task 2 shared run output — 3 November 2026
+
+Run whatever test inputs are available and always give useful feedback below the editor, including when inputs are missing or supplied defaults are used. Execute each test once and reuse its result in a compact display beside the recorded actual-result fields. Use minimal Valid/Invalid test result labels; retain both code versions, with Original code collapsible. Preserve later editor styling and interactions. [Current execution contract](docs/esp/task-2-designs.md#current-execution-contract--agreed-3-november-2026).

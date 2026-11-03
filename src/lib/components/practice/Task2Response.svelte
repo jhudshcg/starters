@@ -3,13 +3,13 @@
   import {
     testResponse,
     studentCases,
-    studentTest,
+    studentRunPlan,
     sameTest,
-    completeOutcome,
     testInputIds,
     testOutcome,
     withTestOutcome,
     testRunOutput,
+    testRunInputs,
   } from '#domain/task2-tests.js';
   let { q, part, answers, a, app } = $props();
   const locked = $derived(Boolean(a.finished || a.pythonSubmission));
@@ -21,14 +21,6 @@
     ),
   );
   let runNotice = $state('');
-  function inputIssue(c) {
-    try {
-      studentTest(q, answers, c.id);
-      return '';
-    } catch (error) {
-      return error.message;
-    }
-  }
   async function runTest(c, document) {
     runNotice = 'Running this test…';
     await app.practice.python.execute(q.slot, 'run', false, { document, caseId: c.id });
@@ -71,7 +63,8 @@
   }
   function matching(c) {
     try {
-      const test = studentTest(q, answers, c.id);
+      const test = studentRunPlan(q, answers, { caseId: c.id }).tests.find((t) => t.id === c.id);
+      if (!test) return [];
       const runs = (a.python?.[q.slot]?.evidence ?? []).filter((r) => sameTest(r, test));
       return ['original', 'edited'].flatMap((document) => {
         const run = runs.findLast((r) => r.document === document);
@@ -174,24 +167,14 @@
         {#each ['original', 'edited'] as document}
           <button
             class="action-button"
-            disabled={locked ||
-              a.pythonBusy ||
-              cases.some(
-                (c) => inputIssue(c) || !completeOutcome(testOutcome(answers[c.expectedPart], c)),
-              )}
+            disabled={locked || a.pythonBusy}
             onclick={() => runTest(cases[0], document)}
           >
             Run {document === 'original' ? 'Original code' : 'Your code'}
           </button>
         {/each}
       </div>
-      <small>
-        {cases[0].independent
-          ? 'All chosen inputs run in order. Enter an expected result for each input first.'
-          : 'Enter the expected result above to enable running.'}
-        Record the original results below; use Your code to retest repairs.
-      </small>
-      {#each cases.filter((c) => inputIssue(c)) as c}<p class="muted">{inputIssue(c)}</p>{/each}
+      <small> Record the original results below; use Your code to retest repairs. </small>
       {#if runNotice}<p role="status">{runNotice}</p>{/if}
     {/if}
     {#each cases as c (c.id)}
@@ -202,18 +185,30 @@
             {c.label}{#if c.input !== undefined}: <code>{JSON.stringify(c.input)}</code>{/if}
           </h4>{/if}
         {#if part.testRole === 'actual'}
-          {#each matching(c) as run}
-            <details class="run-result" open>
-              <summary
-                >{run.document === 'original' ? 'Original code' : 'Your code'} · {new Date(
-                  run.at,
-                ).toLocaleTimeString()}{run.document === 'edited' &&
-                run.source !== (answers.code ?? q.code)
-                  ? ' · Earlier code — retest needed'
-                  : ''}</summary
-              >
-              <pre class="code-panel">{testRunOutput(run.observation)}</pre>
-            </details>
+          {@const runs = matching(c)}
+          {#if runs.length}<h5>{c.row.kind === 'valid' ? 'Valid' : 'Invalid'} test result</h5>{/if}
+          {#each runs as run}
+            {#if run.document === 'original'}
+              <details class="run-result" open>
+                <summary>Original code</summary>
+                <pre class="code-panel">{testRunInputs(run)}{'\n'}{testRunOutput(
+                    run.observation,
+                    true,
+                  )}</pre>
+              </details>
+            {:else}
+              <div class="run-result">
+                <small
+                  >Your code{run.source !== (answers.code ?? q.code)
+                    ? ' · Earlier code — retest needed'
+                    : ''}</small
+                >
+                <pre class="code-panel">{testRunInputs(run)}{'\n'}{testRunOutput(
+                    run.observation,
+                    true,
+                  )}</pre>
+              </div>
+            {/if}
           {/each}
         {/if}
         <fieldset disabled={locked}>
@@ -286,7 +281,8 @@
     padding-top: 1rem;
     margin-top: 0.5rem;
   }
-  h4 {
+  h4,
+  h5 {
     margin: 0;
     overflow-wrap: anywhere;
   }
@@ -342,7 +338,11 @@
     min-width: 0;
   }
   .code-panel {
-    max-height: 18rem;
+    max-height: none;
+    overflow: visible;
+    margin-block: 0.25rem;
+    padding: 0.5rem;
+    font-size: 0.85rem;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
   }

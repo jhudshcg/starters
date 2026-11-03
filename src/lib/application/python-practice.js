@@ -5,10 +5,9 @@
  */
 import { pythonRequest, assessPython } from '#domain/live-python.js';
 import {
-  studentTest,
   studentCases,
-  completeOutcome,
-  testOutcome,
+  studentRunPlan,
+  sameTest,
   testReferenceRequest,
   testRunOutput,
 } from '#domain/task2-tests.js';
@@ -18,10 +17,16 @@ export function createPythonPractice({ session, activeSet, persist, render, load
   let runner,
     token = 0,
     disposed = false,
+    runningFeedback = null,
     statusSink = () => {};
   const state = (a, slot) => ((a.python ??= {})[slot] ??= { runs: 0, checks: 0 });
   function cancel(message = 'Stopped. Your code is saved.') {
     token++;
+    if (runningFeedback) {
+      runningFeedback.status = message;
+      runningFeedback.running = false;
+    }
+    runningFeedback = null;
     runner?.stop(message);
     const a = session.data.active;
     if (a?.pythonBusy) {
@@ -125,33 +130,48 @@ export function createPythonPractice({ session, activeSet, persist, render, load
         return false;
       }
     }
-    let ownTests;
+    let ownTests, feedback;
+    const setStatus = (message) => {
+      a.pythonStatus = message;
+      if (feedback) feedback.status = message;
+    };
     if (action === 'run' && q.livePython.testInputs) {
+      // Reference evidence directly, including original observations reused from earlier runs.
+      feedback = saved.runFeedback = {
+        document,
+        source,
+        from: saved.evidence?.length ?? 0,
+        to: saved.evidence?.length ?? 0,
+        records: [],
+        skipped: [],
+        defaults: false,
+        status: '',
+        running: false,
+      };
       try {
         const answers = a.answers[slot] ?? {};
         const cases = studentCases(q, answers);
         const id =
           options.caseId ??
           (cases.some((c) => c.id === saved.testCase) ? saved.testCase : cases[0].id);
-        const selected = cases.find((c) => c.id === id);
-        if (!selected) throw Error('Choose a test in the test plan.');
-        const group = options.allTests
-          ? cases
-          : selected.independent
-            ? cases.filter((c) => c.baseId === selected.baseId)
-            : [selected];
-        ownTests = group.map((c) => {
-          const test = studentTest(q, answers, c.id);
-          const expected = testOutcome(answers[c.expectedPart], c);
-          if (!completeOutcome(expected))
-            throw Error(
-              `${c.name}: record the expected type, value and inputs used before running this test.`,
-            );
-          return { ...test, expected: JSON.stringify(expected) };
-        });
+        const plan = studentRunPlan(q, answers, { caseId: id, allTests: options.allTests });
+        ownTests = plan.tests;
+        feedback.skipped = plan.hasInputs ? plan.skipped : [];
+        feedback.defaults = plan.defaults;
         saved.testCase = id;
+        if (!ownTests.length) {
+          setStatus(
+            plan.hasInputs
+              ? 'No runnable test inputs provided. Complete some inputs, then run the code again.'
+              : 'No test inputs provided. Add some, then run the code again.',
+          );
+          persist();
+          render();
+          return false;
+        }
       } catch (error) {
-        a.pythonStatus = error.message;
+        setStatus(error.message);
+        persist();
         render();
         return false;
       }
@@ -183,26 +203,33 @@ export function createPythonPractice({ session, activeSet, persist, render, load
     const mine = ++token;
     const current = () => !disposed && mine === token && session.data === data && data.active === a;
     a.pythonBusy = true;
-    a.pythonStatus = 'Preparing Python…';
+    runningFeedback = feedback ?? null;
+    if (feedback) feedback.running = true;
+    setStatus('Preparing Python…');
     if (!submitting) saved[action === 'run' ? 'runs' : 'checks']++;
     persist();
     render();
     try {
-      const module = await load();
-      if (!current()) return false;
       statusSink = (message) => {
         if (current()) {
-          a.pythonStatus = message;
+          setStatus(message);
           persist();
           render();
         }
       };
-      runner ??= module.createRunner((message) => statusSink(message));
+      const runRequest = async (request) => {
+        if (!runner) {
+          const module = await load();
+          if (!current()) return [];
+          runner = module.createRunner((message) => statusSink(message));
+        }
+        return runner.run(request);
+      };
       let testReferences = saved.result?.testReferences ?? [];
       if (action === 'check') {
         const reference = testReferenceRequest(q, a.answers[slot] ?? {});
         if (reference?.cases.length) {
-          const expected = await runner.run(reference);
+          const expected = await runRequest(reference);
           if (!current()) return false;
           testReferences = reference.cases.map((c, i) => ({
             caseId: c.label,
@@ -214,12 +241,18 @@ export function createPythonPractice({ session, activeSet, persist, render, load
         }
       }
       const requests = ownTests
-        ? ownTests.map((test) => ({
-            source,
-            expression: test.expression,
-            fixtures: q.livePython.fixtures,
-            cases: [{ label: test.id, inputs: test.inputs }],
-          }))
+        ? ownTests.flatMap((test) =>
+            (document === 'edited' ? ['original', 'edited'] : ['original']).map((version) => ({
+              test,
+              document: version,
+              request: {
+                source: version === 'original' ? q.code : source,
+                expression: test.expression,
+                fixtures: q.livePython.fixtures,
+                cases: [{ label: test.id, inputs: test.inputs }],
+              },
+            })),
+          )
         : [
             action === 'run'
               ? {
@@ -231,13 +264,31 @@ export function createPythonPractice({ session, activeSet, persist, render, load
                   ],
                 }
               : pythonRequest(q, source),
-          ];
-      for (const [index, request] of requests.entries()) {
+          ].map((request) => ({ request, document }));
+      for (const { request, test, document: version } of requests) {
         if (!current()) return false;
+        if (test && version === 'original') {
+          const match = (saved.evidence ?? []).findLastIndex(
+            (run) =>
+              run.document === 'original' &&
+              run.source === request.source &&
+              run.revision === q.livePython.revision &&
+              JSON.stringify(run.fixtures) === JSON.stringify(request.fixtures) &&
+              sameTest(run, test) &&
+              run.observation &&
+              !run.observation.timedOut,
+          );
+          if (match !== -1) {
+            feedback.records.push(match);
+            persist();
+            render();
+            continue;
+          }
+        }
         let observations;
         try {
           // Separate requests give every chosen input a fresh execution and its own time limit.
-          observations = await runner.run(request);
+          observations = await runRequest(request);
         } catch (error) {
           if (!current() || !ownTests || !error.message.startsWith('Stopped after 5 seconds'))
             throw error;
@@ -266,27 +317,35 @@ export function createPythonPractice({ session, activeSet, persist, render, load
           };
         else {
           const r = observations[0];
-          const test = ownTests?.[index];
           (saved.evidence ??= []).push({
             at: clock(),
-            document,
-            source,
+            document: version,
+            source: request.source,
+            revision: q.livePython.revision,
+            ...(request.fixtures === undefined
+              ? {}
+              : { fixtures: structuredClone(request.fixtures) }),
             caseId: test?.id ?? supplied?.id ?? null,
             expression: request.expression,
             ...(test ? { expected: test.expected, caseName: test.name } : {}),
             inputs: request.cases[0].inputs,
             observation: r,
           });
+          if (feedback) {
+            feedback.to = saved.evidence.length;
+            feedback.records.push(saved.evidence.length - 1);
+          }
           saved.result = { ...saved.result, evidence: saved.evidence };
           saved.output = testRunOutput(r);
           persist();
           render();
         }
       }
-      a.pythonStatus =
+      setStatus(
         action === 'check'
           ? 'Check finished.'
-          : `${options.allTests ? `All ${ownTests.length} tests` : ownTests?.length > 1 ? `All ${ownTests.length} inputs` : (ownTests?.[0].name ?? 'Run')} finished on ${document === 'original' ? 'Original code' : 'Your code'}.`;
+          : `${options.allTests ? `All ${ownTests.length} tests` : ownTests?.length > 1 ? `All ${ownTests.length} inputs` : (ownTests?.[0].name ?? 'Run')} finished on ${document === 'original' ? 'Original code' : 'Your code'}.`,
+      );
       return true;
     } catch (error) {
       if (current() && error.message.startsWith('Stopped after 5 seconds') && action === 'check') {
@@ -307,10 +366,12 @@ export function createPythonPractice({ session, activeSet, persist, render, load
         a.pythonStatus = 'Code exceeded the execution time limit.';
         return true;
       }
-      if (current()) a.pythonStatus = `${error.message} Your code is saved; retry when ready.`;
+      if (current()) setStatus(`${error.message} Your code is saved; retry when ready.`);
       return false;
     } finally {
       if (current()) {
+        runningFeedback = null;
+        if (feedback) feedback.running = false;
         a.pythonBusy = false;
         persist();
         render();

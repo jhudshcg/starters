@@ -525,6 +525,13 @@ export function createPractice({
     try {
       if (data.active) {
         data.active.pythonBusy = false;
+        for (const saved of Object.values(data.active.python ?? {})) {
+          if (saved.runFeedback?.running) {
+            saved.runFeedback.running = false;
+            saved.runFeedback.status =
+              'Run interrupted. Run the code again to finish the remaining tests.';
+          }
+        }
         if (data.active.practiceClock) data.active.practiceClock.running = false;
         const restored = await loadSet(data.active.code);
         if (contentChanged(restored, data.active.contentVersion ?? restored.version)) {

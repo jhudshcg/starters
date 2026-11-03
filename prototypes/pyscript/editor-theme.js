@@ -12,6 +12,7 @@ export function editorTheme({ EditorView }, { HighlightStyle, syntaxHighlighting
       '&': {
         fontSize: '14px',
         colorScheme: 'var(--editor-color-scheme)',
+        scrollbarColor: 'var(--muted) transparent',
         '--code-bg': 'var(--surface)',
         '--code-text': 'var(--text)',
         '--code-muted': 'var(--muted)',

@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import bank from '../data/python.js';
 import esp from '../data/esp-task2.js';
-import { studentCases, withTestOutcome } from '../js/task2-tests.js';
+import { studentCases, withTestOutcome, describeTestResponse } from '../js/task2-tests.js';
 import { markQuestion } from '../js/marking.js';
 import { initialRegions } from '../prototypes/pyscript/regions.js';
 import { createPythonPractice } from '../src/lib/application/python-practice.js';
@@ -191,7 +191,7 @@ test('profile changes cannot receive a previous runtime completion', async () =>
   assert.equal(h.session.data.active.python, undefined);
 });
 
-test('Task 2 gates the whole group and archives each independent input with its own expected result', async () => {
+test('Task 2 runs a group with missing expectations and archives the pre-run answers', async () => {
   const q = { ...esp[0], ...esp[0].variations[5], variation: 5 };
   const h = harness(q),
     a = h.session.data.active;
@@ -203,15 +203,6 @@ test('Task 2 gates the whole group and archives each independent input with its 
     withTestOutcome(undefined, cases[0], {
       type: 'str',
       value: 'Online',
-      consumed: '1',
-    }),
-  );
-  assert.equal(await h.python.execute(q.slot, 'run', false, { caseId: cases[0].id }), false);
-  assert.equal(h.requests.length, 0);
-  answers['c0-own-expected'] = JSON.stringify(
-    withTestOutcome(answers['c0-own-expected'], cases[1], {
-      type: 'str',
-      value: 'In-store',
       consumed: '1',
     }),
   );
@@ -227,7 +218,32 @@ test('Task 2 gates the whole group and archives each independent input with its 
   const evidence = a.python[q.slot].evidence[1];
   assert.equal(evidence.caseId, cases[1].id);
   assert.equal(evidence.caseName, 'Test 1 · Input 2');
-  assert.equal(JSON.parse(evidence.expected).value, 'In-store');
+  assert.deepEqual(
+    JSON.parse(evidence.expected),
+    {},
+    'a missing expectation stays missing in the run record',
+  );
+  assert.equal(describeTestResponse(evidence.expected), 'Not recorded');
+  assert.match(
+    describeTestResponse(JSON.stringify({ type: 'int', value: '0', consumed: 0 })),
+    /inputs used: 0$/,
+  );
+  assert.match(
+    describeTestResponse(JSON.stringify({ value: 'later', consumed: '' })),
+    /Type not recorded.*inputs used: not recorded/,
+  );
+  answers['c0-own-expected'] = JSON.stringify(
+    withTestOutcome(answers['c0-own-expected'], cases[1], {
+      type: 'str',
+      value: 'In-store',
+      consumed: '1',
+    }),
+  );
+  assert.deepEqual(
+    JSON.parse(evidence.expected),
+    {},
+    'later answers cannot rewrite a pre-run expectation',
+  );
   assert.equal(JSON.parse(evidence.expected).outcomes, undefined);
 
   a.finished = 2000;
@@ -248,7 +264,7 @@ test('Task 2 gates the whole group and archives each independent input with its 
   );
 });
 
-test('Task 2 runs all configured tests on the requested document after every expectation is complete', async () => {
+test('Task 2 runs all available tests on either document without expectations and shares each observation', async () => {
   const q = { ...esp[0], ...esp[0].variations[5], variation: 5 };
   const h = harness(q),
     a = h.session.data.active;
@@ -258,14 +274,6 @@ test('Task 2 runs all configured tests on the requested document after every exp
     'invalid-own-inputs': JSON.stringify({ c1: { inputs: ['x', '1'] } }),
   });
   const cases = studentCases(q, answers);
-  for (const c of cases.filter((c) => c.independent))
-    answers[c.expectedPart] = JSON.stringify(
-      withTestOutcome(answers[c.expectedPart], c, { type: 'str', value: 'Online', consumed: '1' }),
-    );
-  assert.equal(await h.python.execute(q.slot, 'run', false, { allTests: true }), false);
-  assert.equal(h.requests.length, 0, 'missing expectation in the later group blocks the whole run');
-  const invalid = cases.find((c) => !c.independent);
-  answers[invalid.expectedPart] = JSON.stringify({ type: 'str', value: 'Online', consumed: '2' });
   for (const document of ['original', 'edited']) {
     const offset = h.requests.length;
     const run = h.python.execute(q.slot, 'run', false, { allTests: true, document });
@@ -284,12 +292,130 @@ test('Task 2 runs all configured tests on the requested document after every exp
       cases.map((c) => c.id),
     );
     assert.match(a.pythonStatus, /All 3 tests finished/);
+    assert.deepEqual(
+      [a.python[q.slot].runFeedback.from, a.python[q.slot].runFeedback.to],
+      [offset, offset + 3],
+    );
+    assert.equal(a.python[q.slot].runFeedback.status, a.pythonStatus);
+    assert.equal(answers['c0-own-actual'], undefined, 'displayed evidence does not fill answers');
   }
   assert.equal(
     a.python[q.slot].checks,
     0,
     'running configured values does not perform repair marking',
   );
+});
+
+test('Task 2 ensures matching original results, reuses completed evidence, and retries timeouts', async () => {
+  const q = structuredClone({ ...esp[0], ...esp[0].variations[5], variation: 5 });
+  const h = harness(q),
+    a = h.session.data.active;
+  const answers = (a.answers[q.slot] = {
+    code: q.code + '\n# draft',
+    'valid-own-inputs': JSON.stringify({ c0: { inputs: ['1', '2'] } }),
+  });
+  async function run(count, document = 'edited') {
+    const offset = h.requests.length;
+    const pending = h.python.execute(q.slot, 'run', false, { allTests: true, document });
+    for (let i = 0; i < count; i++) {
+      await new Promise(setImmediate);
+      assert.equal(h.requests.length, offset + i + 1);
+      h.finish();
+    }
+    assert.equal(await pending, true);
+    assert.equal(h.requests.length, offset + count);
+    return h.session.data.active.python[q.slot];
+  }
+  let saved = await run(4);
+  assert.deepEqual(
+    saved.evidence.map((r) => r.document),
+    ['original', 'edited', 'original', 'edited'],
+  );
+  const first = structuredClone(saved.evidence[0]);
+  answers['c0-own-expected'] = 'changed prediction';
+  saved = await run(2);
+  assert.deepEqual(saved.runFeedback.records, [0, 4, 2, 5]);
+  assert.deepEqual(saved.evidence[0], first, 'reuse preserves timestamp and pre-run prediction');
+  await run(0, 'original');
+  assert.deepEqual(saved.runFeedback.records, [0, 2]);
+  answers['valid-own-inputs'] = JSON.stringify({ c0: { inputs: ['1', '3'] } });
+  await run(3);
+  assert.deepEqual(saved.runFeedback.records, [0, 6, 7, 8]);
+  saved.evidence[7].observation.timedOut = true;
+  await run(3);
+  assert.equal(saved.evidence[10].document, 'original', 'timed-out original is retried');
+  h.session.data = JSON.parse(JSON.stringify(h.session.data));
+  await run(2);
+  q.livePython.revision++;
+  await run(4);
+  q.livePython.fixtures = { 'data.txt': 'new fixture' };
+  await run(4);
+  q.code += '\n# changed original';
+  await run(4);
+  const restored = createPythonPractice({
+    session: h.session,
+    activeSet: () => ({ questions: [q] }),
+    persist() {},
+    render() {},
+    clock: () => 2000,
+    load: async () => {
+      throw Error('Runtime should not load for cached originals');
+    },
+  });
+  assert.equal(
+    await restored.execute(q.slot, 'run', false, { allTests: true, document: 'original' }),
+    true,
+  );
+});
+
+test('Task 2 reports missing inputs and failures locally, uses defaults only on an empty plan, and skips incomplete groups', async () => {
+  const q = structuredClone({ ...esp[0], ...esp[0].variations[5], variation: 5 });
+  const h = harness(q),
+    a = h.session.data.active;
+  a.answers[q.slot] = {};
+  const defaults = q.livePython.cases;
+  delete q.livePython.cases;
+  assert.equal(await h.python.execute(q.slot, 'run', false, { allTests: true }), false);
+  assert.equal(h.requests.length, 0);
+  assert.match(a.python[q.slot].runFeedback.status, /No test inputs provided/);
+  q.livePython.cases = defaults;
+  const defaultRun = h.python.execute(q.slot, 'run', false, {
+    allTests: true,
+    document: 'original',
+  });
+  for (const c of defaults) {
+    await new Promise(setImmediate);
+    assert.deepEqual(h.requests.at(-1).cases[0].inputs, c.inputs);
+    h.finish();
+  }
+  assert.equal(await defaultRun, true);
+  assert.equal(a.python[q.slot].runFeedback.defaults, true);
+  assert.deepEqual(a.answers[q.slot], {}, 'defaults never populate student answers');
+
+  a.answers[q.slot]['valid-own-inputs'] = JSON.stringify({ c0: { inputs: [''] } });
+  const offset = h.requests.length;
+  const partialRun = h.python.execute(q.slot, 'run', false, {
+    allTests: true,
+    document: 'original',
+  });
+  await new Promise(setImmediate);
+  assert.deepEqual(
+    h.requests.at(-1).cases[0].inputs,
+    [''],
+    'an intentional empty entry is executed',
+  );
+  h.finish();
+  assert.equal(await partialRun, true);
+  assert.equal(h.requests.length, offset + 1, 'an untouched group is not filled from defaults');
+  assert.equal(a.python[q.slot].runFeedback.defaults, false);
+  assert.match(a.python[q.slot].runFeedback.skipped.join(' '), /Test 2/);
+
+  const failedRun = h.python.execute(q.slot, 'run', false, { allTests: true });
+  await new Promise(setImmediate);
+  h.fail('Worker could not start');
+  assert.equal(await failedRun, false);
+  assert.match(a.python[q.slot].runFeedback.status, /Worker could not start/);
+  assert.equal(a.python[q.slot].runFeedback.from, a.python[q.slot].runFeedback.to);
 });
 
 test('Task 2 continues after returns, exceptions and timeouts, but Stop cancels remaining inputs', async () => {
@@ -364,6 +490,8 @@ test('Task 2 continues after returns, exceptions and timeouts, but Stop cancels 
   assert.equal(await cancelled, false);
   assert.equal(h.requests.length, 6, 'Stop prevents the third and fourth inputs running');
   assert.equal(a.python[q.slot].evidence.length, 5, 'completed evidence is retained');
+  assert.deepEqual([a.python[q.slot].runFeedback.from, a.python[q.slot].runFeedback.to], [4, 5]);
+  assert.match(a.python[q.slot].runFeedback.status, /Stopped/);
 });
 
 test('six detailed attempts per variation retain all summaries, current draft and backup integrity', () => {

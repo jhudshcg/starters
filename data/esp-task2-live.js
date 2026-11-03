@@ -1992,8 +1992,7 @@ const exampleArguments = {
 /** Replace supplied-case answers with student-owned test contracts and fresh part IDs. */
 function ownTests(q, key, tests) {
   q.livePython.testInputs = { function: tests[0].expression.split('(')[0], parameters: argumentFields[key] ?? [] };
-  delete q.livePython.cases;
-  q.livePython.revision = 3;
+  q.livePython.revision = 4;
   const replace = (id, changes) => {
     const p = q.parts.find((p) => p.id === id);
     delete p.options;

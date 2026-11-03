@@ -5,6 +5,7 @@
   import { pythonModes } from '#domain/live-python.js';
   import { markQuestion } from '#domain/marking.js';
   import { revealPart } from '#domain/packed-data.js';
+  import { studentRunPlan, sameTest, testRunInputs, testRunOutput } from '#domain/task2-tests.js';
   let { q, a, app, hintVisible, review } = $props();
   let host,
     editor = $state.raw(null),
@@ -17,6 +18,7 @@
     tab = $state('edited');
   let height = $state(180);
   let resultsMinimised = $state(false);
+  let outputMinimised = $state(false);
   let guidanceMinimised = $state(false);
   let expanded = $state(false);
   let overlayWidth = $state(0);
@@ -34,11 +36,27 @@
   let intro,
     docked = $state(false),
     viewportHeight = $state(900),
+    rootSize = $state(16),
+    dockTop = $state(0),
+    editorFrameHeight = $state(54),
     singleColumn = $state(false),
     dockedHeight = $state(null);
   const visibleHeight = $derived(
     docked
-      ? (dockedHeight ?? Math.min(height, viewportHeight * (singleColumn ? 0.45 : 0.65)))
+      ? Math.min(
+          dockedHeight ?? Math.min(height, viewportHeight * (singleColumn ? 0.45 : 0.65)),
+          pinnedOutput
+            ? Math.max(
+                100,
+                viewportHeight -
+                  outputReserve -
+                  stickyTop -
+                  editorFrameHeight -
+                  outputGap -
+                  outputMinimum,
+              )
+            : Infinity,
+        )
       : height,
   );
   function setHeight(value) {
@@ -50,14 +68,22 @@
     return app.practice.python.execute(q.slot, 'check');
   }
   let dragStart = null;
-  let workspace, dock;
+  let appliedHeight = 180;
+  let workspace, dock, stack;
   let tabs = $state();
   let tabsOverlap = $state(false);
   let dockHeight = $state(0);
+  let stackHeight = $state(0);
   onMount(() => {
     const measure = () => {
       viewportHeight = window.innerHeight;
-      dockHeight = dock.getBoundingClientRect().height;
+      rootSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+      const dockRect = dock.getBoundingClientRect();
+      dockHeight = dockRect.height;
+      dockTop = dockRect.top;
+      // Include the editor wrapper and native scrollbar space, not only the tab row.
+      editorFrameHeight = editor ? Math.max(0, dockHeight - appliedHeight) : 54;
+      stackHeight = stack.getBoundingClientRect().height;
       const [firstTab, lastTab] = tabs?.children ?? [];
       tabsOverlap = Boolean(
         firstTab &&
@@ -79,6 +105,7 @@
     const observer = new ResizeObserver(schedule);
     observer.observe(intro);
     observer.observe(dock);
+    observer.observe(stack);
     if (tabs) observer.observe(tabs);
     observer.observe(workspace.parentElement);
     window.addEventListener('resize', schedule);
@@ -123,10 +150,11 @@
   $effect(() => {
     editor?.setHeight(visibleHeight);
     originalEditor?.setHeight(visibleHeight);
+    appliedHeight = visibleHeight;
     // Focused answer fields must clear the pinned code, including after manual resizing.
     workspace?.parentElement.style.setProperty(
       '--editor-scroll-offset',
-      `${docked ? dockHeight + 32 : 0}px`,
+      `${docked ? stackHeight + 32 : 0}px`,
     );
   });
   const locked = $derived(Boolean(a.finished || a.pythonSubmission));
@@ -137,7 +165,35 @@
   const permitted = $derived(
     Boolean(a.finished || (!locked && q.livePython.access === 'practice')),
   );
-  const hasOutput = $derived(Boolean(saved?.output && !q.livePython.testInputs));
+  const runFeedback = $derived(saved?.runFeedback);
+  const runRecords = $derived(
+    q.livePython.testInputs
+      ? runFeedback?.records
+        ? runFeedback.records.map((index) => saved.evidence[index]).filter(Boolean)
+        : (saved?.evidence ?? []).slice(runFeedback?.from ?? 0, runFeedback?.to)
+      : [],
+  );
+  const currentTests = $derived(
+    q.livePython.testInputs
+      ? studentRunPlan(q, a.answers[q.slot] ?? {}, { allTests: true }).tests
+      : [],
+  );
+  const hasOutput = $derived(
+    q.livePython.testInputs ? Boolean(runFeedback || runRecords.length) : Boolean(saved?.output),
+  );
+  const pinnedOutput = $derived(Boolean(q.livePython.testInputs && hasOutput));
+  const stickyTop = $derived(singleColumn ? 0 : rootSize);
+  const outputGap = $derived(rootSize + 4);
+  const outputReserve = $derived(rootSize);
+  const outputMinimum = $derived(
+    outputMinimised ? 3.75 * rootSize + Math.max(0, rootSize - 12) + 2 : 8 * rootSize,
+  );
+  const outputHeight = $derived(
+    Math.max(
+      outputMinimum,
+      viewportHeight - Math.max(stickyTop, dockTop) - dockHeight - outputGap - outputReserve,
+    ),
+  );
   const hasResults = $derived(
     Boolean(saved?.result?.parts && saved.result.source === (a.answers[q.slot]?.code ?? q.code)),
   );
@@ -243,6 +299,52 @@
 
 <svelte:head><link rel="stylesheet" href={`${resolve('/')}python/vendor/core.css`} /></svelte:head>
 
+{#snippet output()}
+  <div class="run-output-heading">
+    <h3>Program output</h3>
+    {#if q.livePython.testInputs}
+      <button
+        class="action-button subtle disclosure-toggle"
+        aria-label={outputMinimised ? 'Expand program output' : 'Minimise program output'}
+        aria-expanded={!outputMinimised}
+        aria-controls={`program-output-${q.slot}`}
+        onclick={() => (outputMinimised = !outputMinimised)}
+      >
+        <span aria-hidden="true">{outputMinimised ? '+' : '−'}</span>
+      </button>
+    {/if}
+  </div>
+  <div id={`program-output-${q.slot}`} hidden={q.livePython.testInputs && outputMinimised}>
+    {#if q.livePython.testInputs}
+      {#if runFeedback}<p role="status">{runFeedback.status}</p>{/if}
+      {#if runFeedback?.defaults}<p class="muted">
+          Running with default test values. Try adding your own tests.
+        </p>{/if}
+      {#if runFeedback?.skipped.length}<ul>
+          {#each runFeedback.skipped as message}<li>Skipped — {message}</li>{/each}
+        </ul>{/if}
+      {#each runRecords as run}
+        <div class="run-record" data-run-case={run.caseId}>
+          <h4>
+            {run.caseName ?? run.caseId} · {run.document === 'original'
+              ? 'Original code'
+              : 'Your code'}
+          </h4>
+          {#if run.source !== (run.document === 'original' ? q.code : (a.answers[q.slot]?.code ?? q.code))}
+            <small>Earlier code — retest needed</small>
+          {/if}
+          {#if !currentTests.some((test) => sameTest(run, test))}
+            <small>Earlier inputs — retest needed</small>
+          {/if}
+          <pre class="code-panel">{testRunInputs(run)}{'\n'}{testRunOutput(run.observation)}</pre>
+        </div>
+      {/each}
+    {:else}
+      <pre class="code-panel">{saved.output}</pre>
+    {/if}
+  </div>
+{/snippet}
+
 <div class="live-python coding-workspace" bind:this={workspace}>
   <div class="coding-intro" bind:this={intro}>
     <div class="guidance-heading">
@@ -308,186 +410,201 @@
     </div>
     {#if guidanceMinimised && notice}<p role="status">{notice}</p>{/if}
   </div>
-  <div
-    bind:this={dock}
-    class="editor-dock"
-    class:docked
-    class:expanded
-    style:--editor-overlay-width={`${overlayWidth}px`}
-  >
-    <div class="editor-header" class:has-tabs={Boolean(q.livePython.tabs)}>
+  <div class="editor-stack" bind:this={stack}>
+    <div
+      bind:this={dock}
+      class="editor-dock"
+      class:docked
+      class:expanded
+      style:--editor-overlay-width={`${overlayWidth}px`}
+    >
+      <div class="editor-header" class:has-tabs={Boolean(q.livePython.tabs)}>
+        {#if q.livePython.tabs}
+          <div
+            class="editor-tabs"
+            class:overlapping={tabsOverlap}
+            bind:this={tabs}
+            role="tablist"
+            aria-label="Code version"
+          >
+            {#each ['original', 'edited'] as value, i}
+              {@const label = i === 0 ? 'Original code' : 'Your code'}
+              <button
+                role="tab"
+                id={`tab-${q.slot}-${value}`}
+                aria-controls={`editor-${q.slot}-${value}`}
+                aria-selected={tab === value}
+                tabindex={tab === value ? 0 : -1}
+                class="editor-tab"
+                title={label}
+                onclick={() => (tab = value)}
+                onkeydown={(e) => {
+                  if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+                    e.preventDefault();
+                    tab =
+                      e.key === 'Home'
+                        ? 'original'
+                        : e.key === 'End'
+                          ? 'edited'
+                          : value === 'original'
+                            ? 'edited'
+                            : 'original';
+                    document.getElementById(`tab-${q.slot}-${tab}`)?.focus();
+                  }
+                }}
+                ><span>{label}</span><span class="tab-width" aria-hidden="true">{label}</span
+                ></button
+              >
+            {/each}
+          </div>
+        {/if}
+        {#if q.livePython.testInputs}
+          <span class="sr-only" id={`check-description-${q.slot}`}>
+            Runs the configured test values on the code in the current tab. Ctrl/Cmd + Enter does
+            the same.
+          </span>
+        {/if}
+        <div class="editor-actions">
+          {#if permitted}
+            {#if q.livePython.actions.includes('run') && !q.livePython.testInputs}<button
+                class="action-button"
+                disabled={mounting || a.pythonBusy || !predictionReady}
+                onclick={run}
+                >{q.livePython.predictions?.length ? 'Run and compare' : 'Run code'}</button
+              >{/if}
+            {#if q.livePython.actions.includes(q.livePython.testInputs ? 'run' : 'check')}<button
+                class="action-button"
+                class:compact-action={Boolean(q.livePython.testInputs)}
+                aria-label={q.livePython.testInputs ? 'Run & test' : undefined}
+                disabled={mounting || a.pythonBusy || !predictionReady}
+                onclick={q.livePython.testInputs ? run : check}
+                title={q.livePython.testInputs
+                  ? 'Runs the configured test values on the code in the current tab. Ctrl/Cmd + Enter does the same.'
+                  : undefined}
+                aria-describedby={q.livePython.testInputs
+                  ? `check-description-${q.slot}`
+                  : undefined}
+              >
+                <span class="action-label"
+                  >{q.livePython.testInputs ? 'Run & test' : 'Check code'}</span
+                >
+                {#if q.livePython.testInputs}
+                  <svg
+                    class="action-icon"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 5 12 12 3 19Z" />
+                    <path d="M15 7.5a3 3 0 0 1 6 0c0 2-3 2.5-3 4.5" />
+                    <path d="M18 16h.01" />
+                  </svg>
+                {/if}</button
+              >{/if}
+          {/if}
+          {#if !locked}<button
+              class="action-button subtle compact-action"
+              aria-label="Reset"
+              title="Reset code"
+              disabled={mounting || a.pythonBusy}
+              onclick={() => {
+                editor.setMode('free');
+                editor.source = q.code;
+                changeMode(policy.defaultMode);
+              }}
+            >
+              <span class="action-label">Reset</span>
+              <svg
+                class="action-icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 20 14 4M4 6l8 11a5 5 0 0 0 8-6l-3-4m0 0h5m-5 0v5" />
+              </svg></button
+            >{/if}
+        </div>
+      </div>
       {#if q.livePython.tabs}
         <div
-          class="editor-tabs"
-          class:overlapping={tabsOverlap}
-          bind:this={tabs}
-          role="tablist"
-          aria-label="Code version"
+          class="editor-document"
+          id={`editor-${q.slot}-original`}
+          role="tabpanel"
+          aria-labelledby={`tab-${q.slot}-original`}
+          hidden={tab !== 'original'}
         >
-          {#each ['original', 'edited'] as value, i}
-            {@const label = i === 0 ? 'Original code' : 'Your code'}
-            <button
-              role="tab"
-              id={`tab-${q.slot}-${value}`}
-              aria-controls={`editor-${q.slot}-${value}`}
-              aria-selected={tab === value}
-              tabindex={tab === value ? 0 : -1}
-              class="editor-tab"
-              title={label}
-              onclick={() => (tab = value)}
-              onkeydown={(e) => {
-                if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
-                  e.preventDefault();
-                  tab =
-                    e.key === 'Home'
-                      ? 'original'
-                      : e.key === 'End'
-                        ? 'edited'
-                        : value === 'original'
-                          ? 'edited'
-                          : 'original';
-                  document.getElementById(`tab-${q.slot}-${tab}`)?.focus();
-                }
-              }}
-              ><span>{label}</span><span class="tab-width" aria-hidden="true">{label}</span></button
-            >
-          {/each}
+          <div class="live-python-editor" bind:this={originalHost}></div>
         </div>
       {/if}
-      {#if q.livePython.testInputs}
-        <span class="sr-only" id={`check-description-${q.slot}`}>
-          Runs the configured test values on the code in the current tab. Ctrl/Cmd + Enter does the
-          same.
-        </span>
-      {/if}
-      <div class="editor-actions">
-        {#if permitted}
-          {#if q.livePython.actions.includes('run') && !q.livePython.testInputs}<button
-              class="action-button"
-              disabled={mounting || a.pythonBusy || !predictionReady}
-              onclick={run}
-              >{q.livePython.predictions?.length ? 'Run and compare' : 'Run code'}</button
-            >{/if}
-          {#if q.livePython.actions.includes(q.livePython.testInputs ? 'run' : 'check')}<button
-              class="action-button"
-              class:compact-action={Boolean(q.livePython.testInputs)}
-              aria-label={q.livePython.testInputs ? 'Run & test' : undefined}
-              disabled={mounting || a.pythonBusy || !predictionReady}
-              onclick={q.livePython.testInputs ? run : check}
-              title={q.livePython.testInputs
-                ? 'Runs the configured test values on the code in the current tab. Ctrl/Cmd + Enter does the same.'
-                : undefined}
-              aria-describedby={q.livePython.testInputs ? `check-description-${q.slot}` : undefined}
-            >
-              <span class="action-label"
-                >{q.livePython.testInputs ? 'Run & test' : 'Check code'}</span
-              >
-              {#if q.livePython.testInputs}
-                <svg
-                  class="action-icon"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M3 5 12 12 3 19Z" />
-                  <path d="M15 7.5a3 3 0 0 1 6 0c0 2-3 2.5-3 4.5" />
-                  <path d="M18 16h.01" />
-                </svg>
-              {/if}</button
-            >{/if}
-        {/if}
-        {#if !locked}<button
-            class="action-button subtle compact-action"
-            aria-label="Reset"
-            title="Reset code"
-            disabled={mounting || a.pythonBusy}
-            onclick={() => {
-              editor.setMode('free');
-              editor.source = q.code;
-              changeMode(policy.defaultMode);
-            }}
-          >
-            <span class="action-label">Reset</span>
-            <svg
-              class="action-icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M4 20 14 4M4 6l8 11a5 5 0 0 0 8-6l-3-4m0 0h5m-5 0v5" />
-            </svg></button
-          >{/if}
-      </div>
-    </div>
-    {#if q.livePython.tabs}
       <div
         class="editor-document"
-        id={`editor-${q.slot}-original`}
-        role="tabpanel"
-        aria-labelledby={`tab-${q.slot}-original`}
-        hidden={tab !== 'original'}
+        id={`editor-${q.slot}-edited`}
+        role={q.livePython.tabs ? 'tabpanel' : undefined}
+        aria-labelledby={q.livePython.tabs ? `tab-${q.slot}-edited` : undefined}
+        hidden={tab !== 'edited'}
       >
-        <div class="live-python-editor" bind:this={originalHost}></div>
+        <div class="live-python-editor" bind:this={host}></div>
+      </div>
+      <button
+        class="width-toggle"
+        aria-label={expanded ? 'Restore editor width' : 'Expand editor width'}
+        title={expanded ? 'Restore editor width' : 'Expand editor width'}
+        aria-expanded={expanded}
+        aria-controls={`editor-${q.slot}-edited${q.livePython.tabs ? ` editor-${q.slot}-original` : ''}`}
+        onclick={() => toggleWidth()}><span aria-hidden="true">{expanded ? '◀' : '▶'}</span></button
+      >
+      <div class="editor-height">
+        <button
+          class="height-handle"
+          aria-label="Drag to resize editor; use arrow keys to adjust height"
+          onpointerdown={(e) => {
+            dragStart = { y: e.clientY, height: visibleHeight };
+            e.currentTarget.setPointerCapture(e.pointerId);
+          }}
+          onpointermove={resize}
+          onpointerup={() => (dragStart = null)}
+          onpointercancel={() => (dragStart = null)}
+          onkeydown={(e) => {
+            if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
+              e.preventDefault();
+              setHeight(visibleHeight + (e.key === 'ArrowUp' ? -20 : 20));
+            }
+          }}><span aria-hidden="true"></span></button
+        >
+      </div>
+    </div>
+    {#if pinnedOutput}
+      <!-- svelte-ignore a11y_no_noninteractive_tabindex (The bounded output region needs keyboard scrolling.) -->
+      <div
+        class="run-output pinned-output"
+        class:minimised={outputMinimised}
+        role="region"
+        aria-label="Program output"
+        tabindex="0"
+        style:max-height={`${outputHeight}px`}
+      >
+        {@render output()}
       </div>
     {/if}
-    <div
-      class="editor-document"
-      id={`editor-${q.slot}-edited`}
-      role={q.livePython.tabs ? 'tabpanel' : undefined}
-      aria-labelledby={q.livePython.tabs ? `tab-${q.slot}-edited` : undefined}
-      hidden={tab !== 'edited'}
-    >
-      <div class="live-python-editor" bind:this={host}></div>
-    </div>
-    <button
-      class="width-toggle"
-      aria-label={expanded ? 'Restore editor width' : 'Expand editor width'}
-      title={expanded ? 'Restore editor width' : 'Expand editor width'}
-      aria-expanded={expanded}
-      aria-controls={`editor-${q.slot}-edited${q.livePython.tabs ? ` editor-${q.slot}-original` : ''}`}
-      onclick={() => toggleWidth()}><span aria-hidden="true">{expanded ? '◀' : '▶'}</span></button
-    >
-    <div class="editor-height">
-      <button
-        class="height-handle"
-        aria-label="Drag to resize editor; use arrow keys to adjust height"
-        onpointerdown={(e) => {
-          dragStart = { y: e.clientY, height: visibleHeight };
-          e.currentTarget.setPointerCapture(e.pointerId);
-        }}
-        onpointermove={resize}
-        onpointerup={() => (dragStart = null)}
-        onpointercancel={() => (dragStart = null)}
-        onkeydown={(e) => {
-          if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
-            e.preventDefault();
-            setHeight(visibleHeight + (e.key === 'ArrowUp' ? -20 : 20));
-          }
-        }}><span aria-hidden="true"></span></button
-      >
-    </div>
   </div>
   <!-- Retain the normal flow height when the pinned editor becomes compact, avoiding a page jump. -->
   <div
     class="editor-space"
     aria-hidden="true"
-    style:height={`calc(1rem + 4px + ${Math.max(0, height - visibleHeight)}px)`}
+    style:height={`calc(${pinnedOutput ? '0px' : '1rem + 4px'} + ${Math.max(0, height - visibleHeight)}px)`}
   ></div>
-  {#if hasOutput || hasResults || hasSolution}
+  {#if (hasOutput && !pinnedOutput) || hasResults || hasSolution}
     <div class="coding-controls">
-      {#if hasOutput}
-        <section class="run-output" aria-label="Program output">
-          <h3>Program output</h3>
-          <pre class="code-panel">{saved.output}</pre>
-        </section>
+      {#if hasOutput && !pinnedOutput}
+        <section class="run-output" aria-label="Program output">{@render output()}</section>
       {/if}
       {#if hasResults}
         <section class="check-results" aria-label="Check results" aria-live="polite">
@@ -559,6 +676,7 @@
   }
   .coding-intro {
     grid-area: guidance;
+    padding-top: max(0px, calc(1rem - 12px));
     border-radius: 0.75rem 0.75rem 0 0;
     border-bottom: 0;
   }
@@ -570,12 +688,18 @@
   .editor-guidance:empty {
     display: none;
   }
-  .editor-dock {
+  .editor-stack {
     grid-area: editor;
     min-width: 0;
     position: sticky;
     top: 1rem;
     z-index: 2;
+    pointer-events: none;
+  }
+  .editor-dock {
+    min-width: 0;
+    position: relative;
+    pointer-events: auto;
     padding-inline: 1rem;
     border-radius: 0 0 0.75rem 0.75rem;
     background: var(--surface);
@@ -629,13 +753,58 @@
     margin: 0 0 0.5rem;
     font-size: 1.1rem;
   }
+  .pinned-output {
+    min-height: 8rem;
+    pointer-events: auto;
+    box-sizing: border-box;
+    margin-top: calc(1rem + 4px);
+    padding: 0 1rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 0.75rem;
+    background: var(--surface);
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .pinned-output.minimised {
+    min-height: 0;
+  }
+  .pinned-output .run-output-heading {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: var(--surface);
+    margin-inline: -1rem;
+    padding: max(0px, calc(1rem - 12px)) 1rem 0;
+  }
+  .pinned-output:focus-visible {
+    outline: 2px solid var(--selection-border);
+    outline-offset: 2px;
+  }
+  .pinned-output .code-panel {
+    max-height: none;
+    overflow: visible;
+  }
+  .run-record {
+    margin-top: 0.75rem;
+    min-width: 0;
+  }
+  .run-record h4 {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .run-record .code-panel {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
   .guidance-heading,
+  .run-output-heading,
   .check-results-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
   }
+  .run-output-heading h3,
   .check-results-heading h3 {
     margin: 0;
   }
@@ -892,7 +1061,7 @@
     .coding-controls {
       margin-bottom: 1.5rem;
     }
-    .editor-dock {
+    .editor-stack {
       top: 0;
     }
     .editor-document {

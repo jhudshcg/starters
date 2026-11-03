@@ -34,7 +34,13 @@ export async function enterOutcome(b, slot, id, observation, interactive) {
   );
   if (interactive && id.endsWith('-own-expected')) {
     const actual = id.replace('-own-expected', '-own-actual');
-    assert.equal(await b.evaluate(`document.querySelector('[data-test-response="${actual}"] button').disabled`), true);
+    assert.equal(
+      await b.evaluate(
+        `document.querySelector('[data-test-response="${actual}"] button').disabled`,
+      ),
+      false,
+      'expected-result fields do not gate execution',
+    );
   }
   if (interactive) await b.change(`${prefix}-consumed`, String(observation.consumed), 'input');
 }

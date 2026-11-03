@@ -84,6 +84,10 @@ async function run(slot) {
   );
 }
 try {
+  // Runtime.enable can replay failures from the page left open during a previous rebuild.
+  await b.send('Page.navigate', { url: 'about:blank' });
+  await b.until(`location.href === 'about:blank'`);
+  b.errors.length = 0;
   await b.send('Page.navigate', { url: base });
   await b.until('Boolean(document.querySelector("#main"))');
   await b.evaluate('localStorage.clear()');
@@ -547,10 +551,36 @@ try {
     process.exit(0);
   }
   if (process.argv.includes('--dock-layout-only')) {
+    await open(3, 37, 0);
+    await b.change('#test-37-valid-own-inputs-c0-prices', '3, 5', 'input');
+    await b.evaluate(`${button(37, 'Run & test')}.click()`);
+    await wait(
+      `document.querySelector('.pinned-output')?.innerText.includes('No runnable test inputs')`,
+    );
+    await b.evaluate(
+      `scrollTo(0,scrollY+document.querySelector('.coding-intro').getBoundingClientRect().bottom+50)`,
+    );
+    await wait(`document.querySelector('.editor-dock').classList.contains('docked')`);
+    await b.evaluate(
+      'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))',
+    );
+    const shortOutput = await b.evaluate(`(() => {
+      const p=document.querySelector('.pinned-output'),r=p.getBoundingClientRect(),s=getComputedStyle(p);
+      return {height:r.height,available:parseFloat(s.maxHeight),min:parseFloat(s.minHeight),
+        scroll:p.scrollHeight,client:p.clientHeight,track:s.scrollbarColor};
+    })()`);
+    assert.equal(shortOutput.min, 128);
+    assert.ok(
+      shortOutput.height >= shortOutput.min && shortOutput.height < shortOutput.available,
+      'short output grows only to its content, with an 8rem minimum',
+    );
+    assert.equal(shortOutput.scroll, shortOutput.client);
+    assert.match(shortOutput.track, /rgba\(0, 0, 0, 0\)$/);
     await open(3, 36, 5);
     const q = esp[0].variations[5];
     await enterTestInputs(b, 36, q);
     await enterExpectations(b, 36, q, testOutcomes(q).expected);
+    await replace(36, 'print("long-output-" * 60)\n' + q.code);
     await b.evaluate(`${button(36, 'Run & test')}.click()`);
     await wait(
       `document.body.innerText.includes('tests finished on Your code.') && !${button(36, 'Run & test')}.disabled`,
@@ -568,6 +598,31 @@ try {
       });
       await b.evaluate('scrollTo(0,0)');
       await wait(`!document.querySelector('.editor-dock').classList.contains('docked')`);
+      const cards =
+        await b.evaluate(`Array.from(document.querySelectorAll('.run-result pre'), panel => {
+        const style=getComputedStyle(panel);
+        return {overflow:style.overflowY, width:panel.clientWidth, scrollWidth:panel.scrollWidth,
+          height:panel.clientHeight, scrollHeight:panel.scrollHeight, text:panel.textContent};
+      })`);
+      assert.ok(cards.some((card) => card.text.includes('long-output-'.repeat(60))));
+      assert.ok(
+        cards.every(
+          (card) =>
+            card.overflow === 'visible' &&
+            card.scrollWidth <= card.width + 1 &&
+            card.scrollHeight <= card.height + 1,
+        ),
+        'card outputs wrap and grow without scrollbars or clipping',
+      );
+      const scrollbarColours = await b.evaluate(`[
+        getComputedStyle(document.documentElement).scrollbarColor,
+        getComputedStyle(document.querySelector('.test-log-scroll')).scrollbarColor,
+        getComputedStyle(document.querySelector('.editor-document:not([hidden]) .py-editor-input > div').shadowRoot.querySelector('.cm-scroller')).scrollbarColor,
+      ]`);
+      assert.ok(
+        scrollbarColours.every((colour) => /rgba\(0, 0, 0, 0\)$/.test(colour)),
+        'page, test-log and shadow-DOM editor use the native transparent-track default',
+      );
       const columns = await b.evaluate(
         `getComputedStyle(document.querySelector('.with-editor')).gridTemplateColumns.split(' ').map(parseFloat)`,
       );
@@ -589,13 +644,23 @@ try {
             beside=document.elementFromPoint(r.left+4,r.bottom+g.height/2),
             onGrip=document.elementFromPoint(g.left+g.width/2,g.top+g.height/2);
           return {top:r.top,bottom:r.bottom,codeBottom:code.bottom,frameBottom:d.querySelector('.editor-document:not([hidden])').getBoundingClientRect().bottom,gripTop:g.top,
-            stripIntercepted:d.contains(beside),gripReachable:grip.contains(onGrip)};
+            stripIntercepted:d.contains(beside),gripReachable:grip.contains(onGrip),
+            outputTop:document.querySelector('.pinned-output').getBoundingClientRect().top,
+            outputBottom:document.querySelector('.pinned-output').getBoundingClientRect().bottom};
         })()`);
         assert.ok(
           Math.abs(pinned.top - (width >= 744 ? 16 : 0)) < 1,
           `${width}: code stays visible with test outcomes: ${JSON.stringify(pinned)}`,
         );
         assert.ok(pinned.bottom < 760, `${width}: code fits the viewport`);
+        assert.ok(
+          Math.abs(pinned.outputTop - pinned.bottom - 20) < 1,
+          'output remains attached below the grip clearance',
+        );
+        assert.ok(
+          Math.abs(pinned.outputBottom - 784) < 1,
+          'long output uses the remaining window height, leaving a 1rem bottom margin',
+        );
         assert.equal(
           pinned.bottom,
           pinned.frameBottom,
@@ -621,14 +686,113 @@ try {
           'Run & test and Reset remain visible and reachable while scrolling',
         );
       }
+      const outputScroll = await b.evaluate(`(() => {
+        const output=document.querySelector('.pinned-output'), page=scrollY;
+        output.focus({preventScroll:true});
+        output.scrollTop=output.scrollHeight;
+        return {page, after:scrollY, position:output.scrollTop, overflow:getComputedStyle(output).overflowY};
+      })()`);
+      assert.ok(outputScroll.position > 0, 'full output scrolls within its bounded panel');
+      assert.equal(outputScroll.overflow, 'auto');
+      assert.match(
+        await b.evaluate(
+          `getComputedStyle(document.querySelector('.pinned-output')).scrollbarColor`,
+        ),
+        /rgba\(0, 0, 0, 0\)$/,
+        'dark output also retains a transparent scrollbar track',
+      );
+      assert.equal(
+        outputScroll.page,
+        outputScroll.after,
+        'scrolling output does not scroll the page',
+      );
+      const heading = await b.evaluate(`(() => {
+        const p=document.querySelector('.pinned-output'),h=p.querySelector('.run-output-heading'),
+          r=p.getBoundingClientRect(),hr=h.getBoundingClientRect(),s=getComputedStyle(h);
+        return {top:hr.top-r.top,left:hr.left-r.left,padding:parseFloat(s.paddingTop),
+          coversTop:h.contains(document.elementFromPoint(r.left+4,r.top+3)),
+          background:s.backgroundColor,surface:getComputedStyle(p).backgroundColor,
+          guidancePadding:parseFloat(getComputedStyle(document.querySelector('.coding-intro')).paddingTop)};
+      })()`);
+      assert.ok(
+        Math.abs(heading.top - 1) < 1 && Math.abs(heading.left - 1) < 1 && heading.coversTop,
+        'opaque output heading covers the entire top strip while scrolled',
+      );
+      assert.equal(heading.background, heading.surface);
+      assert.equal(heading.padding, 4);
+      assert.equal(heading.guidancePadding, 4);
+      await b.evaluate(`document.querySelector('.pinned-output').scrollTop=0`);
+      await b.send('Input.dispatchKeyEvent', {
+        type: 'keyDown',
+        key: 'ArrowDown',
+        code: 'ArrowDown',
+        windowsVirtualKeyCode: 40,
+      });
+      await b.send('Input.dispatchKeyEvent', {
+        type: 'keyUp',
+        key: 'ArrowDown',
+        code: 'ArrowDown',
+        windowsVirtualKeyCode: 40,
+      });
+      await wait(`document.querySelector('.pinned-output').scrollTop > 0`);
+      assert.equal(
+        await b.evaluate('scrollY'),
+        outputScroll.page,
+        'keyboard scrolling stays inside output',
+      );
       await writeFile(
         `/private/tmp/editor-dock-${width}.png`,
         Buffer.from((await b.send('Page.captureScreenshot', { format: 'png' })).data, 'base64'),
       );
     }
+    const outputText = await b.evaluate(`document.querySelector('#program-output-36').textContent`);
+    await b.click('[aria-label="Minimise program output"]');
+    await wait(`document.querySelector('.pinned-output').offsetHeight < 128`);
+    assert.equal(await b.evaluate(`document.querySelector('#program-output-36').hidden`), true);
+    await b.click('[aria-label="Expand program output"]');
+    await wait(
+      `Math.abs(document.querySelector('.pinned-output').getBoundingClientRect().bottom - 784) < 1`,
+    );
+    assert.equal(
+      await b.evaluate(`document.querySelector('#program-output-36').textContent`),
+      outputText,
+      'collapse retains every result',
+    );
+    await b.click('[aria-label="Minimise program output"]');
+    await b.evaluate(
+      `document.querySelector('[data-test-response="c0-own-actual"] input[id$="-value"]').focus()`,
+    );
+    await wait(
+      `document.activeElement.getBoundingClientRect().top >= document.querySelector('.pinned-output').getBoundingClientRect().bottom`,
+    );
+    const beforeResize = await b.evaluate(`document.querySelector('.editor-dock').offsetHeight`);
+    await b.evaluate(`document.querySelector('.height-handle').focus({preventScroll:true})`);
+    await b.send('Input.dispatchKeyEvent', {
+      type: 'keyDown',
+      key: 'ArrowUp',
+      code: 'ArrowUp',
+      windowsVirtualKeyCode: 38,
+    });
+    await wait(`document.querySelector('.editor-dock').offsetHeight === ${beforeResize - 20}`);
+    await wait(
+      `Math.abs(document.querySelector('.pinned-output').getBoundingClientRect().top - document.querySelector('.editor-dock').getBoundingClientRect().bottom - 20) < 1`,
+    );
+    await b.send('Emulation.setDeviceMetricsOverride', {
+      width: 743,
+      height: 450,
+      deviceScaleFactor: 1,
+      mobile: false,
+    });
+    await wait(
+      `document.querySelector('.pinned-output').getBoundingClientRect().bottom <= innerHeight - 15`,
+    );
+    await b.evaluate(`document.querySelector('.test-plan').scrollIntoView({block:'start'})`);
+    await wait(
+      `document.querySelector('.pinned-output').getBoundingClientRect().bottom <= document.querySelector('.test-plan').getBoundingClientRect().top`,
+    );
     assert.deepEqual(b.errors, []);
     console.log(
-      'Test outcomes preserve pinned code/actions at 1280/1024px; 360px retains mobile docking. Code-frame/grip alignment, transparent grip surround, pointer access and 60/40 columns pass.',
+      'Attached output, keyboard scrolling, uncapped wrapping cards, pinned controls/grip, focus clearance, resizing, short landscape and release pass at desktop and phone widths.',
     );
     b.close();
     process.exit(0);
