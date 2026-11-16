@@ -9,5 +9,9 @@
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>
+    <section id="startup-error" role="alert" hidden>
+      <p>The page could not finish loading.</p>
+      <button id="startup-reload" type="button" class="action-button">Reload page</button>
+    </section>
   </body>
 </html>

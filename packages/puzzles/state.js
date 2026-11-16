@@ -3,9 +3,11 @@
  * Main contents: hasAnswer. Used by: parent navigation policy and player.
  * Uses: shared board state reader. Libs: none.
  */
+import {answerArray} from './structured-answers.js';
 import {challengeKinds,stateOf} from './rules/challenge-rules.js';
 export function hasAnswer(p,raw){
     
+    if(['choice-set','number-tuple'].includes(p.kind))return answerArray(raw).some(value=>String(value??'').trim());
     if(!challengeKinds.includes(p.kind))return String(raw??'').trim().length>0;
     const s=stateOf(raw,p);
     if(['logic-grid','equation-grid'].includes(p.kind))return Boolean(s.excluded?.length||s.values?.some(row=>row.some(v=>Number.isInteger(v)&&v>=0)));

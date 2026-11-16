@@ -187,3 +187,19 @@ Challenge labels are selection metadata and do not invalidate existing question 
 Hide classic maths from home puzzle cards, focus choices, metadata search and random discovery; link to the live [GCSE Maths practice site](https://joe312213.github.io/practice-gcse-maths/) instead. Preserve its bank slots and direct/shared codes for compatibility.
 
 Puzzle boards and answer grids fit without horizontal scrolling. Candidate tables use automatic column layout so short labels retain natural width, with answer buttons at least 24 CSS pixels wide in the dense 320px cases. Mobile host padding leaves space for answers. Digit grids fit their container while preserving cell-size custom properties. This minimum is a dense-grid check, not a claim that every target meets the broader 44px accessibility aim.
+
+## Staged ESD review activities — 16 November 2026
+
+Two fixed activities approved for student testing on 16 November 2026 (slots 1230–1231) combine staged puzzle reasoning with selected-response evaluation. Their [content, sources and review limits](esd-activity-drafts.md) remain pending classroom review. Home links, exact codes and tagged search open them with `reviewStatus: student-testing`. Staged worksheets stay outside random multi-question sets to preserve their intended length. They use the existing logic-grid focus for compatibility and do not establish a new production subtype or its minimum coverage.
+
+`stages` lists ordered titles, part IDs, evidence and hints. Each part belongs to exactly one stage. All stages appear consecutively and remain editable until normal submission; there is no progression state or stage locking. Final submission marks every part once; timed expiry records unanswered parts as blank. Later instructions must not supply earlier assessed answers. Sources disclosures have no assistance effect; hints retain the existing assisted-question policy.
+
+The portable `choice-set` kind uses a JSON array of selected option strings and requires an exact set without duplicates. `number-tuple` uses an ordered JSON array with labelled fields, awarding the part's points only when every value is correct. Numeric fields can explicitly allow correctly grouped thousands. These are bounded puzzle points, with no Core revision attribution.
+
+## Multiple-selection feedback
+
+After marking, the shared `choice-set` component highlights each correct selection green, each incorrect selection red, and each omitted required option with the warning colour and “Missed answer”. Visible labels accompany colour; missed options remain unchecked so the original response is preserved. The feedback names omissions and incorrect selections. The whole-part score still requires the exact correct set. Apply this policy to every puzzle using the component, including future sets; no correctness highlighting appears before marking.
+
+ESD review activities carry `ESD`, `sustainable` and `sustainability` tags plus “sustainable decisions” and “education for sustainable development” keywords. A draft may opt into explicit search using `searchable: true` without joining random practice. Staged puzzle matches form one-question search groups and open the complete worksheet; do not combine these longer activities into a three-question starter. Retired questions remain excluded.
+
+The longer ESD worksheet begins with two linked three-by-three candidate grids for building and annual costs. All four authored clues are necessary; clue types include exclusion, ordering, a cross-category link and an exclusive alternative. Both grids form one three-point logic part, replacing separate cost-entry questions rather than adding marks or a new activity.

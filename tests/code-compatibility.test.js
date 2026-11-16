@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {banks,resolve,historicalSet,choose} from '../js/bank.js';
 import {encode,decodeLegacyCode,BANK_VERSION} from '../js/codes.js';
-import {revisions} from '../js/code-compatibility.js';
+import {revisions,revisionDetails} from '../js/code-compatibility.js';
 import {snapshotBanks,nextHistory,compatibilityModule} from '../scripts/question-identities.mjs';
 import {setIdentity,attemptEligibility} from '../js/progress.js';
 const history=JSON.parse(readFileSync(new URL('../data/code-history.json',import.meta.url)));
@@ -86,4 +86,34 @@ test('removed question addresses cannot be recycled into new content',()=>{
  const entry={fingerprint:'original',focus:'CA1.1',marks:5};
  assert.throws(()=>nextHistory({2:{'1:5:0':entry},3:{}},{'1:5:0':{...entry,fingerprint:'new'}}),/Cannot reuse removed/);
  assert.throws(()=>nextHistory({2:{'1:5:0':entry},3:{}},{'1:5:1':entry}),/Cannot reuse removed/);
+});
+
+
+test('compact compatibility data exactly reproduces every historical state, focus and mark total', () => {
+ const latest=history[BANK_VERSION];
+ assert.deepEqual(Object.keys(revisions),Object.keys(history));
+ assert.deepEqual(Object.keys(revisionDetails),Object.keys(history));
+ for(const [version,snapshot] of Object.entries(history)) {
+  assert.deepEqual(Object.keys(revisions[version]).sort(),Object.keys(snapshot).sort());
+  assert.deepEqual(Object.keys(revisionDetails[version]).sort(),Object.keys(snapshot).sort());
+  for(const [key,entry] of Object.entries(snapshot)) {
+   assert.equal(revisions[version][key],latest[key]?.fingerprint===entry.fingerprint?1:0);
+   assert.deepEqual(revisionDetails[version][key],[entry.focus,entry.marks]);
+  }
+ }
+});
+
+test('compatibility deltas handle removals, gaps, changed marks and out-of-order lookups', async () => {
+ const original={fingerprint:'one',focus:'logic grids',marks:3};
+ const snapshots={2:{'0:1:0':original,'0:2:0':original},5:{'0:1:0':{...original,fingerprint:'two',marks:4}},8:{'0:1:0':{...original,fingerprint:'two',marks:4},'0:3:0':{...original,focus:'sudoku'}}};
+ const module=await import('data:text/javascript;base64,'+Buffer.from(compatibilityModule(snapshots)).toString('base64'));
+ assert.equal(module.revisions[8]['0:1:0'],1);
+ assert.deepEqual(module.revisionDetails[2]['0:1:0'],['logic grids',3]);
+ assert.equal(module.revisions[2]['0:1:0'],0);
+ assert.equal(module.revisions[2]['0:2:0'],0);
+ assert.equal(module.revisions[5]['0:2:0'],undefined);
+ assert.equal(module.revisions[5]['0:3:0'],undefined);
+ assert.deepEqual(module.revisionDetails[8]['0:3:0'],['sudoku',3]);
+ assert.equal(module.revisions[3],undefined);
+ assert.equal(module.revisions[8],module.revisions[8]);
 });

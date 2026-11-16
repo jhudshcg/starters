@@ -36,9 +36,10 @@ export function searchGroups(bank,type,query,{focusNames={},recipeNames={}}={}){
  if(!terms.length)return [];
  const groups=new Map();
  for(const q of bank){
-  if(q.retired)continue;
-  const key=type===3?`${q.focus}:${q.recipe}`:q.focus;
-  const group=groups.get(key)??{key,type,focus:q.focus,recipe:q.recipe,label:focusNames[q.focus]??q.focus,recipeLabel:recipeNames[q.recipe]??q.recipe,questions:[],matches:new Map(),rank:0,topics:new Set()};
+  if(q.retired||(q.reviewStatus==='draft'&&!q.searchable))continue;
+  const standalone=type===0&&q.variations.some(v=>v.stages);
+  const key=standalone?`${q.focus}:${q.slot}`:type===3?`${q.focus}:${q.recipe}`:q.focus;
+  const group=groups.get(key)??{key,type,standalone,focus:q.focus,recipe:q.recipe,label:standalone?q.title:focusNames[q.focus]??q.focus,recipeLabel:recipeNames[q.recipe]??q.recipe,questions:[],matches:new Map(),rank:0,topics:new Set()};
   groups.set(key,group);group.questions.push(q);
   const found=[];
   q.variations.forEach((v,variation)=>{
@@ -71,7 +72,7 @@ function shuffled(values,random){
  for(let i=list.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[list[i],list[j]]=[list[j],list[i]];}return list;
 }
 function findSet(group,target,{previous=null,mode='new',random=null}={}){
- const size=group.type===2?2:3;
+ const size=group.standalone?1:group.type===2?2:3;
  const match=(q,i)=>group.matches.get(q.slot)?.some(v=>v.variation===i)??false;
  const pool=shuffled(group.questions,random).sort((a,b)=>Number(group.matches.has(b.slot))-Number(group.matches.has(a.slot)));
  const limits=group.type===1?[15,22]:group.type===2?[10,15]:[0,Infinity];
@@ -105,7 +106,7 @@ function findSet(group,target,{previous=null,mode='new',random=null}={}){
  }
 }
 export function searchPlan(group){
- const size=group.type===2?2:3;
+ const size=group.standalone?1:group.type===2?2:3;
  for(let count=Math.min(size,group.matches.size);count>=1;count--){const plan=findSet(group,count);if(plan)return plan;}
  return null;
 }

@@ -1,0 +1,179 @@
+{
+  "checked": "2026-11-16",
+  "method": "Independent Python enumeration and Decimal arithmetic against cached source facts; no app/browser or classroom test.",
+  "starter_cost_solutions": [
+    {
+      "G": 12,
+      "P": 8,
+      "F": 16,
+      "R": 9
+    }
+  ],
+  "starter_clue_removal_counts": [
+    4,
+    6,
+    4
+  ],
+  "starter_capital_derivation": {
+    "G": {
+      "unrounded_m": 12.644003777148253,
+      "rounded_m": 12
+    },
+    "P": {
+      "unrounded_m": 8.39874551971326,
+      "rounded_m": 8
+    },
+    "F": {
+      "unrounded_m": 16.068,
+      "rounded_m": 16
+    },
+    "R": {
+      "unrounded_m": 8.622815087396505,
+      "rounded_m": 9
+    }
+  },
+  "starter_pairs": [
+    {
+      "pair": "G+P",
+      "capital_m": 20,
+      "saving_tco2e": 33000
+    },
+    {
+      "pair": "G+F",
+      "capital_m": 28,
+      "saving_tco2e": 27000
+    },
+    {
+      "pair": "G+R",
+      "capital_m": 21,
+      "saving_tco2e": 16000
+    },
+    {
+      "pair": "P+F",
+      "capital_m": 24,
+      "saving_tco2e": 48000
+    },
+    {
+      "pair": "P+R",
+      "capital_m": 17,
+      "saving_tco2e": 37000
+    },
+    {
+      "pair": "F+R",
+      "capital_m": 25,
+      "saving_tco2e": 31000
+    }
+  ],
+  "starter_stage2": [
+    "G+P",
+    "G+R",
+    "P+F",
+    "P+R"
+  ],
+  "starter_stage3": [
+    "P+F"
+  ],
+  "raw_emission_savings_kg_per_t": [
+    335,
+    2726,
+    705,
+    507
+  ],
+  "longer_designs": [
+    {
+      "plan": "A",
+      "five_year_m": 14.5,
+      "food_processed_t": 24000,
+      "food_saving_tco2e": 16800,
+      "electrical_saving_tco2e": 0,
+      "total_saving_tco2e": 16800,
+      "budget_pass": true,
+      "target_pass": false
+    },
+    {
+      "plan": "B",
+      "five_year_m": 27,
+      "food_processed_t": 24000,
+      "food_saving_tco2e": 16800,
+      "electrical_saving_tco2e": 0,
+      "total_saving_tco2e": 16800,
+      "budget_pass": false,
+      "target_pass": false
+    },
+    {
+      "plan": "C",
+      "five_year_m": 14.5,
+      "food_processed_t": 20000,
+      "food_saving_tco2e": 14000,
+      "electrical_saving_tco2e": 8500,
+      "total_saving_tco2e": 22500,
+      "budget_pass": true,
+      "target_pass": true
+    }
+  ],
+  "longer_misconceptions": {
+    "use_survey_A_saving": 21000,
+    "ignore_rejects_A_saving": 18200,
+    "assume_full_capacity_B_saving": 31500,
+    "building_only_B_appears_affordable": true,
+    "omit_electrical_C_saving": 14000,
+    "double_count_C_electrical_fee_five_year_m": 17
+  },
+  "evidence_limit": "Using the survey can falsely admit A to the emissions shortlist. With checked supply, only C meets both requirements. This is conditional on the authored service availability and material mix.",
+  "rounding_robustness": {
+    "longer_survivors_at_plus_minus_5_percent_saving": [
+      "C"
+    ],
+    "limitation": "Arithmetic sensitivity only. At +10% emissions benefit Plastics + Garden also qualifies. Exact classroom figures determine the answer, not a robust real-world investment recommendation.",
+    "starter_at_minus_10_percent_saving": [
+      "P+F"
+    ],
+    "starter_at_plus_10_percent_saving": [
+      "P+F",
+      "P+R"
+    ]
+  },
+  "result": "pass",
+  "starter_budget_m": 24,
+  "longer_target_tco2e": 20000,
+  "longer_accepted_supply_t": 24000,
+  "starter_unrounded_capital_same_survivors": false,
+  "cost_grid_scoring": "3 points only for a complete correct mapping",
+  "capital_rounding_limit": "The unrounded Plastics + Food benchmark totals \u00a324.467m, above the authored \u00a324m limit. Solve using the stated rounded estimates; the budget has no procurement contingency.",
+  "electrical_derivation": {
+    "annual_net_service_m_unrounded": 0.4657931354359926,
+    "annual_net_service_m_rounded": 0.5,
+    "saving_tco2e_per_t_unrounded": 1.674,
+    "saving_tco2e_per_t_rounded": 1.7,
+    "annual_saving_rounded": 8500.0
+  },
+  "longer_cost_grid": {
+    "candidate_mappings": 36,
+    "solutions": [
+      [
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ]
+    ],
+    "clue_removal_solution_counts": [
+      3,
+      2,
+      4,
+      2
+    ],
+    "clue_types": [
+      "exclusion",
+      "relative order",
+      "cross-category link",
+      "exclusive either/or"
+    ]
+  }
+}

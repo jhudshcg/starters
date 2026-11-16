@@ -1,5 +1,6 @@
 <!-- Home content and compact activity cards. Edit card text/art here. -->
 <script>
+  import { encode, BANK_VERSION } from '#domain/codes.js';
   import { types } from '#domain/bank.js';
   import CodeEntry from '../ui/CodeEntry.svelte';
   let { app, view, href } = $props();
@@ -67,6 +68,28 @@
     </article>
   {/each}
 </section>
+<section class="esd-drafts note-panel" aria-labelledby="esd-drafts-heading">
+  <div>
+    <h2 id="esd-drafts-heading">Sustainable decisions · student testing</h2>
+    <p>Combine clues, costs and environmental evidence, then evaluate your choice.</p>
+    <div class="esd-links">
+      {#each [{ slot: 1230, title: 'Which two facilities?', time: '6 minutes' }, { slot: 1231, title: 'Which recycling plan?', time: '12–15 minutes' }] as draft}
+        <a
+          class="action-button"
+          href={href(
+            '#set=' +
+              encode({
+                version: BANK_VERSION,
+                type: 0,
+                entries: [{ slot: draft.slot, variation: 0 }],
+                minutes: null,
+              }),
+          )}>{draft.title} · {draft.time} →</a
+        >
+      {/each}
+    </div>
+  </div>
+</section>
 <section class="lower-panel">
   <div class="note-panel">
     <span class="note-icon" aria-hidden="true">↗</span>
@@ -94,3 +117,17 @@
       >Continue {view.data.active.code}</a
     >
   </p>{/if}
+
+<style>
+  .esd-drafts {
+    margin-block: 1.5rem;
+  }
+  .esd-drafts h2 {
+    font-size: 1.15rem;
+  }
+  .esd-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+</style>

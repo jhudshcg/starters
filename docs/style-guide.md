@@ -80,6 +80,8 @@ Examples:
 | Unknown code | “Code not found. Check the code or reload to get the latest question catalogue.” |
 | Save failure | “Progress could not be saved on this browser. Export your progress to keep a copy.” |
 
+For marked multiple-selection puzzles, colour options by their own result rather than the whole-part score: correct selections green, incorrect selections red, and required but unselected options in the warning colour. Label them “Correct selection”, “Incorrect selection” and “Missed answer”. Preserve checked states and name omissions in feedback.
+
 Show hints on request, then answer reveal as a separate action. Do not imply that assisted success is an independent first attempt. Code highlighting must preserve readable plain text and copying; indentation remains visible.
 
 ## Files

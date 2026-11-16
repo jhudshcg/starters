@@ -17,7 +17,8 @@
   transform: none;
   transition: none;
 }
-.text-field {
+.text-field,
+.puzzle-text-field {
   @apply input;
 }
 .working-field {
@@ -28,6 +29,7 @@
   background-image: none;
 }
 .text-field,
+.puzzle-text-field,
 .working-field,
 .choice-field {
   height: auto;

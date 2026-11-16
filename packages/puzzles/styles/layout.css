@@ -30,33 +30,37 @@
   padding: .2rem;
 }
 
+/* Intrinsic fractional tracks use the widest label, equally for every data cell. */
 :where(.puzzle-controls) .candidate-table {
+  display: grid;
+  width: max-content;
+  grid-template-columns: max-content max-content repeat(var(--candidate-count), minmax(2.75rem, 1fr));
+  grid-template-rows: auto auto repeat(var(--candidate-rows), minmax(2.75rem, 1fr));
   border-collapse: collapse;
-  width: 100%;
-  table-layout: auto;
 }
-
+:where(.puzzle-controls) .candidate-table :is(thead, tbody, tr) { display: contents; }
+:where(.puzzle-controls) .candidate-table colgroup { display: none; }
 :where(.puzzle-controls) .candidate-table th {
-  padding: .4rem .125rem;
-  max-width: 7rem;
-  overflow-wrap: anywhere;
+  padding: .4rem .5rem;
+  white-space: nowrap;
+  align-content: center;
 }
-
-:where(.puzzle-controls) .candidate-table td {
+:where(.puzzle-controls) .candidate-table th[scope="row"] { text-align: end; }
+:where(.puzzle-controls) .candidate-table .candidate-spacer { grid-column: span 2; border: 0; }
+:where(.puzzle-controls) .candidate-table th[scope="colgroup"] { grid-column: 3 / -1; }
+:where(.puzzle-controls) .candidate-axis-vertical { grid-column: 1; grid-row: 3 / span var(--candidate-rows); }
+:where(.puzzle-controls) .candidate-table .candidate-axis { font-size: 1rem; text-align: center; }
+:where(.puzzle-controls) .candidate-axis-vertical span { writing-mode: vertical-rl; transform: rotate(180deg); }
+:where(.puzzle-controls) .candidate-table td:not(.candidate-spacer) {
   border-width: 1px;
   border-style: solid;
   padding: 0;
 }
-
-:where(.puzzle-controls) .candidate-table caption {
-  text-align: left;
-  padding: .5rem 0;
-}
-
 :where(.puzzle-controls) .candidate-table button {
   width: 100%;
-  min-width: 1.5rem;
-  height: 2.7rem;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -249,7 +253,7 @@
 /* Zero-specificity defaults let a parent keep its own generic form styling. */
 :where(.puzzle-controls .options) { display: grid; gap: .6rem; margin-block: .8rem; }
 :where(.puzzle-controls .option) { display: flex; gap: .6rem; align-items: center; padding: .65rem; border: 1px solid; border-radius: 9px; }
-:where(.puzzle-controls input[type=radio]) { min-height: auto; width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
+:where(.puzzle-controls input:is([type=radio], [type=checkbox])) { min-height: auto; width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
 :where(.puzzle-controls > label, .puzzle-controls > small) { display: block; margin-bottom: .5rem; }
 
 :where(.puzzle-controls) .go-guidance,
@@ -276,15 +280,6 @@
   user-select: none;
 }
 
-/* Candidate cells keep a useful natural width before fitting a smaller panel. */
-:where(.puzzle-controls) .candidate-scroll {
-  width: min(100%, calc(var(--candidate-count) * 3.5rem + var(--candidate-name-width, 2.75rem) + 1.5rem));
-}
-:where(.puzzle-controls) .candidate-axis-column { width: 1.5rem; }
-:where(.puzzle-controls) .candidate-name-column { width: var(--candidate-name-width, 2.75rem); }
-:where(.puzzle-controls) .candidate-table .candidate-axis { font-size: 1rem; text-align: center; }
-:where(.puzzle-controls) .candidate-axis-vertical span { writing-mode: vertical-rl; }
-:where(.puzzle-controls) .candidate-table .candidate-spacer { border: 0; }
 :where(.puzzle-controls) .go-board { max-width: calc(100% - .8rem); }
 :where(.puzzle-controls) :is(.go-point, .path-dot) { min-height: 0; }
 :where(.puzzle-controls) .go-replay { flex-wrap: wrap; }
@@ -292,8 +287,7 @@
 :where(.puzzle-controls) .go-board-zoom,
 :where(.puzzle-controls) .go-board-zoom .go-point { touch-action: pinch-zoom; }
 
-/* Equation row names are single letters; give the saved space to dense value columns. */
-.puzzle-controls[data-kind="equation-grid"] { --candidate-name-width: 2rem; }
-
-/* Value headings share their cell width: avoid splitting short words/times for padding. */
-:where(.puzzle-controls) .candidate-table :is(th[scope="col"], th[scope="row"]) { padding-inline: 0; }
+/* Ordered numeric fields remain usable in narrow question cards. */
+.puzzle-number-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: 1rem; }
+.puzzle-number-fields label { display: grid; align-content: end; gap: 0.5rem; }
+.puzzle-number-fields input { min-width: 0; width: 100%; }

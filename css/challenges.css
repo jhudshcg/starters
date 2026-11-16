@@ -10,6 +10,10 @@
   --puzzle-selection-bg: var(--selection-bg);
   --puzzle-selection-border: var(--selection-border);
   --puzzle-selection-text: var(--selection-text);
+  --puzzle-incorrect-bg: var(--incorrect-bg);
+  --puzzle-incorrect-border: var(--incorrect-border);
+  --puzzle-incorrect-text: var(--incorrect-text);
+  --puzzle-warning-border: var(--warning-border);
   --puzzle-warning-bg: var(--warning-bg);
   --puzzle-warning-text: var(--warning-text);
   --puzzle-correct-bg: var(--correct-bg);

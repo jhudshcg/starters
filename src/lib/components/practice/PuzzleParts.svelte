@@ -4,8 +4,9 @@
   import { puzzlePartHTML } from '#domain/puzzle-view.js';
   import { bindChallenges, disposeChallenges } from '#domain/challenge-controls.js';
   import { challengeKinds } from '#domain/challenge-rules.js';
+  import { inputAnswer, syncInput } from '../../../../packages/puzzles/structured-answers.js';
   import { esc } from '#domain/view-utils.js';
-  let { q, set, attempt, results, app, href } = $props();
+  let { q, set, attempt, results, app, href, partIds = null } = $props();
   let root;
   const html = $derived.by(() => {
     const a = attempt,
@@ -13,28 +14,30 @@
       hintVisible = a.hints[q.slot] && !a.hiddenHints?.[q.slot];
     return q.parts
       .map((part, index) =>
-        puzzlePartHTML(
-          part,
-          challengeKinds.includes(part.kind) ? (a.answers[q.slot]?.[part.id] ?? '') : '',
-          {
-            instanceId: q.slot,
-            index,
-            locked: Boolean(a.finished),
-            result: results?.[index],
-            labelHTML: `<span class="part-label">${String.fromCharCode(97 + index)})</span> ${esc(part.prompt)} <span class="part-marks">(${part.marks})</span>`,
-            guidanceActionsHTML: go
-              ? `<button class="puzzle-link" data-hint="${q.slot}" aria-expanded="${Boolean(hintVisible)}">${hintVisible ? 'Hide hint' : 'Show hint'}</button> <a class="puzzle-link" href="${href('#go')}">Practice board</a>`
-              : '',
-            guidanceHTML:
-              go && hintVisible
-                ? `<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`
-                : '',
-            referenceHTML:
-              go && q.source
-                ? `<a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a>`
-                : '',
-          },
-        ),
+        !partIds || partIds.includes(part.id)
+          ? puzzlePartHTML(
+              part,
+              challengeKinds.includes(part.kind) ? (a.answers[q.slot]?.[part.id] ?? '') : '',
+              {
+                instanceId: q.slot,
+                index,
+                locked: Boolean(a.finished),
+                result: results?.[index],
+                labelHTML: `<span class="part-label">${String.fromCharCode(97 + index)})</span> ${esc(part.prompt)} <span class="part-marks">(${part.marks})</span>`,
+                guidanceActionsHTML: go
+                  ? `<button class="puzzle-link" data-hint="${q.slot}" aria-expanded="${Boolean(hintVisible)}">${hintVisible ? 'Hide hint' : 'Show hint'}</button> <a class="puzzle-link" href="${href('#go')}">Practice board</a>`
+                  : '',
+                guidanceHTML:
+                  go && hintVisible
+                    ? `<p class="hint-text"><strong>Hint:</strong> ${esc(q.hint)}</p>`
+                    : '',
+                referenceHTML:
+                  go && q.source
+                    ? `<a href="${esc(q.source.url)}" target="_blank" rel="noopener noreferrer">Puzzle source</a>`
+                    : '',
+              },
+            )
+          : '',
       )
       .join('');
   });
@@ -65,14 +68,18 @@
     const answers = attempt.answers[q.slot] ?? {};
     for (const input of root.querySelectorAll('[data-part]')) {
       const value = answers[input.dataset.part] ?? '';
-      if (input.type === 'radio') input.checked = input.value === value;
-      else if (input.value !== value) input.value = value;
+      syncInput(input, value);
     }
   });
   onMount(() => {
     const input = (event) => {
       const el = event.target.closest('[data-part]');
-      if (el) app.practice.answer(q.slot, el.dataset.part, el.value);
+      if (el)
+        app.practice.answer(
+          q.slot,
+          el.dataset.part,
+          inputAnswer(el, app.profile.data.active?.answers[q.slot]?.[el.dataset.part]),
+        );
     };
     const click = (event) => {
       if (event.target.closest('[data-hint]')) app.practice.hint(q.slot);

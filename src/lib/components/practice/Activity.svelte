@@ -53,7 +53,10 @@
   </details>{/if}
 <div class="page-top">
   <div>
-    <h1>{focusNames[set.focus]}</h1>
+    <h1>{set.questions.some((q) => q.stages) ? 'Sustainable decisions' : focusNames[set.focus]}</h1>
+    {#if set.questions.some((q) => q.reviewStatus === 'draft')}<p class="development-notice">
+        Review draft · timing and difficulty still to be trialled.
+      </p>{:else if set.questions.some((q) => q.reviewStatus === 'student-testing')}<p class="development-notice">Student testing</p>{/if}
     {#if pageStatus[set.type]?.inDevelopment}<p class="development-notice" role="note">
         {developmentNotice}
       </p>{/if}

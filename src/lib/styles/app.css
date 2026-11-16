@@ -73,3 +73,13 @@
 .progress-summary {
   margin-top: 1.5rem;
 }
+
+/* This fallback remains usable when the application modules cannot mount. */
+#startup-error {
+  max-width: 80rem;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+body:has(> #startup-error:not([hidden])) :is(#main, footer) {
+  display: none;
+}

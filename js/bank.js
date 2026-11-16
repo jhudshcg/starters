@@ -26,7 +26,7 @@ export const espRecipeNames={'T1.1':'Build a feasible schedule','T1.2':'Calculat
 export const challengeLevels = {all:'Mixed challenge',beginner:'Beginner',foundation:'Foundation',standard:'Standard',stretch:'Stretch'};
 espRecipeNames['T2.6'] = 'Read Python and build a test plan';
 export const challengeLabel = (level,focus) => focus==='go'?({all:'Mixed challenge',beginner:'Beginner · 25k+',foundation:'Foundation · 18–24k',standard:'Standard · 12–17k',stretch:'Stretch · 11k and stronger'}[level]??challengeLevels[level]):challengeLevels[level];
-export const puzzlePool = (focus, level='all', topic='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&(level==='all'||q.challengeLevel===level)&&(topic==='all'||q.tags.includes(`maths:${topic}`)));
+export const puzzlePool = (focus, level='all', topic='all') => banks[0].filter(q=>q.focus===focus&&!q.retired&&q.reviewStatus!=='draft'&&!q.variations.some(v=>v.stages)&&(level==='all'||q.challengeLevel===level)&&(topic==='all'||q.tags.includes(`maths:${topic}`)));
 export const availableChallenges = (focus,topic='all') => Object.keys(challengeLevels).filter(level=>puzzlePool(focus,level,topic).length>=3);
 export const focuses = type => [...new Set(banks[type].filter(q=>!q.retired).map(q => q.focus))];
 /** Live recipe IDs for selectors; historical names remain available for old codes. */
@@ -185,10 +185,14 @@ export function validateBank() {
         // Task 2 investigations retain the surrounding input/calculation workflow.
         const codeLimit=type===3&&q.focus==='task2'&&v.testPlan?30:12;
         if(v.code && v.code.split('\n').filter(l=>l.trim()&&!l.trim().startsWith('#')).length>codeLimit) errors.push(`${q.title}: too many lines`);
+        if(v.stages) {
+          const ids=v.stages.flatMap(stage=>stage.parts??[]);
+          if(!v.stages.length||new Set(ids).size!==ids.length||ids.length!==v.parts.length||ids.some(id=>!v.parts.some(p=>p.id===id))||v.stages.some(stage=>!stage.title||!stage.hint||!stage.parts?.length)) errors.push(`${q.title}: invalid stages`);
+        }
         v.parts.forEach((p,j)=>{
           if(!Number.isInteger(p.marks)||p.marks<1||p.marks>3) errors.push(`${q.title}: invalid marks`);
           if(p.kind==='algebra' && (!Array.isArray(p.variables)||!p.variables.length||p.variables.some(v=>!/^[a-z]$/.test(v))||!['equivalent','simplified','expanded','factorised','rearranged'].includes(p.algebraForm)||!Number.isInteger(p.equivalentMarks)||p.equivalentMarks<0||p.equivalentMarks>=p.marks)) errors.push(`${q.title}: invalid algebra marking policy`);
-          if(p.options && !p.options.includes(p.answer)) errors.push(`${q.title} V${i}: answer absent from options`);
+          if(p.options && (p.kind==='choice-set' ? !JSON.parse(p.answer).every(value=>p.options.includes(value)) : !p.options.includes(p.answer))) errors.push(`${q.title} V${i}: answer absent from options`);
           if(p.termRules!==undefined) {
             const strings=list=>Array.isArray(list)&&list.length>0&&list.every(s=>typeof s==='string'&&s.trim()===s&&s.length>0);
             if(p.kind!=='text'||p.options||p.caseSensitive||!Array.isArray(p.termRules)||!p.termRules.length||

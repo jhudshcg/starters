@@ -46,11 +46,13 @@
     <h2 id="logic-heading">Candidate grid</h2>
     <div class="candidate-grids">
       <div class="board-scroll" tabindex="0" aria-label="Device candidate grid">
-        <table class="candidate-table">
-          <caption>Devices</caption>
-          <thead><tr><th scope="col">Person</th><th scope="col">Laptop</th><th scope="col">Tablet</th></tr></thead>
+        <table class="candidate-table" style="--candidate-count:2;--candidate-rows:2" aria-label="Device candidates">
+          <thead>
+            <tr><td colspan="2" class="candidate-spacer"></td><th scope="colgroup" colspan="2" class="candidate-axis">Device</th></tr>
+            <tr><td colspan="2" class="candidate-spacer"></td><th scope="col">Laptop</th><th scope="col">Tablet</th></tr>
+          </thead>
           <tbody>
-            <tr><th scope="row">Alex</th><td><button aria-pressed="true" aria-label="Alex, laptop: selected">✓</button></td><td><button aria-pressed="false" aria-label="Alex, tablet: excluded">×</button></td></tr>
+            <tr><th scope="rowgroup" rowspan="2" class="candidate-axis candidate-axis-vertical"><span>Person</span></th><th scope="row">Alex</th><td><button aria-pressed="true" aria-label="Alex, laptop: selected">✓</button></td><td><button aria-pressed="false" aria-label="Alex, tablet: excluded">×</button></td></tr>
             <tr><th scope="row">Blair</th><td><button aria-pressed="false" aria-label="Blair, laptop: unknown">·</button></td><td><button aria-pressed="false" aria-label="Blair, tablet: unknown">·</button></td></tr>
           </tbody>
         </table>

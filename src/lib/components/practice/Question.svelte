@@ -5,6 +5,7 @@
   import Stimulus from './Stimulus.svelte';
   import Task2Response from './Task2Response.svelte';
   import TestPlan from './TestPlan.svelte';
+  import StagedPuzzle from './StagedPuzzle.svelte';
   import PuzzleParts from './PuzzleParts.svelte';
   import { hasRecentSubmission } from '#domain/review.js';
   import { markQuestion } from '#domain/marking.js';
@@ -110,6 +111,20 @@
       <a href={q.source.url} target="_blank" rel="noopener noreferrer">Puzzle source</a>
       · {q.source.note}
     </p>{/if}
+  {#if q.introduction}<ul>
+      {#each q.introduction as line}<li>{line}</li>{/each}
+    </ul>{/if}
+  {#if q.sources?.length}
+    <details class="question-sources">
+      <summary>Sources</summary>
+      <p>{q.sourcesNote}</p>
+      <ul>
+        {#each q.sources as source}<li>
+            <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a> — {source.note}
+          </li>{/each}
+      </ul>
+    </details>
+  {/if}
   <div
     class="question-layout"
     class:investigation={Boolean(q.testPlan)}
@@ -121,7 +136,14 @@
     {:else}
       <Stimulus {q} />
     {/if}
-    {#if set.type === 0}<PuzzleParts {q} {set} attempt={a} {results} {app} {href} />{:else}
+    {#if q.stages}<StagedPuzzle
+        {q}
+        {set}
+        attempt={a}
+        {results}
+        {app}
+        {href}
+      />{:else if set.type === 0}<PuzzleParts {q} {set} attempt={a} {results} {app} {href} />{:else}
       {#snippet renderParts(items)}
         {#each items as { part, j } (part.id)}
           {@const id = `answer-${q.slot}-${part.id}`}
@@ -314,10 +336,13 @@
         onclick={reveal}>{a.reveals[q.slot] ? 'Answer shown' : 'Show answer'}</button
       >{/if}{#if a.hints[q.slot] || a.reveals[q.slot]}<small>Assisted practice</small>{/if}
   </div>
-  {#if q.focus !== 'go' && hintVisible}<p class="hint-text" tabindex="-1">
+  {#if q.focus !== 'go' && hintVisible}<div class="hint-text" tabindex="-1">
       <strong>Hint:</strong>
       {q.hint}
-    </p>{/if}
+      {#if q.stages}<ol>
+          {#each q.stages as stage}<li><strong>{stage.title}:</strong> {stage.hint}</li>{/each}
+        </ol>{/if}
+    </div>{/if}
   {#if review && a.reveals[q.slot]}<div class="solution" tabindex="-1">
       <h3>Answers and explanations</h3>
       <ol class="solution-list" role="list">
@@ -342,6 +367,19 @@
 </article>
 
 <style>
+  .question-sources {
+    font-size: 0.85rem;
+    margin-block: 0.75rem;
+  }
+  .question-sources summary {
+    color: var(--main);
+    cursor: pointer;
+    text-decoration: underline;
+    width: fit-content;
+  }
+  .question-sources li {
+    margin-block: 0.5rem;
+  }
   .question {
     min-width: 0;
   }

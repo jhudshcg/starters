@@ -35,7 +35,68 @@
 		palette,
 		tweaks
 	};
-})(document.documentElement, localStorage, [{"id":"sage","light":"Sage","dark":"Forest"},{"id":"blue","light":"Blue sky","dark":"Midnight blue"},{"id":"rose","light":"Rose","dark":"Berry"},{"id":"apricot","light":"Apricot","dark":"Ember"}]); } catch {}</script>
+})(document.documentElement, localStorage, [{"id":"sage","light":"Sage","dark":"Forest"},{"id":"blue","light":"Blue sky","dark":"Midnight blue"},{"id":"rose","light":"Rose","dark":"Berry"},{"id":"apricot","light":"Apricot","dark":"Ember"}]); } catch {} (function installStartupRecovery(browser = window) {
+	const { document } = browser;
+	const key = "dsd-starters-startup-retry";
+	let stopped = false, recovering = false, pendingMessage;
+	const notice = (message) => {
+		pendingMessage = message;
+		const panel = document.getElementById("startup-error");
+		if (!panel) return;
+		panel.hidden = false;
+		panel.querySelector("p").textContent = message;
+	};
+	const clearGuard = () => {
+		try {
+			browser.sessionStorage.removeItem(key);
+		} catch {}
+	};
+	async function recover() {
+		if (stopped || recovering) return;
+		recovering = true;
+		notice("The page could not finish loading. Trying a fresh copy…");
+		let allowed = false;
+		try {
+			allowed = browser.sessionStorage.getItem(key) !== browser.location.href;
+			if (allowed) browser.sessionStorage.setItem(key, browser.location.href);
+		} catch {
+			allowed = false;
+		}
+		if (allowed) try {
+			const response = await browser.fetch(browser.location.href, {
+				cache: "reload",
+				signal: browser.AbortSignal.timeout(1e4)
+			});
+			if (response.ok && response.headers.get("content-type")?.includes("text/html")) {
+				await response.text();
+				if (!stopped) browser.location.reload();
+				return;
+			}
+		} catch {}
+		if (!stopped) notice("The page could not finish loading. Check your connection, then reload to try again.");
+	}
+	function failed(event) {
+		const message = String(event.reason?.message || "");
+		if (/Failed to fetch dynamically imported module|error loading dynamically imported module|Importing a module script failed/i.test(message)) recover();
+	}
+	function mounted() {
+		stopped = true;
+		clearGuard();
+		browser.removeEventListener("unhandledrejection", failed);
+		browser.removeEventListener("starters:mounted", mounted);
+		const panel = document.getElementById("startup-error");
+		if (panel) panel.hidden = true;
+	}
+	browser.addEventListener("unhandledrejection", failed);
+	browser.addEventListener("starters:mounted", mounted);
+	document.addEventListener("DOMContentLoaded", () => {
+		if (pendingMessage && !stopped) notice(pendingMessage);
+		document.getElementById("startup-reload")?.addEventListener("click", () => {
+			clearGuard();
+			browser.location.reload();
+		});
+	}, { once: true });
+})();</script>
     <link href="./_app/immutable/entry/start.ClR-hvMx.js" rel="modulepreload">
 		<link href="./_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/BaNbYf_w.js" rel="modulepreload">
@@ -44,14 +105,14 @@
 		<link href="./_app/immutable/chunks/Dt1PO7V6.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/-IGBxMLq.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/DvjDEcbM.js" rel="modulepreload">
-		<link href="./_app/immutable/entry/app.BhGJltEO.js" rel="modulepreload">
-		<link href="./_app/immutable/nodes/0.Br9yGCCH.js" rel="modulepreload">
-		<link href="./_app/immutable/chunks/DdsDy5Dd.js" rel="modulepreload">
+		<link href="./_app/immutable/entry/app.DI5AZKWt.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/0.DtXWO1Nx.js" rel="modulepreload">
+		<link href="./_app/immutable/chunks/CGdYiHzs.js" rel="modulepreload">
 		<link href="./_app/immutable/chunks/CV12yyYr.js" rel="modulepreload">
-		<link href="./_app/immutable/nodes/2.DuN0tfyf.js" rel="modulepreload">
+		<link href="./_app/immutable/nodes/2.CctqjXKc.js" rel="modulepreload">
 		<!--whg6dh--><!----><title>Start here · Digital Software Development</title>
-		<link href="./_app/immutable/assets/0.C3aIhVXg.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/2.3rXGvxEn.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/0.B-XhCyUN.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/2.7ulDd4X0.css" rel="stylesheet">
   </head>
   <body data-sveltekit-preload-data="hover">
     <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><a class="skip" href="#main">Skip to content</a> <header class="site-header"><a class="brand" href="./" aria-label="Start here home"><span class="brand-icon" aria-hidden="true">s.</span><span class="brand-copy">start here</span><span class="brand-sub">Digital Software Development T-Level</span></a> <div class="theme-controls"><!--[--><!--[--><!--$s1--><!--[-1--><button class="icon-button" aria-label="Choose colour theme" title="Choose colour theme" id="theme-picker" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-popover-trigger="" disabled="" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="7" cy="7" r="3"></circle><circle cx="17" cy="7" r="3"></circle><circle cx="7" cy="17" r="3"></circle><circle cx="17" cy="17" r="3"></circle></svg><!----></button><!--]--><!----><!--]--> <!--[--><!--[-1--><!--]--><!--]--><!----><!----><!--]--> <button type="button" id="theme-toggle" class="icon-button" aria-label="Dark theme" title="Switch to paired dark theme" aria-pressed="false" disabled=""><svg viewBox="0 0 24 24" aria-hidden="true"><!--[-1--><path d="M20.5 14A8.5 8.5 0 0 1 10 3.5 8.5 8.5 0 1 0 20.5 14Z"></path><!--]--></svg></button><!----> <!--[--><!--[--><!--$s2--><!--[-1--><button class="icon-button" aria-label="Open navigation menu" title="Navigation menu" id="nav-toggle" aria-haspopup="dialog" aria-expanded="false" data-state="closed" data-popover-trigger="" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"></path></svg><!----></button><!--]--><!----><!--]--> <!--[--><!--[-1--><!--]--><!--]--><!----><!----><!--]--> <a class="header-progress-link" href="./progress/">My progress</a></div> <!--[-1--><!--]--></header><!----> <section class="global-code-entry" hidden="" aria-label="Find practice or open a question set"><form id="global-code-form"><!--[0--><label for="global-code">Code or key term</label><!--]--> <input class="text-field" id="global-code" name="code" aria-label="Question set code or key term" placeholder="Enter code or key term" autocomplete="off" autocapitalize="off" spellcheck="false" required="" value=""/> <button class="action-button" type="submit">Open <span aria-hidden="true">↗</span></button></form> <!--[0--><small id="global-code-help">Search all questions</small><!--]--> <p class="error" id="global-code-error" role="alert"><!--[-1--><!--]--></p><!----></section> <div id="storage-warning" role="alert" hidden="">Progress could not be saved on this browser. You can keep practising. Export a backup from My
@@ -59,17 +120,17 @@
 
 			<script>
 				{
-					__sveltekit_12c1tcq = {
+					__sveltekit_yzqn5j = {
 						base: new URL(".", location).pathname.slice(0, -1),
-						version: "8f598ebe65ea52d3",
+						version: "cf279b5877773456",
 						assets: "/starters"
 					};
 
 					const element = document.currentScript.parentElement;
 
 					import("./_app/immutable/entry/start.ClR-hvMx.js").then(async (kit) => {
-						kit.init(__sveltekit_12c1tcq);
-						const app = await import("./_app/immutable/entry/app.BhGJltEO.js");
+						kit.init(__sveltekit_yzqn5j);
+						const app = await import("./_app/immutable/entry/app.DI5AZKWt.js");
 						kit.start(app, element, {
 							node_ids: [0, 2],
 							data: [null,null],
@@ -80,5 +141,9 @@
 				}
 			</script>
 		</div>
+    <section id="startup-error" role="alert" hidden>
+      <p>The page could not finish loading.</p>
+      <button id="startup-reload" type="button" class="action-button">Reload page</button>
+    </section>
   </body>
 </html>

@@ -4,6 +4,7 @@
  * Used by: consumers without a custom renderer. Uses: UI modules and evaluator.
  * Libs: none. No storage, submission, CSS imports or app theme knowledge.
  */
+import {inputAnswer} from './structured-answers.js';
 import {renderPart,renderHint,renderSolution} from './ui/render.js';
 import {bindChallenges} from './ui/boards.js';
 import {evaluatePuzzle,maximumMark} from './evaluation.js';
@@ -35,9 +36,9 @@ export function mountPuzzle(root,puzzle,options={}){
    onAssist:()=>options.onAssist?.({kind:'next-move-hint'}),onStatus:status=>options.onStatus?.(status)
   });
   // Text entry retains focus/caret; only the affected feedback is removed on editing.
-  for(const input of root.querySelectorAll('[data-part]'))input.addEventListener(input.type==='radio'?'change':'input',()=>{
+  for(const input of root.querySelectorAll('[data-part]'))input.addEventListener(['radio','checkbox'].includes(input.type)?'change':'input',()=>{
    if(locked||destroyed)return;
-   state[input.dataset.part]=input.value;result=null;
+   state[input.dataset.part]=inputAnswer(input,state[input.dataset.part]);result=null;
    root.querySelectorAll('.feedback').forEach(node=>node.remove());
    root.querySelectorAll('[data-result]').forEach(node=>node.removeAttribute('data-result'));
    emit(structuredClone(state),{partId:input.dataset.part});

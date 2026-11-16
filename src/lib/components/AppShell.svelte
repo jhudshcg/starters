@@ -119,6 +119,7 @@
       });
   });
   onMount(() => {
+    window.dispatchEvent(new Event('starters:mounted'));
     app = createApplication({
       navigation,
       focus,

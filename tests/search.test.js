@@ -4,6 +4,7 @@ import {searchGroups,searchPlan,chooseSearchEntries,searchSetMatches,normaliseSe
 import core from '../data/exam.js';
 import python from '../data/python.js';
 import esp from '../data/esp.js';
+import esd from '../packages/puzzles/data/esd.js';
 import {packBank} from '../scripts/pack-bank.mjs';
 
 const part=(marks=6,extra={})=>({id:'0',marks,answer:'secretanswer',options:['secretanswer','distractorword'],prompt:'irrelevantprompt',hint:'irrelevanthint',...extra});
@@ -120,4 +121,21 @@ test('CA tags connect programming to curriculum terms without expanding broad ta
  assert.ok(searchGroups(core,1,'data type conversion').length);
  assert.ok(searchGroups(python,2,'CA2.3.4').some(g=>g.matches.has(55)));
  assert.deepEqual(scoredMatches(packBank(python),2,'data type conversion'),scoredMatches(python,2,'data type conversion'));
+});
+
+
+test('ESD metadata finds both student-testing activities as separately openable complete worksheets', () => {
+ for(const bank of [esd,packBank(esd)])for(const query of ['ESD','sustainable','sustainability','sustainable decisions','education for sustainable development']) {
+  const groups=searchGroups(bank,0,query);
+  assert.deepEqual(groups.flatMap(g=>[...g.matches.keys()]).sort(),[1230,1231]);
+  for(const group of groups) {
+   const plan=searchPlan(group);
+   assert.equal(plan.entries.length,1);
+   assert.equal(plan.related,0);
+   assert.equal(plan.entries[0].slot,group.questions[0].slot);
+  }
+ }
+ const hidden={...esd[0],reviewStatus:'draft',searchable:false};
+ assert.deepEqual(searchGroups([hidden],0,'ESD'),[]);
+ assert.deepEqual(searchGroups([{...esd[0],retired:true}],0,'ESD'),[]);
 });

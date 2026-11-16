@@ -87,7 +87,7 @@ input,select {
   color: var(--text);
 }
 
-input[type=radio] {
+input:is([type=radio], [type=checkbox]) {
   min-height: auto;
   accent-color: var(--main);
   width: 1.15rem;
@@ -625,7 +625,7 @@ main:focus {
   font-size: .75rem;
 }
 
-.part input:not([type=radio]) {
+.part input:not([type=radio], [type=checkbox]) {
   width: 100%;
   max-width: 28rem;
 }
@@ -1467,7 +1467,7 @@ textarea:focus-visible {
 
 /* Premarking selection is neutral amber; edit the shared values in tokens.css. */
 
-.option:has(input:checked) {
+.option:not([data-choice-result]):has(input:checked) {
   background: var(--selection-bg);
   border-color: var(--selection-border);
   color: var(--selection-text);
@@ -1729,7 +1729,7 @@ textarea {
   opacity: 1;
 }
 
-.option input[type=radio] {
+.option input:is([type=radio], [type=checkbox]) {
   accent-color: var(--selection-border);
 }
 

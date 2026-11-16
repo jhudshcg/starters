@@ -5,6 +5,7 @@
  * Uses: authored family data and challenge metadata. Libs: none.
  */
 import {challengeBands, bandForGoRank} from './metadata.js';
+import esd from './data/esd.js';
 import logic from './data/logic-grids.js';
 import equations from './data/logic-equations.js';
 import tangrams from './data/tangrams.js';
@@ -24,7 +25,7 @@ import mathsBeginner from './data/maths-beginner.js';
 import sequencesEnriched from './data/sequences-enriched.js';
 
 /** Normalise authored records; IDs and variation positions must never be reused. */
-export default [...logic,...equations,...tangrams,...paths,...sudoku,...numbers,...sequences,...classics,...go,...sequenceMore,...mathsMore,...mathsPractice,...mathsBeginner,...sequencesEnriched,...sequenceBeginner,...mathsApplied,...mathsReasoningStretch].map(question => {
+export default [...esd,...logic,...equations,...tangrams,...paths,...sudoku,...numbers,...sequences,...classics,...go,...sequenceMore,...mathsMore,...mathsPractice,...mathsBeginner,...sequencesEnriched,...sequenceBeginner,...mathsApplied,...mathsReasoningStretch].map(question => {
   const {slot, focus, setSize, challengeLevel, tags, variations, ...content} = question;
   const rank = focus === 'go'
     ? (question.sourceRank ?? (slot === 175 ? 25 : Number(question.source?.note.match(/(\d+) kyu/)?.[1])))

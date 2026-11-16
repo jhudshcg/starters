@@ -3,10 +3,11 @@
  * Main contents: per-part feedback, aggregate marks and maximum marks.
  * Used by: consumers and app marking adapter. Uses: package rule helpers. Libs: none directly.
  */
+import {answerArray,numericAnswer} from './structured-answers.js';
 import {expressionValue,validCoinSystems,fractionValue} from './rules/maths-answer.js';
 import {markAlgebra} from './rules/algebra-answer.js';
 import {challengeKinds as interactiveKinds,markChallenge as markPuzzle} from './rules/challenge-rules.js';
-export const puzzleAnswerKinds=[...interactiveKinds,'number','fraction','algebra','coin-systems','expression','integer-set','choice','text'];
+export const puzzleAnswerKinds=[...interactiveKinds,'number','fraction','algebra','coin-systems','expression','integer-set','choice','choice-set','number-tuple','text'];
 const normalise = (value, sensitive=false) => {
   const text=String(value??'').trim().replace(/\s+/g,' ');
   return sensitive?text:text.toLowerCase();
@@ -19,9 +20,25 @@ export function markPart(p,raw='',results=[]) {
       const result=value?markPuzzle(p,raw):{earned:0,message:'No answer entered.'};
       return {id:p.id,...result,max:p.marks,blank:!value};
     }
-    let correct=false, algebraMessage, algebraEarned=0;
-    if(value) {
-      if(p.kind==='number') correct=/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(value) && [p.answer,...p.accepted??[]].some(a=>Number(value)===Number(a));
+    let correct=false, algebraMessage, algebraEarned=0, optionResults, choiceFeedback;
+    if(p.kind==='choice-set') {
+      const supplied=answerArray(raw),expected=answerArray(p.answer);
+      correct=Boolean(value)&&supplied.length===expected.length&&new Set(supplied).size===supplied.length&&expected.every(item=>supplied.includes(item));
+      optionResults=p.options.map(option=>({option,selected:supplied.includes(option),correct:expected.includes(option)}));
+      const missing=expected.filter(option=>!supplied.includes(option)),extra=supplied.filter(option=>!expected.includes(option));
+      choiceFeedback=correct?'Correct.':[
+        missing.length?`Missed: ${missing.join('; ')}.`:'',
+        extra.length?`Incorrect selections: ${extra.join('; ')}.`:supplied.length?'Your selected options are correct.':'No options selected.',
+        !missing.length&&!extra.length?'Select each required option once.':'',
+        'Full marks require the complete correct selection.'
+      ].filter(Boolean).join(' ');
+    }
+    if(value && p.kind!=='choice-set') {
+      if(p.kind==='number') correct=numericAnswer(raw,p.allowThousands)!==null && [p.answer,...p.accepted??[]].some(a=>numericAnswer(raw,p.allowThousands)===Number(a));
+      else if(p.kind==='number-tuple') {
+        const supplied=answerArray(raw),expected=answerArray(p.answer);
+        correct=supplied.length===expected.length&&expected.every((item,i)=>numericAnswer(supplied[i],true)!==null&&numericAnswer(supplied[i],true)===Number(item));
+      }
       else if(p.kind==='fraction') {
         const supplied=fractionValue(raw);
         correct=supplied!==null&&[p.answer,...p.accepted??[]].some(a=>{const expected=fractionValue(a);return expected!==null&&Math.abs(supplied-expected)<1e-9;});
@@ -61,7 +78,7 @@ export function markPart(p,raw='',results=[]) {
       }
     }
     const dependency=p.dependsOn===undefined || results[Number(p.dependsOn)]?.earned>0;
-    return {id:p.id,earned:dependency?(correct?p.marks:algebraEarned):0,max:p.marks,blank:!value,message:correct&&!dependency?'Your reason needs to match a correct preceding choice.':correct?'Correct.':value?(algebraMessage??p.feedback??(p.options?'That choice is not correct. Compare it with the model answer.':'This answer was not recognised. Check the requested format or compare it with the model answer.')):'No answer entered.'};
+    return {id:p.id,earned:dependency?(correct?p.marks:algebraEarned):0,max:p.marks,blank:p.kind==='choice-set'?!answerArray(raw).length:!value,...(optionResults?{optionResults}:{}),message:correct&&!dependency?'Your reason needs to match a correct preceding choice.':correct?'Correct.':choiceFeedback??(value?(algebraMessage??p.feedback??(p.options?'That choice is not correct. Compare it with the model answer.':'This answer was not recognised. Check the requested format or compare it with the model answer.')):'No answer entered.')};
 }
 
 /** Read available marks without evaluating answers or accessing the DOM. */

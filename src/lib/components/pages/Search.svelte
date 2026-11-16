@@ -74,6 +74,10 @@
           ? ' · ' + [...group.topics].slice(0, 4).join(', ')
           : ''}
       </p>
+      {#if group.standalone}<p class="muted">
+          {group.questions[0].reviewStatus === 'draft' ? 'Review draft · ' : group.questions[0].reviewStatus === 'student-testing' ? 'Student testing · ' : ''}{group.questions[0]
+            .estimatedMinutes} minutes
+        </p>{/if}
       <p class="muted">
         {group.questions
           .filter((q) => group.matches.has(q.slot))
@@ -82,18 +86,24 @@
           .join(' · ')}{group.matches.size > 3 ? ' …' : ''}
       </p>
       <p>
-        {!plan
-          ? 'These matches cannot form a complete starter set. Broaden your search.'
-          : plan.related
-            ? `This set includes ${plan.matched} matching ${plan.matched === 1 ? 'question' : 'questions'} and ${plan.related} related ${plan.related === 1 ? 'question' : 'questions'} from the same topic.`
-            : `All ${plan.entries.length} questions in this set match your search.`}
+        {group.standalone
+          ? 'Open this complete activity with all its stages.'
+          : !plan
+            ? 'These matches cannot form a complete starter set. Broaden your search.'
+            : plan.related
+              ? `This set includes ${plan.matched} matching ${plan.matched === 1 ? 'question' : 'questions'} and ${plan.related} related ${plan.related === 1 ? 'question' : 'questions'} from the same topic.`
+              : `All ${plan.entries.length} questions in this set match your search.`}
       </p>
       <button
         class="action-button primary"
         data-search-result={index}
         disabled={!plan}
         onclick={() => start(group)}
-        >{plan?.related ? 'Start set with related questions' : 'Start matching set'}</button
+        >{group.standalone
+          ? 'Open activity'
+          : plan?.related
+            ? 'Start set with related questions'
+            : 'Start matching set'}</button
       >
     </article>
   {/each}

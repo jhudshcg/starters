@@ -2,6 +2,8 @@
 
 Use a resolved variation (`question.variations[index]`), not the catalogue template. Render the question's title, variation prompt and any source attribution in the parent-owned question card. The package renders all answer parts, board-specific guidance and interactions. The parent chooses order/grouping and owns codes, submit/check/reveal buttons, persistence and tracked results.
 
+Logic-grid parts may set `entityLabel` for the vertical axis (for example, `Facility`). It defaults to `Person`; equation grids default to `Variable`. Shared CSS sizes uniform data tracks from the longest labels and keeps row labels unwrapped.
+
 ## Ready-made control
 
 ```js
@@ -83,3 +85,11 @@ From the repository root, `node --test packages/puzzles/tests/*.test.js` checks 
 `./go-board` exports `renderGoBoard` for shared puzzle/human geometry; opt into `coordinates` and `zoom` for four-sided axes and native pinch zoom. `./go-press` accepts optional `validate` and `getColour` callbacks so human games can reuse pointer/keyboard handling. Defaults preserve puzzle play.
 
 `./rules/go-game` provides transient human games, pass, positional superko, undo/redo, dead-group marking and area counting. `./rules/go-clock` provides main time and Japanese byo-yomi with caller timestamps. Neither owns app progress or routing. `./gnugo-client` exports `createGnuGoEstimator(workerURL)`, creating a worker only on `estimate(position, signal)`; abort or dispose cancels it. Hosts supply/distribute the engine and its complete source/licences. See [host integration](../../docs/go-integration.md).
+
+## Structured answers and staged hosts
+
+`choice-set` renders checkboxes from `options`; `answer` is a JSON array of selected option strings. Marking requires the exact set without duplicates. `number-tuple` renders labelled numeric inputs from `fields`; `answer` is an ordered JSON array of values. Each part receives its points only for a complete correct response. `number` may opt into `allowThousands`; numeric tuples accept correctly grouped thousands by default. Models must include a readable `solutionText` for structured answers.
+
+Review content can provide ordered `stages` and per-question `sources`. These are parent-owned presentation metadata: the ready-made control still renders the supplied parts without managing stages, storage or submission. The host groups parts into sections and owns submission locking. The ESD host displays all stages together and keeps every part editable until submission. See the app's [ESD review contract](../../docs/esd-activity-drafts.md).
+
+Choice-set marking returns `optionResults` alongside the whole-part score. Each item contains `option`, `selected` and `correct`; the renderer uses it to label correct selections, incorrect selections and missed answers independently. Render feedback only when the host supplies a marking result. Missed options stay unchecked. Exact-set scoring is unchanged.

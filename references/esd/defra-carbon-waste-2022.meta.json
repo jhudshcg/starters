@@ -1,0 +1,15 @@
+{
+  "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1123468/Statistics_on_carbon_emmisions_Waste_Households_England_v8_2018.pdf",
+  "title": "Experimental Statistics on the carbon impact of waste from households managed by local authorities in England",
+  "published": "2022-12-14",
+  "retrieved": "2026-11-15",
+  "sha256": "31ac479770082996672eb35268699d773e55ba94524ffe6169e21750d61cf41f",
+  "used_pdf_pages": [
+    7,
+    8,
+    9,
+    11,
+    12
+  ],
+  "notes": "Historical Carbon WARM factors; baseline-specific classroom estimates, not a 2026 engineering model."
+}

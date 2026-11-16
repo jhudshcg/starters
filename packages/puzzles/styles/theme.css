@@ -9,6 +9,10 @@
   --puzzle-selection-bg: #ffe6a0;
   --puzzle-selection-border: #9b7122;
   --puzzle-selection-text: #49350d;
+  --puzzle-incorrect-bg: #fbe5e7;
+  --puzzle-incorrect-border: #ba4253;
+  --puzzle-incorrect-text: #8f2434;
+  --puzzle-warning-border: #9b7122;
   --puzzle-warning-bg: #fff0c7;
   --puzzle-warning-text: #604811;
   --puzzle-correct-bg: #e0f1df;
@@ -159,7 +163,7 @@
 
 :where(.puzzle-controls .option) { border-color: var(--puzzle-control-border); background: var(--puzzle-surface); }
 :where(.puzzle-controls .option:has(input:checked)) { background: var(--puzzle-selection-bg); border-color: var(--puzzle-selection-border); color: var(--puzzle-selection-text); }
-:where(.puzzle-controls input[type=radio]) { accent-color: var(--puzzle-selection-border); }
+:where(.puzzle-controls input:is([type=radio], [type=checkbox])) { accent-color: var(--puzzle-selection-border); }
 
 :where(.puzzle-controls) .puzzle-link {
   background: none;
@@ -178,3 +182,16 @@
 
 /* Axis headings lead; value labels use lighter emphasis to keep compact columns readable. */
 :where(.puzzle-controls) .candidate-table thead th[scope="col"] { font-weight: 600; }
+
+/* Option feedback comes from that option, independently of the whole-part score. */
+.puzzle-controls .option[data-choice-result="correct"] {
+  background: var(--puzzle-correct-bg); border-color: var(--puzzle-correct-border); color: var(--puzzle-correct-text);
+}
+.puzzle-controls .option[data-choice-result="incorrect"] {
+  background: var(--puzzle-incorrect-bg); border-color: var(--puzzle-incorrect-border); color: var(--puzzle-incorrect-text);
+}
+.puzzle-controls .option[data-choice-result="missed"] {
+  background: var(--puzzle-warning-bg); border-color: var(--puzzle-warning-border); color: var(--puzzle-warning-text);
+}
+.puzzle-controls .option[data-choice-result] input { accent-color: currentColor; }
+.puzzle-controls .option .option-status { display: block; color: inherit; }

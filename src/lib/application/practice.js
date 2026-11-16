@@ -221,6 +221,8 @@ export function createPractice({
   function answer(slot, id, value) {
     const a = session.data.active;
     if (!a || a.finished || a.pythonSubmission) return;
+    const q = activeSet()?.questions.find((q) => q.slot === slot);
+    if (!q?.parts.some((p) => p.id === id)) return;
     a.answers[slot] ??= {};
     if (
       a.pythonBusy &&

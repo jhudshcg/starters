@@ -33,7 +33,7 @@
   color: var(--selection-text);
 }
 
-.question.type-0 .option:has(input:checked) {
+.question.type-0 .option:not([data-choice-result]):has(input:checked) {
   background: var(--selection-bg);
   border-color: var(--selection-border);
   color: var(--selection-text);

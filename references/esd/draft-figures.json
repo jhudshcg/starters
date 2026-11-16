@@ -1,0 +1,358 @@
+{
+  "status": "Review draft; fictional scenarios with historical benchmarks, not current procurement estimates",
+  "retrieved": "2026-11-15",
+  "price_year": 2024,
+  "sources": {
+    "ons": {
+      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7bt/mm23",
+      "series": "D7BT",
+      "release": "2026-10-21",
+      "annual_indices": {
+        "2010": 89.4,
+        "2015": 100.0,
+        "2018": 105.9,
+        "2021": 111.6,
+        "2024": 133.9,
+        "2020": 108.7,
+        "2019": 107.8
+      },
+      "limitation": "General CPI adjustment is a teaching approximation, not a construction-cost index."
+    },
+    "glass": {
+      "url": "https://www.veolia.co.uk/press-releases/new-multi-million-ps-facility-opens-using-cutting-edge-technology-turn-glass",
+      "year": 2018,
+      "capital_gbp_m": 10,
+      "annual_throughput_t": 60000,
+      "scope": "Glass cleaning/refining for insulation. Capital scale comparator only; the draft assumes a separate container-remelt outlet."
+    },
+    "plastics": {
+      "url": "https://www.biffa.co.uk/biffa-insights/the-biffa-billion-bottle-milestone",
+      "article_date": "2022-03-11",
+      "project_year": 2021,
+      "capital_gbp_m": 7,
+      "daily_throughput_t": 70,
+      "scope": "Pre-sorted rigid plastics washed and flaked; historical plant closed in 2024. Annual capacity of 20000 in draft is 70 x 285 operating days, rounded, not a reported annual nameplate figure."
+    },
+    "food": {
+      "url": "https://adbioresources.org/newsroom/members-press-release-hertfordshires-first-food-waste-to-green-energy-plant/",
+      "date": "2015-02-05",
+      "capital_gbp_m": 12,
+      "annual_capacity_t": 45000,
+      "scope": "Bygrave Lodge food-waste AD. Project benchmark, not a quotation for the fictional catchment."
+    },
+    "defra": {
+      "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1123468/Statistics_on_carbon_emmisions_Waste_Households_England_v8_2018.pdf",
+      "published": "2022-12-14",
+      "pdf_pages": [
+        7,
+        8,
+        9,
+        11,
+        12
+      ],
+      "table": 1,
+      "unit": "kg CO2e per metric tonne managed",
+      "factors": {
+        "glass_landfill": 9,
+        "glass_closed_loop": -326,
+        "hdpe_energy_recovery": 2241,
+        "hdpe_closed_loop": -485,
+        "food_landfill": 627,
+        "food_ad": -78,
+        "garden_landfill": 579,
+        "garden_composting": 72
+      },
+      "scope": "Historical consumption-based waste-treatment model; processing/transport and displacement credits included. Do not add separate energy credits. Capital construction emissions not modelled."
+    },
+    "decc": {
+      "url": "https://assets.publishing.service.gov.uk/media/5a79ae3440f0b63d72fc7a83/Renewables_Obligation_consultation_-_review_of_generation_costs_and_deployment_potential.pdf",
+      "published": "2011-10",
+      "price_basis": 2010,
+      "pdf_pages": [
+        200,
+        202,
+        204
+      ],
+      "tables": {
+        "71": {
+          "capital_gbp_thousand_per_MW_under_1MW_median": 4463
+        },
+        "74": {
+          "capital_gbp_thousand_per_MW_food_median": 5241,
+          "capital_gbp_thousand_per_MW_food_high": 6915
+        },
+        "75": {
+          "operating_gbp_thousand_per_MW_year_under_1MW_median": 900
+        },
+        "77": {
+          "operating_gbp_thousand_per_MW_year_food_low": 219,
+          "operating_gbp_thousand_per_MW_year_food_median": 481
+        }
+      },
+      "scope": "Costs are independent benchmark selections, not measured paired designs. Automation can reduce operating labour. Feedstock costs and gate-fee revenues excluded."
+    },
+    "garden": {
+      "url": "https://www.wastewise.co.uk/news/biowise-announces-7m-state-of-the-art-composting-facility-in-crewe-now-fully-operational/",
+      "published": "2020-05-26",
+      "retrieved": "2026-11-16",
+      "capital_gbp_m": 7,
+      "annual_capacity_t": 75000,
+      "reported_managed_t": 45000,
+      "scope": "Crewe in-vessel composting with outdoor composting and screening; real plant accepts mixed food/garden waste. Scenario uses separately collected garden waste only, avoiding overlap with Food."
+    },
+    "weee": {
+      "url": "https://consult.defra.gov.uk/product-regulation-and-producer-responsibility/consultation-on-reforming-the-producer-responsibil/supporting_documents/WEEE%20Review%20Impact%20Assessment%20Final%202023.pdf",
+      "published": "2023-12-28",
+      "retrieved": "2026-11-16",
+      "reviewed_pdf_pages": [
+        40,
+        41,
+        83
+      ],
+      "table_9": {
+        "price_year": 2019,
+        "small_mixed_weee_net_treatment_gbp_per_t": 75,
+        "scope": "Transport from collection points to treatment, containers, treatment and hazardous-waste/residue handling; primary material revenue included. Initial household/retailer collection excluded. This is a purchased service benchmark, not gross plant operating expense."
+      },
+      "table_77": {
+        "accounting": "Consumption-based Carbon WARM model used by Anthesis; not the territorial Table 16 used in the main IA monetary appraisal.",
+        "unit": "kg CO2e per tonne",
+        "landfill": 9,
+        "closed_loop_recycling": -1665,
+        "material_mix_percent": {
+          "steel": 55,
+          "aluminium": 12,
+          "glass": 7,
+          "plastic": 26
+        }
+      },
+      "scope": "Historical indicative model; no claim about current legal requirements. Scenario assumes suitable, non-reusable small electricals with a comparable material mix and closed-loop outlets."
+    }
+  },
+  "starter": {
+    "capital_rounding": "Glass, Plastics and Food: nearest GBP 4m after CPI conversion; Garden: nearest GBP 1m. Each rounded value differs from the converted benchmark by under 6%.",
+    "facilities": [
+      {
+        "id": "G",
+        "name": "Glass cleaning",
+        "capital_m": 12,
+        "benchmark_source": "glass",
+        "annual_capacity_t": 60000,
+        "annual_managed_t": 20000,
+        "previous_route": "landfill",
+        "new_route": "container glass recycling",
+        "saving_tco2e_per_t": 0.3,
+        "annual_saving_tco2e": 6000
+      },
+      {
+        "id": "P",
+        "name": "Rigid-plastic recycling",
+        "capital_m": 8,
+        "benchmark_source": "plastics",
+        "annual_capacity_t": 20000,
+        "annual_managed_t": 10000,
+        "previous_route": "energy recovery",
+        "new_route": "HDPE recycling replacing virgin HDPE",
+        "saving_tco2e_per_t": 2.7,
+        "annual_saving_tco2e": 27000
+      },
+      {
+        "id": "F",
+        "name": "Food-waste digestion",
+        "capital_m": 16,
+        "benchmark_source": "food",
+        "annual_capacity_t": 45000,
+        "annual_managed_t": 30000,
+        "previous_route": "landfill",
+        "new_route": "anaerobic digestion",
+        "saving_tco2e_per_t": 0.7,
+        "annual_saving_tco2e": 21000
+      },
+      {
+        "id": "R",
+        "name": "Garden-waste composting",
+        "capital_m": 9,
+        "benchmark_source": "garden",
+        "capital_derivation": "7 * 133.9 / 108.7 = 8.623735 million; rounded to 9 million",
+        "annual_capacity_t": 75000,
+        "annual_managed_t": 20000,
+        "previous_route": "landfill",
+        "new_route": "composting",
+        "saving_derivation": "(579 - 72) / 1000 = 0.507 tCO2e/t; rounded to 0.5; 20000 * 0.5 = 10000",
+        "saving_tco2e_per_t": 0.5,
+        "annual_saving_tco2e": 10000
+      }
+    ],
+    "cost_domain_m": [
+      8,
+      9,
+      12,
+      16
+    ],
+    "clues": [
+      "Garden costs more than Plastics",
+      "Glass costs more than Garden",
+      "Food costs more than Glass"
+    ],
+    "choose": 2,
+    "capital_budget_m": 24,
+    "minimum_annual_saving_tco2e": 40000,
+    "expected_stage2": [
+      "G+P",
+      "G+R",
+      "P+F",
+      "P+R"
+    ],
+    "expected_stage3": [
+      "P+F"
+    ],
+    "evaluation_answer": "B"
+  },
+  "longer": {
+    "designs": [
+      {
+        "id": "A",
+        "name": "Medium food",
+        "food_benchmark": "medium",
+        "capital_m": 12,
+        "annual_running_m": 0.5,
+        "capacity_t": 30000,
+        "electrical_service": false
+      },
+      {
+        "id": "B",
+        "name": "Large food",
+        "food_benchmark": "large",
+        "capital_m": 20,
+        "annual_running_m": 1.4,
+        "capacity_t": 45000,
+        "electrical_service": false
+      },
+      {
+        "id": "C",
+        "name": "Small food + electrical",
+        "food_benchmark": "small",
+        "capital_m": 6,
+        "annual_running_m": 1.7,
+        "food_annual_running_m": 1.2,
+        "electrical_service_annual_m": 0.5,
+        "capacity_t": 20000,
+        "electrical_service": true
+      }
+    ],
+    "operating_rounding": "nearest GBP 0.1m/year after 2010-to-2024 CPI conversion",
+    "years": 5,
+    "total_budget_m": 25,
+    "survey_forecast_t": 36000,
+    "checked_delivery_t": 24000,
+    "saving_tco2e_per_t": 0.7,
+    "minimum_annual_saving_tco2e": 20000,
+    "expected_stage1": [
+      "A",
+      "C"
+    ],
+    "expected_final": [
+      "C"
+    ],
+    "source_answer": "A",
+    "quality_answer": "C",
+    "evaluation_answer": "B",
+    "recorded_arrivals_t": 26000,
+    "rejected_t": 2000,
+    "food_plant_benchmarks": [
+      {
+        "id": "small",
+        "name": "Small",
+        "capacity_t": 20000,
+        "reference_MWe": 0.9,
+        "capital_input_thousand_per_MW": 4463,
+        "operating_input_thousand_per_MW_year": 900,
+        "capital_round_to_m": 2,
+        "capital_m": 6,
+        "annual_running_m": 1.2
+      },
+      {
+        "id": "medium",
+        "name": "Medium",
+        "capacity_t": 30000,
+        "reference_MWe": 1.5,
+        "capital_input_thousand_per_MW": 5241,
+        "operating_input_thousand_per_MW_year": 219,
+        "capital_round_to_m": 2,
+        "capital_m": 12,
+        "annual_running_m": 0.5
+      },
+      {
+        "id": "large",
+        "name": "Large",
+        "capacity_t": 45000,
+        "reference_MWe": 2.0,
+        "capital_input_thousand_per_MW": 6915,
+        "operating_input_thousand_per_MW_year": 481,
+        "capital_round_to_m": 2,
+        "capital_m": 20,
+        "annual_running_m": 1.4
+      }
+    ],
+    "electrical": {
+      "annual_suitable_t": 5000,
+      "contract_capacity_t": 5000,
+      "baseline": "landfill",
+      "treatment": "specialist material recycling, comparable to the Table 77 closed-loop mix",
+      "annual_service_m": 0.5,
+      "service_derivation": "75 * 133.9 / 107.8 * 5000 / 1000000 = 0.465793 million; rounded to 0.5 million per year",
+      "saving_tco2e_per_t": 1.7,
+      "saving_derivation": "(9 - (-1665)) / 1000 = 1.674; rounded to 1.7; 5000 * 1.7 = 8500 tCO2e/year",
+      "scope": "Separate checked scenario flow after reuse assessment; an existing processor supplies reserved capacity. No new electrical plant capital cost. Net service payment is added once; material income is not separately credited."
+    },
+    "cost_grid": {
+      "rows": [
+        "A",
+        "B",
+        "C"
+      ],
+      "building_domain_m": [
+        6,
+        12,
+        20
+      ],
+      "annual_domain_m": [
+        0.5,
+        1.4,
+        1.7
+      ],
+      "clues": [
+        "A does not have the lowest building cost",
+        "A costs less to build than B",
+        "The lowest-build-cost plan has the highest annual cost",
+        "Exactly one: B building cost is 20; B annual cost is 0.5"
+      ],
+      "mapping_indices": [
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "marks": 3,
+      "scoring": "Three points for both complete correct grids; replaces the three separate cost-entry questions. Budget shortlist still requires five-year calculations."
+    }
+  },
+  "assumptions": [
+    "Both activities use the same fictional city and surrounding-town catchment, approximately 500000 residents plus businesses. This is an authored scale assumption, not measured local data.",
+    "Material availability, the survey, delivery records, budgets and targets are authored scenario inputs; they are not findings reported by the benchmark sources.",
+    "The longer scenario is an alternative decision exercise, not a sequel to a plant already built in the starter.",
+    "Plants receive pre-separated suitable material; stated tonnages are managed input to the chosen treatment route. Historical emissions factors already include average process burdens/yields; no second yield adjustment.",
+    "Glass/plastics have outlets replacing equivalent virgin raw materials. Savings are relative to the specified route, not a universal material ranking.",
+    "Food running costs are fixed gross allowances with no food revenue assumed. Electrical treatment is a separately purchased net service including primary material revenue; no electrical capital or second revenue credit is added. Financing, price changes, land and initial collection are excluded. The comparison is the partnership\u2019s budget outlay, not operators\u2019 gross production costs.",
+    "Design flow/electrical-capacity pairings are authored scale checks, not rated manufacturer specifications. A 0.9/1.5/2 MW class for 20/30/45 ktpa is plausible against the Bygrave-scale benchmark but not independently engineered.",
+    "Linear benefit per tonne is a classroom model, not evidence of identical fixed plant burdens at different utilisation.",
+    "Environmental target concerns estimated treatment savings, not full construction lifecycle or a complete statutory waste-management plan."
+  ],
+  "updated": "2026-11-16"
+}

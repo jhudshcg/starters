@@ -30,6 +30,7 @@ Start content work with the two shared guides below, then the relevant type spec
 | [Puzzle package boundary](../packages/puzzles/ARCHITECTURE.md) | Adopted ownership, rationale and integration checks; player and headless API |
 | [Shared puzzle library](../packages/puzzles/README.md) | Reusable content, numeric challenge bands, individual Go ranks, guidance, rules and app adapters |
 | [Puzzle specification](spec-puzzles.md) | Puzzle families, interactions, scoring and examples |
+| [ESD activity drafts](esd-activity-drafts.md) | Two interactive review drafts, stage behaviour, answers and numerical provenance |
 | [CA1–CA2 coverage report](coverage-ca1-ca2.md) | Generated subelement counts and remaining gaps |
 | [Exam expansion review](exam-depth-review.md) | Source calibration, distinct angles and remaining gaps for slots 126–148 |
 | [Comparison-question review](reviews/2026-09-28-comparison-questions.md) | Authored choice-and-reason questions, source evidence, checks and pending teacher review |
