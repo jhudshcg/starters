@@ -158,7 +158,10 @@ try {
           const table=document.querySelector('.candidate-table');
           const cells=[...table.querySelectorAll('tbody td')].map(el=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height}));
           const labels=[...table.querySelectorAll('th[scope="row"],th[scope="col"]')];
-          return {cells,unwrapped:labels.every(el=>getComputedStyle(el).whiteSpace==='nowrap' && el.scrollWidth<=el.clientWidth),axis:table.querySelector('.candidate-axis-vertical').textContent,rotation:getComputedStyle(table.querySelector('.candidate-axis-vertical span')).transform,overflow:document.documentElement.scrollWidth>innerWidth};
+          const axis=table.querySelector('.candidate-axis-vertical'),axisText=axis.querySelector('span').getBoundingClientRect();
+          const axisBounds=axis.getBoundingClientRect();
+          const separated=[...table.querySelectorAll('th[scope="row"]')].every(el=>{const range=document.createRange();range.selectNodeContents(el);return axisText.right < range.getBoundingClientRect().left;});
+          return {axisContained:axisText.left>=axisBounds.left&&axisText.right<=axisBounds.right,separated,cells,unwrapped:labels.every(el=>getComputedStyle(el).whiteSpace==='nowrap' && el.scrollWidth<=el.clientWidth),axis:table.querySelector('.candidate-axis-vertical').textContent,rotation:getComputedStyle(table.querySelector('.candidate-axis-vertical span')).transform,overflow:document.documentElement.scrollWidth>innerWidth};
         })()`);
         assert.equal(geometry.cells.length, 16);
         assert.ok(
@@ -169,6 +172,8 @@ try {
           ),
         );
         assert.ok(geometry.unwrapped);
+        assert.ok(geometry.axisContained);
+        assert.ok(geometry.separated);
         assert.equal(geometry.axis, 'Facility');
         assert.equal(geometry.rotation, 'matrix(-1, 0, 0, -1, 0, 0)');
         assert.equal(geometry.overflow, false);

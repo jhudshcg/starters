@@ -48,7 +48,8 @@
 :where(.puzzle-controls) .candidate-table th[scope="row"] { text-align: end; }
 :where(.puzzle-controls) .candidate-table .candidate-spacer { grid-column: span 2; border: 0; }
 :where(.puzzle-controls) .candidate-table th[scope="colgroup"] { grid-column: 3 / -1; }
-:where(.puzzle-controls) .candidate-axis-vertical { grid-column: 1; grid-row: 3 / span var(--candidate-rows); }
+/* Reserve the vertical line box even when intrinsic sizing undercounts orthogonal text. */
+:where(.puzzle-controls) .candidate-axis-vertical { grid-column: 1; grid-row: 3 / span var(--candidate-rows); min-width: calc(1lh + 1rem); }
 :where(.puzzle-controls) .candidate-table .candidate-axis { font-size: 1rem; text-align: center; }
 :where(.puzzle-controls) .candidate-axis-vertical span { writing-mode: vertical-rl; transform: rotate(180deg); }
 :where(.puzzle-controls) .candidate-table td:not(.candidate-spacer) {
